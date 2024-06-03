@@ -1,10 +1,10 @@
 ---
 title: "Início"
 description: "Página inicial da API do Marketo"
-source-git-commit: d335bdd9f939c3e557a557b43fb3f33934e13fef
+source-git-commit: 89511b5f9c538866ae42bb1966c6895ed4bbd3d7
 workflow-type: tm+mt
 source-wordcount: '121'
-ht-degree: 9%
+ht-degree: 0%
 
 ---
 
@@ -13,45 +13,12 @@ ht-degree: 9%
 
 Documentação detalhada que ajudam a dominar a API do Marketo
 
-<table>
-  <tr>
-    <td width="150"><img alt="Introdução" src="assets/Smock_Book_18_N.svg" width="120px"/></td>
-    <td><a href="getting-started.md"><strong>Introdução</strong></a>
-      <div>Familiarize-se com as APIs do Marketo.</div></td>
-  </tr>
-  <tr>
-    <td><img alt="Bibliotecas de clientes" src="assets/Smock_Code_18_N.svg" width="120px"></td>
-    <td><a href="https://github.com/Marketo/Community-Supported-Client-Libraries"><strong>Bibliotecas de clientes</strong></a>
-      <div>Use o código aberto para expandir os recursos do Marketo.</div></td>
-  </tr>
-  <tr>
-    <td width="150px"><img alt="Scripts de e-mails" src="assets/Smock_EmailGear_18_N.svg" width="120px"/></td>
-    <td><a href="rest-api/emails.md"><strong>Script de email</strong></a>
-      <div>Use as APIs do Marketo para criar e editar emails e modelos de email.</div></td>
-  </tr>
-  <tr>
-    <td width="150px"><img alt="Acompanhamento de lead" src="assets/Smock_PeopleGroup_18_N.svg" width="120px"></td>
-    <td><a href="javascript-api/lead-tracking.md"><strong>Rastreamento de leads</strong></a><br>
-      <div>Gerenciar clientes potenciais.</div></td>
-  </tr>
-  <tr>
-    <td width="150px"><img alt="Marketo móvel" src="assets/Smock_MobileServices_18_N.svg" width="120px"/></td>
-    <td><a href="mobile/mobile.md"><strong>Marketo móvel</strong></a>
-      <div>Use o Marketo Mobile para ouvir e responder aos clientes em seus dispositivos móveis.</div></td>
-  </tr>
-  <tr>
-    <td width="150"><img alt="API REST" src="assets/Smock_AppleFiles_18_N.svg" width="120px"/></td>
-    <td><a href="https://developer.adobe.com/marketo-apis/"><strong>REST API</strong></a>
-      <div>Leia, grave e atualize seus dados do Marketo por meio da REST API.</div></td>
-  </tr>
-  <tr>
-    <td width="150px"><img alt="Webhooks" src="assets/Smock_SocialNetwork_18_N.svg" width="120px"/></td>
-    <td><a href="webhooks/webhooks.md"><strong>Webhooks</strong></a>
-      <div>Comunique-se com serviços da Web de terceiros com Webhooks.</div></td>
-  </tr>
-  <tr>
-    <td width="150px"><img alt="Personalização na Web" src="assets/Smock_PersonalizationField_18_N.svg" width="120px"></td>
-    <td><a href="javascript-api/web-personalization.md"><strong>Personalização da Web</strong></a>
-      <div>Use a API do javascript para rastreamento de eventos e personalização dinâmica de uma página da Web.</div></td>
-  </tr>
-</table>
+| ![Introdução](assets/Smock_Book_18_N.svg){width="120" align="center"} | [**Introdução**](getting-started.md)  Familiarize-se com as APIs do Marketo. |
+|---|---|
+| ![Bibliotecas de clientes](assets/Smock_Code_18_N.svg){width="120" align="center"} | [**Bibliotecas de clientes**](https://github.com/Marketo/Community-Supported-Client-Libraries) Use o código aberto para expandir os recursos do Marketo. |
+| ![Script de email](assets/Smock_EmailGear_18_N.svg){width="120" align="center"} | [**Script de email**](rest-api/emails.md) Use as APIs do Marketo para criar e editar emails e modelos de email. |
+| ![Rastreamento de leads](assets/Smock_PeopleGroup_18_N.svg){width="120" align="center"} | [**Rastreamento de leads**](javascript-api/lead-tracking.md) Gerenciar clientes potenciais. |
+| ![Marketo móvel](assets/Smock_MobileServices_18_N.svg){width="120" align="center"} | [**Marketo móvel**](mobile/mobile.md) Use o Marketo Mobile para ouvir e responder aos clientes em seus dispositivos móveis. |
+| ![REST API](assets/Smock_AppleFiles_18_N.svg){width="120" align="center"} | [**REST API**](https://developer.adobe.com/marketo-apis/) Leia, grave e atualize seus dados do Marketo por meio da REST API. |
+| ![Webhooks](assets/Smock_SocialNetwork_18_N.svg){width="120" align="center"} | [**Webhooks**](webhooks/webhooks.md) Comunique-se com serviços da Web de terceiros com Webhooks. |
+| ![Personalização da Web](assets/Smock_PersonalizationField_18_N.svg){width="120" align="center"} | [**Personalização da Web**](javascript-api/web-personalization.md) Use a API do javascript para rastreamento de eventos e personalização dinâmica de uma página da Web. |
