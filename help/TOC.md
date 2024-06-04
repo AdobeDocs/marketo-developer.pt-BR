@@ -4,8 +4,8 @@ user-guide-description: "Este guia fornece instruções de uso [!DNL Marketo] AP
 breadcrumb-title: "[!DNL Marketo] Guia do desenvolvedor"
 role: Admin
 feature-set: "Marketo Engage"
-hide: true
-source-git-commit: 2185972a272b64908d6aac8818641af07c807ac2
+index: true
+source-git-commit: 7fffdfd7a74950b00a012400560add330ac5e22b
 workflow-type: tm+mt
 source-wordcount: '249'
 ht-degree: 30%
