@@ -1,17 +1,17 @@
 ---
-title: "Introdução"
-description: "Introdução às APIs do Marketo"
-source-git-commit: 2185972a272b64908d6aac8818641af07c807ac2
+title: Introdução
+description: Introdução às APIs do Marketo Engage
+exl-id: 78c44c32-4e59-4d55-a45c-ef0d7dac814d
+source-git-commit: 82bea1ab3d0d83a8867bb7efefb828ce2d92747c
 workflow-type: tm+mt
-source-wordcount: '1242'
-ht-degree: 0%
+source-wordcount: '1246'
+ht-degree: 1%
 
 ---
 
-
 # Introdução
 
-O Marketo é uma plataforma de automação de marketing que permite aos profissionais de marketing gerenciar programas e campanhas personalizadas de vários canais para clientes atuais e potenciais. A plataforma do Marketo pode ser estendida usando pontos de integração. Abaixo você encontra as entidades principais e seus relacionamentos.
+O Marketo Engage é uma plataforma de automação de marketing que permite aos profissionais de marketing gerenciar programas e campanhas multicanais personalizados para clientes potenciais e de clientes. A plataforma Marketo Engage pode ser estendida usando pontos de integração. Abaixo você encontra as entidades principais e seus relacionamentos.
 
 Os seguintes objetos não estão disponíveis por meio da API REST quando a sincronização nativa está habilitada: Empresa, Oportunidade, Função da oportunidade, Vendedor
 
@@ -19,7 +19,7 @@ Os seguintes objetos não estão disponíveis por meio da API REST quando a sinc
 
 ## Pessoa (Clientes Potenciais)
 
-As pessoas são a base de qualquer plataforma de automação de marketing. No Marketo, todos os registros de pessoas que não são de vendas são chamados de leads, independentemente de serem designados como leads, prospetos, suspeitos, contatos etc., de uma perspectiva de vendas. O objeto principal vem com um conjunto de [campos padrão](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Leads/operation/getLeadFieldsUsingGET) como email, nome e sobrenome. Campos adicionais podem ser adicionados ao tipo de objeto do cliente potencial para estender os tipos de informações associadas aos registros no sistema. Os atributos personalizados podem ser lidos e gravados como campos padrão. Uma lista completa de campos pode ser encontrada na Marketo **[!UICONTROL Admin]** > **[!UICONTROL Gerenciamento de campo]** menu. Os clientes em potencial são identificados exclusivamente no Marketo pelo campo id. Outras chaves exclusivas devem ser impostas externamente do sistema.
+As pessoas são a base de qualquer plataforma de automação de marketing. No Marketo, todos os registros de pessoas que não são de vendas são chamados de leads, independentemente de serem designados como leads, prospetos, suspeitos, contatos e assim por diante, de uma perspectiva de vendas. O objeto principal vem com um conjunto de [campos padrão](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Leads/operation/getLeadFieldsUsingGET) como email, nome e sobrenome. Campos adicionais podem ser adicionados ao tipo de objeto do cliente potencial para estender os tipos de informações associadas aos registros no sistema. Os atributos personalizados podem ser lidos e gravados como campos padrão. Uma lista completa de campos pode ser encontrada na Marketo **[!UICONTROL Admin]** > **[!UICONTROL Gerenciamento de campo]** menu. Os clientes em potencial são identificados exclusivamente no Marketo pelo campo id. Outras chaves exclusivas devem ser impostas externamente do sistema.
 
 APIs relacionadas: [REST](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Leads), [SOAP](soap-api/leads.md), [JavaScript](javascript-api/lead-tracking.md#lead-tracking-api)
 
