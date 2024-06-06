@@ -2,7 +2,7 @@
 title: Início
 description: Página inicial da API Marketo Engage
 exl-id: a249945b-12f3-4b41-badc-ee7a72d5e7eb
-source-git-commit: aea2812730fa5f6054e69dfa9d8045329aa724c7
+source-git-commit: c8de36d73ca2dc4ead29e6e25946bf138723e4b1
 workflow-type: tm+mt
 source-wordcount: '128'
 ht-degree: 7%
@@ -16,8 +16,8 @@ Documentação detalhada que ajudam a dominar a API de Marketo Engage
 <table>
 <tbody>
 <tr>
-<th><img src="assets/Smock_Book_18_N.svg" alt="Introdução"></th>
-<th><a href="getting-started.md"><strong>Introdução</strong></a>  Conheça as APIs do Marketo Engage.</th>
+<td><img src="assets/Smock_Book_18_N.svg" alt="Introdução"></td>
+<td><a href="getting-started.md"><strong>Introdução</strong></a>  Conheça as APIs do Marketo Engage.</td>
 </tr>
 <tr>
 <td><img src="assets/Smock_Code_18_N.svg" alt="Bibliotecas de clientes"></td>
