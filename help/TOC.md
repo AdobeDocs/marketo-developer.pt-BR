@@ -5,9 +5,9 @@ breadcrumb-title: "[!DNL Marketo] Guia do desenvolvedor"
 role: Admin
 feature-set: "Marketo Engage"
 index: true
-source-git-commit: 82bea1ab3d0d83a8867bb7efefb828ce2d92747c
+source-git-commit: 15ac16ab4f8153ee069335951a84cf1691469c6d
 workflow-type: tm+mt
-source-wordcount: '254'
+source-wordcount: '255'
 ht-degree: 29%
 
 ---
@@ -92,6 +92,7 @@ ht-degree: 29%
       - [Lista de campos](rest-api/fields.md)
       - [Tipos de campos](rest-api/field-types.md)
       - [Banco de dados de leads](rest-api/lead-database.md)
+      - [Leads](rest-api/leads.md)
       - [Contas nomeadas](rest-api/named-accounts.md)
       - [Listas de contas nomeadas](rest-api/named-account-lists.md)
       - [Oportunidades](rest-api/opportunities.md)
