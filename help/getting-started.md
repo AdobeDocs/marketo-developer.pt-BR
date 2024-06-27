@@ -69,7 +69,7 @@ APIs relacionadas: [REST](https://developer.adobe.com/marketo-apis/api/mapi/#tag
 
 ## Ativos
 
-Os ativos se referem a páginas de aterrissagem, emails, formulários e imagens usados em um programa. Os ativos podem ser locais para um determinado programa ou globais. Os ativos globais estão disponíveis em qualquer programa.
+O Assets se refere às páginas de aterrissagem, emails, formulários e imagens usados em um programa. O Assets pode ser local para um determinado programa ou global. Os ativos globais estão disponíveis em qualquer programa.
 
 APIs relacionadas: [REST](https://developer.adobe.com/marketo-apis/api/asset/)
 
@@ -87,7 +87,7 @@ APIs relacionadas: [REST](https://developer.adobe.com/marketo-apis/api/asset/#ta
 
 ## Objetos personalizados
 
-Um objeto personalizado do Marketo permite a criação de uma relação um para muitos ou muitos para muitos (Edge-Bridge-Edge) entre seus clientes em potencial do Marketo e os registros de objeto personalizado. Depois de criar e publicar um objeto personalizado do Marketo, você pode executar operações CRUD no objeto personalizado por meio da API do Marketo. Mais informações sobre a criação de objetos personalizados podem ser encontradas [aqui](https://experienceleague.adobe.com/en/docs/marketo/using/home). Quando novos registros são adicionados ao objeto personalizado, você pode usar um acionador de lista inteligente para responder. Você também pode usar dados de objetos personalizados como filtro em smart lists (segmentação) ou em emails usando [Script de email](email-scripting.md).
+Um objeto personalizado do Marketo permite a criação de uma relação um para muitos ou muitos para muitos (Edge-Bridge-Edge) entre seus clientes potenciais do Marketo e os registros de objeto personalizado. Depois de criar e publicar um objeto personalizado do Marketo, você pode executar operações CRUD no objeto personalizado por meio da API do Marketo. Mais informações sobre a criação de objetos personalizados podem ser encontradas [aqui](https://experienceleague.adobe.com/en/docs/marketo/using/home). Quando novos registros são adicionados ao objeto personalizado, você pode usar um acionador de lista inteligente para responder. Você também pode usar dados de objetos personalizados como filtro em smart lists (segmentação) ou em emails usando [Script de email](email-scripting.md).
 
 APIs relacionadas: [REST](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Custom-Objects), [SOAP](soap-api/custom-objects.md)
 
