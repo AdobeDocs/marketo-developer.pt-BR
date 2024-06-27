@@ -1,10 +1,10 @@
 ---
 title: "Assimilação de dados"
 description: "Visão geral da API de assimilação de dados"
-source-git-commit: d335bdd9f939c3e557a557b43fb3f33934e13fef
+source-git-commit: 6fc45ff98998217923e2a5b02d00d1522fe3272c
 workflow-type: tm+mt
-source-wordcount: '952'
-ht-degree: 10%
+source-wordcount: '945'
+ht-degree: 11%
 
 ---
 
@@ -132,7 +132,7 @@ Ponto de extremidade usado para substituir registros de pessoa.
 
 | Caminho |
 |---|
-| /subscriptions/{munchkinId}/pessoas |
+| `/subscriptions/{munchkinId}/persons` |
 
 | HeadersKey | Valor |
 |---|---|
@@ -201,7 +201,7 @@ Ponto de extremidade usado para substituir registros de objeto personalizados.
 
 | Caminho |
 |---|
-| /subscriptions/{munchkinId}/customobjects/{customObjectAPIName} |
+| `/subscriptions/{munchkinId}/customobjects/{customObjectAPIName}` |
 
 Cabeçalhos
 
@@ -210,7 +210,13 @@ Cabeçalhos
 | Tipo de conteúdo | application/json |
 | X-Mkto-User-Token | {accessToken} |
 
-Corpo da solicitação | Chave | Tipo de dados | Obrigatório | Valor | Valor padrão | |—|—|—|—|—| | prioridade | String | Não | Prioridade da solicitação:normalhigh | normal | | dedupeBy | String | Não | Atributos a serem desduplicados em:dedupeFieldsmarketoGUID | dedupeFields | | customObjects | Matriz de objeto | Sim | Lista de pares nome-valor do atributo do objeto. | - |
+Corpo da solicitação
+
+| Chave | Tipo de dados | Obrigatório | Valor | Valor padrão |
+|---|---|---|---|---|
+| prioridade | Sequência de caracteres | Não | Prioridade da solicitação:normalhigh | normal |
+| dedupeBy | Sequência de caracteres | Não | Atributos a serem desduplicados em:dedupeFieldsmarketoGUID | dedupeFields |
+| customObjects | Matriz de objeto | Sim | Lista de pares nome-valor do atributo do objeto. | - |
 
 | Permissão |
 |---|

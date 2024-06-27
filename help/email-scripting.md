@@ -1,14 +1,14 @@
 ---
-title: "Scripts de email"
+title: Scripts de e-mails
 feature: Email Programs
-description: "Visão geral de scripts de email"
-source-git-commit: 2185972a272b64908d6aac8818641af07c807ac2
+description: Visão geral do script de email
+exl-id: ff396f8b-80c2-4c87-959e-fb8783c391bf
+source-git-commit: 6fc45ff98998217923e2a5b02d00d1522fe3272c
 workflow-type: tm+mt
 source-wordcount: '963'
 ht-degree: 0%
 
 ---
-
 
 # Scripts de e-mails
 
@@ -98,7 +98,7 @@ O script do Velocity é incluído nos emails usando tokens de script de email. E
 
 ![Token de script](assets/script-token.png)
 
-Aqui, você pode editar o nome do token e abrir o editor por meio da opção Click to Edit:
+Aqui, você pode editar o nome do token e abrir o editor por meio da [!UICONTROL Clique para editar] opção:
 
 ![Editar script](assets/script-edit.png)
 
@@ -112,11 +112,11 @@ Depois de definir o script em um Meu token de programa, você pode referenciá-l
 
 ![Script de email](assets/email-script-marketo-email.png)
 
-Você pode testar seu script usando a ação de email &quot;Enviar email de amostra&quot; no designer de email do Marketo. Para que o script seja processado corretamente, você deve selecionar um cliente potencial existente para representar no campo Cliente Potencial. Se você estiver testando com `$TriggerObject`, você pode selecionar o objeto de acionamento por meio do parâmetro &quot;Acionador&quot;. Usa os dados do objeto atualizado mais recentemente desse tipo como o `$TriggerObject` variável.
+Você pode testar seu script usando o [!UICONTROL Enviar email de amostra] ação de email no designer de email do Marketo. Para que o script seja processado corretamente, você deve selecionar um cliente potencial existente para representar na variável [!UICONTROL Lead] campo. Se você estiver testando com `$TriggerObject`, é possível selecionar o objeto de acionamento por meio da [!UICONTROL Acionador] parâmetro. Usa os dados do objeto atualizado mais recentemente desse tipo como o `$TriggerObject` variável.
 
 ![Script de email de teste](assets/velocity-test.png)
 
-Você também pode usar a Visualização de email para testar o script. Para fazer isso, você deve selecionar Exibir como: Detalhe do lead e selecionar um lead em uma lista estática disponível. Isso tem a vantagem adicional de gerar quaisquer exceções que possam ter ocorrido durante a execução do script:
+Você também pode usar a variável [!UICONTROL Visualização de email] para testar o script. Para fazer isso, selecione **[!UICONTROL Exibir Como: Detalhe de Cliente Potencial]** e selecione um lead de uma lista estática disponível. Isso tem a vantagem adicional de gerar quaisquer exceções que possam ter ocorrido durante a execução do script:
 
 ![Exibir Email como](assets/view-as.png)
 
@@ -126,7 +126,7 @@ O comprimento combinado de todos os tokens de script de email em um determinado 
 
 - As variáveis referenciadas no script de email devem existir no Marketo em um dos objetos disponíveis para o script.
 - Você pode fazer referência a objetos personalizados de primeiro e segundo nível que se originam de seu CRM integrado nativamente e que estão diretamente conectados ao cliente potencial ou contato, mas não a objetos personalizados de terceiro nível. Objetos personalizados não podem ser pais do cliente potencial ou da empresa
-- Para objetos personalizados do Marketo, você pode fazer referência a objetos personalizados de segundo nível com relacionamento Pai-Filho. Por exemplo `Lead <- Parent <- Child`. Você não pode fazer referência a objetos personalizados de segundo nível com relação Edge-Bridge. por exemplo,  `Lead <- Bridge -> Edge`
+- Para objetos personalizados do Marketo, você pode fazer referência a objetos personalizados de segundo nível com relacionamento Pai-Filho. Por exemplo `Lead <- Parent <- Child`. Não é possível fazer referência a objetos personalizados de segundo nível com uma relação Edge-Bridge. por exemplo,  `Lead <- Bridge -> Edge`
 - Você pode fazer referência a objetos personalizados conectados a um cliente potencial, contato ou conta, mas não a mais de um.
 - Objetos personalizados só podem ser referenciados por meio de uma única conexão, cliente potencial, contato ou conta
 - Você deve marcar a caixa no editor de scripts para os campos que você está usando, caso contrário eles não serão processados

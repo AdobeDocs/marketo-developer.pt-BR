@@ -1,18 +1,18 @@
 ---
-title: "API SOAP"
+title: API SOAP
 feature: SOAP
-description: "Marketo SOAP overview"
-source-git-commit: 2185972a272b64908d6aac8818641af07c807ac2
+description: Visão geral do Marketo SOAP
+exl-id: 6618cc82-15ae-4030-aa00-438e635d8369
+source-git-commit: 6fc45ff98998217923e2a5b02d00d1522fe3272c
 workflow-type: tm+mt
 source-wordcount: '246'
-ht-degree: 0%
+ht-degree: 1%
 
 ---
 
-
 # API SOAP
 
-A API SOAP não está mais em desenvolvimento ativo. As chamadas ainda funcionam, mas nosso desenvolvimento está focado em [REST](https://developer.adobe.com/marketo-apis/) daqui para frente.
+A API do SOAP não está mais em desenvolvimento ativo. As chamadas ainda funcionam, mas nosso desenvolvimento está focado em [REST](https://developer.adobe.com/marketo-apis/) daqui para frente.
 
 A API SOAP do Marketo permite a criação, a recuperação e a remoção de entidades e dados armazenados no Marketo. Você pode encontrar o [Marketo-SOAP-SDK](https://github.com/Marketo/SOAP-API-Java-Client) no GitHub. Há também [bibliotecas de clientes](https://github.com/Marketo/Community-Supported-Client-Libraries) para poupar tempo.
 
@@ -20,7 +20,7 @@ Versão mais recente da API: 3_1
 
 ## WSDL SOAP
 
-Para recuperar o documento WSDL SOAP, obtenha seu Ponto de Extremidade da API SOAP de seu **[!UICONTROL Admin]** > **[!UICONTROL Integração]** > **[!UICONTROL Serviços da Web]** menu.
+Para recuperar o documento WSDL do SOAP, obtenha seu endpoint da API SOAP de seu **[!UICONTROL Admin]** > **[!UICONTROL Integração]** > **[!UICONTROL Serviços da Web]** menu.
 
 ![Endpoint SOAP](assets/endpoint-soap.png)
 
@@ -38,12 +38,12 @@ Não use o ponto final definido no WSDL. Cada instância do Marketo tem um ponto
 
 Nossa recomendação é que os tamanhos dos lotes não sejam maiores que 300. Não há suporte para tamanhos maiores e isso pode resultar em tempos limite e, em casos extremos, em limitação.
 
-## Configurações da API SOAP no Marketo
+## Configurações da API do SOAP no Marketo
 
-1. Acesse a seção Admin e clique em Serviços da Web.
+1. Vá para a **[!UICONTROL Admin]** e clique em **[!UICONTROL Serviços da Web]**.
 
 ![admin-web-services2](assets/admin-web-services2.png)
 
-1. Defina uma Chave de criptografia apropriada, clique em &quot;Salvar alterações&quot; e use os valores de Endpoint da API SOAP, ID do usuário e Chave de criptografia para gerar as [assinatura de autenticação](authentication-signature.md) para cada chamada de API SOAP.
+1. Defina um apropriado [!UICONTROL Chave de criptografia], clique em **[!UICONTROL Salvar alterações]** e usar a API do SOAP [!UICONTROL Endpoint], [!UICONTROL ID de usuário], e [!UICONTROL Chave de criptografia] valores para gerar a correta [assinatura de autenticação](authentication-signature.md) para cada chamada de API SOAP.
 
 ![admin-web-services3](assets/admin-web-services3.png)

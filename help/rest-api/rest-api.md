@@ -1,14 +1,14 @@
 ---
-title: "REST API"
+title: API REST
 feature: REST API
-description: "Visão geral da REST API"
-source-git-commit: 2185972a272b64908d6aac8818641af07c807ac2
+description: Visão geral da REST API
+exl-id: 4b9beaf0-fc04-41d7-b93a-a1ae3147ce67
+source-git-commit: 6fc45ff98998217923e2a5b02d00d1522fe3272c
 workflow-type: tm+mt
 source-wordcount: '664'
 ht-degree: 1%
 
 ---
-
 
 # API REST
 
@@ -30,15 +30,15 @@ Na primeira chamada para o Marketo, você recuperará um registro de lead. Para 
 
 ![Usuários e funções do administrador](assets/admin-users-and-roles.png)
 
-Clique em [!UICONTROL Funções] e, em seguida, Nova função e atribua pelo menos a permissão &quot;Cliente potencial somente leitura&quot; (ou &quot;Pessoa somente leitura&quot;) à função no grupo de APIs de acesso. Atribua um nome descritivo e clique em [!UICONTROL Criar].
+Clique em **[!UICONTROL Funções]** e, em seguida, Nova função e atribua pelo menos a permissão &quot;Cliente potencial somente leitura&quot; (ou &quot;Pessoa somente leitura&quot;) à função no grupo de APIs de acesso. Atribua um nome descritivo e clique em **[!UICONTROL Criar]**.
 
 ![Nova Função](assets/new-role.png)
 
-Agora, volte para a guia Usuários e clique em Convidar novo usuário. Dê ao usuário um nome descritivo que indique que ele é um usuário da API e um endereço de email e clique em **[!UICONTROL Próxima]**.
+Agora de volta ao [!UICONTROL Usuários] e clique em **[!UICONTROL Convidar novo usuário]**. Dê ao usuário um nome descritivo que indique que ele é um usuário da API e um endereço de email e clique em **[!UICONTROL Próxima]**.
 
 ![Novas informações do usuário](assets/new-user-info.png)
 
-Em seguida, marque a opção Somente API e conceda ao usuário a função API que você criou e clique em **[!UICONTROL Próxima]**.
+Em seguida, marque a opção [!UICONTROL Somente API] e conceda ao usuário a função de API que você criou e clique em **[!UICONTROL Próxima]**.
 
 ![Novas permissões de usuário](assets/new-user-permissions.png)
 
@@ -46,23 +46,23 @@ Para concluir o processo de criação do usuário, clique em **[!UICONTROL Envia
 
 ![Nova mensagem de usuário](assets/new-user-message.png)
 
-Em seguida, acesse o menu Admin e clique em **[!UICONTROL LaunchPoint]**.
+Em seguida, acesse o [!UICONTROL Admin] e clique em **[!UICONTROL LaunchPoint]**.
 
 ![Launchpoint](assets/admin-launchpoint.png)
 
-Clique no menu New e selecione [!UICONTROL Novo serviço]. Dê um nome descritivo ao serviço e selecione &quot;Personalizado&quot; no menu suspenso Serviço. Forneça uma descrição, selecione o novo usuário no menu suspenso Somente API de usuário e clique em [!UICONTROL Criar].
+Clique em **[!UICONTROL Novo]** e selecione **[!UICONTROL Novo serviço]**. Dê um nome descritivo ao serviço e selecione **[!UICONTROL Personalizado]** do [!UICONTROL Serviço] menu suspenso. Forneça uma descrição e selecione o novo usuário na caixa [!UICONTROL Somente usuário da API] e clique em **[!UICONTROL Criar]**.
 
 ![Novo serviço de ponto de inicialização](assets/admin-launchpoint-new-service.png)
 
-Clique em Exibir detalhes para o novo serviço para acessar a ID do cliente e o Segredo do cliente. Por enquanto, você pode clicar no link [!UICONTROL Obter token] botão para gerar um token de acesso válido por uma hora. Salve o token em uma nota por enquanto.
+Clique em **[!UICONTROL Exibir detalhes]** para que seu novo serviço acesse a ID do cliente e o Segredo do cliente. Por enquanto, você pode clicar no link **[!UICONTROL Obter token]** botão para gerar um token de acesso válido por uma hora. Salve o token em uma nota por enquanto.
 
 ![Obter token](assets/get-token.png)
 
-Em seguida, acesse o menu Admin e, em seguida, o **[!UICONTROL Serviços da Web]**.
+Em seguida, acesse o **[!UICONTROL Admin]** e, em seguida, para **[!UICONTROL Serviços da Web]**.
 
 ![Serviços da Web](assets/admin-web-services.png)
 
-Localize o Endpoint na caixa API REST e salve em uma nota por enquanto.
+Localize o [!UICONTROL Endpoint] na caixa REST API e salve em uma observação por enquanto.
 
 ![Endpoint REST](assets/admin-web-services-rest-endpoint-1.png)
 

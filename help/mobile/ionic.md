@@ -1,30 +1,30 @@
 ---
-title: "Iônico"
-feature: "Mobile Marketing"
-description: "Uso do Ionic com Marketo para dispositivos móveis"
-source-git-commit: 2185972a272b64908d6aac8818641af07c807ac2
+title: '[!DNL Ionic]'
+feature: Mobile Marketing
+description: Usar [!DNL Ionic] com Marketo para dispositivos móveis
+exl-id: 204e5fb4-c9d6-43a6-9d77-0b2a67ddbed3
+source-git-commit: 6fc45ff98998217923e2a5b02d00d1522fe3272c
 workflow-type: tm+mt
-source-wordcount: '613'
+source-wordcount: '606'
 ht-degree: 1%
 
 ---
 
-
 # Iônico
 
-Este tópico descreve como integrar o plug-in Cordova do Marketo. O capacitor iônico não é suportado no momento.
+Este tópico descreve como integrar o plug-in Cordova do Marketo. [!DNL Ionic] o capacitor não é compatível no momento.
 
 ## Pré-requisitos
 
 1. [Adicionar um aplicativo no Administrador do Marketo](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/mobile-marketing/admin/add-a-mobile-app) (obtenha a chave secreta e a ID do Munchkin do seu aplicativo).
 1. Configurar notificações por push ([iOS](push-notifications.md) | [Android](push-notifications.md) ).
-1. Instalar [Iônico](https://ionicframework.com/getting-started/) &amp; [Cordova CLI](https://cordova.apache.org/docs/en/latest/guide/cli/).
+1. Instalar [[!DNL Ionic]](https://ionicframework.com/getting-started/) &amp; [Cordova CLI](https://cordova.apache.org/docs/en/latest/guide/cli/).
 
 ## Instruções de instalação
 
-### Configurar o plug-in jônico do Marketo
+### Configurar Marketo [!DNL Ionic] Plug-in
 
-1. Supondo que a CLI do Cordova esteja instalada, vá para o diretório de aplicativos Ionic e execute o seguinte comando para adicionar o plug-in do Marketo ao aplicativo:
+1. Supondo que a CLI do Cordova esteja instalada, vá para o [!DNL Ionic] diretório da aplicação e execute o seguinte comando para adicionar o Marketo Plugin na sua aplicação:
 
    `$ ionic plugin add https://github.com/Marketo/PhoneGapPlugin.git --variable APPLICATION_SECRET_KEY="YOUR_APPLICATION_SECRET"`
 
@@ -74,7 +74,7 @@ sharedInstance.trackPushNotfication(launchOptions)
 
 Para garantir que a estrutura do Marketo seja iniciada na inicialização do aplicativo, adicione o seguinte código no `onDeviceReady` no arquivo JavaScript principal.
 
-Você deve passar `ionicCordova` como tipo de estrutura para aplicativos Cordova Iônicos.
+Você deve passar `ionicCordova` como tipo de estrutura para [!DNL Ionic] Aplicativos Cordova.
 
 #### Sintaxe
 
