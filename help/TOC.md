@@ -1,7 +1,7 @@
 ---
-user-guide-title: "[!DNL Marketo] Guia do desenvolvedor"
-user-guide-description: "Este guia fornece instruções de uso [!DNL Marketo] APIs."
-breadcrumb-title: "[!DNL Marketo] Guia do desenvolvedor"
+user-guide-title: "[!DNL Marketo] Guia do Desenvolvedor"
+user-guide-description: "Este guia fornece instruções para usar  [!DNL Marketo] APIs."
+breadcrumb-title: "[!DNL Marketo] Guia do Desenvolvedor"
 role: Admin
 feature-set: "Marketo Engage"
 index: true
@@ -13,7 +13,7 @@ ht-degree: 32%
 ---
 
 
-# [!DNL Marketo] Desenvolvedor {#marketo}
+# Desenvolvedor [!DNL Marketo] {#marketo}
 
 - [Início](home.md)
 - [Introdução](getting-started.md)
@@ -32,9 +32,9 @@ ht-degree: 32%
    - [Redes sociais](javascript-api/social.md)
    - [Gatilhos](javascript-api/triggers.md)
    - [Personalização na Web](javascript-api/web-personalization.md)
-- Dispositivo móvel {#mobile}
-   - [Instalar [!DNL Adobe Launch] Extensão](mobile/adobe-launch-extension-installation.md)
-   - [[!DNL Adobe Launch] Extensão](mobile/adobe-launch-extension.md)
+- Celular {#mobile}
+   - [Instalar  [!DNL Adobe Launch] Extensão](mobile/adobe-launch-extension-installation.md)
+   - [Extensão [!DNL Adobe Launch]](mobile/adobe-launch-extension.md)
    - [Modo de Segurança Avançada](mobile/advanced-security-access-mode.md)
    - [Ações Personalizadas](mobile/custom-actions.md)
    - [Deep links](mobile/enabling-deep-links-in-your-app.md)
@@ -72,7 +72,7 @@ ht-degree: 32%
    - [Assinatura de autenticação](rest-api/authentication-signature.md)
    - [URL base](rest-api/base-url.md)
    - [Práticas recomendadas](rest-api/marketo-integration-best-practices.md)
-   - Extração em massa {#bulk-extract}
+   - Extração em Massa {#bulk-extract}
       - [Atividade em massa](rest-api/bulk-activity-extract.md)
       - [Objeto personalizado em massa](rest-api/bulk-custom-object-extract.md)
       - [Extração em massa](rest-api/bulk-extract.md)
@@ -88,7 +88,7 @@ ht-degree: 32%
    - [Baixar definições do Swagger](rest-api/swagger.md)
    - [Referência do ponto de extremidade](rest-api/endpoint-reference.md)
    - [Códigos de erro](rest-api/error-codes.md)
-   - Banco de dados de clientes potenciais {#lead-database}
+   - Banco de Dados de Cliente Potencial {#lead-database}
       - [Empresas](rest-api/companies.md)
       - [Lista de campos](rest-api/fields.md)
       - [Tipos de campos](rest-api/field-types.md)
@@ -118,7 +118,7 @@ ht-degree: 32%
       - [[!DNL getCampaignsForSource]](soap-api/getcampaignsforsource.md)
       - [[!DNL requestCampaign]](soap-api/requestcampaign.md)
       - [[!DNL scheduleCampaign]](soap-api/schedulecampaign.md)
-   - Objetos personalizados {#custom-objects}
+   - Objetos Personalizados {#custom-objects}
       - [Objetos personalizados](soap-api/custom-objects.md)
       - [[!DNL deleteCustomObjects]](soap-api/deletecustomobjects.md)
       - [[!DNL getCustomObjects]](soap-api/getcustomobjects.md)
@@ -131,7 +131,7 @@ ht-degree: 32%
       - [Leads](soap-api/leads.md)
       - [[!DNL syncLead]](soap-api/synclead.md)
       - [[!DNL syncMultipleLeads]](soap-api/syncmultipleleads.md)
-   - Objetos do Marketo {#marketo-objects}
+   - Objetos Marketo {#marketo-objects}
       - [[!DNL deleteMObjects]](soap-api/deletemobjects.md)
       - [[!DNL describeMObjects]](soap-api/describemobject.md)
       - [[!DNL getMObjects]](soap-api/getmobjects.md)
@@ -152,7 +152,7 @@ ht-degree: 32%
    - [Erros](webhooks/errors.md)
    - [Mapeamentos de resposta](webhooks/response-mappings.md)
    - [Webhooks](webhooks/webhooks.md)
-- [Bibliotecas de clientes](https://github.com/Marketo/Community-Supported-Client-Libraries)
+- [Bibliotecas de Clientes](https://github.com/Marketo/Community-Supported-Client-Libraries)
 - [Fluxos de dados](data-streams.md)
 - [Scripts de e-mails](email-scripting.md)
 - [Licença](api-license.md)
