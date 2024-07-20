@@ -1,43 +1,43 @@
 ---
-title: "getLeadChanges"
+title: getLeadChanges
 feature: SOAP
-description: "Chamadas SOAP getLeadChanges"
-source-git-commit: d335bdd9f939c3e557a557b43fb3f33934e13fef
+description: chamadas de SOAP getLeadChanges
+exl-id: 23445684-d8d9-407b-8f19-cb69e806795c
+source-git-commit: 66add4c38d0230c36d57009de985649bb67fde3e
 workflow-type: tm+mt
 source-wordcount: '402'
 ht-degree: 3%
 
 ---
 
-
 # getLeadChanges
 
-Essa API é como `getLeadActivity` exceto que ela opera em vários leads de uma só vez. A operação verifica se há novos clientes potenciais criados, atualizações de campo de clientes potenciais e outras atividades.
+Esta API é semelhante a `getLeadActivity`, exceto que opera em vários clientes em potencial de uma só vez. A operação verifica se há novos clientes potenciais criados, atualizações de campo de clientes potenciais e outras atividades.
 
-O resultado contém atividades que causaram a alteração, juntamente com uma [posição do fluxo](stream-position.md) para paginar por meio de conjuntos de resultados grandes.
+O resultado contém atividades que fizeram com que a alteração, juntamente com uma [posição de fluxo](stream-position.md), paginasse por meio de conjuntos de resultados grandes.
 
 Você deve incluir um parâmetro de entrada que identifique quais filtros de atividade você deseja retornar no resultado. Se quiser todas as atividades, um valor em branco poderá ser transmitido. Para mais de um filtro de atividade, forneça uma lista de filtros de atividade.
 
 Alguns exemplos de tipos de atividades são: &quot;Visitar página da Web&quot;, &quot;Preencher formulário&quot; e &quot;Clicar em link&quot;.
 
-Depois da API SOAP versão 2_2, é possível incluir um `leadSelector`.
+Depois da API SOAP versão 2_2, você pode incluir um `leadSelector`.
 
-Para `LastUpdateAtSelector`, o `oldestUpdatedAt` o valor corresponderia ao `oldestCreatedAt` valor no `startPosition`. E a variável `latestUpdatedAt` o valor corresponderia ao `latestCreatedAt` valor no `startPosition`.
+Para `LastUpdateAtSelector`, o valor `oldestUpdatedAt` corresponderia ao valor `oldestCreatedAt` em `startPosition`. E o valor `latestUpdatedAt` corresponderia ao valor `latestCreatedAt` em `startPosition`.
 
-Observação: o número limite de clientes em potencial aceito em um `LeadKeySelector` é 100. Se o número de leads exceder 100, a API lançará uma exceção de parâmetro incorreta e retornará uma falha SOAP.
+Observação: o número limite de clientes em potencial com suporte em um `LeadKeySelector` é 100. Se o número de leads exceder 100, a API lançará uma exceção de parâmetro ruim e retornará uma falha do SOAP.
 
 ## Solicitar
 
 | Nome do campo | Obrigatório/Opcional | Descrição |
 | --- | --- | --- |
-| activityFilter->includeAttributes->activityType | Uso opcional (obsoleto) `activityNameFilter` em vez disso | Limita a resposta para incluir somente os tipos de atividade especificados. Consulte WSDL para todos os tipos de atividades. |
-| activityFilter->excludeAttributes->activityType | Opcional | Limita a resposta para excluir os tipos de atividade especificados. Consulte WSDL para todos os tipos de atividades. OBSERVAÇÃO: não é possível especificar ambos `includeAttributes` e `excludeAttributes` na mesma chamada. |
+| activityFilter->includeAttributes->activityType | Opcional (obsoleto) Use `activityNameFilter` em seu lugar | Limita a resposta para incluir somente os tipos de atividade especificados. Consulte WSDL para todos os tipos de atividades. |
+| activityFilter->excludeAttributes->activityType | Opcional | Limita a resposta para excluir os tipos de atividade especificados. Consulte WSDL para todos os tipos de atividades. OBSERVAÇÃO: você não pode especificar `includeAttributes` e `excludeAttributes` na mesma chamada. |
 | activityNameFilter | Opcional | Limita a resposta para incluir somente os filtros de atividade especificados. |
 | batchSize | Opcional | Número máximo de registros a serem retornados. Sistema limitado a 1.000 ou `batchSize`, o que for menor. |
 | startPosition | Obrigatório | Usado para paginar por meio de um grande número de respostas da atividade. |
 | startPosition->offset | Opcional | O valor de deslocamento é retornado pelo campo de resposta de chamada anterior newStartPosition->offset. |
-| startPosition->olderCreatedAt | Opcional | O carimbo de data e hora usado para filtrar os resultados para incluir somente clientes potenciais criados desde o olderCreatedAt. OBSERVAÇÃO: você pode usar `LastUpdateAtSelector->oldestUpdatedAt` carimbo de data e hora a ser especificado `oldestCreatedAt`. |
-| startPosition->activityCreatedAt | Opcional | O carimbo de data e hora usado para filtrar os resultados para incluir somente clientes potenciais com atividade desde activityCreatedAt. OBSERVAÇÃO: você pode usar `LastUpdateAtSelector->latestUpdatedAt` carimbo de data e hora a ser especificado `activityCreatedAt`. |
+| startPosition->olderCreatedAt | Opcional | O carimbo de data e hora usado para filtrar os resultados para incluir somente clientes potenciais criados desde o olderCreatedAt. OBSERVAÇÃO: Você pode usar o carimbo de data/hora `LastUpdateAtSelector->oldestUpdatedAt` para especificar `oldestCreatedAt`. |
+| startPosition->activityCreatedAt | Opcional | O carimbo de data e hora usado para filtrar os resultados para incluir somente clientes potenciais com atividade desde activityCreatedAt. OBSERVAÇÃO: Você pode usar o carimbo de data/hora `LastUpdateAtSelector->latestUpdatedAt` para especificar `activityCreatedAt`. |
 | leadSelector | Opcional | Pode ser um dos três tipos a seguir: `LeadKeySelector`, `StaticListSelector`, `LastUpdateAtSelector` |
 | LeadKeySelector: leadSelector->keyType | Obrigatório | O tipo de id que você deseja consultar. Os valores incluem `IDNUM`, `COOKIE`, `EMAIL`, `LEADOWNEREMAIL`, `SFDCACCOUNTID`, `SFDCCONTACTID`, `SFDCLEADID`, `SFDCLEADOWNERID`, `SFDCOPPTYID`. |
 | LeadKeySelector: leadSelector->keyValues->stringItem | Obrigatório | Lista de valores de chave. Ou seja, &quot;lead@email.com&quot; |

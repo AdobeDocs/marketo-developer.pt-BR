@@ -1,20 +1,20 @@
 ---
-title: "Canais"
+title: Canais
 feature: REST API
-description: "Configuração de dados de canais com APIs do Marketo."
-source-git-commit: d335bdd9f939c3e557a557b43fb3f33934e13fef
+description: Configuração de dados de Canais com APIs do Marketo.
+exl-id: ec6c279f-a7b4-4a7c-b980-1a68045f37ce
+source-git-commit: 66add4c38d0230c36d57009de985649bb67fde3e
 workflow-type: tm+mt
 source-wordcount: '125'
-ht-degree: 2%
+ht-degree: 3%
 
 ---
 
-
 # Canais
 
-[Referência de ponto de extremidade de canais](https://developer.adobe.com/marketo-apis/api/asset/#tag/Channels)
+[Referência de Ponto de Extremidade de Canais](https://developer.adobe.com/marketo-apis/api/asset/#tag/Channels)
 
-Canais são um campo padrão e obrigatório para todos os tipos de programas. Cada tipo de canal só pode ser usado com o `applicableProgramType` e fornece a lista de status de programa disponíveis que são válidos para membros de programa em cada programa. Se os status do programa de um canal forem alterados após a criação de um programa, a lista de status do programa para a qual um cliente potencial pode ser alterado corresponderá à lista fornecida pelo canal no momento, mas não alterará retroativamente o status do programa para nenhum registro de associação de programa existente.
+Canais são um campo padrão e obrigatório para todos os tipos de programas. Cada tipo de canal só pode ser usado com o `applicableProgramType` especificado e fornece a lista de status de programas disponíveis que são válidos para membros de programas em cada programa. Se os status do programa de um canal forem alterados após a criação de um programa, a lista de status do programa para a qual um cliente potencial pode ser alterado corresponderá à lista fornecida pelo canal no momento, mas não alterará retroativamente o status do programa para nenhum registro de associação de programa existente.
 
 ## Consultar
 

@@ -1,20 +1,20 @@
 ---
-title: "Campos padrão"
+title: Campos padrão
 feature: REST API, Field Management
-description: "Uma tabela de campos padrão do Marketo."
-source-git-commit: 8c1ffb6db05da49e7377b8345eeb30472ad9b78b
+description: Uma tabela de campos padrão do Marketo.
+exl-id: 147dbdff-4bc9-4ab3-8918-c4de3e1aa97a
+source-git-commit: 66add4c38d0230c36d57009de985649bb67fde3e
 workflow-type: tm+mt
 source-wordcount: '1140'
 ht-degree: 28%
 
 ---
 
-
 # Campos padrão
 
 Esta é uma lista de campos padrão disponíveis no Marketo que podem ser acessados por meio da API.
 
-Você pode recuperar a lista de todos os nomes de campos compatíveis disponíveis em seus registros de lead usando o REST [Descrever lead](https://developer.adobe.com/marketo-apis/api/mapi/) terminal.
+Você pode recuperar a lista de todos os nomes de campos com suporte disponíveis em seus registros de cliente potencial usando o ponto de extremidade REST [Descrever cliente potencial](https://developer.adobe.com/marketo-apis/api/mapi/).
 
 | Nome da API REST | Nome da API SOAP | Rótulo intuitivo | Descrição |
 | --- | --- | --- | --- |

@@ -1,30 +1,30 @@
 ---
-title: "getCustomObjects"
+title: getCustomObjects
 feature: SOAP, Custom Objects
-description: "chamadas getCustomObjects SOAP"
-source-git-commit: d335bdd9f939c3e557a557b43fb3f33934e13fef
+description: chamadas de SOAP getCustomObjects
+exl-id: 32ff208a-f824-4420-a26f-1fd969a2bc4c
+source-git-commit: 66add4c38d0230c36d57009de985649bb67fde3e
 workflow-type: tm+mt
 source-wordcount: '156'
 ht-degree: 5%
 
 ---
 
-
 # getCustomObjects
 
 Recupera um ou mais objetos personalizados usando uma combinação de critérios que consiste em zero ou uma chave de objeto personalizada.
 
-Retorna uma lista de objetos personalizados correspondentes, todos de um único tipo, até 100 em um lote e um [posição do fluxo](stream-position.md) token para recuperar lotes sucessivos.
+Retorna uma lista de objetos personalizados correspondentes, todos de um único tipo, até 100 em um lote e um token de [posição de fluxo](stream-position.md) para recuperar lotes sucessivos.
 
 ## Solicitar
 
 | Nome do campo | Obrigatório/Opcional | Descrição |
 | --- | --- | --- |
 | objTypeName | Obrigatório | Nome do objeto personalizado |
-| customObjKeyLists->keyList->attribute | Obrigatório | O atributo é um par de chave/valor usado para identificar os objetos personalizados que você deseja recuperar. Você pode especificar vários atributos na variável `customObjKeyLists` |
+| customObjKeyLists->keyList->attribute | Obrigatório | O atributo é um par de chave/valor usado para identificar os objetos personalizados que você deseja recuperar. Você pode especificar vários atributos na `customObjKeyLists` |
 | includeAttributes | Obrigatório | A lista de campos de objetos personalizados que você deseja recuperar. Transmitir none retorna todos os valores. |
 | batchSize | Opcional | O número de objetos a serem retornados (máximo de 100) |
-| streamPosition | Opcional | Usado para paginar por meio de vários conjuntos de resultados. O valor transmitido é o valor retornado pelo anterior `getCustomObjects` chame. |
+| streamPosition | Opcional | Usado para paginar por meio de vários conjuntos de resultados. O valor transmitido é o valor retornado pela chamada `getCustomObjects` anterior. |
 
 ## XML de solicitação
 

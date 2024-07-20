@@ -1,18 +1,18 @@
 ---
-title: "syncMObjects"
+title: syncMObjects
 feature: SOAP
-description: "chamadas syncMObjects SOAP"
-source-git-commit: d335bdd9f939c3e557a557b43fb3f33934e13fef
+description: chamadas de SOAP syncMObjects
+exl-id: 68bb69ce-aa8c-40b7-8938-247f4fe97b5d
+source-git-commit: 66add4c38d0230c36d57009de985649bb67fde3e
 workflow-type: tm+mt
 source-wordcount: '421'
 ht-degree: 6%
 
 ---
 
-
 # syncMObjects
 
-Aceita uma matriz de [MObjects](marketo-objects.md) a ser criado ou atualizado, até 100 por chamada, e retorna o resultado (status) da operação (CREATED, UPDATED, FAILED, UNCHANGED, SKIPPED) e as IDs do Marketo dos objetos. A API pode ser chamada em um dos três modos de operação:
+Aceita uma matriz de [MObjects](marketo-objects.md) a ser criada ou atualizada, até um máximo de 100 por chamada, e retorna o resultado (status) da operação (CREATED, UPDATED, FAILED, UNCHANGED, SKIPPED) e as IDs de Marketo do(s) MObject(s). A API pode ser chamada em um dos três modos de operação:
 
 1. INSERIR - Inserir somente novos objetos, ignorar objetos existentes
 1. ATUALIZAR - Atualizar apenas objetos existentes; ignorar novos objetos.
@@ -27,8 +27,8 @@ As operações UPDATE e UPSERT usam ID como chave. Em uma única chamada de API,
 | --- | --- | --- |
 | mObjectList->mObject->type | Obrigatório | Pode ser um de:`Program`, `Opportunity`, `OpportunityPersonRole` |
 | mObjectList->mObject->id | Obrigatório | Id do objeto MO. É possível especificar até 100 MObjects por chamada. |
-| mObjectList->mObject->typeAttribList->typeAttrib->attrType | Obrigatório | Custo (usado somente ao atualizar o objeto de programa) Pode ser um de: `Cost`, `Tag` |
-| mObjectList->mObject->typeAttribList->typeAttrib->attrList->attrib->name | Obrigatório | Para o Program MObject, os seguintes atributos podem ser passados como pares de nome-valor. Para Custo:`Month (Required)`, `Amount (Required)`, `Id (Cost Id - Optional)`, `Note (Optional)`. Para Tag/Canal: `Type (Required)`, `Value (Required)`. Para o objeto Oportunidade, todos os campos da saída do [describeMObject](describemobject.md) pode ser passado como pares nome-valor. A lista abaixo são todos os campos opcionais e o conjunto padrão de atributos. Você pode ter campos adicionais no objeto Oportunidade que foram criados por meio de uma solicitação de suporte. |
+| mObjectList->mObject->typeAttribList->typeAttrib->attrType | Obrigatório | O custo (usado somente ao atualizar o objeto de programa) Pode ser um de: `Cost`, `Tag` |
+| mObjectList->mObject->typeAttribList->typeAttrib->attrList->attrib->name | Obrigatório | Para o Program MObject, os seguintes atributos podem ser passados como pares de nome-valor. Para Custo:`Month (Required)`, `Amount (Required)`, `Id (Cost Id - Optional)`, `Note (Optional)`. Para Tag/Canal: `Type (Required)`, `Value (Required)`. Para o Opportunity MObject, todos os campos da saída do [describeMObject](describemobject.md) podem ser passados como pares nome-valor. A lista abaixo são todos os campos opcionais e o conjunto padrão de atributos. Você pode ter campos adicionais no objeto Oportunidade que foram criados por meio de uma solicitação de suporte. |
 
 1. Valor
 1. CloseDate
@@ -50,7 +50,7 @@ As operações UPDATE e UPSERT usam ID como chave. Em uma única chamada de API,
 1. Estágio
 1. Tipo
 
-Para o objeto OpportunityPersonRole, é possível fornecer todos os campos a partir da saída de [describeMObject](./describemobject.md) como pares nome-valor. O conjunto padrão de atributos no OpportunityPersonRole MObject está listado aqui:
+Para o OpportunityPersonRole MObject, você pode fornecer todos os campos da saída de [describeMObject](./describemobject.md) como pares de nome-valor. O conjunto padrão de atributos no OpportunityPersonRole MObject está listado aqui:
 
 1. OpportunityId (Obrigatório)
 1. PersonId (Obrigatório)
@@ -60,7 +60,10 @@ Para o objeto OpportunityPersonRole, é possível fornecer todos os campos a par
 1. IsPrimary (Opcional)
 1. Função (opcional)
 
-| | mObjAssociationList->mObjAssociation->mObjType | Opcional | Usado para atualizar os Objetos Opportunity/OpportunityPersonRole usando a id ou a chave externa de um objeto associado. Os objetos associados podem ser uma das seguintes: Empresa (para atualizar o OpportunityMObject), Cliente em potencial (para atualizar o OpportunityPersonRole MObject), Oportunidade (para atualizar o OpportunityPersonRole MObject)| | mObjAssociationList->mObjAssociation->id | Opcional | A ID do objeto associado (Cliente Potencial/Empresa/Oportunidade) | | mObjAssociationList->mObjAssociation->externalKey | Opcional | Um atributo personalizado do objeto associado |
+|
+| mObjAssociationList->mObjAssociation->mObjType | Opcional | Usado para atualizar os Objetos Opportunity/OpportunityPersonRole usando a id ou a chave externa de um objeto associado. Os objetos associados podem ser uma das seguintes: Empresa (para atualizar o OpportunityMObject), Cliente em potencial (para atualizar o OpportunityPersonRole MObject), Oportunidade (para atualizar o OpportunityPersonRole MObject)|
+| mObjAssociationList->mObjAssociation->id | Opcional | A ID do objeto associado (Cliente Potencial/Empresa/Oportunidade) |
+| mObjAssociationList->mObjAssociation->externalKey | Opcional | Um atributo personalizado do objeto associado |
 
 ## XML de solicitação
 

@@ -1,20 +1,20 @@
 ---
 title: Importação de Membros do Programa em Massa
 feature: REST API
-description: "Importação em lote de dados do membro."
-source-git-commit: d335bdd9f939c3e557a557b43fb3f33934e13fef
+description: Importação em lote de dados do membro.
+exl-id: b0e1039a-fe9b-4fb7-9aa6-9980a06da673
+source-git-commit: 66add4c38d0230c36d57009de985649bb67fde3e
 workflow-type: tm+mt
 source-wordcount: '838'
 ht-degree: 0%
 
 ---
 
-
 # Importação de Membros do Programa em Massa
 
-[Referência de Ponto de Extremidade de Importação de Membro do Programa em Massa](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Bulk-Import-Program-Members)
+[Referência de Ponto de Extremidade de Importação de Membro de Programa em Massa](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Bulk-Import-Program-Members)
 
-Para grandes quantidades de registros de membros de programas, os membros de programas podem ser importados de forma assíncrona com o [API em massa](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Bulk-Import-Program-Members). Isso permite importar uma lista de registros para o Marketo usando um arquivo simples com os delimitadores (vírgula, tabulação ou ponto e vírgula). O arquivo pode conter qualquer número de registros, desde que o arquivo totalize menos de 10 MB. A operação de registro é somente &quot;inserir ou atualizar&quot;.
+Para grandes quantidades de registros de membros de programas, os membros de programas podem ser importados de forma assíncrona com a [API em massa](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Bulk-Import-Program-Members). Isso permite importar uma lista de registros para o Marketo usando um arquivo simples com os delimitadores (vírgula, tabulação ou ponto e vírgula). O arquivo pode conter qualquer número de registros, desde que o arquivo totalize menos de 10 MB. A operação de registro é somente &quot;inserir ou atualizar&quot;.
 
 ## Limites de processamento
 
@@ -22,7 +22,7 @@ Você pode enviar mais de uma solicitação de importação em massa, com limita
 
 ## Importar arquivo
 
-A primeira linha do arquivo deve ser um cabeçalho que lista os nomes da API REST correspondentes como campos para mapear os valores de cada linha. Os nomes da API REST podem ser recuperados usando [Descrever lead](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Leads/operation/describeUsingGET_2) e/ou [Descrever membro do programa](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Leads/operation/describeProgramMemberUsingGET) pontos finais. Os registros podem conter campos de cliente potencial, campos de cliente potencial personalizados e campos de membro de programa personalizado.
+A primeira linha do arquivo deve ser um cabeçalho que lista os nomes da API REST correspondentes como campos para mapear os valores de cada linha. Os nomes da API REST podem ser recuperados usando os pontos de extremidade [Descrever Cliente Potencial](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Leads/operation/describeUsingGET_2) e/ou [Descrever Membro do Programa](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Leads/operation/describeProgramMemberUsingGET). Os registros podem conter campos de cliente potencial, campos de cliente potencial personalizados e campos de membro de programa personalizado.
 
 Um arquivo típico seguiria este padrão básico:
 
@@ -31,17 +31,17 @@ email,firstName,lastName
 test@example.com,John,Doe
 ```
 
-A própria chamada é feita usando o `multipart/form-data` tipo de conteúdo.
+A própria chamada é feita usando o tipo de conteúdo `multipart/form-data`.
 
 Esse tipo de solicitação pode ser difícil de implementar, portanto, é altamente recomendável usar uma implementação de biblioteca existente.
 
 ## Criação de um trabalho
 
-A variável [Importar membros do programa](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Bulk-Import-Program-Members/operation/importProgramMemberUsingPOST) o endpoint lê um arquivo contendo registros de membros de programas e os adiciona a um programa com determinado status. Os registros podem conter campos de cliente potencial e campos personalizados de membros do programa. Todos os registros devem incluir o campo de email, que é usado para fins de desduplicação.
+O ponto de extremidade [Importar Membros do Programa](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Bulk-Import-Program-Members/operation/importProgramMemberUsingPOST) lê um arquivo contendo registros de membros do programa e os adiciona a um programa com determinado status. Os registros podem conter campos de cliente potencial e campos personalizados de membros do programa. Todos os registros devem incluir o campo de email, que é usado para fins de desduplicação.
 
-A variável `programId` parâmetro de caminho especifica o programa ao qual os membros são adicionados.
+O parâmetro de caminho `programId` especifica o programa ao qual os membros são adicionados.
 
-Há três parâmetros de consulta necessários. A variável `format` especifica o formato do arquivo de importação (CSV, TSV ou SSV), o `programMemberStatus` parâmetro especifica o status do programa para os membros que estão sendo adicionados ao programa e o `file` o parâmetro contém o nome do arquivo de importação que contém registros de membros do programa.
+Há três parâmetros de consulta necessários. O parâmetro `format` especifica o formato do arquivo de importação (CSV, TSV ou SSV), o parâmetro `programMemberStatus` especifica o status do programa para os membros que estão sendo adicionados ao programa e o parâmetro `file` contém o nome do arquivo de importação que contém registros de membros do programa.
 
 ```
 POST /bulk/v1/program/{programId}/members/import.json?format=csv&programMemberStatus=On List
@@ -85,7 +85,7 @@ Lancel,Lannister,Lancel@Lannister.com,Lannister,House Lannister,0
 }
 ```
 
-Observe na resposta à nossa chamada que há uma `batchId` e uma `status` para o registro na matriz de resultados. Como esse endpoint é assíncrono, ele pode retornar um status de Enfileirado, Importação ou Falha. Você deve manter a `batchId` para obter o status do trabalho de importação e para recuperar falhas e/ou avisos após a conclusão. A variável `batchId` permanece válido por sete dias.
+Observe na resposta à nossa chamada que há um campo `batchId` e um campo `status` para o registro na matriz de resultados. Como esse endpoint é assíncrono, ele pode retornar um status de Enfileirado, Importação ou Falha. Você deve reter o `batchId` para obter o status do trabalho de importação e para recuperar falhas e/ou avisos após a conclusão. O `batchId` permanece válido por sete dias.
 
 Usando o exemplo acima, uma maneira simples de chamar o endpoint é usar cURL a partir da linha de comando:
 
@@ -109,7 +109,7 @@ Lancel,Lannister,Lancel@Lannister.com,Lannister,House Lannister,0
 
 ## Status do trabalho de pesquisa
 
-Após criar o trabalho de importação, você deve consultar seu status. É prática recomendada pesquisar o trabalho de importação a cada 5-30 segundos. Faça isso passando o `batchId` parâmetro de caminho para o [Obter Status de Membro do Programa de Importação](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Bulk-Import-Program-Members/operation/getImportProgramMemberStatusUsingGET) terminal.
+Após criar o trabalho de importação, você deve consultar seu status. É prática recomendada pesquisar o trabalho de importação a cada 5-30 segundos. Faça isso passando o parâmetro de caminho `batchId` para o ponto de extremidade [Obter Status de Membro do Programa de Importação](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Bulk-Import-Program-Members/operation/getImportProgramMemberStatusUsingGET).
 
 ```
 GET /bulk/v1/program/members/import/{batchId}/status.json
@@ -139,15 +139,15 @@ Se a tarefa tiver sido concluída, você terá uma lista do número de linhas pr
 
 ## Falhas
 
-As falhas são indicadas pela variável `numOfRowsFailed` atributo em [Obter Status de Membro do Programa de Importação](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Bulk-Import-Program-Members/operation/getImportProgramMemberStatusUsingGET) resposta. Se numOfRowsFailed for maior que zero, esse valor indicará o número de falhas que ocorreram.
+As falhas são indicadas pelo atributo `numOfRowsFailed` na resposta [Obter Status de Membro do Programa de Importação](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Bulk-Import-Program-Members/operation/getImportProgramMemberStatusUsingGET). Se numOfRowsFailed for maior que zero, esse valor indicará o número de falhas que ocorreram.
 
-Use o [Obter Falhas de Membro do Programa de Importação](http://TODO) endpoint para recuperar registros e causas de linhas com falha transmitindo a variável `batchId` parâmetro de caminho.
+Use o ponto de extremidade [Obter Falhas de Membro do Programa de Importação](http://TODO) para recuperar registros e causas de linhas com falha transmitindo o parâmetro de caminho `batchId`.
 
 ```
 GET /bulk/v1/program/members/import/{batchId}/failures.json
 ```
 
-O endpoint responde com um arquivo indicando quais linhas falharam, juntamente com uma mensagem indicando por que o registro falhou. O formato do arquivo é o mesmo especificado em `format` durante a criação do trabalho. Um campo adicional é anexado a cada registro com uma descrição da falha.
+O endpoint responde com um arquivo indicando quais linhas falharam, juntamente com uma mensagem indicando por que o registro falhou. O formato do arquivo é igual ao especificado no parâmetro `format` durante a criação do trabalho. Um campo adicional é anexado a cada registro com uma descrição da falha.
 
 Por exemplo, suponha que você importe o seguinte arquivo com uma pontuação de lead inválida:
 
@@ -156,7 +156,7 @@ firstName,lastName,email,title,company,leadScore
 Aerys,Targaryen,Aerys@Targaryen.com,Targaryen,House Targaryen,TEXT_VALUE_IN_INTEGER_FIELD
 ```
 
-Ao verificar o status do trabalho, você vê `numOfRowsFailed` é 1, que indica que ocorreu uma falha:
+Ao verificar o status do trabalho, você vê `numOfRowsFailed` é 1, o que indica que ocorreu uma falha:
 
 ```
 GET /bulk/v1/program/members/import/{batchId}/status.json
@@ -193,15 +193,15 @@ Aerys,Targaryen,Aerys@Targaryen.com,Targaryen,House Targaryen,TEXT_VALUE_IN_INTE
 
 ## Avisos
 
-Os avisos são indicados pela variável `numOfRowsWithWarning` atributo em [Obter Status de Membro do Programa de Importação](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Bulk-Import-Program-Members/operation/getImportProgramMemberStatusUsingGET) resposta. Se `numOfRowsWithWarning` for maior que zero, esse valor indicará o número de avisos que ocorreram.
+Os avisos são indicados pelo atributo `numOfRowsWithWarning` na resposta [Obter Status do Membro do Programa de Importação](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Bulk-Import-Program-Members/operation/getImportProgramMemberStatusUsingGET). Se `numOfRowsWithWarning` for maior que zero, esse valor indicará o número de avisos que ocorreram.
 
-Use o [Obter avisos do membro do programa de importação](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Bulk-Import-Program-Members/operation/getImportProgramMemberWarningsUsingGET) endpoint para recuperar registros e causas de linhas de aviso transmitindo a variável `batchId` parâmetro de caminho.
+Use o ponto de extremidade [Obter Avisos do Membro do Programa de Importação](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Bulk-Import-Program-Members/operation/getImportProgramMemberWarningsUsingGET) para recuperar registros e causas de linhas de aviso transmitindo o parâmetro de caminho `batchId`.
 
 ```
 GET /bulk/v1/program/members/import/{batchId}/warnings.json
 ```
 
-O endpoint responde com um arquivo indicando quais linhas produziram avisos, juntamente com uma mensagem indicando por que o registro produziu um aviso. O formato do arquivo é o mesmo especificado em `format` durante a criação do trabalho. Um campo adicional é anexado a cada registro com uma descrição do aviso.
+O endpoint responde com um arquivo indicando quais linhas produziram avisos, juntamente com uma mensagem indicando por que o registro produziu um aviso. O formato do arquivo é igual ao especificado no parâmetro `format` durante a criação do trabalho. Um campo adicional é anexado a cada registro com uma descrição do aviso.
 
 Por exemplo, suponha que você importe o seguinte arquivo com um endereço de email inválido:
 
@@ -210,7 +210,7 @@ firstName,lastName,email,title,company,leadScore
 Aerys,Targaryen,INVALID_EMAIL,Targaryen,House Targaryen,0
 ```
 
-Ao verificar o status do trabalho, você vê `numOfRowsWithWarning` é 1, que indica que ocorreu um aviso:
+Ao verificar o status do trabalho, você verá `numOfRowsWithWarning` is 1, que indica que ocorreu um aviso:
 
 ```
 GET /bulk/v1/program/members/import/{batchId}/status.json

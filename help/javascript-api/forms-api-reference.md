@@ -1,18 +1,18 @@
 ---
-title: "Referência da API do Forms"
-description: "Referência da API do Forms"
+title: Referência da API do Forms
+description: Referência da API do Forms
 feature: Forms, Javascript
-source-git-commit: 2185972a272b64908d6aac8818641af07c807ac2
+exl-id: 0f8d242f-0b27-4087-b080-3d41ebaa25b3
+source-git-commit: 66add4c38d0230c36d57009de985649bb67fde3e
 workflow-type: tm+mt
 source-wordcount: '1327'
 ht-degree: 2%
 
 ---
 
-
 # Referência da API do Forms
 
-Há dois objetos principais com os quais você interagirá usando a API do Forms 2.0. A variável `MktoForms2` e o `Form` objeto. A variável `MktoForms2` object é o namespace publicamente visível de nível superior para a funcionalidade Forms2 e contém funções para criar, carregar e buscar objetos Form.
+Há dois objetos principais com os quais você interagirá usando a API do Forms 2.0. Os objetos `MktoForms2` e `Form`. O objeto `MktoForms2` é o namespace publicamente visível de nível superior para a funcionalidade Forms2 e contém funções para criar, carregar e buscar objetos Form.
 
 ## Métodos MktoForms2
 
@@ -178,11 +178,11 @@ Há dois objetos principais com os quais você interagirá usando a API do Forms
     <tr valign="top">
       <td>.onSuccess(callback)</td>
       <td>Adiciona um retorno de chamada que será chamado quando o formulário for enviado com êxito, mas antes do cliente em potencial ser encaminhado para a página de acompanhamento. Pode ser usado para impedir que o cliente potencial seja encaminhado para a página de acompanhamento após o envio bem-sucedido.</td>
-      <td>callback - Uma função que será chamada quando o formulário for enviado com êxito. Essa chamada de retorno receberá dois argumentos. Um objeto JS contendo os valores que foram enviados e um URL de string da página de acompanhamento à qual o usuário será encaminhado, ou uma string nula ou vazia se não houver uma página de acompanhamento configurada. Comportamento especial: se esse retorno de chamada retornar "false" (medido usando ===), o visitante NÃO será encaminhado para a página de acompanhamento e a página NÃO será recarregada. Isso permite que o implementador faça processamento extra no url de acompanhamento ou execute uma ação na página usando JavaScript em vez de sair da página.</td>
+      <td>callback - Uma função que será chamada quando o formulário for enviado com êxito. Essa chamada de retorno receberá dois argumentos. Um objeto JS contendo os valores que foram enviados e um URL de string da página de acompanhamento à qual o usuário será encaminhado, ou uma string nula ou vazia se não houver uma página de acompanhamento configurada. Comportamento especial: se esse retorno de chamada retornar "false" (medido usando ===), o visitante NÃO será encaminhado para a página de acompanhamento e a página NÃO será recarregada. Isso permite que o implementador faça processamento extra no url de acompanhamento ou execute uma ação na página usando o JavaScript em vez de sair da página.</td>
       <td>Objeto de formulário - O mesmo objeto de formulário no qual o método foi chamado, para fins de encadeamento.</td>
     </tr>
     <tr valign="top">
-      <td>.enviável(canSubmit) <em>também disponível como:</em> <em>.enviável(canSubmit)</em></td>
+      <td>.submittable(canSubmit) <em>também disponível como:</em> <em>.submitable(canSubmit)</em></td>
       <td>Obtém ou define se o formulário pode ser enviado. Se chamado sem argumentos, ele obtém o valor; se chamado com um argumento, ele define o valor. Isso pode ser usado para impedir que um formulário seja enviado, enquanto outros critérios fora do formulário normal devem ser atendidos.</td>
       <td>canSubmit (opcional)(Booleano) - Define o formulário como enviado ou não.</td>
       <td>Booleano ou objeto de formulário - Se chamado sem argumentos, retorna um booleano indicando se o formulário é enviado. Se chamado com um argumento, retorna este Objeto de formulário para fins de encadeamento. </td>

@@ -1,14 +1,14 @@
 ---
-title: "Campos"
+title: Campos
 feature: REST API, Field Management
-description: "Uma lista de nomes de campo suportados."
-source-git-commit: 8c1ffb6db05da49e7377b8345eeb30472ad9b78b
+description: Uma lista de nomes de campos compatíveis.
+exl-id: 9033f32a-c7cb-4bbf-abcf-38ca4112139f
+source-git-commit: 66add4c38d0230c36d57009de985649bb67fde3e
 workflow-type: tm+mt
 source-wordcount: '194'
 ht-degree: 6%
 
 ---
-
 
 # Campos
 
@@ -35,4 +35,4 @@ Recupere a lista de todos os nomes de campo com suporte disponíveis em seus reg
 
 ### Por que o campo REST API sfdcId sempre retorna um valor nulo?
 
-O campo `sfdcId` é um campo de fórmula que foi incluído incorretamente no mapa de campo original da API REST. Os registros recuperados por meio da API REST não calculam o valor de campos de fórmula, portanto, o valor sempre será nulo. Para capturar a ID real do SFDC, você deve usar os campos chamados `sfdcLeadId` e `sfdcContactId`.
+O campo `sfdcId` é um campo de fórmula que foi incluído incorretamente no mapa de campos original para a API REST. Os registros recuperados por meio da API REST não calculam o valor de campos de fórmula, portanto, o valor sempre será nulo. Para capturar a ID real do SFDC, você deve usar os campos chamados `sfdcLeadId` e `sfdcContactId`.

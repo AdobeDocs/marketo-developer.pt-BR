@@ -1,20 +1,20 @@
 ---
-title: "getLeadActivity"
+title: getLeadActivity
 feature: SOAP
-description: "chamadas getLeadActivity SOAP"
-source-git-commit: d335bdd9f939c3e557a557b43fb3f33934e13fef
+description: chamadas getLeadActivity SOAP
+exl-id: f38dee95-235f-4dc2-8839-61d6008132a5
+source-git-commit: 66add4c38d0230c36d57009de985649bb67fde3e
 workflow-type: tm+mt
 source-wordcount: '346'
 ht-degree: 3%
 
 ---
 
-
 # getLeadActivity
 
 Esta função recupera o histórico de atividades de um único cliente potencial identificado pela chave fornecida. Você pode especificar quais tipos de atividades você deseja que sejam retornados no resultado. Se você quiser todos os tipos de atividades, um valor em branco precisará ser transmitido. Para mais de um tipo de atividade, forneça uma lista de tipos de atividades. Ao solicitar várias atividades, a contagem restante não é um número preciso, mas deve ser tratada como um sinalizador que indica que há mais atividades quando a contagem restante é > 0.
 
-A [posição do fluxo](stream-position.md) pode ser usado para paginar por meio de conjuntos de resultados grandes.
+Uma [posição de fluxo](stream-position.md) pode ser usada para paginar por meio de conjuntos de resultados grandes.
 
 ## Solicitar
 
@@ -23,11 +23,11 @@ A [posição do fluxo](stream-position.md) pode ser usado para paginar por meio 
 | leadKey->keyType | Obrigatório | keyType permite especificar o campo pelo qual deseja consultar o lead. Os valores possíveis incluem:`IDNUM`, `COOKIE`, `EMAIL`, `SFDCLEADID`, `LEADOWNEREMAIL`, `SFDCACCOUNTID`, `SFDCCONTACTID`, `SFDCLEADID`, `SFDCLEADOWNERID`, `SFDCOPPTYID` |
 | leadKey->keyValue | Obrigatório | `keyValue` é o valor pelo qual você deseja consultar o lead. |
 | activityFilter->includeAttributes->activityType | Opcional | Limita a resposta para incluir somente os tipos de atividade especificados. Consulte WSDL para todos os tipos de atividades. |
-| activityFilter->excludeAttributes->activityType | Opcional | Limita a resposta para excluir os tipos de atividades especificados. Consulte WSDL para todos os tipos de atividades. OBSERVAÇÃO: não é possível especificar ambos `includeAttributes` e `excludeAttributes` na mesma chamada. |
+| activityFilter->excludeAttributes->activityType | Opcional | Limita a resposta para excluir os tipos de atividades especificados. Consulte WSDL para todos os tipos de atividades. OBSERVAÇÃO: você não pode especificar `includeAttributes` e `excludeAttributes` na mesma chamada. |
 | batchSize | Opcional | Número máximo de registros a serem retornados. O sistema limitará a 100 ou `batchSize`, o que for menor. |
-| startPosition->offset | Opcional | Usado para paginar por meio de um grande número de respostas da atividade. O valor de deslocamento é retornado pelo campo de resposta das chamadas anteriores `newStartPosition->offset`. |
+| startPosition->offset | Opcional | Usado para paginar por meio de um grande número de respostas da atividade. O valor de deslocamento é retornado pelo campo de resposta de chamadas anteriores `newStartPosition->offset`. |
 | startPosition->activityCreatedAt | Opcional | Usado para paginar por meio de um grande número de respostas da atividade. O activityCreatedAt é retornado pelo campo de resposta da chamada anterior `newStartPosition->activityCreatedAt`. (formato de data WSDL W3C). |
-| startPosition->latestCreatedAt | Opcional | Usado para paginar por meio de um grande número de respostas da atividade. O latestCreatedAt é retornado pelo campo de resposta da chamada anterior `newStartPosition->latestCreatedAt`. (formato de data WSDL W3C). |
+| startPosition->latestCreatedAt | Opcional | Usado para paginar por meio de um grande número de respostas da atividade. latestCreatedAt é retornado pelo campo de resposta da chamada anterior `newStartPosition->latestCreatedAt`. (formato de data WSDL W3C). |
 | startPosition->olderCreatedAt | Opcional | Usado para paginar por meio de um grande número de respostas da atividade. O olderCreatedAt é retornado pelo campo de resposta da chamada anterior `newStartPosition->oldestCreatedAt`. (formato de data WSDL W3C). |
 
 ## XML de solicitação
@@ -668,7 +668,7 @@ A [posição do fluxo](stream-position.md) pode ser usado para paginar por meio 
 </SOAP-ENV:Envelope>
 ```
 
-Observe que dentro de `activityRecord` elementos, a variável `id` O elemento está sendo substituído pelo `marketoGUID` elemento como identificador exclusivo.  Essa alteração ocorrerá na versão da primavera de 2017.
+Observe que dentro dos elementos `activityRecord`, o elemento `id` está sendo substituído pelo elemento `marketoGUID` como identificador exclusivo.  Essa alteração ocorrerá na versão da primavera de 2017.
 
 ## Código de exemplo - PHP
 

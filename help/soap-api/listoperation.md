@@ -1,14 +1,14 @@
 ---
-title: "listOperation"
+title: listOperation
 feature: SOAP
-description: "chamadas de listOperation SOAP"
-source-git-commit: d335bdd9f939c3e557a557b43fb3f33934e13fef
+description: chamadas de SOAP listOperation
+exl-id: 8332cc22-c5a9-43d6-9e92-8d62265cfab2
+source-git-commit: 66add4c38d0230c36d57009de985649bb67fde3e
 workflow-type: tm+mt
 source-wordcount: '187'
 ht-degree: 8%
 
 ---
-
 
 # listOperation
 
@@ -24,10 +24,10 @@ Os tipos de operação incluem:
 
 | Nome do campo | Obrigatório/Opcional | Descrição |
 | --- | --- | --- |
-| listOperation | Obrigatório | O tipo de operação que você deseja executar na lista especificada. Possíveis operações: `ADDTOLIST`, `ISMEMBEROFLIST`, `REMOVEFROMLIST` |
+| listOperation | Obrigatório | O tipo de operação que você deseja executar na lista especificada. Operações possíveis: `ADDTOLIST`, `ISMEMBEROFLIST`, `REMOVEFROMLIST` |
 | listKey->keyType | Obrigatório | O tipo de lista na qual você deseja operar. Valores possíveis: `MKTOLISTNAME`, `MKTOSALESUSERID`, `SFDCLEADOWNERID` |
 | listKey->keyValue | Obrigatório | Nome da lista na qual você deseja operar. |
-| listMemberList->leadKey->keyType | Obrigatório | `keyType` permite especificar a ID pela qual você deseja fazer referência ao lead. Valores possíveis: `IDNUM` |
+| listMemberList->leadKey->keyType | Obrigatório | `keyType` permite que você especifique a ID pela qual deseja fazer referência ao lead. Valores possíveis: `IDNUM` |
 | listMemberList->leadKey->keyValue | Obrigatório | `keyValue` é o valor no qual você deseja operar a lista |
 | estrito | Opcional | O modo estrito falha para toda a operação se qualquer subconjunto da chamada falhar. O modo não estrito conclui tudo o que pode e retorna erros para tudo o que falhou. |
 

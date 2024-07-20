@@ -1,24 +1,24 @@
 ---
-title: "syncMultipleLeads"
+title: syncMultipleLeads
 feature: SOAP
-description: "chamadas syncMultipleLeads SOAP"
-source-git-commit: d335bdd9f939c3e557a557b43fb3f33934e13fef
+description: chamadas syncMultipleLeads SOAP
+exl-id: 91980b82-dff9-48a7-b03e-20dce9d0d046
+source-git-commit: 66add4c38d0230c36d57009de985649bb67fde3e
 workflow-type: tm+mt
 source-wordcount: '221'
 ht-degree: 4%
 
 ---
 
-
 # syncMultipleLeads
 
-Esta função solicita uma operação de inserção ou atualização (substituição) para _múltiplo_ registros de clientes potenciais. Ao atualizar um cliente potencial existente, ele pode ser identificado com uma das seguintes chaves:
+Esta função solicita uma operação de inserção ou atualização (substituição) para _vários_ registros de cliente potencial. Ao atualizar um cliente potencial existente, ele pode ser identificado com uma das seguintes chaves:
 
 - ID do Marketo
 - ID de sistema externo
 - Email
 
-Se mais de uma chave estiver presente, a Marketo ID terá prioridade sobre `ForeignSysPersonId`e o último será atualizado. No entanto, se o Email também estiver presente como uma chave, ele não será atualizado, a menos que esteja especificado na lista de atributos.
+Se mais de uma chave estiver presente, a Marketo ID terá prioridade sobre `ForeignSysPersonId` e a última será atualizada. No entanto, se o Email também estiver presente como uma chave, ele não será atualizado, a menos que esteja especificado na lista de atributos.
 
 Recomendamos que os tamanhos dos lotes não excedam 300. Tamanhos maiores não são suportados e podem resultar em tempos limite e, em casos extremos, serem limitados.
 
@@ -29,7 +29,7 @@ Você pode desativar o recurso de eliminação de duplicação com essa chamada 
 | Nome do campo | Obrigatório/Opcional | Descrição |
 | --- | --- | --- |
 | leadRecordList->leadRecord | Obrigatório | Matriz de registros de clientes potenciais que você deseja sincronizar. LeadRecords deve especificar a ID do lead, o email ou ForeignSysPersonId |
-| dedupEnabled | opcional | Valor opcional com o qual você pode desativar o recurso de eliminação de duplicação. Transmitindo um valor de `false` criará duplicatas no Marketo |
+| dedupEnabled | opcional | Valor opcional com o qual você pode desativar o recurso de eliminação de duplicação. Transmitir um valor de `false` criará duplicatas no Marketo |
 
 ## XML de solicitação
 

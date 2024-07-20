@@ -1,26 +1,26 @@
 ---
-title: "Vendedores"
+title: Vendedores
 feature: REST API
-description: "Leia dados sobre vendedores."
-source-git-commit: 8c1ffb6db05da49e7377b8345eeb30472ad9b78b
+description: Ler dados sobre vendedores.
+exl-id: f8ed5aa5-63c1-4c5b-8683-bf47eed1ea18
+source-git-commit: 66add4c38d0230c36d57009de985649bb67fde3e
 workflow-type: tm+mt
 source-wordcount: '303'
 ht-degree: 0%
 
 ---
 
-
 # Vendedores
 
 [Referência de Ponto de Extremidade de Vendedor](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Sales-Persons)
 
-As APIs de Vendedor são acesso somente leitura para assinaturas que têm [Sincronização SFDC](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/crm-sync/salesforce-sync/sfdc-sync-details/sfdc-sync-field-sync) ou [Microsoft Dynamics Sync](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/crm-sync/microsoft-dynamics/microsoft-dynamics-sync-details/microsoft-dynamics-sync-user-sync) são ativados. Vendedores são um tipo de registro de pessoa que é o proprietário das vendas dos registros de lead. Eles estão relacionados aos registros de cliente potencial pelo campo externalSalesPersonId em cada registro de cliente potencial. Quando um cliente potencial é relacionado a um Vendedor por um campo externalSalesPersonId preenchido, os campos de pesquisa Proprietário do cliente potencial correspondentes são preenchidos para esse registro de cliente potencial no Marketo, permitindo o uso dos filtros e tokens correspondentes.
+As APIs de Vendedor são acesso somente leitura para assinaturas com [Sincronização do SFDC](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/crm-sync/salesforce-sync/sfdc-sync-details/sfdc-sync-field-sync) ou [Sincronização do Microsoft Dynamics](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/crm-sync/microsoft-dynamics/microsoft-dynamics-sync-details/microsoft-dynamics-sync-user-sync) habilitada. Vendedores são um tipo de registro de pessoa que é o proprietário das vendas dos registros de lead. Eles estão relacionados aos registros de cliente potencial pelo campo externalSalesPersonId em cada registro de cliente potencial. Quando um cliente potencial é relacionado a um Vendedor por um campo externalSalesPersonId preenchido, os campos de pesquisa Proprietário do cliente potencial correspondentes são preenchidos para esse registro de cliente potencial no Marketo, permitindo o uso dos filtros e tokens correspondentes.
 
-Os Vendedores estão relacionados aos registros de Cliente Potencial usando o [Sincronizar clientes em potencial](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Leads/operation/syncLeadUsingPOST) e transmitindo o atributo externalSalesPersonId.
+Vendedores estão relacionados a registros de Clientes potenciais usando o ponto de extremidade [Sincronizar Clientes Potenciais](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Leads/operation/syncLeadUsingPOST) e transmitindo o atributo externalSalesPersonId.
 
-Os Vendedores estão relacionados aos registros de Oportunidade usando o [Oportunidades de Sincronização](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Opportunities/operation/syncOpportunitiesUsingPOST) e transmitindo o atributo externalSalesPersonId.
+Vendedores estão relacionados a Registros de oportunidade usando o ponto de extremidade [Sincronizar oportunidades](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Opportunities/operation/syncOpportunitiesUsingPOST) e transmitindo o atributo externalSalesPersonId.
 
-Os Vendedores estão relacionados aos Registros da empresa usando o [Sincronizar Empresas](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Companies/operation/syncCompaniesUsingPOST) e transmitindo o atributo externalSalesPersonId.
+Os Vendedores estão relacionados aos registros da Empresa usando o ponto de extremidade [Sincronizar Empresas](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Companies/operation/syncCompaniesUsingPOST) e transmitindo o atributo externalSalesPersonId.
 
 Os registros de Vendedor só podem ser editados por meio da API.
 
@@ -95,7 +95,7 @@ GET /rest/v1/salespersons/describe.json
 }
 ```
 
-Por padrão, a variável `idField` de Vendedores é &quot;id&quot; e a variável `dedupeFields` é apenas &quot;externalSalesPersonId&quot;.
+Por padrão, o `idField` dos Vendedores é &quot;id&quot; e o `dedupeFields` é apenas &quot;externalSalesPersonId&quot;.
 
 ## Consultar
 

@@ -1,14 +1,14 @@
 ---
-title: "Listas de contas nomeadas"
+title: Listas de contas nomeadas
 feature: REST API
-description: "Configurar listas de contas nomeadas."
-source-git-commit: 8c1ffb6db05da49e7377b8345eeb30472ad9b78b
+description: Configurar listas de contas nomeadas.
+exl-id: 98f42780-8329-42fb-9cd8-58e5dbea3809
+source-git-commit: 66add4c38d0230c36d57009de985649bb67fde3e
 workflow-type: tm+mt
 source-wordcount: '696'
 ht-degree: 3%
 
 ---
-
 
 # Listas de contas nomeadas
 
@@ -37,7 +37,7 @@ As Listas de contas nomeadas têm um número limitado de campos padrão e não s
 
 ## Consultar
 
-Consultar listas de contas é simples e fácil. Atualmente, há apenas dois filterTypes válidos para consultar listas de contas nomeadas: &quot;dedupeFields&quot; e &quot;idField&quot;. O campo para filtrar está definido na variável `filterType` parâmetro da consulta, e os valores são definidos em `filterValues as` uma lista separada por vírgulas. A variável `nextPageToken` e `batchSize` os filtros também são parâmetros opcionais.
+Consultar listas de contas é simples e fácil. Atualmente, há apenas dois filterTypes válidos para consultar listas de contas nomeadas: &quot;dedupeFields&quot; e &quot;idField&quot;. O campo para filtrar está definido no parâmetro `filterType` da consulta, e os valores estão definidos em `filterValues as` uma lista separada por vírgulas. Os filtros `nextPageToken` e `batchSize` também são parâmetros opcionais.
 
 ```
 GET /rest/v1/namedAccountLists.json?filterType=idField&filterValues=dff23271-f996-47d7-984f-f2676861b5fb,dff23271-f996-47d7-984f-f2676861b5fc
@@ -74,9 +74,9 @@ GET /rest/v1/namedAccountLists.json?filterType=idField&filterValues=dff23271-f99
 
 A criação e a atualização de registros de lista de contas nomeadas seguem os padrões estabelecidos para outras operações de criação e atualização de bancos de dados de clientes potenciais. Lembre-se de que as listas de contas nomeadas têm apenas um campo atualizável, `name`.
 
-O endpoint permite os dois tipos de ação padrão: &quot;createOnly&quot; e &quot;updateOnly&quot;.  A variável `action defaults` para &quot;createOnly&quot;.
+O endpoint permite os dois tipos de ação padrão: &quot;createOnly&quot; e &quot;updateOnly&quot;.  O `action defaults` para &quot;createOnly&quot;.
 
-O modelo opcional `dedupeBy parameter` pode ser especificado se a ação for `updateOnly`.  Os valores permitidos são &quot;dedupeFields&quot; (correspondente a &quot;name&quot;) ou &quot;idField&quot; (correspondente a &quot;marketoGUID&quot;).  Entrada `createOnly` modos, somente &quot;name&quot; é permitido como a variável `dedupeBy` campo. É possível enviar até 300 registros de cada vez.
+O `dedupeBy parameter` opcional poderá ser especificado se a ação for `updateOnly`.  Os valores permitidos são &quot;dedupeFields&quot; (correspondente a &quot;name&quot;) ou &quot;idField&quot; (correspondente a &quot;marketoGUID&quot;).  Nos modos `createOnly`, somente &quot;name&quot; é permitido como o campo `dedupeBy`. É possível enviar até 300 registros de cada vez.
 
 ```
 POST /rest/v1/namedAccountLists.json
@@ -118,7 +118,7 @@ POST /rest/v1/namedAccountLists.json
 
 ## Excluir
 
-A exclusão de listas de contas nomeadas é simples e pode ser feita com base no `name`ou a variável `marketoGUID` da lista. Para selecionar a chave que deseja usar, transmita &quot;dedupeFields&quot; para name ou &quot;idField&quot; para marketoGUID no`deleteB` membro de sua solicitação. Se desdefinido, o padrão será dedupeFields. É possível excluir até 300 registros de cada vez.
+A exclusão de Listas de Contas Nomeadas é simples e pode ser feita com base no `name` ou no `marketoGUID` da lista. Para selecionar a chave que deseja usar, passe &quot;dedupeFields&quot; para o nome ou &quot;idField&quot; para marketoGUID no membro `deleteB` da sua solicitação. Se desdefinido, o padrão será dedupeFields. É possível excluir até 300 registros de cada vez.
 
 ```
 POST /rest/v1/namedAccountLists/delete.json
@@ -170,17 +170,19 @@ POST /rest/v1/namedAccountLists/delete.json
 }
 ```
 
-No caso de um registro não ser encontrado para uma determinada chave, o item de resultado correspondente terá um`status` de &quot;ignorado&quot; e um motivo com um código e uma mensagem descrevendo a falha, como mostrado no exemplo acima.
+Caso um registro não possa ser encontrado para uma determinada chave, o item de resultado correspondente terá um`status` de &quot;ignorado&quot; e um motivo com um código e uma mensagem descrevendo a falha, como mostrado no exemplo acima.
 
 ## Gerenciar associação
 
 ### Associação de consulta
 
-Consultar a associação de uma lista de contas nomeadas é simples, exigindo apenas o`i` da lista de contas. Os parâmetros opcionais são:
+Consultar a associação de uma lista de contas nomeadas é simples, exigindo apenas o `i` da lista de contas. Os parâmetros opcionais são:
 
--`field` - uma lista de campos separados por vírgulas para inclusão nos registros de resposta -`nextPageToke` - para paginação por meio do conjunto de resultados -`batchSiz` - para especificar o número de registros a serem retornados
+-`field` - uma lista separada por vírgulas de campos a serem incluídos nos registros de resposta
+-`nextPageToke` - para paginação através do conjunto de resultados
+-`batchSiz` - para especificar o número de registros a serem retornados
 
-Se`field` não está definido, então`marketoGUI`,`nam`, `createdA`, e`updatedA` serão retornados. `batchSiz` tem um valor máximo e padrão de 300.
+Se `field` não estiver definido, então`marketoGUI`,`nam`, `createdA` e`updatedA` serão retornados. `batchSiz` tem um valor máximo e padrão de 300.
 
 ```
 GET /rest/v1/namedAccountList/{id}/namedAccounts.json
@@ -251,7 +253,7 @@ POST /rest/v1/namedAccountList/{id}/namedAccounts.json
 
 ### Remover membros
 
-A remoção de registros de uma lista de contas tem um caminho diferente, mas a mesma interface, exigindo um`marketoGUI` para cada registro que deseja excluir. É possível remover até 300 registros de cada vez.
+A remoção de registros de uma lista de contas tem um caminho diferente, mas a mesma interface, exigindo `marketoGUI` para cada registro que você deseja excluir. É possível remover até 300 registros de cada vez.
 
 ```
 POST /rest/v1/namedAccountList/{id}/namedAccounts/remove.json

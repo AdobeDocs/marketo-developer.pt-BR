@@ -1,33 +1,33 @@
 ---
-title: "Práticas recomendadas de integração do Marketo"
+title: Práticas recomendadas de integração do Marketo
 feature: REST API
-description: "Práticas recomendadas para usar APIs do Marketo."
-source-git-commit: 8c1ffb6db05da49e7377b8345eeb30472ad9b78b
+description: Práticas recomendadas para usar APIs do Marketo.
+exl-id: 1e418008-a36b-4366-a044-dfa9fe4b5f82
+source-git-commit: 66add4c38d0230c36d57009de985649bb67fde3e
 workflow-type: tm+mt
 source-wordcount: '952'
 ht-degree: 0%
 
 ---
 
-
 # Práticas recomendadas de integração do Marketo
 
 ## Limites da API
 
-- **Cota Diária:** A maioria das assinaturas recebe 50.000 chamadas de API por dia (que são redefinidas diariamente às 12h00, horário padrão da região central dos EUA). Você pode aumentar sua cota diária por meio do gerente da conta.
-- **Limite de taxa:** Acesso à API por instância limitado a 100 chamadas por 20 segundos.
+- **Cota Diária:** A maioria das assinaturas tem 50.000 chamadas de API alocadas por dia (o que é redefinido diariamente às 12h00 CST). Você pode aumentar sua cota diária por meio do gerente da conta.
+- **Limite de Taxa:** Acesso à API por instância limitado a 100 chamadas por 20 segundos.
 - **Limite de simultaneidade:**  Máximo de dez chamadas de API simultâneas.
-- **Tamanho do lote:** BD líder - 300 registros; Consulta de ativo - 200 registros
-- **Tamanho da carga da API REST:** 1 MB
-- **Tamanho do arquivo de importação em massa:** 10 MB
-- **Tamanho máximo do lote SOAP:** 300 registros
-- **Trabalhos de extração em massa:** 2 em execução; 10 em fila (inclusive)
+- **Tamanho do Lote:** BD de Cliente Potencial - 300 registros; Consulta de Ativo - 200 registros
+- **Tamanho da Carga da API REST:** 1 MB
+- **Tamanho do Arquivo de Importação em Massa:** 10MB
+- **Tamanho máx. do lote SOAP:** 300 registros
+- **Trabalhos de Extração em Massa:** 2 em execução; 10 em fila (inclusive)
 
 ## Dicas rápidas
 
 - Suponha que seu aplicativo concorra por recursos de cota, taxa e simultaneidade com outros aplicativos e defina limites de uso conservadores.
 - Use os métodos em massa e em lote do Marketo quando disponíveis e apropriados. Use apenas chamadas de registro ou resultado único quando necessário.
-- Uso [retrocesso exponencial](https://en.wikipedia.org/wiki/Exponential_backoff) para repetir chamadas de API que falham devido a limites de taxa ou simultaneidade.
+- Use o [retrocesso exponencial](https://en.wikipedia.org/wiki/Exponential_backoff) para repetir chamadas de API que falham devido a limites de taxa ou simultaneidade.
 - Evite fazer chamadas de API simultâneas se o caso de uso não se beneficiar delas.
 
 ## Colocação em lote
@@ -41,14 +41,14 @@ Determinar suas tolerâncias de latência ou o tempo máximo que pode decorrer a
 | Latência Aceitável | Métodos preferidos | Observações |
 |---|---|---|
 | Baixa (&lt;10s) | APIs síncronas (em lote ou sem lote) | Verifique se o caso de uso exige isso. O envio de chamadas imediatas e síncronas para casos de uso de alto volume pode consumir rapidamente uma cota diária de API e potencialmente exceder os limites de taxa e simultaneidade. |
-| Médio(10s - 60m) | APIs síncronas (em lote) | Para integrações de dados de entrada com o Marketo, é altamente recomendado usar uma fila com um limite de idade e tamanho. Quando um desses limites for atingido, limpe a fila e envie sua solicitação de API com os registros acumulados. Isso é um forte comprometimento entre velocidade e eficiência, garantindo que suas solicitações ocorram na cadência necessária, enquanto o agrupamento de quantos registros a idade da fila permitir. |
+| Medium(10s - 60m) | APIs síncronas (em lote) | Para integrações de dados de entrada com o Marketo, é altamente recomendado usar uma fila com um limite de idade e tamanho. Quando um desses limites for atingido, limpe a fila e envie sua solicitação de API com os registros acumulados. Isso é um forte comprometimento entre velocidade e eficiência, garantindo que suas solicitações ocorram na cadência necessária, enquanto o agrupamento de quantos registros a idade da fila permitir. |
 | Alta(>60m) | Importação/exportação em massa (se houver suporte) | Para integrações de dados de entrada, os registros devem ser enfileirados e enviados por meio de APIs em massa do Marketo, sempre que disponíveis. |
 
 ## Limites diários
 
 Cada instância habilitada para API do Marketo tem uma alocação diária de pelo menos 10.000 chamadas de API REST por dia, mas geralmente tem 50.000 ou mais e 500 MB ou mais de capacidade de extração em massa. Embora a capacidade diária adicional possa ser adquirida como parte de uma assinatura do Marketo, o design do aplicativo deve considerar os limites comuns de assinaturas do Marketo.
 
-Como a capacidade é compartilhada entre todos os serviços de API e usuários em uma instância, a prática recomendada é eliminar chamadas redundantes e agrupar registros em lote no menor número possível de chamadas. A maneira mais eficiente de importar registros é usando as APIs de importação em massa do Marketo, que estão disponíveis para [Clientes Potenciais/Pessoas](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Bulk-Import-Leads/operation/importLeadUsingPOST) e [Objetos personalizados](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Snippets/operation/createSnippetUsingPOST). A Marketo também fornece extração em massa para [Clientes potenciais](bulk-lead-extract.md) e [Atividades](bulk-activity-extract.md).
+Como a capacidade é compartilhada entre todos os serviços de API e usuários em uma instância, a prática recomendada é eliminar chamadas redundantes e agrupar registros em lote no menor número possível de chamadas. A maneira mais eficiente de chamar para importar registros é usando as APIs de importação em massa da Marketo, que estão disponíveis para [Clientes potenciais/Pessoas](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Bulk-Import-Leads/operation/importLeadUsingPOST) e [Objetos personalizados](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Snippets/operation/createSnippetUsingPOST). A Marketo também fornece Extração em massa para [Clientes potenciais](bulk-lead-extract.md) e [Atividades](bulk-activity-extract.md).
 
 ### Armazenamento em cache
 

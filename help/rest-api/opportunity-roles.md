@@ -1,20 +1,20 @@
 ---
-title: "Funções da oportunidade"
+title: Funções da oportunidade
 feature: REST API
-description: "Lidar com funções de oportunidade no Marketo."
-source-git-commit: 8c1ffb6db05da49e7377b8345eeb30472ad9b78b
+description: Lidar com funções de oportunidade no Marketo.
+exl-id: 2ba84f4d-82d0-4368-94e8-1fc6d17b69ed
+source-git-commit: 66add4c38d0230c36d57009de985649bb67fde3e
 workflow-type: tm+mt
 source-wordcount: '253'
 ht-degree: 0%
 
 ---
 
-
 # Funções da oportunidade
 
 [Referência de Ponto de Extremidade de Funções da Oportunidade](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Opportunities/operation/getOpportunityRolesUsingGET)
 
-Os clientes em potencial estão vinculados às oportunidades por meio do intermediário `opportunityRole` objeto.
+Os clientes em potencial estão vinculados às oportunidades por meio do objeto `opportunityRole` intermediário.
 
 As APIs de Função de Oportunidade são expostas apenas para assinaturas que não têm uma sincronização CRM nativa habilitada.
 
@@ -106,7 +106,7 @@ GET /rest/v1/opportunities/roles/describe.json
 
 ## Consultar
 
-Observe que ambos `dedupeFields` e `searchableFields` são um pouco diferentes das oportunidades. `dedupeFields` realmente fornece uma chave composta, onde todos os três `externalOpportunityId`, `leadId`, e `role` são obrigatórios. O link de oportunidade e de cliente potencial pelos campos de id devem existir na instância de destino para que a criação do registro seja bem-sucedida. Para `searchableFields`, `marketoGUID`, `leadId`, e `externalOpportunityId` são válidos para consultas por conta própria e usam um padrão idêntico a Oportunidades, mas há uma opção adicional de usar a chave composta para consultar, o que requer o envio de um objeto JSON por POST, com o parâmetro de consulta adicional `_method=GET`.
+Observe que `dedupeFields` e `searchableFields` são um pouco diferentes de oportunidades. `dedupeFields` realmente fornece uma chave composta, onde todos os três de `externalOpportunityId`, `leadId` e `role` são necessários. O link de oportunidade e de cliente potencial pelos campos de id devem existir na instância de destino para que a criação do registro seja bem-sucedida. Para `searchableFields`, `marketoGUID`, `leadId` e `externalOpportunityId` são válidos para consultas por conta própria e usam um padrão idêntico a Oportunidades, mas há uma opção adicional de usar a chave composta para consulta, o que requer o envio de um objeto JSON via POST, com o parâmetro de consulta adicional `_method=GET`.
 
 ```
 POST /rest/v1/opportunities/roles.json?_method=GET

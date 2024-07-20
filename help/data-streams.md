@@ -1,13 +1,13 @@
 ---
-title: "Fluxos de dados"
-description: "Visão geral dos fluxos de dados"
-source-git-commit: 2185972a272b64908d6aac8818641af07c807ac2
+title: Fluxos de dados
+description: Visão geral dos fluxos de dados
+exl-id: 5617b6a5-ebc8-4d97-a290-e3b87f83e360
+source-git-commit: 66add4c38d0230c36d57009de985649bb67fde3e
 workflow-type: tm+mt
 source-wordcount: '1594'
 ht-degree: 2%
 
 ---
-
 
 # Fluxos de dados
 
@@ -19,7 +19,7 @@ Além do benefício dos dados quase em tempo real, há benefícios relacionados 
 - Reduz o cenário de limites da API, gerando menos mensagens de alerta.
 - Não é necessário executar exportações em massa para extrair dados devido ao recurso de transmissão de dados.
 
-Os fluxos de dados estão disponíveis para aqueles que compraram um [Pacote de camada de desempenho do Marketo Engage](https://nation.marketo.com/t5/product-documents/marketo-engage-performance-tiers/ta-p/328835).
+Os Fluxos de Dados estão disponíveis para aqueles que compraram um [Pacote da Camada de Desempenho do Marketo Engage](https://nation.marketo.com/t5/product-documents/marketo-engage-performance-tiers/ta-p/328835).
 
 ## Visão Geral do Fluxo de Dados da Atividade de Cliente Potencial
 
@@ -185,14 +185,14 @@ Para implementar o Fluxo de Dados da Atividade Principal, siga estas etapas para
    1. O URL do endpoint na etapa 1
    1. Os tipos de atividade que eles desejam receber (lista completa acima)
    1. Um meio de autenticação, para que o cliente possa verificar se as solicitações são legítimas. Ou:
-      1. Um URL de provedor de identidade, ID do cliente e Segredo do cliente para OAuth [Autenticação de Credenciais de Cliente](https://www.oauth.com/oauth2-servers/access-tokens/client-credentials/)
+      1. Uma URL de provedor de identidade, ID do Cliente e Segredo do Cliente para OAuth [Autenticação de Credenciais do Cliente](https://www.oauth.com/oauth2-servers/access-tokens/client-credentials/)
       1. Um token de API, que pode ser incluído em solicitações enviadas pela sequência de dados da atividade de lead em parâmetros de consulta ou em um cabeçalho de autorização (escolha do cliente)
 
 O Adobe ativa o fluxo de dados, momento em que os clientes começam a receber dados.
 
 Diagrama UML de uma chamada típica de Fluxo de Dados de Atividade Principal:
 
-![Diagrama do Fluxo de Dados da Atividade do Cliente Potencial](assets/lead-activity-data-stream.png)
+![Diagrama de Fluxo de Dados da Atividade Principal](assets/lead-activity-data-stream.png)
 
 Exemplo de criação de endpoint de URL:
 
@@ -239,7 +239,7 @@ app.listen(port,()=>{
 })
 ```
 
-Uma amostra de código para um aplicativo que consome o fluxo de dados de atividades de clientes potenciais da Marketo pode ser encontrada [aqui](https://github.com/ihgrant/activity-stream-consumer-example).
+Uma amostra de código para um aplicativo que consome o Fluxo de Dados de Atividade de Cliente Potencial da Marketo pode ser encontrada [aqui](https://github.com/ihgrant/activity-stream-consumer-example).
 
 ### Fluxo de dados de auditoria do usuário e fluxo de dados de notificação
 
@@ -254,15 +254,15 @@ Os eventos de Auditoria de usuário são enviados para o Adobe IO e podem ser co
    1. Esta etapa requer um Adobe Org
    1. Exige que o usuário da organização Adobe tenha a função de desenvolvedor ou administrador do sistema
 
-Para configurar o Adobe IO, consulte [Configuração de fluxos de dados de auditoria do usuário do Marketo com Adobe IO](https://developer.adobe.com/events/docs/guides/using/marketo/marketo-user-audit-data-stream-setup/) na seção Documentação pública.
+Para configurar E/S de Adobe, consulte [Configuração de fluxos de dados de auditoria de usuário do Marketo com E/S de Adobe](https://developer.adobe.com/events/docs/guides/using/marketo/marketo-user-audit-data-stream-setup/) na seção Documentação pública.
 
 ### Configuração do fluxo de dados de auditoria do usuário no Marketo
 
-O Fluxo de dados de auditoria do usuário está disponível atualmente como parte dos pacotes de desempenho, juntamente com os outros 3 Fluxos de dados. Para obter mais informações sobre os pacotes, consulte [Página de descrição do produto](https://helpx.adobe.com/legal/product-descriptions/adobe-marketo-engage---product-description.html) para Limites e recursos do produto.
+O Fluxo de dados de auditoria do usuário está disponível atualmente como parte dos pacotes de desempenho, juntamente com os outros 3 Fluxos de dados. Para obter mais informações sobre os Pacotes, consulte a [Página de Descrição do Produto](https://helpx.adobe.com/legal/product-descriptions/adobe-marketo-engage---product-description.html) para obter os limites e recursos do produto.
 
 ### Configurar o Adobe I/O
 
-[Consulte Introdução aos eventos do Adobe I/O](https://developer.adobe.com/runtime/docs/guides/getting-started/)
+[Consulte a Introdução aos Adobe I/O Events](https://developer.adobe.com/runtime/docs/guides/getting-started/)
 
 Para obter instruções básicas para este caso de uso, a partir de [console.adobe.io](https://developer.adobe.com/console):
 
@@ -270,10 +270,10 @@ Quando solicitado, selecione **[!UICONTROL Criar novo projeto]** ou **[!UICONTRO
 
 ### Introdução ao novo projeto
 
-Para começar a usar os serviços da Adobe, adicionar uma API, eventos ou tempo de execução, exiba nossa [documentação](https://developer.adobe.com/runtime/docs/).
+Para começar a usar os serviços da Adobe, adicione uma API, eventos ou tempo de execução, exiba nossa [documentação](https://developer.adobe.com/runtime/docs/).
 
 ## Documentação pública
 
 - [Fluxos de dados do Marketo](https://developer.adobe.com/events/docs/guides/using/marketo/marketo-data-streams/)
-- [Introdução aos eventos e webhooks do Adobe IO](https://developer.adobe.com/events/docs/guides/)
-- [Blog de fluxos de dados](https://blog.developer.adobe.com/introducing-the-adobe-marketo-engage-data-streams-61198b567fbb)
+- [Introdução a eventos e webhooks do Adobe IO](https://developer.adobe.com/events/docs/guides/)
+- [Blog de Fluxos de Dados](https://blog.developer.adobe.com/introducing-the-adobe-marketo-engage-data-streams-61198b567fbb)

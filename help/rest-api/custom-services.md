@@ -1,22 +1,22 @@
 ---
-title: "Serviços personalizados"
+title: Serviços personalizados
 feature: REST API
-description: "Credenciais de autenticação com o Marketo."
-source-git-commit: 2185972a272b64908d6aac8818641af07c807ac2
+description: Credenciais de autenticação com o Marketo.
+exl-id: 38b05c4c-4404-4c30-a7cb-d31b28a3a72e
+source-git-commit: 66add4c38d0230c36d57009de985649bb67fde3e
 workflow-type: tm+mt
 source-wordcount: '985'
 ht-degree: 6%
 
 ---
 
-
 # Serviços personalizados
 
-Um Serviço personalizado fornece credenciais para autenticar com o Marketo. As credenciais são necessárias para obter um token de acesso da Marketo [Serviço de identidade](https://developer.adobe.com/marketo-apis/api/identity/#tag/Identity/operation/identityUsingGET). Cada Serviço personalizado tem seu escopo definido para um único usuário somente API, do qual ele obtém suas permissões.
+Um Serviço personalizado fornece credenciais para autenticar com o Marketo. São necessárias credenciais para obter um token de acesso do [serviço de identidade](https://developer.adobe.com/marketo-apis/api/identity/#tag/Identity/operation/identityUsingGET) da Marketo. Cada Serviço personalizado tem seu escopo definido para um único usuário somente API, do qual ele obtém suas permissões.
 
 ## Funções
 
-A primeira etapa na criação de um Serviço personalizado é criar uma função que pode ser aplicada ao usuário relevante somente API. Isso é feito a partir do **[!UICONTROL Admin]** > **[!UICONTROL Usuários e funções]** > **[!UICONTROL Funções]** menu.
+A primeira etapa na criação de um Serviço personalizado é criar uma função que pode ser aplicada ao usuário relevante somente API. Isso é feito no menu **[!UICONTROL Administrador]** > **[!UICONTROL Usuários e funções]** > **[!UICONTROL Funções]**.
 
 Funções são containers para permissões individuais que permitem ou restringem o acesso a determinadas funções. Em assinaturas com Espaços de Trabalho e Partições habilitados, as permissões são concedidas por espaço de trabalho. Se um usuário tiver permissão em um espaço de trabalho, mas não em outro, ele só poderá executar as ações permitidas nesse espaço de trabalho. Para criar uma função, clique no botão Nova função.
 
@@ -24,13 +24,13 @@ Funções são containers para permissões individuais que permitem ou restringe
 
 Dê um nome descritivo à sua função. Os usuários somente API têm um conjunto específico de permissões separadas e distintas das permissões normais do usuário. As permissões de API existem em sua própria hierarquia na árvore &quot;API de acesso&quot;.
 
-![Novas permissões de função](assets/new-role-access-api-permissions.png)
+![Novas Permissões de Função](assets/new-role-access-api-permissions.png)
 
 ### Permissões de função
 
 Somente as permissões no grupo &quot;Access API&quot; são aplicadas aos usuários da API, ou seja, a concessão de todas as permissões de administrador não concederá permissões de API a um usuário.
 
-Ao construir uma função, pense cuidadosamente sobre quais ações você deve permitir que o aplicativo a use para fazer. Conceda somente o conjunto mínimo de permissões necessárias para executar essas ações. Permitir um conjunto desnecessariamente permissivo de permissões pode permitir integrações para executar ações indesejadas em sua assinatura. Você pode usar o [ferramenta permissões](endpoint-reference.md) para determinar seu conjunto mínimo de permissões. Veja a lista completa de [permissões](#permission_list).
+Ao construir uma função, pense cuidadosamente sobre quais ações você deve permitir que o aplicativo a use para fazer. Conceda somente o conjunto mínimo de permissões necessárias para executar essas ações. Permitir um conjunto desnecessariamente permissivo de permissões pode permitir integrações para executar ações indesejadas em sua assinatura. Você pode usar a [ferramenta de permissões](endpoint-reference.md) para determinar seu conjunto mínimo de permissões. Veja a lista completa de [permissões](#permission_list).
 
 ## Usuários
 
@@ -42,10 +42,10 @@ Depois de criar uma função, você deve criar um usuário &quot;Somente API&quo
 
 >[!MORELIKETHIS]
 >
->Para criar um usuário Somente API, vá para a **[!UICONTROL Admin]** > **[!UICONTROL Usuários e funções]** > **[!UICONTROL Usuários]** e clique em [!UICONTROL Convidar novo usuário].
+>Para criar um usuário Somente API, vá para o menu **[!UICONTROL Administrador]** > **[!UICONTROL Usuários e Funções]** > **[!UICONTROL Usuários]** e clique em [!UICONTROL Convidar Novo Usuário].
 
 
-![Informações do novo usuário](assets/new-user-info.png)
+![Novas Informações do Usuário](assets/new-user-info.png)
 
 Dê ao usuário um nome descritivo e um endereço de email (ele não deve ser válido), com base no serviço e no aplicativo para os quais será usado. Preencha os campos obrigatórios no menu da caixa de diálogo, clique na caixa de seleção &quot;Somente API&quot; e conceda uma de suas funções de API ao usuário. Isso atribui as permissões dessa função definidas para o usuário.
 
@@ -57,11 +57,11 @@ Ao provisionar um novo aplicativo com credenciais, considere criar um novo usuá
 
 ## Serviços personalizados
 
-Os Serviços personalizados fornecem as credenciais reais, a ID do cliente e o segredo do cliente, necessárias para executar a autenticação com uma instância do Marketo. Para provisionar um, vá para o **[!UICONTROL Admin]** > **[!UICONTROL Integrações]** > **[!UICONTROL LaunchPoint]** e selecione **[!UICONTROL Novo serviço]**.
+Os Serviços personalizados fornecem as credenciais reais, a ID do cliente e o segredo do cliente, necessárias para executar a autenticação com uma instância do Marketo. Para provisionar um, vá para o menu **[!UICONTROL Admin]** > **[!UICONTROL Integrações]** > **[!UICONTROL LaunchPoint]** e selecione **[!UICONTROL Novo Serviço]**.
 
-Dê um nome descritivo ao serviço e, na lista &quot;Serviço&quot;, selecione o &quot;Personalizado&quot;. Forneça uma descrição detalhada ao serviço, selecione um usuário apropriado na lista Somente usuário da API e clique em [!UICONTROL Criar].
+Dê um nome descritivo ao serviço e, na lista &quot;Serviço&quot;, selecione o &quot;Personalizado&quot;. Forneça uma descrição detalhada ao seu serviço, selecione um usuário apropriado na lista Somente Usuário de API e clique em [!UICONTROL Criar].
 
-![Novo serviço personalizado](assets/admin-launchpoint-new-service.png)
+![Novo Serviço Personalizado](assets/admin-launchpoint-new-service.png)
 
 Isso adiciona um novo serviço à lista de serviços do LaunchPoint e a opção &quot;Exibir detalhes&quot;. Clique em &quot;Exibir detalhes&quot; e você receberá a ID do cliente e o Segredo do cliente necessários para a autenticação, o usuário proprietário e uma opção para Obter o token para fins de teste de curto prazo. O token obtido nesta caixa de diálogo tem o mesmo tempo de vida que os tokens obtidos normalmente do [Serviço de identidade](https://developer.adobe.com/marketo-apis/api/identity/#tag/Identity/operation/identityUsingGET) e é válido por 3.600 segundos a partir da criação.
 
@@ -71,7 +71,7 @@ Isso adiciona um novo serviço à lista de serviços do LaunchPoint e a opção 
 
 Em assinaturas com Espaços de Trabalho e Partições, a capacidade de acessar um determinado registro ou ativo é concedida com base nas permissões que a função de um usuário tem em um determinado espaço de trabalho. Cada espaço de trabalho recebe acesso a uma ou mais partições no menu Espaços de Trabalho e Partições, e um lead pertence a uma única partição. Se o usuário somente API tiver acesso a registros de lead de leitura ou gravação em um espaço de trabalho, ele poderá acessar todos os registros nas partições às quais esse espaço de trabalho tem acesso.
 
-Os ativos pertencem a espaços de trabalho, portanto, a capacidade de ler ou gravar um ativo é determinada pelo fato de o usuário ter uma função no espaço de trabalho relevante que tem permissão para ler ou gravar esse tipo de registro de ativo no espaço de trabalho.
+O Assets pertence a espaços de trabalho, portanto, a capacidade de ler ou gravar um ativo é determinada pelo fato de o usuário ter uma função no espaço de trabalho relevante que tem permissão para ler ou gravar esse tipo de registro de ativo no espaço de trabalho.
 
 ## Lista de permissões
 

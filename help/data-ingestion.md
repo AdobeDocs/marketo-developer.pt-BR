@@ -13,11 +13,11 @@ ht-degree: 11%
 
 A API de assimilação de dados é um serviço de alto volume, baixa latência e alta disponibilidade, projetado para lidar com a assimilação de grandes quantidades de dados pessoais e relacionados a pessoas de maneira eficiente e com atrasos mínimos. 
 
-Os dados são assimilados enviando solicitações que são executadas de forma assíncrona. O status da solicitação pode ser recuperado inscrevendo-se em eventos do [Fluxo de dados de observação do Marketo](https://developer.adobe.com/events/docs/guides/using/marketo/marketo-observability-data-stream-setup/)&#x200B;
+Os dados são assimilados enviando solicitações que são executadas de forma assíncrona. O status da solicitação pode ser recuperado assinando-se a eventos do [Fluxo de Dados de Observação do Marketo](https://developer.adobe.com/events/docs/guides/using/marketo/marketo-observability-data-stream-setup/).&#x200B;
 
 As interfaces são oferecidas para dois tipos de objeto: Pessoas, Objetos personalizados. A operação de registro é somente &quot;inserir ou atualizar&quot;.
 
-A API de assimilação de dados está em beta privado. Os convidados devem ter direito a [Pacote de camada de desempenho do Marketo Engage](https://nation.marketo.com/t5/product-documents/marketo-engage-performance-tiers/ta-p/328835).
+A API de assimilação de dados está em beta privado. Os convidados devem ter um direito para [Pacote da Camada de Desempenho do Marketo Engage](https://nation.marketo.com/t5/product-documents/marketo-engage-performance-tiers/ta-p/328835).
 
 ## Autenticação
 
@@ -61,7 +61,7 @@ A representação de dados é incluída no corpo da solicitação como applicati
 
 O nome do domínio é: `mkto-ingestion-api.adobe.io`
 
-O caminho começa com `/subscriptions/_MunchkinId_` onde `_MunchkinId_` é específico para a sua instância do Marketo. Você pode encontrar sua ID do Munchkin na interface do usuário do Marketo Engage em **Admin** >**Minha conta** > **Informações de suporte**. O restante do caminho é usado para especificar o recurso de interesse.
+O caminho começa com `/subscriptions/_MunchkinId_`, onde `_MunchkinId_` é específico para sua instância do Marketo. Você pode encontrar seu ID do Munchkin na interface do Marketo Engage em **Admin** >**Minha conta** > **Informações de suporte**. O restante do caminho é usado para especificar o recurso de interesse.
 
 Exemplo de URL para Pessoas:
 
@@ -73,7 +73,7 @@ Exemplo de URL para objetos personalizados:
 
 ## Respostas
 
-Todas as respostas retornam uma ID de solicitação exclusiva por meio do `X-Request-Id` cabeçalho.
+Todas as respostas retornam uma ID de solicitação exclusiva por meio do cabeçalho `X-Request-Id`.
 
 Exemplo de ID de solicitação via cabeçalho:
 
@@ -89,7 +89,7 @@ Exemplo de resposta bem-sucedida:
 
 ### Erro
 
-Quando uma chamada produz um erro, um status diferente de 202 é retornado junto com um corpo de resposta com detalhes adicionais sobre o erro. O corpo da resposta é application/json e contém um único objeto com membros `error_code` e `message`.
+Quando uma chamada produz um erro, um status diferente de 202 é retornado junto com um corpo de resposta com detalhes adicionais sobre o erro. O corpo da resposta é application/json e contém um único objeto com os membros `error_code` e `message`.
 
 Abaixo estão os códigos de erro reutilizados do Adobe Developer Gateway.
 
@@ -145,7 +145,7 @@ Corpo da solicitação
 |---|---|---|---|---|
 | prioridade | Sequência de caracteres | Não | Prioridade da solicitação:normalhigh | normal |
 | partitionName | Sequência de caracteres | Não | Nome da partição da pessoa | Padrão |
-| dedupeFields | Objeto | Não | Atributos para desduplicar em. Um ou dois nomes de atributo são permitidos. Dois atributos são usados em uma operação AND. Por exemplo, se ambos `email` e `firstName` forem especificadas, ambas serão usadas para procurar uma pessoa usando a operação AND. Os atributos compatíveis são:`idemail`, `sfdcAccountId`, `sfdcContactId`, `sfdcLeadId`, `sfdcLeadOwnerIdCustom` atributos (somente tipo &quot;string&quot; e &quot;integer&quot;) | email |
+| dedupeFields | Objeto | Não | Atributos para desduplicar em. Um ou dois nomes de atributo são permitidos. Dois atributos são usados em uma operação AND. Por exemplo, se `email` e `firstName` forem especificados, ambos serão usados para procurar uma pessoa usando a operação AND. Os atributos suportados são:`idemail`, `sfdcAccountId`, `sfdcContactId`, `sfdcLeadId`, `sfdcLeadOwnerIdCustom` atributos (somente os tipos &quot;string&quot; e &quot;integer&quot;) | email |
 | pessoas | Matriz de objeto | Sim | Lista de pares de nome-valor do atributo para a pessoa | - |
 
 | Permissão |
@@ -224,7 +224,7 @@ Corpo da solicitação
 
 #### Pessoa Não Presente
 
-Se um campo de link para uma Pessoa for especificado na solicitação e essa Pessoa não existir, várias tentativas ocorrerão. Se essa pessoa for adicionada durante a janela de nova tentativa (65 minutos), a atualização será bem-sucedida. Por exemplo, se o campo de link for `email` em Pessoa, e a Pessoa não existir, ocorrerão novas tentativas.
+Se um campo de link para uma Pessoa for especificado na solicitação e essa Pessoa não existir, várias tentativas ocorrerão. Se essa pessoa for adicionada durante a janela de nova tentativa (65 minutos), a atualização será bem-sucedida. Por exemplo, se o campo de link for `email` em Pessoa e a Pessoa não existir, ocorrerão novas tentativas.
 
 #### Exemplo de objetos personalizados
 
@@ -279,10 +279,10 @@ Esta é uma lista de uso de medidas de proteção:
 Esta é uma lista de diferenças entre a API de assimilação de dados e outras APIs REST do Marketo:
 
 - Esta não é uma interface CRUD completa, ela suporta somente &quot;upsert&quot;
-- Para autenticar, você deve passar o token de acesso usando o `X-Mkto-User-Token` cabeçalho
-- O nome de domínio do URL é `mkto-ingestion-api.adobe.io`
-- O caminho do URL começa com `/subscriptions/_MunchkinId_`
+- Para autenticar, você deve passar o token de acesso usando o cabeçalho `X-Mkto-User-Token`
+- O nome de domínio da URL é `mkto-ingestion-api.adobe.io`
+- O caminho da URL começa com `/subscriptions/_MunchkinId_`
 - Não há parâmetros de consulta
 - Se a chamada for bem-sucedida, um status 202 será retornado e o corpo da resposta ficará vazio
 - Se a chamada falhar, um status diferente de 202 será retornado e o corpo da resposta conterá `{ "error_code" : "_Error Code_", "message" : "_Message_" }`
-- A ID da solicitação é retornada via `X-Request-Id` cabeçalho
+- A ID da solicitação é retornada pelo cabeçalho `X-Request-Id`

@@ -1,14 +1,14 @@
 ---
-title: "syncLead"
+title: syncLead
 feature: SOAP
-description: "chamadas syncLead SOAP"
-source-git-commit: d335bdd9f939c3e557a557b43fb3f33934e13fef
+description: chamadas de SOAP syncLead
+exl-id: e6cda794-a9d4-4153-a5f3-52e97a506807
+source-git-commit: 66add4c38d0230c36d57009de985649bb67fde3e
 workflow-type: tm+mt
 source-wordcount: '518'
 ht-degree: 2%
 
 ---
-
 
 # syncLean
 
@@ -21,7 +21,7 @@ Esta função insere ou atualiza um único registro de lead. Ao atualizar um cli
 
 Se uma correspondência existente for encontrada, a chamada executará uma atualização. Caso contrário, insere e cria um lead. Clientes potenciais anônimos podem ser atualizados usando a ID de cookie do Marketo e se tornarão conhecidos após a atualização.
 
-Exceto email, todos esses identificadores são tratados como chaves exclusivas. A Marketo ID tem prioridade sobre todas as outras chaves. Se ambos `foreignSysPersonId` e a Marketo ID estiverem presentes no registro principal, a Marketo ID terá prioridade e a variável `foreignSysPersonId` será atualizado para esse cliente potencial. Se a única `foreignSysPersonId` é fornecido, então é usado como um identificador exclusivo. Se ambos `foreignSysPersonId` e Email estiverem presentes, mas a Marketo ID não estiver presente, a variável `foreignSysPersonId` tem precedência e o Email será atualizado para esse lead.
+Exceto email, todos esses identificadores são tratados como chaves exclusivas. A Marketo ID tem prioridade sobre todas as outras chaves. Se `foreignSysPersonId` e a Marketo ID estiverem presentes no registro de cliente potencial, a Marketo ID terá prioridade e a `foreignSysPersonId` será atualizada para esse cliente potencial. Se o único `foreignSysPersonId` for fornecido, ele será usado como um identificador exclusivo. Se `foreignSysPersonId` e o Email estiverem presentes, mas a Marketo ID não estiver presente, o `foreignSysPersonId` terá prioridade e o Email será atualizado para esse cliente potencial.
 
 Opcionalmente, um Cabeçalho de contexto pode ser especificado para nomear o espaço de trabalho de destino.
 
@@ -42,14 +42,14 @@ Se os espaços de trabalho do Marketo NÃO estiverem ativados, o espaço de trab
 
 | Nome do campo | Obrigatório/Opcional | Descrição |
 | --- | --- | --- |
-| leadRecord->Id | Obrigatório - Somente quando enviar por email ou `foreignSysPersonId` não está presente | A Marketo Id do registro de cliente potencial |
-| leadRecord->Email | Obrigatório - Somente quando a ID ou `foreignSysPersonId` não está presente | O endereço de email associado ao registro de cliente potencial |
+| leadRecord->Id | Obrigatório - Somente quando um Email ou `foreignSysPersonId` não estiver presente | A Marketo Id do registro de cliente potencial |
+| leadRecord->Email | Obrigatório - Apenas quando a ID ou `foreignSysPersonId` não está presente | O endereço de email associado ao registro de cliente potencial |
 | leadRecord->`foreignSysPersonId` | Obrigatório - Somente quando a ID ou o Email não estiver presente | A ID do sistema externo associada ao registro de cliente potencial |
-| leadRecord->ForeignSysType | Opcional - Obrigatório somente quando `foreignSysPersonId` está presente | O tipo de sistema externo. Valores possíveis: CUSTOM, SFDC, NETSUITE |
+| leadRecord->ForeignSysType | Opcional - Necessário somente quando `foreignSysPersonId` está presente | O tipo de sistema externo. Valores possíveis: CUSTOM, SFDC, NETSUITE |
 | leadRecord->leadAttributeList->attribute->attrName | Obrigatório | O nome do atributo de cliente potencial do qual você deseja atualizar o valor. |
 | leadRecord->leadAttributeList->attribute->attrValue | Obrigatório | O valor que você deseja definir para o atributo de cliente potencial especificado em attrName. |
 | returnLead | Obrigatório | Quando verdadeiro, retorna o registro de lead completo atualizado após a atualização. |
-| marketoCookie | Opcional | A variável [Javascript do Munchkin](../javascript-api/lead-tracking.md) cookie |
+| marketoCookie | Opcional | O cookie [Munchkin javascript](../javascript-api/lead-tracking.md) |
 
 ## XML de solicitação
 

@@ -1,14 +1,14 @@
 ---
-title: "Recomendação para mídia avançada"
-description: "Recomendação para mídia avançada"
+title: Recomendação de rich media
+description: Recomendação de rich media
 feature: Javascript
-source-git-commit: d335bdd9f939c3e557a557b43fb3f33934e13fef
+exl-id: ee92e46d-e529-40a2-a0d0-ee233916f004
+source-git-commit: 66add4c38d0230c36d57009de985649bb67fde3e
 workflow-type: tm+mt
 source-wordcount: '812'
-ht-degree: 4%
+ht-degree: 5%
 
 ---
-
 
 # Recomendação de rich media
 
@@ -28,7 +28,7 @@ Mais informações disponíveis [aqui](https://experienceleague.adobe.com/en/doc
 | Atributo | Opcional/Obrigatório | Descrição |
 |---|---|---|
 | classe | Obrigatório | Especifique que esse elemento de HTML div é a recomendação RTP div. |
-| data-rtp-template-id | Obrigatório | A ID do modelo. Isso determina o alinhamento da recomendação. Use &quot;template1&quot; para alinhamento horizontal, &quot;template2&quot; para alinhamento vertical ou &quot;template3&quot; para alinhamento vertical que inclui apenas título e descrição. O script injeta o template correspondente neste `div.Permissible` valores: template1, template2, template3. |
+| data-rtp-template-id | Obrigatório | A ID do modelo. Isso determina o alinhamento da recomendação. Use &quot;template1&quot; para alinhamento horizontal, &quot;template2&quot; para alinhamento vertical ou &quot;template3&quot; para alinhamento vertical que inclui apenas título e descrição. O script injeta o modelo correspondente nesses `div.Permissible` valores: template1, template2, template3. |
 
 ### Exemplos
 
@@ -50,11 +50,11 @@ Para exibir suas recomendações em alinhamento vertical somente com título e d
 <div class="RTP_RCMD2" data-rtp-template-id="template3"></div>
 ```
 
-Veja as capturas de tela dos alinhamentos do modelo [aqui](#example_of_rich_media_recommendation_template_1).
+Veja as capturas de tela dos alinhamentos do modelo [aqui](#example_of_rich_media_recommendation_template_1).
 
 ## Preencher recomendação
 
-Esse método preenche toda a mídia avançada `<divs>` na página com recomendações.
+Este método preenche toda a mídia avançada `<divs>` da página com recomendações.
 
 ### Uso
 
@@ -232,16 +232,16 @@ rtp('get','rcmd', 'richmedia');
 
 #### Exemplo de modelo de recomendação de mídia avançada #1
 
-**Nome**: template1 **Descrição**: conteúdo horizontal, incluindo imagem, título e descrição, e botão de ação.
+**Nome**: modelo1 **Descrição**: conteúdo horizontal, incluindo imagem, título, descrição e botão de chamada para ação.
 
 ![Modelo de mídia avançada](assets/rich-media-template1.png)
 
 #### Exemplo de modelo de recomendação de mídia avançada #2
 
-**Nome**: modelo2 **Descrição**: conteúdo vertical, incluindo imagem, título e descrição, e botão de ação.
+**Nome**: modelo2 **Descrição**: conteúdo vertical, incluindo imagem, título, descrição e botão de chamada para ação.
 
 ![Modelo de mídia avançada](assets/rich-media-template2.png)
 
 #### Exemplo de modelo de recomendação de mídia avançada #3
 
-**Nome**: template3 **Descrição**: conteúdo vertical, incluindo somente o título e a descrição. Ao passar o mouse, o cabeçalho muda de cor e é vinculado por hiperlink ao URL do conteúdo. A descrição também vincula ao conteúdo sem alteração de cor. ![Modelo de mídia avançada](assets/rich-media-template3.png)
+**Nome**: modelo3 **Descrição**: conteúdo vertical que inclui apenas título e descrição. Ao passar o mouse, o cabeçalho muda de cor e é vinculado por hiperlink ao URL do conteúdo. A descrição também vincula ao conteúdo sem alteração de cor. ![Modelo de mídia avançada](assets/rich-media-template3.png)

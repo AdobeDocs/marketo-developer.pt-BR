@@ -1,14 +1,14 @@
 ---
-title: "getLead"
+title: getLead
 feature: SOAP
-description: "getLead SOAP calls"
-source-git-commit: d335bdd9f939c3e557a557b43fb3f33934e13fef
+description: getLead SOAP chamadas
+exl-id: 1a3eab26-7994-455d-bc7a-80e43e6ef4a7
+source-git-commit: 66add4c38d0230c36d57009de985649bb67fde3e
 workflow-type: tm+mt
 source-wordcount: '127'
 ht-degree: 4%
 
 ---
-
 
 # getLead
 

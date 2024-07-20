@@ -1,14 +1,14 @@
 ---
-title: "Desempenho"
+title: Desempenho
 feature: REST API
-description: "Dicas de desempenho para trabalhar com a API do Marketo."
-source-git-commit: 8c1ffb6db05da49e7377b8345eeb30472ad9b78b
+description: Dicas de desempenho para trabalhar com a API do Marketo.
+exl-id: 173a398a-9d36-4e8d-9dd3-7d0d375b085a
+source-git-commit: 66add4c38d0230c36d57009de985649bb67fde3e
 workflow-type: tm+mt
 source-wordcount: '117'
-ht-degree: 0%
+ht-degree: 1%
 
 ---
-
 
 # Desempenho
 
@@ -32,7 +32,7 @@ A API REST do Marketo compactará o corpo da resposta e incluirá este cabeçalh
 Content-Encoding: gzip
 ```
 
-Veja um exemplo de uso do Curl para chamar o [Obter clientes em potencial por tipo de filtro](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Leads/operation/getLeadsByFilterUsingGET) endpoint para recuperar 5 leads:
+Este é um exemplo usando o Curl para chamar o ponto de extremidade [Obter Clientes Potenciais por Tipo de Filtro](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Leads/operation/getLeadsByFilterUsingGET) para recuperar 5 clientes potenciais:
 
 ```bash
 $ curl -H 'Accept-Encoding: gzip' 'https://123-ABC-456.mktorest.com/rest/v1/leads.json?filterType=id&filterValues=4,5,7,12,13'

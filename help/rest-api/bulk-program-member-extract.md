@@ -1,14 +1,14 @@
 ---
-title: "Extração de membros do programa em massa"
+title: Extração de membros do programa em massa
 feature: REST API
-description: "Processamento em lote da extração de dados do Membro."
-source-git-commit: d335bdd9f939c3e557a557b43fb3f33934e13fef
+description: Processamento em lote da extração de dados do Membro.
+exl-id: 6e0a6bab-2807-429d-9c91-245076a34680
+source-git-commit: 66add4c38d0230c36d57009de985649bb67fde3e
 workflow-type: tm+mt
 source-wordcount: '1142'
 ht-degree: 4%
 
 ---
-
 
 # Extração de membros do programa em massa
 
@@ -22,7 +22,7 @@ As APIs de Extração de membros do programa em massa exigem que o usuário da A
 
 ## Descrever
 
-[Descrever membro do programa](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Program-Members/operation/describeProgramMemberUsingGET2) O é a principal fonte da verdade para determinar se os campos estão disponíveis para uso e os metadados sobre esses campos. A variável `name` O atributo contém o nome da API REST.
+[Descrever Membro do Programa](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Program-Members/operation/describeProgramMemberUsingGET2) é a principal fonte da verdade sobre se os campos estão disponíveis para uso e os metadados sobre esses campos. O atributo `name` contém o nome da API REST.
 
 ```
 GET /rest/v1/programs/members/describe.json
@@ -213,7 +213,7 @@ GET /rest/v1/programs/members/describe.json
 
 ## Filtros
 
-Os membros do programa oferecem suporte a várias opções de filtro. Vários tipos de filtros podem ser especificados para um trabalho, nesse caso, eles são ANDed juntos. Você deve especificar o `programId` ou o `programIds` filtro. Todos os outros filtros são opcionais. A variável `updatedAt` O filtro exige componentes de infraestrutura adicionais que ainda não foram implantados em todas as assinaturas.
+Os membros do programa oferecem suporte a várias opções de filtro. Vários tipos de filtros podem ser especificados para um trabalho, nesse caso, eles são ANDed juntos. Especifique o filtro `programId` ou `programIds`. Todos os outros filtros são opcionais. O filtro `updatedAt` requer componentes de infraestrutura adicionais que ainda não foram implantados em todas as assinaturas.
 
 <table>
   <tbody>
@@ -225,12 +225,12 @@ Os membros do programa oferecem suporte a várias opções de filtro. Vários ti
     <tr>
       <td>programId</td>
       <td>Inteiro</td>
-      <td>Aceita a ID de um programa. As ordens de produção retornam todos os registros acessíveis que são membros do programa no momento em que a ordem de produção começa a ser processada. Recupere as IDs do programa usando <a href="https://developer.adobe.com/marketo-apis/api/asset/#tag/Programs">Obter Programas</a> endpoint.Não pode ser usado com o filtro programIds.</td>
+      <td>Aceita a ID de um programa. Os trabalhos retornam todos os registros acessíveis que são membros do programa no momento em que o trabalho começa a ser processado. Recupere as IDs do programa usando o ponto de extremidade <a href="https://developer.adobe.com/marketo-apis/api/asset/#tag/Programs">Obter Programas</a>. Não é possível usar com o filtro programIds.</td>
     </tr>
     <tr>
       <td>programIds</td>
       <td>Matriz[Inteiro]</td>
-      <td>Aceita uma matriz de até 10 IDs de programa. As tarefas retornam todos os registros acessíveis que são membros dos programas no momento em que a tarefa começa a ser processada. Um campo adicional "programId" é adicionado ao arquivo de exportação como o primeiro campo. Este campo identifica o programa do qual um registro de associação de programa foi extraído. Recupere as IDs de programa usando a <a href="https://developer.adobe.com/marketo-apis/api/asset/#tag/Programs">Obter Programas</a> endpoint.Não pode ser usado com o filtro programId.</td>
+      <td>Aceita uma matriz de até 10 IDs de programa. As tarefas retornam todos os registros acessíveis que são membros dos programas no momento em que a tarefa começa a ser processada. Um campo adicional "programId" é adicionado ao arquivo de exportação como o primeiro campo. Este campo identifica o programa do qual um registro de associação de programa foi extraído. Recupere as IDs de programa usando o ponto de extremidade <a href="https://developer.adobe.com/marketo-apis/api/asset/#tag/Programs">Obter Programas</a>. Não é possível usar com o filtro programId.</td>
     </tr>
     <tr>
       <td>isExhausted</td>
@@ -320,14 +320,14 @@ O ponto de extremidade Criar Trabalho do Membro do Programa de Exportação forn
 
 | Parâmetro | Tipo de dados | Obrigatório | Observações |
 |---|---|---|---|
-| campos | Matriz[String] | Sim | O parâmetro fields aceita uma matriz JSON de cadeias de caracteres. Os campos listados são incluídos no arquivo exportado. Os seguintes tipos de campo podem ser exportados:`LeadCustom` `LeadProgram` MemberCustom `ProgramMember`. Especifique um campo usando seu nome de API REST, que pode ser recuperado usando Descrever lead2 e/ou Descrever endpoints de membros do programa. |
+| campos | Matriz[Cadeia de Caracteres] | Sim | O parâmetro fields aceita uma matriz JSON de cadeias de caracteres. Os campos listados são incluídos no arquivo exportado. Os seguintes tipos de campo podem ser exportados:`LeadCustom` `LeadProgram` MemberCustom `ProgramMember`. Especifique um campo usando seu nome de API REST, que pode ser recuperado usando Descrever lead2 e/ou Descrever endpoints de membros do programa. |
 | columnHeaderNames | Objeto | Não | Um objeto JSON que contém pares de valores chave de nomes de campos e cabeçalhos de coluna. A chave deve ser o nome de um campo incluído no trabalho de exportação. O valor é o nome do cabeçalho de coluna exportado para esse campo. |
 | formato | Sequência de caracteres | Não | Aceita um dos seguintes: CSV, TSV, SSV. O arquivo exportado é renderizado como um arquivo de valores separados por vírgula, valores separados por tabulação ou valores separados por espaço, respectivamente, se definido. O padrão é CSV, caso não esteja definido. |
 
 
 ## Criação de um trabalho
 
-Os parâmetros do processo são definidos antes do início da exportação usando o [Criar Trabalho de Membro do Programa de Exportação](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Bulk-Export-Program-Members/operation/createExportProgramMembersUsingPOST) terminal. Precisamos definir o `filter` contendo a id do programa e a variável `fields` que são necessários para a exportação. Opcionalmente, podemos definir a variável `format` do arquivo e o `columnHeaderNames`.
+Os parâmetros do trabalho são definidos antes do início da exportação usando o ponto de extremidade [Criar Trabalho de Membro do Programa de Exportação](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Bulk-Export-Program-Members/operation/createExportProgramMembersUsingPOST). Devemos definir o `filter` que contém a ID do programa e o `fields` que é necessário para a exportação. Opcionalmente, podemos definir o `format` do arquivo e o `columnHeaderNames`.
 
 ```
 POST /bulk/v1/program/members/export/create.json
@@ -371,7 +371,7 @@ POST /bulk/v1/program/members/export/create.json
 }
 ```
 
-Isso retorna uma resposta de status indicando que o processo foi criado. A tarefa foi definida e criada, mas ainda não foi iniciada. Para isso, a [Enfileirar Trabalho de Membro do Programa de Exportação](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Bulk-Export-Program-Members/operation/enqueueExportProgramMembersUsingPOST) o ponto de extremidade deve ser chamado usando o `exportId` na resposta do status de criação:
+Isso retorna uma resposta de status indicando que o processo foi criado. A tarefa foi definida e criada, mas ainda não foi iniciada. Para fazer isso, o ponto de extremidade [Enfileirar Trabalho do Membro do Programa de Exportação](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Bulk-Export-Program-Members/operation/enqueueExportProgramMembersUsingPOST) deve ser chamado usando o `exportId` da resposta do status de criação:
 
 ```
 POST /bulk/v1/program/members/export/{exportId}/enqueue.json
@@ -393,13 +393,13 @@ POST /bulk/v1/program/members/export/{exportId}/enqueue.json
 }
 ```
 
-Isso responderá com uma primeira `status` de &quot;Em fila&quot;, após o que será definido como &quot;Processando&quot; quando houver um slot de exportação disponível.
+Isso responderá com um `status` inicial de &quot;Em fila&quot;, após o qual será definido como &quot;Processando&quot; quando houver um slot de exportação disponível.
 
 ## Status do trabalho de pesquisa
 
 Observação: o status só pode ser recuperado para trabalhos criados pelo mesmo usuário da API.
 
-Como esse é um endpoint assíncrono, depois de criar o trabalho, devemos sondar seu status para determinar seu progresso. Consultar usando o [Obter Status de Trabalho de Membro do Programa de Exportação](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Bulk-Export-Leads/operation/getExportLeadsStatusUsingGET) terminal. O status só é atualizado uma vez a cada 60 segundos, portanto, uma frequência de polling inferior a essa não é recomendada e, em quase todos os casos, ainda é excessiva. O campo de status pode responder com qualquer um dos seguintes: Criado, Em fila, Processando, Cancelado, Concluído, Falha.
+Como esse é um endpoint assíncrono, depois de criar o trabalho, devemos sondar seu status para determinar seu progresso. Sondar usando o ponto de extremidade [Obter Status do Trabalho do Membro do Programa de Exportação](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Bulk-Export-Leads/operation/getExportLeadsStatusUsingGET). O status só é atualizado uma vez a cada 60 segundos, portanto, uma frequência de polling inferior a essa não é recomendada e, em quase todos os casos, ainda é excessiva. O campo de status pode responder com qualquer um dos seguintes: Criado, Em fila, Processando, Cancelado, Concluído, Falha.
 
 ```
 GET /bulk/v1/program/members/export/{exportId}/status.json
@@ -422,7 +422,7 @@ GET /bulk/v1/program/members/export/{exportId}/status.json
 }
 ```
 
-O endpoint de status responde indicando que o trabalho ainda está sendo processado, portanto, o arquivo ainda não está disponível para recuperação. Uma vez que o trabalho `status` as alterações para &quot;Concluído&quot; estão disponíveis para download.
+O endpoint de status responde indicando que o trabalho ainda está sendo processado, portanto, o arquivo ainda não está disponível para recuperação. Quando o trabalho `status` for alterado para &quot;Concluído&quot;, ele estará disponível para download.
 
 ```json
 {
@@ -447,9 +447,9 @@ O endpoint de status responde indicando que o trabalho ainda está sendo process
 
 ## Recuperação de dados
 
-Para recuperar o arquivo de uma exportação concluída de membros do programa, basta chamar o [Obter arquivo de membro do programa de exportação](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Bulk-Export-Program-Members/operation/getExportProgramMembersFileUsingGET) terminal com seu `exportId`.
+Para recuperar o arquivo de uma exportação concluída de membros do programa, basta chamar o ponto de extremidade [Obter Arquivo de Membro do Programa de Exportação](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Bulk-Export-Program-Members/operation/getExportProgramMembersFileUsingGET) com seu `exportId`.
 
-A resposta contém um arquivo formatado da maneira que o trabalho foi configurado. O endpoint responde com o conteúdo do arquivo. Se um campo do membro do programa solicitado estiver vazio (não contiver dados), `null` é colocado no campo correspondente no arquivo de exportação.
+A resposta contém um arquivo formatado da maneira que o trabalho foi configurado. O endpoint responde com o conteúdo do arquivo. Se um campo de membro do programa solicitado estiver vazio (não contiver dados), `null` será colocado no campo correspondente no arquivo de exportação.
 
 ```
 GET /bulk/v1/program/members/export/{exportId}/file.json
@@ -471,11 +471,11 @@ Jory,Cassel,jcas@housestark.com,2020-01-08T18:10:26Z,PMCF Program,On List,1799,f
 Septa,Mordane,smor@housestark.com,2020-01-08T18:10:26Z,PMCF Program,On List,1800,false,Lead01_Value,Lead02_Value,PM01_Value,PM02_Value
 ```
 
-Para oferecer suporte à recuperação parcial e de fácil retomada dos dados extraídos, o endpoint do arquivo oferece suporte opcional ao Intervalo do cabeçalho HTTP do tipo bytes. Se o cabeçalho não estiver definido, todo o conteúdo será retornado. Você pode ler mais sobre como usar o cabeçalho Intervalo com o Marketo [Extração em massa](bulk-extract.md).
+Para oferecer suporte à recuperação parcial e de fácil retomada dos dados extraídos, o endpoint do arquivo oferece suporte opcional ao Intervalo do cabeçalho HTTP do tipo bytes. Se o cabeçalho não estiver definido, todo o conteúdo será retornado. Você pode ler mais sobre como usar o cabeçalho Intervalo com a [Extração em massa](bulk-extract.md) do Marketo.
 
 ## Cancelar um trabalho
 
-Se uma tarefa for configurada incorretamente ou se se tornar desnecessária, ela poderá ser facilmente cancelada usando o [Cancelar Trabalho de Membro do Programa de Exportação](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Bulk-Export-Program-Members/operation/cancelExportProgramMembersUsingPOST) endpoint:
+Se um trabalho for configurado incorretamente ou se se tornar desnecessário, ele poderá ser facilmente cancelado usando o ponto de extremidade [Cancelar Trabalho de Membro do Programa de Exportação](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Bulk-Export-Program-Members/operation/cancelExportProgramMembersUsingPOST):
 
 ```
 POST /bulk/v1/program/members/export/{exportId}/cancel.json
@@ -496,4 +496,4 @@ POST /bulk/v1/program/members/export/{exportId}/cancel.json
 }
 ```
 
-Isso responde com uma `status` indicando que o trabalho foi cancelado.
+Isso responde com um `status` indicando que o trabalho foi cancelado.

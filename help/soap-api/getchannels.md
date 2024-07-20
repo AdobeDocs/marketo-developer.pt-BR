@@ -1,14 +1,14 @@
 ---
-title: "getChannels"
+title: getChannels
 feature: SOAP
-description: "chamadas getChannels SOAP"
-source-git-commit: d335bdd9f939c3e557a557b43fb3f33934e13fef
+description: chamadas getChannels SOAP
+exl-id: bcaef85b-154b-4571-ad24-07a36707a6ef
+source-git-commit: 66add4c38d0230c36d57009de985649bb67fde3e
 workflow-type: tm+mt
 source-wordcount: '92'
 ht-degree: 5%
 
 ---
-
 
 # getChannels
 

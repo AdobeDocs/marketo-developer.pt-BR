@@ -1,14 +1,14 @@
 ---
-title: "getCampaignsForSource"
+title: getCampaignsForSource
 feature: SOAP
-description: "chamadas getCampaignsForSource SOAP"
-source-git-commit: d335bdd9f939c3e557a557b43fb3f33934e13fef
+description: Chamadas de SOAP getCampaignsForSource
+exl-id: bd8803ef-f462-4346-a381-73f40dc5d9ee
+source-git-commit: 66add4c38d0230c36d57009de985649bb67fde3e
 workflow-type: tm+mt
 source-wordcount: '131'
 ht-degree: 6%
 
 ---
-
 
 # getCampaignsForSource
 
@@ -16,7 +16,7 @@ Essa função retorna uma lista de campanhas elegíveis do Marketo que podem ser
 
 Importante: a Campanha inteligente deve ter um acionador &quot;Campanha solicitada&quot; para se qualificar. Sua origem deve incluir a API do serviço da Web.
 
-![campaign_is_requested_trigger](assets/campaign-is-requested-trigger.png)
+![campanha_é_acionador_solicitado](assets/campaign-is-requested-trigger.png)
 
 ## Solicitar
 

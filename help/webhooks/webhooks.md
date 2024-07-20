@@ -16,32 +16,32 @@ O Marketo permite o uso de Webhooks para comunicação com serviços da Web de t
 
 - [Criar um Webhook](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/administration/additional-integrations/create-a-webhook)
 - [Chamar Webhook](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/core-marketo-concepts/smart-campaigns/flow-actions/call-webhook)
-- [Usar um Webhook em uma campanha inteligente](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/core-marketo-concepts/smart-campaigns/flow-actions/use-a-webhook-in-a-smart-campaign)
+- [Usar um Webhook em uma Campanha Inteligente](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/core-marketo-concepts/smart-campaigns/flow-actions/use-a-webhook-in-a-smart-campaign)
 
 Cada webhook individual tem as seguintes propriedades:
 
-- [!UICONTROL URL] - Digite o URL que você usa para enviar sua solicitação ao serviço Web.
-- [!UICONTROL Tipo de solicitação] - O método HTTP.
-- [!UICONTROL Modelo de carga útil] - Se desejar transmitir informações no corpo do POST, insira o template. Use qualquer formato de dados compatível com HTTP POST, incluindo XML, JSON ou SOAP. O formato de serialização deve permitir aspas duplas em cadeias de caracteres. Para inserir um token no modelo, clique em **[!UICONTROL Inserir token]**.  Os tokens do tipo string são automaticamente colocados entre aspas duplas.
-- [!UICONTROL Codificação do token de solicitação] - Se os valores de token incluírem caracteres especiais (como um E comercial (&amp;), indique o formato da solicitação (JSON ou Formulário/Url). A codificação correta deve ser selecionada para o corpo para garantir que o Webhook se comunique corretamente com o serviço da Web.
-- [!UICONTROL Tipo de resposta] - Selecione o formato da resposta que você recebe do serviço (JSON ou XML). O tipo de resposta correto deve ser selecionado para mapear propriedades da resposta de volta aos campos de cliente potencial no Marketo
-- [!UICONTROL Cabeçalhos personalizados] - Acessado por meio de [!UICONTROL Ações de webhooks] -> [!UICONTROL Definir cabeçalho personalizado], esse menu permite a adição de qualquer número de pares de valores chave personalizados como Cabeçalhos HTTP.
+- [!UICONTROL URL] - Insira a URL usada para enviar sua solicitação ao serviço Web.
+- [!UICONTROL Tipo de Solicitação] - O método HTTP.
+- [!UICONTROL Modelo de carga] - Se desejar transmitir informações no corpo do POST, insira o modelo. Use qualquer formato de dados compatível com HTTP POST, incluindo XML, JSON ou SOAP. O formato de serialização deve permitir aspas duplas em cadeias de caracteres. Para inserir um token no modelo, clique em **[!UICONTROL Inserir Token]**.  Os tokens do tipo string são automaticamente colocados entre aspas duplas.
+- [!UICONTROL Solicitar Codificação de Token] - Se os valores de token incluírem caracteres especiais (como um E comercial, &quot;&amp;&quot;), indique o formato da sua solicitação (JSON ou Formulário/Url). A codificação correta deve ser selecionada para o corpo para garantir que o Webhook se comunique corretamente com o serviço da Web.
+- [!UICONTROL Tipo de Resposta] - Selecione o formato da resposta recebida do serviço (JSON ou XML). O tipo de resposta correto deve ser selecionado para mapear propriedades da resposta de volta aos campos de cliente potencial no Marketo
+- [!UICONTROL Cabeçalhos Personalizados] - Acessados por meio de [!UICONTROL Ações de Webhooks] -> [!UICONTROL Definir Cabeçalho Personalizado], esse menu permite a adição de qualquer número de pares de Valores-Chave personalizados como Cabeçalhos HTTP.
 
-Os dados podem ser gravados nos clientes potenciais a partir das respostas do serviço da Web usando [Mapeamentos de resposta](response-mappings.md)
+Os dados podem ser gravados de volta nos clientes potenciais a partir das respostas do serviço Web usando [Mapeamentos de Resposta](response-mappings.md)
 
 ## Tokens
 
 Todos os campos de saída em um Webhook (URL, Modelo e Cabeçalhos personalizados) preenchem o conteúdo de tokens no mesmo contexto da etapa de fluxo. Isso significa que os tokens de Cliente potencial e Sistema estão sempre disponíveis, enquanto os tokens de Acionador, Campanha e Programa estão disponíveis em seus respectivos escopos. Consulte artigos relacionados ao token:
 
-- [Visão geral de tokens](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/demand-generation/landing-pages/personalizing-landing-pages/tokens-overview)
+- [Visão geral dos tokens](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/demand-generation/landing-pages/personalizing-landing-pages/tokens-overview)
 - [Glossário de tokens do sistema](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/email-marketing/general/using-tokens/system-tokens-glossary)
-- [Tokens de momentos interessantes](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/marketo-sales-insight/msi-for-salesforce/features/tabs-in-the-msi-panel/interesting-moments/trigger-tokens-for-interesting-moments)
+- [Tokens para Momentos Interessantes](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/marketo-sales-insight/msi-for-salesforce/features/tabs-in-the-msi-panel/interesting-moments/trigger-tokens-for-interesting-moments)
 
-Um caso comum para isso é quando um Programa ou Campanha é mapeado explicitamente para um recurso de terceiros. Uma ID pode ser definida no nível do programa como um `My Token`e, em seguida, passado para a solicitação do Webhook como um token.
+Um caso comum para isso é quando um Programa ou Campanha é mapeado explicitamente para um recurso de terceiros. Uma ID pode ser definida no nível do programa como um `My Token` e depois passada para a solicitação do Webhook como um token.
 
 ## Cabeçalhos personalizados
 
-Os webhooks permitem que o uso de qualquer número de campos de Cabeçalho personalizados seja enviado junto com a solicitação de saída. Eles podem ser adicionados por meio de **[!UICONTROL Ações de webhooks]** > **[!UICONTROL Definir cabeçalho personalizado]**. Cada cabeçalho é registrado como um par de valores chave simples. Os tokens podem ser usados nessa área.
+Os webhooks permitem que o uso de qualquer número de campos de Cabeçalho personalizados seja enviado junto com a solicitação de saída. Eles podem ser adicionados através de **[!UICONTROL Ações de Webhooks]** > **[!UICONTROL Definir Cabeçalho Personalizado]**. Cada cabeçalho é registrado como um par de valores chave simples. Os tokens podem ser usados nessa área.
 
 ![Cabeçalhos personalizados](assets/custom-headers.png)
 

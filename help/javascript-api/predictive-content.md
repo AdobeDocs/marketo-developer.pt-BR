@@ -1,15 +1,15 @@
 ---
-title: "Conteúdo preditivo"
-description: "Conteúdo preditivo"
+title: Predictive Content
+description: Predictive Content
 feature: Predictive Content, Javascript
-source-git-commit: d335bdd9f939c3e557a557b43fb3f33934e13fef
+exl-id: 14c80ed6-01b3-4dfc-9073-e6b881bb0fb8
+source-git-commit: 66add4c38d0230c36d57009de985649bb67fde3e
 workflow-type: tm+mt
 source-wordcount: '28'
-ht-degree: 7%
+ht-degree: 21%
 
 ---
 
-
 # Predictive Content
 
-A API JavaScript de conteúdo preditivo estende o conteúdo preditivo da plataforma. Ele permite a personalização dinâmica de uma página da Web por meio de [Rich Media Recommendations](rich-media-recommendation.md).
+A API do JavaScript de conteúdo preditivo estende o conteúdo preditivo da plataforma. Ela permite a personalização dinâmica de uma página da Web via [Rich Media Recommendations](rich-media-recommendation.md).

@@ -1,42 +1,42 @@
 ---
-title: "getMultipleLeads"
+title: getMultipleLeads
 feature: SOAP
-description: "chamadas getMultipleLeads SOAP"
-source-git-commit: d335bdd9f939c3e557a557b43fb3f33934e13fef
+description: chamadas getMultipleLeads SOAP
+exl-id: db9aabec-8705-40c6-b264-740fdcef8a52
+source-git-commit: 66add4c38d0230c36d57009de985649bb67fde3e
 workflow-type: tm+mt
 source-wordcount: '384'
 ht-degree: 3%
 
 ---
 
-
 # getMultipleLeads
 
-Curtir `getLead`, `getMultipleLeads` recupera registros de clientes potenciais do Marketo. Em vez de dados para um único lead, essa chamada retorna dados para um lote de leads que correspondem aos critérios passados para o parâmetro leadSelector. Os critérios podem ser um intervalo de datas, como a última data atualizada, uma matriz de teclas de lead ou uma lista estática.
+Assim como `getLead`, `getMultipleLeads` recupera registros de clientes potenciais da Marketo. Em vez de dados para um único lead, essa chamada retorna dados para um lote de leads que correspondem aos critérios passados para o parâmetro leadSelector. Os critérios podem ser um intervalo de datas, como a última data atualizada, uma matriz de teclas de lead ou uma lista estática.
 
 Observação: se você usar uma matriz de chaves de lead, estará limitado a 100 por lote; as chaves adicionais serão ignoradas.
 
-Se apenas um subconjunto dos campos de cliente potencial for obrigatório, a variável `includeAttributes` para especificar os campos desejados.
+Se apenas um subconjunto dos campos de cliente potencial for necessário, o parâmetro `includeAttributes` deverá ser usado para especificar os campos desejados.
 
-Each `getMultipleLeads` a chamada de função retorna até 1000 leads. Se você precisar recuperar mais de 1000 clientes em potencial, o resultado retornará um [posição do fluxo](stream-position.md), que pode ser usado em chamadas subsequentes para recuperar o próximo lote de 1000 clientes potenciais. A contagem restante no resultado informa exatamente quantos leads permanecem. Ao buscar de uma lista estática, a condição de terminação é remainingCount == 0.
+Cada chamada de função `getMultipleLeads` retorna até 1000 leads. Se você precisar recuperar mais de 1000 clientes potenciais, o resultado retornará uma [posição do fluxo](stream-position.md), que pode ser usada em chamadas subsequentes para recuperar o próximo lote de 1000 clientes potenciais. A contagem restante no resultado informa exatamente quantos leads permanecem. Ao buscar de uma lista estática, a condição de terminação é remainingCount == 0.
 
-Um caso de uso comum para esse endpoint é encontrar leads que foram atualizados em datas específicas. A variável `LastUpdateAtSelector` permite que você faça isso.
+Um caso de uso comum para esse endpoint é encontrar leads que foram atualizados em datas específicas. O `LastUpdateAtSelector` permite que você faça isso.
 
 ## Solicitar
 
 | Nome do campo | Obrigatório/Opcional | Descrição |
 | --- | --- | --- |
-| leadSelector | Obrigatório | Pode ser um dos três tipos a seguir:`LeadKeySelector`, `StaticListSelector`,`LastUpdateAtSelector` |
+| leadSelector | Obrigatório | Pode ser um dos 3 tipos a seguir:`LeadKeySelector`, `StaticListSelector`,`LastUpdateAtSelector` |
 | keyType | Obrigatório | O tipo de id que você deseja consultar. Os valores incluem IDNUM, COOKIE, EMAIL, LEADOWNEREMAIL, SFDCACCOUNTID, SFDCCONTACTID, SFDCLEADID, SFDCLEADOWNERID, SFDCOPPTYID. |
 | keyValues->stringItem | Obrigatório | Lista de valores de chave. Ou seja, &quot;lead@email.com&quot; |
 | LastUpdateAtSelector: leadSelector->olderUpdatedAt | Obrigatório | O carimbo de data e hora para especificar os critérios &quot;desde&quot;. Ou seja, Retornar todos os clientes potenciais atualizados desde o horário especificado. (formato de data e hora W3C WSDL) |
 | LastUpdateAtSelector: leadSelector->latestUpdatedAt | Opcional | O carimbo de data e hora para especificar os critérios &quot;até&quot;. Ou seja, Retornar todos os clientes potenciais atualizados até o horário especificado. (formato de data e hora W3C WSDL) |
 | StaticListSelector: leadSelector->staticListName | Opcional quando `leadSelector->staticListId` está presente | O nome da lista estática |
 | StaticListSelector: leadSelector->staticListId | Opcional quando `leadSelector->staticListName` está presente | A ID da lista estática |
-| lastUpdatedAt | **Obsoleto** | Uso `LastUpdateAtSelector` em vez disso |
+| lastUpdatedAt | **Obsoleto** | Usar `LastUpdateAtSelector` no lugar dele |
 | includeAttributes | Opcional | Lista de atributos que você deseja obter. Limitar os campos de cliente potencial retornados pode melhorar o tempo de resposta da API. |
-| batchSize | Opcional | Número máximo de registros a serem retornados. Limites do sistema para 100 ou `batchSize`, consoante o que for menor |
-| streamPosition | Opcional | Usado para paginar por meio de um grande número de respostas de clientes potenciais. A variável `streamPosition` é retornado pelo campo de resposta de chamadas anteriores `newStreamPosition` |
+| batchSize | Opcional | Número máximo de registros a serem retornados. O limite do sistema é 100 ou `batchSize`, o que for menor |
+| streamPosition | Opcional | Usado para paginar por meio de um grande número de respostas de clientes potenciais. O valor `streamPosition` é retornado pelo campo de resposta de chamadas anteriores `newStreamPosition` |
 
 ## XML de solicitação
 

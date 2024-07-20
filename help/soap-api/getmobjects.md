@@ -1,39 +1,39 @@
 ---
-title: "getMObjects"
+title: getMObjects
 feature: SOAP
-description: "chamadas getMObjects SOAP"
-source-git-commit: d335bdd9f939c3e557a557b43fb3f33934e13fef
+description: chamadas de SOAP getMObjects
+exl-id: 5cf18161-f590-4dc3-bba1-ee3ed9fd7e9f
+source-git-commit: 66add4c38d0230c36d57009de985649bb67fde3e
 workflow-type: tm+mt
 source-wordcount: '226'
 ht-degree: 7%
 
 ---
 
-
 # getMObjects
 
-Recupera um ou mais [MObjects](marketo-objects.md) usando uma combinação de critérios que consistem em:
+Recupera um ou mais [MObjects](marketo-objects.md) usando uma combinação de critérios que consiste em:
 
 - Zero ou um identificador exclusivo, seja o Marketo ID ou o identificador externo
 - Zero ou mais filtros de atributo como trios de nome/valor/comparação
 - Zero ou mais filtros de objeto associados como pares de nome/ID do objeto
 
-Retorna uma lista de MObjects correspondentes, todos de um único tipo, até 100 em um lote e um [posição do fluxo](stream-position.md) token para recuperar lotes sucessivos.
+Retorna uma lista de MObjects correspondentes, todos de um único tipo, até 100 em um lote e um token de [posição de fluxo](stream-position.md) para recuperar lotes sucessivos.
 
 ## Solicitar
 
 | Nome do campo | Obrigatório/Opcional | Descrição |
 | --- | --- | --- |
-| tipo | Obrigatório | O tipo de objeto que você deseja consultar. Pode ser um dos seguintes: `Opportunity`, `OpportunityPersonRole`ou `Program` |
+| tipo | Obrigatório | O tipo de objeto que você deseja consultar. Pode ser um dos seguintes: `Opportunity`, `OpportunityPersonRole` ou `Program` |
 | ID | Opcional | Id do objeto |
 | includeDetails | Opcional | Quando verdadeiro, retornará todos os atributos para um determinado objeto. Este parâmetro só é aplicável quando usado com Objetos de programa |
-| mObjCriteriaList->mObjCriteria->attrName | Opcional | Um ou mais dos seguintes parâmetros de entrada podem ser usados:`Name`, `Role`, `Type`, `Stage`, `CRM Id`, `Created At`, `Updated At` ou `Tag Type` (somente um pode ser especificado), `Tag Value`, `Workspace Name`, `Workspace Id`, `Include Archive` |
+| mObjCriteriaList->mObjCriteria->attrName | Opcional | Um ou mais dos seguintes parâmetros de entrada podem ser usados: `Name`, `Role`, `Type`, `Stage`, `CRM Id`, `Created At`, `Updated At` ou `Tag Type` (somente um pode ser especificado), `Tag Value`, `Workspace Name`, `Workspace Id`, `Include Archive` |
 | mObjCriteriaList->mObjCriteria->attrValue | Opcional | O valor que você deseja usar para filtragem |
 | mObjCriteriaList->mObjCriteria->comparação | Opcional | Um de `EQ`, `NE`, `LT` ,`LE`, `GT`, `GE` |
 | mObjAssociationList->mObjAssociation->mObjType | Opcional |  |
 | mObjAssociationList->mObjAssociation->id | Opcional | A ID do objeto associado (Cliente Potencial/Empresa/Oportunidade) |
 | mObjAssociationList->mObjAssociation->externalKey | Opcional | Um atributo personalizado do objeto associado |
-| streamPosition | Opcional | Usado para paginar por meio de vários conjuntos de resultados. O valor transmitido é o valor retornado pelo anterior `getMObjects` chame. |
+| streamPosition | Opcional | Usado para paginar por meio de vários conjuntos de resultados. O valor transmitido é o valor retornado pela chamada `getMObjects` anterior. |
 
 ## XML de solicitação
 

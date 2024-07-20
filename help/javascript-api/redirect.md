@@ -1,20 +1,20 @@
 ---
-title: "Redirecionar"
-description: "Redirecionar"
+title: Redirecionar
+description: Redirecionar
 feature: Javascript
-source-git-commit: 2185972a272b64908d6aac8818641af07c807ac2
+exl-id: bbf91245-42e5-47ae-a561-e522cc65ff49
+source-git-commit: 66add4c38d0230c36d57009de985649bb67fde3e
 workflow-type: tm+mt
 source-wordcount: '468'
 ht-degree: 8%
 
 ---
 
-
 # Redirecionar
 
 A API de redirecionamento do RTP permite redirecionar públicos segmentados para um URL de destino.
 
-- Você deve se tornar um cliente de Personalização da Web e ter o [Tag RTP implantada](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/web-personalization/rtp-tag-implementation/deploy-the-rtp-javascript) no site antes de usar a API de contexto do usuário.
+- Você deve se tornar um cliente do Web Personalization e implantar a [tag RTP](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/web-personalization/rtp-tag-implementation/deploy-the-rtp-javascript) no site antes de usar a API de Contexto de Usuário.
 - O RTP não suporta listas de contas nomeadas de Marketing Baseado em Conta. As listas e os códigos ABM pertencem apenas às listas de contas carregadas (arquivos CSV) gerenciadas no RTP.
 
 ## Uso
@@ -34,16 +34,16 @@ Organização, Setor, Listas ABM, Local, ISP, Segmentos correspondentes
 
 | Condição | Hierarquia de dados | Exemplo |
 |-------------------------------------------------|----------------------|------------------------------------------------------------------------------------------------------------------|
-| Segmentos correspondentes (funciona somente após o primeiro clique) | matchedSegments.name | rtp( &#39;send&#39;, &#39;redirect&#39; , &#39;matchedSegments.name&#39; , [&#39;Fortune 1.000&#39; , &#39;Empresa&#39;] , &#39;http://www.marketo.com&#39;); |
-| Segmentos correspondentes (funciona somente após o primeiro clique) | matchedSegments.id | rtp( &#39;send&#39;, &#39;redirect&#39; , &#39;matchedSegments.id&#39; , [106, 107, 190] , &#39;http://www.marketo.com&#39;); |
+| Segmentos correspondentes (funciona somente após o primeiro clique) | matchedSegments.name | rtp( &#39;send&#39;, &#39;redirect&#39; , &#39;matchedSegments.name&#39; , [&#39;Fortune 1.000&#39; , &#39;Enterprise&#39;] , &#39;http://www.marketo.com&#39;); |
+| Segmentos correspondentes (funciona somente após o primeiro clique) | matchedSegments.id | rtp( &#39;send&#39;, &#39;redirect&#39; , &#39;matchedSegments.id&#39; , [106 , 107 , 190] , &#39;http://www.marketo.com&#39;); |
 | Listas ABM | abm.name | rtp( &#39;send&#39;, &#39;redirect&#39; , &#39;abm.name&#39; , [&#39;top_key_accounts&#39;, &#39;ative_customers&#39;] , &#39;http://www.marketo.com&#39;); |
 | Listas ABM | abm.code | rtp( &#39;send&#39;, &#39;redirect&#39; , &#39;abm.code&#39; , [13 , 15] , &#39;http://www.marketo.com&#39;); |
 | Organizações | org | rtp( &#39;send&#39;, &#39;redirect&#39; , &#39;org&#39;, [&#39;ebay&#39;], &#39;http://www.marketo.com&#39;); |
-| Local | location.country | rtp( &#39;send&#39;, &#39;redirect&#39; , &#39;location.country&#39; , [&#39;Estados Unidos&#39;], &#39;http://www.marketo.com&#39;); |
+| Local | location.country | rtp( &#39;send&#39;, &#39;redirect&#39; , &#39;location.country&#39; , [&#39;United States&#39;], &#39;http://www.marketo.com&#39;); |
 | Local | location.state | rtp( &#39;send&#39;, &#39;redirect&#39; , &#39;location.state&#39;, [&#39;ca&#39;], &#39;http://www.marketo.com&#39;); |
 | Local | location.city | rtp( &#39;send&#39;, &#39;redirect&#39; , &#39;location.city&#39;, [&#39;San Mateo&#39;], &#39;http://www.marketo.com&#39;); |
-| Setores | indústrias | rtp( &#39;enviar&#39;, &#39;redirecionar&#39; , &#39;setores&#39; , [&#39;Educação&#39;], &#39;http://www.marketo.com&#39;); |
-| Provedor de Internet  | isp | rtp( &#39;send&#39;, &#39;redirect&#39; , isp , [&#39;Falso&#39;], &#39;http://www.marketo.com&#39;); |
+| Setores | indústrias | rtp( &#39;enviar&#39;, &#39;redirecionar&#39; , &#39;indústrias&#39; , [&#39;Educação&#39;], &#39;http://www.marketo.com&#39;); |
+| Provedor de Internet  | isp | rtp( &#39;send&#39;, &#39;redirect&#39; , isp , [&#39;False&#39;], &#39;http://www.marketo.com&#39;); |
 
 
 ## Observações
@@ -91,7 +91,7 @@ rtp('get','campaign');
 1. Crie um segmento chamado - &quot;Redirecionado pelo RTP&quot;
 1. Use o parâmetro &quot;Páginas específicas&quot; para direcionar os visitantes que visualizam qualquer página com o parâmetro mostrado abaixo.
 
-![tracking-redirect-visitors](assets/tracking-redirected-vistors.png)
+![visitantes-redirecionados-de-rastreamento](assets/tracking-redirected-vistors.png)
 
 ## Como definir mais de uma condição com URLs de destino diferentes
 

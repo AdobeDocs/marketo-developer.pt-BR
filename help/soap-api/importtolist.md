@@ -1,20 +1,20 @@
 ---
-title: "importToList"
+title: importToList
 feature: SOAP
-description: "Chamadas SOAP importToList"
-source-git-commit: d335bdd9f939c3e557a557b43fb3f33934e13fef
+description: chamadas de SOAP importToList
+exl-id: 7e4930a9-a78f-44a3-9e8c-eeca908080c8
+source-git-commit: 66add4c38d0230c36d57009de985649bb67fde3e
 workflow-type: tm+mt
 source-wordcount: '317'
 ht-degree: 5%
 
 ---
 
-
 # importToList
 
 Essa função permite importar uma lista de leads para uma Lista estática existente no Marketo, semelhante à função de lista de importação na interface do usuário do Marketo.
 
-**Formato de importação:** Esses valores são idênticos à estrutura de um CSV usado em uma importação de lista.
+**Formato de Importação:** esses valores são idênticos à estrutura de um CSV usado em uma importação de lista.
 
 **Exemplo:**
 
@@ -24,9 +24,9 @@ Essa função permite importar uma lista de leads para uma Lista estática exist
 | mary@company.com | Mary | Rodgers |
 | wanda@megacorp.com | Wanda | Williams |
 
-**Nota:** `displayName` Os valores de devem ser usados na `importFileHeader` em vez da `name` valores.
+**Observação:** valores de `displayName` devem ser usados em `importFileHeader` em vez dos valores de `name`.
 
-**Conteúdo de email dinâmico:** Como opção, você pode transmitir valores por lead que atuam como substitutos de Meus tokens em um email.
+**Conteúdo de Email Dinâmico**: como opção, você pode passar valores por cliente potencial que atuam como substitutos de Meus Tokens em um email.
 
 | Email | Primeiro | Último | {{my.specialToken}} | {{my.otherToken}} |
 | --- | --- | --- | --- | --- |
@@ -34,9 +34,9 @@ Essa função permite importar uma lista de leads para uma Lista estática exist
 | mary@company.com | Mary | Rodgers | Frango | Marrom |
 | wanda@megacorp.com | Wanda | Williams | Veggie | Hazel |
 
-**Importante:** Se você adicionar tokens para os clientes potenciais, deverá especificar a Campanha inteligente que os utiliza. Na próxima vez que a Campanha inteligente especificada for executada, ela usará os valores da sua lista, em vez dos valores normais do Meu token. Depois que essa única campanha for executada, os tokens serão descartados.
+**Importante:** se você adicionar tokens aos clientes potenciais, deverá especificar a Campanha Inteligente que os utiliza. Na próxima vez que a Campanha inteligente especificada for executada, ela usará os valores da sua lista, em vez dos valores normais do Meu token. Depois que essa única campanha for executada, os tokens serão descartados.
 
-**NOTA:** `importToList` pode demorar para ser concluído, especialmente para listas grandes. Se você planeja usar a lista recém-importada em outras chamadas de API, você deve usar `importToListStatus` para verificar se a operação foi concluída.
+**OBSERVAÇÃO:** `importToList` pode demorar para ser concluído, especialmente para listas grandes. Se você planeja usar a lista recém-importada em outras chamadas de API, você deve usar `importToListStatus` para verificar se a operação foi concluída.
 
 ## Solicitar
 

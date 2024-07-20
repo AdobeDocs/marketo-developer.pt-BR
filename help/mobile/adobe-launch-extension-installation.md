@@ -1,7 +1,7 @@
 ---
-title: '[!DNL Adobe Launch] Instalação de extensão'
+title: Instalação da Extensão '[!DNL Adobe Launch]'
 feature: Mobile Marketing
-description: '[!DNL Adobe Launch] visão geral da instalação da extensão'
+description: Visão geral da instalação da extensão '[!DNL Adobe Launch]'
 exl-id: d71b7cd7-309b-4882-9bba-7daaaa5ef32d
 source-git-commit: 6fc45ff98998217923e2a5b02d00d1522fe3272c
 workflow-type: tm+mt
@@ -10,26 +10,26 @@ ht-degree: 0%
 
 ---
 
-# [!DNL Adobe Launch] Instalação da extensão
+# Instalação da Extensão [!DNL Adobe Launch]
 
-Instruções de instalação para [!DNL Adobe Launch] Extensão do Marketo. As etapas abaixo são necessárias para enviar notificações por push e/ou mensagens no aplicativo.
+Instruções de instalação para a extensão do Marketo [!DNL Adobe Launch]. As etapas abaixo são necessárias para enviar notificações por push e/ou mensagens no aplicativo.
 
 ## Pré-requisitos
 
-1. [Adicionar um aplicativo no Administrador do Marketo](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/mobile-marketing/admin/add-a-mobile-app) (obtenha a chave secreta e a ID do Munchkin do seu aplicativo)
+1. [Adicionar um aplicativo no Marketo Admin](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/mobile-marketing/admin/add-a-mobile-app) (obtenha a Chave Secreta e a ID do Munchkin do aplicativo)
 1. [Configurar a propriedade no [!DNL Adobe Launch] portal](https://experience.adobe.com/#/@amc/data-collection/home)
-1. Configure a chave secreta do aplicativo e a ID do Munchkin para a propriedade na [!DNL Adobe Launch] portal
-1. [Configurar notificações por push](push-notifications.md) (opcional)
+1. Configurar a chave secreta do aplicativo e a ID do Munchkin para a propriedade no portal [!DNL Adobe Launch]
+1. [Configurar notificações por push](push-notifications.md) (opcional)
 
 ## Como instalar a extensão do Marketo no iOS
 
 ### Configurar cabeçalho de ponte Swift
 
-1. Ir para [!UICONTROL Arquivo] > [!UICONTROL Novo] > [!UICONTROL Arquivo] e Selecionar **[!UICONTROL Arquivo de cabeçalho]**.
+1. Vá para [!UICONTROL Arquivo] > [!UICONTROL Novo] > [!UICONTROL Arquivo] e selecione **[!UICONTROL Arquivo de cabeçalho]**.
 
-1. Nomeie o arquivo &quot;&lt;_NomeProjeto_>-Bridging-Header&quot;.
+1. Nomeie o arquivo &quot;&lt;_ProjectName_>-Bridging-Header&quot;.
 
-1. Ir para [!UICONTROL Projeto] > [!UICONTROL Target] > [!UICONTROL Configurações de build] > [!UICONTROL Compilador Swift] > [!UICONTROL Geração de código]. Adicione o seguinte caminho ao cabeçalho &quot;Objetive-Bridging&quot;:
+1. Vá para [!UICONTROL Projeto] > [!UICONTROL Destino] > [!UICONTROL Configurações de Compilação] > [!UICONTROL Compilador Swift] > [!UICONTROL Geração de Código]. Adicione o seguinte caminho ao cabeçalho &quot;Objetive-Bridging&quot;:
 
 `$(PODS_ROOT)/<_ProjectName_>-Bridging-Header.h`
 
@@ -39,7 +39,7 @@ Instruções de instalação para [!DNL Adobe Launch] Extensão do Marketo. As e
 
 >[!TAB Objetivo C]
 
-Atualize o `applicationDidBecomeActive` como abaixo
+Atualize o método `applicationDidBecomeActive` conforme abaixo
 
 ```
 (void)applicationDidBecomeActive:(UIApplication*) application
@@ -50,7 +50,7 @@ Atualize o `applicationDidBecomeActive` como abaixo
 
 >[!TAB Swift]
 
-Atualize o `applicationDidBecomeActive` como abaixo
+Atualize o método `applicationDidBecomeActive` conforme abaixo
 
 ```
 func applicationDidBecomeActive(_ application: UIApplication)
@@ -63,10 +63,10 @@ func applicationDidBecomeActive(_ application: UIApplication)
 
 ## Dispositivos de teste iOS
 
-1. Selecionar **[!UICONTROL Projeto]** > **[!UICONTROL Target]** > **[!UICONTROL Informações]** > **[!UICONTROL Tipos de URL]**.
+1. Selecione **[!UICONTROL Projeto]** > **[!UICONTROL Destino]** > **[!UICONTROL Informações]** > **[!UICONTROL Tipos de URL]**.
 1. Adicionar identificador: ${PRODUCT_NAME}
-1. Definir esquemas de URL: mkto-&lt;s_ecret key_=&quot;&quot;>
-1. Incluir `application:openURL:sourceApplication:annotation:` para `AppDelegate.m file` (Objetivo-C)
+1. Definir esquemas de URL: mkto-&lt;Chave_secreta_>
+1. Incluir `application:openURL:sourceApplication:annotation:` a `AppDelegate.m file` (Objetive-C)
 
 ### Tratar tipo de URL personalizado no AppDelegate
 
@@ -111,11 +111,11 @@ func application(_ application: UIApplication, open url: URL, sourceApplication:
 
 ### Configuração de extensão do Android
 
-Siga as instruções em [!DNL Adobe Launch] portal
+Siga as instruções no portal [!DNL Adobe Launch]
 
 ### Configurar permissões
 
-Abertura `AndroidManifest.xml` e adicione as seguintes permissões. Seu aplicativo deve solicitar as permissões &quot;INTERNET&quot; e &quot;ACCESS_NETWORK_STATE&quot;. Se seu aplicativo já solicitar essas permissões, ignore esta etapa.
+Abra `AndroidManifest.xml` e adicione as seguintes permissões. Seu aplicativo deve solicitar as permissões &quot;INTERNET&quot; e &quot;ACCESS_NETWORK_STATE&quot;. Se seu aplicativo já solicitar essas permissões, ignore esta etapa.
 
 ```xml
 <uses‐permission android:name="android.permission.INTERNET"></uses‐permission>
@@ -126,7 +126,7 @@ Abertura `AndroidManifest.xml` e adicione as seguintes permissões. Seu aplicati
 
 Configuração do ProGuard (opcional)
 
-Se você estiver usando o ProGuard para o seu aplicativo, adicione as seguintes linhas no `proguard.cfg` arquivo. O arquivo está localizado em seu `project` pasta. A adição desse código exclui o Marketo SDK do processo de ofuscação.
+Se você estiver usando o ProGuard no seu aplicativo, adicione as seguintes linhas no arquivo `proguard.cfg`. O arquivo está localizado na pasta `project`. A adição desse código exclui o Marketo SDK do processo de ofuscação.
 
 ```
 -dontwarn com.marketo.*
@@ -134,9 +134,9 @@ Se você estiver usando o ProGuard para o seu aplicativo, adicione as seguintes 
 -keep class com.marketo.**{ *; }
 ```
 
-## Dispositivos de teste Android
+## Android  Teste  Dispositivos
 
-Adicionar &quot;MarketoActivity&quot; a `AndroidManifest.xml` dentro da tag do aplicativo.
+Adicione &quot;MarketoActivity&quot; a `AndroidManifest.xml` dentro da marca do aplicativo.
 
 ```xml
 <activity android:name="com.marketo.MarketoActivity"  android:configChanges="orientation|screenSize" >
@@ -153,26 +153,26 @@ Adicionar &quot;MarketoActivity&quot; a `AndroidManifest.xml` dentro da tag do a
 
 O MME Software Development Kit (SDK) para Android foi atualizado para uma estrutura mais moderna, estável e escalável, que contém mais flexibilidade e novos recursos de engenharia para o desenvolvedor de aplicativos do Android.
 
-Os desenvolvedores de aplicativos do Android Google agora podem usar diretamente o [Firebase Cloud Messaging](https://firebase.google.com/docs/cloud-messaging/) (FCM) com este SDK.
+Os desenvolvedores de aplicativos da Android agora podem usar diretamente o [Firebase Cloud Messaging](https://firebase.google.com/docs/cloud-messaging/) (FCM) da Google com este SDK.
 
 ### Adicionar o FCM ao aplicativo
 
 1. Integre o SDK do Marketo Android mais recente ao aplicativo da Android.  As etapas estão disponíveis em [GitHub](https://github.com/Marketo/android-sdk).
 1. Configurar o aplicativo Firebase no console do Firebase.
-   1. Criar/adicionar um projeto em [](https://accounts.google.com/ServiceLogin?passive=1209600&amp;osid=1&amp;continue=https://console.firebase.google.com/&amp;followup=https://console.firebase.google.com/)Console Firebase.
-      1. No [Console Firebase](https://accounts.google.com/ServiceLogin?passive=1209600&amp;osid=1&amp;continue=https://console.firebase.google.com/&amp;followup=https://console.firebase.google.com/), selecione **[!UICONTROL Adicionar projeto]**.
-      1. Selecione o projeto GCM na lista de projetos existentes do Google Cloud e selecione **[!UICONTROL Adicionar Firebase]**.
-      1. Na tela de boas-vindas do Firebase, selecione **[!UICONTROL Adicionar o Firebase ao aplicativo do Android]**.
-      1. Forneça o nome do pacote e o SHA-1 e selecione **[!UICONTROL Adicionar aplicativo]**. Um novo `google-services.json` o arquivo do aplicativo Firebase foi baixado.
-      1. Selecionar **[!UICONTROL Continuar]** e siga as instruções detalhadas para adicionar o plug-in do Google Services no Android Studio.
+   1. Criar/adicionar um projeto no [](https://accounts.google.com/ServiceLogin?passive=1209600&amp;osid=1&amp;continue=https://console.firebase.google.com/&amp;followup=https://console.firebase.google.com/)Console Firebase.
+      1. No [console Firebase](https://accounts.google.com/ServiceLogin?passive=1209600&amp;osid=1&amp;continue=https://console.firebase.google.com/&amp;followup=https://console.firebase.google.com/), selecione **[!UICONTROL Adicionar projeto]**.
+      1. Selecione o projeto GCM na lista de projetos existentes do Google Cloud e selecione **[!UICONTROL Adicionar Firebase]**.
+      1. Na tela de boas-vindas do Firebase, selecione **[!UICONTROL Adicionar o Firebase ao seu aplicativo Android]**.
+      1. Forneça o nome do pacote e SHA-1 e selecione **[!UICONTROL Adicionar aplicativo]**. Um novo arquivo `google-services.json` para seu aplicativo Firebase está sendo baixado.
+      1. Selecione **[!UICONTROL Continuar]** e siga as instruções detalhadas para adicionar o plug-in do Google Services no Android Studio.
 
-   1. Navegue até **[!UICONTROL Configurações do projeto]** in [!UICONTROL Visão geral do projeto]
-      1. Clique em **[!UICONTROL Geral]** guia. Baixe o `google-services.json` arquivo.
-      1. Clique em **[!UICONTROL Cloud Messaging]** guia. Copiar [!UICONTROL Chave do servidor] &amp; [!UICONTROL ID do remetente]. Forneça estes [!UICONTROL Chave do servidor] &amp; [!UICONTROL ID do remetente] para o Marketo.
+   1. Navegue até **[!UICONTROL Configurações do projeto]** em [!UICONTROL Visão geral do projeto]
+      1. Clique na guia **[!UICONTROL Geral]**. Baixe o arquivo `google-services.json`.
+      1. Clique na guia **[!UICONTROL Cloud Messaging]**. Copiar [!UICONTROL Chave do Servidor] e [!UICONTROL ID do Remetente]. Forneça estas [!UICONTROL Chave do Servidor] e [!UICONTROL ID do Remetente] à Marketo.
    1. Configurar alterações no FCM no aplicativo do Android
       1. Alterne para a exibição Projeto no Android Studio para ver o diretório raiz do projeto
-         1. Mover o baixado `google-services.json` arquivo no diretório raiz do módulo de aplicativo Android
-         1. No nível do projeto `build.gradle` adicione o seguinte:
+         1. Mova o arquivo `google-services.json` baixado para o diretório raiz do módulo de aplicativo do Android
+         1. No nível de projeto `build.gradle` adicione o seguinte:
 
             ```
             buildscript {
@@ -192,7 +192,7 @@ Os desenvolvedores de aplicativos do Android Google agora podem usar diretamente
             apply plugin: 'com.google.gms.google-services'
             ```
 
-         1. Por fim, clique em **[!UICONTROL Sincronizar agora]** na barra que aparece na ID
+         1. Finalmente, clique em **[!UICONTROL Sincronizar agora]** na barra que aparece na ID
    1. Editar o manifesto do aplicativo O SDK do FCM adiciona automaticamente todas as permissões necessárias e a funcionalidade do receptor necessária. Remova os seguintes elementos obsoletos (e possivelmente prejudiciais, pois podem causar duplicação de mensagem) do manifesto do seu aplicativo:
 
       ```xml
@@ -218,17 +218,17 @@ Os desenvolvedores de aplicativos do Android Google agora podem usar diretamente
 
 Perguntas frequentes sobre o suporte ao Firebase Cloud Messaging.
 
-**P: Onde posso encontrar instruções para atualizar para a versão mais recente do SDK do MME?** As instruções podem ser encontradas no Site do Desenvolvedor do Marketo [AQUI](installation.md).
+**P: Onde posso encontrar instruções para atualizar para a versão mais recente do SDK do MME?As instruções** podem ser encontradas no Site do Desenvolvedor do Marketo [AQUI](installation.md).
 
 **P: A atualização para a versão mais recente do SDK exigirá que eu publique uma versão atualizada do aplicativo Android para meus usuários existentes?** Não.
 
-**P: Como isso afeta os clientes de MME existentes que publicaram aplicativos Android integrados ao SDK do Marketo Android?** Eles podem migrar um aplicativo cliente GCM existente no Android para o Firebase Cloud Messaging (FCM) da seguinte maneira:
+**P: Como isso afeta os clientes MME existentes que publicaram aplicativos Android integrados ao SDK do Marketo Android?** Eles podem migrar um aplicativo cliente GCM existente no Android para o Firebase Cloud Messaging (FCM) da seguinte maneira:
 
-1. No [Console Firebase](https://accounts.google.com/ServiceLogin?passive=1209600&amp;osid=1&amp;continue=https://console.firebase.google.com/&amp;followup=https://console.firebase.google.com/), selecione **[!UICONTROL Adicionar projeto]**.
+1. No [console Firebase](https://accounts.google.com/ServiceLogin?passive=1209600&amp;osid=1&amp;continue=https://console.firebase.google.com/&amp;followup=https://console.firebase.google.com/), selecione **[!UICONTROL Adicionar projeto]**.
 1. Selecione o projeto GCM na lista de projetos existentes do Google Cloud e selecione **[!UICONTROL Adicionar Firebase]**.
-1. Na tela de boas-vindas do Firebase, selecione **[!UICONTROL Adicionar o Firebase ao aplicativo do Android]**.
-1. Forneça o nome do pacote e o SHA-1 e selecione **[!UICONTROL Adicionar aplicativo]**. Um novo arquivo google-services.json para o
+1. Na tela de boas-vindas do Firebase, selecione **[!UICONTROL Adicionar o Firebase ao seu aplicativo Android]**.
+1. Forneça o nome do pacote e SHA-1 e selecione **[!UICONTROL Adicionar aplicativo]**. Um novo arquivo google-services.json para o
 1. O aplicativo Firebase foi baixado.
-1. Selecionar **[!UICONTROL Continuar]** e siga as instruções detalhadas para adicionar o plug-in do Google Services no Android Studio.
+1. Selecione **[!UICONTROL Continuar]** e siga as instruções detalhadas para adicionar o plug-in do Google Services no Android Studio.
 
 **P: Podemos direcionar os clientes potenciais criados usando o antigo SDK do Marketo que usava o aplicativo GCM?** Sim. Todos os clientes potenciais criados usando o SDK da Marketo podem ser direcionados para enviar as notificações por push.

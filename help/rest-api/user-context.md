@@ -1,20 +1,20 @@
 ---
-title: "Contexto de usuário"
+title: Contexto do usuário
 feature: REST API
-description: "Visão geral do contexto do usuário e descrições da API"
-source-git-commit: 8c1ffb6db05da49e7377b8345eeb30472ad9b78b
+description: Visão geral do contexto do usuário e descrições da API
+exl-id: b8daace2-07a5-4621-aa3a-03fa9f66ea73
+source-git-commit: 66add4c38d0230c36d57009de985649bb67fde3e
 workflow-type: tm+mt
 source-wordcount: '266'
 ht-degree: 5%
 
 ---
 
-
 # Contexto do usuário
 
-A API JavaScript do Contexto do usuário expõe os dados no nível do usuário e do visitante em várias sessões para ativar o recurso de personalização avançada usando o comportamento e os dados históricos do usuário. A API vai além da leitura de dados e expõe variáveis personalizadas que permitem enviar dados e eventos significativos para o back-end do RTP para fins avançados de segmentação e personalização. Recursos adicionais: [Triggers](../javascript-api/triggers.md), [Correspondência de padrões](../javascript-api/pattern-match.md).
+Contexto do usuário A API do JavaScript expõe os dados no nível do usuário e do visitante em várias sessões para ativar o recurso de personalização avançada usando o comportamento e os dados históricos do usuário. A API vai além da leitura de dados e expõe variáveis personalizadas que permitem enviar dados e eventos significativos para o back-end do RTP para fins avançados de segmentação e personalização. Recursos adicionais: [Triggers](../javascript-api/triggers.md), [Correspondência de Padrões](../javascript-api/pattern-match.md).
 
-- Você deve se tornar um cliente de Personalização da Web e ter o [Tag RTP implantada](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/web-personalization/rtp-tag-implementation/deploy-the-rtp-javascript) no site antes de usar a API de contexto de usuário.
+- Você deve se tornar um cliente do Web Personalization e implantar a [tag RTP](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/web-personalization/rtp-tag-implementation/deploy-the-rtp-javascript) no site antes de usar a API de Contexto de Usuário.
 - A API de contexto de usuário é um recurso que deve ser ativado pelo Suporte da Marketo mediante solicitação. Quando a API estiver ativada, um objeto userContext no objeto global RTP será exposto.
 
 ## Atributos de Contexto do Usuário

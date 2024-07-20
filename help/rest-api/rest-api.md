@@ -14,59 +14,59 @@ ht-degree: 1%
 
 O Marketo expõe uma API REST que permite a execução remota de muitos dos recursos do sistema. Desde a criação de programas até a importação de leads em massa, há muitas opções que permitem o controle refinado de uma instância do Marketo.
 
-Essas APIs geralmente se dividem em duas categorias amplas: [Banco de dados de clientes potenciais](https://developer.adobe.com/marketo-apis/api/mapi/), e [Ativo](https://developer.adobe.com/marketo-apis/api/asset/). As APIs de banco de dados de clientes potenciais permitem a recuperação e a interação com registros de pessoas da Marketo e tipos de objetos associados, como Oportunidades e Empresas. As APIs de ativos permitem a interação com material de apoio de marketing e registros relacionados a fluxos de trabalho.
+Essas APIs geralmente se encaixam em duas categorias amplas: [Banco de Dados Principal](https://developer.adobe.com/marketo-apis/api/mapi/) e [Ativo](https://developer.adobe.com/marketo-apis/api/asset/). As APIs de banco de dados de clientes potenciais permitem a recuperação e a interação com registros de pessoas da Marketo e tipos de objetos associados, como Oportunidades e Empresas. As APIs de ativos permitem a interação com material de apoio de marketing e registros relacionados a fluxos de trabalho.
 
-- **Cota Diária:** As assinaturas recebem 50.000 chamadas de API por dia (que são redefinidas diariamente às 12h00, horário padrão da região central dos Estados Unidos). Você pode aumentar sua cota diária por meio do gerente da conta.
-- **Limite de taxa:** Acesso à API por instância limitado a 100 chamadas por 20 segundos.
+- **Cota Diária:** as assinaturas recebem 50.000 chamadas de API por dia (que são redefinidas diariamente às 12h00 CST). Você pode aumentar sua cota diária por meio do gerente da conta.
+- **Limite de Taxa:** Acesso à API por instância limitado a 100 chamadas por 20 segundos.
 - **Limite de simultaneidade:**  Máximo de dez chamadas de API simultâneas.
 
-O tamanho das chamadas padrão é limitado a um comprimento de URI de 8 KB e um tamanho de corpo de 1 MB, embora o corpo possa ser de 10 MB para nossas APIs em massa. Se houver um erro na sua chamada, a API normalmente ainda retornará um código de status 200, mas a resposta JSON conterá um membro &quot;success&quot; com um valor de `false`e uma matriz de erros no membro &quot;erros&quot;. Mais sobre erros [aqui](error-codes.md).
+O tamanho das chamadas padrão é limitado a um comprimento de URI de 8 KB e um tamanho de corpo de 1 MB, embora o corpo possa ser de 10 MB para nossas APIs em massa. Se houver um erro na sua chamada, a API normalmente ainda retornará um código de status 200, mas a resposta JSON conterá um membro &quot;success&quot; com um valor de `false` e uma matriz de erros no membro &quot;errors&quot;. Mais sobre os erros [aqui](error-codes.md).
 
 ## Introdução
 
 As etapas a seguir exigem privilégios de administrador na instância do Marketo.
 
-Na primeira chamada para o Marketo, você recuperará um registro de lead. Para começar a trabalhar com o Marketo, você deve obter credenciais de API para fazer chamadas autenticadas para sua instância. Faça logon na sua instância e acesse o **[!UICONTROL Admin]** -> **[!UICONTROL Usuários e funções]**.
+Na primeira chamada para o Marketo, você recuperará um registro de lead. Para começar a trabalhar com o Marketo, você deve obter credenciais de API para fazer chamadas autenticadas para sua instância. Faça logon na sua instância e acesse o **[!UICONTROL Administrador]** -> **[!UICONTROL Usuários e Funções]**.
 
 ![Usuários e funções do administrador](assets/admin-users-and-roles.png)
 
-Clique em **[!UICONTROL Funções]** e, em seguida, Nova função e atribua pelo menos a permissão &quot;Cliente potencial somente leitura&quot; (ou &quot;Pessoa somente leitura&quot;) à função no grupo de APIs de acesso. Atribua um nome descritivo e clique em **[!UICONTROL Criar]**.
+Clique na guia **[!UICONTROL Funções]**, em Novo Função e atribua pelo menos a permissão &quot;Líder Somente Leitura&quot; (ou &quot;Pessoa Somente Leitura&quot;) à função no grupo de APIs de Acesso. Certifique-se de dar um nome descritivo e clique em **[!UICONTROL Criar]**.
 
 ![Nova Função](assets/new-role.png)
 
-Agora de volta ao [!UICONTROL Usuários] e clique em **[!UICONTROL Convidar novo usuário]**. Dê ao usuário um nome descritivo que indique que ele é um usuário da API e um endereço de email e clique em **[!UICONTROL Próxima]**.
+Agora volte para a guia [!UICONTROL Usuários] e clique em **[!UICONTROL Convidar novo usuário]**. Dê ao usuário um nome descritivo que indique que ele é um usuário da API, um Endereço de email e clique em **[!UICONTROL Avançar]**.
 
-![Novas informações do usuário](assets/new-user-info.png)
+![Novas Informações do Usuário](assets/new-user-info.png)
 
-Em seguida, marque a opção [!UICONTROL Somente API] e conceda ao usuário a função de API que você criou e clique em **[!UICONTROL Próxima]**.
+Em seguida, marque a opção [!UICONTROL API Somente] e conceda ao usuário a função de API que você criou e clique em **[!UICONTROL Avançar]**.
 
 ![Novas permissões de usuário](assets/new-user-permissions.png)
 
 Para concluir o processo de criação do usuário, clique em **[!UICONTROL Enviar]**.
 
-![Nova mensagem de usuário](assets/new-user-message.png)
+![Nova Mensagem de Usuário](assets/new-user-message.png)
 
-Em seguida, acesse o [!UICONTROL Admin] e clique em **[!UICONTROL LaunchPoint]**.
+Em seguida, vá para o menu [!UICONTROL Admin] e clique em **[!UICONTROL LaunchPoint]**.
 
-![Launchpoint](assets/admin-launchpoint.png)
+![Ponto de inicialização](assets/admin-launchpoint.png)
 
-Clique em **[!UICONTROL Novo]** e selecione **[!UICONTROL Novo serviço]**. Dê um nome descritivo ao serviço e selecione **[!UICONTROL Personalizado]** do [!UICONTROL Serviço] menu suspenso. Forneça uma descrição e selecione o novo usuário na caixa [!UICONTROL Somente usuário da API] e clique em **[!UICONTROL Criar]**.
+Clique no menu **[!UICONTROL Novo]** e selecione **[!UICONTROL Novo serviço]**. Dê um nome descritivo ao seu serviço e selecione **[!UICONTROL Personalizado]** no menu suspenso [!UICONTROL Serviço]. Forneça uma descrição, selecione seu novo usuário no menu suspenso [!UICONTROL Usuário único da API] e clique em **[!UICONTROL Criar]**.
 
-![Novo serviço de ponto de inicialização](assets/admin-launchpoint-new-service.png)
+![Novo Serviço de Ponto de Inicialização](assets/admin-launchpoint-new-service.png)
 
-Clique em **[!UICONTROL Exibir detalhes]** para que seu novo serviço acesse a ID do cliente e o Segredo do cliente. Por enquanto, você pode clicar no link **[!UICONTROL Obter token]** botão para gerar um token de acesso válido por uma hora. Salve o token em uma nota por enquanto.
+Clique em **[!UICONTROL Exibir Detalhes]** do novo serviço para acessar a ID do Cliente e o Segredo do Cliente. Por enquanto, você pode clicar no botão **[!UICONTROL Obter token]** para gerar um token de acesso válido por uma hora. Salve o token em uma nota por enquanto.
 
 ![Obter token](assets/get-token.png)
 
-Em seguida, acesse o **[!UICONTROL Admin]** e, em seguida, para **[!UICONTROL Serviços da Web]**.
+Em seguida, vá para o menu **[!UICONTROL Admin]** e depois para **[!UICONTROL Serviços da Web]**.
 
 ![Serviços da Web](assets/admin-web-services.png)
 
-Localize o [!UICONTROL Endpoint] na caixa REST API e salve em uma observação por enquanto.
+Localize o [!UICONTROL Ponto de extremidade] na caixa API REST e salve em uma observação por enquanto.
 
-![Endpoint REST](assets/admin-web-services-rest-endpoint-1.png)
+![Ponto de extremidade REST](assets/admin-web-services-rest-endpoint-1.png)
 
-Abra uma nova guia do navegador e insira o seguinte, usando as informações apropriadas para chamar [Obter clientes em potencial por tipo de filtro](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Leads/operation/getLeadsByFilterUsingGET):
+Abra uma nova guia do navegador e insira o seguinte, usando as informações apropriadas para chamar [Obter Clientes Potenciais por Tipo de Filtro](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Leads/operation/getLeadsByFilterUsingGET):
 
 ```
 <Your Endpoint URL>/rest/v1/leads.json?access_token=<Your Access Token>&filterType=email&filterValues=<Your Email Address>

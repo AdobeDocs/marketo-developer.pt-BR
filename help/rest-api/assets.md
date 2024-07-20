@@ -1,14 +1,14 @@
 ---
-title: "Ativos"
+title: Ativos
 feature: REST API
-description: "Uma API para trabalhar com ativos do Marketo."
-source-git-commit: 8c1ffb6db05da49e7377b8345eeb30472ad9b78b
+description: Uma API para trabalhar com ativos do Marketo.
+exl-id: 4273a5b1-1904-46e8-b583-fc6f46b388d2
+source-git-commit: 66add4c38d0230c36d57009de985649bb67fde3e
 workflow-type: tm+mt
 source-wordcount: '876'
 ht-degree: 2%
 
 ---
-
 
 # Ativos
 
@@ -31,11 +31,11 @@ Os ativos da Marketo incluem:
 
 ## API
 
-Para obter uma lista completa dos endpoints da API do Asset, incluindo parâmetros e informações de modelagem, consulte o [Referência do endpoint da API de ativos](endpoint-reference.md).
+Para obter uma lista completa de pontos de extremidade da API de ativos, incluindo parâmetros e informações de modelagem, consulte a [Referência de ponto de extremidade da API de ativos](endpoint-reference.md).
 
 ## Consultar
 
-Os ativos normalmente têm três padrões pelos quais podem ser recuperados: por ID, por nome e pela navegação.  Por ID e por nome recuperará um único ativo para um determinado parâmetro, enquanto a navegação retornará e permitirá a paginação por toda a lista de ativos desse tipo.  Tipos individuais de ativos têm parâmetros variáveis pelos quais podem ser filtrados. Portanto, verifique seus documentos individuais para obter detalhes.
+O Assets normalmente tem três padrões pelos quais eles podem ser recuperados: por id, por nome e pela navegação.  Por ID e por nome recuperará um único ativo para um determinado parâmetro, enquanto a navegação retornará e permitirá a paginação por toda a lista de ativos desse tipo.  Tipos individuais de ativos têm parâmetros variáveis pelos quais podem ser filtrados. Portanto, verifique seus documentos individuais para obter detalhes.
 
 Em certos casos, o endpoint de navegação para alguns tipos de ativos não retornará ativos secundários, como os valores permitidos para uma tag, e eles devem ser recuperados individualmente usando o endpoint Por nome ou Por ID para retornar o conjunto completo de metadados.  Outros podem ter endpoints totalmente separados para recuperar objetos dependentes como Campos de formulário.
 
@@ -174,7 +174,7 @@ GET /rest/asset/v1/emailTemplates.json?offset=10&maxReturn=50
 
 ## Criar e atualizar
 
-Para tipos de ativos simples como Pastas, Tokens e Arquivos, normalmente há apenas um único endpoint para criação e, em seguida, um endpoint adicional para atualizar registros por ID.  Os ativos são criados com um nome que é sempre obrigatório e, em seguida, todos os metadados e IDs são retornados pela resposta de criação ou atualização.
+Para tipos de ativos simples como Pastas, Tokens e Arquivos, normalmente há apenas um único endpoint para criação e, em seguida, um endpoint adicional para atualizar registros por ID.  Os Assets são criados com um nome que é sempre obrigatório e, em seguida, todos os metadados e IDs são retornados pela resposta de criação ou atualização.
 
 Por exemplo, veja como criar um token:
 
@@ -433,7 +433,7 @@ POST /rest/asset/v1/emailTemplate/{id}/discardDraft.json
 }
 ```
 
-Os ativos também podem ter a aprovação cancelada se estiverem em um estado somente aprovado.  Isso removerá todas as versões ativas do ativo e retornará o ativo a um estado somente de rascunho, além de descartar qualquer rascunho associado.  Essa ação só poderá ser executada na maioria dos ativos se não estiver em uso em nenhum lugar do Marketo, como um email referido em uma etapa do fluxo Enviar email ou um trecho incorporado em um email.
+O Assets também pode ser desaprovado se estiver em um estado somente aprovado.  Isso removerá todas as versões ativas do ativo e retornará o ativo a um estado somente de rascunho, além de descartar qualquer rascunho associado.  Essa ação só poderá ser executada na maioria dos ativos se não estiver em uso em nenhum lugar do Marketo, como um email referido em uma etapa do fluxo Enviar email ou um trecho incorporado em um email.
 
 ```
 POST /rest/asset/v1/email/{id}/unapprove.json
@@ -455,7 +455,7 @@ POST /rest/asset/v1/email/{id}/unapprove.json
 
 ## Excluir
 
-Os ativos com estados de aprovação e rascunho, exceto formulários, não podem ser excluídos enquanto aprovados e devem ser desaprovados antes da exclusão.  As exclusões geralmente só podem ser realizadas quando um ativo não é aprovado e está fora de uso e, no caso de pastas, está vazio de ativos.  Uma exceção notável são programas, que podem ser excluídos junto com todo o seu conteúdo secundário, desde que o programa e seu conteúdo não estejam em uso em nenhum lugar fora dos limites do programa.
+O Assets com estados de aprovação e rascunho, exceto de formulários, não pode ser excluído enquanto for aprovado e deve ser cancelado antes da exclusão.  As exclusões geralmente só podem ser realizadas quando um ativo não é aprovado e está fora de uso e, no caso de pastas, está vazio de ativos.  Uma exceção notável são programas, que podem ser excluídos junto com todo o seu conteúdo secundário, desde que o programa e seu conteúdo não estejam em uso em nenhum lugar fora dos limites do programa.
 
 ```
 POST /rest/asset/v1/program/{id}/delete.json

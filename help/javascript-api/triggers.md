@@ -1,20 +1,20 @@
 ---
-title: "Triggers"
-description: "Triggers"
+title: Gatilhos
+description: Gatilhos
 feature: Javascript
-source-git-commit: d335bdd9f939c3e557a557b43fb3f33934e13fef
+exl-id: 588836fa-1e4d-41f3-aec5-5cd17eb16071
+source-git-commit: 66add4c38d0230c36d57009de985649bb67fde3e
 workflow-type: tm+mt
 source-wordcount: '80'
-ht-degree: 11%
+ht-degree: 13%
 
 ---
-
 
 # Gatilhos
 
 Adiciona a capacidade de acionar funções em determinado estado do objeto rtp global.
 
-Você deve ser um cliente de Personalização da Web e ter o [Tag RTP implantada](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/web-personalization/rtp-tag-implementation/deploy-the-rtp-javascript) no site antes de usar a API de contexto de usuário.
+Você deve ser um cliente do Web Personalization e implantar a [tag RTP](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/web-personalization/rtp-tag-implementation/deploy-the-rtp-javascript) no site antes de usar a API de Contexto de Usuário.
 
 ## Uso
 

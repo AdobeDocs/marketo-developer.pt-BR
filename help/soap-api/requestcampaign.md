@@ -1,35 +1,35 @@
 ---
-title: "requestCampaign"
+title: requestCampaign
 feature: SOAP, Smart Campaigns
-description: "requestCampaign chamadas SOAP"
-source-git-commit: d335bdd9f939c3e557a557b43fb3f33934e13fef
+description: requestCampaign chamadas SOAP
+exl-id: b5367eb9-4f4c-4e1d-8b6d-36de8f134f0e
+source-git-commit: 66add4c38d0230c36d57009de985649bb67fde3e
 workflow-type: tm+mt
 source-wordcount: '277'
 ht-degree: 3%
 
 ---
 
-
 # requestCampaign
 
 Essa função executa um lead existente do Marketo em uma Campanha inteligente do Marketo. A Campanha inteligente deve ter um acionador &quot;Campanha solicitada&quot; com a origem da API do serviço da Web (veja abaixo).
 
-![API do serviço Web](assets/webserviceapi.png)
+![API de Serviço da Web](assets/webserviceapi.png)
 
-Há dois conjuntos de parâmetros que podem ser usados. O primeiro caso é usar `campaignName` + `programName` + `programTokenList`. A variável `programTokenList` pode estar vazio nesse caso. O segundo caso é usar `campaignId` sozinho. Qualquer outra combinação aciona uma exceção de parâmetro incorreta.
+Há dois conjuntos de parâmetros que podem ser usados. A primeira ocorrência está usando `campaignName` + `programName` + `programTokenList`. O `programTokenList` pode estar vazio nesse caso. O segundo caso está usando `campaignId` sozinho. Qualquer outra combinação aciona uma exceção de parâmetro incorreta.
 
 Observação: limite de 100 valores de leadKey por chamada. Chaves adicionais são ignoradas.
 
 | Nome do campo | Obrigatório/Opcional | Descrição |
 | --- | --- | --- |
-| leadList->leadKey->keyType | Obrigatório | `keyType` permite especificar o campo pelo qual deseja consultar o lead. Os valores possíveis incluem:`IDNUM`, `EMAIL`, `SFDCLEADID`, `LEADOWNEREMAIL`, `SFDCACCOUNTID`, `SFDCCONTACTID`, `SFDCLEADID`, `SFDCLEADOWNERID`, `SFDCOPPTYID` |
+| leadList->leadKey->keyType | Obrigatório | `keyType` permite especificar o campo pelo qual você deseja consultar o cliente em potencial. Os valores possíveis incluem:`IDNUM`, `EMAIL`, `SFDCLEADID`, `LEADOWNEREMAIL`, `SFDCACCOUNTID`, `SFDCCONTACTID`, `SFDCLEADID`, `SFDCLEADOWNERID`, `SFDCOPPTYID` |
 | leadList->leadKey->keyValue | Obrigatório | `keyValue` é o valor pelo qual você deseja consultar o lead. |
 | origem | Obrigatório | A origem da campanha. Valores possíveis: `MKTOWS` ou `SALES`. A enumeração está definida no WSDL. |
-| campaignId | Opcional quando `campaignName`, `programName`, e `programTokenList` são agrupados em um site de parâmetro; caso contrário `campaignId` é obrigatório | A ID da campanha. OBSERVAÇÃO: ocorre um erro de parâmetro incorreto se `campaignID` e `campaignName` ambos foram aprovados. |
-| campaignName | Opcional quando campaignId está presente; Caso contrário, obrigatório em um conjunto como `campaignName`, programName e programTokenList | O nome da campanha |
-| programName | Opcional quando campaignId está presente; Caso contrário, obrigatório em um conjunto como `campaignName`, programName e programTokenList | O nome do programa |
-| programTokenList | Opcional quando campaignId está presente; Caso contrário, obrigatório em um conjunto como `campaignName`, `programName`, e `programTokenList` | Matriz de tokens a serem usados na campanha. Ao especificar tokens, programName e `campaignName` são obrigatórios. |
-| programTokenList->attrib->name | Opcional | O nome do token do programa do qual você deseja passar o valor. Exemplo:{{my.message}} |
+| campaignId | Opcional quando `campaignName`, `programName` e `programTokenList` estão juntos em um site de parâmetro; caso contrário, `campaignId` é necessário | A ID da campanha. OBSERVAÇÃO: um erro de parâmetro incorreto ocorre se `campaignID` e `campaignName` são passados. |
+| campaignName | Opcional quando campaignId está presente; Caso contrário, necessário em um conjunto como `campaignName`, programName e programTokenList | O nome da campanha |
+| programName | Opcional quando campaignId está presente; Caso contrário, necessário em um conjunto como `campaignName`, programName e programTokenList | O nome do programa |
+| programTokenList | Opcional quando campaignId está presente; Caso contrário, necessário em um conjunto como `campaignName`, `programName` e `programTokenList` | Matriz de tokens a serem usados na campanha. Ao especificar tokens, programName e `campaignName` são necessários. |
+| programTokenList->attrib->name | Opcional | O nome do token do programa do qual você deseja passar o valor. Ex:{{my.message}} |
 | programTokenList->attrib->value | Opcional | O valor do nome do token especificado. |
 
 ## XML de solicitação

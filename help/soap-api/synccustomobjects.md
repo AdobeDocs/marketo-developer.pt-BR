@@ -1,14 +1,14 @@
 ---
-title: "syncCustomObjects"
+title: syncCustomObjects
 feature: SOAP
-description: "chamadas syncCustomObjects SOAP"
-source-git-commit: d335bdd9f939c3e557a557b43fb3f33934e13fef
+description: chamadas de SOAP syncCustomObjects
+exl-id: dbdd7ee6-f83f-4e20-b847-25a61f0f6046
+source-git-commit: 66add4c38d0230c36d57009de985649bb67fde3e
 workflow-type: tm+mt
 source-wordcount: '226'
 ht-degree: 3%
 
 ---
-
 
 # syncCustomObjects
 
@@ -20,7 +20,7 @@ Aceita uma matriz de objetos personalizados a serem criados ou atualizados, até
 
 Em uma única chamada de API, algumas atualizações podem ter êxito e algumas podem falhar. Uma mensagem de erro é retornada para cada falha.
 
-Para Objetos personalizados provisionados com a nova interface de Objeto personalizado, somente os campos designados como `dedupe` os campos na interface do podem ser passados como atributos no `CustomObjKeyList`. Vincular campos que não são `dedupe` os campos devem ser passados como um atributo em `customObjAttributeList`.
+Para Objetos Personalizados provisionados com a nova interface de Objeto Personalizado, somente os campos designados como `dedupe` campos na interface podem ser passados como atributos em `CustomObjKeyList`. Campos de link que não são campos `dedupe` devem ser passados como um atributo em `customObjAttributeList`.
 
 ## Solicitar
 

@@ -1,14 +1,14 @@
 ---
 title: Listas estáticas
 feature: REST API, Static Lists
-description: "Execute operações CRUD em listas estáticas."
-source-git-commit: e8bb45a7b3bee71c3d0ab6117296a75c8959d72e
+description: Execute operações CRUD em listas estáticas.
+exl-id: 20679fd2-fae2-473e-84bc-cb4fdf2f5151
+source-git-commit: 66add4c38d0230c36d57009de985649bb67fde3e
 workflow-type: tm+mt
 source-wordcount: '741'
 ht-degree: 1%
 
 ---
-
 
 # Listas estáticas
 
@@ -20,11 +20,11 @@ O Marketo oferece um conjunto de APIs REST para executar operações CRUD em lis
 
 ## Consultar
 
-A consulta de listas estáticas segue os tipos de consulta padrão para ativos do [por id](https://developer.adobe.com/marketo-apis/api/asset/#tag/Static-Lists/operation/getStaticListByIdUsingGET), [por nome](https://developer.adobe.com/marketo-apis/api/asset/#tag/Static-Lists/operation/getStaticListByNameUsingGET), e [navegar](https://developer.adobe.com/marketo-apis/api/asset/#tag/Static-Lists/operation/getStaticListsUsingGET).
+A consulta de listas estáticas segue os tipos de consulta padrão para ativos de [por id](https://developer.adobe.com/marketo-apis/api/asset/#tag/Static-Lists/operation/getStaticListByIdUsingGET), [por nome](https://developer.adobe.com/marketo-apis/api/asset/#tag/Static-Lists/operation/getStaticListByNameUsingGET) e [procurar](https://developer.adobe.com/marketo-apis/api/asset/#tag/Static-Lists/operation/getStaticListsUsingGET).
 
 ### Por ID
 
-[Consultar por id](https://developer.adobe.com/marketo-apis/api/asset/#tag/Static-Lists/operation/getStaticListByIdUsingGET) ocupa uma única lista estática `id` como um parâmetro de caminho e retorna um único registro estático de lista.
+A [Consulta por id](https://developer.adobe.com/marketo-apis/api/asset/#tag/Static-Lists/operation/getStaticListByIdUsingGET) usa uma única lista estática `id` como parâmetro de caminho e retorna um único registro de lista estática.
 
 ```
 GET /rest/asset/v1/staticList/{id}.json
@@ -53,7 +53,7 @@ GET /rest/asset/v1/staticList/{id}.json
 
 #### Por nome
 
-[Consultar por nome](https://developer.adobe.com/marketo-apis/api/asset/#tag/Smart-Lists/operation/getSmartListByNameUsingGET) faz uma lista estática `name` como parâmetro e retorna um único registro estático de lista. Uma correspondência de sequência exata é executada em relação a todos os nomes de lista estáticos na instância e retorna um resultado para a lista estática correspondente a esse nome.
+[A consulta por nome](https://developer.adobe.com/marketo-apis/api/asset/#tag/Smart-Lists/operation/getSmartListByNameUsingGET) usa uma lista estática `name` como parâmetro e retorna um único registro de lista estática. Uma correspondência de sequência exata é executada em relação a todos os nomes de lista estáticos na instância e retorna um resultado para a lista estática correspondente a esse nome.
 
 ```
 GET /rest/asset/v1/staticList/byName.json?name=Foundation Seed List
@@ -82,7 +82,7 @@ GET /rest/asset/v1/staticList/byName.json?name=Foundation Seed List
 
 #### Navegar
 
-As listas estáticas também podem ser [recuperado em lotes](https://developer.adobe.com/marketo-apis/api/asset/#tag/Static-Lists/operation/getStaticListsUsingGET). A variável `folder` O parâmetro pode ser usado para especificar a pasta principal sob a qual a consulta será executada e é formatado como um objeto JSON contendo id e tipo. Como outros endpoints de recuperação de ativos em massa, `offset` e `maxReturn` são parâmetros opcionais que podem ser usados para paginação. A variável `earliestUpdatedAt` e `latestUpdatedAt` Os parâmetros do permitem definir marcas d&#39;água de data e hora baixas e altas para retornar listas estáticas criadas ou atualizadas dentro do intervalo especificado. Os valores de data e hora devem ser strings ISO-8601 válidas e não devem incluir milissegundos
+Listas estáticas também podem ser [recuperadas em lotes](https://developer.adobe.com/marketo-apis/api/asset/#tag/Static-Lists/operation/getStaticListsUsingGET). O parâmetro `folder` pode ser usado para especificar a pasta pai na qual a consulta será executada e é formatado como um objeto JSON contendo id e tipo. Assim como outros pontos de extremidade de recuperação de ativos em massa, `offset` e `maxReturn` são parâmetros opcionais que podem ser usados para paginação. Os parâmetros `earliestUpdatedAt` e `latestUpdatedAt` permitem definir marcas d&#39;água de data e hora baixas e altas para retornar listas estáticas criadas ou atualizadas dentro do intervalo especificado. Os valores de data e hora devem ser strings ISO-8601 válidas e não devem incluir milissegundos
 
 ```
 GET /rest/asset/v1/staticLists.json?folder={"id":13,"type":"Folder"}
@@ -133,7 +133,7 @@ GET /rest/asset/v1/staticLists.json?folder={"id":13,"type":"Folder"}
 
 ## Criar e atualizar
 
-[Criação de uma lista estática](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Static-Lists/createStaticListUsingPOST) é executado com um POST application/x-www-form-urlencoded com dois parâmetros obrigatórios. A variável `folder` O parâmetro é usado para especificar a pasta principal sob a qual a lista estática será criada e é formatado como um objeto JSON contendo id e tipo. A variável `name` é usado para nomear a lista estática e deve ser exclusivo. Opcionalmente, a variável `description` pode ser usado para descrever a lista estática.
+[A criação de uma lista estática](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Static-Lists/createStaticListUsingPOST) é executada com um POST application/x-www-form-urlencoded com dois parâmetros obrigatórios. O parâmetro `folder` é usado para especificar a pasta pai na qual a lista estática será criada e é formatado como um objeto JSON contendo id e tipo. O parâmetro `name` é usado para nomear a lista estática e deve ser exclusivo. Opcionalmente, o parâmetro `description` pode ser usado para descrever a lista estática.
 
 ```
 POST /rest/asset/v1/staticLists.json
@@ -168,7 +168,7 @@ folder={"id":1034,"type":"Program"}&name=My Static List
 }
 ```
 
-[Atualizações em uma lista estática](https://developer.adobe.com/marketo-apis/api/asset/#tag/Static-Lists/operation/updateStaticListUsingPOST) são feitas por meio de um terminal separado com dois parâmetros opcionais. A variável `description` para atualizar a descrição da lista estática. A variável `name` pode ser usado para atualizar o nome da lista estática e deve ser exclusivo.
+[As atualizações em uma lista estática](https://developer.adobe.com/marketo-apis/api/asset/#tag/Static-Lists/operation/updateStaticListUsingPOST) são feitas por meio de um ponto de extremidade separado com dois parâmetros opcionais. O parâmetro `description` pode ser usado para atualizar a descrição da lista estática. O parâmetro `name` pode ser usado para atualizar o nome da lista estática e deve ser exclusivo.
 
 ```
 POST /rest/asset/v1/staticList/{id}.json
@@ -206,7 +206,7 @@ description=This is a static list used for testing
 
 ### Excluir
 
-[Exclusão de uma lista estática](https://developer.adobe.com/marketo-apis/api/asset/#tag/Static-Lists/operation/deleteStaticListByIdUsingPOST) ocupa uma única lista estática `id` como um parâmetro de caminho. As exclusões não podem ser feitas em listas estáticas que estão sendo usadas por uma operação de importação ou exportação ou que estão sendo usadas por outros ativos.
+[A exclusão de uma lista estática](https://developer.adobe.com/marketo-apis/api/asset/#tag/Static-Lists/operation/deleteStaticListByIdUsingPOST) usa uma única lista estática `id` como parâmetro de caminho. As exclusões não podem ser feitas em listas estáticas que estão sendo usadas por uma operação de importação ou exportação ou que estão sendo usadas por outros ativos.
 
 ```
 POST /rest/asset/v1/staticList/{id}/delete.json
@@ -231,9 +231,9 @@ Os endpoints de associação à lista oferecem a capacidade de adicionar, remove
 
 ### Adicionar à lista
 
-A variável [Adicionar à lista](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Static-Lists/operation/addLeadsToListUsingPOST) endpoint é usado para adicionar um ou mais membros a uma lista. O endpoint atende a um requisito `listId` parâmetro de caminho e um ou mais parâmetros de consulta de id que contêm ids de lead (o máximo permitido é 300).
+O ponto de extremidade [Adicionar à Lista](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Static-Lists/operation/addLeadsToListUsingPOST) é usado para adicionar um ou mais membros a uma lista. O ponto de extremidade pega um parâmetro de caminho `listId` necessário e um ou mais parâmetros de consulta de id que contêm ids de lead (o máximo permitido é 300).
 
-A resposta contém uma `result` Matriz composta por objetos JSON com o status para cada ID de lead que foi especificada na solicitação.
+A resposta contém uma matriz `result` composta de objetos JSON com o status para cada ID de cliente potencial especificada na solicitação.
 
 ```
 POST /rest/v1/lists/{listId}/leads.json?id=318594&id=318595
@@ -264,9 +264,9 @@ POST /rest/v1/lists/{listId}/leads.json?id=318594&id=318595
 
 ### Remover da lista
 
-A variável [Remover da lista](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Static-Lists/operation/removeLeadsFromListUsingDELETE) endpoint é usado para remover um ou mais membros de uma lista. O endpoint atende a um requisito `listId` parâmetro de caminho e um ou mais `id` parâmetros de consulta que contêm ids de lead (o máximo permitido é 300).
+O ponto de extremidade [Remover da Lista](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Static-Lists/operation/removeLeadsFromListUsingDELETE) é usado para remover um ou mais membros de uma lista. O ponto de extremidade pega um parâmetro de caminho `listId` necessário e um ou mais parâmetros de consulta `id` que contêm ids de cliente potencial (o máximo permitido é 300).
 
-A resposta contém uma `result` Matriz composta por objetos JSON com o status para cada ID de lead que foi especificada na solicitação.
+A resposta contém uma matriz `result` composta de objetos JSON com o status para cada ID de cliente potencial especificada na solicitação.
 
 ```
 DELETE /rest/v1/lists/{listId}/leads.json?id=318603&id=318595&id=999999
@@ -301,15 +301,15 @@ DELETE /rest/v1/lists/{listId}/leads.json?id=318603&id=318595&id=999999
 
 ### Lista de Consultas
 
-A variável [Obter clientes em potencial por ID de lista](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Static-Lists/operation/getLeadsByListIdUsingGET) endpoint é usado para recuperar membros de uma lista. O endpoint atende a um requisito `listId` e permite que vários parâmetros de consulta opcionais especifiquem critérios de filtragem.
+O ponto de extremidade [Obter Clientes Potenciais por Id de Lista](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Static-Lists/operation/getLeadsByListIdUsingGET) é usado para recuperar membros de uma lista. O ponto de extremidade pega um parâmetro de caminho `listId` necessário e permite que vários parâmetros de consulta opcionais especifiquem critérios de filtragem.
 
-A variável `batchSize` O parâmetro é usado para especificar o número de registros de cliente potencial a serem retornados em uma única chamada (o padrão e o máximo são 300).
+O parâmetro `batchSize` é usado para especificar o número de registros de cliente potencial a serem retornados em uma única chamada (o padrão e o máximo são 300).
 
-A variável `nextPageToken` é usado para paginar por meio de conjuntos de resultados grandes. Esse parâmetro não é transmitido na primeira chamada, mas somente nas chamadas subsequentes da paginação.
+O parâmetro `nextPageToken` é usado para paginar por meio de conjuntos de resultados grandes. Esse parâmetro não é transmitido na primeira chamada, mas somente nas chamadas subsequentes da paginação.
 
-A variável `fields` O parâmetro contém uma lista separada por vírgulas de nomes de campo a serem retornados na resposta. Se o parâmetro fields não estiver incluído nessa solicitação, os seguintes campos padrão serão retornados: email, updatedAt, createdAt, lastName, firstName e id.
+O parâmetro `fields` contém uma lista separada por vírgulas de nomes de campos a serem retornados na resposta. Se o parâmetro fields não estiver incluído nessa solicitação, os seguintes campos padrão serão retornados: email, updatedAt, createdAt, lastName, firstName e id.
 
-A resposta contém uma `result` Matriz composta de objetos JSON contendo os campos de cliente potencial que foram especificados na solicitação.
+A resposta contém uma matriz `result` composta de objetos JSON contendo os campos de cliente potencial especificados na solicitação.
 
 ```
 GET /rest/v1/lists/{listId}/leads.json?batchSize=3
@@ -351,9 +351,9 @@ GET /rest/v1/lists/{listId}/leads.json?batchSize=3
 
 #### Associação à Lista de Consultas por ID de Cliente Potencial
 
-A variável [Membro da lista](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Static-Lists/operation/areLeadsMemberOfListUsingGET) o endpoint é usado para ver se um ou mais leads são membros de uma lista. O endpoint atende a um requisito `listId` parâmetro de caminho e um ou mais `id` parâmetros de consulta que contêm ids de lead (o máximo permitido é 300).
+O ponto de extremidade [Membro da Lista](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Static-Lists/operation/areLeadsMemberOfListUsingGET) é usado para ver se um ou mais clientes em potencial são membros de uma lista. O ponto de extremidade pega um parâmetro de caminho `listId` necessário e um ou mais parâmetros de consulta `id` que contêm ids de cliente potencial (o máximo permitido é 300).
 
-A resposta contém uma `result` Matriz composta por objetos JSON com o status para cada ID de lead que foi especificada na solicitação.
+A resposta contém uma matriz `result` composta de objetos JSON com o status para cada ID de cliente potencial especificada na solicitação.
 
 ```
 GET /rest/v1/lists/{listId}/leads/ismember.json?id=309901&id=318603&id=999999

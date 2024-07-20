@@ -1,20 +1,20 @@
 ---
-title: "Eventos de dados personalizados"
-description: "API de eventos de dados personalizados"
+title: Eventos de dados personalizados
+description: API de eventos de dados personalizados
 feature: Javascript
-source-git-commit: d335bdd9f939c3e557a557b43fb3f33934e13fef
+exl-id: ef7cab9c-3bd0-450e-9247-9324b1e6f9ab
+source-git-commit: 66add4c38d0230c36d57009de985649bb67fde3e
 workflow-type: tm+mt
 source-wordcount: '223'
 ht-degree: 4%
 
 ---
 
-
 # Eventos de dados personalizados
 
 Esse método envia eventos personalizados para rastreamento e personalização em tempo real. Eles podem ser usados para enviar dados de terceiros ou para acionar seu próprio evento personalizado com base no comportamento do visitante. Os eventos de dados personalizados são contados uma vez na sessão de um visitante.
 
-Você deve se tornar um cliente de Personalização da Web e ter o [Tag RTP implantada](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/web-personalization/rtp-tag-implementation/deploy-the-rtp-javascript) no site antes de usar a API de contexto de usuário.
+Você deve se tornar um cliente do Web Personalization e implantar a [tag RTP](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/web-personalization/rtp-tag-implementation/deploy-the-rtp-javascript) no site antes de usar a API de Contexto de Usuário.
 
 | Parâmetro | Opcional/Obrigatório | Tipo | Descrição |
 |---|---|---|---|

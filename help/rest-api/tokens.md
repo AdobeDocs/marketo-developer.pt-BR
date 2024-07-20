@@ -1,14 +1,14 @@
 ---
-title: "Tokens"
+title: Tokens
 feature: REST API, Tokens
-description: "Gerenciar tokens no Marketo."
-source-git-commit: 8c1ffb6db05da49e7377b8345eeb30472ad9b78b
+description: Gerenciar tokens no Marketo.
+exl-id: 4f8d87d7-ba2a-4c90-8b39-4d20679d404a
+source-git-commit: 66add4c38d0230c36d57009de985649bb67fde3e
 workflow-type: tm+mt
 source-wordcount: '297'
 ht-degree: 4%
 
 ---
-
 
 # Tokens
 
@@ -34,7 +34,7 @@ Esses são os únicos tipos de dados que podem ser usados ao criar um token via 
 
 ## Consultar
 
-[Obter tokens por ID de pasta](https://developer.adobe.com/marketo-apis/api/asset/#tag/Tokens/operation/getTokensByFolderIdUsingGET) toma uma `id` como um parâmetro de caminho de um tipo de programa ou pasta. Esse tipo é especificado pela variável `folderType` parâmetro.
+[Obter Tokens por Id de Pasta](https://developer.adobe.com/marketo-apis/api/asset/#tag/Tokens/operation/getTokensByFolderIdUsingGET) usa `id` como parâmetro de caminho de um tipo de Programa ou Pasta. Este tipo é especificado pelo parâmetro `folderType`.
 
 ```curl
 GET /rest/asset/v1/folder/{id}/tokens.json?folderType=Folder
@@ -67,7 +67,7 @@ GET /rest/asset/v1/folder/{id}/tokens.json?folderType=Folder
 
 ## Criar e atualizar
 
-A variável [Criar token](https://developer.adobe.com/marketo-apis/api/asset/#tag/Tokens/operation/addTokenTOFolderUsingPOST) O endpoint cria tokens ou, se eles existirem, atualize-os com valores enviados. Os tokens são criados no contexto de uma pasta ou programa. O necessário `id` parâmetro de caminho é a id da pasta à qual o token será associado. A variável `name`, `type`, `value`, e `folderType` são todos parâmetros obrigatórios do token. Os dados são transmitidos como POST x-www-form-urlencoded, não como JSON. A variável `name` o campo do token não pode exceder 50 caracteres.
+O ponto de extremidade [Criar token](https://developer.adobe.com/marketo-apis/api/asset/#tag/Tokens/operation/addTokenTOFolderUsingPOST) cria tokens ou, se eles existirem, atualiza-os com os valores enviados. Os tokens são criados no contexto de uma pasta ou programa. O parâmetro de caminho `id` necessário é a identificação da pasta à qual o token será associado. `name`, `type`, `value` e `folderType` são parâmetros obrigatórios do token. Os dados são transmitidos como POST x-www-form-urlencoded, não como JSON. O campo `name` do token não pode exceder 50 caracteres.
 
 ```
 POST /rest/asset/v1/folder/{id}/tokens.json
@@ -108,7 +108,7 @@ name=April Fools&type=date&value=2015-04-01&folderType=Folder
 
 ## Excluir
 
-[Excluir token por nome](https://developer.adobe.com/marketo-apis/api/asset/#tag/Tokens/operation/deleteTokenByNameUsingPOST) A pega uma id como parâmetro de caminho de um tipo de programa ou pasta. Esse tipo é especificado pela variável `folderType` parâmetro. Os tokens são excluídos com base na pasta principal, a variável `name`, e o `type` do token, cada um deles é obrigatório. Os dados são transmitidos como POST x-www-form-urlencoded, não como JSON.
+[Excluir token por nome](https://developer.adobe.com/marketo-apis/api/asset/#tag/Tokens/operation/deleteTokenByNameUsingPOST) usa uma identificação como parâmetro de caminho de um tipo de programa ou pasta. Este tipo é especificado pelo parâmetro `folderType`. Os tokens são excluídos com base na pasta pai, o `name`, e o `type` do token, cada um deles é necessário. Os dados são transmitidos como POST x-www-form-urlencoded, não como JSON.
 
 ```
 POST /rest/asset/v1/folder/{id}/tokens/delete.json

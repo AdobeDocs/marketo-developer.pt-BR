@@ -1,18 +1,18 @@
 ---
-title: "Modelos de landing page"
+title: Modelos de páginas
 feature: REST API, Landing Pages
-description: "Criar e editar modelos de página de aterrissagem."
-source-git-commit: 8c1ffb6db05da49e7377b8345eeb30472ad9b78b
+description: Criar e editar modelos de página de aterrissagem.
+exl-id: f9d1255e-ec13-4b75-96d5-b4cc9457a51b
+source-git-commit: 66add4c38d0230c36d57009de985649bb67fde3e
 workflow-type: tm+mt
 source-wordcount: '533'
 ht-degree: 1%
 
 ---
 
-
 # Modelos de páginas
 
-[Referência de endpoint de modelo de página de aterrissagem](https://developer.adobe.com/marketo-apis/api/asset/#tag/Landing-Page-Templates)
+[Referência de Ponto de Extremidade de Modelo de Página de Aterrissagem](https://developer.adobe.com/marketo-apis/api/asset/#tag/Landing-Page-Templates)
 
 Os Modelos de página de aterrissagem são um recurso principal e uma dependência de páginas de aterrissagem individuais do Marketo. As landing pages derivam o esqueleto de seu conteúdo do template principal.
 
@@ -22,7 +22,7 @@ O Marketo tem dois tipos de Modelos de página de aterrissagem: livre e guiado.�
 
 ## Consultar
 
-Os Modelos de página inicial são compatíveis com os tipos de consulta padrão para ativos do [por id](https://developer.adobe.com/marketo-apis/api/asset/#tag/Landing-Page-Templates/operation/getLandingPageTemplateByIdUsingGET), [por nome](https://developer.adobe.com/marketo-apis/api/asset/#tag/Landing-Page-Templates/operation/getLandingPageTemplateByNameUsingGET), e [navegação](https://developer.adobe.com/marketo-apis/api/asset/#tag/Landing-Page-Templates/operation/getLandingPageTemplatesUsingGET). Esses endpoints retornam metadados para os modelos. A recuperação do conteúdo HTML dos modelos deve ser feita com base no modelo por meio da id.
+Os Modelos de Página de Aterrissagem são compatíveis com os tipos de consulta padrão para ativos de [por identificação](https://developer.adobe.com/marketo-apis/api/asset/#tag/Landing-Page-Templates/operation/getLandingPageTemplateByIdUsingGET), [por nome](https://developer.adobe.com/marketo-apis/api/asset/#tag/Landing-Page-Templates/operation/getLandingPageTemplateByNameUsingGET) e [navegação](https://developer.adobe.com/marketo-apis/api/asset/#tag/Landing-Page-Templates/operation/getLandingPageTemplatesUsingGET). Esses endpoints retornam metadados para os modelos. A recuperação do conteúdo HTML dos modelos deve ser feita com base no modelo por meio da id.
 
 ## Criar e atualizar
 
@@ -66,11 +66,11 @@ name=New LPT - PHP&folder={"id":12,"type":"Folder"}
 }
 ```
 
-O conteúdo do modelo deve ser preenchido separadamente por meio de [Atualizar conteúdo do modelo da página de aterrissagem](https://developer.adobe.com/marketo-apis/api/asset/#tag/Landing-Page-Templates/operation/updateLandingPageTemplateContentUsingPOST) terminal.
+O conteúdo do modelo deve ser preenchido separadamente por meio do ponto de extremidade [Atualizar Conteúdo do Modelo de Página de Aterrissagem](https://developer.adobe.com/marketo-apis/api/asset/#tag/Landing-Page-Templates/operation/updateLandingPageTemplateContentUsingPOST).
 
 ### Atualizar metadados
 
-Os metadados para modelos de página de aterrissagem podem ser atualizados por meio da [Atualizar metadados do modelo da página de aterrissagem](https://developer.adobe.com/marketo-apis/api/asset/#tag/Landing-Page-Templates/operation/updateLpTemplateUsingPOST) terminal. O nome, a descrição e a configuração enableMunchkin podem ser atualizados dessa forma.
+Os metadados dos modelos de página de aterrissagem podem ser atualizados por meio do [ponto de extremidade Atualizar metadados do modelo de página de aterrissagem](https://developer.adobe.com/marketo-apis/api/asset/#tag/Landing-Page-Templates/operation/updateLpTemplateUsingPOST). O nome, a descrição e a configuração enableMunchkin podem ser atualizados dessa forma.
 
 ### Atualizar conteúdo
 
@@ -114,13 +114,13 @@ Content-Type: text/plain
 
 O Marketo fornece um método simples para clonar modelos de página de aterrissagem. Esta é uma solicitação POST application/x-www-url-formencoded.
 
-A variável `id` parâmetro de caminho especifica a id do modelo de página inicial de origem a ser clonado.
+O parâmetro de caminho `id` especifica a identificação do Modelo de página de aterrissagem de origem a ser clonado.
 
-A variável `name` é utilizado para especificar o nome do novo modelo de página de aterrissagem.
+O parâmetro `name` é usado para especificar o nome do novo Modelo de página de aterrissagem.
 
-A variável `folder` é usado para especificar a pasta principal onde o novo modelo de página de aterrissagem residirá. Ela está no formato de um objeto JSON incorporado que contém  `id` e `type`.
+O parâmetro `folder` é usado para especificar a pasta principal onde o novo Modelo de página de aterrissagem residirá. Ela está no formato de um objeto JSON incorporado que contém  `id` e `type`.
 
-O modelo opcional `description` é usado para descrever o novo modelo de página de aterrissagem.
+O parâmetro `description` opcional é usado para descrever o novo Modelo de página de aterrissagem.
 
 ```
 POST /rest/asset/v1/landingPageTemplate/{id}/clone.json
@@ -167,9 +167,9 @@ Os Modelos de página de aterrissagem seguem o modelo padrão de rascunho aprova
 
 Para que um modelo seja homologado, deve estar em conformidade com as regras do seu tipo, quer guiado de forma livre. Para obter mais informações sobre os requisitos para criar e aprovar modelos de seus respectivos tipos, consulte os respectivos documentos de criação:
 
-- [Modelos de página de aterrissagem de forma livre](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/demand-generation/landing-pages/landing-page-templates/create-a-free-form-landing-page-template)
+- [Modelos de páginas de aterrissagem de forma livre](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/demand-generation/landing-pages/landing-page-templates/create-a-free-form-landing-page-template)
 - [Modelos de página de aterrissagem guiados](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/demand-generation/landing-pages/landing-page-templates/create-a-guided-landing-page-template)
-- [Exemplos de modelo guiado](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/demand-generation/landing-pages/landing-page-templates/guided-landing-page-template-list)
+- [Exemplos de Modelo Guiados](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/demand-generation/landing-pages/landing-page-templates/guided-landing-page-template-list)
 
 ## Excluir
 

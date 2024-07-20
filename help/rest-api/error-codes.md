@@ -1,14 +1,14 @@
 ---
-title: "Códigos de erro"
+title: Códigos de erro
 feature: REST API
-description: "Descrições de código de erro do Marketo."
-source-git-commit: d335bdd9f939c3e557a557b43fb3f33934e13fef
+description: Descrições do código de erro do Marketo.
+exl-id: a923c4d6-2bbc-4cb7-be87-452f39b464b6
+source-git-commit: 66add4c38d0230c36d57009de985649bb67fde3e
 workflow-type: tm+mt
 source-wordcount: '2272'
 ht-degree: 3%
 
 ---
-
 
 # Códigos de erro
 
@@ -22,7 +22,7 @@ Ao desenvolver para o Marketo, é importante que as solicitações e respostas s
 
 A API REST do Marketo pode retornar três tipos diferentes de erros em operação normal:
 
-* Nível HTTP: esses erros são indicados por um `4xx` código.
+* Nível de HTTP: esses erros são indicados por um código `4xx`.
 * Nível de resposta: esses erros são incluídos na matriz &quot;erros&quot; da resposta JSON.
 * Nível de registro: esses erros são incluídos na matriz &quot;resultado&quot; da resposta JSON e são indicados em uma base de registro individual com o campo &quot;status&quot; e a matriz &quot;motivos&quot;.
 
@@ -30,12 +30,12 @@ Para os tipos de erro de Nível de resposta e Nível de registro, um código de 
 
 ### Erros de nível de HTTP
 
-Em circunstâncias normais de operação, o Marketo só deve retornar dois erros de código de status HTTP, `413 Request Entity Too Large`, e `414 Request URI Too Long`. Ambos são recuperáveis ao capturar o erro, modificar a solicitação e tentar novamente, mas com práticas de codificação inteligente, você nunca deve encontrá-los na natureza.
+Em circunstâncias normais de operação, o Marketo só deve retornar dois erros de código de status HTTP, `413 Request Entity Too Large` e `414 Request URI Too Long`. Ambos são recuperáveis ao capturar o erro, modificar a solicitação e tentar novamente, mas com práticas de codificação inteligente, você nunca deve encontrá-los na natureza.
 
 O Marketo retornará 413 se a Carga da solicitação exceder 1 MB, ou 10 MB no caso de Lead de importação. Na maioria dos cenários, é improvável atingir esses limites, mas adicionar uma verificação ao tamanho da solicitação e mover quaisquer registros, o que faz com que o limite seja excedido para uma nova solicitação, deve evitar quaisquer circunstâncias, que levam a esse erro ser retornado por quaisquer pontos de extremidade.
 
-414 serão retornados quando o URI de uma solicitação GET exceder 8KB. Para evitá-lo, verifique o comprimento da sua cadeia de caracteres de consulta para ver se ela excede esse limite. Se ele fizer com que a solicitação seja alterada para um método POST, insira a string de consulta como o corpo da solicitação com o parâmetro adicional `_method=GET`. Isso abre mão da limitação nos URIs. É raro atingir esse limite na maioria dos casos, mas é um pouco comum ao recuperar grandes lotes de registros com valores de filtro individuais longos, como uma GUID.
-A variável [Identidade](https://developer.adobe.com/marketo-apis/api/identity/) O endpoint pode retornar um erro 401 Unauthorized. Normalmente, isso se deve a uma ID de cliente inválida ou a um Segredo do cliente inválido. Códigos de erro de nível HTTP
+414 serão retornados quando o URI de uma solicitação GET exceder 8KB. Para evitá-lo, verifique o comprimento da sua cadeia de caracteres de consulta para ver se ela excede esse limite. Se ele fizer com que sua solicitação seja alterada para um método POST, insira sua cadeia de caracteres de consulta como o corpo da solicitação com o parâmetro adicional `_method=GET`. Isso abre mão da limitação nos URIs. É raro atingir esse limite na maioria dos casos, mas é um pouco comum ao recuperar grandes lotes de registros com valores de filtro individuais longos, como uma GUID.
+O ponto de extremidade [Identidade](https://developer.adobe.com/marketo-apis/api/identity/) pode retornar um erro 401 Não Autorizado. Normalmente, isso se deve a uma ID de cliente inválida ou a um Segredo do cliente inválido. Códigos de erro de nível HTTP
 
 <table>
   <thead>
@@ -62,7 +62,7 @@ A variável [Identidade](https://developer.adobe.com/marketo-apis/api/identity/)
 
 #### Erros de nível de resposta
 
-Erros de nível de resposta estão presentes quando a variável `success` O parâmetro da resposta é definido como false e está estruturado como:
+Erros de nível de resposta estão presentes quando o parâmetro `success` da resposta é definido como false, e são estruturados como:
 
 ```json
 {
@@ -77,7 +77,7 @@ Erros de nível de resposta estão presentes quando a variável `success` O par�
 }
 ```
 
-Cada objeto na matriz &quot;errors&quot; tem dois membros, `code`, que é um número inteiro entre aspas de 601 a 799 e um `message` fornecendo o motivo do texto sem formatação para o erro. Os códigos 6xx sempre indicam que uma solicitação falhou completamente e não foi executada. Um exemplo é um 601, &quot;Token de acesso inválido&quot;, que pode ser recuperado através da reautenticação e transmissão do novo token de acesso com a solicitação. Os erros 7xx indicam que a solicitação falhou, seja porque nenhum dado foi retornado ou porque a solicitação foi parametrizada incorretamente, como a inclusão de uma data inválida ou a ausência de um parâmetro obrigatório.
+Cada objeto na matriz &quot;errors&quot; tem dois membros, `code`, que é um inteiro entre aspas de 601 a 799 e um `message` que fornece a razão do texto sem formatação para o erro. Os códigos 6xx sempre indicam que uma solicitação falhou completamente e não foi executada. Um exemplo é um 601, &quot;Token de acesso inválido&quot;, que pode ser recuperado através da reautenticação e transmissão do novo token de acesso com a solicitação. Os erros 7xx indicam que a solicitação falhou, seja porque nenhum dado foi retornado ou porque a solicitação foi parametrizada incorretamente, como a inclusão de uma data inválida ou a ausência de um parâmetro obrigatório.
 
 #### Códigos de erro de nível de resposta
 
@@ -110,7 +110,7 @@ Uma chamada de API que retorna esse código de resposta não é contabilizada em
     <tr>
       <td><a name="603"></a>603</td>
       <td>Acesso negado</td>
-      <td>A autenticação foi bem-sucedida, mas o usuário não tem permissão suficiente para chamar essa API. [Permissões adicionais](custom-services.md) podem precisar ser atribuídas à função de usuário ou <a href="https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/administration/additional-integrations/create-an-allowlist-for-ip-based-api-access">Incluir na lista de permissões Pesquisar acesso à API com base em IP</a> pode ser ativado.</td>
+      <td>A autenticação foi bem-sucedida, mas o usuário não tem permissão suficiente para chamar essa API. Talvez seja necessário atribuir [permissões adicionais](custom-services.md) à função de usuário ou habilitar o <a href="https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/administration/additional-integrations/create-an-allowlist-for-ip-based-api-access">Incluir na lista de permissões Acesso à API Baseada em IP</a>.</td>
     </tr>
     <tr>
       <td><a name="604"></a>604*</td>
@@ -155,7 +155,7 @@ Uma chamada de API que retorna esse código de resposta não é contabilizada em
     <tr>
       <td><a name="612"></a>612</td>
       <td>Tipo de conteúdo inválido</td>
-      <td>Se você vir esse erro, adicione um cabeçalho de tipo de conteúdo especificando o formato JSON à solicitação. Por exemplo, tente usar "content type: application/json". <a href="https://stackoverflow.com/questions/28181325/why-invalid-content-type">Veja esta pergunta sobre StackOverflow</a> para obter mais detalhes.</td>
+      <td>Se você vir esse erro, adicione um cabeçalho de tipo de conteúdo especificando o formato JSON à solicitação. Por exemplo, tente usar "content type: application/json". <a href="https://stackoverflow.com/questions/28181325/why-invalid-content-type">Consulte esta pergunta sobre StackOverflow</a> para obter mais detalhes.</td>
     </tr>
     <tr>
       <td><a name="613"></a>613</td>
@@ -207,7 +207,7 @@ Uma chamada de API que retorna esse código de resposta não é contabilizada em
       <td>A chamada não pode ser atendida porque viola um requisito para criar ou atualizar um ativo, por exemplo, tentar criar um email sem um modelo. Também é possível obter esse erro ao tentar:
         <ul>
           <li>Recupere conteúdo para páginas de aterrissagem que contenham conteúdo social.</li>
-          <li>Clonar um programa que contenha determinados tipos de ativos (consulte <a href="programs.md#clone">Clone do programa</a> para obter mais informações).</li>
+          <li>Clonar um programa que contenha determinados tipos de ativos (consulte <a href="programs.md#clone">Clonar programa</a> para obter mais informações).</li>
           <li>Aprovar um ativo que não tem rascunho (ou seja, já foi aprovado).</li>
         </ul></td>
     </tr>
@@ -353,7 +353,7 @@ Cada registro em uma solicitação bem-sucedida pode ter êxito ou falha individ
       <td><a name="1012"></a>1012</td>
       <td>Valor de cookie inválido ‘%s’</td>
       <td>Pode ocorrer ao chamar o <a href="https://developer.adobe.com/marketo-apis/api/mapi/#tag/Leads/operation/associateLeadUsingPOST">Associar lead</a> com um valor inválido para o parâmetro de cookie.
-        Isso também ocorre ao chamar <a href="https://developer.adobe.com/marketo-apis/api/mapi/#tag/Leads/operation/getLeadsByFilterUsingGET">Obter clientes em potencial por tipo de filtro</a> com filterType=cookies e valor válido inválido para o parâmetro filterValues.</td>
+        Isso também ocorre ao chamar <a href="https://developer.adobe.com/marketo-apis/api/mapi/#tag/Leads/operation/getLeadsByFilterUsingGET">Obter Clientes Potenciais por Tipo de Filtro</a> com filterType=cookies e valor válido inválido para o parâmetro filterValues.</td>
     </tr>
     <tr>
       <td><a name="1013"></a>1013</td>
@@ -469,19 +469,20 @@ Cada registro em uma solicitação bem-sucedida pode ter êxito ou falha individ
     </tr>
     <tr>
       <td><a name="1076"></a>1076</td>
-      <td><a href="https://developer.adobe.com/marketo-apis/api/mapi/#tag/Leads/operation/mergeLeadsUsingPOST">Mesclar leads</a> a chamada com o sinalizador mergeInCRM é 4.</td>
+      <td>A chamada <a href="https://developer.adobe.com/marketo-apis/api/mapi/#tag/Leads/operation/mergeLeadsUsingPOST">Mesclar clientes em potencial</a> com o sinalizador mergeInCRM é 4.</td>
       <td>Você está criando um registro duplicado. É recomendável usar um registro existente.
         Esta é a mensagem de erro que o Marketo recebe ao mesclar no Salesforce.</td>
     </tr>
     <tr>
       <td><a name="1077"></a>1077</td>
-      <td><a href="https://developer.adobe.com/marketo-apis/api/mapi/#tag/Leads/operation/mergeLeadsUsingPOST">Mesclar leads</a> falha na chamada devido ao comprimento de "Campo SFDC"</td>
+      <td>A chamada <a href="https://developer.adobe.com/marketo-apis/api/mapi/#tag/Leads/operation/mergeLeadsUsingPOST">Mesclar clientes em potencial</a> falhou devido ao comprimento do 'Campo SFDC'</td>
       <td>Uma chamada de Mesclagem de clientes em potencial com mergeInCRM definido como verdadeiro falhou porque o "Campo SFDC" excede o limite de caracteres permitidos. Para corrigir, reduza o comprimento de "SFDC Field" ou defina mergeInCRM como false.</td>
     </tr>
     <tr>
       <td><a name="1078"></a>1078</td>
-      <td><a href="https://developer.adobe.com/marketo-apis/api/mapi/#tag/Leads/operation/mergeLeadsUsingPOST">Mesclar leads</a> falha na chamada devido à entidade excluída, não é um cliente potencial/contato ou os critérios de filtro de campo não correspondem.</td>
-      <td>Falha na mesclagem, não é possível executar a operação de mesclagem no CRM sincronizado nativamente. Esta é a mensagem de erro, que o Marketo recebe ao mesclar no Salesforce.</td>
+      <td>A chamada <a href="https://developer.adobe.com/marketo-apis/api/mapi/#tag/Leads/operation/mergeLeadsUsingPOST">Mesclar clientes em potencial</a> falhou devido à entidade excluída, não a um cliente potencial/contato ou a critérios de filtro de campo não correspondem.</td>
+      <td>Falha na mesclagem; não é possível executar a operação de mesclagem no CRM sincronizado nativamente
+        Esta é a mensagem de erro que o Marketo recebe ao mesclar no Salesforce.</td>
     </tr>
   </tbody>
 </table>

@@ -1,14 +1,14 @@
 ---
-title: "Assinatura de autenticação"
+title: Assinatura de autenticação
 feature: SOAP
-description: "Segurança de API com assinaturas de autenticação"
-source-git-commit: d335bdd9f939c3e557a557b43fb3f33934e13fef
+description: Segurança de API com assinaturas de autenticação
+exl-id: d6bed8ee-77fa-440c-8f35-a71cf77f45d3
+source-git-commit: 66add4c38d0230c36d57009de985649bb67fde3e
 workflow-type: tm+mt
 source-wordcount: '226'
 ht-degree: 3%
 
 ---
-
 
 # Assinatura de autenticação
 
@@ -19,8 +19,8 @@ As assinaturas HMAC-SHA1 exigem o seguinte:
 * Uma Assinatura que é calculada usando uma chave secreta compartilhada e o conteúdo da mensagem e é transmitida com a solicitação de serviço
 * Uma chave secreta compartilhada (também chamada de Chave de criptografia) que não é transmitida com a solicitação de serviço
 
-Essas informações de segurança são confirmadas por meio de Admin > API SOAP no Marketo.
-O programa cliente calculará a assinatura HMAC-SHA1 usando a chave secreta compartilhada e parte do conteúdo da mensagem de solicitação. O cliente deve incluir um cabeçalho SOAP, AuthenticationHeaderInfo, para passar informações de autenticação com a mensagem SOAP.
+Essas informações de segurança são confirmadas por meio de Admin > API de SOAP no Marketo.
+O programa cliente calculará a assinatura HMAC-SHA1 usando a chave secreta compartilhada e parte do conteúdo da mensagem de solicitação. O cliente deve incluir um cabeçalho SOAP, AuthenticationHeaderInfo, para transmitir informações de autenticação com a mensagem SOAP.
 O seguinte pseudocódigo demonstra o algoritmo:
 
 ```
@@ -42,7 +42,7 @@ authHeader = "<ns1:AuthenticationHeader>" +
 
 | Nome do campo | Obrigatório/Opcional | Descrição |
 |--- |--- |--- |
-| mktowsUserId | Obrigatório | A ID de acesso do cliente do Marketo é encontrada no painel da API SOAP de administrador do Marketo, em Integração. |
+| mktowsUserId | Obrigatório | A ID de acesso do cliente do Marketo é encontrada no painel API SOAP do administrador do Marketo, em Integração. |
 | requestSignature | Obrigatório | Assinatura HMAC-SHA1 com base na chave de segredo compartilhado, requestTimestamp e ID de usuário do Marketo |
 | requestTimestamp | Obrigatório | Solicitar carimbo de data e hora (formato de data WSDL W3C Ex. &quot;06/2013/09T14:04:54-08:00&quot;) |
 | partnerId | Opcional | Chave da API do parceiro de tecnologia do LaunchPoint. |
