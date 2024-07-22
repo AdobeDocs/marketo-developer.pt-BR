@@ -60,7 +60,8 @@ Para o OpportunityPersonRole MObject, você pode fornecer todos os campos da sa�
 1. IsPrimary (Opcional)
 1. Função (opcional)
 
-|
+| Nome do campo | Obrigatório/Opcional | Descrição |
+| --- | --- | --- |
 | mObjAssociationList->mObjAssociation->mObjType | Opcional | Usado para atualizar os Objetos Opportunity/OpportunityPersonRole usando a id ou a chave externa de um objeto associado. Os objetos associados podem ser uma das seguintes: Empresa (para atualizar o OpportunityMObject), Cliente em potencial (para atualizar o OpportunityPersonRole MObject), Oportunidade (para atualizar o OpportunityPersonRole MObject)|
 | mObjAssociationList->mObjAssociation->id | Opcional | A ID do objeto associado (Cliente Potencial/Empresa/Oportunidade) |
 | mObjAssociationList->mObjAssociation->externalKey | Opcional | Um atributo personalizado do objeto associado |
