@@ -8,7 +8,7 @@ index: true
 source-git-commit: 85062243d57a3fc6d15251163e926495858edf2a
 workflow-type: tm+mt
 source-wordcount: '234'
-ht-degree: 32%
+ht-degree: 36%
 
 ---
 
@@ -30,18 +30,18 @@ ht-degree: 32%
    - [Redirecionamentos](javascript-api/redirect.md)
    - [Rich Media Recommendations](javascript-api/rich-media-recommendation.md)
    - [Redes sociais](javascript-api/social.md)
-   - [Gatilhos](javascript-api/triggers.md)
+   - [Acionadores](javascript-api/triggers.md)
    - [Personalização na Web](javascript-api/web-personalization.md)
-- Celular {#mobile}
+- Dispositivo móvel {#mobile}
    - [Instalar  [!DNL Adobe Launch] Extensão](mobile/adobe-launch-extension-installation.md)
-   - [Extensão [!DNL Adobe Launch]](mobile/adobe-launch-extension.md)
+   - [[!DNL Adobe Launch] Extensão](mobile/adobe-launch-extension.md)
    - [Modo de Segurança Avançada](mobile/advanced-security-access-mode.md)
    - [Ações Personalizadas](mobile/custom-actions.md)
    - [Deep links](mobile/enabling-deep-links-in-your-app.md)
-   - [Mensagens internas do aplicativo](mobile/in-app-messages.md)
+   - [Mensagens no aplicativo](mobile/in-app-messages.md)
    - [Instalação](mobile/installation.md)
    - [[!DNL Ionic]](mobile/ionic.md)
-   - [Celular](mobile/mobile.md)
+   - [Dispositivo móvel](mobile/mobile.md)
    - [Phonegap](mobile/phonegap.md)
    - [Notificações por push](mobile/push-notifications.md)
    - [React Native](mobile/react-native.md)
@@ -49,10 +49,10 @@ ht-degree: 32%
 - REST{#rest}
    - [Visão geral da REST API](rest-api/rest-api.md)
    - [Referência da API REST](https://developer.adobe.com/marketo-apis/)
-   - Assets {#assets}
+   - Ativos {#assets}
       - [Ativos](rest-api/assets.md)
       - [Conteúdo dinâmico](rest-api/dynamic-content.md)
-      - [E-mails](rest-api/emails.md)
+      - [Emails](rest-api/emails.md)
       - [Modelos de e-mail](rest-api/email-templates.md)
       - [Arquivos](rest-api/files.md)
       - [Pastas](rest-api/folders.md)
@@ -70,7 +70,7 @@ ht-degree: 32%
       - [Email transacional](rest-api/transactional-email.md)
    - [Autenticação](rest-api/authentication.md)
    - [Assinatura de autenticação](rest-api/authentication-signature.md)
-   - [URL base](rest-api/base-url.md)
+   - [URL básica](rest-api/base-url.md)
    - [Práticas recomendadas](rest-api/marketo-integration-best-practices.md)
    - Extração em Massa {#bulk-extract}
       - [Atividade em massa](rest-api/bulk-activity-extract.md)
