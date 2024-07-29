@@ -2,7 +2,7 @@
 title: Assimilação de dados
 feature: REST API, Dynamic Content
 description: Consumir dados com APIs do Marketo.
-source-git-commit: 5d18a24f25e5bda39e10bce3b2a77370dd28c937
+source-git-commit: 1595aa6df0b0404c7cda2c246c9249018fe87e77
 workflow-type: tm+mt
 source-wordcount: '968'
 ht-degree: 11%
@@ -50,7 +50,7 @@ A assimilação de dados usa os seguintes cabeçalhos HTTP personalizados.
 ### Resposta
 
 | Chave | Valor | Obrigatório |
-| - | - |
+| - | - | - |
 | X-Request-Id | Identificador exclusivo da solicitação. | Sim |
 
 ## Solicitações
