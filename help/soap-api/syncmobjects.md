@@ -3,10 +3,10 @@ title: syncMObjects
 feature: SOAP
 description: chamadas de SOAP syncMObjects
 exl-id: 68bb69ce-aa8c-40b7-8938-247f4fe97b5d
-source-git-commit: 66add4c38d0230c36d57009de985649bb67fde3e
+source-git-commit: 04e6b38a7ee602c38a851f9b99101186e72a8518
 workflow-type: tm+mt
-source-wordcount: '421'
-ht-degree: 6%
+source-wordcount: '426'
+ht-degree: 7%
 
 ---
 
@@ -21,7 +21,7 @@ Aceita uma matriz de [MObjects](marketo-objects.md) a ser criada ou atualizada, 
 
 As operações UPDATE e UPSERT usam ID como chave. Em uma única chamada de API, algumas atualizações podem ter êxito e algumas podem falhar. Uma mensagem de erro será retornada para cada falha
 
-## Solicitar
+## Solicitação
 
 | Nome do campo | Obrigatório/Opcional | Descrição |
 | --- | --- | --- |
@@ -62,7 +62,7 @@ Para o OpportunityPersonRole MObject, você pode fornecer todos os campos da sa�
 
 | Nome do campo | Obrigatório/Opcional | Descrição |
 | --- | --- | --- |
-| mObjAssociationList->mObjAssociation->mObjType | Opcional | Usado para atualizar os Objetos Opportunity/OpportunityPersonRole usando a id ou a chave externa de um objeto associado. Os objetos associados podem ser uma das seguintes: Empresa (para atualizar o OpportunityMObject), Cliente em potencial (para atualizar o OpportunityPersonRole MObject), Oportunidade (para atualizar o OpportunityPersonRole MObject)|
+| mObjAssociationList->mObjAssociation->mObjType | Opcional | Usado para atualizar os Objetos Opportunity/OpportunityPersonRole usando a id ou a chave externa de um objeto associado. Os objetos associados podem ser uma das seguintes: Empresa (para atualizar o OpportunityMObject), Cliente em potencial (para atualizar o OpportunityPersonRole MObject), Oportunidade (para atualizar o OpportunityPersonRole MObject) |
 | mObjAssociationList->mObjAssociation->id | Opcional | A ID do objeto associado (Cliente Potencial/Empresa/Oportunidade) |
 | mObjAssociationList->mObjAssociation->externalKey | Opcional | Um atributo personalizado do objeto associado |
 
