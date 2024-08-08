@@ -3,9 +3,9 @@ title: Desempenho
 feature: REST API
 description: Dicas de desempenho para trabalhar com a API do Marketo.
 exl-id: 173a398a-9d36-4e8d-9dd3-7d0d375b085a
-source-git-commit: 66add4c38d0230c36d57009de985649bb67fde3e
+source-git-commit: 4e64b8a801e443471f52090b7f008b11e628012d
 workflow-type: tm+mt
-source-wordcount: '117'
+source-wordcount: '122'
 ht-degree: 1%
 
 ---
@@ -16,9 +16,11 @@ Esta página contém uma lista de tópicos relacionados ao desempenho que você 
 
 ## Compactação HTTP
 
-A API REST do Marketo oferece suporte à compactação HTTP de corpos de resposta usando padrões definidos pela especificação HTTP 1.1.  A ativação da compactação é recomendada porque reduz o uso da largura de banda e o tempo gasto na recuperação de dados.
+A API REST do Marketo oferece suporte à compactação HTTP de corpos de resposta usando padrões definidos pela especificação HTTP 1.1. A ativação da compactação é recomendada porque reduz o uso da largura de banda e o tempo gasto na recuperação de dados.
 
-**Nota:**  Cargas menores que 1024 bytes não serão compactadas.
+>[!NOTE]
+>
+>Cargas menores que 1024 bytes não são compactadas e APIs em massa não oferecem suporte à compactação.
 
 Para ativar a compactação, inclua o seguinte cabeçalho HTTP na solicitação:
 
