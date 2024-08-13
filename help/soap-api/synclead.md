@@ -3,14 +3,14 @@ title: syncLead
 feature: SOAP
 description: chamadas de SOAP syncLead
 exl-id: e6cda794-a9d4-4153-a5f3-52e97a506807
-source-git-commit: 66add4c38d0230c36d57009de985649bb67fde3e
+source-git-commit: ebe8faf41dff0e0ba5f4323f5909cc3c9813fd10
 workflow-type: tm+mt
 source-wordcount: '518'
 ht-degree: 2%
 
 ---
 
-# syncLean
+# syncLead
 
 Esta função insere ou atualiza um único registro de lead. Ao atualizar um cliente potencial existente, o cliente potencial é identificado com uma das seguintes chaves:
 
@@ -38,7 +38,7 @@ Quando os espaços de trabalho do Marketo estão ativados e o cabeçalho NÃO é
 
 Se os espaços de trabalho do Marketo NÃO estiverem ativados, o espaço de trabalho de destino DEVERÁ ser o espaço de trabalho &quot;Padrão&quot;. Não é necessário passar o cabeçalho.
 
-## Solicitar
+## Solicitação
 
 | Nome do campo | Obrigatório/Opcional | Descrição |
 | --- | --- | --- |
