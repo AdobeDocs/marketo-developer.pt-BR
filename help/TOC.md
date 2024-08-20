@@ -5,10 +5,10 @@ breadcrumb-title: "[!DNL Marketo] Guia do Desenvolvedor"
 role: Admin
 feature-set: "Marketo Engage"
 index: true
-source-git-commit: 5d18a24f25e5bda39e10bce3b2a77370dd28c937
+source-git-commit: 13a567be067a8a1272e981fad4e03b0a8519f132
 workflow-type: tm+mt
-source-wordcount: '237'
-ht-degree: 35%
+source-wordcount: '238'
+ht-degree: 36%
 
 ---
 
@@ -49,6 +49,7 @@ ht-degree: 35%
 - REST{#rest}
    - [Visão geral da REST API](rest-api/rest-api.md)
    - [Referência da API REST](https://developer.adobe.com/marketo-apis/)
+   - [Atividades](rest-api/activities.md)
    - Ativos {#assets}
       - [Ativos](rest-api/assets.md)
       - [Conteúdo dinâmico](rest-api/dynamic-content.md)
