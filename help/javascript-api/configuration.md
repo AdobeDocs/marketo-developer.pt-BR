@@ -1,11 +1,11 @@
 ---
 title: Configuração
-description: API de configuração
+description: Use a API JavaScript de configuração para definir valores de configuração ao usar o Munchkin.
 feature: Javascript
 exl-id: 4700ce7b-f624-4f27-871e-9a050f203973
-source-git-commit: 66add4c38d0230c36d57009de985649bb67fde3e
+source-git-commit: e609f9d5d58f656298412acef5e2106a19765396
 workflow-type: tm+mt
-source-wordcount: '608'
+source-wordcount: '618'
 ht-degree: 3%
 
 ---
@@ -35,12 +35,12 @@ O objeto de definições de configuração pode conter qualquer número de propr
 | clickTime | Inteiro | Define o tempo a ser bloqueado após um clique para permitir a solicitação de rastreamento de cliques (em milissegundos). A redução desse número reduz a precisão do rastreamento de cliques. O padrão é 350 ms. |
 | cookieAnon | Booleano | Se definido como falso, impede o rastreamento e a criação de cookies de novos leads anônimos. Os clientes potenciais têm cookies e são rastreados após preencher um formulário do Marketo ou clicando em um email do Marketo. O padrão é verdadeiro. |
 | cookieLifeDays | Inteiro | Define a data de expiração de qualquer cookie de rastreamento do Munchkin recém-criado para este número de dias no futuro. O padrão é 730 dias (2 anos). |
-| customName | Sequência de caracteres | Nome de página personalizado. Somente para uso do sistema. |
+| customName | String | Nome de página personalizado. Somente para uso do sistema. |
 | domainLevel | Inteiro | Define o número de partes do domínio da página a serem usadas ao definir o atributo de domínio do cookie. Por exemplo, suponha que o domínio da página atual seja &quot;www.example.com&quot;.domainLevel: 2 definirá o atributo de domínio do cookie como &quot;.example.com&quot;domainLevel: 3 definirá o atributo de domínio do cookie como &quot;.www.example.com&quot;Background:Munchkin gerenciará automaticamente determinados domínios de nível superior com duas letras. O padrão é duas partes nos casos normais em que o domínio de nível superior é de três letras. Por exemplo &quot;www.example.com&quot;, as duas partes mais à direita são usadas para definir o cookie, &quot;.example.com&quot;.Para códigos de país com duas letras, como &quot;.jp&quot;, &quot;.us&quot;, &quot;.cn&quot; e &quot;.uk&quot;, o código assume três partes como padrão. Por exemplo, &quot;www.example.co.jp&quot; usará três partes de domínio mais à direita, &quot;.example.co.jp&quot;. Se o padrão de domínio exigir um comportamento diferente, isso deverá ser especificado usando o parâmetro `domainLevel`. |
 | domainSelectorV2 | Booleano | Se definido como verdadeiro, o utiliza um método aprimorado para determinar como definir o atributo de domínio do cookie. |
 | httpsOnly | Booleano | O padrão é false. Quando definido como true, define o cookie para usar a configuração Secure quando a página rastreada foi veiculada via https. |
 | useBeaconAPI | Booleano | O padrão é false. Quando definido como verdadeiro, o usa a API Beacon para enviar solicitações de não bloqueio em vez de XMLHttpRequest. Se o navegador não suportar essa API, o Munchkin voltará a usar XMLHttpRequest. |
-| wsInfo | Sequência de caracteres | Usa uma string para direcionar um espaço de trabalho. Essa ID de espaço de trabalho é obtida selecionando o Workspace no menu Admin > Integração > Munchkin. Essa configuração se aplica somente à criação inicial de um registro de lead anônimo. Depois que o valor do cookie Munchkin for estabelecido para esse registro de lead, o parâmetro wsInfo não poderá ser usado para alterar sua partição. Como essa configuração afeta apenas clientes potenciais anônimos, ela só é relevante para Visitantes anônimos específicos da partição em Relatórios da Web. |
+| wsInfo | String | Usa uma string para direcionar um espaço de trabalho. Essa ID de espaço de trabalho é obtida selecionando o Workspace no menu Admin > Integração > Munchkin. Essa configuração se aplica somente à criação inicial de um registro de lead anônimo. Depois que o valor do cookie Munchkin for estabelecido para esse registro de lead, o parâmetro wsInfo não poderá ser usado para alterar sua partição. Como essa configuração afeta apenas clientes potenciais anônimos, ela só é relevante para Visitantes anônimos específicos da partição em Relatórios da Web. |
 
 ## Exemplos
 
