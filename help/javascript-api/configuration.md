@@ -3,9 +3,9 @@ title: Configuração
 description: Use a API JavaScript de configuração para definir valores de configuração ao usar o Munchkin.
 feature: Javascript
 exl-id: 4700ce7b-f624-4f27-871e-9a050f203973
-source-git-commit: e609f9d5d58f656298412acef5e2106a19765396
+source-git-commit: 257478ecb76b5908c2f623192f37be25bff1a02a
 workflow-type: tm+mt
-source-wordcount: '618'
+source-wordcount: '554'
 ht-degree: 3%
 
 ---
@@ -29,7 +29,7 @@ O objeto de definições de configuração pode conter qualquer número de propr
 | Nome | Tipo de dados | Descrição |
 |---|---|---|
 | altIds | Matriz | Aceita uma matriz de sequências de caracteres da ID do Munchkin. Quando ativado, duplica todas as atividades da Web para as assinaturas direcionadas, com base na ID do Munchkin. |
-| anonymizeIP | Booleano | Torna anônimo o endereço IP registrado no Marketo para novos visitantes. Você pode determinar se sua assinatura foi provisionada com o Munchkin V2 verificando se seu domínio `{Munchkin-Id}.mktoresp.com` tem um dos seguintes endereços: `192.28.144.124` `134.213.193.62` `192.28.147.68` `103.237.104.82`. Como alternativa, você pode executar o script abaixo a partir de um shell unix: nslookup {munchkin-id}.mktoresp.com | grep -E -c -e &quot;(192.28.144.124,134.213.193.62,192.28.147.68,103.237.104.82)&quot; Se o comando gerar &#39;0&#39;, sua assinatura não será provisionada com o Munchkin V2; se gerar 1 ou mais, ela será provisionada. |
+| anonymizeIP | Booleano | Torna anônimo o endereço IP registrado no Marketo para novos visitantes. |
 | apiOnly | Booleano | Se definida como true, a função `Munchkin.Init()` não chamará `visitsWebPage`. Isso é útil para aplicativos web de página única que precisam de controle total sobre cada evento `visitsWebPage`. |
 | asyncOnly | Booleano | Se definido como verdadeiro, envia o de XMLHttpRequest de forma assíncrona. O padrão é falso. |
 | clickTime | Inteiro | Define o tempo a ser bloqueado após um clique para permitir a solicitação de rastreamento de cliques (em milissegundos). A redução desse número reduz a precisão do rastreamento de cliques. O padrão é 350 ms. |
