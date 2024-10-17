@@ -3,9 +3,9 @@ title: Códigos de erro
 feature: REST API
 description: Descrições do código de erro do Marketo.
 exl-id: a923c4d6-2bbc-4cb7-be87-452f39b464b6
-source-git-commit: 66add4c38d0230c36d57009de985649bb67fde3e
+source-git-commit: d0750eab0a37df0b7f80c6252f46c95068975000
 workflow-type: tm+mt
-source-wordcount: '2272'
+source-wordcount: '2273'
 ht-degree: 3%
 
 ---
@@ -224,7 +224,7 @@ Uma chamada de API que retorna esse código de resposta não é contabilizada em
     <tr>
       <td><a name="712"></a>712</td>
       <td>A operação de mesclagem para conta de pessoa é inválida</td>
-      <td>Uma chamada de Mesclagem de clientes potenciais falhou devido a uma tentativa de mesclar clientes potenciais que são Contas pessoais do Salesforce.  As contas de pessoas do Salesforce devem ser mescladas no Salesforce.</td>
+      <td>Falha na chamada de Mesclagem de Clientes Potenciais devido a uma tentativa de mesclar clientes potenciais que são Contas Pessoais da Salesforce.  As contas de pessoas da Salesforce devem ser mescladas no Salesforce.</td>
     </tr>
     <tr>
       <td><a name="713"></a>713</td>
@@ -352,8 +352,8 @@ Cada registro em uma solicitação bem-sucedida pode ter êxito ou falha individ
     <tr>
       <td><a name="1012"></a>1012</td>
       <td>Valor de cookie inválido ‘%s’</td>
-      <td>Pode ocorrer ao chamar o <a href="https://developer.adobe.com/marketo-apis/api/mapi/#tag/Leads/operation/associateLeadUsingPOST">Associar lead</a> com um valor inválido para o parâmetro de cookie.
-        Isso também ocorre ao chamar <a href="https://developer.adobe.com/marketo-apis/api/mapi/#tag/Leads/operation/getLeadsByFilterUsingGET">Obter Clientes Potenciais por Tipo de Filtro</a> com filterType=cookies e valor válido inválido para o parâmetro filterValues.</td>
+      <td>Pode ocorrer ao chamar o <a href="https://developer.adobe.com/marketo-apis/api/mapi/#tag/Leads/operation/associateLeadUsingPOST">Associar lead</a> com um valor inválido para o parâmetro "cookie".
+        Isso também ocorre ao chamar <a href="https://developer.adobe.com/marketo-apis/api/mapi/#tag/Leads/operation/getLeadsByFilterUsingGET">Obter clientes em potencial por Tipo de filtro</a> com "filterType=cookies" e um valor inválido para o parâmetro "filterValues".</td>
     </tr>
     <tr>
       <td><a name="1013"></a>1013</td>
@@ -471,18 +471,18 @@ Cada registro em uma solicitação bem-sucedida pode ter êxito ou falha individ
       <td><a name="1076"></a>1076</td>
       <td>A chamada <a href="https://developer.adobe.com/marketo-apis/api/mapi/#tag/Leads/operation/mergeLeadsUsingPOST">Mesclar clientes em potencial</a> com o sinalizador mergeInCRM é 4.</td>
       <td>Você está criando um registro duplicado. É recomendável usar um registro existente.
-        Esta é a mensagem de erro que o Marketo recebe ao mesclar no Salesforce.</td>
+        Essa é a mensagem de erro, que o Marketo recebe ao mesclar no Salesforce.</td>
     </tr>
     <tr>
       <td><a name="1077"></a>1077</td>
-      <td>A chamada <a href="https://developer.adobe.com/marketo-apis/api/mapi/#tag/Leads/operation/mergeLeadsUsingPOST">Mesclar clientes em potencial</a> falhou devido ao comprimento do 'Campo SFDC'</td>
-      <td>Uma chamada de Mesclagem de clientes em potencial com mergeInCRM definido como verdadeiro falhou porque o "Campo SFDC" excede o limite de caracteres permitidos. Para corrigir, reduza o comprimento de "SFDC Field" ou defina mergeInCRM como false.</td>
+      <td>A chamada <a href="https://developer.adobe.com/marketo-apis/api/mapi/#tag/Leads/operation/mergeLeadsUsingPOST">Mesclar clientes em potencial</a> falhou devido ao comprimento do "Campo SFDC"</td>
+      <td>Uma chamada de Mesclagem de leads com mergeInCRM definido como true falhou porque o "Campo SFDC" excede o limite de caracteres permitidos. Para corrigir, reduza o comprimento de "SFDC Field" ou defina mergeInCRM como false.</td>
     </tr>
     <tr>
       <td><a name="1078"></a>1078</td>
       <td>A chamada <a href="https://developer.adobe.com/marketo-apis/api/mapi/#tag/Leads/operation/mergeLeadsUsingPOST">Mesclar clientes em potencial</a> falhou devido à entidade excluída, não a um cliente potencial/contato ou a critérios de filtro de campo não correspondem.</td>
       <td>Falha na mesclagem; não é possível executar a operação de mesclagem no CRM sincronizado nativamente
-        Esta é a mensagem de erro que o Marketo recebe ao mesclar no Salesforce.</td>
+        Essa é a mensagem de erro, que o Marketo recebe ao mesclar no Salesforce.</td>
     </tr>
   </tbody>
 </table>
