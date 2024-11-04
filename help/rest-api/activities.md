@@ -2,13 +2,13 @@
 title: Atividades
 feature: REST API
 description: Uma API para gerenciar atividades de Marketo Engage.
-source-git-commit: 13a567be067a8a1272e981fad4e03b0a8519f132
+exl-id: 1e69af23-2b0c-467a-897c-1dcf81343e73
+source-git-commit: 6baf62bc8881470eca597899e3228c377fb597d0
 workflow-type: tm+mt
 source-wordcount: '2029'
 ht-degree: 0%
 
 ---
-
 
 # Atividades
 
@@ -133,7 +133,7 @@ Em alguns casos, essa API pode responder com menos de 300 itens de atividade, ma
 
 Observe que em cada item da matriz de resultados, o atributo inteiro `id` está sendo substituído pelo atributo da cadeia de caracteres `marketoGUID` como identificador exclusivo. 
 
-## Alterações no valor de dados
+### Alterações no valor de dados
 
 Para atividades de Alteração do valor de dados, é fornecida uma versão especializada da API de atividades. O ponto de extremidade [Obter Alterações de Cliente Potencial](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Activities/operation/getLeadChangesUsingGET) retorna somente atividades de registros de Alteração de Valor de Dados para campos de cliente potencial. A interface é a mesma da API Obter atividades principais, com duas diferenças:
 
@@ -188,7 +188,7 @@ Cada atividade na resposta tem uma matriz de campos, incluindo uma lista de alte
 
 Observe que em cada item da matriz de resultados, o atributo inteiro `id` está sendo substituído pelo atributo da cadeia de caracteres `marketoGUID` como identificador exclusivo.
 
-## Clientes potenciais excluídos
+### Clientes potenciais excluídos
 
 Também há um ponto de extremidade especial [Obter clientes em potencial excluídos](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Activities/operation/getDeletedLeadsUsingGET) para recuperar atividades excluídas da Marketo.
 
@@ -229,7 +229,7 @@ GET /rest/v1/activities/deletedleads.json?nextPageToken=GIYDAOBNGEYS2MBWKQYDAORQ
 
 Observe que em cada item da matriz de resultados, o atributo inteiro `id` está sendo substituído pelo atributo da cadeia de caracteres `marketoGUID` como identificador exclusivo.
 
-## Página pelos resultados
+### Página pelos resultados
 
 Por padrão, os endpoints mencionados nesta seção retornam 300 itens de atividade por vez.  Se o atributo `moreResult` for true, mais resultados estarão disponíveis. Chame o ponto de extremidade até que o atributo `moreResult` retorne false, o que significa que não há mais resultados disponíveis. O `nextPageToken` retornado deste ponto de extremidade deve sempre ser reutilizado para a próxima iteração desta chamada.
 
@@ -322,7 +322,7 @@ GET /rest/v1/activities/external/type/{apiName}/describe.json
 }
 ```
 
-### Criar tipo
+## Criar tipo
 
 Cada tipo de atividade personalizado requer um nome de exibição, nome da API, nome do acionador, nome do filtro e atributo principal.
 
@@ -386,7 +386,7 @@ POST /rest/v1/activities/external/type.json
 }
 ```
 
-### Tipo de atualização
+## Tipo de atualização
 
 A atualização de um tipo é muito semelhante, exceto que apiName é o único parâmetro obrigatório como parâmetro de caminho.
 
@@ -448,7 +448,7 @@ Os tipos de dados válidos para atributos são: string, boolean, integer, float,
 
 Ao alterar o atributo primário de um tipo de atividade, qualquer atributo primário existente deve ser rebaixado, definindo-se primeiro `isPrimary` como falso.
 
-## Criar atributos
+### Criar atributos
 
 A criação de um atributo usa um parâmetro de caminho `apiName` necessário. Também são necessários os parâmetros `name` e `dataType`.` The description and` `isPrimary` parâmetros são opcionais.
 
@@ -515,7 +515,7 @@ POST /rest/v1/activities/external/type/{apiName}/attributes/create.json
 }
 ```
 
-## Atualizar atributos
+### Atualizar atributos
 
 Ao executar atualizações de atributos, o `apiName` do atributo é a chave primária. O parâmetro `apiName` deve existir para que a atualização seja bem-sucedida (ou seja, você não pode alterar o parâmetro `apiName` usando update).
 
@@ -582,7 +582,7 @@ POST /rest/v1/activities/external/type/{apiName}/attributes/update.json
 }
 ```
 
-## Excluir atributos
+### Excluir atributos
 
 A exclusão de um atributo usa um parâmetro de caminho `apiName` necessário, que é o nome da API de atividade personalizada.  Também é necessário um parâmetro de atributo que seja uma matriz de objetos de atributo.  Cada objeto deve conter um parâmetro `apiName` que seja o nome da API do tipo de atividade personalizada.
 
@@ -710,4 +710,4 @@ POST /rest/v1/activities/external.json
 Os endpoints de atividades têm um tempo limite de 30 s, a menos que indicado abaixo.
 
 * Obter token de paginação: 300s 
-* Adicionar atividade personalizada: 90s 
+* Adicionar atividade personalizada: 90s
