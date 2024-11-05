@@ -3,9 +3,9 @@ title: Tokens de paginação
 feature: REST API
 description: Exibir dados de tokens de paginação.
 exl-id: 63fbbf03-8daf-4add-85b0-a8546c825e5b
-source-git-commit: 66add4c38d0230c36d57009de985649bb67fde3e
+source-git-commit: a00583f367c2da36d9d1d6e0b05bfd4216573fbb
 workflow-type: tm+mt
-source-wordcount: '345'
+source-wordcount: '352'
 ht-degree: 0%
 
 ---
@@ -15,6 +15,8 @@ ht-degree: 0%
 Para percorrer os resultados ou recuperar dados atualizados de acordo com determinados dados, o Marketo fornece tokens de paginação.
 
 Em certos casos, cadeias de caracteres de token de paginação longas podem ser retornadas. Isso pode fazer você encontrar um código de erro HTTP 414. Você pode encontrar mais informações sobre como lidar com estes [erros](error-codes.md).
+
+Consulte a documentação da [API do token de paginação](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Activities/operation/getActivitiesPagingTokenUsingGET).
 
 ## Tipos de token
 
