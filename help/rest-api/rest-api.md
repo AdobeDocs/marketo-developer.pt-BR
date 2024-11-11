@@ -3,9 +3,9 @@ title: API REST
 feature: REST API
 description: Visão geral da REST API
 exl-id: 4b9beaf0-fc04-41d7-b93a-a1ae3147ce67
-source-git-commit: 6fc45ff98998217923e2a5b02d00d1522fe3272c
+source-git-commit: ade3216f04c822de14dc0bbcbc08bfa3a4b17cb3
 workflow-type: tm+mt
-source-wordcount: '664'
+source-wordcount: '744'
 ht-degree: 1%
 
 ---
@@ -17,7 +17,7 @@ O Marketo expõe uma API REST que permite a execução remota de muitos dos recu
 Essas APIs geralmente se encaixam em duas categorias amplas: [Banco de Dados Principal](https://developer.adobe.com/marketo-apis/api/mapi/) e [Ativo](https://developer.adobe.com/marketo-apis/api/asset/). As APIs de banco de dados de clientes potenciais permitem a recuperação e a interação com registros de pessoas da Marketo e tipos de objetos associados, como Oportunidades e Empresas. As APIs de ativos permitem a interação com material de apoio de marketing e registros relacionados a fluxos de trabalho.
 
 - **Cota Diária:** as assinaturas recebem 50.000 chamadas de API por dia (que são redefinidas diariamente às 12h00 CST). Você pode aumentar sua cota diária por meio do gerente da conta.
-- **Limite de Taxa:** Acesso à API por instância limitado a 100 chamadas por 20 segundos.
+- **Limite de Taxa:** O acesso à API por instância é limitado a 100 chamadas por 20 segundos.
 - **Limite de simultaneidade:**  Máximo de dez chamadas de API simultâneas.
 
 O tamanho das chamadas padrão é limitado a um comprimento de URI de 8 KB e um tamanho de corpo de 1 MB, embora o corpo possa ser de 10 MB para nossas APIs em massa. Se houver um erro na sua chamada, a API normalmente ainda retornará um código de status 200, mas a resposta JSON conterá um membro &quot;success&quot; com um valor de `false` e uma matriz de erros no membro &quot;errors&quot;. Mais sobre os erros [aqui](error-codes.md).
@@ -26,7 +26,7 @@ O tamanho das chamadas padrão é limitado a um comprimento de URI de 8 KB e um 
 
 As etapas a seguir exigem privilégios de administrador na instância do Marketo.
 
-Na primeira chamada para o Marketo, você recuperará um registro de lead. Para começar a trabalhar com o Marketo, você deve obter credenciais de API para fazer chamadas autenticadas para sua instância. Faça logon na sua instância e acesse o **[!UICONTROL Administrador]** -> **[!UICONTROL Usuários e Funções]**.
+Na primeira chamada para o Marketo, você recupera um registro de lead. Para começar a trabalhar com o Marketo, você deve obter credenciais de API para fazer chamadas autenticadas para sua instância. Faça logon na sua instância e acesse o **[!UICONTROL Administrador]** -> **[!UICONTROL Usuários e Funções]**.
 
 ![Usuários e funções do administrador](assets/admin-users-and-roles.png)
 
@@ -34,7 +34,7 @@ Clique na guia **[!UICONTROL Funções]**, em Novo Função e atribua pelo menos
 
 ![Nova Função](assets/new-role.png)
 
-Agora volte para a guia [!UICONTROL Usuários] e clique em **[!UICONTROL Convidar novo usuário]**. Dê ao usuário um nome descritivo que indique que ele é um usuário da API, um Endereço de email e clique em **[!UICONTROL Avançar]**.
+Agora, volte para a guia [!UICONTROL Usuários] e clique em **[!UICONTROL Convidar novo usuário]**. Dê ao usuário um nome descritivo que indique que ele é um usuário da API, um Endereço de email e clique em **[!UICONTROL Avançar]**.
 
 ![Novas Informações do Usuário](assets/new-user-info.png)
 
@@ -66,10 +66,20 @@ Localize o [!UICONTROL Ponto de extremidade] na caixa API REST e salve em uma ob
 
 ![Ponto de extremidade REST](assets/admin-web-services-rest-endpoint-1.png)
 
-Abra uma nova guia do navegador e insira o seguinte, usando as informações apropriadas para chamar [Obter Clientes Potenciais por Tipo de Filtro](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Leads/operation/getLeadsByFilterUsingGET):
+Ao fazer chamadas para métodos da API REST, um token de acesso deve ser incluído em cada chamada para que a chamada seja bem-sucedida. O token de acesso deve ser enviado como um cabeçalho HTTP.
 
 ```
-<Your Endpoint URL>/rest/v1/leads.json?access_token=<Your Access Token>&filterType=email&filterValues=<Your Email Address>
+Authorization: Bearer cdf01657-110d-4155-99a7-f986b2ff13a0:int
+```
+
+>[!IMPORTANT]
+>
+>O suporte para autenticação usando o parâmetro de consulta **access_token** será removido em 30 de junho de 2025. Se o projeto usar um parâmetro de consulta para passar o token de acesso, ele deverá ser atualizado para usar o cabeçalho **Autorização** o mais rápido possível. O novo desenvolvimento deve usar o cabeçalho **Autorização** exclusivamente.
+
+Abra uma nova guia do navegador e insira o seguinte, usando as informações apropriadas para chamar [Obter clientes em potencial por Tipo de Filtro](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Leads/operation/getLeadsByFilterUsingGET)
+
+```
+<Your Endpoint URL>/rest/v1/leads.json?&filterType=email&filterValues=<Your Email Address>
 ```
 
 Se você não tiver um registro de cliente potencial com seu endereço de email no banco de dados, substitua-o por um que você sabe que está lá. Pressione Enter na barra de URL e você deverá obter uma resposta JSON semelhante a:
