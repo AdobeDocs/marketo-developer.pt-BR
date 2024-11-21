@@ -3,9 +3,9 @@ title: Importação em massa
 feature: REST API
 description: Importação em lote de dados da pessoa.
 exl-id: f7922fd2-8408-4d04-8955-0f8f58914d24
-source-git-commit: 66add4c38d0230c36d57009de985649bb67fde3e
+source-git-commit: e7d893a81d3ed95e34eefac1ee8f1ddd6852f5cc
 workflow-type: tm+mt
-source-wordcount: '554'
+source-wordcount: '592'
 ht-degree: 2%
 
 ---
@@ -24,7 +24,11 @@ Os pontos de extremidade da API em massa não recebem o prefixo &#39;/rest&#39; 
 
 ## Autenticação
 
-As APIs de importação em massa usam o mesmo método de autenticação OAuth 2.0 que as outras APIs REST do Marketo.  Isso requer que um token de acesso válido seja inserido como o parâmetro de cadeia de caracteres de consulta `access_token={_AccessToken_}` ou como um cabeçalho HTTP `Authorization: Bearer {_AccessToken_}`.
+As APIs de importação em massa usam o mesmo método de autenticação OAuth 2.0 que as outras APIs REST do Marketo.  Isso requer um token de acesso válido enviado como um cabeçalho HTTP `Authorization: Bearer {_AccessToken_}`.
+
+>[!IMPORTANT]
+>
+>O suporte para autenticação usando o parâmetro de consulta **access_token** será removido em 30 de junho de 2025. Se o projeto usar um parâmetro de consulta para passar o token de acesso, ele deverá ser atualizado para usar o cabeçalho **Autorização** o mais rápido possível. O novo desenvolvimento deve usar o cabeçalho **Autorização** exclusivamente.
 
 ## Limites
 
@@ -90,8 +94,8 @@ Cada endpoint de criação de trabalho compartilha alguns parâmetros comuns par
 
 | Parâmetro | Tipo de dados | Observações |
 |---|---|---|
-| formato | Sequência de caracteres | Determina o formato de arquivo dos dados importados com opções para valores separados por vírgula, valores separados por tabulação e valores separados por ponto e vírgula. Aceita um dos seguintes: CSV, SSV, TSV. O formato é padronizado como CSV. |
-| arquivo | Sequência de caracteres | Os dados são especificados por meio de dados de formulário de várias partes no arquivo. |
+| formato | String | Determina o formato de arquivo dos dados importados com opções para valores separados por vírgula, valores separados por tabulação e valores separados por ponto e vírgula. Aceita um dos seguintes: CSV, SSV, TSV. O formato é padronizado como CSV. |
+| arquivo | String | Os dados são especificados por meio de dados de formulário de várias partes no arquivo. |
 
 
 ## Status do trabalho de pesquisa

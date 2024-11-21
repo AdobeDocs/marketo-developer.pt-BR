@@ -3,9 +3,9 @@ title: Extração em massa
 feature: REST API
 description: Operações em lote para extração de dados do Marketo.
 exl-id: 6a15c8a9-fd85-4c7d-9f65-8b2e2cba22ff
-source-git-commit: 66add4c38d0230c36d57009de985649bb67fde3e
+source-git-commit: e7d893a81d3ed95e34eefac1ee8f1ddd6852f5cc
 workflow-type: tm+mt
-source-wordcount: '1643'
+source-wordcount: '1683'
 ht-degree: 1%
 
 ---
@@ -25,7 +25,11 @@ A extração em massa é executada criando um trabalho, definindo o conjunto de 
 
 ## Autenticação
 
-As APIs de extração em massa usam o mesmo método de autenticação OAuth 2.0 que outras APIs REST do Marketo. Isso requer que um token de acesso válido seja inserido como o parâmetro de cadeia de caracteres de consulta `access_token={_AccessToken_}` ou como um cabeçalho HTTP `Authorization: Bearer {_AccessToken_}`.
+As APIs de extração em massa usam o mesmo método de autenticação OAuth 2.0 que outras APIs REST do Marketo. Isso requer que um token de acesso válido seja enviado como um cabeçalho HTTP `Authorization: Bearer {_AccessToken_}`.
+
+>[!IMPORTANT]
+>
+>O suporte para autenticação usando o parâmetro de consulta **access_token** será removido em 30 de junho de 2025. Se o projeto usar um parâmetro de consulta para passar o token de acesso, ele deverá ser atualizado para usar o cabeçalho **Autorização** o mais rápido possível. O novo desenvolvimento deve usar o cabeçalho **Autorização** exclusivamente.
 
 ## Limites
 
@@ -115,7 +119,7 @@ Cada endpoint de criação de trabalho compartilha alguns parâmetros comuns par
 
 | Parâmetro | Tipo de dados | Observações |
 |---|---|---|
-| formato | Sequência de caracteres | Determina o formato de arquivo dos dados extraídos com opções para valores separados por vírgula, valores separados por tabulação e valores separados por ponto e vírgula. Aceita um dos seguintes: CSV, SSV, TSV. O formato é padronizado como CSV. |
+| formato | String | Determina o formato de arquivo dos dados extraídos com opções para valores separados por vírgula, valores separados por tabulação e valores separados por ponto e vírgula. Aceita um dos seguintes: CSV, SSV, TSV. O formato é padronizado como CSV. |
 | columnHeaderNames | Objeto | Permite definir os nomes dos cabeçalhos de coluna no arquivo retornado. Cada chave do membro é o nome do cabeçalho da coluna a ser renomeado, e o valor é o novo nome do cabeçalho da coluna. Por exemplo, &quot;columnHeaderNames&quot;: { &quot;firstName&quot;: &quot;First Name&quot;, &quot;lastName&quot;: &quot;Last Name&quot; }, |
 | filtro | Objeto | Filtro aplicado ao trabalho de extração. Os tipos e as opções variam entre os tipos de trabalho. |
 
