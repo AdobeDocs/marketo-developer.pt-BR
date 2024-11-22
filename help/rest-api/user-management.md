@@ -3,9 +3,9 @@ title: Gerenciamento de usuários
 feature: REST API
 description: Execute operações CRUD em registros de usuário.
 exl-id: 2a58f496-0fe6-4f7e-98ef-e9e5a017c2de
-source-git-commit: 13a567be067a8a1272e981fad4e03b0a8519f132
+source-git-commit: 159c3fe29c26ea0fff718bf582a7e4c9a1740831
 workflow-type: tm+mt
-source-wordcount: '1185'
+source-wordcount: '1180'
 ht-degree: 0%
 
 ---
@@ -23,12 +23,12 @@ Ao contrário de outras APIs REST do Marketo, ao usar as APIs de gerenciamento d
    1. Permissão &quot;Usuários de Acesso&quot; do grupo [Administrador de Acesso](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/administration/users-and-roles/descriptions-of-role-permissions)
    1. &quot;Acessar API de Gerenciamento de Usuários&quot; do grupo [Acessar API](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/administration/users-and-roles/descriptions-of-role-permissions)
 - Os corpos de resposta não contêm o atributo booleano &quot;success&quot; indicando o sucesso ou a falha de uma chamada. Em vez disso, você deve avaliar o código de status da resposta HTTP. Se uma chamada for bem-sucedida, um código de status 200 será retornado. Se uma chamada falhar, um código de status de nível diferente de 200 será retornado e o corpo da resposta conterá a matriz &quot;erros&quot; padrão com código de erro e mensagem de erro descritiva.
-- O formato das cadeias de caracteres de data e hora é &quot;aaaaMMdd&#39;T&#39;HH:mm:ss.SSS&#39;t&#39;+|-hhmm&quot;. Isso se aplica aos seguintes atributos: createdAt, updatedAt, expiresAt.
+- O formato das cadeias de caracteres datetime é `yyyyMMdd'T'HH:mm:ss.SSS't'+|-hhmm`. Isso se aplica aos seguintes atributos: `createdAt`, `updatedAt`, `expiresAt`.
 - Os endpoints da API de gerenciamento de usuários não recebem o prefixo &quot;/rest&quot; como outros endpoints.
 
 ## Consultar
 
-O suporte de consulta para gerenciamento de usuários inclui a capacidade de recuperar todos os usuários, funções e espaços de trabalho. Além disso, você pode recuperar um único registro de usuário por ID de usuário ou registro de função/espaço de trabalho por ID de usuário.
+O suporte de consulta para gerenciamento de usuários inclui a capacidade de recuperar todos os usuários, funções e espaços de trabalho. Além disso, você pode recuperar um único registro de usuário por id de usuário ou um registro de função/espaço de trabalho por id de usuário.
 
 ### Usuário por ID
 
