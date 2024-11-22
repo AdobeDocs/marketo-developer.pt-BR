@@ -1,24 +1,24 @@
 ---
 title: API do JavaScript
 description: API Javascript
-feature: Munchkin Tracking Code, Javascript
+feature: Munchkin Tracking Code, Forms, Web Personalization, Predictive Content, Social, Javascript
 exl-id: 6129a467-be44-44bd-9e02-62009070c318
-source-git-commit: 66add4c38d0230c36d57009de985649bb67fde3e
+source-git-commit: e63db409981d10cfea6206cf91340428e5d0b17f
 workflow-type: tm+mt
 source-wordcount: '337'
 ht-degree: 1%
 
 ---
 
-# Javascript APi
+# API Javascript
 
 Veja a seguir uma visão geral dos recursos de integração do JavaScript no lado do cliente do Marketo. É necessário ter uma conta do Marketo para usar esses recursos. Normalmente, a implementação envolve simplesmente adicionar um &quot;código incorporado&quot; à propriedade da Web. Como opção, você pode usar funcionalidades adicionais chamando funções do JavaScript que são expostas pelo código incorporado. Essas funções estão totalmente documentadas aqui.
 
 O código incorporado é exclusivo para sua instância do Marketo, pois contém um identificador de conta. Obtenha o código incorporado navegando até o painel apropriado na interface do usuário do Marketo, copiando para a área de transferência e colando na página da Web.
 
-## Rastreamento de leads (Munchkin)
+## Rastreamento de clientes potenciais (Munchkin)
 
-O [código de rastreamento do Munchkin JavaScript](lead-tracking.md) da Marketo é fundamental para os recursos do Marketo. Ele permite gerar leads a partir de visitas ao seu site. Ele rastreia até mesmo visitantes que ainda não lhe forneceram suas informações pessoais, criando leads anônimos que incluem o endereço IP do usuário e outras informações. Você configurou o Munchkin na página Munchkin na área de Administração do Marketo.
+O [código de rastreamento do Munchkin JavaScript](lead-tracking.md) da Marketo é fundamental para os recursos do Marketo. Ele permite gerar leads a partir de visitas ao seu site. Ele rastreia até mesmo visitantes que ainda não lhe forneceram suas informações pessoais, criando leads anônimos que incluem o endereço IP do usuário e outras informações. Você configura o Munchkin na página Munchkin na área Administração do Marketo.
 
 ## Forms 2.0
 

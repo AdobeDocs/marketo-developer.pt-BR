@@ -1,22 +1,24 @@
 ---
 title: Referência da API do Munchkin
-description: Use a API Javascript do Munchkin para personalizar seus dados do Munchkin.
-feature: Javascript
-source-git-commit: c6c0a492ede415471e10efb6213eb3f590e63ebe
+description: Use a API JavaScript do Munchkin para personalizar os dados do Munchkin.
+feature: Munchkin Tracking Code, Javascript
+exl-id: e9727691-5501-4223-bc98-2b4bacc33513
+source-git-commit: 1ad2d793832d882bb32ebf7ef1ecd4148a6ef8d5
 workflow-type: tm+mt
 source-wordcount: '414'
 ht-degree: 9%
 
 ---
 
-
 # Referência da API do Munchkin
 
-O Munchkin fornece várias funções que podem ser chamadas manualmente através do Javascript. Isso pode permitir o rastreamento personalizado de eventos do navegador, como reproduções de vídeo ou cliques em não links.
+O Munchkin fornece várias funções que podem ser chamadas manualmente por meio do Javascript. Isso pode permitir o rastreamento personalizado de eventos do navegador, como reproduções de vídeo ou cliques em não links.
 
 ## Funções
 
-A API Munchkin é composta das seguintes funções: `init`, `createTrackingCookie`, `munchkinFunction`.
+A API do Munchkin é composta pelas seguintes funções: `init`, `createTrackingCookie`, `munchkinFunction`.
+
+<a name="munchkin_init"></a>
 
 ### Munchkin.init()
 
@@ -24,8 +26,8 @@ A API Munchkin é composta das seguintes funções: `init`, `createTrackingCooki
 
 | Nome do parâmetro | Opcional/Obrigatório | Tipo | Descrição |
 | --- | --- | --- | --- |
-| ID do Munchkin | Obrigatório | String | ID da conta do Munchkin encontrada no menu Admin > Integração > Munchkin. Define a instância de destino para a qual enviar atividades. |
-| [Configurações](configuration.md) | Opcional | Objeto | Habilita configurações de comportamento alternativas para o Munchkin. |
+| ID do Munchkin | Obrigatório | String | ID de conta do Munchkin encontrada no menu Admin > Integração > Munchkin. Define a instância de destino para a qual enviar atividades. |
+| [Configurações](configuration.md) | Opcional | Objeto | Ativa configurações de comportamento alternativas para o Munchkin. |
 
 ```javascript
 Munchkin.init('299-BYM-827');
