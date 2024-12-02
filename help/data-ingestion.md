@@ -1,6 +1,6 @@
 ---
-title: "Assimilação de dados"
-description: "Visão geral da API de assimilação de dados"
+title: Assimilação de dados
+description: Visão geral da API de assimilação de dados
 source-git-commit: 6fc45ff98998217923e2a5b02d00d1522fe3272c
 workflow-type: tm+mt
 source-wordcount: '945'
@@ -40,7 +40,7 @@ A assimilação de dados usa o mesmo modelo de permissões que a API REST do Mar
 
 A assimilação de dados usa os seguintes cabeçalhos HTTP personalizados.
 
-### Solicitar
+### Solicitação
 
 | Chave | Valor | Obrigatório | Descrição |
 |---|---|---|---|
@@ -61,7 +61,7 @@ A representação de dados é incluída no corpo da solicitação como applicati
 
 O nome do domínio é: `mkto-ingestion-api.adobe.io`
 
-O caminho começa com `/subscriptions/_MunchkinId_`, onde `_MunchkinId_` é específico para sua instância do Marketo. Você pode encontrar seu ID do Munchkin na interface do Marketo Engage em **Admin** >**Minha conta** > **Informações de suporte**. O restante do caminho é usado para especificar o recurso de interesse.
+O caminho começa com `/subscriptions/_MunchkinId_`, onde `_MunchkinId_` é específico para sua instância do Marketo. Você pode encontrar sua Munchkin ID na interface do Marketo Engage em **Admin** >**Minha conta** > **Informações de suporte**. O restante do caminho é usado para especificar o recurso de interesse.
 
 Exemplo de URL para Pessoas:
 
@@ -143,8 +143,8 @@ Corpo da solicitação
 
 | Chave | Tipo de dados | Obrigatório | Valor | Valor padrão |
 |---|---|---|---|---|
-| prioridade | Sequência de caracteres | Não | Prioridade da solicitação:normalhigh | normal |
-| partitionName | Sequência de caracteres | Não | Nome da partição da pessoa | Padrão |
+| prioridade | String | Não | Prioridade da solicitação:normalhigh | normal |
+| partitionName | String | Não | Nome da partição da pessoa | Padrão |
 | dedupeFields | Objeto | Não | Atributos para desduplicar em. Um ou dois nomes de atributo são permitidos. Dois atributos são usados em uma operação AND. Por exemplo, se `email` e `firstName` forem especificados, ambos serão usados para procurar uma pessoa usando a operação AND. Os atributos suportados são:`idemail`, `sfdcAccountId`, `sfdcContactId`, `sfdcLeadId`, `sfdcLeadOwnerIdCustom` atributos (somente os tipos &quot;string&quot; e &quot;integer&quot;) | email |
 | pessoas | Matriz de objeto | Sim | Lista de pares de nome-valor do atributo para a pessoa | - |
 
@@ -214,8 +214,8 @@ Corpo da solicitação
 
 | Chave | Tipo de dados | Obrigatório | Valor | Valor padrão |
 |---|---|---|---|---|
-| prioridade | Sequência de caracteres | Não | Prioridade da solicitação:normalhigh | normal |
-| dedupeBy | Sequência de caracteres | Não | Atributos a serem desduplicados em:dedupeFieldsmarketoGUID | dedupeFields |
+| prioridade | String | Não | Prioridade da solicitação:normalhigh | normal |
+| dedupeBy | String | Não | Atributos a serem desduplicados em:dedupeFieldsmarketoGUID | dedupeFields |
 | customObjects | Matriz de objeto | Sim | Lista de pares nome-valor do atributo do objeto. | - |
 
 | Permissão |

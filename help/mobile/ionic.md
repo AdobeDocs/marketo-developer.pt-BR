@@ -16,7 +16,7 @@ Este tópico descreve como integrar o plug-in Cordova do Marketo. Não há supor
 
 ## Pré-requisitos
 
-1. [Adicionar um aplicativo no Marketo Admin](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/mobile-marketing/admin/add-a-mobile-app) (obtenha a Chave Secreta e a ID do Munchkin do aplicativo).
+1. [Adicione um aplicativo ao Administrador do Marketo](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/mobile-marketing/admin/add-a-mobile-app) (obtenha a Chave Secreta e a ID do Munchkin do aplicativo).
 1. Configurar notificações por push ([iOS](push-notifications.md) | [Android](push-notifications.md) ).
 1. Instale o [[!DNL Ionic]](https://ionicframework.com/getting-started/) e a [CLI do Cordova](https://cordova.apache.org/docs/en/latest/guide/cli/).
 
@@ -99,7 +99,7 @@ marketo.onStart(
 
 - Retorno de Chamada com Êxito : função a ser executada se a estrutura do Marketo for inicializada com êxito.
 - Retorno de Chamada de Falha : função a ser executada se a estrutura do Marketo falhar ao inicializar.
-- ID do MUNCHKIN : ID do Munchkin recebida do Marketo no momento do registro.
+- MUNCHKIN ID : Munchkin ID recebida do Marketo no momento do registro.
 - CHAVE SECRETA : chave secreta recebida do Marketo no momento do registro.
 
 ### Inicializar notificação por push do Marketo
