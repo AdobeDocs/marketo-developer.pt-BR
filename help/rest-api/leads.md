@@ -3,9 +3,9 @@ title: Leads
 feature: REST API
 description: Detalhes sobre as chamadas de API de clientes potenciais
 exl-id: 0a2f7c38-02ae-4d97-acfe-9dd108a1f733
-source-git-commit: 8c1c620614408dd2df0b0848e6efc027adb71834
+source-git-commit: 7a3df193e47e7ee363c156bf24f0941879c6bd13
 workflow-type: tm+mt
-source-wordcount: '3343'
+source-wordcount: '3338'
 ht-degree: 3%
 
 ---
@@ -18,10 +18,10 @@ A API do líder da Marketo fornece um grande conjunto de recursos para aplicativ
 
 ## Descrever
 
-Um dos principais recursos da API de clientes potenciais é o método Descrever. Use Descrever leads para recuperar uma lista completa dos campos disponíveis para interação por meio da API REST e da API SOAP, bem como metadados para cada uma:
+Um dos principais recursos da API de clientes potenciais é o método Descrever. Use Descrever clientes em potencial para recuperar uma lista completa dos campos disponíveis para interação por meio da API REST, bem como metadados para cada:
 
 * Tipo de dados
-* Nomes de API REST e SOAP
+* Nomes da API REST
 * Comprimento (se aplicável)
 * Somente leitura
 * Rótulo amigável
@@ -95,7 +95,7 @@ Para esse método, sempre haverá um único registro na primeira posição da ma
 
 Obter Clientes Potenciais por Tipo de Filtro retornará o mesmo tipo de registro, mas pode retornar até 300 por página. Ela requer os parâmetros de consulta `filterType` e `filterValues`.
 
-`filterType` aceita qualquer campo personalizado ou a maioria dos campos usados com frequência. Chame o ponto de extremidade `Describe2` para obter uma lista abrangente de campos pesquisáveis permitidos para uso em `filterType`. Ao pesquisar por Campo Personalizado, somente os seguintes tipos de dados são suportados: `string`, `email`, `integer`. Você pode obter detalhes do campo (descrição, tipo etc.) usando o método Descrever acima mencionado.
+`filterType` aceita qualquer campo personalizado ou a maioria dos campos usados com frequência. Chame o ponto de extremidade `Describe2` para obter uma lista abrangente de campos pesquisáveis permitidos para uso em `filterType`. Ao pesquisar por Campo Personalizado, somente os seguintes tipos de dados são suportados: `string`, `email`, `integer`. Você pode obter detalhes de campo (descrição, tipo etc.) usando o método Descrever mencionado acima.
 
 `filterValues` aceita até 300 valores em formato separado por vírgulas. A chamada procura registros em que o campo do cliente potencial corresponde a um dos `filterValues` incluídos. Se o número de clientes potenciais correspondentes ao filtro de cliente potencial for maior que 1.000, será retornado o erro: &quot;1003, Muitos resultados correspondem ao filtro&quot;.
 
@@ -708,7 +708,7 @@ No registro de entrada, o objeto `leadFormFields` é obrigatório. Este objeto c
 
 O objeto membro `visitorData` é opcional e contém pares de nome/valor que correspondem aos dados de visita de página, incluindo `pageURL`, `queryString`, `leadClientIpAddress` e `userAgentString`. Pode ser usado para preencher campos de atividade adicionais para fins de filtragem e acionamento.
 
-A string do membro do cookie é opcional e permite associar um cookie Munchkin a um registro de pessoa no Marketo. Quando um novo lead é criado, todas as atividades anônimas anteriores são associadas a esse lead, a menos que o valor do cookie tenha sido previamente associado a outro registro conhecido. Se o valor do cookie foi associado anteriormente, as novas atividades são rastreadas em relação ao registro, mas as atividades antigas não serão migradas do registro conhecido existente. Para criar um novo lead sem histórico de atividade, basta omitir o membro do cookie.
+A string do membro do cookie é opcional e permite associar um cookie do Munchkin a um registro de pessoa no Marketo. Quando um novo lead é criado, todas as atividades anônimas anteriores são associadas a esse lead, a menos que o valor do cookie tenha sido previamente associado a outro registro conhecido. Se o valor do cookie foi associado anteriormente, as novas atividades são rastreadas em relação ao registro, mas as atividades antigas não serão migradas do registro conhecido existente. Para criar um novo lead sem histórico de atividade, basta omitir o membro do cookie.
 
 Novos clientes potenciais são criados na partição primária do espaço de trabalho no qual o formulário reside.
 
@@ -789,11 +789,11 @@ POST /rest/v1/leads/{id}/merge.json?leadId=1324
 
 O lead especificado no parâmetro de caminho é o lead vencedor, portanto, se houver campos em conflito entre os registros que estão sendo mesclados, o valor do vencedor será obtido, exceto se o campo no registro vencedor estiver vazio e o campo correspondente no registro perdedor não estiver. Os clientes potenciais especificados nos parâmetros `leadId` ou `leadIds` são os clientes potenciais perdidos.
 
-Se você tiver uma assinatura habilitada para sincronização SFDC, também poderá usar o parâmetro `mergeInCRM` em sua solicitação. Se definido como true, a mesclagem correspondente no CRM também será executada. Se ambos os leads estiverem no SFDC e um for um lead do CRM e o outro for um contato do CRM, o vencedor será o contato do CRM (independentemente de qual lead seja especificado como vencedor). Se um dos leads estiver no SFDC e o outro for somente no Marketo, o vencedor será o lead do SFDC (independentemente de qual lead seja especificado como vencedor).
+Se você tiver uma assinatura habilitada para sincronização com SFDC, também poderá usar o parâmetro `mergeInCRM` em sua solicitação. Se definido como true, a mesclagem correspondente no CRM também será executada. Se ambos os clientes em potencial estiverem na SFDC e um for um cliente potencial do CRM e o outro for um contato do CRM, o vencedor será o contato do CRM (independentemente de qual cliente potencial for especificado como vencedor). Se um dos leads estiver no SFDC e o outro for somente no Marketo, o vencedor será o lead da SFDC (independentemente de qual lead é especificado como vencedor).
 
 ## Associar Atividade da Web
 
-Por meio do Rastreamento de leads (Munchkin), o Marketo registra a atividade dos visitantes do seu site e das páginas de aterrissagem da Marketo. Essas atividades, Visitas e Cliques, são registradas com uma chave que corresponde a um cookie &quot;_mkto_track&quot; definido no navegador do lead, e o Marketo usa isso para rastrear as atividades da mesma pessoa. Normalmente, a associação a registros de cliente potencial ocorre quando um cliente potencial clica em um email do Marketo ou preenche um formulário do Marketo, mas às vezes uma associação pode ser acionada por um tipo diferente de evento e você pode usar o ponto de extremidade Associar cliente potencial para fazer isso. O endpoint assume a ID do registro de lead conhecido como um parâmetro de caminho e o valor do cookie &quot;_mkto_trk&quot; no parâmetro de consulta de cookie.
+Por meio do Rastreamento de leads (Munchkin), a Marketo registra a atividade dos visitantes do seu site e das páginas de aterrissagem da Marketo na Web. Essas atividades, Visitas e Cliques, são registradas com uma chave que corresponde a um cookie &quot;_mkto_track&quot; definido no navegador do lead, e o Marketo usa isso para rastrear as atividades da mesma pessoa. Normalmente, a associação a registros de cliente potencial ocorre quando um cliente potencial clica em um email do Marketo ou preenche um formulário do Marketo, mas às vezes uma associação pode ser acionada por um tipo diferente de evento e você pode usar o ponto de extremidade Associar cliente potencial para fazer isso. O endpoint assume a ID do registro de lead conhecido como um parâmetro de caminho e o valor do cookie &quot;_mkto_trk&quot; no parâmetro de consulta de cookie.
 
 ### Solicitação
 
