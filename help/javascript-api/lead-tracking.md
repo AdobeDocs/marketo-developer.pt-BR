@@ -3,9 +3,9 @@ title: Acompanhamento de lead
 description: API de rastreamento de lead
 feature: Munchkin Tracking Code, Javascript
 exl-id: 7ece5133-9d32-4be3-a940-4ac0310c4d8b
-source-git-commit: 1ad2d793832d882bb32ebf7ef1ecd4148a6ef8d5
+source-git-commit: 8ad3e3f0958ea705375651b1c8a75967d807ca80
 workflow-type: tm+mt
-source-wordcount: '769'
+source-wordcount: '766'
 ht-degree: 0%
 
 ---
@@ -74,7 +74,7 @@ Na primeira visita de um lead a uma página em seu domínio, um novo registro de
 
 - O cliente potencial deve visitar uma página rastreada pela Munchkin com um parâmetro `mkt_tok` na cadeia de caracteres de consulta de um link de email rastreado da Marketo.
 - O cliente em potencial deve preencher um formulário do Marketo.
-- Uma chamada SOAP [syncLead](../soap-api/leads.md) ou REST [Associar Lead](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Leads/operation/associateLeadUsingPOST) deve ser enviada.
+- Uma chamada REST [Associate Lead](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Leads/operation/associateLeadUsingPOST) deve ser enviada.
 
 Quando uma dessas condições é atendida, o cookie e todas as atividades da Web associadas são associados ao lead conhecido.
 

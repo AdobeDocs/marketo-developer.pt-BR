@@ -2,9 +2,9 @@
 title: Introdução
 description: Introdução às APIs do Marketo Engage
 exl-id: 78c44c32-4e59-4d55-a45c-ef0d7dac814d
-source-git-commit: 7a3df193e47e7ee363c156bf24f0941879c6bd13
+source-git-commit: 490411e411bed7b5b76fd9e5f41ccc9d156b2ba9
 workflow-type: tm+mt
-source-wordcount: '1268'
+source-wordcount: '1340'
 ht-degree: 1%
 
 ---
@@ -13,7 +13,11 @@ ht-degree: 1%
 
 O Marketo Engage é uma plataforma de automação de marketing que permite aos profissionais de marketing gerenciar programas e campanhas multicanais personalizados para clientes potenciais e de clientes. A plataforma Marketo Engage pode ser estendida usando pontos de integração. Abaixo você encontra as entidades principais e seus relacionamentos.
 
-Os seguintes objetos não estão disponíveis por meio da API REST quando a sincronização nativa está habilitada: Empresa, Oportunidade, Função da oportunidade, Vendedor
+>[!NOTE]
+>A API do SOAP está sendo descontinuada e não estará mais disponível após 31 de outubro de 2025. Todos os novos desenvolvimentos devem ser feitos com a [REST API](./rest-api/rest-api.md) do Marketo, e os serviços existentes devem ser migrados até essa data para evitar interrupções no serviço. Se você tiver um serviço que usa a API SOAP, consulte a API SOAP [Guia de Migração](./soap-api/migration.md) para obter informações sobre como migrar.
+>
+
+Quando a conexão Nativa do SFDC ou do MS Dynamics CRM está habilitada em uma instância do Marketo Engage, os seguintes objetos são Somente Leitura: Empresa, Oportunidade, Função da Oportunidade, Vendedor
 
 ![Modelo de dados](assets/data_model.png)
 

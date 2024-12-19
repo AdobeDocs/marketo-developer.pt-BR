@@ -5,9 +5,9 @@ breadcrumb-title: Guia do desenvolvedor do [!DNL Marketo]
 role: Admin
 feature-set: "Marketo Engage"
 index: true
-source-git-commit: afe7e713fe15d63822625cd0299dc7125761cd33
+source-git-commit: 8ad3e3f0958ea705375651b1c8a75967d807ca80
 workflow-type: tm+mt
-source-wordcount: '243'
+source-wordcount: '247'
 ht-degree: 37%
 
 ---
@@ -142,6 +142,7 @@ ht-degree: 37%
       - [[!DNL listMObjects]](soap-api/listmobjects.md)
       - [Objetos do Marketo](soap-api/marketo-objects.md)
       - [[!DNL syncMObjects]](soap-api/syncmobjects.md)
+   - [Migração para a API REST](soap-api/migration.md)
    - Programas {#programs}
       - [[!DNL getChannels]](soap-api/getchannels.md)
       - [[!DNL getTags]](soap-api/gettags.md)
