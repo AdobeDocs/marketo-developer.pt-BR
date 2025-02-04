@@ -3,9 +3,9 @@ title: importToList
 feature: SOAP
 description: chamadas de SOAP importToList
 exl-id: 7e4930a9-a78f-44a3-9e8c-eeca908080c8
-source-git-commit: 66add4c38d0230c36d57009de985649bb67fde3e
+source-git-commit: 8a019985fc9ce7e1aa690ca26bfa263cd3c48cfc
 workflow-type: tm+mt
-source-wordcount: '317'
+source-wordcount: '393'
 ht-degree: 5%
 
 ---
@@ -24,7 +24,7 @@ Essa função permite importar uma lista de leads para uma Lista estática exist
 | mary@company.com | Mary | Rodgers |
 | wanda@megacorp.com | Wanda | Williams |
 
-**Observação:** valores de `displayName` devem ser usados em `importFileHeader` em vez dos valores de `name`.
+Os valores `displayName` devem ser usados em `importFileHeader` em vez dos valores `name`.
 
 **Conteúdo de Email Dinâmico**: como opção, você pode passar valores por cliente potencial que atuam como substitutos de Meus Tokens em um email.
 
@@ -36,9 +36,11 @@ Essa função permite importar uma lista de leads para uma Lista estática exist
 
 **Importante:** se você adicionar tokens aos clientes potenciais, deverá especificar a Campanha Inteligente que os utiliza. Na próxima vez que a Campanha inteligente especificada for executada, ela usará os valores da sua lista, em vez dos valores normais do Meu token. Depois que essa única campanha for executada, os tokens serão descartados.
 
-**OBSERVAÇÃO:** `importToList` pode demorar para ser concluído, especialmente para listas grandes. Se você planeja usar a lista recém-importada em outras chamadas de API, você deve usar `importToListStatus` para verificar se a operação foi concluída.
+`importToList` pode demorar para ser concluído, especialmente para listas grandes. Se você planeja usar a lista recém-importada em outras chamadas de API, você deve usar `importToListStatus` para verificar se a operação foi concluída.
 
-## Solicitar
+**Observação:** a importação de valores NULL para campos numéricos em um arquivo CSV pode gerar uma atividade &quot;Alterar Valor de Dados&quot; para esses campos, mesmo que o campo já esteja em branco. Quaisquer campanhas inteligentes que usam um filtro &quot;Valor dos dados alterado&quot; ou um acionador &quot;Alterações no valor dos dados&quot; podem fazer com que os clientes potenciais se qualifiquem para essas campanhas, mesmo que os dados não estejam sendo realmente alterados. Use restrições nesses filtros/acionadores para garantir que os clientes em potencial não se qualifiquem para campanhas incorretas ao executar importações.
+
+## Solicitação
 
 | Nome do campo | Obrigatório/Opcional | Descrição |
 | --- | --- | --- |
