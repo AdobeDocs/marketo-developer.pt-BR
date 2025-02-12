@@ -3,9 +3,9 @@ title: Programas
 feature: REST API, Programs
 description: Criar e editar informações do programa.
 exl-id: 30700de2-8f4a-4580-92f2-7036905deb80
-source-git-commit: 66add4c38d0230c36d57009de985649bb67fde3e
+source-git-commit: f28aa6daf53063381077b357061fe7813c64b5de
 workflow-type: tm+mt
-source-wordcount: '843'
+source-wordcount: '848'
 ht-degree: 2%
 
 ---
@@ -320,9 +320,12 @@ GET /rest/asset/v1/program/byTag.json?tagType=Presenter&tagValue=Dennis
 
 ## Criar e atualizar
 
-[Criar]https://developer.adobe.com/marketo-apis/api/asset/#tag/Programs/operation/createProgramUsingPOST) e [atualizar](https://developer.adobe.com/marketo-apis/api/asset/#tag/Programs/operation/updateProgramUsingPOST) programas seguem o padrão de ativo padrão e têm `folder`, `name`, `type` e `channel` como parâmetros obrigatórios, com `description`, `costs` e `tags` sendo opcionais. Canal e tipo só podem ser definidos na criação do programa. Somente descrição, nome, `tags` e `costs` podem ser atualizados após a criação, com um parâmetro `costsDestructiveUpdate` adicional permitido. Passar `costsDestructiveUpdate` como verdadeiro fará com que todos os custos existentes sejam compensados e substituídos por quaisquer custos incluídos na chamada. Observe que as tags podem ser necessárias para alguns tipos de programas em algumas assinaturas, mas isso depende da configuração e deve ser verificado primeiro com Obter tags para ver se há requisitos específicos de instância.
+A [criação](https://developer.adobe.com/marketo-apis/api/asset/#tag/Programs/operation/createProgramUsingPOST) e a [atualização](https://developer.adobe.com/marketo-apis/api/asset/#tag/Programs/operation/updateProgramUsingPOST) de programas seguem o padrão de ativo padrão e têm `folder`, `name`, `type` e `channel` como parâmetros obrigatórios, com `description`, `costs` e `tags` sendo opcionais. Canal e tipo só podem ser definidos na criação do programa. Somente descrição, nome, `tags` e `costs` podem ser atualizados após a criação, com um parâmetro `costsDestructiveUpdate` adicional permitido. Passar `costsDestructiveUpdate` como verdadeiro fará com que todos os custos existentes sejam compensados e substituídos por quaisquer custos incluídos na chamada. Observe que as tags podem ser necessárias para alguns tipos de programas em algumas assinaturas, mas isso depende da configuração e deve ser verificado primeiro com Obter tags para ver se há requisitos específicos de instância.
 
-Ao criar ou atualizar um Programa de Email, um `startDate` e `endDate` também podem ser passados.
+Ao criar ou atualizar um Programa de Email, um `startDate` e `endDate` também podem ser transmitidos como uma data/hora UTC:
+
+`"startDate": "2022-10-19T15:00:00.000Z"`
+`"endDate": "2022-10-19T15:00:00.000Z"`
 
 ### Criar
 
