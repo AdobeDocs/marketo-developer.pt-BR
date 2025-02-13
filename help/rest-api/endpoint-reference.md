@@ -3,9 +3,9 @@ title: Referência do ponto de extremidade
 feature: REST API
 description: Referências de endpoint da API do Marketo
 exl-id: 27d16b6f-865a-4e40-ab9c-cbabe2927472
-source-git-commit: f28aa6daf53063381077b357061fe7813c64b5de
+source-git-commit: 3632d2b713d97a2c895c65f144c07e62e1d369cb
 workflow-type: tm+mt
-source-wordcount: '4677'
+source-wordcount: '4676'
 ht-degree: 27%
 
 ---
@@ -19,7 +19,7 @@ Abaixo estão links para as referências da API REST do Marketo.
 - [Banco de Dados Principal](https://developer.adobe.com/marketo-apis/api/mapi/)
 - [Gerenciamento de usuários](https://developer.adobe.com/marketo-apis/api/user/)
 
-## Lista de pontos de extremidade (#endpoint_list)
+## Lista de Pontos de Extremidade {#endpoint_list}
 
 Esta é uma lista abrangente de endpoints da REST API.
 
