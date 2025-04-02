@@ -3,9 +3,9 @@ title: Autenticação
 feature: REST API
 description: Autenticação de usuários do Marketo para uso da API.
 exl-id: f89a8389-b50c-4e86-a9e4-6f6acfa98e7e
-source-git-commit: 6f8dc76703aba204b6d0d4f1a3b5275aea819f08
+source-git-commit: 9830572277db2709c6853bea56fc70c455fd5e54
 workflow-type: tm+mt
-source-wordcount: '567'
+source-wordcount: '573'
 ht-degree: 0%
 
 ---
@@ -52,13 +52,15 @@ Definição de resposta
 
 Ao fazer chamadas para métodos da API REST, um token de acesso deve ser incluído em cada chamada para que a chamada seja bem-sucedida.
 
-O token de acesso deve ser enviado como um cabeçalho HTTP.
-
-`Authorization: Bearer cdf01657-110d-4155-99a7-f986b2ff13a0:int`
-
 >[!IMPORTANT]
 >
 >O suporte para autenticação usando o parâmetro de consulta **access_token** será removido em 30 de junho de 2025. Se o projeto usar um parâmetro de consulta para passar o token de acesso, ele deverá ser atualizado para usar o cabeçalho **Autorização** o mais rápido possível. O novo desenvolvimento deve usar o cabeçalho **Autorização** exclusivamente.
+
+O token de acesso deve ser enviado como um cabeçalho HTTP. Por exemplo, em uma solicitação CURL:
+
+```bash
+$ curl -H 'Authorization: Bearer cdf01657-110d-4155-99a7-f984b2ff13a0:int`' 'https://123-ABC-456.mktourl.com/rest/v1/apicall.json?filterType=id&filterValues=4,5,7,12,13'
+```
 
 ## Dicas e práticas recomendadas
 

@@ -3,9 +3,9 @@ title: Extração de Objeto Personalizado em Massa
 feature: REST API, Custom Objects
 description: Processamento em lote de objetos personalizados do Marketo.
 exl-id: 86cf02b0-90a3-4ec6-8abd-b4423cdd94eb
-source-git-commit: 66add4c38d0230c36d57009de985649bb67fde3e
+source-git-commit: 9830572277db2709c6853bea56fc70c455fd5e54
 workflow-type: tm+mt
-source-wordcount: '1300'
+source-wordcount: '1298'
 ht-degree: 1%
 
 ---
@@ -28,10 +28,10 @@ A extração de objeto personalizado oferece suporte a várias opções de filtr
 
 | Tipo de filtro | Tipo de dados | Observações |
 |---|---|---|
-| `updatedAt` | Intervalo de datas | Aceita um objeto JSON com os membros `startAt` e `endAt` &amp;nbsp.;`startAt` aceita um datetime que representa a marca d&#39;água inferior e `endAt` aceita um datetime que representa a marca d&#39;água superior. O intervalo deve ser de 31 dias ou menos. Os trabalhos com este tipo de filtro retornam todos os registros acessíveis que foram atualizados dentro do intervalo de datas. Os datetimes devem estar em um formato ISO-8601, sem milissegundos. |
-| `staticListName` | Sequência de caracteres | Aceita o nome de uma lista estática. Os trabalhos com esse tipo de filtro retornam todos os registros acessíveis que são membros da lista estática no momento em que o trabalho começa a ser processado. Recupere nomes de lista estáticos usando o ponto de extremidade Get Lists. |
+| `updatedAt` | Date Range | Aceita um objeto JSON com os membros `startAt` e `endAt` &amp;nbsp.;`startAt` aceita um datetime que representa a marca d&#39;água inferior e `endAt` aceita um datetime que representa a marca d&#39;água superior. O intervalo deve ser de 31 dias ou menos. Os trabalhos com este tipo de filtro retornam todos os registros acessíveis que foram atualizados dentro do intervalo de datas. Os datetimes devem estar em um formato ISO-8601, sem milissegundos. |
+| `staticListName` | String | Aceita o nome de uma lista estática. Os trabalhos com esse tipo de filtro retornam todos os registros acessíveis que são membros da lista estática no momento em que o trabalho começa a ser processado. Recupere nomes de lista estáticos usando o ponto de extremidade Get Lists. |
 | `staticListId` | Inteiro | Aceita a id de uma lista estática. Os trabalhos com esse tipo de filtro retornam todos os registros acessíveis que são membros da lista estática no momento em que o trabalho começa a ser processado. Recupere ids de lista estáticas usando o ponto de extremidade Obter Listas. |
-| `smartListName`* | Sequência de caracteres | Aceita o nome de uma lista inteligente. Os trabalhos com esse tipo de filtro retornam todos os registros acessíveis que são membros das smart lists no momento em que o trabalho começa a ser processado. Recupere nomes de listas inteligentes usando o ponto de extremidade Obter Smart Lists. |
+| `smartListName`* | String | Aceita o nome de uma lista inteligente. Os trabalhos com esse tipo de filtro retornam todos os registros acessíveis que são membros das smart lists no momento em que o trabalho começa a ser processado. Recupere nomes de listas inteligentes usando o ponto de extremidade Obter Smart Lists. |
 | `smartListId`* | Inteiro | Aceita a ID de uma lista inteligente. Os trabalhos com esse tipo de filtro retornam todos os registros acessíveis que são membros das smart lists no momento em que o trabalho começa a ser processado. Recupere as IDs das listas inteligentes usando o ponto de extremidade Obter listas inteligentes. |
 
 O tipo de filtro não está disponível para algumas assinaturas. Se não estiver disponível para sua assinatura, você receberá um erro ao chamar o endpoint Criar trabalho de lead de exportação (&quot;1035, Tipo de filtro não suportado para assinatura de destino&quot;). Os clientes podem entrar em contato com o Suporte da Marketo para ativar essa funcionalidade em suas assinaturas.
@@ -48,7 +48,7 @@ O ponto de extremidade [Criar Trabalho de Objeto Personalizado de Exportação](
 |---|---|---|---|
 | `fields` | Matriz[Cadeia de Caracteres] | Sim | Matriz de cadeias de caracteres que contém o valor do nome de atributo do objeto personalizado, conforme retornado pelo ponto de extremidade Descrever Objeto Personalizado. Os campos listados são incluídos no arquivo exportado. |
 | `columnHeaderNames` | Objeto | Não | Um objeto JSON que contém pares de valores chave de nomes de campos e cabeçalhos de coluna. A chave deve ser o nome de um campo incluído no trabalho de exportação. O valor é o nome do cabeçalho de coluna exportado para esse campo. |
-| `format` | Sequência de caracteres | Não | Aceita um dos seguintes: CSV, TSV, SSV. O arquivo exportado é renderizado como um arquivo de valores separados por vírgula, valores separados por tabulação ou valores separados por espaço, respectivamente, se definido. O padrão é CSV, caso não esteja definido. |
+| `format` | String | Não | Aceita um dos seguintes: CSV, TSV, SSV. O arquivo exportado é renderizado como um arquivo de valores separados por vírgula, valores separados por tabulação ou valores separados por espaço, respectivamente, se definido. O padrão é CSV, caso não esteja definido. |
 
 
 ## Criação de um trabalho
@@ -403,7 +403,7 @@ leadId,color,make,model,vIN
 13,Fusion Red,Tesla,Roadster,SFGRC3C41FF154321
 ```
 
-Para oferecer suporte à recuperação parcial e de fácil retomada dos dados extraídos, o endpoint do arquivo oferece suporte opcional ao Intervalo do cabeçalho HTTP do tipo bytes. Se o cabeçalho não estiver definido, todo o conteúdo será retornado. Você pode ler mais sobre como usar o cabeçalho Intervalo na [Extração em massa](bulk-extract.md) do Marketo.
+Para oferecer suporte à recuperação parcial e de fácil retomada de dados extraídos, o ponto de extremidade do arquivo oferece suporte opcionalmente ao cabeçalho HTTP `Range` do tipo `bytes`. Se o cabeçalho não estiver definido, todo o conteúdo será retornado. Você pode ler mais sobre como usar o cabeçalho Intervalo na [Extração em massa](bulk-extract.md) do Marketo.
 
 ## Cancelar um trabalho
 

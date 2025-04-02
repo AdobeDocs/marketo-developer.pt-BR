@@ -3,9 +3,9 @@ title: Extração de atividade em massa
 feature: REST API
 description: Dados de atividade de processamento em lote do Marketo.
 exl-id: 6bdfa78e-bc5b-4eea-bcb0-e26e36cf6e19
-source-git-commit: 8c22255673fee1aa0f5b47393a241fcf6680778b
+source-git-commit: 9830572277db2709c6853bea56fc70c455fd5e54
 workflow-type: tm+mt
-source-wordcount: '1343'
+source-wordcount: '1342'
 ht-degree: 7%
 
 ---
@@ -222,7 +222,7 @@ GET /bulk/v1/activities/export/{exportId}/file.json
 
 A resposta contém um arquivo formatado da maneira que o trabalho foi configurado. O endpoint responde com o conteúdo do arquivo.
 
-Se um campo de cliente em potencial solicitado estiver vazio (não contiver dados), `then null` será colocado no campo correspondente no arquivo de exportação.  No exemplo abaixo, o campo campaignId da atividade retornada está vazio.
+Se um campo de cliente em potencial solicitado estiver vazio (não contiver dados), `then null` será colocado no campo correspondente no arquivo de exportação.  No exemplo abaixo, o campo `campaignId` da atividade retornada está vazio.
 
 ```json
 marketoGUID,leadId,activityDate,activityTypeId,campaignId,primaryAttributeValueId,primaryAttributeValue,attributes
