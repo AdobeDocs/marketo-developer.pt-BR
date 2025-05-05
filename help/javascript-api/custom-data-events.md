@@ -14,7 +14,7 @@ ht-degree: 3%
 
 Esse método envia eventos personalizados para rastreamento e personalização em tempo real. Eles podem ser usados para enviar dados de terceiros ou para acionar seu próprio evento personalizado com base no comportamento do visitante. Os eventos de dados personalizados são contados uma vez na sessão de um visitante.
 
-Você deve se tornar um cliente do Web Personalization e implantar a [tag RTP](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/web-personalization/rtp-tag-implementation/deploy-the-rtp-javascript) no site antes de usar a API de Contexto de Usuário.
+Você deve se tornar um cliente do Web Personalization e implantar a [tag RTP](https://experienceleague.adobe.com/pt-br/docs/marketo/using/product-docs/web-personalization/rtp-tag-implementation/deploy-the-rtp-javascript) no site antes de usar a API de Contexto de Usuário.
 
 | Parâmetro | Opcional/Obrigatório | Tipo | Descrição |
 |---|---|---|---|

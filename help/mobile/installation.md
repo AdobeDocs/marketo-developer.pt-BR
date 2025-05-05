@@ -18,7 +18,7 @@ Instruções de instalação do SDK do Marketo Mobile. As etapas abaixo são nec
 
 ### Pré-requisitos
 
-1. [Adicionar um aplicativo no Marketo Admin](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/mobile-marketing/admin/add-a-mobile-app) (obtenha a Chave Secreta e a ID do Munchkin do aplicativo)
+1. [Adicionar um aplicativo no Marketo Admin](https://experienceleague.adobe.com/pt-br/docs/marketo/using/product-docs/mobile-marketing/admin/add-a-mobile-app) (obtenha a Chave Secreta e a ID do Munchkin do aplicativo)
 1. [Configurar notificações por push](push-notifications.md) (opcional)
 
 ### Instalar a estrutura via CocoaPods
@@ -132,7 +132,7 @@ private func application(_ app: UIApplication, open url: URL, options: [UIApplic
 
 ### Pré-requisitos
 
-1. [Adicionar um aplicativo no Marketo Admin](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/mobile-marketing/admin/add-a-mobile-app) (obtenha a Chave Secreta e a ID do Munchkin do aplicativo)
+1. [Adicionar um aplicativo no Marketo Admin](https://experienceleague.adobe.com/pt-br/docs/marketo/using/product-docs/mobile-marketing/admin/add-a-mobile-app) (obtenha a Chave Secreta e a ID do Munchkin do aplicativo)
 1. [Configurar notificações por push](push-notifications.md#android_setup_push) (opcional)
 1. [Baixar o SDK do Marketo para Android](https://codeload.github.com/Marketo/android-sdk/zip/refs/heads/master)
 

@@ -14,7 +14,7 @@ ht-degree: 2%
 
 [Referência de Ponto de Extremidade de Modelo de Email](https://developer.adobe.com/marketo-apis/api/asset/#tag/Email-Templates)
 
-Modelos de email formam a base para cada novo email no Marketo.  Embora os emails possam ser desvinculados dos modelos por meio da substituição de HTML, eles devem ser criados inicialmente com um modelo como base.  Os modelos são criados como documentos de HTML puro no Marketo com metadados como nomes e descrições.  Há poucas restrições no conteúdo, mas o HTML do modelo deve ser válido e deve conter pelo menos uma seção editável, que siga os requisitos [descritos aqui](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/email-marketing/general/functions-in-the-editor/add-editable-sections-to-email-templates-v1-0).
+Modelos de email formam a base para cada novo email no Marketo.  Embora os emails possam ser desvinculados dos modelos por meio da substituição de HTML, eles devem ser criados inicialmente com um modelo como base.  Os modelos são criados como documentos de HTML puro no Marketo com metadados como nomes e descrições.  Há poucas restrições no conteúdo, mas o HTML do modelo deve ser válido e deve conter pelo menos uma seção editável, que siga os requisitos [descritos aqui](https://experienceleague.adobe.com/pt-br/docs/marketo/using/product-docs/email-marketing/general/functions-in-the-editor/add-editable-sections-to-email-templates-v1-0).
 
 ## Consultar
 
