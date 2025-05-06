@@ -5,10 +5,10 @@ breadcrumb-title: Guia do desenvolvedor do [!DNL Marketo]
 role: Admin
 feature-set: "Marketo Engage"
 index: true
-source-git-commit: 8ad3e3f0958ea705375651b1c8a75967d807ca80
+source-git-commit: e2e45c0dfa55966aeaa11c0ecf5bfcff01bbaf81
 workflow-type: tm+mt
-source-wordcount: '247'
-ht-degree: 37%
+source-wordcount: '249'
+ht-degree: 41%
 
 ---
 
@@ -23,18 +23,18 @@ ht-degree: 37%
    - [Referência da API do Forms](javascript-api/forms-api-reference.md)
    - [Obter dados do visitante](javascript-api/get-visitor-data.md)
    - [API Javascript](javascript-api/javascript-api.md)
-   - Acompanhamento de Cliente Potencial {#leadtracking}
+   - Acompanhamento de lead {#leadtracking}
       - [Acompanhamento de lead](javascript-api/lead-tracking.md)
       - [Configuração](javascript-api/configuration.md)
       - [Referência da API do Munchkin](javascript-api/api-reference.md)
    - [Correspondência de padrões](javascript-api/pattern-match.md)
    - [Predictive Content](javascript-api/predictive-content.md)
    - [Redirecionamentos](javascript-api/redirect.md)
-   - [Rich Media Recommendations](javascript-api/rich-media-recommendation.md)
+   - [Recomendações para mídia avançada](javascript-api/rich-media-recommendation.md)
    - [Redes sociais](javascript-api/social.md)
    - [Acionadores](javascript-api/triggers.md)
    - [Personalização na Web](javascript-api/web-personalization.md)
-- Dispositivo móvel {#mobile}
+- Dispositivos móveis {#mobile}
    - [Instalar  [!DNL Adobe Launch] Extensão](mobile/adobe-launch-extension-installation.md)
    - [[!DNL Adobe Launch] Extensão](mobile/adobe-launch-extension.md)
    - [Modo de Segurança Avançada](mobile/advanced-security-access-mode.md)
@@ -43,7 +43,7 @@ ht-degree: 37%
    - [Mensagens no aplicativo](mobile/in-app-messages.md)
    - [Instalação](mobile/installation.md)
    - [[!DNL Ionic]](mobile/ionic.md)
-   - [Dispositivo móvel](mobile/mobile.md)
+   - [Dispositivos móveis](mobile/mobile.md)
    - [Phonegap](mobile/phonegap.md)
    - [Notificações por push](mobile/push-notifications.md)
    - [React Native](mobile/react-native.md)
@@ -73,7 +73,7 @@ ht-degree: 37%
    - [Autenticação](rest-api/authentication.md)
    - [URL básica](rest-api/base-url.md)
    - [Práticas recomendadas](rest-api/marketo-integration-best-practices.md)
-   - Extração em Massa {#bulk-extract}
+   - Extração em massa {#bulk-extract}
       - [Atividade em massa](rest-api/bulk-activity-extract.md)
       - [Objeto personalizado em massa](rest-api/bulk-custom-object-extract.md)
       - [Extração em massa](rest-api/bulk-extract.md)
@@ -90,7 +90,7 @@ ht-degree: 37%
    - [Baixar definições do Swagger](rest-api/swagger.md)
    - [Referência do ponto de extremidade](rest-api/endpoint-reference.md)
    - [Códigos de erro](rest-api/error-codes.md)
-   - Banco de Dados de Cliente Potencial {#lead-database}
+   - Banco de dados de leads {#lead-database}
       - [Atividades](rest-api/activities.md)
       - [Empresas](rest-api/companies.md)
       - [Objetos personalizados](rest-api/custom-objects.md)
@@ -122,20 +122,20 @@ ht-degree: 37%
       - [[!DNL getCampaignsForSource]](soap-api/getcampaignsforsource.md)
       - [[!DNL requestCampaign]](soap-api/requestcampaign.md)
       - [[!DNL scheduleCampaign]](soap-api/schedulecampaign.md)
-   - Objetos Personalizados {#custom-objects}
+   - Objetos personalizados {#custom-objects}
       - [Objetos personalizados](soap-api/custom-objects.md)
       - [[!DNL deleteCustomObjects]](soap-api/deletecustomobjects.md)
       - [[!DNL getCustomObjects]](soap-api/getcustomobjects.md)
       - [[!DNL syncCustomObjects]](soap-api/synccustomobjects.md)
    - [Códigos de erro](soap-api/error-codes.md)
-   - Clientes potenciais {#leads}
+   - Leads {#leads}
       - [[!DNL getLead]](soap-api/getlead.md)
       - [[!DNL getMultipleLeads]](soap-api/getmultipleleads.md)
       - [[!DNL mergeLeads]](soap-api/mergeleads.md)
       - [Leads](soap-api/leads.md)
       - [[!DNL syncLead]](soap-api/synclead.md)
       - [[!DNL syncMultipleLeads]](soap-api/syncmultipleleads.md)
-   - Objetos Marketo {#marketo-objects}
+   - Objetos do Marketo {#marketo-objects}
       - [[!DNL deleteMObjects]](soap-api/deletemobjects.md)
       - [[!DNL describeMObjects]](soap-api/describemobject.md)
       - [[!DNL getMObjects]](soap-api/getmobjects.md)
@@ -147,8 +147,8 @@ ht-degree: 37%
       - [[!DNL getChannels]](soap-api/getchannels.md)
       - [[!DNL getTags]](soap-api/gettags.md)
    - [API SOAP](soap-api/soap-api.md)
-   - [Perguntas frequentes sobre SOAP](soap-api/soap-faq.md)
-   - Listas Estáticas {#static-lists}
+   - [Perguntas frequentes sobre o SOAP](soap-api/soap-faq.md)
+   - Listas estáticas {#static-lists}
       - [[!DNL getImportToListStatus]](soap-api/getimporttoliststatus.md)
       - [[!DNL importToList]](soap-api/importtolist.md)
       - [[!DNL listOperation]](soap-api/listoperation.md)
@@ -163,3 +163,4 @@ ht-degree: 37%
 - [Licença](api-license.md)
 - [Sandbox de parceiros](partner-sandbox.md)
 - [Etapas de fluxo de autoatendimento](self-service-flow-steps.md)
+- [Arquivo do blog](blog.md)
