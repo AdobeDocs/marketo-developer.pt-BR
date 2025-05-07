@@ -3,9 +3,9 @@ title: Extração de atividade em massa
 feature: REST API
 description: Dados de atividade de processamento em lote do Marketo.
 exl-id: 6bdfa78e-bc5b-4eea-bcb0-e26e36cf6e19
-source-git-commit: 9830572277db2709c6853bea56fc70c455fd5e54
+source-git-commit: a5b855691e7fb9e628e2d68fd14a8a6c689d6750
 workflow-type: tm+mt
-source-wordcount: '1342'
+source-wordcount: '1332'
 ht-degree: 7%
 
 ---
@@ -104,7 +104,7 @@ Ao usar `primaryAttributeValues`, o filtro `activityTypeIds` deve estar presente
 | filtro | Matriz[Objeto] | Sim | Aceita uma matriz de filtros. Exatamente um filtro `createdAt` deve ser incluído na matriz. Um filtro `activityTypeIds` opcional pode ser incluído. Os filtros são aplicados ao conjunto de atividades acessível e o conjunto de atividades resultante é retornado pelo trabalho de exportação. |
 | formato | String | Não | Aceita um dos seguintes: CSV, TSV, SSV O arquivo exportado é renderizado como um arquivo de valores separados por vírgula, valores separados por tabulação ou valores separados por espaço, respectivamente, se definido. O padrão é CSV, caso não esteja definido. |
 | columnHeaderNames | Objeto | Não | Um objeto JSON que contém pares de valores chave de nomes de campos e cabeçalhos de coluna. A chave deve ser o nome de um campo incluído no trabalho de exportação. O valor é o nome do cabeçalho de coluna exportado para esse campo. |
-| campos | Matriz[Cadeia de Caracteres] | Não | Matriz opcional de cadeias de caracteres que contêm valores de campo. Os campos listados são incluídos no arquivo exportado. Por padrão, os seguintes campos são retornados: `marketoGUIDleadId` `activityDate` `activityTypeId` `campaignId` `primaryAttributeValueId` `primaryAttributeValueattributes`. Esse parâmetro pode ser usado para reduzir o número de campos retornados especificando um subconjunto da lista acima. Exemplo:&quot;fields&quot;: [&quot;leadId&quot;, &quot;activityDate&quot;, &quot;activityTypeId&quot;]Um campo adicional &quot;actionResult&quot; pode ser especificado para incluir a ação de atividade (&quot;bem-sucedido&quot;, &quot;ignorado&quot; ou &quot;falhou&quot;). |
+| campos | Matriz[Cadeia de Caracteres] | Não | Matriz opcional de cadeias de caracteres que contêm valores de campo. Os campos listados são incluídos no arquivo exportado. Por padrão, os seguintes campos são retornados: <ul><li>`marketoGUIDleadId`</li><li> `activityDate` </li><li>`activityTypeId` </li><li>`campaignId`</li><li> `primaryAttributeValueId` </li><li>`primaryAttributeValue`</li><li> `attributes`</li></ul>. Este parâmetro pode ser usado para reduzir o número de campos retornados especificando um subconjunto da lista acima:`"fields": ["leadId", "activityDate", "activityTypeId"]`. Um campo adicional `actionResult` pode ser especificado para incluir a ação da atividade: `("succeeded", "skipped", or "failed")`. |
 
 
 ## Criação de um trabalho
