@@ -2,14 +2,18 @@
 title: Fluxos de dados
 description: Visão geral dos fluxos de dados
 exl-id: 5617b6a5-ebc8-4d97-a290-e3b87f83e360
-source-git-commit: 9830572277db2709c6853bea56fc70c455fd5e54
+source-git-commit: 43bcafd335a2fdc709e917ef74504500422c2889
 workflow-type: tm+mt
-source-wordcount: '1588'
+source-wordcount: '1601'
 ht-degree: 2%
 
 ---
 
 # Fluxos de dados
+
+>[!NOTE]
+> Informações atuais sobre fluxos de dados agora estão disponíveis em [Usando Fluxos de Dados](https://developer.adobe.com/events/docs/guides/using/marketo/marketo-data-streams/).
+>
 
 As organizações de marketing de nossos clientes dependem de Campanhas de marketing focadas e oportunas para manter-se a par de seus negócios e serem competitivas. Para dar suporte a decisões rápidas e permitir alterações estratégicas rapidamente, é importante ter dados que apóiem e impulsionem as principais decisões que oferecem campanhas focadas e direcionadas. Também há alguns clientes que realizam esforços de marketing nos níveis de seus segmentos de clientes, dentro e fora da Marketo Engage. Para dar suporte a esses diferentes esforços, a Marketo criou a capacidade de adquirir grandes volumes de dados em tempo quase real por meio dos Fluxos de dados.
 
@@ -258,7 +262,7 @@ Para configurar o Adobe IO, consulte [Configuração de fluxos de dados de audit
 
 ### Configuração do fluxo de dados de auditoria do usuário no Marketo
 
-O Fluxo de dados de auditoria do usuário está disponível atualmente como parte dos pacotes de desempenho, juntamente com os outros 3 Fluxos de dados. Para obter mais informações sobre os Pacotes, consulte a [Página de Descrição do Produto](https://helpx.adobe.com/br/legal/product-descriptions/adobe-marketo-engage---product-description.html) para obter os limites e recursos do produto.
+O Fluxo de dados de auditoria do usuário está disponível atualmente como parte dos pacotes de desempenho, juntamente com os outros 3 Fluxos de dados. Para obter mais informações sobre os Pacotes, consulte a [Página de Descrição do Produto](https://helpx.adobe.com/legal/product-descriptions/adobe-marketo-engage---product-description.html) para obter os limites e recursos do produto.
 
 ### Configuração do Adobe I/O
 
