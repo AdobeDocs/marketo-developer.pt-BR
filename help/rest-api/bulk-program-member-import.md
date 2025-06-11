@@ -3,9 +3,9 @@ title: Importação de Membros do Programa em Massa
 feature: REST API
 description: Importação em lote de dados do membro.
 exl-id: b0e1039a-fe9b-4fb7-9aa6-9980a06da673
-source-git-commit: 66add4c38d0230c36d57009de985649bb67fde3e
+source-git-commit: 8a785b0719e08544ed1a87772faf90bd9dda3077
 workflow-type: tm+mt
-source-wordcount: '838'
+source-wordcount: '837'
 ht-degree: 0%
 
 ---
@@ -141,7 +141,7 @@ Se a tarefa tiver sido concluída, você terá uma lista do número de linhas pr
 
 As falhas são indicadas pelo atributo `numOfRowsFailed` na resposta [Obter Status de Membro do Programa de Importação](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Bulk-Import-Program-Members/operation/getImportProgramMemberStatusUsingGET). Se numOfRowsFailed for maior que zero, esse valor indicará o número de falhas que ocorreram.
 
-Use o ponto de extremidade [Obter Falhas de Membro do Programa de Importação](http://TODO) para recuperar registros e causas de linhas com falha transmitindo o parâmetro de caminho `batchId`.
+Use o ponto de extremidade Obter Falhas de Membro do Programa de Importação para recuperar registros e causas de linhas com falha transmitindo o parâmetro de caminho `batchId`.
 
 ```
 GET /bulk/v1/program/members/import/{batchId}/failures.json

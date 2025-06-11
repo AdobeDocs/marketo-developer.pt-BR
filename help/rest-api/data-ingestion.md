@@ -1,10 +1,11 @@
 ---
-title: Assimilação de dados
+title: Ingestão de dados
 feature: REST API, Dynamic Content
 description: Consumir dados com APIs do Marketo.
-source-git-commit: 1595aa6df0b0404c7cda2c246c9249018fe87e77
+exl-id: 1d501916-53ac-42d8-a804-abb4ab01c7e8
+source-git-commit: 8a785b0719e08544ed1a87772faf90bd9dda3077
 workflow-type: tm+mt
-source-wordcount: '968'
+source-wordcount: '965'
 ht-degree: 11%
 
 ---
@@ -13,11 +14,11 @@ ht-degree: 11%
 
 A API de assimilação de dados é um serviço de alto volume, baixa latência e alta disponibilidade, projetado para lidar com a assimilação de grandes quantidades de dados pessoais e relacionados a pessoas de maneira eficiente e com atrasos mínimos.
 
-Os dados são assimilados enviando solicitações que são executadas de forma assíncrona. O status da solicitação pode ser recuperado assinando-se a eventos do [Fluxo de Dados de Observação do Marketo](https://developer.adobe.com/events/docs/guides/using/marketo/marketo-observability-data-stream-setup/).&#x200B;
+Os dados são assimilados enviando solicitações que são executadas de forma assíncrona. O status da solicitação pode ser recuperado assinando-se a eventos do [Fluxo de Dados de Observação do Marketo](https://developer.adobe.com/events/docs/guides/using/marketo/marketo-observability-data-stream-setup).&#x200B;
 
 As interfaces são oferecidas para dois tipos de objeto: Pessoas, Objetos personalizados. A operação de registro é somente &quot;inserir ou atualizar&quot;.
 
-No momento, a API de assimilação de dados está em beta privado.  Os convidados devem ter um direito ao Pacote [Camada de Desempenho de Marketo Engage](https://nation.marketo.com/t5/product-documents/marketo-engage-performance-tiers/ta-p/328835).
+No momento, a API de assimilação de dados está em beta privado.  Os convidados devem ter um direito ao Pacote [Camada de Desempenho do Marketo Engage](https://nation.marketo.com/t5/product-documents/marketo-engage-performance-tiers/ta-p/328835).
 
 ## Autenticação
 
@@ -61,7 +62,7 @@ A representação de dados é incluída no corpo da solicitação como applicati
 
 O nome do domínio é: `mkto-ingestion-api.adobe.io`
 
-O caminho começa com `/subscriptions/MunchkinId`, onde MunchkinId é específico para sua instância do Marketo. Você pode encontrar seu ID do Munchkin na interface do usuário do Marketo Engage em **Admin** > **Minha conta** > **Informações de suporte**.  O restante do caminho é usado para especificar o recurso de interesse.
+O caminho começa com `/subscriptions/MunchkinId`, onde MunchkinId é específico para sua instância do Marketo. Você pode encontrar sua Munchkin ID na interface do Marketo Engage em **Admin** > **Minha conta** > **Informações de suporte**.  O restante do caminho é usado para especificar o recurso de interesse.
 
 Exemplo de URL para Pessoas:
 
