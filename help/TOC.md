@@ -5,10 +5,10 @@ breadcrumb-title: Guia do desenvolvedor do [!DNL Marketo]
 role: Admin
 feature-set: "Marketo Engage"
 index: true
-source-git-commit: 8a785b0719e08544ed1a87772faf90bd9dda3077
+source-git-commit: 05f8966a2eafca71a00f1e22b6edd4d8dae6b6ac
 workflow-type: tm+mt
-source-wordcount: '250'
-ht-degree: 41%
+source-wordcount: '247'
+ht-degree: 42%
 
 ---
 
@@ -87,7 +87,6 @@ ht-degree: 41%
    - [Canais](rest-api/channels.md)
    - [Serviços personalizados](rest-api/custom-services.md)
    - [API de assimilação de dados](rest-api/data-ingestion.md)
-   - [Baixar definições do Swagger](rest-api/swagger.md)
    - [Referência do ponto de extremidade](rest-api/endpoint-reference.md)
    - [Códigos de erro](rest-api/error-codes.md)
    - Banco de dados de leads {#lead-database}
