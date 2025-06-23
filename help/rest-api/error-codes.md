@@ -3,9 +3,9 @@ title: Códigos de erro
 feature: REST API
 description: Descrições do código de erro do Marketo.
 exl-id: a923c4d6-2bbc-4cb7-be87-452f39b464b6
-source-git-commit: d0750eab0a37df0b7f80c6252f46c95068975000
+source-git-commit: d44ec0442bc33e3e5cb7e2dd6ce3947036c7cd25
 workflow-type: tm+mt
-source-wordcount: '2273'
+source-wordcount: '2283'
 ht-degree: 3%
 
 ---
@@ -34,7 +34,7 @@ Em circunstâncias normais de operação, o Marketo só deve retornar dois erros
 
 O Marketo retornará 413 se a Carga da solicitação exceder 1 MB, ou 10 MB no caso de Lead de importação. Na maioria dos cenários, é improvável atingir esses limites, mas adicionar uma verificação ao tamanho da solicitação e mover quaisquer registros, o que faz com que o limite seja excedido para uma nova solicitação, deve evitar quaisquer circunstâncias, que levam a esse erro ser retornado por quaisquer pontos de extremidade.
 
-414 serão retornados quando o URI de uma solicitação GET exceder 8KB. Para evitá-lo, verifique o comprimento da sua cadeia de caracteres de consulta para ver se ela excede esse limite. Se ele fizer com que sua solicitação seja alterada para um método POST, insira sua cadeia de caracteres de consulta como o corpo da solicitação com o parâmetro adicional `_method=GET`. Isso abre mão da limitação nos URIs. É raro atingir esse limite na maioria dos casos, mas é um pouco comum ao recuperar grandes lotes de registros com valores de filtro individuais longos, como uma GUID.
+O 414 será retornado quando o URI de uma solicitação GET exceder 8KB. Para evitá-lo, verifique o comprimento da sua cadeia de caracteres de consulta para ver se ela excede esse limite. Se isso fizer com que sua solicitação seja alterada para um método POST, insira sua cadeia de caracteres de consulta como o corpo da solicitação com o parâmetro adicional `_method=GET`. Isso abre mão da limitação nos URIs. É raro atingir esse limite na maioria dos casos, mas é um pouco comum ao recuperar grandes lotes de registros com valores de filtro individuais longos, como uma GUID.
 O ponto de extremidade [Identidade](https://developer.adobe.com/marketo-apis/api/identity/) pode retornar um erro 401 Não Autorizado. Normalmente, isso se deve a uma ID de cliente inválida ou a um Segredo do cliente inválido. Códigos de erro de nível HTTP
 
 <table>
@@ -110,7 +110,7 @@ Uma chamada de API que retorna esse código de resposta não é contabilizada em
     <tr>
       <td><a name="603"></a>603</td>
       <td>Acesso negado</td>
-      <td>A autenticação foi bem-sucedida, mas o usuário não tem permissão suficiente para chamar essa API. Talvez seja necessário atribuir [permissões adicionais](custom-services.md) à função de usuário ou habilitar o <a href="https://experienceleague.adobe.com/pt-br/docs/marketo/using/product-docs/administration/additional-integrations/create-an-allowlist-for-ip-based-api-access">Incluir na lista de permissões Acesso à API Baseada em IP</a>.</td>
+      <td>A autenticação foi bem-sucedida, mas o usuário não tem permissão suficiente para chamar essa API. Talvez seja necessário atribuir [permissões adicionais](custom-services.md) à função de usuário ou habilitar o <a href="https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/administration/additional-integrations/create-an-allowlist-for-ip-based-api-access">Incluir na lista de permissões Acesso à API Baseada em IP</a>.</td>
     </tr>
     <tr>
       <td><a name="604"></a>604*</td>
@@ -120,7 +120,7 @@ Uma chamada de API que retorna esse código de resposta não é contabilizada em
     <tr>
       <td><a name="605"></a>605*</td>
       <td>Método HTTP não suportado</td>
-      <td>Não há suporte para GET para o ponto de extremidade Sync Leads. POST deve ser usado.</td>
+      <td>O GET não é compatível com o ponto de extremidade Sync Leads. O POST deve ser usado.</td>
     </tr>
     <tr>
       <td><a name="606"></a>606</td>
@@ -160,7 +160,7 @@ Uma chamada de API que retorna esse código de resposta não é contabilizada em
     <tr>
       <td><a name="613"></a>613</td>
       <td>Solicitação de várias partes inválida</td>
-      <td>O conteúdo multiparte do POST não foi formatado corretamente</td>
+      <td>O conteúdo multiparte da publicação não foi formatado corretamente</td>
     </tr>
     <tr>
       <td><a name="614"></a>614</td>
@@ -287,8 +287,10 @@ Cada registro em uma solicitação bem-sucedida pode ter êxito ou falha individ
 
 #### Códigos de erro de nível de registro
 
-<table>
-  <tbody>
+>[!NOTE]
+>
+><table>
+<tbody>
     <tr>
       <td>Código de resposta</td>
       <td>Descrição</td>
@@ -430,10 +432,12 @@ Cada registro em uma solicitação bem-sucedida pode ter êxito ou falha individ
       <td><ul>
           <li>Muitos trabalhos na fila</li>
           <li>Exportação de cota diária excedida</li>
+          <li>Tarefa já na fila</li>
         </ul></td>
       <td><ul>
           <li>As assinaturas podem ter no máximo 10 trabalhos de extração em massa na fila em um determinado momento.</li>
           <li>Por padrão, os trabalhos de extração são limitados a 500 MB por dia (é redefinido diariamente às 12h00 CST).</li>
+          <li>A ID de exportação já foi colocada na fila.</li>
         </ul></td>
     </tr>
     <tr>
@@ -486,3 +490,4 @@ Cada registro em uma solicitação bem-sucedida pode ter êxito ou falha individ
     </tr>
   </tbody>
 </table>
+
