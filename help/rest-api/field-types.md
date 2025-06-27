@@ -12,7 +12,7 @@ ht-degree: 8%
 
 # Tipos de campos
 
-Esta é uma descrição dos tipos de campo no Marketo. Informações adicionais sobre tipos de campo podem ser encontradas [aqui](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/administration/field-management/custom-field-type-glossary). Informações adicionais sobre limites de tipo de campo podem ser encontradas [aqui](https://nation.marketo.com/t5/knowledgebase/marketo-field-limits-by-field-type/ta-p/251613).
+Esta é uma descrição dos tipos de campo no Marketo. Informações adicionais sobre tipos de campo podem ser encontradas [aqui](https://experienceleague.adobe.com/pt-br/docs/marketo/using/product-docs/administration/field-management/custom-field-type-glossary). Informações adicionais sobre limites de tipo de campo podem ser encontradas [aqui](https://nation.marketo.com/t5/knowledgebase/marketo-field-limits-by-field-type/ta-p/251613).
 
 | Tipo de campo | Descrição | Exemplo |
 | --- | --- | --- |
@@ -20,7 +20,7 @@ Esta é uma descrição dos tipos de campo no Marketo. Informações adicionais
 | Email | Um campo de sequência de caracteres que aceita endereços de email | example@example.com |
 | Flutuante | Um campo de número que contém Números Reais e pode usar uma casa decimal. | 10,4 |
 | Inteiro | Números inteiros | 10 |
-| Fórmula | Campos cujos valores são gerados pela manipulação de dados de outros campos presentes em um registro de cliente potencial. Elas não são exportadas e não podem ser usadas em Campanhas inteligentes. | Veja este [artigo](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/administration/field-management/create-and-use-a-concatenated-string-formula-field) |
+| Fórmula | Campos cujos valores são gerados pela manipulação de dados de outros campos presentes em um registro de cliente potencial. Elas não são exportadas e não podem ser usadas em Campanhas inteligentes. | Veja este [artigo](https://experienceleague.adobe.com/pt-br/docs/marketo/using/product-docs/administration/field-management/create-and-use-a-concatenated-string-formula-field) |
 | Porcentagem | Uma porcentagem expressa como um número inteiro | 30 |
 | URL | Um campo de texto que restringe a entrada para URLs, incluindo o protocolo do URL. | http://example.com/ |
 | Telefone | Número de telefone | 111-111-1111 |
