@@ -892,7 +892,7 @@ O ponto de extremidade [Adicionar Campos Personalizados de Tipo de Objeto](https
 Para uma estrutura de objeto personalizado de um para muitos, use um campo de link em um objeto personalizado para conectá-lo a um objeto padrão: Cliente Potencial ou Empresa. Usando o exemplo do proprietário do carro na documentação do produto Marketo [aqui](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/administration/marketo-custom-objects/add-marketo-custom-object-link-fields#AddMarketoCustomObjectLinkFields-CreateaLinkFieldforaOne-to-ManyStructure), criamos um objeto personalizado que contém informações relacionadas ao carro para conexão com clientes em potencial.
 
 1. Criar um objeto **Car**
-1. Adicionar campos ao objeto **Car**: desduplicar em **VIN**, vincular a **Lead****/ID de Lead**
+1. Adicionar campos ao objeto **Car**: desduplicar em **VIN**, vincular a **Lead**&#x200B;**/ID de Lead**
 1. Aprovar o objeto **Car**
 
 Primeiro, crie o tipo de objeto personalizado para conter informações específicas do carro.
@@ -996,7 +996,7 @@ As relações muitos para muitos são representadas usando um objeto personaliza
 1. Adicionar campos ao **Curso:** desduplicar em **ID do Curso**
 1. Aprovar **Curso**
 1. Criar um objeto de ponte de **Registro**
-1. Adicionar campos ao **Registro:** desduplicar em **ID de Registro**, vincular ao campo **Curso****/ID do Curso** e vincular ao **Lead****/ID do Cliente Potencial**
+1. Adicionar campos ao **Registro:** desduplicar em **ID de Registro**, vincular ao campo **Curso**&#x200B;**/ID do Curso** e vincular ao **Lead**&#x200B;**/ID do Cliente Potencial**
 1. Aprovar **Inscrição**
 
 Primeiro, crie o tipo de objeto de borda para conter informações específicas do curso:
