@@ -3,7 +3,7 @@ title: Empresas
 feature: REST API
 description: Configure os dados da empresa com as APIs do Marketo.
 exl-id: 80e514a2-1c86-46a7-82bc-e4db702189b0
-source-git-commit: 66add4c38d0230c36d57009de985649bb67fde3e
+source-git-commit: 981ed9b254f277d647a844803d05a1a2549cbaed
 workflow-type: tm+mt
 source-wordcount: '564'
 ht-degree: 1%
@@ -16,7 +16,7 @@ ht-degree: 1%
 
 As empresas representam a organização à qual os registros de lead pertencem. Os clientes em potencial são adicionados a uma Empresa preenchendo o campo `externalCompanyId` correspondente com o uso dos pontos de extremidade [Sincronizar Clientes Potenciais](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Leads/operation/syncLeadUsingPOST) ou [Importação de Clientes Potenciais em Massa](bulk-lead-import.md). Depois que um cliente potencial é adicionado a uma empresa, não é possível excluí-lo dessa empresa (a menos que você adicione o cliente potencial a uma empresa diferente). Clientes potenciais vinculados a um registro de empresa herdarão diretamente os valores de um registro de empresa como se os valores existissem no próprio registro do cliente potencial.
 
-As APIs da empresa são acesso somente leitura para assinaturas com [Sincronização do SFDC](https://experienceleague.adobe.com/docs/marketo/using/product-docs/crm-sync/salesforce-sync/sfdc-sync-details/sfdc-sync-field-sync.html?lang=pt-BR) ou [Sincronização do Microsoft Dynamics](https://experienceleague.adobe.com/docs/marketo/using/product-docs/crm-sync/microsoft-dynamics/microsoft-dynamics-sync-details/microsoft-dynamics-sync-user-sync.html?lang=pt-BR) habilitada.
+As APIs da empresa são acesso somente leitura para assinaturas com [Sincronização do SFDC](https://experienceleague.adobe.com/docs/marketo/using/product-docs/crm-sync/salesforce-sync/sfdc-sync-details/sfdc-sync-field-sync.html?lang=en) ou [Sincronização do Microsoft Dynamics](https://experienceleague.adobe.com/docs/marketo/using/product-docs/crm-sync/microsoft-dynamics/microsoft-dynamics-sync-details/microsoft-dynamics-sync-user-sync.html?lang=en) habilitadas.
 
 ## Descrever
 
@@ -27,63 +27,63 @@ GET /rest/v1/companies/describe.json
 ```
 
 ```json
-{  
+{
    "success":true,
    "requestId":"5847#14d44113ad7",
-   "result":[  
-      {  
+   "result":[
+      {
          "name":"Company",
          "description":"Company object",
          "createdAt":"2015-05-11T17:11:32Z",
          "updatedAt":"2015-05-11T17:11:32Z",
          "idField":"id",
-         "dedupeFields":[  
+         "dedupeFields":[
             "externalCompanyId"
          ],
-         "searchableFields":[  
-            [  
+         "searchableFields":[
+            [
                "externalCompanyId"
             ],
-            [  
+            [
                "id"
             ],
-            [  
+            [
                "company"
             ]
          ],
-         "fields":[  
-            {  
+         "fields":[
+            {
                "name":"createdAt",
                "displayName":"Created At",
                "dataType":"datetime",
                "updateable":false
             },
-            {  
+            {
                "name":"externalCompanyId",
                "displayName":"External Company Id",
                "dataType":"string",
                "length":100,
                "updateable":false
             },
-            {  
+            {
                "name":"id",
                "displayName":"Id",
                "dataType":"integer",
                "updateable":false
             },
-            {  
+            {
                "name":"updatedAt",
                "displayName":"Updated At",
                "dataType":"datetime",
                "updateable":false
             },
-            {  
+            {
                "name":"annualRevenue",
                "displayName":"Annual Revenue",
                "dataType":"currency",
                "updateable":true
             }
-            {  
+            {
                "name":"company",
                "displayName":"Company Name",
                "dataType":"string",
@@ -114,17 +114,17 @@ GET /rest/v1/companies.json?filterType=id&filterValues=3433,5345
 ```
 
 ```json
-{  
+{
    "requestId":"e42b#14272d07d78",
    "success":true,
-   "result":[  
-      {  
+   "result":[
+      {
          "seq":0,
          "id":3433,
          "externalCompanyId":"19UYA31581L000000",
          "company":"Google"
       },
-      {  
+      {
          "seq":1,
          "id":5345,
          "externalCompanyId":"29UYA31581L000000",
@@ -147,15 +147,15 @@ Content-Type: application/json
 ```
 
 ```json
-{  
+{
    "action":"createOrUpdate",
    "dedupeBy":"dedupeFields",
-   "input":[  
-      {  
+   "input":[
+      {
          "externalCompanyId":"19UYA31581L000000",
          "company":"Google"
       },
-      {  
+      {
          "externalCompanyId":"29UYA31581L000000",
          "company":"Yahoo"
       }
@@ -164,16 +164,16 @@ Content-Type: application/json
 ```
 
 ```json
-{  
+{
    "requestId":"e42b#14272d07d78",
    "success":true,
-   "result":[  
-      {  
+   "result":[
+      {
          "seq":0,
          "status":"updated",
          "id":1232
       },
-      {  
+      {
          "seq":1,
          "status":"created",
          "id":1323
@@ -312,16 +312,16 @@ POST /rest/v1/companies/delete.json
 ```
 
 ```json
-{  
+{
    "deleteBy":"dedupeFields",
-   "input":[  
-      {  
+   "input":[
+      {
          "externalCompanyId":"19UYA31581L000000"
       },
-      {  
+      {
          "externalCompanyId":"29UYA31581L000000"
       },
-      {  
+      {
          "externalCompanyId":"39UYA31581L000000"
       }
    ]
@@ -329,25 +329,25 @@ POST /rest/v1/companies/delete.json
 ```
 
 ```json
-{  
+{
    "requestId":"e42b#14272d07d78",
    "success":true,
-   "result":[  
-      {  
+   "result":[
+      {
          "seq":0,
          "id":1234,
          "status":"deleted"
       },
-      {  
+      {
          "seq":1,
          "id":56456,
          "status":"deleted"
       },
-      {  
+      {
          "seq":2,
          "status":"skipped",
-         "reasons":[  
-            {  
+         "reasons":[
+            {
                "code":"1013",
                "message":"Record not found"
             }

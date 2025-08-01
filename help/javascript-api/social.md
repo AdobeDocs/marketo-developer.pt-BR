@@ -3,7 +3,7 @@ title: Redes sociais
 description: Redes sociais
 feature: Social, Javascript
 exl-id: 82d2b86f-5efe-4434-b617-d27f76515a79
-source-git-commit: 66add4c38d0230c36d57009de985649bb67fde3e
+source-git-commit: 981ed9b254f277d647a844803d05a1a2549cbaed
 workflow-type: tm+mt
 source-wordcount: '776'
 ht-degree: 4%
@@ -17,12 +17,12 @@ O [Marketo Social Marketing](https://business.adobe.com/products/marketo/social-
 ## Widget de compartilhamento incorporado de exemplo
 
 ```html
-<!-- Marketo Widget Loader Script --> 
+<!-- Marketo Widget Loader Script -->
 
 <script type="text/javascript" src="//b2c-mlm.marketo.com/jsloader/271d8232-1500-4305-b7ed-05d451b9ee0c/loader.php.js">
 </script>
 
- <!-- The Location of the Social Widget --> 
+ <!-- The Location of the Social Widget -->
 
 <divclass='cf_widgetloader cf_w_245d8f3c0955454cbd26abc39d0d874c'="" options="{&quot;outerHeight&quot;:400, &quot;outerWidth&quot;:600}">
 </divclass='cf_widgetloader'>
@@ -89,13 +89,13 @@ Este exemplo mostra um elemento oculto anteriormente com a ID &quot;signedUp&quo
 ## Tabela de eventos básicos
 
 | Nome do evento | Descrição | Widgets que usam este evento | Argumentos suportados (passados para a função de retorno de chamada de evento) |
-| --- | --- | --- | --- | 
+| --- | --- | --- | --- |
 | share_sent | Acionado sempre que uma solicitação de compartilhamento é enviada ao servidor para processamento | Todos os widgets que podem compartilhar | 1.&quot;share_sent&quot; (Cadeia de caracteres)<br>2. Parâmetros enviados (Objeto) |
 | share_success | Acionado quando a solicitação de compartilhamento é processada com êxito. | Todos os widgets que podem ser compartilhados. | 1.&quot;share_success&quot; (cadeia de caracteres)<br>2. Compartilhar objeto de resposta, contendo mensagem enviada e url encurtado (Objeto) |
-| vote_success | Acionado quando um usuário votar em uma pesquisa com êxito. | Widgets de Pesquisa, VS, Votação | 1. &quot;vote_success&quot; (cadeia de caracteres)<br>2. Item votado, incluindo título, descrição, identificador de entidade (Objeto) |
+| vote_success | Acionado quando um usuário votar em uma pesquisa com êxito. | Widgets de Pesquisa, VS, Votação | &#x200B;1. &quot;vote_success&quot; (cadeia de caracteres)<br>2. Item votado, incluindo título, descrição, identificador de entidade (Objeto) |
 | offer_enrolled | Acionado quando um usuário é inscrito com êxito em uma oferta | Todos os widgets de oferta | 1.&quot;offer_enrolled&quot; (Cadeia de caracteres)<br>2. Propriedades do usuário (Objeto) alteradas,<br>3. Atributos de usuário alterados (Objeto) |
 | profile_saved | Acionado quando um usuário atualiza o perfil da captura de perfil | Todos os widgets que não são de oferta com captura de perfil ativada | 1.&quot;profile_saved&quot; (Cadeia de caracteres)<br>2. Propriedades do usuário (Objeto) alteradas<br>3. Atributos de usuário alterados (Objeto) |
-| video_loaded | Acionado quando um vídeo incorporado é totalmente carregado e inicializado. | Widget de Compartilhamento de vídeo | 1. &quot;video_loaded&quot; (String) 2. Elemento &quot;.cf_videoshare_wrap&quot; que contém o vídeo (Objeto jQuery) |
+| video_loaded | Acionado quando um vídeo incorporado é totalmente carregado e inicializado. | Widget de Compartilhamento de vídeo | &#x200B;1. &quot;video_loaded&quot; (String) 2. Elemento &quot;.cf_videoshare_wrap&quot; que contém o vídeo (Objeto jQuery) |
 
 ## Substituição da interface por uma interface personalizada
 
@@ -170,7 +170,7 @@ cf_scripts.afterload(function($, CF){
 |---------------|----------------------------------------------------|
 | data | Valor da data do formulário &quot;dd-MM-yyyy&quot; |
 | número | Um número inteiro ou de ponto flutuante |
-| Texto formatado | Uma sequência de HTML |
+| Texto formatado | Uma string do HTML |
 | Pontuação | Um inteiro de 32 bits assinado |
 | campanha do sfdc | Usado na integração do gerenciamento de campanhas do Salesforce |
 | texto | Uma string de texto |
@@ -181,7 +181,7 @@ cf_scripts.afterload(function($, CF){
 |---------------|----------------------------------------------------|
 | data | Valor da data do formulário &quot;dd-MM-yyyy&quot; |
 | número | Um número inteiro ou de ponto flutuante |
-| Texto formatado | Uma sequência de HTML |
+| Texto formatado | Uma string do HTML |
 | Pontuação | Um inteiro de 32 bits assinado |
 | campanha do sfdc | Usado na integração do gerenciamento de campanhas do Salesforce |
 | texto | Uma string de texto |
@@ -192,7 +192,7 @@ cf_scripts.afterload(function($, CF){
 |---------------|----------------------------------------------------|
 | data | Valor da data do formulário &quot;dd-MM-yyyy&quot; |
 | número | Um número inteiro ou de ponto flutuante |
-| Texto formatado | Uma sequência de HTML |
+| Texto formatado | Uma string do HTML |
 | Pontuação | Um inteiro de 32 bits assinado |
 | campanha do sfdc | Usado na integração do gerenciamento de campanhas do Salesforce |
 | texto | Uma string de texto |
@@ -203,7 +203,7 @@ cf_scripts.afterload(function($, CF){
 |---------------|----------------------------------------------------|
 | data | Valor da data do formulário &quot;dd-MM-yyyy&quot; |
 | número | Um número inteiro ou de ponto flutuante |
-| Texto formatado | Uma sequência de HTML |
+| Texto formatado | Uma string do HTML |
 | Pontuação | Um inteiro de 32 bits assinado |
 | campanha do sfdc | Usado na integração do gerenciamento de campanhas do Salesforce |
 | texto | Uma string de texto |

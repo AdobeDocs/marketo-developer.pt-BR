@@ -3,10 +3,10 @@ title: '[!DNL Ionic]'
 feature: Mobile Marketing
 description: Usando o  [!DNL Ionic]  com o Marketo para dispositivos móveis
 exl-id: 204e5fb4-c9d6-43a6-9d77-0b2a67ddbed3
-source-git-commit: 6fc45ff98998217923e2a5b02d00d1522fe3272c
+source-git-commit: 981ed9b254f277d647a844803d05a1a2549cbaed
 workflow-type: tm+mt
 source-wordcount: '606'
-ht-degree: 1%
+ht-degree: 2%
 
 ---
 
@@ -16,7 +16,7 @@ Este tópico descreve como integrar o plug-in Cordova do Marketo. Não há supor
 
 ## Pré-requisitos
 
-1. [Adicione um aplicativo ao Administrador do Marketo](https://experienceleague.adobe.com/pt-br/docs/marketo/using/product-docs/mobile-marketing/admin/add-a-mobile-app) (obtenha a Chave Secreta e a ID do Munchkin do aplicativo).
+1. [Adicione um aplicativo ao Administrador do Marketo](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/mobile-marketing/admin/add-a-mobile-app) (obtenha a Chave Secreta e a ID do Munchkin do aplicativo).
 1. Configurar notificações por push ([iOS](push-notifications.md) | [Android](push-notifications.md) ).
 1. Instale o [[!DNL Ionic]](https://ionicframework.com/getting-started/) e a [CLI do Cordova](https://cordova.apache.org/docs/en/latest/guide/cli/).
 
@@ -88,7 +88,7 @@ marketo.initialize(
   'FRAMEWORK_TYPE'
 );
 
-// For session tracking, add following. 
+// For session tracking, add following.
 marketo.onStart(
   function(){ console.log("onStart."); },
   function(error){ console.log("Failed to report onStart." + error); }
@@ -121,7 +121,7 @@ marketo.initializeMarketoPush(
 
 - Retorno de Chamada com Êxito : função a ser executada se a notificação por push do Marketo for inicializada com êxito.
 - Retorno de Chamada de Falha : função a ser executada se a notificação por push do Marketo falhar ao inicializar.
-- GCM_PROJECT_ID : ID do projeto GCM encontrada no [Console de desenvolvedores do Google](https://accounts.google.com/ServiceLogin?service=cloudconsole&amp;passive=1209600&amp;osid=1&amp;continue=https://console.cloud.google.com/apis/dashboard&amp;followup=https://console.cloud.google.com/apis/dashboard) após a criação do aplicativo.
+- GCM_PROJECT_ID : ID do projeto GCM encontrada no [Console de desenvolvedores do Google](https://accounts.google.com/ServiceLogin?service=cloudconsole&passive=1209600&osid=1&continue=https://console.cloud.google.com/apis/dashboard&followup=https://console.cloud.google.com/apis/dashboard) após a criação do aplicativo.
 
 O token também pode ser cancelado no logout.
 
@@ -249,6 +249,6 @@ Há três maneiras de criar leads a partir de um aplicativo híbrido:
 1. API REST DO MARKETO
 1. Envio de formulários
 
-Dependendo do método usado, um lead recém-criado é reconhecido por acionadores e filtros diferentes. Os clientes em potencial criados usando o SDK do MME ou a API REST aparecem nos acionadores e filtros &quot;Criados por clientes potenciais&quot;. Os clientes em potencial criados por envios de formulários aparecem nos acionadores e filtros &quot;Preencher formulário&quot;.
+Dependendo do método usado, um lead recém-criado é reconhecido por acionadores e filtros diferentes. Clientes potenciais criados usando o MME SDK ou a API REST aparecem nos acionadores e filtros &quot;Clientes potenciais criados&quot;. Os clientes em potencial criados por envios de formulários aparecem nos acionadores e filtros &quot;Preencher formulário&quot;.
 
-A prática recomendada é manter a consistência com o método usado pelo aplicativo web ao criar leads. Se você já tiver um aplicativo Web que usa o envio de formulários como o mecanismo para criar clientes potenciais, use o mesmo mecanismo ao criar clientes potenciais no aplicativo híbrido. Se você já tiver um aplicativo Web que usa nossa API REST como o mecanismo para criar leads, use esse mesmo mecanismo ao criar leads no aplicativo híbrido. Nos casos em que você não usa o envio de formulários nem a API REST como um mecanismo para criar clientes em potencial no aplicativo Web, é possível considerar o uso do SDK do MME para criar clientes em potencial no Marketo.
+A prática recomendada é manter a consistência com o método usado pelo aplicativo web ao criar leads. Se você já tiver um aplicativo Web que usa o envio de formulários como o mecanismo para criar clientes potenciais, use o mesmo mecanismo ao criar clientes potenciais no aplicativo híbrido. Se você já tiver um aplicativo Web que usa nossa API REST como o mecanismo para criar leads, use esse mesmo mecanismo ao criar leads no aplicativo híbrido. Nos casos em que você não usa o envio de formulários nem a API REST como um mecanismo para criar clientes em potencial no aplicativo Web, é possível considerar o uso do SDK MME para criar clientes em potencial no Marketo.

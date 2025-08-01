@@ -3,7 +3,7 @@ title: Exemplos
 description: Exemplos de código Marketo para configurar ações de formulário
 feature: Javascript
 exl-id: dc5f0cc5-ff5a-48b0-be36-52c10e56f798
-source-git-commit: e609f9d5d58f656298412acef5e2106a19765396
+source-git-commit: 981ed9b254f277d647a844803d05a1a2549cbaed
 workflow-type: tm+mt
 source-wordcount: '211'
 ht-degree: 0%
@@ -72,7 +72,7 @@ MktoForms2.loadForm("//app-ab00.marketo.com", "785-UHP-775", 1057, function(form
         // We'll just alert them to show the principle
         alert("Submitted values: " + JSON.stringify(vals));
     });
-}); 
+});
 ```
 
 ## Envio de formulário em evento de clique que não seja de formulário
@@ -98,7 +98,7 @@ btn.onclick = function() {
 Para o propósito deste exemplo, você deve clicar no botão de contador de cliques pelo menos três vezes antes do botão de envio no formulário funcionar.
 
 ```javascript
-MktoForms2.loadForm("//app-ab00.marketo.com", "785-UHP-775", 1057, function (form) { 
+MktoForms2.loadForm("//app-ab00.marketo.com", "785-UHP-775", 1057, function (form) {
     // Check if the form is submittable
     if (form.submittable()) {
         // Set it to be non submittable
@@ -128,7 +128,7 @@ clickCounterBtn.onclick = function() {
 Este exemplo define valores em campos ocultos.
 
 ```javascript
-MktoForms2.loadForm("//app-ab00.marketo.com", "785-UHP-775", 1057, function (form) { 
+MktoForms2.loadForm("//app-ab00.marketo.com", "785-UHP-775", 1057, function (form) {
     // Set values for the hidden fields, "userIsAwesome" and "enrollDate"
     // Note that these fields were configured in the form editor as hidden fields already
     form.vals({"userIsAwesome":"true", "enrollDate":"2014-01-01"});
@@ -140,7 +140,7 @@ MktoForms2.loadForm("//app-ab00.marketo.com", "785-UHP-775", 1057, function (for
 Este exemplo mostra o formulário em uma caixa de diálogo de estilo lightbox se a url contiver um parâmetro `lightboxForm=true`.
 
 ```javascript
-MktoForms2.loadForm("//app-ab00.marketo.com", "785-UHP-775", 1057, function (form) { 
+MktoForms2.loadForm("//app-ab00.marketo.com", "785-UHP-775", 1057, function (form) {
     if (location.href.indexOf("lightboxForm=true") != -1) {
         MktoForms2.lightbox(form).show();
     }
@@ -152,7 +152,7 @@ MktoForms2.loadForm("//app-ab00.marketo.com", "785-UHP-775", 1057, function (for
 Este exemplo mostra uma mensagem de erro personalizada no envio com base na lógica de negócios personalizada.
 
 ```javascript
-MktoForms2.loadForm("//app-ab00.marketo.com", "785-UHP-775", 1057, function (form) { 
+MktoForms2.loadForm("//app-ab00.marketo.com", "785-UHP-775", 1057, function (form) {
     //listen for the validate event
     form.onValidate(function() {
         // Get the values

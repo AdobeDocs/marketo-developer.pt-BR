@@ -3,9 +3,9 @@ title: Banco de dados de leads
 feature: REST API, Database
 description: Manipular o banco de dados principal de clientes potenciais.
 exl-id: e62e381f-916b-4d56-bc3d-0046219b68d3
-source-git-commit: 66add4c38d0230c36d57009de985649bb67fde3e
+source-git-commit: 981ed9b254f277d647a844803d05a1a2549cbaed
 workflow-type: tm+mt
-source-wordcount: '1345'
+source-wordcount: '1342'
 ht-degree: 1%
 
 ---
@@ -14,7 +14,7 @@ ht-degree: 1%
 
 As APIs de banco de dados de clientes potenciais da Marketo são as APIs mais utilizadas que a Marketo fornece, pois permitem a troca de dados de pessoas e dados relacionados à pessoa da Marketo, como Atividades, Oportunidades e Empresas.
 
-## Objetos 
+## Objetos
 
 Os objetos do banco de dados de clientes potenciais incluem o seguinte:
 
@@ -34,7 +34,7 @@ A maioria desses objetos inclui pelo menos os métodos Create, Read, Update e De
 
 Para obter uma lista completa dos pontos de extremidade da API do Banco de Dados Principal, incluindo parâmetros e informações de modelagem, consulte a [Referência de Ponto de Extremidade da API do Banco de Dados Principal](https://developer.adobe.com/marketo-apis/api/mapi/).
 
-Para instâncias com uma integração nativa do CRM habilitada (Microsoft Dynamics ou Salesforce.com), as APIs Empresa, Oportunidade, Função Oportunidade e Vendedor estão desabilitadas. Os registros são gerenciados por meio do CRM quando ativados e não podem ser acessados ou atualizados por meio das APIs do Marketo.
+Para instâncias com uma integração de CRM nativa habilitada (Microsoft Dynamics ou Salesforce.com), as APIs Empresa, Oportunidade, Função Oportunidade e Vendedor estão desabilitadas. Os registros são gerenciados por meio do CRM quando ativados e não podem ser acessados ou atualizados por meio das APIs do Marketo.
 
 - Tamanho máximo do lote (padrão): 300 registros
 - Tamanho máximo do lote (em massa): arquivo de 10 MB
@@ -51,72 +51,72 @@ GET /rest/v1/opportunities/roles/describe.json
 ```
 
 ```json
-{  
+{
    "requestId":"185d6#14b51985ff0",
    "success":true,
-   "result":[  
-      {  
+   "result":[
+      {
          "name":"opportunityRole",
          "displayName":"Opportunity Role",
          "createdAt":"2015-02-03T22:36:23Z",
          "updatedAt":"2015-02-03T22:36:24Z",
          "idField":"marketoGUID",
-         "dedupeFields":[  
+         "dedupeFields":[
             "externalOpportunityId",
             "leadId",
             "role"
          ],
-         "searchableFields":[  
-            [  
+         "searchableFields":[
+            [
                "externalOpportunityId",
                "leadId",
                "role"
             ],
-            [  
+            [
                "marketoGUID"
             ],
-            [  
+            [
                "leadId"
             ],
-            [  
+            [
                "externalOpportunityId"
             ]
          ],
-         "fields":[  
-            {  
+         "fields":[
+            {
                "name":"marketoGUID",
                "displayName":"Marketo GUID",
                "dataType":"string",
                "length":36,
                "updateable":false
             },
-            {  
+            {
                "name":"externalOpportunityId",
                "displayName":"External Opportunity Id",
                "dataType":"string",
                "length":50,
                "updateable":false
             },
-            {  
+            {
                "name":"leadId",
                "displayName":"Lead Id",
                "dataType":"integer",
                "updateable":false
             },
-            {  
+            {
                "name":"role",
                "displayName":"Role",
                "dataType":"string",
                "length":50,
                "updateable":false
             },
-            {  
+            {
                "name":"isPrimary",
                "displayName":"Is Primary",
                "dataType":"boolean",
                "updateable":true
             },
-            {  
+            {
                "name":"externalCreatedDate",
                "displayName":"External Created Date",
                "dataType":"datetime",
@@ -140,12 +140,12 @@ Todos os objetos de banco de dados de clientes potenciais compartilham um padrã
 GET /rest/v1/{type}.json?filterType={field to query}&filterValues={comma-separated list of possible values}
 ```
 
-Para todos os objetos, exceto clientes em potencial, você pode selecionar seu {field to query} nos searchableFields da chamada de descrição correspondente e compor uma lista separada por vírgulas de até 300 valores. Há também estes parâmetros de consulta opcionais:
+Para todos os objetos, exceto clientes em potencial, você pode selecionar seu {field to query} no searchableFields da chamada de descrição correspondente e compor uma lista separada por vírgulas de até 300 valores. Há também estes parâmetros de consulta opcionais:
 
 - `batchSize` - Uma contagem inteira do número de resultados a serem retornados. O padrão e o máximo são 300.
 - `nextPageToken` - Token retornado de uma chamada anterior para paginação. Consulte [Tokens de paginação](paging-tokens.md) para obter mais detalhes.
 - `fields` - Uma lista separada por vírgulas de nomes de campos a serem retornados para cada registro. Consulte a descrição correspondente para obter uma lista de campos válidos. Se um determinado campo for solicitado, mas não for retornado, o valor será considerado nulo.
-- `_method` - Usado para enviar consultas usando o método HTTP POST. Consulte a seção _method=GET abaixo para obter detalhes sobre o uso.
+- `_method` - Usado para enviar consultas usando o método POST HTTP. Consulte a seção _method=GET abaixo para uso.
 
 Para ver um exemplo rápido, vamos ver as oportunidades de consulta:
 
@@ -154,11 +154,11 @@ GET /rest/v1/opportunities.json?filterType=idField&filterValues=dff23271-f996-47
 ```
 
 ```json
-{  
+{
    "requestId":"e42b#14272d07d78",
    "success":true,
-   "result":[  
-      {  
+   "result":[
+      {
          "seq":0,
          "marketoGUID":"dff23271-f996-47d7-984f-f2676861b5fa ",
          "externalOpportunityId":"19UYA31581L000000",
@@ -167,7 +167,7 @@ GET /rest/v1/opportunities.json?filterType=idField&filterValues=dff23271-f996-47
          "amount":"1604.47",
          "source":"Inbound Sales Call/Email"
       },
-      {  
+      {
          "seq":1,
          "marketoGUID":"dff23271-f996-47d7-984f-f2676861b5fc ",
          "externalOpportunityId":"29UYA31581L000000",
@@ -186,7 +186,7 @@ Se o conjunto de registros na consulta exceder 300 ou o `batchSize` que foi espe
 
 ### URIs longos
 
-Às vezes, como ao consultar por GUIDs, seu URI pode ser longo e exceder os 8 KB permitidos pelo serviço REST. Nesse caso, você deve usar o método HTTP POST em vez do GET e adicionar um parâmetro de consulta `_method=GET`. Além disso, o restante dos parâmetros de consulta devem ser passados no corpo do POST como uma string &quot;application/x-www-form-urlencoded&quot; e passar o cabeçalho Content-type associado.
+Às vezes, como ao consultar por GUIDs, seu URI pode ser longo e exceder os 8 KB permitidos pelo serviço REST. Nesse caso, você deve usar o método HTTP POST em vez do GET e adicionar um parâmetro de consulta `_method=GET`. Além disso, o restante dos parâmetros de consulta devem ser passados no corpo POST como uma string &quot;application/x-www-form-urlencoded&quot; e passar o cabeçalho Content-type associado.
 
 ```
 POST /rest/v1/opportunities.json?_method=GET
@@ -211,26 +211,26 @@ POST /rest/v1/opportunities/roles.json?_method=GET
 ```
 
 ```json
-{  
+{
    "filterType":"dedupeFields",
-   "fields":[  
+   "fields":[
       "marketoGuid",
       "externalOpportunityId",
       "leadId",
       "role"
    ],
-   "input":[  
-      {  
+   "input":[
+      {
         "externalOpportunityId":"Opportunity1",
         "leadId": 1,
         "role": "Captain"
       },
-      {  
+      {
         "externalOpportunityId":"Opportunity2",
         "leadId": 1872,
         "role": "Commander"
       },
-      {  
+      {
         "externalOpportunityId":"Opportunity3",
         "leadId": 273891,
         "role": "Lieutenant Commander"
@@ -254,18 +254,18 @@ POST /rest/v1/opportunities.json
 ```
 
 ```json
-{  
+{
    "action":"createOrUpdate",
    "dedupeBy":"dedupeFields",
-   "input":[  
-      {  
+   "input":[
+      {
          "externalOpportunityId":"19UYA31581L000000",
          "name":"Chairs",
          "description":"Chairs",
          "amount":"1604.47",
          "source":"Inbound Sales Call/Email"
       },
-      {  
+      {
          "externalOpportunityId":"29UYA31581L000000",
          "name":"Big Dog Day Care-Phase12",
          "description":"Big Dog Day Care-Phase12",
@@ -277,16 +277,16 @@ POST /rest/v1/opportunities.json
 ```
 
 ```json
-{  
+{
    "requestId":"e42b#14272d07d78",
    "success":true,
-   "result":[  
-      {  
+   "result":[
+      {
          "seq":0,
          "status":"updated",
          "marketoGUID":"dff23271-f996-47d7-984f-f2676861b5fb"
       },
-      {  
+      {
          "seq":1,
          "status":"created",
          "marketoGUID":"cff23271-f996-47d7-984f-f2676861b5fb"
@@ -306,16 +306,16 @@ POST /rest/v1/customobjects/{name}/delete.json
 ```
 
 ```json
-{  
+{
    "deleteBy":"dedupeFields",
-   "input":[  
-      {  
+   "input":[
+      {
          "vin":"19UYA31581L000000"
       },
-      {  
+      {
          "vin":"29UYA31581L000000"
       },
-      {  
+      {
          "vin":"39UYA31581L000000"
       }
    ]

@@ -3,7 +3,7 @@ title: Leads
 feature: REST API
 description: Detalhes sobre as chamadas de API de clientes potenciais
 exl-id: 0a2f7c38-02ae-4d97-acfe-9dd108a1f733
-source-git-commit: 7a3df193e47e7ee363c156bf24f0941879c6bd13
+source-git-commit: 981ed9b254f277d647a844803d05a1a2549cbaed
 workflow-type: tm+mt
 source-wordcount: '3338'
 ht-degree: 3%
@@ -37,20 +37,20 @@ GET /rest/v1/leads/describe.json
 ### Resposta
 
 ```json
-{  
+{
    "requestId":"37ca#1475b74e276",
    "success":true,
-   "result":[  
-      {  
+   "result":[
+      {
          "id":2,
          "displayName":"Company Name",
          "dataType":"string",
          "length":255,
-         "rest":{  
+         "rest":{
             "name":"company",
             "readOnly":false
          },
-         "soap":{  
+         "soap":{
             "name":"Company",
             "readOnly":false
          }
@@ -175,21 +175,21 @@ POST /rest/v1/leads.json
 ### Corpo
 
 ```json
-{  
+{
    "action":"createOnly",
    "lookupField":"email",
-   "input":[  
-      {  
+   "input":[
+      {
          "email":"kjashaedd-1@klooblept.com",
          "firstName":"Kataldar-1",
          "postalCode":"04828"
       },
-      {  
+      {
          "email":"kjashaedd-2@klooblept.com",
          "firstName":"Kataldar-2",
          "postalCode":"04828"
       },
-      {  
+      {
          "email":"kjashaedd-3@klooblept.com",
          "firstName":"Kataldar-3",
          "postalCode":"04828"
@@ -201,19 +201,19 @@ POST /rest/v1/leads.json
 ### Resposta
 
 ```json
-{  
+{
    "requestId":"e42b#14272d07d78",
    "success":true,
-   "result":[  
-      {  
+   "result":[
+      {
          "id":50,
          "status":"created"
       },
-      {  
+      {
          "id":51,
          "status":"created"
       },
-      {  
+      {
          "id":52,
          "status":"created"
       }
@@ -233,7 +233,7 @@ Observação: ao executar solicitações de substituição de lead simultaneamen
 
 ## Campos
 
-O objeto de cliente potencial contém campos padrão e, opcionalmente, campos personalizados. Campos padrão estão presentes em cada assinatura de Marketo Engage, enquanto campos personalizados são criados pelo usuário, conforme necessário. Cada definição de campo é composta de um conjunto de atributos que descrevem o campo. Exemplos de atributos são nome de exibição, nome da API e dataType. Esses atributos são conhecidos coletivamente como metadados.
+O objeto de cliente potencial contém campos padrão e, opcionalmente, campos personalizados. Campos padrão estão presentes em todas as assinaturas do Marketo Engage, enquanto campos personalizados são criados pelo usuário conforme necessário. Cada definição de campo é composta de um conjunto de atributos que descrevem o campo. Exemplos de atributos são nome de exibição, nome da API e dataType. Esses atributos são conhecidos coletivamente como metadados.
 
 Os endpoints a seguir permitem consultar, criar e atualizar campos no objeto de cliente potencial. Essas APIs exigem que o usuário da API proprietária tenha uma função com uma ou ambas as permissões de Campo padrão de esquema de leitura-gravação ou Campo personalizado de esquema de leitura-gravação.
 
@@ -781,7 +781,7 @@ POST /rest/v1/leads/{id}/merge.json?leadId=1324
 ### Resposta
 
 ```json
-{  
+{
    "requestId":"e42b#14272d07d78",
    "success":true
 }
@@ -804,7 +804,7 @@ POST /rest/v1/leads/{id}/associate.json?cookie=id:287-GTJ-838%26token:_mch-marke
 ### Resposta
 
 ```json
-{  
+{
    "requestId":"e42b#14272d07d78",
    "success":true
 }
@@ -816,7 +816,7 @@ Associação
 Os registros de clientes potenciais também podem ser recuperados com base na associação a uma lista estática ou a um programa. Além disso, você pode recuperar todas as listas estáticas, programas ou campanhas inteligentes das quais um lead é membro.
 
 A estrutura de resposta e os parâmetros opcionais são idênticos aos de Obter leads por tipo de filtro, embora filterType e filterValues não possam ser usados com essa API.
-Para acessar a ID da lista por meio da interface do usuário do Marketo, navegue até a lista. A lista `id` está na URL da lista estática, `https://app-**&#x200B;**.marketo.com/#ST1001A1`. Neste exemplo, 1001 é o `id` da lista.
+Para acessar a ID da lista por meio da interface do usuário do Marketo, navegue até a lista. A lista `id` está na URL da lista estática, `https://app-****.marketo.com/#ST1001A1`. Neste exemplo, 1001 é o `id` da lista.
 
 ### Solicitação
 
@@ -827,14 +827,14 @@ GET /rest/v1/list/{listId}/leads.json?batchSize=3
 ### Resposta
 
 ```json
-{ 
+{
    "requestId":"e42b#14272d07d78",
    "success":true,
    "nextPageToken":
 "PS5VL5WD4UOWGOUCJR6VY7JQO2KUXL7BGBYXL4XH4BYZVPYSFBAONP4V4KQKN4SSBS55U4LEMAKE6===",
     "result":[
        {
-            "id":50,  
+            "id":50,
             "email":"kjashaedd@klooblept.com",
             "firstName":"Kataldar",
              "postalCode":"04828"
@@ -843,11 +843,11 @@ GET /rest/v1/list/{listId}/leads.json?batchSize=3
            "id":2343,
            "email":"kjashaedd@klooblept.com",
            "firstName":"Kataldar",
-           "postalCode":"04828" 
+           "postalCode":"04828"
        },
       {
            "id":88498,
-           "email":"kjashaedd@klooblept.com", 
+           "email":"kjashaedd@klooblept.com",
            "firstName":"Kataldar",
          "postalCode":"04828"
          }

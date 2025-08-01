@@ -3,7 +3,7 @@ title: Vendedores
 feature: REST API
 description: Ler dados sobre vendedores.
 exl-id: f8ed5aa5-63c1-4c5b-8683-bf47eed1ea18
-source-git-commit: 66add4c38d0230c36d57009de985649bb67fde3e
+source-git-commit: 981ed9b254f277d647a844803d05a1a2549cbaed
 workflow-type: tm+mt
 source-wordcount: '303'
 ht-degree: 0%
@@ -14,7 +14,7 @@ ht-degree: 0%
 
 [Referência de Ponto de Extremidade de Vendedor](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Sales-Persons)
 
-As APIs de Vendedor são acesso somente leitura para assinaturas com [Sincronização do SFDC](https://experienceleague.adobe.com/pt-br/docs/marketo/using/product-docs/crm-sync/salesforce-sync/sfdc-sync-details/sfdc-sync-field-sync) ou [Sincronização do Microsoft Dynamics](https://experienceleague.adobe.com/pt-br/docs/marketo/using/product-docs/crm-sync/microsoft-dynamics/microsoft-dynamics-sync-details/microsoft-dynamics-sync-user-sync) habilitada. Vendedores são um tipo de registro de pessoa que é o proprietário das vendas dos registros de lead. Eles estão relacionados aos registros de cliente potencial pelo campo externalSalesPersonId em cada registro de cliente potencial. Quando um cliente potencial é relacionado a um Vendedor por um campo externalSalesPersonId preenchido, os campos de pesquisa Proprietário do cliente potencial correspondentes são preenchidos para esse registro de cliente potencial no Marketo, permitindo o uso dos filtros e tokens correspondentes.
+As APIs de Vendedor são acesso somente leitura para assinaturas com [Sincronização do SFDC](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/crm-sync/salesforce-sync/sfdc-sync-details/sfdc-sync-field-sync) ou [Sincronização do Microsoft Dynamics](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/crm-sync/microsoft-dynamics/microsoft-dynamics-sync-details/microsoft-dynamics-sync-user-sync) habilitada. Vendedores são um tipo de registro de pessoa que é o proprietário das vendas dos registros de lead. Eles estão relacionados aos registros de cliente potencial pelo campo externalSalesPersonId em cada registro de cliente potencial. Quando um cliente potencial é relacionado a um Vendedor por um campo externalSalesPersonId preenchido, os campos de pesquisa Proprietário do cliente potencial correspondentes são preenchidos para esse registro de cliente potencial no Marketo, permitindo o uso dos filtros e tokens correspondentes.
 
 Vendedores estão relacionados a registros de Clientes potenciais usando o ponto de extremidade [Sincronizar Clientes Potenciais](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Leads/operation/syncLeadUsingPOST) e transmitindo o atributo externalSalesPersonId.
 
@@ -33,56 +33,56 @@ GET /rest/v1/salespersons/describe.json
 ```
 
 ```json
-{  
+{
    "requestId":"185d6#14b51985ff0",
    "success":true,
-   "result":[  
-      {  
+   "result":[
+      {
          "name":"SalesPerson",
          "createdAt":"2015-02-03T22:36:23Z",
          "updatedAt":"2015-02-03T22:36:24Z",
          "idField":"id",
-         "dedupeFields":[  
+         "dedupeFields":[
             "externalSalesPersonId"
          ],
-         "searchableFields":[  
-            [  
+         "searchableFields":[
+            [
                "email"
             ],
-            [  
+            [
                "id"
             ],
             [
                "externalSalesPersonId"
             ]
          ],
-         "fields":[  
-            {  
+         "fields":[
+            {
                "name":"id",
                "displayName":"Marketo Id",
                "dataType":"integer",
                "updateable":false
             },
-            {  
+            {
                "name":"createdAt",
                "displayName":"Created At",
                "dataType":"datetime",
                "updateable":false
             },
-            {  
+            {
                "name":"updatedAt",
                "displayName":"Updated At",
                "dataType":"datetime",
                "updateable":false
             },
-            {  
+            {
                "name":"email",
                "displayName":"Email",
                "dataType":"string",
                "length":255,
                "updateable":false
             },
-            {  
+            {
                "name":"externalSalesPersonId",
                "displayName":"External Sales Person Id",
                "dataType":"string",
@@ -106,18 +106,18 @@ GET /rest/v1/salespersons.json?filterType=dedupeFields&filterValues=david@test.c
 ```
 
 ```json
- {  
+ {
    "requestId":"e42b#14272d07d78",
    "success":true,
-   "result":[  
-      {  
+   "result":[
+      {
          "seq":0,
          "id":53453,
          "externalSalesPersonId":"sam@test.com",
          "createdAt":"2015-02-03T22:36:23Z",
          "updatedAt":"2015-02-03T22:36:23Z"
       },
-      {  
+      {
          "seq":1,
          "id":53454,
          "externalSalesPersonId":"david@test.com",
@@ -190,16 +190,16 @@ POST /rest/v1/salespersons/delete.json
 ```
 
 ```json
-{  
+{
    "deleteBy":"dedupeFields",
-   "input":[  
-      {  
+   "input":[
+      {
          "externalSalesPersonId":"sam@test.com"
       },
-      {  
+      {
          "externalSalesPersonId":"david@test.com"
       },
-      {  
+      {
          "externalSalesPersonId":"raj@test.com"
       }
    ]

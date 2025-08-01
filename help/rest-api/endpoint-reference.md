@@ -3,10 +3,10 @@ title: Referência do ponto de extremidade
 feature: REST API
 description: Referências de endpoint da API do Marketo
 exl-id: 27d16b6f-865a-4e40-ab9c-cbabe2927472
-source-git-commit: 3632d2b713d97a2c895c65f144c07e62e1d369cb
+source-git-commit: 981ed9b254f277d647a844803d05a1a2549cbaed
 workflow-type: tm+mt
-source-wordcount: '4676'
-ht-degree: 27%
+source-wordcount: '4448'
+ht-degree: 28%
 
 ---
 
@@ -107,19 +107,19 @@ Esta é uma lista abrangente de endpoints da REST API.
 | Sincronizar objetos personalizados | Objetos personalizados | POST | /rest/v1/customobjects/{name}.json | Objeto personalizado de leitura-gravação |
 | Sincronizar tipo de objeto personalizado | Objetos personalizados | POST | /rest/v1/customobjects/schema.json | Tipo de objeto personalizado de leitura-gravação |
 | Atualizar campo de tipo de objeto personalizado | Objetos personalizados | POST | /rest/v1/customobjects/schema/{apiName}/updateField.json | Tipo de objeto personalizado de leitura-gravação |
-| Aprovar rascunho do modelo de email | Modelos de e-mail | POST | /rest/asset/v1/emailTemplate/{id}/approveDraft.json | Ativo de leitura-gravação |
-| Clonar modelo de e-mail | Modelos de e-mail | POST | /rest/asset/v1/emailTemplate/{id}/clone.json | Ativo de leitura-gravação |
-| Criar modelo de e-mail | Modelos de e-mail | POST | /rest/asset/v1/emailTemplates.json | Ativo de leitura-gravação |
-| Excluir modelo de e-mail | Modelos de e-mail | POST | /rest/asset/v1/emailTemplate/{id}/delete.json | Ativo de leitura-gravação |
-| Descartar Rascunho de Modelo de Email | Modelos de e-mail | POST | /rest/asset/v1/emailTemplate/{id}/discardDraft.json | Ativo de leitura-gravação |
-| Obter Modelo de email por ID | Modelos de e-mail | GET | /rest/asset/v1/emailTemplate/{id}.json | Ativo somente leitura |
-| Obter Modelo de email por Nome | Modelos de e-mail | GET | /rest/asset/v1/emailTemplate/byName.json | Ativo somente leitura |
-| Obter conteúdo do modelo de email por ID | Modelos de e-mail | GET | /rest/asset/v1/emailTemplate/{id}/content.json | Ativo somente leitura |
-| Obter Modelo De Email Usado Por | Modelos de e-mail | GET | /rest/asset/v1/emailTemplates/{id}/usedBy.json | Ativo somente leitura |
-| Obter Modelos de Email | Modelos de e-mail | GET | /rest/asset/v1/emailTemplates.json | Ativo somente leitura |
-| Cancelar aprovação do rascunho do modelo de e-mail | Modelos de e-mail | POST | /rest/asset/v1/emailTemplate/{id}/unapprove.json | Ativo de leitura-gravação |
-| Atualizar conteúdo do modelo de e-mail | Modelos de e-mail | POST | /rest/asset/v1/emailTemplate/{id}/content.json | Ativo de leitura-gravação |
-| Atualizar metadados do modelo de email | Modelos de e-mail | POST | /rest/asset/v1/emailTemplate/{id}.json | Ativo de leitura-gravação |
+| Aprovar rascunho do modelo de email | Modelos de email | POST | /rest/asset/v1/emailTemplate/{id}/approveDraft.json | Ativo de leitura-gravação |
+| Clonar modelo de e-mail | Modelos de email | POST | /rest/asset/v1/emailTemplate/{id}/clone.json | Ativo de leitura-gravação |
+| Criar modelo de e-mail | Modelos de email | POST | /rest/asset/v1/emailTemplates.json | Ativo de leitura-gravação |
+| Excluir modelo de e-mail | Modelos de email | POST | /rest/asset/v1/emailTemplate/{id}/delete.json | Ativo de leitura-gravação |
+| Descartar Rascunho de Modelo de Email | Modelos de email | POST | /rest/asset/v1/emailTemplate/{id}/discardDraft.json | Ativo de leitura-gravação |
+| Obter Modelo de email por ID | Modelos de email | GET | /rest/asset/v1/emailTemplate/{id}.json | Ativo somente leitura |
+| Obter Modelo de email por Nome | Modelos de email | GET | /rest/asset/v1/emailTemplate/byName.json | Ativo somente leitura |
+| Obter conteúdo do modelo de email por ID | Modelos de email | GET | /rest/asset/v1/emailTemplate/{id}/content.json | Ativo somente leitura |
+| Obter Modelo De Email Usado Por | Modelos de email | GET | /rest/asset/v1/emailTemplates/{id}/usedBy.json | Ativo somente leitura |
+| Obter Modelos de Email | Modelos de email | GET | /rest/asset/v1/emailTemplates.json | Ativo somente leitura |
+| Cancelar aprovação do rascunho do modelo de e-mail | Modelos de email | POST | /rest/asset/v1/emailTemplate/{id}/unapprove.json | Ativo de leitura-gravação |
+| Atualizar conteúdo do modelo de e-mail | Modelos de email | POST | /rest/asset/v1/emailTemplate/{id}/content.json | Ativo de leitura-gravação |
+| Atualizar metadados do modelo de email | Modelos de email | POST | /rest/asset/v1/emailTemplate/{id}.json | Ativo de leitura-gravação |
 | Adicionar módulo de e-mail | Emails | POST | /rest/asset/v1/email/{id}/content/{moduleId}/add.json | Ativo de leitura-gravação |
 | Aprovar rascunho de email | Emails | POST | /rest/asset/v1/email/{id}/approveDraft.json | Ativo de leitura-gravação |
 | Clonar e-mail | Emails | POST | /rest/asset/v1/email/{id}/clone.json | Ativo de leitura-gravação |
@@ -188,22 +188,22 @@ Esta é uma lista abrangente de endpoints da REST API.
 | Obter conteúdo dinâmico da landing page | Conteúdo da landing page | GET | /rest/asset/v1/landingPage/{id}/dynamicContent/{dynamicContentId}.json | Ativo somente leitura |
 | Seção Atualizar conteúdo da página inicial | Conteúdo da landing page | POST | /rest/asset/v1/landingPage/{id}/content/{contentId}.json | Ativo de leitura-gravação |
 | Seção Atualizar conteúdo dinâmico da página de aterrissagem | Conteúdo da landing page | POST | /rest/asset/v1/landingPage/{id}/dynamicContent/{dynamicContentId}.json | Ativo de leitura-gravação |
-| Aprovar rascunho do modelo de página de aterrissagem | Modelos de páginas | POST | /rest/asset/v1/landingPageTemplate/{id}/approveDraft.json | Ativo de leitura-gravação |
-| Clonar modelo de página | Modelos de páginas | POST | /rest/asset/v1/landingPageTemplate/{id}/clone.json | Ativo de leitura-gravação |
-| Criar modelo de página | Modelos de páginas | POST | /rest/asset/v1/landingPageTemplate.json | Ativo de leitura-gravação |
-| Excluir modelo de página | Modelos de páginas | POST | /rest/asset/v1/landingPageTemplate/{id}/delete.json | Ativo de leitura-gravação |
-| Descartar rascunho de modelo de página de aterrissagem | Modelos de páginas | POST | /rest/asset/v1/landingPageTemplate/{id}/discardDraft.json | Ativo de leitura-gravação |
-| Obter modelo de landing page por ID | Modelos de páginas | GET | /rest/asset/v1/landingPageTemplate/{id}.json | Ativo somente leitura |
-| Obter modelo de landing page por nome | Modelos de páginas | GET | /rest/asset/v1/landingPageTemplates/byName.json | Ativo somente leitura |
-| Obter conteúdo do modelo da landing page | Modelos de páginas | GET | /rest/asset/v1/landingPageTemplate/{id}/content.json | Ativo somente leitura |
-| Obter modelos de página de aterrissagem | Modelos de páginas | GET | /rest/asset/v1/landingPageTemplates.json | Ativo somente leitura |
-| Cancelar aprovação do modelo de página | Modelos de páginas | POST | /rest/asset/v1/landingPageTemplate/{id}/unapprove.json | Ativo de leitura-gravação |
-| Atualizar conteúdo do modelo da página de aterrissagem | Modelos de páginas | POST | /rest/asset/v1/landingPageTemplate/{id}/content.json | Ativo de leitura-gravação |
-| Atualizar metadados do modelo da página de aterrissagem | Modelos de páginas | POST | /rest/asset/v1/landingPageTemplate/{id}.json | Ativo de leitura-gravação |
+| Aprovar rascunho do modelo de página de aterrissagem | Modelos de páginas de destino | POST | /rest/asset/v1/landingPageTemplate/{id}/approveDraft.json | Ativo de leitura-gravação |
+| Clonar modelo de página | Modelos de páginas de destino | POST | /rest/asset/v1/landingPageTemplate/{id}/clone.json | Ativo de leitura-gravação |
+| Criar modelo de página | Modelos de páginas de destino | POST | /rest/asset/v1/landingPageTemplate.json | Ativo de leitura-gravação |
+| Excluir modelo de página | Modelos de páginas de destino | POST | /rest/asset/v1/landingPageTemplate/{id}/delete.json | Ativo de leitura-gravação |
+| Descartar rascunho de modelo de página de aterrissagem | Modelos de páginas de destino | POST | /rest/asset/v1/landingPageTemplate/{id}/discardDraft.json | Ativo de leitura-gravação |
+| Obter modelo de landing page por ID | Modelos de páginas de destino | GET | /rest/asset/v1/landingPageTemplate/{id}.json | Ativo somente leitura |
+| Obter modelo de landing page por nome | Modelos de páginas de destino | GET | /rest/asset/v1/landingPageTemplates/byName.json | Ativo somente leitura |
+| Obter conteúdo do modelo da landing page | Modelos de páginas de destino | GET | /rest/asset/v1/landingPageTemplate/{id}/content.json | Ativo somente leitura |
+| Obter modelos de página de aterrissagem | Modelos de páginas de destino | GET | /rest/asset/v1/landingPageTemplates.json | Ativo somente leitura |
+| Cancelar aprovação do modelo de página | Modelos de páginas de destino | POST | /rest/asset/v1/landingPageTemplate/{id}/unapprove.json | Ativo de leitura-gravação |
+| Atualizar conteúdo do modelo da página de aterrissagem | Modelos de páginas de destino | POST | /rest/asset/v1/landingPageTemplate/{id}/content.json | Ativo de leitura-gravação |
+| Atualizar metadados do modelo da página de aterrissagem | Modelos de páginas de destino | POST | /rest/asset/v1/landingPageTemplate/{id}.json | Ativo de leitura-gravação |
 | Aprovar rascunho da página de destino | Páginas de aterrissagem | POST | /rest/asset/v1/landingPage/{id}/approveDraft.json | Ativo de leitura-gravação |
 | Clonar página | Páginas de aterrissagem | POST | /rest/asset/v1/landingPage/{id}/clone.json | Ativo de leitura-gravação |
 | Criar páginas de destino | Páginas de aterrissagem | POST | /rest/asset/v1/landingPages.json | Ativo de leitura-gravação |
-| Excluir página | Páginas de aterrissagem | POST | /rest/asset/v1/landingPage/{id}/delete.json | Ativo de leitura-gravação |
+| Excluir página de destino | Páginas de aterrissagem | POST | /rest/asset/v1/landingPage/{id}/delete.json | Ativo de leitura-gravação |
 | Descartar rascunho da página inicial | Páginas de aterrissagem | POST | /rest/asset/v1/landingPage/{id}/discardDraft.json | Ativo de leitura-gravação |
 | Obter página inicial por ID | Páginas de aterrissagem | GET | /rest/asset/v1/landingPage/{id}.json | Ativo somente leitura |
 | Obter página inicial por nome | Páginas de aterrissagem | GET | /rest/asset/v1/landingPage/byName.json | Ativo somente leitura |

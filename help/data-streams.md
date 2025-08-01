@@ -2,7 +2,7 @@
 title: Fluxos de dados
 description: Visão geral dos fluxos de dados
 exl-id: 5617b6a5-ebc8-4d97-a290-e3b87f83e360
-source-git-commit: 43bcafd335a2fdc709e917ef74504500422c2889
+source-git-commit: 981ed9b254f277d647a844803d05a1a2549cbaed
 workflow-type: tm+mt
 source-wordcount: '1601'
 ht-degree: 2%
@@ -124,7 +124,7 @@ Exemplo de evento de auditoria do usuário:
             "munchkinId": "123-ABC-456",
             "imsOrgId": "ADOBEORGID@AdobeOrg",
             "user": 253,
-            "userId": "example@marketo.com"          
+            "userId": "example@marketo.com"
         }
     }
 }
@@ -262,7 +262,7 @@ Para configurar o Adobe IO, consulte [Configuração de fluxos de dados de audit
 
 ### Configuração do fluxo de dados de auditoria do usuário no Marketo
 
-O Fluxo de dados de auditoria do usuário está disponível atualmente como parte dos pacotes de desempenho, juntamente com os outros 3 Fluxos de dados. Para obter mais informações sobre os Pacotes, consulte a [Página de Descrição do Produto](https://helpx.adobe.com/br/legal/product-descriptions/adobe-marketo-engage---product-description.html) para obter os limites e recursos do produto.
+O Fluxo de dados de auditoria do usuário está disponível atualmente como parte dos pacotes de desempenho, juntamente com os outros 3 Fluxos de dados. Para obter mais informações sobre os Pacotes, consulte a [Página de Descrição do Produto](https://helpx.adobe.com/legal/product-descriptions/adobe-marketo-engage---product-description.html) para obter os limites e recursos do produto.
 
 ### Configuração do Adobe I/O
 

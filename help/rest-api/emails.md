@@ -1,26 +1,26 @@
 ---
-title: E-mails
+title: Emails
 feature: REST API
 description: APIs para manipular ativos de email.
 exl-id: 6875730d-c74a-42cf-a3d2-dad7a3ac535d
-source-git-commit: 66add4c38d0230c36d57009de985649bb67fde3e
+source-git-commit: 981ed9b254f277d647a844803d05a1a2549cbaed
 workflow-type: tm+mt
 source-wordcount: '1946'
 ht-degree: 1%
 
 ---
 
-# E-mails
+# Emails
 
 [Referência de Ponto de Extremidade de Email](https://developer.adobe.com/marketo-apis/api/asset/#tag/Emails) Um conjunto completo de pontos de extremidade REST é fornecido para manipular ativos de email.
 
-Observação: se você estiver usando o [Conteúdo Preditivo do Marketo](https://experienceleague.adobe.com/pt-br/docs/marketo/using/product-docs/predictive-content/working-with-predictive-content/understanding-predictive-content), os seguintes pontos de extremidade falharão se fizerem referência a um email com conteúdo preditivo: [Obter Conteúdo de Email](https://developer.adobe.com/marketo-apis/api/asset/#tag/Emails/operation/getEmailContentByIdUsingGET), [Atualizar Seção de Conteúdo de Email](https://developer.adobe.com/marketo-apis/api/asset/#tag/Emails/operation/updateEmailComponentContentUsingPOST), [Aprovar Rascunho de Email](https://developer.adobe.com/marketo-apis/api/asset/#tag/Emails/operation/approveDraftUsingPOST). A chamada retorna um código de erro 709 e a mensagem de erro correspondente.
+Observação: se você estiver usando o [Conteúdo Preditivo do Marketo](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/predictive-content/working-with-predictive-content/understanding-predictive-content), os seguintes pontos de extremidade falharão se fizerem referência a um email com conteúdo preditivo: [Obter Conteúdo de Email](https://developer.adobe.com/marketo-apis/api/asset/#tag/Emails/operation/getEmailContentByIdUsingGET), [Atualizar Seção de Conteúdo de Email](https://developer.adobe.com/marketo-apis/api/asset/#tag/Emails/operation/updateEmailComponentContentUsingPOST), [Aprovar Rascunho de Email](https://developer.adobe.com/marketo-apis/api/asset/#tag/Emails/operation/approveDraftUsingPOST). A chamada retorna um código de erro 709 e a mensagem de erro correspondente.
 
 ## Consultar
 
 O padrão de consulta para emails é idêntico ao dos modelos, permitindo consultas [por id](https://developer.adobe.com/marketo-apis/api/asset/#tag/Emails/operation/getEmailByIdUsingGET), [por nome](https://developer.adobe.com/marketo-apis/api/asset/#tag/Emails/operation/getEmailByNameUsingGET) e [navegação](https://developer.adobe.com/marketo-apis/api/asset/#tag/Emails/operation/getEmailUsingGET) e para filtragem com base na pasta com as APIs de navegação e por nome.
 
-Observação: se um email fizer parte de um programa de email que está usando o [Teste A/B](https://experienceleague.adobe.com/pt-br/docs/marketo/using/product-docs/email-marketing/email-programs/email-program-actions/email-test-a-b-test/add-an-a-b-test), esse email não estará disponível para consulta usando os seguintes pontos de extremidade: [Obter Email por Id](https://developer.adobe.com/marketo-apis/api/asset/#tag/Emails/operation/getEmailByIdUsingGET), [Obter Email por Nome](https://developer.adobe.com/marketo-apis/api/asset/#tag/Emails/operation/getEmailByNameUsingGET), [Obter Emails](https://developer.adobe.com/marketo-apis/api/asset/#tag/Emails/operation/getEmailUsingGET). A chamada indica sucesso, mas conterá o seguinte aviso: &quot;Nenhum ativo encontrado para os critérios de pesquisa fornecidos&quot;.
+Observação: se um email fizer parte de um programa de email que está usando o [Teste A/B](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/email-marketing/email-programs/email-program-actions/email-test-a-b-test/add-an-a-b-test), esse email não estará disponível para consulta usando os seguintes pontos de extremidade: [Obter Email por Id](https://developer.adobe.com/marketo-apis/api/asset/#tag/Emails/operation/getEmailByIdUsingGET), [Obter Email por Nome](https://developer.adobe.com/marketo-apis/api/asset/#tag/Emails/operation/getEmailByNameUsingGET), [Obter Emails](https://developer.adobe.com/marketo-apis/api/asset/#tag/Emails/operation/getEmailUsingGET). A chamada indica sucesso, mas conterá o seguinte aviso: &quot;Nenhum ativo encontrado para os critérios de pesquisa fornecidos&quot;.
 
 ### Por ID
 
@@ -260,19 +260,19 @@ GET /rest/asset/v1/email/ccFields.json
 ```
 
 ```json
-{  
+{
    "success":true,
    "errors":[ ],
    "requestId":"e54b#16796fdbd4e",
    "warnings":[ ],
-   "result":[  
-      {  
+   "result":[
+      {
          "attributeId":"157",
          "objectName":"lead",
          "displayName":"Lead Owner Email Address",
          "apiName":"leadOwnerEmailAddress"
       },
-      {  
+      {
          "attributeId":"396",
          "objectName":"company",
          "displayName":"Account Owner Email Address",
@@ -284,7 +284,7 @@ GET /rest/asset/v1/email/ccFields.json
 
 ## Criar e atualizar
 
-[Os emails são criados](https://developer.adobe.com/marketo-apis/api/asset/#tag/Emails/operation/createEmailUsingPOST) com base em um modelo de origem e têm uma lista de seções editáveis derivadas de cada elemento de HTML separado nesse modelo com uma classe de &quot;mktEditable&quot; e uma propriedade de id exclusiva. A criação de um email com a API cria um registro com base no modelo, juntamente com quaisquer metadados adicionais transmitidos. Os seguintes parâmetros são necessários para uma chamada Criar email bem-sucedida: nome, modelo, pasta.
+[Os emails são criados](https://developer.adobe.com/marketo-apis/api/asset/#tag/Emails/operation/createEmailUsingPOST) com base em um modelo de origem e têm uma lista de seções editáveis derivadas de cada elemento HTML separado nesse modelo com uma classe de &quot;mktEditable&quot; e uma propriedade de id exclusiva. A criação de um email com a API cria um registro com base no modelo, juntamente com quaisquer metadados adicionais transmitidos. Os seguintes parâmetros são necessários para uma chamada Criar email bem-sucedida: nome, modelo, pasta.
 
 Os seguintes parâmetros são opcionais para criação: `subject`, `fromName`, `fromEmail`, `replyEmail`, `operational`, `isOpenTrackingDisabled`. Se não for definido, `subject` ficará vazio, `fromName`, `fromEmail` e `replyEmail` será definido para os padrões de instância, e `operational` e `isOpenTrackingDisabled` será falso. `isOpenTrackingDisabled` determina se o pixel de rastreamento aberto é incluído em um email quando enviado.
 
@@ -345,7 +345,7 @@ name=My New Email 02 - deverly&folder={"id":1017,"type":"Program"}&template=24&d
             "isOpenTrackingDisabled": false,
             "version": 2,
             "autoCopyToText": false,
-            "ccFields": null,  
+            "ccFields": null,
             "preHeader": null
         }
     ]
@@ -411,7 +411,7 @@ description=This is an Email&name=Updated Email
             "isOpenTrackingDisabled": false,
             "version": 2,
             "autoCopyToText": false,
-            "ccFields": null,  
+            "ccFields": null,
             "preHeader": null
         }
     ]
@@ -480,11 +480,11 @@ type=Text&value=<h1>Hello World!</h1>&textValue=Hello World!
 }
 ```
 
-Observação: se a cópia automática no texto estiver desativada para um trecho incorporado em um email, o valor de HTML do trecho for atualizado e, em seguida, a versão de texto de outra seção no email for atualizada, a versão de texto do email terá o texto refletindo o valor atualizado do HTML do trecho, não a versão anterior, como seria esperado com a cópia automática desativada.
+Observação: se a cópia automática no texto estiver desativada para um trecho incorporado em um email, o valor do HTML do trecho for atualizado e, em seguida, a versão de texto de outra seção no email for atualizada, a versão de texto do email terá o texto refletindo o valor atualizado do trecho HTML, não a versão anterior, como seria esperado com a cópia automática desativada.
 
 ## Módulos
 
-No Editor de email 1.0, um módulo é uma seção do seu email definida no modelo. Os módulos podem conter qualquer combinação de elementos, variáveis e outro conteúdo de HTML, conforme descrito [aqui](https://experienceleague.adobe.com/pt-br/docs/marketo/using/product-docs/email-marketing/general/email-editor-2/email-template-syntax#EmailTemplateSyntax-Modules). O Marketo oferece um conjunto de APIs para gerenciar módulos em um email. Para pontos de extremidade relacionados ao módulo que exigem o método POST HTTP, o corpo é formatado como &quot;application/x-www-form-urlencoded&quot; (não como JSON).
+No Editor de email 1.0, um módulo é uma seção do seu email definida no modelo. Os módulos podem conter qualquer combinação de elementos, variáveis e outro conteúdo HTML, conforme descrito [aqui](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/email-marketing/general/email-editor-2/email-template-syntax#EmailTemplateSyntax-Modules). O Marketo oferece um conjunto de APIs para gerenciar módulos em um email. Para endpoints relacionados ao módulo que exigem o método HTTP POST, o corpo é formatado como &quot;application/x-www-form-urlencoded&quot; (não como JSON).
 
 A maioria dos endpoints relacionados ao módulo exigem um &quot;moduleId&quot; como parâmetro de caminho. Esta é uma string que descreve o módulo. moduleIds são retornados pelo ponto de extremidade [Obter Conteúdo de Email](https://developer.adobe.com/marketo-apis/api/asset/#tag/Emails/operation/getEmailContentByIdUsingGET) como o atributo &quot;htmlId&quot; (consulte a seção [Consulta](#modules_query) abaixo).
 
@@ -535,7 +535,7 @@ GET /rest/asset/v1/email/{moduleId}/content.json
     {
       "htmlId": "video2",
       "value": {
-        
+
       },
       "contentType": "Video",
       "parentHtmlId": "video",
@@ -705,7 +705,7 @@ GET /rest/asset/v1/email/{moduleId}/content.json
 }
 ```
 
-A matriz de resultados contém elementos que descrevem os módulos e os elementos de HTML misturados. Os elementos do módulo contêm um atributo &quot;contentType&quot;: &quot;Module&quot; e um atributo &quot;index&quot;. O moduleId é armazenado no atributo &quot;htmlId&quot;.
+A matriz de resultados contém elementos que descrevem os módulos e os elementos do HTML misturados. Os elementos do módulo contêm um atributo &quot;contentType&quot;: &quot;Module&quot; e um atributo &quot;index&quot;. O moduleId é armazenado no atributo &quot;htmlId&quot;.
 
 Continuando com o exemplo &quot;Esqueleto&quot; acima, a tabela a seguir contém um resumo das moduleIds e seus índices correspondentes contidos no email.
 
@@ -720,7 +720,7 @@ Continuando com o exemplo &quot;Esqueleto&quot; acima, a tabela a seguir contém
 | dois artigos | 6 |
 | rodapé | 7 |
 
-#### Adicionar
+#### Add
 
 [Adicione um módulo](https://developer.adobe.com/marketo-apis/api/asset/#tag/Emails/operation/addModuleUsingPOST) a um email selecionando um dos módulos existentes no modelo de email que está em uso. Para fazer isso, especifique a ID de email e a moduleId como parâmetros de caminho. O parâmetro de consulta de índice é obrigatório e determina a ordem do módulo no email. Se o valor do índice exceder o maior valor de índice existente, o módulo será anexado ao email.
 
@@ -856,7 +856,7 @@ name=MarketoVideo
 
 ## Variáveis
 
-No Editor de email 1.0, as variáveis são usadas para armazenar valores para elementos em seu email. Cada variável é definida adicionando uma sintaxe específica do Marketo ao seu HTML como descrito [aqui](https://experienceleague.adobe.com/pt-br/docs/marketo/using/product-docs/email-marketing/general/email-editor-2/email-template-syntax#EmailTemplateSyntax-Variables). O Marketo oferece um conjunto de APIs para gerenciar variáveis em um email.
+No Editor de email 1.0, as variáveis são usadas para armazenar valores para elementos em seu email. Cada variável é definida adicionando uma sintaxe específica do Marketo à sua HTML, conforme descrito [aqui](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/email-marketing/general/email-editor-2/email-template-syntax#EmailTemplateSyntax-Variables). O Marketo oferece um conjunto de APIs para gerenciar variáveis em um email.
 
 ### Consultar
 
@@ -1332,7 +1332,7 @@ emailAddress=abe@testmail.com&textOnly=true
 A Marketo fornece o ponto de extremidade [Obter Conteúdo Completo de Email](https://developer.adobe.com/marketo-apis/api/asset/#tag/Emails/operation/getEmailFullContentUsingGET) para recuperar uma visualização ao vivo de um email como ele seria enviado a um recipient. Esse endpoint só pode ser usado em Emails da Versão 1.0. Há um parâmetro obrigatório, o parâmetro de caminho de id, que é a id do ativo de email que você deseja visualizar. Há três parâmetros de consulta opcionais adicionais:
 
 - Status: Aceita os valores &quot;rascunho&quot; ou &quot;aprovado&quot; que assumirão como padrão a versão aprovada, se aprovada, rascunho, se não aprovada
-- Tipo: aceita &quot;Texto&quot; ou &quot;HTML&quot; e assume o padrão HTML
+- Tipo: aceita &quot;Text&quot; ou &quot;HTML&quot; e assume o padrão HTML
 - leadId:. Aceita a ID de número inteiro de um cliente potencial. Quando definido, pré-visualiza o email como se ele tivesse sido recebido pelo cliente potencial designado
 
 ```
@@ -1357,9 +1357,9 @@ GET /rest/asset/v1/email/{id}/fullContent.json
 
 ## Substituir HTML
 
-A Marketo fornece o ponto de extremidade [Atualizar Conteúdo Completo de Email](https://developer.adobe.com/marketo-apis/api/asset/#tag/Emails/operation/createEmailFullContentUsingPOST) para substituir todo o conteúdo de um ativo de email. Esse endpoint só pode ser usado em emails da versão 1.0 que tiveram a função &quot;Editar código&quot; da interface do usuário usada neles e a relação com o modelo pai interrompida. Essa API destina-se principalmente ao uso em ativos que foram clonados como parte de um programa e não pode ser modificada com os endpoints de conteúdo padrão. Emails com conteúdo dinâmico não são compatíveis. Além disso, se você tentar substituir o HTML em um email no qual a relação está intacta, um erro será retornado.
+A Marketo fornece o ponto de extremidade [Atualizar Conteúdo Completo de Email](https://developer.adobe.com/marketo-apis/api/asset/#tag/Emails/operation/createEmailFullContentUsingPOST) para substituir todo o conteúdo de um ativo de email. Esse endpoint só pode ser usado em emails da versão 1.0 que tiveram a função &quot;Editar código&quot; da interface do usuário usada neles e a relação com o modelo pai interrompida. Essa API destina-se principalmente ao uso em ativos que foram clonados como parte de um programa e não pode ser modificada com os endpoints de conteúdo padrão. Emails com conteúdo dinâmico não são compatíveis. Além disso, se você tentar substituir o HTML em um email em que a relação está intacta, um erro será retornado.
 
-Esse endpoint espera um Content-Type : multipart/form-data com o parâmetro id no caminho, a id do email e um parâmetro no corpo, content como um documento de email de HTML completo com o Content-Type &quot;text/html&quot;. Um documento HTML malformado emite um aviso, mas pode não permitir aprovação, enquanto a inclusão de JavaScript e/ou `<script>`tags no documento faz com que a chamada falhe e emita um erro.
+Esse endpoint espera um Content-Type : multipart/form-data com o parâmetro id no caminho, a id do email e um parâmetro no corpo, content como um documento de email completo do HTML com o Content-Type &quot;text/html&quot;. Um documento do HTML mal formado emite um aviso, mas pode não permitir aprovação, enquanto a inclusão de JavaScript e/ou `<script>`tags no documento faz com que a chamada falhe e emita um erro.
 
 ```
 POST /rest/asset/v1/email/{id}/fullContent.json

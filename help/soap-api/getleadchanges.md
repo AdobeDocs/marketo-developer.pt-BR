@@ -1,9 +1,9 @@
 ---
 title: getLeadChanges
 feature: SOAP
-description: chamadas de SOAP getLeadChanges
+description: chamadas getLeadChanges SOAP
 exl-id: 23445684-d8d9-407b-8f19-cb69e806795c
-source-git-commit: 66add4c38d0230c36d57009de985649bb67fde3e
+source-git-commit: 981ed9b254f277d647a844803d05a1a2549cbaed
 workflow-type: tm+mt
 source-wordcount: '402'
 ht-degree: 3%
@@ -20,13 +20,13 @@ Você deve incluir um parâmetro de entrada que identifique quais filtros de ati
 
 Alguns exemplos de tipos de atividades são: &quot;Visitar página da Web&quot;, &quot;Preencher formulário&quot; e &quot;Clicar em link&quot;.
 
-Depois da API SOAP versão 2_2, você pode incluir um `leadSelector`.
+Depois da API do SOAP versão 2_2, você pode incluir um `leadSelector`.
 
 Para `LastUpdateAtSelector`, o valor `oldestUpdatedAt` corresponderia ao valor `oldestCreatedAt` em `startPosition`. E o valor `latestUpdatedAt` corresponderia ao valor `latestCreatedAt` em `startPosition`.
 
-Observação: o número limite de clientes em potencial com suporte em um `LeadKeySelector` é 100. Se o número de leads exceder 100, a API lançará uma exceção de parâmetro ruim e retornará uma falha do SOAP.
+Observação: o número limite de clientes em potencial com suporte em um `LeadKeySelector` é 100. Se o número de leads exceder 100, a API lançará uma exceção de parâmetro incorreta e retornará uma falha de SOAP.
 
-## Solicitar
+## Solicitação
 
 | Nome do campo | Obrigatório/Opcional | Descrição |
 | --- | --- | --- |
@@ -497,14 +497,14 @@ $marketoSoapEndPoint    = "";  // CHANGE ME
 $marketoUserId      = "";  // CHANGE ME
 $marketoSecretKey   = ""; // CHANGE ME
 $marketoNameSpace   = "http://www.marketo.com/mktows/";
- 
+
 // Create Signature
 $dtzObj = new DateTimeZone("America/Los_Angeles");
 $dtObj  = new DateTime('now', $dtzObj);
 $timeStamp = $dtObj->format(DATE_W3C);
 $encryptString = $timeStamp . $marketoUserId;
 $signature = hash_hmac('sha1', $encryptString, $marketoSecretKey);
- 
+
 // Create SOAP Header
 $attrs = new stdClass();
 $attrs->mktowsUserId = $marketoUserId;
@@ -515,7 +515,7 @@ $options = array("connection_timeout" => 600, "location" => $marketoSoapEndPoint
 if ($debug) {
   $options["trace"] = 1;
 }
- 
+
 // Create Request
 $params = new stdClass();
 $filter = new stdClass();
@@ -564,73 +564,73 @@ import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBElement;
 import javax.xml.bind.Marshaller;
 import java.util.GregorianCalendar;
- 
- 
+
+
 public class GetLeadChanges {
- 
+
     public static void main(String[] args) {
         System.out.println("Executing Get Lead Changes");
         try {
             URL marketoSoapEndPoint = new URL("CHANGE ME" + "?WSDL");
             String marketoUserId = "CHANGE ME";
             String marketoSecretKey = "CHANGE ME";
-             
+
             QName serviceName = new QName("http://www.marketo.com/mktows/", "MktMktowsApiService");
             MktMktowsApiService service = new MktMktowsApiService(marketoSoapEndPoint, serviceName);
             MktowsPort port = service.getMktowsApiSoapPort();
-             
+
             // Create Signature
             DateFormat df = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ssZ");
             String text = df.format(new Date());
-            String requestTimestamp = text.substring(0, 22) + ":" + text.substring(22);           
+            String requestTimestamp = text.substring(0, 22) + ":" + text.substring(22);
             String encryptString = requestTimestamp + marketoUserId;
-             
+
             SecretKeySpec secretKey = new SecretKeySpec(marketoSecretKey.getBytes(), "HmacSHA1");
             Mac mac = Mac.getInstance("HmacSHA1");
             mac.init(secretKey);
             byte[] rawHmac = mac.doFinal(encryptString.getBytes());
             char[] hexChars = Hex.encodeHex(rawHmac);
-            String signature = new String(hexChars); 
-             
+            String signature = new String(hexChars);
+
             // Set Authentication Header
             AuthenticationHeader header = new AuthenticationHeader();
             header.setMktowsUserId(marketoUserId);
             header.setRequestTimestamp(requestTimestamp);
             header.setRequestSignature(signature);
-             
+
             // Create Request
             ParamsGetLeadChanges request = new ParamsGetLeadChanges();
- 
+
             ObjectFactory objectFactory = new ObjectFactory();
             JAXBElement<Integer> batchSize = objectFactory.createParamsGetLeadActivityBatchSize(10);
             request.setBatchSize(batchSize);
-             
+
             ArrayOfString activities = new ArrayOfString();
             activities.getStringItems().add("Visit Webpage");
             activities.getStringItems().add("Click Link");
-            
+
             JAXBElement<ArrayOfString> activityFilter = objectFactory.createParamsGetLeadChangesActivityNameFilter(activities);
             request.setActivityNameFilter(activityFilter);
-             
+
             // Create oldestCreateAt timestamp from 5 days ago
             GregorianCalendar gc = new GregorianCalendar();
             gc.setTimeInMillis(new Date().getTime());
             gc.add( GregorianCalendar.DAY_OF_YEAR, -5);
-             
+
             DatatypeFactory factory = DatatypeFactory.newInstance();
             JAXBElement<XMLGregorianCalendar> oldestCreateAtValue =objectFactory.createStreamPositionOldestCreatedAt(factory.newXMLGregorianCalendar(gc));
- 
+
             StreamPosition sp = new StreamPosition();
             sp.setOldestCreatedAt(oldestCreateAtValue);
             request.setStartPosition(sp);
-             
+
             SuccessGetLeadChanges result = port.getLeadChanges(request, header);
- 
+
             JAXBContext context = JAXBContext.newInstance(SuccessGetLeadChanges.class);
             Marshaller m = context.createMarshaller();
             m.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
             m.marshal(result, System.out);
-             
+
         }
         catch(Exception e) {
             e.printStackTrace();
@@ -659,9 +659,9 @@ hashedsignature = OpenSSL::HMAC.hexdigest(digest, marketoSecretKey, encryptStrin
 requestSignature = hashedsignature.to_s
 
 #Create SOAP Header
-headers = { 
-    'ns1:AuthenticationHeader' => { "mktowsUserId" => mktowsUserId, "requestSignature" => requestSignature,                     
-    "requestTimestamp"  => requestTimestamp 
+headers = {
+    'ns1:AuthenticationHeader' => { "mktowsUserId" => mktowsUserId, "requestSignature" => requestSignature,
+    "requestTimestamp"  => requestTimestamp
     }
 }
 

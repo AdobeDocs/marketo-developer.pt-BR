@@ -3,7 +3,7 @@ title: Redirecionar
 description: Redirecionar
 feature: Javascript
 exl-id: bbf91245-42e5-47ae-a561-e522cc65ff49
-source-git-commit: 66add4c38d0230c36d57009de985649bb67fde3e
+source-git-commit: 981ed9b254f277d647a844803d05a1a2549cbaed
 workflow-type: tm+mt
 source-wordcount: '468'
 ht-degree: 8%
@@ -14,7 +14,7 @@ ht-degree: 8%
 
 A API de redirecionamento do RTP permite redirecionar públicos segmentados para um URL de destino.
 
-- Você deve se tornar um cliente do Web Personalization e implantar a [tag RTP](https://experienceleague.adobe.com/pt-br/docs/marketo/using/product-docs/web-personalization/rtp-tag-implementation/deploy-the-rtp-javascript) no site antes de usar a API de Contexto de Usuário.
+- Você deve se tornar um cliente do Web Personalization e implantar a [tag RTP](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/web-personalization/rtp-tag-implementation/deploy-the-rtp-javascript) no site antes de usar a API de Contexto de Usuário.
 - O RTP não suporta listas de contas nomeadas de Marketing Baseado em Conta. As listas e os códigos ABM pertencem apenas às listas de contas carregadas (arquivos CSV) gerenciadas no RTP.
 
 ## Uso
@@ -23,11 +23,11 @@ A API de redirecionamento do RTP permite redirecionar públicos segmentados para
 
 | Parâmetro | Opcional/Obrigatório | Tipo | Descrição |
 |---------------------------|-------------------|---------|-----------------------------|
-| &#39;enviar&#39; | Obrigatório | Sequência de caracteres | Ação do método. |
-| &#39;redirecionar&#39; | Obrigatório | Sequência de caracteres | Nome do método. |
-| field_name | Obrigatório | Sequência de caracteres | Nome do campo para corresponder. Exemplo: &#39;abm.name&#39; (veja abaixo). |
+| &#39;enviar&#39; | Obrigatório | String | Ação do método. |
+| &#39;redirecionar&#39; | Obrigatório | String | Nome do método. |
+| field_name | Obrigatório | String | Nome do campo para corresponder. Exemplo: &#39;abm.name&#39; (veja abaixo). |
 | values_array | Obrigatório | Matriz | Lista de valores para corresponder ao campo (não diferencia maiúsculas de minúsculas). |
-| redirect_url | Obrigatório | Sequência de caracteres | URL do Target para redirecionar visitantes que corresponderam à condição. |
+| redirect_url | Obrigatório | String | URL do Target para redirecionar visitantes que corresponderam à condição. |
 | redirect_matched_visitors | Opcional | Booleano | Se true, os visitantes correspondentes à condição serão redirecionados. Se for falso, os visitantes sem correspondência da condição serão redirecionados. Padrão: verdadeiro. |
 
 Organização, Setor, Listas ABM, Local, ISP, Segmentos correspondentes
@@ -39,11 +39,11 @@ Organização, Setor, Listas ABM, Local, ISP, Segmentos correspondentes
 | Listas ABM | abm.name | rtp( &#39;send&#39;, &#39;redirect&#39; , &#39;abm.name&#39; , [&#39;top_key_accounts&#39;, &#39;ative_customers&#39;] , &#39;http://www.marketo.com&#39;); |
 | Listas ABM | abm.code | rtp( &#39;send&#39;, &#39;redirect&#39; , &#39;abm.code&#39; , [13 , 15] , &#39;http://www.marketo.com&#39;); |
 | Organizações | org | rtp( &#39;send&#39;, &#39;redirect&#39; , &#39;org&#39;, [&#39;ebay&#39;], &#39;http://www.marketo.com&#39;); |
-| Local | location.country | rtp( &#39;send&#39;, &#39;redirect&#39; , &#39;location.country&#39; , [&#39;United States&#39;], &#39;http://www.marketo.com&#39;); |
-| Local | location.state | rtp( &#39;send&#39;, &#39;redirect&#39; , &#39;location.state&#39;, [&#39;ca&#39;], &#39;http://www.marketo.com&#39;); |
-| Local | location.city | rtp( &#39;send&#39;, &#39;redirect&#39; , &#39;location.city&#39;, [&#39;San Mateo&#39;], &#39;http://www.marketo.com&#39;); |
+| Localização | location.country | rtp( &#39;send&#39;, &#39;redirect&#39; , &#39;location.country&#39; , [&#39;United States&#39;], &#39;http://www.marketo.com&#39;); |
+| Localização | location.state | rtp( &#39;send&#39;, &#39;redirect&#39; , &#39;location.state&#39;, [&#39;ca&#39;], &#39;http://www.marketo.com&#39;); |
+| Localização | location.city | rtp( &#39;send&#39;, &#39;redirect&#39; , &#39;location.city&#39;, [&#39;San Mateo&#39;], &#39;http://www.marketo.com&#39;); |
 | Setores | indústrias | rtp( &#39;enviar&#39;, &#39;redirecionar&#39; , &#39;indústrias&#39; , [&#39;Educação&#39;], &#39;http://www.marketo.com&#39;); |
-| Provedor de Internet  | isp | rtp( &#39;send&#39;, &#39;redirect&#39; , isp , [&#39;False&#39;], &#39;http://www.marketo.com&#39;); |
+| ISP | isp | rtp( &#39;send&#39;, &#39;redirect&#39; , isp , [&#39;False&#39;], &#39;http://www.marketo.com&#39;); |
 
 
 ## Observações
@@ -57,7 +57,7 @@ Organização, Setor, Listas ABM, Local, ISP, Segmentos correspondentes
 <!DOCTYPE html>
 <html lang="en-US">
 <head>
-<!-- RTP tag --> 
+<!-- RTP tag -->
 <script type='text/javascript'>
 
 // This tag needs to be replaced with your account tag
@@ -65,18 +65,18 @@ Organização, Setor, Listas ABM, Local, ISP, Segmentos correspondentes
 c[a].a=i;var g=h.createElement("script");g.async=true;g.type="text/javascript";
 g.src=f+'?rh='+c.location.hostname+'&aid='+i;var b=h.getElementsByTagName("script")[0];b.parentNode.insertBefore(g,b);
 })(window,document,"rtp","//xyz.marketo.com/rtp-api/v1/rtp.js","xyz");
- 
-// START REDIRECT EXAMPLE 
+
+// START REDIRECT EXAMPLE
 //   - Using a helper redirect function
 //   - Redirect based on named account
 rtp('send','redirect','org', ['microsoft'],'http://www.marketo.com');
- 
+
 // Redirect based on named account list (ABM)
 rtp('send','redirect','abm.name', {
     // Redirect visitors that match 'first_abm' list to www.marketo.com
     'http://www.marketo.com' : ['first_abm'],
     // Redirect visitors that match 'second_abm' list to blog.marketo.com
-    'http://blog.marketo.com' : ['second_abm'] 
+    'http://blog.marketo.com' : ['second_abm']
 });
 // END REDIRECT EXAMPLE
 rtp('send','view');
@@ -103,9 +103,9 @@ A chamada de redirecionamento oferece suporte a várias chamadas. Isso permite r
 
 | Parâmetro | Opcional/Obrigatório | Tipo | Descrição |
 |---|---|---|---|
-| &#39;enviar&#39; | Obrigatório | Sequência de caracteres | Ação do método. |
-| &#39;redirecionar&#39; | Obrigatório | Sequência de caracteres | Nome do método. |
-| field_name | Obrigatório | Sequência de caracteres | Nome do campo para corresponder. Exemplo: &#39;abm.name&#39; (veja acima). |
+| &#39;enviar&#39; | Obrigatório | String | Ação do método. |
+| &#39;redirecionar&#39; | Obrigatório | String | Nome do método. |
+| field_name | Obrigatório | String | Nome do campo para corresponder. Exemplo: &#39;abm.name&#39; (veja acima). |
 | url_values_map | Obrigatório | Objeto | Mapear entre o URL de redirecionamento e a lista de valores. Exemplo:{&#39;http://marketo.com&#39; : [&#39;first_abm&#39;, &#39;second_abm&#39;]} |
 
 

@@ -3,22 +3,22 @@ title: API SOAP
 feature: SOAP
 description: Visão geral do Marketo SOAP
 exl-id: 6618cc82-15ae-4030-aa00-438e635d8369
-source-git-commit: 8ad3e3f0958ea705375651b1c8a75967d807ca80
+source-git-commit: 981ed9b254f277d647a844803d05a1a2549cbaed
 workflow-type: tm+mt
-source-wordcount: '245'
+source-wordcount: '244'
 ht-degree: 1%
 
 ---
 
 # API SOAP
 
-A API do SOAP está sendo descontinuada e não estará mais disponível após 31 de outubro de 2025. Todos os novos desenvolvimentos devem ser feitos com a [REST API](../rest-api/rest-api.md) do Marketo, e os serviços existentes devem ser migrados até essa data para evitar interrupções no serviço. Se você tiver um serviço que usa a API SOAP, consulte a API SOAP [Guia de Migração](./migration.md) para obter informações sobre como migrar.
+A API do SOAP está sendo substituída e não estará mais disponível após 31 de outubro de 2025. Todos os novos desenvolvimentos devem ser feitos com a [REST API](../rest-api/rest-api.md) do Marketo, e os serviços existentes devem ser migrados até essa data para evitar interrupções no serviço. Se você tiver um serviço que usa a API do SOAP, consulte o [Guia de Migração](./migration.md) da API do SOAP para obter informações sobre como migrar.
 
-## WSDL SOAP
+## WSDL do SOAP
 
-Para recuperar o documento WSDL SOAP, obtenha o Ponto de Extremidade da API SOAP do menu **[!UICONTROL Admin]** > **[!UICONTROL Integração]** > **[!UICONTROL Serviços da Web]**.
+Para recuperar o documento WSDL do SOAP, obtenha o Ponto de Extremidade da API do SOAP do menu **[!UICONTROL Admin]** > **[!UICONTROL Integração]** > **[!UICONTROL Serviços da Web]**.
 
-![Ponto de extremidade SOAP](assets/endpoint-soap.png)
+![Ponto de Extremidade do SOAP](assets/endpoint-soap.png)
 
 Seu URL WSDL é:
 
@@ -28,7 +28,7 @@ Não use o ponto final definido no WSDL. Cada instância do Marketo tem um ponto
 
 ## Limites
 
-- **Cota Diária:** A maioria das assinaturas recebe 10.000 chamadas de API por dia (que são redefinidas diariamente às 12h00 CST). Você pode aumentar sua cota diária por meio do gerente da conta.
+- **Cota Diária:** A maioria das assinaturas recebe 10.000 chamadas de API por dia (o que é redefinido diariamente a uma CST de 12:00AM). Você pode aumentar sua cota diária por meio do gerente da conta.
 - **Limite de Taxa:** Acesso à API por instância limitado a 100 chamadas por 20 segundos.
 - **Limite de simultaneidade:**  Máximo de dez chamadas de API simultâneas.
 
@@ -40,6 +40,6 @@ Nossa recomendação é que os tamanhos dos lotes não sejam maiores que 300. N�
 
 ![admin-web-services2](assets/admin-web-services2.png)
 
-1. Defina uma [!UICONTROL Chave de Criptografia] apropriada, clique em **[!UICONTROL Salvar Alterações]** e use os valores de API de SOAP [!UICONTROL Ponto de Extremidade], [!UICONTROL ID de Usuário] e [!UICONTROL Chave de Criptografia] para gerar a [assinatura de autenticação](authentication-signature.md) correta para cada chamada de API de SOAP.
+1. Defina uma [!UICONTROL Chave de Criptografia] apropriada, clique em **[!UICONTROL Salvar Alterações]** e use os valores de [!UICONTROL Ponto de Extremidade], [!UICONTROL ID de Usuário] e [!UICONTROL Chave de Criptografia] da API do SOAP para gerar a [assinatura de autenticação](authentication-signature.md) correta para cada chamada de API do SOAP.
 
 ![admin-web-services3](assets/admin-web-services3.png)

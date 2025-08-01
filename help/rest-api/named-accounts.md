@@ -3,7 +3,7 @@ title: Contas nomeadas
 feature: REST API
 description: Manipular contas nomeadas por meio da API.
 exl-id: 2aa1d2a0-9e54-4a9a-abb1-0d0479ed3558
-source-git-commit: 66add4c38d0230c36d57009de985649bb67fde3e
+source-git-commit: 981ed9b254f277d647a844803d05a1a2549cbaed
 workflow-type: tm+mt
 source-wordcount: '679'
 ht-degree: 1%
@@ -27,99 +27,99 @@ GET /rest/v1/namedaccounts/describe.json
 ```
 
 ```json
-{  
+{
    "requestId":"d65e#156c27ac57d",
-   "result":[  
-      {  
+   "result":[
+      {
          "name":"Named Account",
          "description":"Marketo standard account attribute map",
          "createdAt":"2016-08-18T20:16:41Z",
          "updatedAt":"2016-08-18T20:16:41Z",
          "idField":"marketoGUID",
-         "dedupeFields":[  
+         "dedupeFields":[
             "name"
          ],
          "searchableFields":[
             [
                "marketoGUID",
-            ], 
-            [  
+            ],
+            [
                "annualRevenue"
             ],
-            [  
+            [
                "city"
             ],
-            [  
+            [
                "country"
             ],
-            [  
+            [
                "domainName"
             ],
-            [  
+            [
                "industry"
             ],
-            [  
+            [
                "logoUrl"
             ],
-            [  
+            [
                "membershipCount"
             ],
-            [  
+            [
                "name"
             ],
-            [  
+            [
                "numberOfEmployees"
             ],
-            [  
+            [
                "opptyAmount"
             ],
-            [  
+            [
                "opptyCount"
             ],
-            [  
+            [
                "score1"
             ],
-            [  
+            [
                "score2"
             ],
-            [  
+            [
                "score3"
             ],
-            [  
+            [
                "score4"
             ],
-            [  
+            [
                "score5"
             ],
-            [  
+            [
                "sicCode"
             ],
-            [  
+            [
                "state"
             ]
          ],
-         "fields":[  
-            {  
+         "fields":[
+            {
                "name":"marketoGUID",
                "displayName":"Marketo GUID",
                "dataType":"string",
                "length":36,
                "updateable":false
             },
-            {  
+            {
                "name":"annualRevenue",
                "displayName":"annualRevenue",
                "dataType":"currency",
                "updateable":true
             },
-            {  
+            {
                "name":"city",
                "displayName":"city",
                "dataType":"string",
                "length":255,
                "updateable":true
             },
-            {  
+            {
                "name":"country",
                "displayName":"country",
                "dataType":"string",
@@ -177,15 +177,15 @@ Content-Type: application/json
 ```
 
 ```json
-{  
+{
    "action":"updateOnly",
    "dedupeBy":"dedupeFields",
-   "input":[  
-      {  
+   "input":[
+      {
          "name":"Google",
          "domainName":"www.google.com"
       },
-      {  
+      {
          "name":"Yahoo",
          "domainName":"www.yahoo.com"
       }
@@ -194,16 +194,16 @@ Content-Type: application/json
 ```
 
 ```json
-{  
+{
    "requestId":"e42b#14272d07d78",
    "success":true,
-   "result":[  
-      {  
+   "result":[
+      {
          "seq":0,
          "status":"updated",
          "marketoGUID":"dff23271-f996-47d7-984f-f2676861b5fb"
       },
-      {  
+      {
          "seq":1,
          "status":"created",
          "marketoGUID":"dff23271-f996-47d7-984f-f2676861b5fc"
@@ -331,7 +331,7 @@ GET /rest/v1/namedaccounts/schema/fields.json?batchSize=5
 
 ### Excluir
 
-As exclusões são feitas por meio de uma solicitação POST JSON e têm um membro de entrada obrigatório e um membro deleteBy opcional. deleteBy pode ser um dos &quot;dedupeFields&quot; ou &quot;idField&quot;, correspondendo a name ou marketoGUID, respectivamente, e assumirá dedupeFields como padrão, caso não esteja definido. O membro de entrada aceita uma matriz de até 300 registros, contendo um membro cada, seja name ou marketoGUID, dependendo da configuração de deleteBy.
+As exclusões são feitas por meio de uma solicitação JSON POST e têm um membro de entrada obrigatório e um membro deleteBy opcional. deleteBy pode ser um dos &quot;dedupeFields&quot; ou &quot;idField&quot;, correspondendo a name ou marketoGUID, respectivamente, e assumirá dedupeFields como padrão, caso não esteja definido. O membro de entrada aceita uma matriz de até 300 registros, contendo um membro cada, seja name ou marketoGUID, dependendo da configuração de deleteBy.
 
 ```
 POST /rest/v1/namedaccounts/delete.json
@@ -342,16 +342,16 @@ Content-Type: application/json
 ```
 
 ```json
-{  
+{
    "deleteBy":"dedupeFields",
-   "input":[  
-      {  
+   "input":[
+      {
          "name":"Google"
       },
-      {  
+      {
          "name":"Yahoo"
       },
-      {  
+      {
          "name":"Marketo"
       }
    ]
@@ -359,25 +359,25 @@ Content-Type: application/json
 ```
 
 ```json
-{  
+{
    "requestId":"e42b#14272d07d78",
    "success":true,
-   "result":[  
-      {  
+   "result":[
+      {
          "seq":0,
          "marketoGUID":"dff23271-f996-47d7-984f-f2676861b5fb",
          "status":"deleted"
       },
-      {  
+      {
          "seq":1,
          "id":"dff23271-f996-47d7-984f-f2676861b5fc",
          "status":"deleted"
       },
-      {  
+      {
          "seq":2,
          "status":"skipped",
-         "reasons":[  
-            {  
+         "reasons":[
+            {
                "code":"1013",
                "message":"Record not found"
             }

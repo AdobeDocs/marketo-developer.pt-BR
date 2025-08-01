@@ -3,7 +3,7 @@ title: Recomendação de rich media
 description: Recomendação de rich media
 feature: Javascript
 exl-id: ee92e46d-e529-40a2-a0d0-ee233916f004
-source-git-commit: 66add4c38d0230c36d57009de985649bb67fde3e
+source-git-commit: 981ed9b254f277d647a844803d05a1a2549cbaed
 workflow-type: tm+mt
 source-wordcount: '812'
 ht-degree: 5%
@@ -21,13 +21,13 @@ As tags e chamadas de API a seguir devem ser configuradas na página em que voc�
 1. No corpo da página
    1. Coloque a tag de modelo (classe div) no local onde deseja que o modelo apareça
 
-Mais informações disponíveis [aqui](https://experienceleague.adobe.com/pt-br/docs/marketo/using/product-docs/predictive-content/enabling-predictive-content/enable-predictive-content-for-web-rich-media).
+Mais informações disponíveis [aqui](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/predictive-content/enabling-predictive-content/enable-predictive-content-for-web-rich-media).
 
 ## Tag de modelo
 
 | Atributo | Opcional/Obrigatório | Descrição |
 |---|---|---|
-| classe | Obrigatório | Especifique que esse elemento de HTML div é a recomendação RTP div. |
+| classe | Obrigatório | Especifique que esse elemento div HTML é RTP recommendation div. |
 | data-rtp-template-id | Obrigatório | A ID do modelo. Isso determina o alinhamento da recomendação. Use &quot;template1&quot; para alinhamento horizontal, &quot;template2&quot; para alinhamento vertical ou &quot;template3&quot; para alinhamento vertical que inclui apenas título e descrição. O script injeta o modelo correspondente nesses `div.Permissible` valores: template1, template2, template3. |
 
 ### Exemplos
@@ -62,9 +62,9 @@ Este método preenche toda a mídia avançada `<divs>` da página com recomenda�
 
 | Parâmetro | Opcional/Obrigatório | Tipo | Descrição |
 |---|---|---|---|
-| &#39;get&#39; | Obrigatório | Sequência de caracteres | Ação do método. |
-| &#39;rcmd&#39; | Obrigatório | Sequência de caracteres | Nome do método. |
-| &#39;richmedia&#39; | Obrigatório | Sequência de caracteres | Nome do submétodo. |
+| &#39;get&#39; | Obrigatório | String | Ação do método. |
+| &#39;rcmd&#39; | Obrigatório | String | Nome do método. |
+| &#39;richmedia&#39; | Obrigatório | String | Nome do submétodo. |
 
 
 ## Alterar configuração do modelo
@@ -79,10 +79,10 @@ Observação: ao usar esse método, ele deve ser chamado antes de chamar rtp(&#3
 
 | Parâmetro | Opcional/Obrigatório | Tipo | Descrição |
 |---|---|---|---|
-| &#39;definir&#39; | Obrigatório | Sequência de caracteres | Ação do método. |
-| &#39;rcmd&#39; | Obrigatório | Sequência de caracteres | Nome do método. |
-| &#39;richmedia&#39; | Obrigatório | Sequência de caracteres | Nome do submétodo. |
-| template_id | Opcional | Sequência de caracteres | A ID do modelo das alterações de configuração. Use para especificar alterações de configurações para apenas um modelo. |
+| &#39;definir&#39; | Obrigatório | String | Ação do método. |
+| &#39;rcmd&#39; | Obrigatório | String | Nome do método. |
+| &#39;richmedia&#39; | Obrigatório | String | Nome do submétodo. |
+| template_id | Opcional | String | A ID do modelo das alterações de configuração. Use para especificar alterações de configurações para apenas um modelo. |
 | conf_obj | Obrigatório | Objeto | A nova configuração. O objeto mantém todas as configurações como um par de chave/valor. |
 
 
@@ -103,7 +103,7 @@ Este trecho de código mostra categorias de configuração com várias configura
 ```javascript
 rtp("set", "rcmd", "richmedia",
     {
-        "template1": 
+        "template1":
         {
             "rcmd.title.text": "RECOMMENDED CONTENT",
             "rcmd.general.font.family": "arial",
@@ -156,7 +156,7 @@ Observação: o suporte à configuração pode ser alterado por modelo.
 
 #### Exemplo básico
 
-Este exemplo tem um template com três recomendações. Copie esse exemplo em uma página de HTML e substitua a tag RTP pela sua tag.
+Este exemplo tem um template com três recomendações. Copie este exemplo em uma página do HTML e substitua a tag RTP pela sua tag.
 
 ```html
 <!DOCTYPE>
@@ -164,7 +164,7 @@ Este exemplo tem um template com três recomendações. Copie esse exemplo em um
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>RTP recommendation</title>
-<!-- RTP tag --> 
+<!-- RTP tag -->
 <script type='text/javascript'>
 
 // This tag needs to be replaced with your account tag
@@ -188,7 +188,7 @@ rtp('get','rcmd', 'richmedia');
 
 #### Exemplo avançado
 
-Este exemplo tem um template com três recomendações. O título do modelo é &quot;CONTEÚDO RECOMENDADO&quot; e o texto do botão será &quot;Leia mais&quot;. Copie esse exemplo em uma página de HTML e substitua a tag RTP pela sua tag.
+Este exemplo tem um template com três recomendações. O título do modelo é &quot;CONTEÚDO RECOMENDADO&quot; e o texto do botão será &quot;Leia mais&quot;. Copie este exemplo em uma página do HTML e substitua a tag RTP pela sua tag.
 
 ```html
 <!DOCTYPE>
@@ -196,7 +196,7 @@ Este exemplo tem um template com três recomendações. O título do modelo é &
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>RTP recommendation</title>
-<!-- RTP tag --> 
+<!-- RTP tag -->
 <script type='text/javascript'>
 
 // This tag needs to be replaced with your account tag
@@ -232,13 +232,13 @@ rtp('get','rcmd', 'richmedia');
 
 #### Exemplo de modelo de recomendação de mídia avançada #1
 
-**Nome**: modelo1 **Descrição**: conteúdo horizontal, incluindo imagem, título, descrição e botão de chamada para ação.
+**Nome**: modelo1 **Descrição**: conteúdo horizontal, incluindo imagem, título, descrição e botão call to action.
 
 ![Modelo de mídia avançada](assets/rich-media-template1.png)
 
 #### Exemplo de modelo de recomendação de mídia avançada #2
 
-**Nome**: modelo2 **Descrição**: conteúdo vertical, incluindo imagem, título, descrição e botão de chamada para ação.
+**Nome**: modelo2 **Descrição**: conteúdo vertical, incluindo imagem, título, descrição e botão call to action.
 
 ![Modelo de mídia avançada](assets/rich-media-template2.png)
 

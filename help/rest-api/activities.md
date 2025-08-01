@@ -1,9 +1,9 @@
 ---
 title: Atividades
 feature: REST API
-description: Uma API para gerenciar atividades de Marketo Engage.
+description: Uma API para gerenciar atividades do Marketo Engage.
 exl-id: 1e69af23-2b0c-467a-897c-1dcf81343e73
-source-git-commit: 6baf62bc8881470eca597899e3228c377fb597d0
+source-git-commit: 981ed9b254f277d647a844803d05a1a2549cbaed
 workflow-type: tm+mt
 source-wordcount: '2029'
 ht-degree: 0%
@@ -133,7 +133,7 @@ Em alguns casos, essa API pode responder com menos de 300 itens de atividade, ma
 
 Observe que em cada item da matriz de resultados, o atributo inteiro `id` está sendo substituído pelo atributo da cadeia de caracteres `marketoGUID` como identificador exclusivo. 
 
-### Alterações no valor de dados
+### Alterações no valor dos dados
 
 Para atividades de Alteração do valor de dados, é fornecida uma versão especializada da API de atividades. O ponto de extremidade [Obter Alterações de Cliente Potencial](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Activities/operation/getLeadChangesUsingGET) retorna somente atividades de registros de Alteração de Valor de Dados para campos de cliente potencial. A interface é a mesma da API Obter atividades principais, com duas diferenças:
 
