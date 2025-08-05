@@ -3,7 +3,7 @@ title: Listas de contas nomeadas
 feature: REST API
 description: Configurar listas de contas nomeadas.
 exl-id: 98f42780-8329-42fb-9cd8-58e5dbea3809
-source-git-commit: 981ed9b254f277d647a844803d05a1a2549cbaed
+source-git-commit: 3649db037a95cfd20ff0a2c3d81a3b40d0095c39
 workflow-type: tm+mt
 source-wordcount: '696'
 ht-degree: 3%
@@ -14,7 +14,7 @@ ht-degree: 3%
 
 [Referência de Ponto de Extremidade de Listas de Contas Nomeadas](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Named-Account-Lists)
 
-[Listas de contas nomeadas](https://experienceleague.adobe.com/pt-br/docs/marketo/using/product-docs/target-account-management/target/account-lists) no Marketo representam coleções de contas nomeadas. Eles podem ser usados para uma grande variedade de casos, incluindo categorização, enriquecimento de dados e filtragem inteligente de campanha. As APIs da Lista de contas nomeadas permitem o gerenciamento remoto desses ativos de lista e sua associação.
+[Listas de contas nomeadas](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/target-account-management/target/account-lists) no Marketo representam coleções de contas nomeadas. Eles podem ser usados para uma grande variedade de casos, incluindo categorização, enriquecimento de dados e filtragem inteligente de campanha. As APIs da Lista de contas nomeadas permitem o gerenciamento remoto desses ativos de lista e sua associação.
 `Content`
 
 ## Permissões
@@ -33,7 +33,6 @@ As Listas de contas nomeadas têm um número limitado de campos padrão e não s
 | createdAt | Data/hora | Falso | Data e hora de criação da lista. Este campo é gerenciado pelo sistema e não é permitido como um campo ao criar ou atualizar um registro. |
 | updatedAt | Data/hora | Falso | Data e hora da atualização mais recente da lista. Este campo é gerenciado pelo sistema e não é permitido como um campo ao criar ou atualizar um registro. |
 | tipo | String | Falso | Tipo da lista. Pode ter um valor &quot;padrão&quot; ou &quot;externo&quot;. Listas externas são aquelas criadas pela Exibição de Conta do CRM. |
-
 
 ## Consultar
 
@@ -294,9 +293,9 @@ POST /rest/v1/namedAccountList/{id}/namedAccounts/remove.json
 ## Tempos limite
 
 - Os endpoints da Lista de Contas Nomeadas têm um tempo limite de 30s, a menos que indicado abaixo
-   - Sincronizar listas de contas nomeadas: 60s 
-   - Excluir Listas de Contas Nomeadas: 60s 
-   - Obter Listas de Contas Nomeadas: 60s 
-   - Adicionar membros da lista de contas nomeadas: 60s 
-   - Remover Membros da Lista de Contas Nomeadas: 60s 
+   - Sincronizar listas de contas nomeadas: 60s
+   - Excluir Listas de Contas Nomeadas: 60s
+   - Obter Listas de Contas Nomeadas: 60s
+   - Adicionar membros da lista de contas nomeadas: 60s
+   - Remover Membros da Lista de Contas Nomeadas: 60s
    - Obter Membros da Lista de Contas Nomeadas: 60s

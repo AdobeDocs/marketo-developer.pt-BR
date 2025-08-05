@@ -3,9 +3,9 @@ title: getMultipleLeads
 feature: SOAP
 description: getMultipleLeads Chamadas do SOAP
 exl-id: db9aabec-8705-40c6-b264-740fdcef8a52
-source-git-commit: 981ed9b254f277d647a844803d05a1a2549cbaed
+source-git-commit: 3649db037a95cfd20ff0a2c3d81a3b40d0095c39
 workflow-type: tm+mt
-source-wordcount: '384'
+source-wordcount: '383'
 ht-degree: 3%
 
 ---
@@ -28,7 +28,7 @@ Um caso de uso comum para esse endpoint é encontrar leads que foram atualizados
 | --- | --- | --- |
 | leadSelector | Obrigatório | Pode ser um dos 3 tipos a seguir:`LeadKeySelector`, `StaticListSelector`,`LastUpdateAtSelector` |
 | keyType | Obrigatório | O tipo de id que você deseja consultar. Os valores incluem IDNUM, COOKIE, EMAIL, LEADOWNEREMAIL, SFDCACCOUNTID, SFDCCONTACTID, SFDCLEADID, SFDCLEADOWNERID, SFDCOPPTYID. |
-| keyValues->stringItem | Obrigatório | Lista de valores de chave. Ou seja, &quot;lead@email.com&quot; |
+| keyValues->stringItem | Obrigatório | Lista de valores de chave. Ou seja, &quot;<lead@email.com>&quot; |
 | LastUpdateAtSelector: leadSelector->olderUpdatedAt | Obrigatório | O carimbo de data e hora para especificar os critérios &quot;desde&quot;. Ou seja, Retornar todos os clientes potenciais atualizados desde o horário especificado. (formato de data e hora W3C WSDL) |
 | LastUpdateAtSelector: leadSelector->latestUpdatedAt | Opcional | O carimbo de data e hora para especificar os critérios &quot;até&quot;. Ou seja, Retornar todos os clientes potenciais atualizados até o horário especificado. (formato de data e hora W3C WSDL) |
 | StaticListSelector: leadSelector->staticListName | Opcional quando `leadSelector->staticListId` está presente | O nome da lista estática |

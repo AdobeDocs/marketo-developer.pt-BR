@@ -3,7 +3,7 @@ title: Extração de atividade em massa
 feature: REST API
 description: Dados de atividade de processamento em lote do Marketo.
 exl-id: 6bdfa78e-bc5b-4eea-bcb0-e26e36cf6e19
-source-git-commit: 981ed9b254f277d647a844803d05a1a2549cbaed
+source-git-commit: 3649db037a95cfd20ff0a2c3d81a3b40d0095c39
 workflow-type: tm+mt
 source-wordcount: '1332'
 ht-degree: 7%
@@ -105,7 +105,6 @@ Ao usar `primaryAttributeValues`, o filtro `activityTypeIds` deve estar presente
 | formato | String | Não | Aceita um dos seguintes: CSV, TSV, SSV O arquivo exportado é renderizado como um arquivo de valores separados por vírgula, valores separados por tabulação ou valores separados por espaço, respectivamente, se definido. O padrão é CSV, caso não esteja definido. |
 | columnHeaderNames | Objeto | Não | Um objeto JSON que contém pares de valores chave de nomes de campos e cabeçalhos de coluna. A chave deve ser o nome de um campo incluído no trabalho de exportação. O valor é o nome do cabeçalho de coluna exportado para esse campo. |
 | campos | Matriz[Cadeia de Caracteres] | Não | Matriz opcional de cadeias de caracteres que contêm valores de campo. Os campos listados são incluídos no arquivo exportado. Por padrão, os seguintes campos são retornados: <ul><li>`marketoGUIDleadId`</li><li> `activityDate` </li><li>`activityTypeId` </li><li>`campaignId`</li><li> `primaryAttributeValueId` </li><li>`primaryAttributeValue`</li><li> `attributes`</li></ul>. Este parâmetro pode ser usado para reduzir o número de campos retornados especificando um subconjunto da lista acima:`"fields": ["leadId", "activityDate", "activityTypeId"]`. Um campo adicional `actionResult` pode ser especificado para incluir a ação da atividade: `("succeeded", "skipped", or "failed")`. |
-
 
 ## Criação de um trabalho
 

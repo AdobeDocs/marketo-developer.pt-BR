@@ -3,9 +3,9 @@ title: Extração em massa
 feature: REST API
 description: Operações em lote para extração de dados do Marketo.
 exl-id: 6a15c8a9-fd85-4c7d-9f65-8b2e2cba22ff
-source-git-commit: e7d893a81d3ed95e34eefac1ee8f1ddd6852f5cc
+source-git-commit: 3649db037a95cfd20ff0a2c3d81a3b40d0095c39
 workflow-type: tm+mt
-source-wordcount: '1683'
+source-wordcount: '1682'
 ht-degree: 1%
 
 ---
@@ -36,7 +36,7 @@ As APIs de extração em massa usam o mesmo método de autenticação OAuth 2.0 
 - Máximo de Trabalhos de Exportação Simultâneos: 2
 - Máximo de trabalhos de exportação em fila (incluindo os trabalhos que estão sendo exportados no momento): 10
 - Período de retenção do arquivo: sete dias
-- Alocação padrão de exportação diária: 500 MB (que é redefinido diariamente às 12h00 CST). Aumentos disponíveis para compra.
+- Alocação de exportação diária padrão: 500 MB (que é redefinido diariamente no CST 12:00AM). Aumentos disponíveis para compra.
 - Período máximo para o filtro de intervalo de datas (createdAt ou updatedAt): 31 dias
 
 Os filtros de Extração de lead em massa para UpdatedAt e Smart List não estão disponíveis para alguns tipos de assinatura. Se não estiver disponível, uma chamada para o ponto de extremidade Criar trabalho de lead de exportação retornará o erro &quot;1035, Tipo de filtro não suportado para assinatura de destino&quot;. Os clientes podem entrar em contato com o Suporte da Marketo para ativar essa funcionalidade em suas assinaturas.
@@ -123,7 +123,6 @@ Cada endpoint de criação de trabalho compartilha alguns parâmetros comuns par
 | columnHeaderNames | Objeto | Permite definir os nomes dos cabeçalhos de coluna no arquivo retornado. Cada chave do membro é o nome do cabeçalho da coluna a ser renomeado, e o valor é o novo nome do cabeçalho da coluna. Por exemplo, &quot;columnHeaderNames&quot;: { &quot;firstName&quot;: &quot;First Name&quot;, &quot;lastName&quot;: &quot;Last Name&quot; }, |
 | filtro | Objeto | Filtro aplicado ao trabalho de extração. Os tipos e as opções variam entre os tipos de trabalho. |
 
-
 ## Recuperando tarefas
 
 Às vezes, você pode precisar recuperar seus trabalhos recentes. Isso é feito facilmente com Obter trabalhos de exportação para o tipo de objeto correspondente. Cada ponto de extremidade de Obter Trabalhos de Exportação oferece suporte a um campo de filtro `status`, um  `batchSize` para limitar o número de trabalhos retornados e `nextPageToken` para paginação por meio de conjuntos de resultados grandes. O filtro de status suporta cada status válido para um trabalho de exportação: Criado, Em fila, Processando, Cancelado, Concluído e Falha. O batchSize tem um máximo e o padrão de 300. Vamos obter a lista de Tarefas de exportação de clientes potenciais:
@@ -209,7 +208,7 @@ GET /bulk/v1/leads/export/{exportId}/file.json
 
 A resposta contém um arquivo formatado da maneira que o trabalho foi configurado. O endpoint responde com o conteúdo do arquivo. Se uma tarefa não tiver sido concluída ou uma ID de tarefa incorreta for transmitida, os endpoints de arquivo responderão com o status 404 Não encontrado e uma mensagem de erro de texto sem formatação como carga, ao contrário da maioria dos outros endpoints REST do Marketo.
 
-Para oferecer suporte à recuperação parcial e de fácil retomada de dados extraídos, o ponto de extremidade do arquivo oferece suporte opcionalmente ao cabeçalho HTTP `Range` do tipo `bytes` (por [RFC 7233](https://datatracker.ietf.org/doc/html/rfc7233)). Se o cabeçalho não estiver definido, todo o conteúdo será retornado. Para recuperar os primeiros 10.000 bytes de um arquivo, você passaria o seguinte cabeçalho como parte da solicitação do GET para o endpoint, começando pelo byte 0:
+Para oferecer suporte à recuperação parcial e de fácil retomada de dados extraídos, o ponto de extremidade do arquivo oferece suporte opcionalmente ao cabeçalho HTTP `Range` do tipo `bytes` (por [RFC 7233](https://datatracker.ietf.org/doc/html/rfc7233)). Se o cabeçalho não estiver definido, todo o conteúdo será retornado. Para recuperar os primeiros 10.000 bytes de um arquivo, você passaria o seguinte cabeçalho como parte de sua solicitação GET para o endpoint, começando pelo byte 0:
 
 ```
 Range: bytes=0-9999

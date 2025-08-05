@@ -3,7 +3,7 @@ title: Serviços personalizados
 feature: REST API
 description: Credenciais de autenticação com o Marketo.
 exl-id: 38b05c4c-4404-4c30-a7cb-d31b28a3a72e
-source-git-commit: 66add4c38d0230c36d57009de985649bb67fde3e
+source-git-commit: 3649db037a95cfd20ff0a2c3d81a3b40d0095c39
 workflow-type: tm+mt
 source-wordcount: '985'
 ht-degree: 6%
@@ -43,7 +43,6 @@ Depois de criar uma função, você deve criar um usuário &quot;Somente API&quo
 >[!MORELIKETHIS]
 >
 >Para criar um usuário Somente API, vá para o menu **[!UICONTROL Administrador]** > **[!UICONTROL Usuários e Funções]** > **[!UICONTROL Usuários]** e clique em [!UICONTROL Convidar Novo Usuário].
-
 
 ![Novas Informações do Usuário](assets/new-user-info.png)
 

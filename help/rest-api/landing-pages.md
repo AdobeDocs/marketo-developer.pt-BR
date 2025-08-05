@@ -3,7 +3,7 @@ title: Páginas de aterrissagem
 feature: REST API, Landing Pages
 description: Páginas de aterrissagem de consulta no Marketo.
 exl-id: 2f986fb0-0a6b-469f-b199-1c526cd5a882
-source-git-commit: 66add4c38d0230c36d57009de985649bb67fde3e
+source-git-commit: 3649db037a95cfd20ff0a2c3d81a3b40d0095c39
 workflow-type: tm+mt
 source-wordcount: '1000'
 ht-degree: 2%
@@ -113,7 +113,7 @@ As landing pages seguem o modelo padrão de rascunho aprovado, em que pode haver
 
 ## Excluir
 
-Para excluir uma página de aterrissagem, ela deve primeiro estar fora de uso e não ser referenciada por nenhum outro ativo do Marketo, bem como não ser aprovada. As páginas são excluídas individualmente com o ponto de extremidade [Excluir Página de Aterrissagem](https://developer.adobe.com/marketo-apis/api/asset/#tag/Landing-Pages/operation/deleteLandingPageByIdUsingPOST). Páginas de aterrissagem com botões sociais incorporados não podem ser excluídas por meio dessa API. 
+Para excluir uma página de aterrissagem, ela deve primeiro estar fora de uso e não ser referenciada por nenhum outro ativo do Marketo, bem como não ser aprovada. As páginas são excluídas individualmente com o ponto de extremidade [Excluir Página de Aterrissagem](https://developer.adobe.com/marketo-apis/api/asset/#tag/Landing-Pages/operation/deleteLandingPageByIdUsingPOST). Páginas de aterrissagem com botões sociais incorporados não podem ser excluídas por meio dessa API.
 
 ## Clonar
 
@@ -274,7 +274,7 @@ As variáveis são definidas como metatags dentro do elemento `<head>` de um mod
 </head>
 ```
 
-Para obter mais informações, consulte a seção &quot;Variável editável&quot; na documentação [Criar um modelo de página de aterrissagem guiado](https://experienceleague.adobe.com/pt-br/docs/marketo/using/product-docs/demand-generation/landing-pages/landing-page-templates/create-a-guided-landing-page-template).
+Para obter mais informações, consulte a seção &quot;Variável editável&quot; na documentação [Criar um modelo de página de aterrissagem guiado](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/demand-generation/landing-pages/landing-page-templates/create-a-guided-landing-page-template).
 
 ### Consultar
 

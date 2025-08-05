@@ -3,7 +3,7 @@ title: scheduleCampaign
 feature: SOAP, Smart Campaigns
 description: scheduleCampaign chamadas de SOAP
 exl-id: a9ef2c16-34ef-4e0f-b765-e332335b0b81
-source-git-commit: 981ed9b254f277d647a844803d05a1a2549cbaed
+source-git-commit: 3649db037a95cfd20ff0a2c3d81a3b40d0095c39
 workflow-type: tm+mt
 source-wordcount: '252'
 ht-degree: 4%
@@ -14,7 +14,7 @@ ht-degree: 4%
 
 Essa função define o agendamento de uma Campanha inteligente em lote para execução imediata ou em uma data futura. Ela requer uma Campanha inteligente existente para ser concluída com sucesso. Pode ser usado com importToList para fazer upload de uma lista de clientes potenciais e, em seguida, executar uma campanha em lote nessa lista recém-criada.
 
-## Tokens de programa opcionais:
+## Tokens de programa opcionais
 
 Semelhante à função requestCampaign, é possível passar uma matriz de Meus tokens para essa chamada de API que substituirá os tokens existentes. Após a execução da campanha, os tokens são descartados.
 

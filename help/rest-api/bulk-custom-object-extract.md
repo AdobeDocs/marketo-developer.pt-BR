@@ -3,7 +3,7 @@ title: Extração de Objeto Personalizado em Massa
 feature: REST API, Custom Objects
 description: Processamento em lote de objetos personalizados do Marketo.
 exl-id: 86cf02b0-90a3-4ec6-8abd-b4423cdd94eb
-source-git-commit: 9830572277db2709c6853bea56fc70c455fd5e54
+source-git-commit: 3649db037a95cfd20ff0a2c3d81a3b40d0095c39
 workflow-type: tm+mt
 source-wordcount: '1298'
 ht-degree: 1%
@@ -16,7 +16,7 @@ ht-degree: 1%
 
 O conjunto de Extração de objeto personalizado em massa de REST APIs fornece uma interface programática para recuperar grandes conjuntos de registros de objeto personalizado do Marketo. Essa é a interface recomendada para casos de uso que exigem intercâmbio contínuo de dados entre o Marketo e um ou mais sistemas externos, para fins de ETL, data warehouse e arquivamento.
 
-Essa API oferece suporte à exportação de registros de objetos personalizados de primeiro nível do Marketo que estão vinculados diretamente a um cliente potencial. Transmita o nome do objeto personalizado e uma lista de clientes potenciais aos quais o objeto está vinculado. Para cada cliente potencial na lista, os registros de objeto personalizado vinculados que correspondem ao nome de objeto personalizado especificado são gravados como linhas no arquivo de exportação. Os dados do objeto personalizado podem ser exibidos na [guia Objeto Personalizado da página de detalhes do cliente potencial na interface do usuário do Marketo](https://experienceleague.adobe.com/pt-br/docs/marketo/using/product-docs/administration/marketo-custom-objects/understanding-marketo-custom-objects).
+Essa API oferece suporte à exportação de registros de objetos personalizados de primeiro nível do Marketo que estão vinculados diretamente a um cliente potencial. Transmita o nome do objeto personalizado e uma lista de clientes potenciais aos quais o objeto está vinculado. Para cada cliente potencial na lista, os registros de objeto personalizado vinculados que correspondem ao nome de objeto personalizado especificado são gravados como linhas no arquivo de exportação. Os dados do objeto personalizado podem ser exibidos na [guia Objeto Personalizado da página de detalhes do cliente potencial na interface do usuário do Marketo](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/administration/marketo-custom-objects/understanding-marketo-custom-objects).
 
 ## Permissões
 
@@ -50,7 +50,6 @@ O ponto de extremidade [Criar Trabalho de Objeto Personalizado de Exportação](
 | `columnHeaderNames` | Objeto | Não | Um objeto JSON que contém pares de valores chave de nomes de campos e cabeçalhos de coluna. A chave deve ser o nome de um campo incluído no trabalho de exportação. O valor é o nome do cabeçalho de coluna exportado para esse campo. |
 | `format` | String | Não | Aceita um dos seguintes: CSV, TSV, SSV. O arquivo exportado é renderizado como um arquivo de valores separados por vírgula, valores separados por tabulação ou valores separados por espaço, respectivamente, se definido. O padrão é CSV, caso não esteja definido. |
 
-
 ## Criação de um trabalho
 
 Os parâmetros do trabalho são definidos antes de iniciar a exportação usando o ponto de extremidade [Criar Trabalho de Objeto Personalizado de Exportação](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Bulk-Export-Custom-Objects/operation/createExportCustomObjectsUsingPOST).
@@ -62,7 +61,6 @@ Como exemplo, vamos supor que criamos um objeto personalizado chamado &quot;Carr
 Definição de objeto personalizado
 
 ![Objeto personalizado](assets/custom-object-car.png)
-
 
 Campos de objeto personalizados
 

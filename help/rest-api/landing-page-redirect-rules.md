@@ -3,7 +3,7 @@ title: Regras de redirecionamento de páginas
 feature: REST API, Landing Pages
 description: Configure regras de redirecionamento de landing page por meio da API.
 exl-id: f63aa5ef-5872-4401-be75-6fb9b2977734
-source-git-commit: 66add4c38d0230c36d57009de985649bb67fde3e
+source-git-commit: 3649db037a95cfd20ff0a2c3d81a3b40d0095c39
 workflow-type: tm+mt
 source-wordcount: '641'
 ht-degree: 4%
@@ -136,7 +136,7 @@ GET /rest/asset/v1/redirectRules.json&maxReturn=3
 
 ## Criar
 
-O ponto de extremidade [Criar Regra de Redirecionamento de Página de Aterrissagem](https://developer.adobe.com/marketo-apis/api/asset/#tag/Landing-Page-Redirect-Rules/operation/createLandingPageRedirectRuleUsingPOST) é executado com um POST de aplicativo/x-www-form-urlencoded que tem os três parâmetros necessários a seguir.
+O ponto de extremidade [Criar Regra de Redirecionamento de Página de Aterrissagem](https://developer.adobe.com/marketo-apis/api/asset/#tag/Landing-Page-Redirect-Rules/operation/createLandingPageRedirectRuleUsingPOST) é executado com um POST aplicativo/x-www-form-urlencoded que tem os três parâmetros necessários a seguir.
 
 O parâmetro `hostname` especifica o nome de host da página de aterrissagem. Deve pertencer a um domínio ou alias de marca. O comprimento máximo é de 255 caracteres.
 
@@ -144,10 +144,9 @@ O parâmetro `redirectFrom` especifica a página de aterrissagem de origem. Esse
 
 | Parâmetro | Opcional/Obrigatório | Tipo | Descrição |
 |---|---|---|---|
-| &#39;get&#39; | Obrigatório | Sequência de caracteres | Ação do método. |
-| &#39;visitante&#39; | Obrigatório | Sequência de caracteres | Nome do método. |
+| &#39;get&#39; | Obrigatório | String | Ação do método. |
+| &#39;visitante&#39; | Obrigatório | String | Nome do método. |
 | retorno de chamada | Obrigatório | Função | Função de retorno de chamada a ser acionada para cada campanha retornada. |
-
 
 O parâmetro `redirectTo` especifica a página de destino. Esse é um objeto JSON que contém um par tipo/valor que determina se a origem é uma página de aterrissagem do Marketo ou uma página de aterrissagem que não seja do Marketo. O atributo `type` pode ser &quot;landingPageId&quot; ou &quot;url&quot;.
 
@@ -156,7 +155,7 @@ O parâmetro `redirectTo` especifica a página de destino. Esse é um objeto JSO
 | Marketo | landingPageId | {&quot;type&quot;:&quot;landingPageId&quot;,&quot;value&quot;:&quot;1774&quot;} |
 | Não Marketo | url | {&quot;type&quot;:&quot;url&quot;,&quot;value&quot;:&quot;www.contactLogs.com&quot;} |
 
-Mais informações sobre como criar regras de redirecionamento de página de destino podem ser encontradas [aqui](https://experienceleague.adobe.com/docs/marketo/using/product-docs/demand-generation/landing-pages/landing-page-actions/redirect-a-marketo-landing-page-to-another-page.html?lang=pt-BR).
+Mais informações sobre como criar regras de redirecionamento de página de destino podem ser encontradas [aqui](https://experienceleague.adobe.com/docs/marketo/using/product-docs/demand-generation/landing-pages/landing-page-actions/redirect-a-marketo-landing-page-to-another-page.html).
 
 ```
 POST /rest/asset/v1/redirectRules.json

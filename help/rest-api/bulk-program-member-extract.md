@@ -3,7 +3,7 @@ title: Extração de membros do programa em massa
 feature: REST API
 description: Processamento em lote da extração de dados do Membro.
 exl-id: 6e0a6bab-2807-429d-9c91-245076a34680
-source-git-commit: 981ed9b254f277d647a844803d05a1a2549cbaed
+source-git-commit: 3649db037a95cfd20ff0a2c3d81a3b40d0095c39
 workflow-type: tm+mt
 source-wordcount: '1142'
 ht-degree: 4%
@@ -235,7 +235,7 @@ Os membros do programa oferecem suporte a várias opções de filtro. Vários ti
     <tr>
       <td>isExhausted</td>
       <td>Booleano</td>
-      <td>Aceita um booleano usado para filtrar registros de associação de programa para <a href="https://experienceleague.adobe.com/pt-br/docs/marketo/using/product-docs/email-marketing/drip-nurturing/using-engagement-programs/people-who-have-exhausted-content">pessoas que esgotaram o conteúdo</a>.</td>
+      <td>Aceita um booleano usado para filtrar registros de associação de programa para <a href="https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/email-marketing/drip-nurturing/using-engagement-programs/people-who-have-exhausted-content">pessoas que esgotaram o conteúdo</a>.</td>
     </tr>
     <tr>
       <td>NurtureCadence</td>
@@ -323,7 +323,6 @@ O ponto de extremidade Criar Trabalho do Membro do Programa de Exportação forn
 | campos | Matriz[Cadeia de Caracteres] | Sim | O parâmetro fields aceita uma matriz JSON de cadeias de caracteres. Os campos listados são incluídos no arquivo exportado. Os seguintes tipos de campo podem ser exportados:`LeadCustom` `LeadProgram` MemberCustom `ProgramMember`. Especifique um campo usando seu nome de API REST, que pode ser recuperado usando Descrever lead2 e/ou Descrever endpoints de membros do programa. |
 | columnHeaderNames | Objeto | Não | Um objeto JSON que contém pares de valores chave de nomes de campos e cabeçalhos de coluna. A chave deve ser o nome de um campo incluído no trabalho de exportação. O valor é o nome do cabeçalho de coluna exportado para esse campo. |
 | formato | String | Não | Aceita um dos seguintes: CSV, TSV, SSV. O arquivo exportado é renderizado como um arquivo de valores separados por vírgula, valores separados por tabulação ou valores separados por espaço, respectivamente, se definido. O padrão é CSV, caso não esteja definido. |
-
 
 ## Criação de um trabalho
 

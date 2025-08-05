@@ -3,7 +3,7 @@ title: Tokens
 feature: REST API, Tokens
 description: Gerenciar tokens no Marketo.
 exl-id: 4f8d87d7-ba2a-4c90-8b39-4d20679d404a
-source-git-commit: 66add4c38d0230c36d57009de985649bb67fde3e
+source-git-commit: 3649db037a95cfd20ff0a2c3d81a3b40d0095c39
 workflow-type: tm+mt
 source-wordcount: '297'
 ht-degree: 4%
@@ -24,11 +24,10 @@ Os tokens podem ser criados com os seguintes tipos de dados:
 |---------------|----------------------------------------------------|
 | data | Valor da data do formulário &quot;dd-MM-yyyy&quot; |
 | número | Um número inteiro ou de ponto flutuante |
-| Texto formatado | Uma sequência de HTML |
+| Texto formatado | Uma string do HTML |
 | Pontuação | Um inteiro de 32 bits assinado |
 | campanha do sfdc | Usado na integração do gerenciamento de campanhas do Salesforce |
 | texto | Uma string de texto |
-
 
 Esses são os únicos tipos de dados que podem ser usados ao criar um token via API.
 

@@ -1,23 +1,23 @@
 ---
-title: Assimilação de dados
+title: Ingestão de dados
 description: Visão geral da API de assimilação de dados
-source-git-commit: 6fc45ff98998217923e2a5b02d00d1522fe3272c
+source-git-commit: 3649db037a95cfd20ff0a2c3d81a3b40d0095c39
 workflow-type: tm+mt
-source-wordcount: '945'
+source-wordcount: '940'
 ht-degree: 11%
 
 ---
 
 
-# Assimilação de dados
+# Ingestão de dados
 
-A API de assimilação de dados é um serviço de alto volume, baixa latência e alta disponibilidade, projetado para lidar com a assimilação de grandes quantidades de dados pessoais e relacionados a pessoas de maneira eficiente e com atrasos mínimos. 
+A API de assimilação de dados é um serviço de alto volume, baixa latência e alta disponibilidade, projetado para lidar com a assimilação de grandes quantidades de dados pessoais e relacionados a pessoas de maneira eficiente e com atrasos mínimos.
 
 Os dados são assimilados enviando solicitações que são executadas de forma assíncrona. O status da solicitação pode ser recuperado assinando-se a eventos do [Fluxo de Dados de Observação do Marketo](https://developer.adobe.com/events/docs/guides/using/marketo/marketo-observability-data-stream-setup/).&#x200B;
 
 As interfaces são oferecidas para dois tipos de objeto: Pessoas, Objetos personalizados. A operação de registro é somente &quot;inserir ou atualizar&quot;.
 
-A API de assimilação de dados está em beta privado. Os convidados devem ter um direito para [Pacote da Camada de Desempenho do Marketo Engage](https://nation.marketo.com/t5/product-documents/marketo-engage-performance-tiers/ta-p/328835).
+A API de assimilação de dados está em beta privado. Os convidados devem ter um direito ao [Pacote da Camada de Desempenho do Marketo Engage](https://nation.marketo.com/t5/product-documents/marketo-engage-performance-tiers/ta-p/328835).
 
 ## Autenticação
 
@@ -100,7 +100,7 @@ Abaixo estão os códigos de erro reutilizados do Adobe Developer Gateway.
 | 404 | 404040 | Recurso não encontrado |
 | 429 | 429001 | Limite de uso do serviço atingido |
 
-Abaixo estão códigos de erro exclusivos à API de assimilação de dados e compostos de três segmentos. Os primeiros três dígitos são o status (retornado pelo Gateway de E/S Adobe), seguido por um zero &quot;0&quot;, seguido por três dígitos.
+Abaixo estão códigos de erro exclusivos à API de assimilação de dados e compostos de três segmentos. Os primeiros três dígitos são o status (retornado pelo Adobe IO Gateway), seguido por um zero &quot;0&quot;, seguido por três dígitos.
 
 | Código de status HTTP | error_code | mensagem |
 |--- |--- |--- |
@@ -215,7 +215,7 @@ Corpo da solicitação
 | Chave | Tipo de dados | Obrigatório | Valor | Valor padrão |
 |---|---|---|---|---|
 | prioridade | String | Não | Prioridade da solicitação:normalhigh | normal |
-| dedupeBy | String | Não | Atributos a serem desduplicados em:dedupeFieldsmarketoGUID | dedupeFields |
+| dedupeBy | String | Não | Atributos a serem desduplicados em :dedupeFieldsmarketoGUID | dedupeFields |
 | customObjects | Matriz de objeto | Sim | Lista de pares nome-valor do atributo do objeto. | - |
 
 | Permissão |

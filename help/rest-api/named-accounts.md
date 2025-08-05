@@ -3,7 +3,7 @@ title: Contas nomeadas
 feature: REST API
 description: Manipular contas nomeadas por meio da API.
 exl-id: 2aa1d2a0-9e54-4a9a-abb1-0d0479ed3558
-source-git-commit: 981ed9b254f277d647a844803d05a1a2549cbaed
+source-git-commit: 3649db037a95cfd20ff0a2c3d81a3b40d0095c39
 workflow-type: tm+mt
 source-wordcount: '679'
 ht-degree: 1%
@@ -390,5 +390,5 @@ Content-Type: application/json
 ## Tempos limite
 
 - Os endpoints de conta nomeados têm um tempo limite de 30 s, a menos que observado abaixo
-   - Sincronizar contas nomeadas: 120s 
+   - Sincronizar contas nomeadas: 120s
    - Excluir contas nomeadas: 60s

@@ -3,9 +3,9 @@ title: Instalação
 feature: Mobile Marketing
 description: Como instalar SDKs para dispositivos móveis Marketo
 exl-id: e0b79d85-3509-46d2-a77d-cee211c5ec7f
-source-git-commit: 981ed9b254f277d647a844803d05a1a2549cbaed
+source-git-commit: 3649db037a95cfd20ff0a2c3d81a3b40d0095c39
 workflow-type: tm+mt
-source-wordcount: '762'
+source-wordcount: '761'
 ht-degree: 0%
 
 ---
@@ -18,7 +18,7 @@ Instruções de instalação para o Marketo Mobile SDK. As etapas abaixo são ne
 
 ### Pré-requisitos
 
-1. [Adicionar um aplicativo no Administrador do Marketo](https://experienceleague.adobe.com/pt-br/docs/marketo/using/product-docs/mobile-marketing/admin/add-a-mobile-app) (obter a Chave Secreta e a ID do Munchkin do aplicativo)
+1. [Adicionar um aplicativo no Administrador do Marketo](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/mobile-marketing/admin/add-a-mobile-app) (obter a Chave Secreta e a ID do Munchkin do aplicativo)
 1. [Configurar notificações por push](push-notifications.md) (opcional)
 
 ### Instalar a estrutura via CocoaPods
@@ -37,7 +37,7 @@ Instruções de instalação para o Marketo Mobile SDK. As etapas abaixo são ne
 
    ![Adicionar dependência](assets/dependency-manager-add.png)
 
-1. Adicionar o pacote do Marketo a partir deste repositório. Adicione este URL para este repositório: https://github.com/Marketo/ios-sdk.
+1. Adicionar o pacote do Marketo a partir deste repositório. Adicionar esta URL para este repositório: <https://github.com/Marketo/ios-sdk>.
 
    ![URL do repositório](assets/dependency-manager-url.png)
 
@@ -132,7 +132,7 @@ private func application(_ app: UIApplication, open url: URL, options: [UIApplic
 
 ### Pré-requisitos
 
-1. [Adicionar um aplicativo no Administrador do Marketo](https://experienceleague.adobe.com/pt-br/docs/marketo/using/product-docs/mobile-marketing/admin/add-a-mobile-app) (obter a Chave Secreta e a ID do Munchkin do aplicativo)
+1. [Adicionar um aplicativo no Administrador do Marketo](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/mobile-marketing/admin/add-a-mobile-app) (obter a Chave Secreta e a ID do Munchkin do aplicativo)
 1. [Configurar notificações por push](push-notifications.md#android_setup_push) (opcional)
 1. [Baixar o Marketo SDK para Android](https://codeload.github.com/Marketo/android-sdk/zip/refs/heads/master)
 
@@ -208,7 +208,7 @@ Os desenvolvedores de aplicativos do Android agora podem usar diretamente o [Fir
 
 1. Integre o Marketo Android SDK mais recente ao aplicativo do Android.  As etapas estão disponíveis em [GitHub](https://github.com/Marketo/android-sdk).
 1. Configurar o aplicativo Firebase no console do Firebase.
-   1. Criar/adicionar um projeto no [&#128279;](https://accounts.google.com/ServiceLogin?passive=1209600&osid=1&continue=https://console.firebase.google.com/&followup=https://console.firebase.google.com/)Console Firebase.
+   1. Criar/adicionar um projeto no [](https://accounts.google.com/ServiceLogin?passive=1209600&osid=1&continue=https://console.firebase.google.com/&followup=https://console.firebase.google.com/)Console Firebase.
       1. No [console Firebase](https://accounts.google.com/ServiceLogin?passive=1209600&osid=1&continue=https://console.firebase.google.com/&followup=https://console.firebase.google.com/), selecione `Add Project`.
       1. Selecione o projeto GCM na lista de projetos existentes da Google Cloud e selecione `Add Firebase`.
       1. Na tela de boas-vindas do Firebase, selecione `Add Firebase to your Android App`.

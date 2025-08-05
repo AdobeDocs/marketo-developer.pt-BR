@@ -3,7 +3,7 @@ title: Objetos personalizados
 feature: SOAP
 description: Criação de objetos personalizados.
 exl-id: 29d65841-4b44-4d94-b14e-c583d433d015
-source-git-commit: 66add4c38d0230c36d57009de985649bb67fde3e
+source-git-commit: 3649db037a95cfd20ff0a2c3d81a3b40d0095c39
 workflow-type: tm+mt
 source-wordcount: '231'
 ht-degree: 2%
@@ -16,7 +16,7 @@ Um objeto personalizado do Marketo permite a criação de uma relação um para 
 
 Objetos personalizados são suportados em todas as edições do Marketo, exceto no Spark. Quando o objeto personalizado do Marketo for provisionado com sucesso em sua conta, você poderá
 
-- Criar/Ler/Atualizar/Excluir registros no objeto personalizado por meio da API SOAP do Marketo
+- Criar/Ler/Atualizar/Excluir registros no objeto personalizado por meio da API do Marketo SOAP
 - Usar o acionador de Smart List quando novos registros forem adicionados ao objeto personalizado
 - Usar os dados do objeto personalizado como um filtro em Smart Lists
 - Usar os dados do objeto personalizado em emails usando o script de email do Marketo

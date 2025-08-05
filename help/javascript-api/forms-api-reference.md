@@ -3,7 +3,7 @@ title: Referência da API do Forms
 description: Referência da API do Forms
 feature: Forms, Javascript
 exl-id: 0f8d242f-0b27-4087-b080-3d41ebaa25b3
-source-git-commit: 66add4c38d0230c36d57009de985649bb67fde3e
+source-git-commit: 3649db037a95cfd20ff0a2c3d81a3b40d0095c39
 workflow-type: tm+mt
 source-wordcount: '1327'
 ht-degree: 2%
@@ -33,7 +33,7 @@ Há dois objetos principais com os quais você interagirá usando a API do Forms
     <tr>
       <td></td>
       <td></td>
-      <td>munchkinId (String) - ID do Munchkin da assinatura</td>
+      <td>munchkinId (String) - ID Munchkin da assinatura</td>
       <td></td>
     </tr>
     <tr>
@@ -121,7 +121,6 @@ Há dois objetos principais com os quais você interagirá usando a API do Forms
       <td></td>
     </tr>
 </table>
-
 
 ## Métodos de formulário
 
@@ -220,7 +219,7 @@ Há dois objetos principais com os quais você interagirá usando a API do Forms
     <tr valign="top">
       <td>.showErrorMessage(msg, elem)</td>
       <td>Mostra uma mensagem de erro, apontando para elem.</td>
-      <td>msg (String of HTML) - Uma string que contém o texto do erro que você deseja mostrar.</td>
+      <td>msg (Cadeia de caracteres do HTML) - Uma cadeia de caracteres que contém o texto do erro que você deseja mostrar.</td>
             <td>Objeto de formulário - Este objeto de formulário, para encadeamento.</td>
     </tr>
     <tr>

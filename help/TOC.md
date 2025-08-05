@@ -5,7 +5,7 @@ breadcrumb-title: Guia do desenvolvedor do [!DNL Marketo]
 role: Admin
 feature-set: "Marketo Engage"
 index: true
-source-git-commit: 05f8966a2eafca71a00f1e22b6edd4d8dae6b6ac
+source-git-commit: 3649db037a95cfd20ff0a2c3d81a3b40d0095c39
 workflow-type: tm+mt
 source-wordcount: '247'
 ht-degree: 42%
@@ -55,18 +55,18 @@ ht-degree: 42%
       - [Ativos](rest-api/assets.md)
       - [Conteúdo dinâmico](rest-api/dynamic-content.md)
       - [Emails](rest-api/emails.md)
-      - [Modelos de e-mail](rest-api/email-templates.md)
+      - [Modelos de email](rest-api/email-templates.md)
       - [Arquivos](rest-api/files.md)
       - [Pastas](rest-api/folders.md)
       - [Formulários](rest-api/forms.md)
       - [Páginas de aterrissagem](rest-api/landing-pages.md)
       - [Regras de redirecionamento de páginas](rest-api/landing-page-redirect-rules.md)
-      - [Modelos de páginas](rest-api/landing-page-templates.md)
+      - [Modelos de páginas de destino](rest-api/landing-page-templates.md)
       - [Lista de campos padrão](rest-api/list-of-standard-fields.md)
       - [Programas](rest-api/programs.md)
       - [Campanhas inteligentes](rest-api/smart-campaigns.md)
       - [Listas inteligentes](rest-api/smart-lists.md)
-      - [Bl. conteúdo](rest-api/snippets.md)
+      - [Blocos de conteúdo](rest-api/snippets.md)
       - [Listas estáticas](rest-api/static-lists.md)
       - [Tokens](rest-api/tokens.md)
       - [Email transacional](rest-api/transactional-email.md)

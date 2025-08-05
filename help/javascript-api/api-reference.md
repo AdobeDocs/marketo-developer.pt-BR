@@ -3,7 +3,7 @@ title: Referência da API do Munchkin
 description: Use a API JavaScript do Munchkin para personalizar os dados do Munchkin.
 feature: Munchkin Tracking Code, Javascript
 exl-id: e9727691-5501-4223-bc98-2b4bacc33513
-source-git-commit: 1ad2d793832d882bb32ebf7ef1ecd4148a6ef8d5
+source-git-commit: 3649db037a95cfd20ff0a2c3d81a3b40d0095c39
 workflow-type: tm+mt
 source-wordcount: '414'
 ht-degree: 9%
@@ -40,7 +40,6 @@ Quando chamada, esta opção verifica se existe um cookie `_mkto_trk` no navegad
 | Nome do parâmetro | Opcional/Obrigatório | Tipo | Descrição |
 | --- | --- | --- | --- |
 | forceCreate | Obrigatório | Booleano | Criar cookie mesmo se `cookieAnon` estiver definido como falso. |
-
 
 ```javascript
 Munchkin.createTrackingCookie(true);

@@ -3,7 +3,7 @@ title: Extração de chumbo em massa
 feature: REST API
 description: Extração em lote de dados de cliente potencial.
 exl-id: 42796e89-5468-463e-9b67-cce7e798677b
-source-git-commit: 66add4c38d0230c36d57009de985649bb67fde3e
+source-git-commit: 3649db037a95cfd20ff0a2c3d81a3b40d0095c39
 workflow-type: tm+mt
 source-wordcount: '1173'
 ht-degree: 2%
@@ -26,13 +26,12 @@ Os clientes em potencial são compatíveis com várias opções de filtro. Deter
 
 | Tipo de filtro | Tipo de dados | Observações |
 |---|---|---|
-| createdAt | Intervalo de datas | Aceita um objeto JSON com os membros `startAt` e `endAt`. `startAt` aceita um datetime que representa a marca d&#39;água inferior e `endAt` aceita um datetime que representa a marca d&#39;água superior. O intervalo deve ser de 31 dias ou menos. Os datetimes devem estar em um formato ISO-8601, sem milissegundos. Os trabalhos com esse tipo de filtro retornam todos os registros acessíveis que foram criados dentro do intervalo de datas. |
-| updatedAt* | Intervalo de datas | Aceita um objeto JSON com os membros `startAt` e `endAt`. `startAt` aceita um datetime que representa a marca d&#39;água inferior e `endAt` aceita um datetime que representa a marca d&#39;água superior. O intervalo deve ser de 31 dias ou menos. Os datetimes devem estar em um formato ISO-8601, sem milissegundos. Observação: esse filtro não filtra no campo &quot;updatedAt&quot; visível, que reflete somente atualizações em campos padrão. Ela filtra com base em quando a atualização de campo mais recente foi feita em um registro de cliente potencialJobs com esse tipo de filtro retorna todos os registros acessíveis que foram atualizados mais recentemente dentro do intervalo de datas. |
-| staticListName | Sequência de caracteres | Aceita o nome de uma lista estática. Os trabalhos com esse tipo de filtro retornam todos os registros acessíveis que são membros da lista estática no momento em que o trabalho começa a ser processado. Recupere nomes de lista estáticos usando o ponto de extremidade Get Lists. |
+| createdAt | Date Range | Aceita um objeto JSON com os membros `startAt` e `endAt`. `startAt` aceita um datetime que representa a marca d&#39;água inferior e `endAt` aceita um datetime que representa a marca d&#39;água superior. O intervalo deve ser de 31 dias ou menos. Os datetimes devem estar em um formato ISO-8601, sem milissegundos. Os trabalhos com esse tipo de filtro retornam todos os registros acessíveis que foram criados dentro do intervalo de datas. |
+| updatedAt* | Date Range | Aceita um objeto JSON com os membros `startAt` e `endAt`. `startAt` aceita um datetime que representa a marca d&#39;água inferior e `endAt` aceita um datetime que representa a marca d&#39;água superior. O intervalo deve ser de 31 dias ou menos. Os datetimes devem estar em um formato ISO-8601, sem milissegundos. Observação: esse filtro não filtra no campo &quot;updatedAt&quot; visível, que reflete somente atualizações em campos padrão. Ela filtra com base em quando a atualização de campo mais recente foi feita em um registro de cliente potencialJobs com esse tipo de filtro retorna todos os registros acessíveis que foram atualizados mais recentemente dentro do intervalo de datas. |
+| staticListName | String | Aceita o nome de uma lista estática. Os trabalhos com esse tipo de filtro retornam todos os registros acessíveis que são membros da lista estática no momento em que o trabalho começa a ser processado. Recupere nomes de lista estáticos usando o ponto de extremidade Get Lists. |
 | staticListId | Inteiro | Aceita a id de uma lista estática. Os trabalhos com esse tipo de filtro retornam todos os registros acessíveis que são membros da lista estática no momento em que o trabalho começa a ser processado. Recupere ids de lista estáticas usando o ponto de extremidade Get Lists. |
-| smartListName* | Sequência de caracteres | Aceita o nome de uma lista inteligente. Os trabalhos com esse tipo de filtro retornam todos os registros acessíveis que são membros das smart lists no momento em que o trabalho começa a ser processado. Recupere nomes de listas inteligentes usando o ponto de extremidade Obter Smart Lists. |
+| smartListName* | String | Aceita o nome de uma lista inteligente. Os trabalhos com esse tipo de filtro retornam todos os registros acessíveis que são membros das smart lists no momento em que o trabalho começa a ser processado. Recupere nomes de listas inteligentes usando o ponto de extremidade Obter Smart Lists. |
 | smartListId* | Inteiro | Aceita a ID de uma lista inteligente. Os trabalhos com esse tipo de filtro retornam todos os registros acessíveis que são membros das smart lists no momento em que o trabalho começa a ser processado. Recupere as IDs das listas inteligentes usando o ponto de extremidade Obter listas inteligentes. |
-
 
 O tipo de filtro não está disponível para algumas assinaturas. Se não estiver disponível para sua assinatura, você receberá um erro ao chamar o endpoint Criar trabalho de lead de exportação (&quot;1035, Tipo de filtro não suportado para assinatura de destino&quot;). Os clientes podem entrar em contato com o Suporte da Marketo para ativar essa funcionalidade em suas assinaturas.
 
@@ -44,8 +43,7 @@ O ponto de extremidade Criar trabalho de lead de exportação fornece várias op
 |---|---|---|---|
 | campos | Matriz[Cadeia de Caracteres] | Sim | O parâmetro fields aceita uma matriz JSON de cadeias de caracteres. Cada string deve ser o nome da API REST de um campo de lead Marketo. Os campos listados são incluídos no arquivo exportado. O cabeçalho de coluna para cada campo será o nome da API REST de cada campo, a menos que seja substituído por columnHeader. Observação: quando o recurso [!DNL Adobe Experience Cloud Audience Sharing] é habilitado, ocorre um processo de sincronização de cookies que associa a [!DNL Adobe Experience Cloud] ID (ECID) a clientes potenciais do Marketo. Você pode especificar o campo &quot;ecids&quot; para incluir ECIDs no arquivo de exportação. |
 | columnHeaderNames | Objeto | Não | Um objeto JSON que contém pares de valores chave de nomes de campos e cabeçalhos de coluna. A chave deve ser o nome de um campo incluído no trabalho de exportação. Esse é o nome da API do campo que pode ser recuperado chamando Descrever lead. O valor é o nome do cabeçalho de coluna exportado para esse campo. |
-| formato | Sequência de caracteres | Não | Aceita um dos seguintes: CSV, TSV, SSV. O arquivo exportado é renderizado como um arquivo de valores separados por vírgula, valores separados por tabulação ou valores separados por espaço, respectivamente, se definido. O padrão é CSV, caso não esteja definido. |
-
+| formato | String | Não | Aceita um dos seguintes: CSV, TSV, SSV. O arquivo exportado é renderizado como um arquivo de valores separados por vírgula, valores separados por tabulação ou valores separados por espaço, respectivamente, se definido. O padrão é CSV, caso não esteja definido. |
 
 ## Criação de um trabalho
 

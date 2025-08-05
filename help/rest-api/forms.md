@@ -3,7 +3,7 @@ title: Formulários
 feature: REST API, Forms
 description: Crie e gerencie formulários por meio da API.
 exl-id: 2e5dfa70-3163-4ab4-b269-3112417714c3
-source-git-commit: 66add4c38d0230c36d57009de985649bb67fde3e
+source-git-commit: 3649db037a95cfd20ff0a2c3d81a3b40d0095c39
 workflow-type: tm+mt
 source-wordcount: '1598'
 ht-degree: 2%
@@ -295,7 +295,7 @@ Ao editar campos ou seu comportamento dentro de um formulário, a lista de campo
 | Botão de opção | rádio |
 | Área de texto | textarea |
 | Lista de seleção | lista de opções |
-| Sequência de caracteres | string |
+| String | string |
 | Email | email |
 | Data | data |
 | Número | número |
@@ -305,7 +305,6 @@ Ao editar campos ou seu comportamento dentro de um formulário, a lista de campo
 | Moeda | currency |
 | Caixa de seleção | single_checkbox |
 | Barra deslizante | intervalo |
-
 
 ### Dependências
 
@@ -789,8 +788,6 @@ values=[{"label":"Select...","value":"","isDefault":true,"selected":true}, {"lab
 }
 ```
 
- 
-
 Para determinar como formatar um campo de formulário complexo, verifique a resposta de Adicionar campo para formulário.
 
 ### Reorganização do campo
@@ -833,7 +830,7 @@ positions=[{"columnNumber":0,"rowNumber":0,"fieldName":"FirstName"},{"columnNumb
 
 ### Texto formatado
 
-Campos de rich text são adicionados por meio de um [ponto de extremidade separado](https://developer.adobe.com/marketo-apis/api/asset/#tag/Form-Fields/operation/addRichTextFieldUsingPOST) de campos de cliente potencial. O conteúdo do campo é transmitido como multipart/form-data. Ele deve ser estruturado como conteúdo HTML que não contém nenhum script, metatags ou tag de link.
+Campos de rich text são adicionados por meio de um [ponto de extremidade separado](https://developer.adobe.com/marketo-apis/api/asset/#tag/Form-Fields/operation/addRichTextFieldUsingPOST) de campos de cliente potencial. O conteúdo do campo é transmitido como multipart/form-data. Ele deve ser estruturado como conteúdo do HTML que não contém nenhum script, meta tag ou tag de link.
 
 ```
 POST /rest/asset/v1/form/{id}/richText.json

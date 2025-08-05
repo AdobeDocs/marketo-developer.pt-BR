@@ -3,7 +3,7 @@ title: Atividades
 feature: REST API
 description: Uma API para gerenciar atividades do Marketo Engage.
 exl-id: 1e69af23-2b0c-467a-897c-1dcf81343e73
-source-git-commit: 981ed9b254f277d647a844803d05a1a2549cbaed
+source-git-commit: 3649db037a95cfd20ff0a2c3d81a3b40d0095c39
 workflow-type: tm+mt
 source-wordcount: '2029'
 ht-degree: 0%
@@ -131,7 +131,7 @@ Se o atributo `moreResult` for true, significa que mais resultados estarão disp
 
 Em alguns casos, essa API pode responder com menos de 300 itens de atividade, mas também pode ter o atributo `moreResult` definido como verdadeiro.  Isso indica que há mais atividades que podem ser retornadas e que o ponto de extremidade pode ser consultado para atividades mais recentes incluindo a `nextPageToken` retornada em uma chamada subsequente.
 
-Observe que em cada item da matriz de resultados, o atributo inteiro `id` está sendo substituído pelo atributo da cadeia de caracteres `marketoGUID` como identificador exclusivo. 
+Observe que em cada item da matriz de resultados, o atributo inteiro `id` está sendo substituído pelo atributo da cadeia de caracteres `marketoGUID` como identificador exclusivo.
 
 ### Alterações no valor dos dados
 
@@ -435,7 +435,6 @@ POST /rest/v1/activities/external/type/{apiName}.json
 
 Os tipos podem ser gerenciados com Aprovar tipo de atividade personalizado, Descartar rascunho do tipo de atividade personalizado e Excluir tipo de atividade personalizado, da mesma forma que os ativos padrão do Marketo.
 
-
 ## Atributos de tipo de atividade personalizados
 
 Cada tipo de atividade personalizado pode ter de 0 a 20 atributos secundários. Os atributos secundários podem ter qualquer tipo de campo válido para um campo do Marketo. Elas são adicionadas, atualizadas e removidas separadamente do tipo principal, mas podem ser editadas enquanto um tipo de atividade estiver em uso e depois aprovadas. Quando os campos são editados em um tipo em tempo real, todas as atividades desse tipo criadas após a aprovação têm o novo atributo secundário definido. As alterações não serão aplicadas retroativamente a atividades existentes que compartilhem esse tipo.
@@ -450,7 +449,7 @@ Ao alterar o atributo primário de um tipo de atividade, qualquer atributo prim�
 
 ### Criar atributos
 
-A criação de um atributo usa um parâmetro de caminho `apiName` necessário. Também são necessários os parâmetros `name` e `dataType`.` The description and` `isPrimary` parâmetros são opcionais.
+A criação de um atributo usa um parâmetro de caminho `apiName` necessário. Também são necessários os parâmetros `name` e `dataType`.`The description and` `isPrimary` parâmetros são opcionais.
 
 ```
 POST /rest/v1/activities/external/type/{apiName}/attributes/create.json
@@ -709,5 +708,5 @@ POST /rest/v1/activities/external.json
 
 Os endpoints de atividades têm um tempo limite de 30 s, a menos que indicado abaixo.
 
-* Obter token de paginação: 300s 
+* Obter token de paginação: 300s
 * Adicionar atividade personalizada: 90s

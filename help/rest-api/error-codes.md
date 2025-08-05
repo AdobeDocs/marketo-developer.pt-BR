@@ -3,7 +3,7 @@ title: Códigos de erro
 feature: REST API
 description: Descrições do código de erro do Marketo.
 exl-id: a923c4d6-2bbc-4cb7-be87-452f39b464b6
-source-git-commit: 981ed9b254f277d647a844803d05a1a2549cbaed
+source-git-commit: 71e685efb25acffb5c1000293daaea4e936fc4f5
 workflow-type: tm+mt
 source-wordcount: '2320'
 ht-degree: 3%
@@ -59,7 +59,6 @@ O ponto de extremidade [Identidade](https://developer.adobe.com/marketo-apis/api
   </tbody>
 </table>
 
-
 #### Erros de nível de resposta
 
 Erros de nível de resposta estão presentes quando o parâmetro `success` da resposta é definido como false, e são estruturados como:
@@ -110,7 +109,7 @@ Uma chamada de API que retorna esse código de resposta não é contabilizada em
     <tr>
       <td><a name="603"></a>603</td>
       <td>Acesso negado</td>
-      <td>A autenticação foi bem-sucedida, mas o usuário não tem permissão suficiente para chamar essa API. Talvez seja necessário atribuir [permissões adicionais](custom-services.md) à função de usuário ou habilitar o <a href="https://experienceleague.adobe.com/pt-br/docs/marketo/using/product-docs/administration/additional-integrations/create-an-allowlist-for-ip-based-api-access">Incluir na lista de permissões Acesso à API Baseada em IP</a>.</td>
+      <td>A autenticação foi bem-sucedida, mas o usuário não tem permissão suficiente para chamar essa API. Talvez seja necessário atribuir [permissões adicionais](custom-services.md) à função de usuário ou habilitar o <a href="https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/administration/additional-integrations/create-an-allowlist-for-ip-based-api-access">Incluir na lista de permissões Acesso à API Baseada em IP</a>.</td>
     </tr>
     <tr>
       <td><a name="604"></a>604*</td>
@@ -253,7 +252,6 @@ Uma chamada de API que retorna esse código de resposta não é contabilizada em
 
 Os erros no nível do registro indicam que não foi possível concluir uma operação para um registro individual, mas a própria solicitação era válida. Uma resposta com erros de nível de registro segue este padrão:
 
-
 #### Resposta
 
 ```json
@@ -290,208 +288,208 @@ Cada registro em uma solicitação bem-sucedida pode ter êxito ou falha individ
 >[!NOTE]
 >
 ><table>
-><tbody>
->    <tr>
->      <td>Código de resposta</td>
->      <td>Descrição</td>
->      <td>Comentário</td>
->    </tr>
->    <tr>
->      <td><a name="1001"></a>1001</td>
->      <td>Valor inválido ‘%s’. Obrigatório do tipo ‘%s’</td>
->      <td>O erro é gerado sempre que um valor de parâmetro tem uma incompatibilidade de tipo. Por exemplo, o valor da string especificado para um parâmetro inteiro.</td>
->    </tr>
->    <tr>
->      <td><a name="1002"></a>1002</td>
->      <td>Valor ausente para o parâmetro obrigatório ‘%s’</td>
->      <td>O erro é gerado quando um parâmetro obrigatório está ausente na solicitação</td>
->    </tr>
->    <tr>
->      <td><a name="1003"></a>1003</td>
->      <td>Dados inválidos</td>
->      <td>Quando os dados enviados não são de um tipo válido para o endpoint ou modo especificado, como quando a ID é enviada para um cliente potencial com a ação designada como createOnly ou ao usar a Campanha de solicitação em uma campanha em lote.</td>
->    </tr>
->    <tr>
->      <td><a name="1004"></a>1004</td>
->      <td>Lead não encontrado</td>
->      <td>Para syncLead, quando a ação for "updateOnly" e se o lead não for encontrado</td>
->    </tr>
->    <tr>
->      <td><a name="1005"></a>1005</td>
->      <td>O cliente em potencial já existe</td>
->      <td>Para syncLead, quando a ação for "createOnly" e um lead já existir</td>
->    </tr>
->    <tr>
->      <td><a name="1006"></a>1006</td>
->      <td>Campo ‘%s’ não encontrado</td>
->      <td>Um campo incluído na chamada não é válido.</td>
->    </tr>
->    <tr>
->      <td><a name="1007"></a>1007</td>
->      <td>Vários leads correspondem aos critérios de pesquisa</td>
->      <td>Vários clientes em potencial correspondem aos critérios de pesquisa. As atualizações só podem ser executadas quando a chave corresponde a um único registro</td>
->    </tr>
->    <tr>
->      <td><a name="1008"></a>1008</td>
->      <td>Acesso negado à partição ‘%s’</td>
->      <td>O usuário do serviço personalizado não tem acesso a um espaço de trabalho com a partição em que o registro existe.</td>
->    </tr>
->    <tr>
->      <td><a name="1009"></a>1009</td>
->      <td>O nome da partição deve ser especificado</td>
->      <td></td>
->    </tr>
->    <tr>
->      <td><a name="1010"></a>1010</td>
->      <td>Atualização de partição não permitida</td>
->      <td>O registro especificado já existe em uma partição de cliente potencial separada.</td>
->    </tr>
->    <tr>
->      <td><a name="1011"></a>1011</td>
->      <td>O campo ‘%s’ não é suportado</td>
->      <td>Quando o campo de pesquisa ou "filterType" é especificado com campos padrão sem suporte (por exemplo: firstName, lastName)</td>
->    </tr>
->    <tr>
->      <td><a name="1012"></a>1012</td>
->      <td>Valor de cookie inválido ‘%s’</td>
->      <td>Pode ocorrer ao chamar o <a href="https://developer.adobe.com/marketo-apis/api/mapi/#tag/Leads/operation/associateLeadUsingPOST">Associar lead</a> com um valor inválido para o parâmetro "cookie".
->        Isso também ocorre ao chamar <a href="https://developer.adobe.com/marketo-apis/api/mapi/#tag/Leads/operation/getLeadsByFilterUsingGET">Obter clientes em potencial por Tipo de filtro</a> com "filterType=cookies" e um valor inválido para o parâmetro "filterValues".</td>
->    </tr>
->    <tr>
->      <td><a name="1013"></a>1013</td>
->      <td>Objeto não encontrado</td>
->      <td>Obter objeto (lista, campanha) por id retorna este código de erro</td>
->    </tr>
->    <tr>
->      <td><a name="1014"></a>1014</td>
->      <td>Falha ao criar objeto</td>
->      <td>Falha ao criar objeto (lista)</td>
->    </tr>
->    <tr>
->      <td><a name="1015"></a>1015</td>
->      <td>Cliente em potencial não está na lista</td>
->      <td>O cliente em potencial designado não é um membro da lista de público alvo</td>
->    </tr>
->    <tr>
->      <td><a name="1016"></a>1016</td>
->      <td>Muitas importações</td>
->      <td>Há muitas importações na fila. Um máximo de 10 é permitido</td>
->    </tr>
->    <tr>
->      <td><a name="1017"></a>1017</td>
->      <td>O objeto já existe</td>
->      <td>Falha na criação porque o registro já existe</td>
->    </tr>
->    <tr>
->      <td><a name="1018"></a>1018</td>
->      <td>CRM Habilitado</td>
->      <td>A ação não pôde ser executada porque a instância tem uma integração nativa do CRM habilitada.</td>
->    </tr>
->    <tr>
->      <td><a name="1019"></a>1019</td>
->      <td>Importação em andamento</td>
->      <td>A lista de destino já está sendo importada para</td>
->    </tr>
->    <tr>
->      <td><a name="1020"></a>1020</td>
->      <td>Muitos clones para o programa</td>
->      <td>A assinatura atingiu o uso alocado de "cloneToProgramName" no Programa de agendamento para o dia</td>
->    </tr>
->    <tr>
->      <td><a name="1021"></a>1021</td>
->      <td>Atualização de empresa não permitida</td>
->      <td>Atualização da empresa não permitida durante syncLead</td>
->    </tr>
->    <tr>
->      <td><a name="1022"></a>1022</td>
->      <td>Objeto em uso</td>
->      <td>A exclusão não é permitida quando um objeto está em uso por outro objeto</td>
->    </tr>
->    <tr>
->      <td><a name="1025"></a>1025</td>
->      <td>Status do programa não encontrado</td>
->      <td>Foi especificado um status para Alterar o status do programa de cliente potencial que não corresponde a um status disponível para o canal do programa.</td>
->    </tr>
->    <tr>
->      <td><a name="1026"></a>1026</td>
->      <td>Objeto personalizado não habilitado</td>
->      <td>A ação não pôde ser executada, pois a instância não tem a integração de objetos personalizados habilitada.</td>
->    </tr>
->    <tr>
->      <td><a name="1027"></a>1027</td>
->      <td>Limite máximo de tipos de atividade atingido</td>
->      <td>A assinatura atingiu o número máximo de tipos de atividades personalizadas disponíveis.</td>
->    </tr>
->    <tr>
->      <td><a name="1028"></a>1028</td>
->      <td>Limite máximo de campos atingido</td>
->      <td>As atividades personalizadas têm no máximo 20 atributos secundários.</td>
->    </tr>
->    <tr>
->      <td><a name="1029"></a>1029</td>
->      <td><ul>
->          <li>Muitos trabalhos na fila</li>
->          <li>Exportação de cota diária excedida</li>
->          <li>Tarefa já na fila</li>
->        </ul></td>
->      <td><ul>
->          <li>As assinaturas podem ter no máximo 10 trabalhos de extração em massa na fila em um determinado momento.</li>
->          <li>Por padrão, os trabalhos de extração são limitados a 500 MB por dia (é redefinido diariamente às 12h00 CST).</li>
->          <li>A ID de exportação já foi colocada na fila.</li>
->        </ul></td>
->    </tr>
->    <tr>
->      <td><a name="1035"></a>1035</td>
->      <td>Tipo de filtro incompatível</td>
->      <td>Em algumas assinaturas, os seguintes tipos de filtro de Extração de lead em massa não são compatíveis: updatedAt, smartListId, smartListName.</td>
->    </tr>
->    <tr>
->      <td><a name="1036"></a>1036</td>
->      <td>Objeto duplicado encontrado na entrada</td>
->      <td>Foi feita uma chamada para atualizar dois ou mais registros usando a mesma chave estrangeira. Por exemplo, uma chamada de Empresas de sincronização usando a mesma externalCompanyId para mais de uma empresa.</td>
->    </tr>
->    <tr>
->      <td><a name="1037"></a>1037</td>
->      <td>O lead foi ignorado</td>
->      <td>O cliente em potencial foi ignorado porque já está neste status ou já passou dele.</td>
->    </tr>
->    <tr>
->      <td><a name="1042"></a>1042</td>
->      <td>Data runAt inválida</td>
->      <td>A data runAt especificada para o Schedule Campaign estava muito distante no futuro (o máximo é 2 anos).</td>
->    </tr>
->    <tr>
->      <td><a name="1048"></a>1048</td>
->      <td>Falha ao descartar rascunho de objeto personalizado</td>
->      <td>Foi feita uma chamada para descartar a versão de rascunho de um objeto personalizado.</td>
->    </tr>
->    <tr>
->      <td><a name="1049"></a>1049</td>
->      <td>Falha ao criar atividade</td>
->      <td>Matriz de atributos muito longa.
->        A matriz de atributos passada para o registro excedeu o comprimento máximo de 65.536 bytes</td>
->    </tr>
->    <tr>
->      <td><a name="1076"></a>1076</td>
->      <td>A chamada <a href="https://developer.adobe.com/marketo-apis/api/mapi/#tag/Leads/operation/mergeLeadsUsingPOST">Mesclar clientes em potencial</a> com o sinalizador mergeInCRM é 4.</td>
->      <td>Você está criando um registro duplicado. É recomendável usar um registro existente.
->        Essa é a mensagem de erro, que o Marketo recebe ao mesclar no Salesforce.</td>
->    </tr>
->    <tr>
->      <td><a name="1077"></a>1077</td>
->      <td>A chamada <a href="https://developer.adobe.com/marketo-apis/api/mapi/#tag/Leads/operation/mergeLeadsUsingPOST">Mesclar clientes em potencial</a> falhou devido ao comprimento do "Campo SFDC"</td>
->      <td>Uma chamada de Mesclagem de leads com mergeInCRM definido como true falhou porque o "Campo SFDC" excede o limite de caracteres permitidos. Para corrigir, reduza o comprimento de "SFDC Field" ou defina mergeInCRM como false.</td>
->    </tr>
->    <tr>
->      <td><a name="1078"></a>1078</td>
->      <td>A chamada <a href="https://developer.adobe.com/marketo-apis/api/mapi/#tag/Leads/operation/mergeLeadsUsingPOST">Mesclar clientes em potencial</a> falhou devido à entidade excluída, não a um cliente potencial/contato ou a critérios de filtro de campo não correspondem.</td>
->      <td>Falha na mesclagem; não é possível executar a operação de mesclagem no CRM sincronizado nativamente
->        Essa é a mensagem de erro, que o Marketo recebe ao mesclar no Salesforce.</td>
->    </tr>
->    <tr>
->      <td><a name="1079"></a>1079</td>
->      <td>A chamada <a href="https://developer.adobe.com/marketo-apis/api/mapi/#tag/Leads/operation/mergeLeadsUsingPOST">Mesclar clientes em potencial</a> falhou devido ao conflito de URL personalizado em registros duplicados</td>
->      <td>Uma chamada de Mesclar leads especificou muitos leads com a mesma URL personalizada. Para resolver, use a interface do usuário do Marketo Engage para mesclar esses registros.</td>
->    </tr>
->  </tbody>
-></table>
+<tbody>
+    <tr>
+      <td>Código de resposta</td>
+      <td>Descrição</td>
+      <td>Comentário</td>
+    </tr>
+    <tr>
+      <td><a name="1001"></a>1001</td>
+      <td>Valor inválido ‘%s’. Obrigatório do tipo ‘%s’</td>
+      <td>O erro é gerado sempre que um valor de parâmetro tem uma incompatibilidade de tipo. Por exemplo, o valor da string especificado para um parâmetro inteiro.</td>
+    </tr>
+    <tr>
+      <td><a name="1002"></a>1002</td>
+      <td>Valor ausente para o parâmetro obrigatório ‘%s’</td>
+      <td>O erro é gerado quando um parâmetro obrigatório está ausente na solicitação</td>
+    </tr>
+    <tr>
+      <td><a name="1003"></a>1003</td>
+      <td>Dados inválidos</td>
+      <td>Quando os dados enviados não são de um tipo válido para o endpoint ou modo especificado, como quando a ID é enviada para um cliente potencial com a ação designada como createOnly ou ao usar a Campanha de solicitação em uma campanha em lote.</td>
+    </tr>
+    <tr>
+      <td><a name="1004"></a>1004</td>
+      <td>Lead não encontrado</td>
+      <td>Para syncLead, quando a ação for "updateOnly" e se o lead não for encontrado</td>
+    </tr>
+    <tr>
+      <td><a name="1005"></a>1005</td>
+      <td>O cliente em potencial já existe</td>
+      <td>Para syncLead, quando a ação for "createOnly" e um lead já existir</td>
+    </tr>
+    <tr>
+      <td><a name="1006"></a>1006</td>
+      <td>Campo ‘%s’ não encontrado</td>
+      <td>Um campo incluído na chamada não é válido.</td>
+    </tr>
+    <tr>
+      <td><a name="1007"></a>1007</td>
+      <td>Vários leads correspondem aos critérios de pesquisa</td>
+      <td>Vários clientes em potencial correspondem aos critérios de pesquisa. As atualizações só podem ser executadas quando a chave corresponde a um único registro</td>
+    </tr>
+    <tr>
+      <td><a name="1008"></a>1008</td>
+      <td>Acesso negado à partição ‘%s’</td>
+      <td>O usuário do serviço personalizado não tem acesso a um espaço de trabalho com a partição em que o registro existe.</td>
+    </tr>
+    <tr>
+      <td><a name="1009"></a>1009</td>
+      <td>O nome da partição deve ser especificado</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td><a name="1010"></a>1010</td>
+      <td>Atualização de partição não permitida</td>
+      <td>O registro especificado já existe em uma partição de cliente potencial separada.</td>
+    </tr>
+    <tr>
+      <td><a name="1011"></a>1011</td>
+      <td>O campo ‘%s’ não é suportado</td>
+      <td>Quando o campo de pesquisa ou "filterType" é especificado com campos padrão sem suporte (por exemplo: firstName, lastName)</td>
+    </tr>
+    <tr>
+      <td><a name="1012"></a>1012</td>
+      <td>Valor de cookie inválido ‘%s’</td>
+      <td>Pode ocorrer ao chamar o <a href="https://developer.adobe.com/marketo-apis/api/mapi/#tag/Leads/operation/associateLeadUsingPOST">Associar lead</a> com um valor inválido para o parâmetro "cookie".
+        Isso também ocorre ao chamar <a href="https://developer.adobe.com/marketo-apis/api/mapi/#tag/Leads/operation/getLeadsByFilterUsingGET">Obter clientes em potencial por Tipo de filtro</a> com "filterType=cookies" e um valor inválido para o parâmetro "filterValues".</td>
+    </tr>
+    <tr>
+      <td><a name="1013"></a>1013</td>
+      <td>Objeto não encontrado</td>
+      <td>Obter objeto (lista, campanha) por id retorna este código de erro</td>
+    </tr>
+    <tr>
+      <td><a name="1014"></a>1014</td>
+      <td>Falha ao criar objeto</td>
+      <td>Falha ao criar objeto (lista)</td>
+    </tr>
+    <tr>
+      <td><a name="1015"></a>1015</td>
+      <td>Cliente em potencial não está na lista</td>
+      <td>O cliente em potencial designado não é um membro da lista de público alvo</td>
+    </tr>
+    <tr>
+      <td><a name="1016"></a>1016</td>
+      <td>Muitas importações</td>
+      <td>Há muitas importações na fila. Um máximo de 10 é permitido</td>
+    </tr>
+    <tr>
+      <td><a name="1017"></a>1017</td>
+      <td>O objeto já existe</td>
+      <td>Falha na criação porque o registro já existe</td>
+    </tr>
+    <tr>
+      <td><a name="1018"></a>1018</td>
+      <td>CRM Habilitado</td>
+      <td>A ação não pôde ser executada porque a instância tem uma integração nativa do CRM habilitada.</td>
+    </tr>
+    <tr>
+      <td><a name="1019"></a>1019</td>
+      <td>Importação em andamento</td>
+      <td>A lista de destino já está sendo importada para</td>
+    </tr>
+    <tr>
+      <td><a name="1020"></a>1020</td>
+      <td>Muitos clones para o programa</td>
+      <td>A assinatura atingiu o uso alocado de "cloneToProgramName" no Programa de agendamento para o dia</td>
+    </tr>
+    <tr>
+      <td><a name="1021"></a>1021</td>
+      <td>Atualização de empresa não permitida</td>
+      <td>Atualização da empresa não permitida durante syncLead</td>
+    </tr>
+    <tr>
+      <td><a name="1022"></a>1022</td>
+      <td>Objeto em uso</td>
+      <td>A exclusão não é permitida quando um objeto está em uso por outro objeto</td>
+    </tr>
+    <tr>
+      <td><a name="1025"></a>1025</td>
+      <td>Status do programa não encontrado</td>
+      <td>Foi especificado um status para Alterar o status do programa de cliente potencial que não corresponde a um status disponível para o canal do programa.</td>
+    </tr>
+    <tr>
+      <td><a name="1026"></a>1026</td>
+      <td>Objeto personalizado não habilitado</td>
+      <td>A ação não pôde ser executada, pois a instância não tem a integração de objetos personalizados habilitada.</td>
+    </tr>
+    <tr>
+      <td><a name="1027"></a>1027</td>
+      <td>Limite máximo de tipos de atividade atingido</td>
+      <td>A assinatura atingiu o número máximo de tipos de atividades personalizadas disponíveis.</td>
+    </tr>
+    <tr>
+      <td><a name="1028"></a>1028</td>
+      <td>Limite máximo de campos atingido</td>
+      <td>As atividades personalizadas têm no máximo 20 atributos secundários.</td>
+    </tr>
+    <tr>
+      <td><a name="1029"></a>1029</td>
+      <td><ul>
+          <li>Muitos trabalhos na fila</li>
+          <li>Exportação de cota diária excedida</li>
+          <li>Tarefa já na fila</li>
+        </ul></td>
+      <td><ul>
+          <li>As assinaturas podem ter no máximo 10 trabalhos de extração em massa na fila em um determinado momento.</li>
+          <li>Por padrão, os trabalhos de extração são limitados a 500 MB por dia (é redefinido diariamente às 12h00 CST).</li>
+          <li>A ID de exportação já foi colocada na fila.</li>
+        </ul></td>
+    </tr>
+    <tr>
+      <td><a name="1035"></a>1035</td>
+      <td>Tipo de filtro incompatível</td>
+      <td>Em algumas assinaturas, os seguintes tipos de filtro de Extração de lead em massa não são compatíveis: updatedAt, smartListId, smartListName.</td>
+    </tr>
+    <tr>
+      <td><a name="1036"></a>1036</td>
+      <td>Objeto duplicado encontrado na entrada</td>
+      <td>Foi feita uma chamada para atualizar dois ou mais registros usando a mesma chave estrangeira. Por exemplo, uma chamada de Empresas de sincronização usando a mesma externalCompanyId para mais de uma empresa.</td>
+    </tr>
+    <tr>
+      <td><a name="1037"></a>1037</td>
+      <td>O lead foi ignorado</td>
+      <td>O cliente em potencial foi ignorado porque já está neste status ou já passou dele.</td>
+    </tr>
+    <tr>
+      <td><a name="1042"></a>1042</td>
+      <td>Data runAt inválida</td>
+      <td>A data runAt especificada para o Schedule Campaign estava muito distante no futuro (o máximo é 2 anos).</td>
+    </tr>
+    <tr>
+      <td><a name="1048"></a>1048</td>
+      <td>Falha ao descartar rascunho de objeto personalizado</td>
+      <td>Foi feita uma chamada para descartar a versão de rascunho de um objeto personalizado.</td>
+    </tr>
+    <tr>
+      <td><a name="1049"></a>1049</td>
+      <td>Falha ao criar atividade</td>
+      <td>Matriz de atributos muito longa.
+        A matriz de atributos passada para o registro excedeu o comprimento máximo de 65.536 bytes</td>
+    </tr>
+    <tr>
+      <td><a name="1076"></a>1076</td>
+      <td>A chamada <a href="https://developer.adobe.com/marketo-apis/api/mapi/#tag/Leads/operation/mergeLeadsUsingPOST">Mesclar clientes em potencial</a> com o sinalizador mergeInCRM é 4.</td>
+      <td>Você está criando um registro duplicado. É recomendável usar um registro existente.
+        Essa é a mensagem de erro, que o Marketo recebe ao mesclar no Salesforce.</td>
+    </tr>
+    <tr>
+      <td><a name="1077"></a>1077</td>
+      <td>A chamada <a href="https://developer.adobe.com/marketo-apis/api/mapi/#tag/Leads/operation/mergeLeadsUsingPOST">Mesclar clientes em potencial</a> falhou devido ao comprimento do "Campo SFDC"</td>
+      <td>Uma chamada de Mesclagem de leads com mergeInCRM definido como true falhou porque o "Campo SFDC" excede o limite de caracteres permitidos. Para corrigir, reduza o comprimento de "SFDC Field" ou defina mergeInCRM como false.</td>
+    </tr>
+    <tr>
+      <td><a name="1078"></a>1078</td>
+      <td>A chamada <a href="https://developer.adobe.com/marketo-apis/api/mapi/#tag/Leads/operation/mergeLeadsUsingPOST">Mesclar clientes em potencial</a> falhou devido à entidade excluída, não a um cliente potencial/contato ou a critérios de filtro de campo não correspondem.</td>
+      <td>Falha na mesclagem; não é possível executar a operação de mesclagem no CRM sincronizado nativamente
+        Essa é a mensagem de erro, que o Marketo recebe ao mesclar no Salesforce.</td>
+    </tr>
+    <tr>
+      <td><a name="1079"></a>1079</td>
+      <td>A chamada <a href="https://developer.adobe.com/marketo-apis/api/mapi/#tag/Leads/operation/mergeLeadsUsingPOST">Mesclar clientes em potencial</a> falhou devido ao conflito de URL personalizado em registros duplicados</td>
+      <td>Uma chamada de Mesclar leads especificou muitos leads com a mesma URL personalizada. Para resolver, use a interface do usuário do Marketo Engage para mesclar esses registros.</td>
+    </tr>
+  </tbody>
+</table>

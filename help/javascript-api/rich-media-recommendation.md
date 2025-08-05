@@ -3,7 +3,7 @@ title: Recomendação de rich media
 description: Recomendação de rich media
 feature: Javascript
 exl-id: ee92e46d-e529-40a2-a0d0-ee233916f004
-source-git-commit: 981ed9b254f277d647a844803d05a1a2549cbaed
+source-git-commit: 3649db037a95cfd20ff0a2c3d81a3b40d0095c39
 workflow-type: tm+mt
 source-wordcount: '812'
 ht-degree: 5%
@@ -21,7 +21,7 @@ As tags e chamadas de API a seguir devem ser configuradas na página em que voc�
 1. No corpo da página
    1. Coloque a tag de modelo (classe div) no local onde deseja que o modelo apareça
 
-Mais informações disponíveis [aqui](https://experienceleague.adobe.com/pt-br/docs/marketo/using/product-docs/predictive-content/enabling-predictive-content/enable-predictive-content-for-web-rich-media).
+Mais informações disponíveis [aqui](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/predictive-content/enabling-predictive-content/enable-predictive-content-for-web-rich-media).
 
 ## Tag de modelo
 
@@ -66,7 +66,6 @@ Este método preenche toda a mídia avançada `<divs>` da página com recomenda�
 | &#39;rcmd&#39; | Obrigatório | String | Nome do método. |
 | &#39;richmedia&#39; | Obrigatório | String | Nome do submétodo. |
 
-
 ## Alterar configuração do modelo
 
 Este método altera a configuração padrão do modelo.
@@ -84,7 +83,6 @@ Observação: ao usar esse método, ele deve ser chamado antes de chamar rtp(&#3
 | &#39;richmedia&#39; | Obrigatório | String | Nome do submétodo. |
 | template_id | Opcional | String | A ID do modelo das alterações de configuração. Use para especificar alterações de configurações para apenas um modelo. |
 | conf_obj | Obrigatório | Objeto | A nova configuração. O objeto mantém todas as configurações como um par de chave/valor. |
-
 
 ### Exemplos
 
@@ -150,7 +148,6 @@ rtp("set", "rcmd", "richmedia",
 | rcmd.cta.font.color | &quot;rcmd.cta.font.color&quot; : &quot;rgb(90, 84, 164)&quot; | Altera a cor da fonte do botão. Essa propriedade oferece suporte a todos os valores de cor de fonte (rgb, hex, ...) |
 | rcmd.cta.text | &quot;rcmd.cta.text&quot; : &quot;Push&quot; | Altera o texto do botão. O texto é o mesmo para todos os botões. |
 | categoria | &quot;categoria&quot; : [&quot;uma categoria&quot;] | Altera a categoria de recomendação à qual este modelo dá suporte. O modelo exibe somente recomendações com uma das categorias definidas por essa configuração. |
-
 
 Observação: o suporte à configuração pode ser alterado por modelo.
 
