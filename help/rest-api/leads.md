@@ -814,7 +814,7 @@ Associação
 Os registros de clientes potenciais também podem ser recuperados com base na associação a uma lista estática ou a um programa. Além disso, você pode recuperar todas as listas estáticas, programas ou campanhas inteligentes das quais um lead é membro.
 
 A estrutura de resposta e os parâmetros opcionais são idênticos aos de Obter leads por tipo de filtro, embora filterType e filterValues não possam ser usados com essa API.
-Para acessar a ID da lista por meio da interface do usuário do Marketo, navegue até a lista. A lista `id` está na URL da lista estática, `https://app-****.marketo.com/#ST1001A1`. Neste exemplo, 1001 é o `id` da lista.
+Para acessar a ID da lista por meio da interface do usuário do Marketo, navegue até a lista. A lista `id` está na URL da lista estática, `https://app-**&#x200B;**.marketo.com/#ST1001A1`. Neste exemplo, 1001 é o `id` da lista.
 
 ### Solicitação
 
