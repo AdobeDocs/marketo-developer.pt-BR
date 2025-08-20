@@ -3,7 +3,7 @@ title: Ingestão de dados
 feature: REST API, Dynamic Content
 description: Consumir dados com APIs do Marketo.
 exl-id: 1d501916-53ac-42d8-a804-abb4ab01c7e8
-source-git-commit: 3649db037a95cfd20ff0a2c3d81a3b40d0095c39
+source-git-commit: 4bac6968867f1fbee0846b1bcd75b5e34ad91dee
 workflow-type: tm+mt
 source-wordcount: '965'
 ht-degree: 11%
@@ -18,7 +18,9 @@ Os dados são assimilados enviando solicitações que são executadas de forma a
 
 As interfaces são oferecidas para dois tipos de objeto: Pessoas, Objetos personalizados. A operação de registro é somente &quot;inserir ou atualizar&quot;.
 
-No momento, a API de assimilação de dados está em beta privado.  Os convidados devem ter um direito ao Pacote [Camada de Desempenho do Marketo Engage](https://nation.marketo.com/t5/product-documents/marketo-engage-performance-tiers/ta-p/328835).
+>[!NOTE]
+>
+>No momento, a API de assimilação de dados está em beta privado.  Os convidados devem ter um direito ao Pacote [Camada de Desempenho do Marketo Engage](https://nation.marketo.com/t5/product-documents/marketo-engage-performance-tiers/ta-p/328835).
 
 ## Autenticação
 
