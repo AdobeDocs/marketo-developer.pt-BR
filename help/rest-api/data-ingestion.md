@@ -1,11 +1,11 @@
 ---
-title: Ingestão de dados
+title: Assimilação de dados
 feature: REST API, Dynamic Content
 description: Consumir dados com APIs do Marketo.
 exl-id: 1d501916-53ac-42d8-a804-abb4ab01c7e8
-source-git-commit: 4bac6968867f1fbee0846b1bcd75b5e34ad91dee
+source-git-commit: af2d0f266a271696dbf7d334f23bcd9962b9eba4
 workflow-type: tm+mt
-source-wordcount: '965'
+source-wordcount: '957'
 ht-degree: 11%
 
 ---
@@ -14,13 +14,13 @@ ht-degree: 11%
 
 A API de assimilação de dados é um serviço de alto volume, baixa latência e alta disponibilidade, projetado para lidar com a assimilação de grandes quantidades de dados pessoais e relacionados a pessoas de maneira eficiente e com atrasos mínimos.
 
-Os dados são assimilados enviando solicitações que são executadas de forma assíncrona. O status da solicitação pode ser recuperado assinando-se a eventos do [Fluxo de Dados de Observação do Marketo](https://developer.adobe.com/events/docs/guides/using/marketo/marketo-observability-data-stream-setup).&#x200B;
+Os dados são assimilados enviando solicitações que são executadas de forma assíncrona. O status da solicitação pode ser recuperado assinando-se a eventos do [Fluxo de Dados de Observação do Marketo](https://developer.adobe.com/events/docs/guides/using/marketo/marketo-observability-data-stream-setup).
 
 As interfaces são oferecidas para dois tipos de objeto: Pessoas, Objetos personalizados. A operação de registro é somente &quot;inserir ou atualizar&quot;.
 
 >[!NOTE]
 >
->No momento, a API de assimilação de dados está em beta privado.  Os convidados devem ter um direito ao Pacote [Camada de Desempenho do Marketo Engage](https://nation.marketo.com/t5/product-documents/marketo-engage-performance-tiers/ta-p/328835).
+>O acesso à API de assimilação de dados exige o direito ao pacote [Camada de desempenho do Marketo Engage](https://nation.marketo.com/t5/product-documents/marketo-engage-performance-tiers/ta-p/328835).
 
 ## Autenticação
 
