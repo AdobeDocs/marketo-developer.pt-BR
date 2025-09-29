@@ -21,7 +21,7 @@ As tags e chamadas de API a seguir devem ser configuradas na página em que voc�
 1. No corpo da página
    1. Coloque a tag de modelo (classe div) no local onde deseja que o modelo apareça
 
-Mais informações disponíveis [aqui](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/predictive-content/enabling-predictive-content/enable-predictive-content-for-web-rich-media).
+Mais informações disponíveis [aqui](https://experienceleague.adobe.com/pt-br/docs/marketo/using/product-docs/predictive-content/enabling-predictive-content/enable-predictive-content-for-web-rich-media).
 
 ## Tag de modelo
 
