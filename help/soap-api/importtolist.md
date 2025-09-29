@@ -1,12 +1,12 @@
 ---
 title: importToList
 feature: SOAP
-description: chamadas importToList SOAP
+description: Saiba como usar importToList no Marketo SOAP para importar leads para uma lista estática com cabeçalhos CSV, substituições de token, exemplos XML e verificações de status.
 exl-id: 7e4930a9-a78f-44a3-9e8c-eeca908080c8
-source-git-commit: 3649db037a95cfd20ff0a2c3d81a3b40d0095c39
+source-git-commit: 7557b9957c87f63c2646be13842ea450035792be
 workflow-type: tm+mt
-source-wordcount: '387'
-ht-degree: 5%
+source-wordcount: '409'
+ht-degree: 4%
 
 ---
 

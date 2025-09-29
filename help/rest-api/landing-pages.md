@@ -1,16 +1,16 @@
 ---
-title: Páginas de aterrissagem
+title: Páginas de destino
 feature: REST API, Landing Pages
-description: Páginas de aterrissagem de consulta no Marketo.
+description: Use a API REST do Marketo para consultar metadados e conteúdo, criar, atualizar, aprovar, excluir e clonar páginas de aterrissagem, incluindo tipos guiados e de formato livre.
 exl-id: 2f986fb0-0a6b-469f-b199-1c526cd5a882
-source-git-commit: 3649db037a95cfd20ff0a2c3d81a3b40d0095c39
+source-git-commit: 7557b9957c87f63c2646be13842ea450035792be
 workflow-type: tm+mt
-source-wordcount: '1000'
+source-wordcount: '1018'
 ht-degree: 2%
 
 ---
 
-# Páginas de aterrissagem
+# Páginas de destino
 
 [Referência de Ponto de Extremidade de Página de Aterrissagem](https://developer.adobe.com/marketo-apis/api/asset/#tag/Landing-Pages)
 
@@ -185,7 +185,7 @@ As seções de conteúdo são ordenadas por sua propriedade index e, por fim, di
 | Imagem | A ID do ativo de imagem. |
 | Retângulo | Vazio. |
 | RichText | Conteúdo do HTML de texto.  Pode conter apenas elementos rich text. |
-| Bloco de conteúdo | A ID do trecho. |
+| Snippet | A ID do trecho. |
 | SocialButton | A ID de  o botão social. |
 | Vídeo | A ID do vídeo. |
 
@@ -274,7 +274,7 @@ As variáveis são definidas como metatags dentro do elemento `<head>` de um mod
 </head>
 ```
 
-Para obter mais informações, consulte a seção &quot;Variável editável&quot; na documentação [Criar um modelo de página de aterrissagem guiado](https://experienceleague.adobe.com/pt-br/docs/marketo/using/product-docs/demand-generation/landing-pages/landing-page-templates/create-a-guided-landing-page-template).
+Para obter mais informações, consulte a seção &quot;Variável editável&quot; na documentação [Criar um modelo de página de aterrissagem guiado](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/demand-generation/landing-pages/landing-page-templates/create-a-guided-landing-page-template).
 
 ### Consultar
 

@@ -1,10 +1,11 @@
 ---
 title: Objetos do Marketo
 feature: Email Programs
-description: Uma visão geral do uso de objetos do Marketo com scripts do Velocity
-source-git-commit: 3ccb27a0d184e0c1314979d404022bc4e0794f7b
+description: Guia para usar o Marketo Velocity com leads, oportunidades e objetos personalizados, campos de carregamento, acesso aos 10 principais da lista, relacionamentos com a SFDC e $TriggerObject.
+exl-id: 88c63d72-7aa5-4550-9e1a-887a479872e1
+source-git-commit: 7557b9957c87f63c2646be13842ea450035792be
 workflow-type: tm+mt
-source-wordcount: '518'
+source-wordcount: '530'
 ht-degree: 0%
 
 ---

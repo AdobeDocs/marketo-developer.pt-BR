@@ -1,11 +1,11 @@
 ---
 title: Referência da API do Forms
-description: Referência da API do Forms
+description: Referência abrangente para a API do Marketo Forms 2.0, detalhando métodos MktoForms2 e Form, parâmetros, retornos de chamada e retornos para carregar e renderizar formulários.
 feature: Forms, Javascript
 exl-id: 0f8d242f-0b27-4087-b080-3d41ebaa25b3
-source-git-commit: 3649db037a95cfd20ff0a2c3d81a3b40d0095c39
+source-git-commit: 7557b9957c87f63c2646be13842ea450035792be
 workflow-type: tm+mt
-source-wordcount: '1327'
+source-wordcount: '1345'
 ht-degree: 2%
 
 ---

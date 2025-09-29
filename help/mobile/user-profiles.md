@@ -1,12 +1,12 @@
 ---
 title: Perfis de usuário
 feature: Mobile Marketing, Users and Roles
-description: Utilização de perfis de usuário no Marketo Mobile
+description: Saiba como criar e atualizar perfis de usuário no Marketo Mobile SDK no iOS e no Android com Objetive-C Swift e Java, campos padrão e personalizados, associateLead
 exl-id: 1b2cfb7f-d678-4022-8cd9-a56004a1ac46
-source-git-commit: 66add4c38d0230c36d57009de985649bb67fde3e
+source-git-commit: 7557b9957c87f63c2646be13842ea450035792be
 workflow-type: tm+mt
-source-wordcount: '83'
-ht-degree: 0%
+source-wordcount: '103'
+ht-degree: 1%
 
 ---
 

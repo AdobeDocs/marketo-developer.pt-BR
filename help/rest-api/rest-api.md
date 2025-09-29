@@ -1,11 +1,11 @@
 ---
 title: API REST
 feature: REST API
-description: Visão geral da REST API
+description: Saiba como usar a API REST do Marketo, configurar usuários da API e o LaunchPoint, exibir cotas e limites, autenticar com o cabeçalho de autorização e recuperar leads.
 exl-id: 4b9beaf0-fc04-41d7-b93a-a1ae3147ce67
-source-git-commit: 8ad3e3f0958ea705375651b1c8a75967d807ca80
+source-git-commit: 7557b9957c87f63c2646be13842ea450035792be
 workflow-type: tm+mt
-source-wordcount: '808'
+source-wordcount: '828'
 ht-degree: 1%
 
 ---
@@ -17,10 +17,10 @@ O Marketo expõe uma API REST que permite a execução remota de muitos dos recu
 Essas APIs geralmente se encaixam em duas categorias amplas: [Banco de Dados Principal](https://developer.adobe.com/marketo-apis/api/mapi/) e [Ativo](https://developer.adobe.com/marketo-apis/api/asset/). As APIs de banco de dados de clientes potenciais permitem a recuperação e a interação com registros de pessoas da Marketo e tipos de objetos associados, como Oportunidades e Empresas. As APIs de ativos permitem a interação com material de apoio de marketing e registros relacionados a fluxos de trabalho.
 
 >[!NOTE]
->A API do SOAP está sendo descontinuada e não estará mais disponível após 31 de outubro de 2025. Todos os novos desenvolvimentos devem ser feitos com a [REST API](./rest-api.md) do Marketo, e os serviços existentes devem ser migrados até essa data para evitar interrupções no serviço. Se você tiver um serviço que usa a API SOAP, consulte a API SOAP [Guia de Migração](../soap-api/migration.md) para obter informações sobre como migrar.
+>A API do SOAP está sendo substituída e não estará mais disponível após 31 de outubro de 2025. Todos os novos desenvolvimentos devem ser feitos com a [REST API](./rest-api.md) do Marketo, e os serviços existentes devem ser migrados até essa data para evitar interrupções no serviço. Se você tiver um serviço que usa a API do SOAP, consulte o [Guia de Migração](../soap-api/migration.md) da API do SOAP para obter informações sobre como migrar.
 >
 
-- **Cota Diária:** as assinaturas recebem 50.000 chamadas de API por dia (que são redefinidas diariamente às 12h00 CST). Você pode aumentar sua cota diária por meio do gerente da conta.
+- **Cota Diária:** as assinaturas recebem 50.000 chamadas de API por dia (o que é redefinido diariamente a 12:00AM CST). Você pode aumentar sua cota diária por meio do gerente da conta.
 - **Limite de Taxa:** O acesso à API por instância é limitado a 100 chamadas por 20 segundos.
 - **Limite de simultaneidade:**  Máximo de dez chamadas de API simultâneas.
 

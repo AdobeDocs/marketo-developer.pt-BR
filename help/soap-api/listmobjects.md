@@ -1,12 +1,12 @@
 ---
 title: listMObjects
 feature: SOAP
-description: chamadas de SOAP listMObjects
+description: Referência para a chamada de SOAP listMObjects que retorna nomes de objetos Marketo para describeMObjects, com XML de solicitação e resposta e código de amostra.
 exl-id: d8b32ba2-7c20-4611-9062-c3c5db2d2ccb
-source-git-commit: 981ed9b254f277d647a844803d05a1a2549cbaed
+source-git-commit: 7557b9957c87f63c2646be13842ea450035792be
 workflow-type: tm+mt
-source-wordcount: '48'
-ht-degree: 2%
+source-wordcount: '66'
+ht-degree: 1%
 
 ---
 

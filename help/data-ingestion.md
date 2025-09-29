@@ -1,15 +1,15 @@
 ---
-title: Ingestão de dados
-description: Visão geral da API de assimilação de dados
-source-git-commit: 3649db037a95cfd20ff0a2c3d81a3b40d0095c39
+title: Assimilação de dados
+description: API de assimilação de dados do Marketo para upserts de baixo volume de pessoas e objetos personalizados, status assíncrono via Observability, autenticação de cabeçalho OAuth, beta privado.
+source-git-commit: 7557b9957c87f63c2646be13842ea450035792be
 workflow-type: tm+mt
-source-wordcount: '940'
+source-wordcount: '960'
 ht-degree: 11%
 
 ---
 
 
-# Ingestão de dados
+# Assimilação de dados
 
 A API de assimilação de dados é um serviço de alto volume, baixa latência e alta disponibilidade, projetado para lidar com a assimilação de grandes quantidades de dados pessoais e relacionados a pessoas de maneira eficiente e com atrasos mínimos.
 

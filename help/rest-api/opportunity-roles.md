@@ -1,11 +1,11 @@
 ---
 title: Funções da oportunidade
 feature: REST API
-description: Lidar com funções de oportunidade no Marketo.
+description: Gerencie funções de oportunidade do Marketo por meio da API REST, incluindo descrever, consultas com campos de desduplicação compostos, criar exclusão de atualização, tempos limite e nenhuma sincronização de CRM.
 exl-id: 2ba84f4d-82d0-4368-94e8-1fc6d17b69ed
-source-git-commit: 3649db037a95cfd20ff0a2c3d81a3b40d0095c39
+source-git-commit: 7557b9957c87f63c2646be13842ea450035792be
 workflow-type: tm+mt
-source-wordcount: '253'
+source-wordcount: '270'
 ht-degree: 0%
 
 ---

@@ -1,10 +1,10 @@
 ---
 title: Etapas de fluxo de autoatendimento
-description: Visão geral das etapas do fluxo de autoatendimento
+description: As Etapas de fluxo de autoatendimento permitem que os integradores implantem APIs da Web como Etapas de fluxo do Marketo para processar dados de clientes potenciais, serviços de chamada e gravar dados de clientes potenciais e de atividades de volta
 exl-id: f4353692-9e6c-431c-b8b7-3ae96040cf3a
-source-git-commit: 66add4c38d0230c36d57009de985649bb67fde3e
+source-git-commit: 7557b9957c87f63c2646be13842ea450035792be
 workflow-type: tm+mt
-source-wordcount: '80'
+source-wordcount: '101'
 ht-degree: 0%
 
 ---

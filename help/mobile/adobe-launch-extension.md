@@ -1,22 +1,22 @@
 ---
 title: Extensão do Marketo Mobile para  [!DNL Adobe Launch]
 feature: Mobile Marketing
-description: Visão geral da extensão do Marketo Mobile para  [!DNL Adobe Launch]
+description: Instale e configure a extensão Marketo Mobile SDK no Adobe Launch para iOS e Android, incluindo a configuração para notificações por push e mensagens no aplicativo.
 exl-id: 2f8691ff-0442-45a5-aeba-c91c3af5c711
-source-git-commit: 66add4c38d0230c36d57009de985649bb67fde3e
+source-git-commit: 7557b9957c87f63c2646be13842ea450035792be
 workflow-type: tm+mt
-source-wordcount: '269'
+source-wordcount: '287'
 ht-degree: 1%
 
 ---
 
 # Extensão do Marketo Mobile para [!DNL Adobe Launch]
 
-Instruções de instalação da extensão SDK do Marketo Mobile em [!DNL Adobe Launch]. As etapas abaixo são necessárias para enviar notificações por push e/ou mensagens no aplicativo.
+Instruções de instalação da extensão Marketo Mobile SDK em [!DNL Adobe Launch]. As etapas abaixo são necessárias para enviar notificações por push e/ou mensagens no aplicativo.
 
 ## Pré-requisitos
 
-- [Adicionar um aplicativo no Marketo Admin](https://experienceleague.adobe.com/pt-br/docs/marketo/using/product-docs/mobile-marketing/admin/add-a-mobile-app) (obtenha a Chave Secreta e a ID do Munchkin do aplicativo)
+- [Adicionar um aplicativo no Administrador do Marketo](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/mobile-marketing/admin/add-a-mobile-app) (obter a Chave Secreta e a ID do Munchkin do aplicativo)
 - Siga as instruções fornecidas no portal [!DNL Adobe Launch] para instalação
 - [Configurar notificações por push](push-notifications.md) (opcional)
 

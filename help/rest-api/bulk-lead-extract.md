@@ -1,11 +1,11 @@
 ---
 title: Extração de chumbo em massa
 feature: REST API
-description: Extração em lote de dados de cliente potencial.
+description: Saiba como usar as APIs REST de extração de lead em massa do Marketo para exportar leads em massa com filtros de data, lista e lista inteligente, campos personalizados e formatos CSV/TSV.
 exl-id: 42796e89-5468-463e-9b67-cce7e798677b
-source-git-commit: 3649db037a95cfd20ff0a2c3d81a3b40d0095c39
+source-git-commit: 7557b9957c87f63c2646be13842ea450035792be
 workflow-type: tm+mt
-source-wordcount: '1173'
+source-wordcount: '1195'
 ht-degree: 2%
 
 ---

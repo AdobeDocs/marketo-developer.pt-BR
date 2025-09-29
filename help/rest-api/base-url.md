@@ -1,16 +1,16 @@
 ---
-title: URL base
+title: URL básica
 feature: REST API
-description: Descreve como inserir URLs para o Marketo.
+description: Saiba como criar solicitações de API REST do Marketo, entender o recurso e os parâmetros de caminho do URL de base e encontrar seu URL de base exclusivo.
 exl-id: 6c3f122c-3ace-4ed3-bed0-a6b89cedc99a
-source-git-commit: 66add4c38d0230c36d57009de985649bb67fde3e
+source-git-commit: 7557b9957c87f63c2646be13842ea450035792be
 workflow-type: tm+mt
-source-wordcount: '142'
-ht-degree: 0%
+source-wordcount: '156'
+ht-degree: 2%
 
 ---
 
-# URL base
+# URL básica
 
 A documentação de [Referência de Ponto de Extremidade](endpoint-reference.md) para cada chamada de API mostra o método REST, o caminho, o recurso e os parâmetros que devem ser anexados à URL base para formar uma solicitação.
 
@@ -25,7 +25,7 @@ que é composto pelas seguintes partes:
 - Recurso: `318582.json`
 - Parâmetro de consulta: `fields=email,firstName,lastName`
 
-O URL base contém a ID da conta (também conhecida como ID do Munchkin) e, portanto, é exclusivo para cada assinatura do Marketo. Sua URL base é encontrada efetuando logon no Marketo e navegando até o menu **[!UICONTROL Admin]** > **[!UICONTROL Integração]** > **[!UICONTROL Serviços Web]**. Ela é rotulada como &quot;Endpoint:&quot; na seção &quot;REST API&quot;, como mostrado nas capturas de tela a seguir.
+O URL de base contém a ID da conta (ou seja, Munchkin id) e, portanto, é exclusivo para cada assinatura do Marketo. Sua URL base é encontrada efetuando logon no Marketo e navegando até o menu **[!UICONTROL Admin]** > **[!UICONTROL Integração]** > **[!UICONTROL Serviços Web]**. Ela é rotulada como &quot;Endpoint:&quot; na seção &quot;REST API&quot;, como mostrado nas capturas de tela a seguir.
 
 ![Ponto de Extremidade da URL Base dos Serviços Web](assets/rest-api-base-url-web-services.png)
 

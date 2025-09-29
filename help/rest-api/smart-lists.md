@@ -1,11 +1,11 @@
 ---
 title: Listas inteligentes
 feature: REST API
-description: Criar e editar listas inteligentes.
+description: Saiba como usar as REST APIs do Marketo para consultar, clonar e excluir Smart Lists criadas pelo usuário, incluindo endpoints por ID, nome, campanha e programa com regras.
 exl-id: 4ba37e57-ee56-48c3-bb2b-b4ec8e907911
-source-git-commit: 66add4c38d0230c36d57009de985649bb67fde3e
+source-git-commit: 7557b9957c87f63c2646be13842ea450035792be
 workflow-type: tm+mt
-source-wordcount: '419'
+source-wordcount: '439'
 ht-degree: 1%
 
 ---
@@ -16,7 +16,7 @@ ht-degree: 1%
 
 O Marketo oferece um conjunto de APIs REST para executar operações em listas inteligentes. Essas APIs seguem o padrão de interface padrão para APIs de ativos, fornecendo opções de Consulta, Exclusão e Clonagem.
 
-Observação: essas APIs são compatíveis somente com Smart Lists criadas pelo usuário. Eles não podem ser usados para [Listas Inteligentes Internas/do Sistema](https://experienceleague.adobe.com/pt-br/docs/marketo/using/product-docs/core-marketo-concepts/smart-lists-and-static-lists/using-smart-lists/use-built-in-system-smart-lists).
+Observação: essas APIs são compatíveis somente com Smart Lists criadas pelo usuário. Eles não podem ser usados para [Listas Inteligentes Internas/do Sistema](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/core-marketo-concepts/smart-lists-and-static-lists/using-smart-lists/use-built-in-system-smart-lists).
 
 ## Consultar
 
@@ -245,7 +245,7 @@ GET /rest/asset/v1/smartLists.json?folder={"id":31,"type":"Folder"}
 
 ## Clonar
 
-[Clonagem de uma lista inteligente](https://developer.adobe.com/marketo-apis/api/asset/#tag/Smart-Lists/operation/cloneSmartListUsingPOST) executada com um POST application/x-www-form-urlencoded. A lista inteligente a ser clonada está especificada no parâmetro de caminho `id`. O parâmetro `folder` é usado para especificar a pasta pai na qual a lista inteligente será criada e é formatado como um objeto JSON contendo id e tipo. A pasta principal deve ser uma pasta de Programa ou de Lista Inteligente. O parâmetro `name` é usado para nomear a nova lista inteligente e deve ser exclusivo. Opcionalmente, o parâmetro `description` pode ser usado para descrever a lista inteligente.
+[Clonagem de uma lista inteligente](https://developer.adobe.com/marketo-apis/api/asset/#tag/Smart-Lists/operation/cloneSmartListUsingPOST) executada com uma POST application/x-www-form-urlencoded. A lista inteligente a ser clonada está especificada no parâmetro de caminho `id`. O parâmetro `folder` é usado para especificar a pasta pai na qual a lista inteligente será criada e é formatado como um objeto JSON contendo id e tipo. A pasta principal deve ser uma pasta de Programa ou de Lista Inteligente. O parâmetro `name` é usado para nomear a nova lista inteligente e deve ser exclusivo. Opcionalmente, o parâmetro `description` pode ser usado para descrever a lista inteligente.
 
 ```
 POST /rest/asset/v1/smartList/{id}/clone.json

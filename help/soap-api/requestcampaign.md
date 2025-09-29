@@ -1,11 +1,11 @@
 ---
 title: requestCampaign
 feature: SOAP, Smart Campaigns
-description: requestCampaign Chamadas do SOAP
+description: Executar leads em uma Marketo Smart Campaign por meio da solicitação SOAPCampaign, incluindo conjuntos de parâmetros, manipulação de token, limite de 100 leads, solicitações XML e exemplos de Java do PHP.
 exl-id: b5367eb9-4f4c-4e1d-8b6d-36de8f134f0e
-source-git-commit: 981ed9b254f277d647a844803d05a1a2549cbaed
+source-git-commit: 7557b9957c87f63c2646be13842ea450035792be
 workflow-type: tm+mt
-source-wordcount: '277'
+source-wordcount: '298'
 ht-degree: 3%
 
 ---

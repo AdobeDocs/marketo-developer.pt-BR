@@ -1,20 +1,20 @@
 ---
 title: Ações Personalizadas
 feature: Mobile Marketing
-description: Visão geral das ações personalizadas
+description: Saiba como enviar e relatar ações personalizadas com o Marketo Mobile SDK para iOS e Android, colocar em fila offline, acionar Campanhas inteligentes e atender aos 20 caracteres...
 exl-id: 8c2698ce-4e39-4b2b-9d36-0864c55be17a
-source-git-commit: 66add4c38d0230c36d57009de985649bb67fde3e
+source-git-commit: 7557b9957c87f63c2646be13842ea450035792be
 workflow-type: tm+mt
-source-wordcount: '291'
+source-wordcount: '313'
 ht-degree: 0%
 
 ---
 
 # Ações Personalizadas
 
-É possível rastrear a interação do usuário enviando ações personalizadas. Quando o aplicativo móvel chama o SDK da Marketo para enviar uma ação personalizada, a ação personalizada é salva inicialmente no dispositivo. O SDK do Marketo verifica se há conectividade de Internet adequada antes de enviar a ação personalizada. Como resultado, pode haver um atraso entre o momento em que a ação personalizada é enviada e o momento em que é recebida pelo Marketo.
+É possível rastrear a interação do usuário enviando ações personalizadas. Quando o aplicativo móvel chama o Marketo SDK para enviar uma ação personalizada, a ação personalizada é salva inicialmente no dispositivo. O Marketo SDK verifica se há conectividade de Internet adequada antes de enviar a ação personalizada. Como resultado, pode haver um atraso entre o momento em que a ação personalizada é enviada e o momento em que é recebida pelo Marketo.
 
-Ações personalizadas podem ser usadas como acionadores e filtros em Campanhas inteligentes. Para obter mais informações, consulte [Atividade no aplicativo móvel](https://experienceleague.adobe.com/pt-br/docs/marketo/using/product-docs/core-marketo-concepts/smart-campaigns/flow-actions/triggers-and-filters-for-mobile-smart-campaigns).
+Ações personalizadas podem ser usadas como acionadores e filtros em Campanhas inteligentes. Para obter mais informações, consulte [Atividade no aplicativo móvel](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/core-marketo-concepts/smart-campaigns/flow-actions/triggers-and-filters-for-mobile-smart-campaigns).
 
 ## Envio de ações personalizadas no iOS
 
@@ -113,6 +113,6 @@ sharedInstance.reportAll();
 
 ## Solução de problemas de ações personalizadas
 
-Configurar ações personalizadas para dispositivos móveis é simples, mas há restrições quanto ao número de caracteres que você pode enviar do SDK móvel para o Marketo. Verifique se todas as ações personalizadas relatadas ao Marketo por meio do SDK móvel têm menos de 20 caracteres.
+A configuração de ações personalizadas para dispositivos móveis é simples, mas há restrições quanto ao número de caracteres que você pode enviar do SDK móvel para o Marketo. Certifique-se de que todas as ações personalizadas relatadas ao Marketo por meio do SDK móvel tenham menos de 20 caracteres.
 
-**Observação sobre casos de uso de vários usuários em um dispositivo compartilhado:** quando um usuário faz logon em um aplicativo móvel integrado ao SDK do Marketo, é feita a primeira chamada para associar o cliente potencial à instalação do aplicativo. Depois que esta chamada for concluída com sucesso, outras atividades do usuário no aplicativo poderão ser vistas no log de atividades do cliente potencial. Observe que, como esta é uma chamada assíncrona, se houver ações personalizadas registradas imediatamente após o logon, elas poderão ser associadas ao usuário que estava conectado anteriormente até que a chamada associada seja bem-sucedida.
+**Observação sobre casos de uso de vários usuários em um dispositivo compartilhado:** quando um usuário faz logon em um aplicativo móvel integrado ao Marketo SDK, é feita a primeira chamada para associar o cliente potencial à instalação do aplicativo. Depois que esta chamada for concluída com sucesso, outras atividades do usuário no aplicativo poderão ser vistas no log de atividades do cliente potencial. Observe que, como esta é uma chamada assíncrona, se houver ações personalizadas registradas imediatamente após o logon, elas poderão ser associadas ao usuário que estava conectado anteriormente até que a chamada associada seja bem-sucedida.

@@ -1,12 +1,12 @@
 ---
 title: Filtros de tipo de atividade
 feature: SOAP
-description: Filtros de Tipo de atividade para chamadas SOAP.
+description: Navegue por todos os filtros de tipo de atividade compatíveis com chamadas do SOAP, desde cliques em emails e preenchimentos de formulário até alterações em campanhas do SFDC e atualizações de oportunidades.
 exl-id: d661bb41-5615-4394-ade0-29254e48f7eb
-source-git-commit: 66add4c38d0230c36d57009de985649bb67fde3e
+source-git-commit: 7557b9957c87f63c2646be13842ea450035792be
 workflow-type: tm+mt
-source-wordcount: '210'
-ht-degree: 90%
+source-wordcount: '226'
+ht-degree: 83%
 
 ---
 
@@ -17,7 +17,7 @@ ht-degree: 90%
 | Adicionar à criação |
 | Adicionar à oportunidade |
 | Adicionar ao segmento |
-| Adicionar à campanha da SFDC |
+| Adicionar à campanha do SFDC |
 | Adicionar à campanha inteligente |
 | Atribuir conteúdo de promoção |
 | Capturar histórico de associação a campanhas |
@@ -37,10 +37,10 @@ ht-degree: 90%
 | Alterar pontuação |
 | Alterar segmento |
 | Alteração do status na progressão |
-| Alterar status de campanha da SFDC |
-| Cliques em email |
+| Alterar status de campanha do SFDC |
+| Cliques no email |
 | Clicar em link |
-| Clicar em e-mail de vendas |
+| Clicar em email de vendas |
 | Clicar no link compartilhado |
 | Conversão de lead |
 | Criar tarefa |
@@ -57,13 +57,13 @@ ht-degree: 90%
 | Nova oportunidade da SFDC |
 | Implantar promoção |
 | Abertura de email |
-| Abrir e-mail de vendas |
+| Abrir email de vendas |
 | Receber e-mail de vendas |
 | Recebeu e-mail de &quot;Encaminhar para amigo&quot; |
 | Remover do fluxo |
 | Remover da lista |
 | Remover da oportunidade |
-| Remover da campanha da SFDC |
+| Remover da campanha do SFDC |
 | Solicitar campanha |
 | Recompensar variante do grupo de testes |
 | E-mail de vendas foi devolvido |

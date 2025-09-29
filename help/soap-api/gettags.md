@@ -1,12 +1,12 @@
 ---
 title: getTags
 feature: SOAP, Tags
-description: chamadas getTags SOAP
+description: O Marketo SOAP getTags recupera tipos e valores de tag que não são de canal com filtros de tag opcionais, além de campos de solicitação e amostras completas de resposta de solicitação XML.
 exl-id: 4fd9de1a-9362-479a-afe1-09ef0aaf5e6e
-source-git-commit: 981ed9b254f277d647a844803d05a1a2549cbaed
+source-git-commit: 7557b9957c87f63c2646be13842ea450035792be
 workflow-type: tm+mt
-source-wordcount: '94'
-ht-degree: 7%
+source-wordcount: '113'
+ht-degree: 6%
 
 ---
 

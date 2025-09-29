@@ -1,10 +1,10 @@
 ---
 title: Fluxos de dados
-description: Visão geral dos fluxos de dados
+description: Visão geral dos fluxos de dados do Marketo Engage, permitindo atividades de clientes potenciais quase em tempo real e eventos de auditoria de usuários, diminuindo os limites da API para clientes da camada de desempenho
 exl-id: 5617b6a5-ebc8-4d97-a290-e3b87f83e360
-source-git-commit: 981ed9b254f277d647a844803d05a1a2549cbaed
+source-git-commit: 7557b9957c87f63c2646be13842ea450035792be
 workflow-type: tm+mt
-source-wordcount: '1601'
+source-wordcount: '1620'
 ht-degree: 2%
 
 ---
@@ -90,14 +90,14 @@ Lista de eventos de auditoria de usuários transmitidos:
 | Formulário | aprovar, clonar, criar, excluir, rascunhoCriar, editar, mover, renomear |
 | Formulário -> Formulário de página de aterrissagem | criar, clonar, editar, excluir, aprovar, renomear |
 | Página de destino | aprovar, clonar, criar, excluir, rascunhoDescartar, editar, renomear, cancelar aprovação |
-| Modelo de página | aprovar, clonar, criar, excluir, rascunhoCriar, rascunhoDescartar, editar, renomear, cancelar aprovação |
+| Modelo de página de destino | aprovar, clonar, criar, excluir, rascunhoCriar, rascunhoDescartar, editar, renomear, cancelar aprovação |
 | Lista inteligente | clonar, criar, excluir, editar, exportar, modificar configuração de lista inteligente, renomear |
 | Pasta de marketing | criar, editar, excluir |
-| Programa de promoção | clonar, criar, excluir, editar canal, modificar configuração de programa, modificar fluxo de programa, modificar token de programa, renomear |
+| Programa de estímulo | clonar, criar, excluir, editar canal, modificar configuração de programa, modificar fluxo de programa, modificar token de programa, renomear |
 | Segmento | criar, excluir, editar, renomear |
 | Segmentação | aprovar, criar, excluir, rascunhoCriado, rascunhoDescartado, renomear, cancelar aprovação |
 | Campanha inteligente | abortar, ativar, clonar, criar, desativar, excluir, editar, modificar programação de campanha, modificar ação da etapa do fluxo, modificar configuração da smart list, mover, renomear |
-| Bloco de conteúdo | aprovar, aprovar sem rascunho, clonar, criar, excluir, editar, renomear, cancelar aprovação |
+| Snippet | aprovar, aprovar sem rascunho, clonar, criar, excluir, editar, renomear, cancelar aprovação |
 | Interface do administrador -> Launchpoint -> Integração | criar, excluir, editar |
 | Interface do administrador -> Usuário | criar, editar, excluir (o mesmo para o usuário somente API) |
 | Login do administrador -> Usuário | sucesso de login, falha de login |
@@ -262,7 +262,7 @@ Para configurar o Adobe IO, consulte [Configuração de fluxos de dados de audit
 
 ### Configuração do fluxo de dados de auditoria do usuário no Marketo
 
-O Fluxo de dados de auditoria do usuário está disponível atualmente como parte dos pacotes de desempenho, juntamente com os outros 3 Fluxos de dados. Para obter mais informações sobre os Pacotes, consulte a [Página de Descrição do Produto](https://helpx.adobe.com/br/legal/product-descriptions/adobe-marketo-engage---product-description.html) para obter os limites e recursos do produto.
+O Fluxo de dados de auditoria do usuário está disponível atualmente como parte dos pacotes de desempenho, juntamente com os outros 3 Fluxos de dados. Para obter mais informações sobre os Pacotes, consulte a [Página de Descrição do Produto](https://helpx.adobe.com/legal/product-descriptions/adobe-marketo-engage---product-description.html) para obter os limites e recursos do produto.
 
 ### Configuração do Adobe I/O
 

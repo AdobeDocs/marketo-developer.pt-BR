@@ -1,20 +1,20 @@
 ---
-title: Bl. conteúdo
+title: Snippets
 feature: REST API, Snippets
-description: Gerenciamento de snippets por meio da API do Marketo.
+description: API REST do Marketo Asset para obter fragmentos, abrangendo a consulta por ID e navegar com status, obtendo conteúdo, criando e atualizando HTML, Texto e conteúdo dinâmico.
 exl-id: 87901c29-ee59-4224-848d-3bd6a6c52718
-source-git-commit: 66add4c38d0230c36d57009de985649bb67fde3e
+source-git-commit: 7557b9957c87f63c2646be13842ea450035792be
 workflow-type: tm+mt
-source-wordcount: '438'
+source-wordcount: '456'
 ht-degree: 2%
 
 ---
 
-# Bl. conteúdo
+# Snippets
 
 [Referência de Ponto de Extremidade de Trecho](https://developer.adobe.com/marketo-apis/api/asset/#tag/Snippets)
 
-Os snippets são componentes de HTML reutilizáveis que podem ser incorporados a emails e landing pages e segmentados para conteúdo dinâmico. Os trechos não têm modelos associados e podem ser criados e implantados em outros ativos dentro do Marketo.
+Os trechos são componentes reutilizáveis do HTML que podem ser incorporados a emails e páginas de aterrissagem e segmentados para conteúdo dinâmico. Os trechos não têm modelos associados e podem ser criados e implantados em outros ativos dentro do Marketo.
 
 ## Consultar
 
@@ -139,7 +139,7 @@ GET /rest/asset/v1/snippet/{id}/content.json
 }
 ```
 
-A chamada retorna uma lista de seções de conteúdo,  que consistem em seções do tipo HTML ou tipo DynamicContent e, opcionalmente, uma seção com um tipo de Texto.
+A chamada retorna uma lista de seções de conteúdo,  que consistem em seções do tipo HTML ou DynamicContent e, opcionalmente, em uma seção com um tipo de Texto.
 
 ## Criar e atualizar
 

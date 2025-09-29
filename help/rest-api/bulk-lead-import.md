@@ -1,11 +1,11 @@
 ---
 title: Importação de leads em massa
 feature: REST API
-description: Importação em lote de dados de cliente potencial.
+description: Crie e monitore importações assíncronas de leads em massa no Marketo com CSV, TSV ou SSV.
 exl-id: 615f158b-35f9-425a-b568-0a7041262504
-source-git-commit: 66add4c38d0230c36d57009de985649bb67fde3e
+source-git-commit: 7557b9957c87f63c2646be13842ea450035792be
 workflow-type: tm+mt
-source-wordcount: '803'
+source-wordcount: '812'
 ht-degree: 0%
 
 ---

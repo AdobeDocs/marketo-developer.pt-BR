@@ -1,12 +1,12 @@
 ---
 title: syncMultipleLeads
 feature: SOAP
-description: chamadas syncMultipleLeads do SOAP
+description: Saiba como usar syncMultipleLeads para substituir vários leads do Marketo por meio de SOAP, chaves e regras de eliminação de duplicação, limites de tamanho de lote e código XML, PHP e Java de amostra.
 exl-id: 91980b82-dff9-48a7-b03e-20dce9d0d046
-source-git-commit: 981ed9b254f277d647a844803d05a1a2549cbaed
+source-git-commit: 7557b9957c87f63c2646be13842ea450035792be
 workflow-type: tm+mt
-source-wordcount: '221'
-ht-degree: 4%
+source-wordcount: '244'
+ht-degree: 3%
 
 ---
 

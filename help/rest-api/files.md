@@ -1,11 +1,11 @@
 ---
 title: Arquivos
 feature: REST API
-description: Armazenamento e manipulação de arquivos do Marketo.
+description: Guia para consulta de arquivos da API REST do Marketo por id ou nome, navegação com pasta e deslocamento, criação ou atualização por upload multiparte, insertOnly, tipos MIME, sem transmissão
 exl-id: 17361cdc-2309-442c-803c-34ce187aee1a
-source-git-commit: 66add4c38d0230c36d57009de985649bb67fde3e
+source-git-commit: 7557b9957c87f63c2646be13842ea450035792be
 workflow-type: tm+mt
-source-wordcount: '267'
+source-wordcount: '289'
 ht-degree: 1%
 
 ---

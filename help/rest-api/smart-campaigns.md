@@ -1,11 +1,11 @@
 ---
 title: Campanhas inteligentes
 feature: REST API, Smart Campaigns
-description: Visão geral da campanha inteligente
+description: Saiba como usar as APIs REST do Marketo para campanhas inteligentes, incluindo query por id ou nome, filtros de navegação, criar exclusão de clone e acionadores de agendamento ou solicitação
 exl-id: 540bdf59-b102-4081-a3d7-225494a19fdd
-source-git-commit: 66add4c38d0230c36d57009de985649bb67fde3e
+source-git-commit: 7557b9957c87f63c2646be13842ea450035792be
 workflow-type: tm+mt
-source-wordcount: '989'
+source-wordcount: '1012'
 ht-degree: 1%
 
 ---
@@ -185,7 +185,7 @@ Com este ponto de extremidade, haverá um ou mais registros na matriz `result`.
 
 ## Criar
 
-O ponto de extremidade [Criar Campanha Inteligente](https://developer.adobe.com/marketo-apis/api/asset/#tag/Smart-Campaigns/operation/createSmartCampaignUsingPOST) é executado com um POST aplicativo/x-www-form-urlencoded com dois parâmetros obrigatórios. O parâmetro `name` especifica o nome da campanha inteligente a ser criada. O parâmetro `folder` especifica a pasta principal onde a campanha inteligente é criada. O formato é um bloco JSON contendo `id` e `type` atributos.
+O ponto de extremidade [Criar Campanha Inteligente](https://developer.adobe.com/marketo-apis/api/asset/#tag/Smart-Campaigns/operation/createSmartCampaignUsingPOST) é executado com um POST aplicativo/x-www-form-urlencoded com dois parâmetros necessários. O parâmetro `name` especifica o nome da campanha inteligente a ser criada. O parâmetro `folder` especifica a pasta principal onde a campanha inteligente é criada. O formato é um bloco JSON contendo `id` e `type` atributos.
 
 Como opção, você pode descrever a campanha inteligente usando o parâmetro `description` (máximo de 2.000 caracteres).
 
@@ -291,7 +291,7 @@ name=Smart Campaign 02 Update&description=This is a smart campaign update test.
 
 ## Clonar
 
-O ponto de extremidade [Clone Smart Campaign](https://developer.adobe.com/marketo-apis/api/asset/#tag/Sales-Persons/operation/describeUsingGET_5) é executado com um POST application/x-www-form-urlencoded com três parâmetros obrigatórios. É necessário um parâmetro `id` que especifica a campanha inteligente a ser clonada, um parâmetro `name` que especifica o nome da nova campanha inteligente e um parâmetro `folder` para especificar a pasta principal onde a nova campanha inteligente é criada. O formato é um bloco JSON contendo `id` e `type` atributos.
+O ponto de extremidade [Clone Smart Campaign](https://developer.adobe.com/marketo-apis/api/asset/#tag/Sales-Persons/operation/describeUsingGET_5) é executado com um POST aplicativo/x-www-form-urlencoded com três parâmetros obrigatórios. É necessário um parâmetro `id` que especifica a campanha inteligente a ser clonada, um parâmetro `name` que especifica o nome da nova campanha inteligente e um parâmetro `folder` para especificar a pasta principal onde a nova campanha inteligente é criada. O formato é um bloco JSON contendo `id` e `type` atributos.
 
 Como opção, você pode descrever a campanha inteligente usando o parâmetro `description` (máximo de 2.000 caracteres).
 
@@ -416,17 +416,17 @@ POST /rest/v1/campaigns/{id}/schedule.json
 }
 ```
 
-## Gatilho
+## Acionador
 
 Os acionadores de campanhas inteligentes afetam uma pessoa de cada vez com base em um evento acionado.
 
-### Solicitar
+### Solicitação
 
 Use o ponto de extremidade [Solicitar Campanha](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Campaigns/operation/triggerCampaignUsingPOST) para passar um conjunto de clientes em potencial para uma campanha de acionador para executar pelo fluxo da campanha. A campanha deve ter um acionador &quot;Campanha solicitada&quot; com &quot;API de serviço da Web&quot; como a origem.
 
 Este ponto de extremidade requer uma campanha `id` como parâmetro de caminho e um parâmetro de matriz de inteiros `leads` contendo ids de cliente potencial. É permitido um máximo de 100 clientes em potencial por chamada.
 
-Opcionalmente, o parâmetro de matriz `tokens` pode ser usado para substituir Meus Tokens locais no programa pai da campanha. `tokens` aceita no máximo 100 tokens. Cada item da matriz `tokens` contém um par nome/valor. O nome do token deve ser formatado como &quot;{{my.name}}&quot;. Se você usar [Adicionar um Token do Sistema como um Link em uma abordagem de Email](https://experienceleague.adobe.com/pt-br/docs/marketo/using/product-docs/email-marketing/general/using-tokens/add-a-system-token-as-a-link-in-an-email) para adicionar o token do sistema &quot;viewAsWebpageLink&quot;, não será possível substituí-lo usando `tokens`. Em vez disso, use [Adicionar uma Exibição como Link da Página da Web para uma abordagem de Email](https://experienceleague.adobe.com/pt-br/docs/marketo/using/product-docs/email-marketing/general/functions-in-the-editor/add-a-view-as-web-page-link-to-an-email) que permite substituir &quot;viewAsWebPageLink&quot; usando `tokens`.
+Opcionalmente, o parâmetro de matriz `tokens` pode ser usado para substituir Meus Tokens locais no programa pai da campanha. `tokens` aceita no máximo 100 tokens. Cada item da matriz `tokens` contém um par nome/valor. O nome do token deve ser formatado como &quot;{{my.name}}&quot;. Se você usar [Adicionar um Token do Sistema como um Link em uma abordagem de Email](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/email-marketing/general/using-tokens/add-a-system-token-as-a-link-in-an-email) para adicionar o token do sistema &quot;viewAsWebpageLink&quot;, não será possível substituí-lo usando `tokens`. Em vez disso, use [Adicionar uma Exibição como Link da Página da Web para uma abordagem de Email](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/email-marketing/general/functions-in-the-editor/add-a-view-as-web-page-link-to-an-email) que permite substituir &quot;viewAsWebPageLink&quot; usando `tokens`.
 
 Os parâmetros `leads` e `tokens` são passados no corpo da solicitação como application/json.
 

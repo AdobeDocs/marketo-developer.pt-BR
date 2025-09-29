@@ -1,16 +1,16 @@
 ---
-title: Modelos de páginas
+title: Modelos de páginas de destino
 feature: REST API, Landing Pages
-description: Criar e editar modelos de página de aterrissagem.
+description: Gerencie modelos de página de aterrissagem do Marketo por meio de endpoints da API REST para tipos guiados e de forma livre; consulte por ID ou nome; crie, atualize o HTML, clone e Munchkin.
 exl-id: f9d1255e-ec13-4b75-96d5-b4cc9457a51b
-source-git-commit: 66add4c38d0230c36d57009de985649bb67fde3e
+source-git-commit: 7557b9957c87f63c2646be13842ea450035792be
 workflow-type: tm+mt
-source-wordcount: '533'
+source-wordcount: '552'
 ht-degree: 1%
 
 ---
 
-# Modelos de páginas
+# Modelos de páginas de destino
 
 [Referência de Ponto de Extremidade de Modelo de Página de Aterrissagem](https://developer.adobe.com/marketo-apis/api/asset/#tag/Landing-Page-Templates)
 
@@ -18,15 +18,15 @@ Os Modelos de página de aterrissagem são um recurso principal e uma dependênc
 
 ## Tipos de modelo
 
-O Marketo tem dois tipos de Modelos de página de aterrissagem: livre e guiado. Os modelos de página de aterrissagem de forma livre fornecem uma experiência de edição estruturada para páginas derivadas deles. Os modelos guiados fornecem uma experiência altamente estruturada, em que os tipos de elementos e os locais podem ser restritos no nível do modelo. Para obter mais informações sobre as diferenças, consulte [este documento](https://experienceleague.adobe.com/pt-br/docs/marketo/using/product-docs/demand-generation/landing-pages/understanding-landing-pages/understanding-free-form-vs-guided-landing-pages).
+O Marketo tem dois tipos de Modelos de página de aterrissagem: livre e guiado. Os modelos de página de aterrissagem de forma livre fornecem uma experiência de edição estruturada para páginas derivadas deles. Os modelos guiados fornecem uma experiência altamente estruturada, em que os tipos de elementos e os locais podem ser restritos no nível do modelo. Para obter mais informações sobre as diferenças, consulte [este documento](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/demand-generation/landing-pages/understanding-landing-pages/understanding-free-form-vs-guided-landing-pages).
 
 ## Consultar
 
-Os Modelos de Página de Aterrissagem são compatíveis com os tipos de consulta padrão para ativos de [por identificação](https://developer.adobe.com/marketo-apis/api/asset/#tag/Landing-Page-Templates/operation/getLandingPageTemplateByIdUsingGET), [por nome](https://developer.adobe.com/marketo-apis/api/asset/#tag/Landing-Page-Templates/operation/getLandingPageTemplateByNameUsingGET) e [navegação](https://developer.adobe.com/marketo-apis/api/asset/#tag/Landing-Page-Templates/operation/getLandingPageTemplatesUsingGET). Esses endpoints retornam metadados para os modelos. A recuperação do conteúdo HTML dos modelos deve ser feita com base no modelo por meio da id.
+Os Modelos de Página de Aterrissagem são compatíveis com os tipos de consulta padrão para ativos de [por identificação](https://developer.adobe.com/marketo-apis/api/asset/#tag/Landing-Page-Templates/operation/getLandingPageTemplateByIdUsingGET), [por nome](https://developer.adobe.com/marketo-apis/api/asset/#tag/Landing-Page-Templates/operation/getLandingPageTemplateByNameUsingGET) e [navegação](https://developer.adobe.com/marketo-apis/api/asset/#tag/Landing-Page-Templates/operation/getLandingPageTemplatesUsingGET). Esses endpoints retornam metadados para os modelos. A recuperação do conteúdo HTML de modelos deve ser feita com base em cada modelo por meio de sua id.
 
 ## Criar e atualizar
 
-Os modelos são criados como ativos vazios com metadados associados. Ao criar um modelo, um nome e uma pasta devem ser incluídos, juntamente com uma descrição opcional, templateType e o parâmetro enableMunchkin. templateType pode ser de forma livre ou guiado e o padrão é freeForm. Para ver as diferenças entre os tipos, consulte a seção Forma guiada versus Forma livre. enableMunchkin assume o padrão false e, quando ativado, impede que o rastreamento de Munchkin seja executado em qualquer landing page filha do modelo.
+Os modelos são criados como ativos vazios com metadados associados. Ao criar um modelo, um nome e uma pasta devem ser incluídos, juntamente com uma descrição opcional, templateType e o parâmetro enableMunchkin. templateType pode ser de forma livre ou guiado e o padrão é freeForm. Para ver as diferenças entre os tipos, consulte a seção Forma guiada versus Forma livre. enableMunchkin assume o padrão false e, quando ativado, impedirá que o rastreamento do Munchkin seja executado em qualquer landing page filho do template.
 
 ```
 POST /rest/asset/v1/landingPageTemplates.json
@@ -74,7 +74,7 @@ Os metadados dos modelos de página de aterrissagem podem ser atualizados por me
 
 ### Atualizar conteúdo
 
-O conteúdo dos Modelos de página de aterrissagem é feito como uma atualização destrutiva na totalidade do conteúdo HTML. O conteúdo deve ser passado como multipart/form-data, com o único parâmetro sendo nomeado content.
+O conteúdo dos Modelos de página inicial é feito como uma atualização destrutiva na totalidade do conteúdo do HTML. O conteúdo deve ser passado como multipart/form-data, com o único parâmetro sendo nomeado content.
 
 ```
 POST /rest/asset/v1/landingPageTemplate/286/content.json
@@ -167,9 +167,9 @@ Os Modelos de página de aterrissagem seguem o modelo padrão de rascunho aprova
 
 Para que um modelo seja homologado, deve estar em conformidade com as regras do seu tipo, quer guiado de forma livre. Para obter mais informações sobre os requisitos para criar e aprovar modelos de seus respectivos tipos, consulte os respectivos documentos de criação:
 
-- [Modelos de páginas de aterrissagem de forma livre](https://experienceleague.adobe.com/pt-br/docs/marketo/using/product-docs/demand-generation/landing-pages/landing-page-templates/create-a-free-form-landing-page-template)
-- [Modelos de página de aterrissagem guiados](https://experienceleague.adobe.com/pt-br/docs/marketo/using/product-docs/demand-generation/landing-pages/landing-page-templates/create-a-guided-landing-page-template)
-- [Exemplos de Modelo Guiados](https://experienceleague.adobe.com/pt-br/docs/marketo/using/product-docs/demand-generation/landing-pages/landing-page-templates/guided-landing-page-template-list)
+- [Modelos de páginas de aterrissagem de forma livre](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/demand-generation/landing-pages/landing-page-templates/create-a-free-form-landing-page-template)
+- [Modelos de página de aterrissagem guiados](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/demand-generation/landing-pages/landing-page-templates/create-a-guided-landing-page-template)
+- [Exemplos de Modelo Guiados](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/demand-generation/landing-pages/landing-page-templates/guided-landing-page-template-list)
 
 ## Excluir
 

@@ -1,11 +1,11 @@
 ---
 title: Ativação de deep links
 feature: Mobile Marketing
-description: Instruções para ativar deep links
+description: Saiba como habilitar deep links em seu aplicativo para mensagens de push do Marketo usando esquemas de URI personalizados, com orientação e práticas recomendadas para iOS, Android e PhoneGap.
 exl-id: c3647416-d81d-4f15-b660-bcb3e54cb9bc
-source-git-commit: 66add4c38d0230c36d57009de985649bb67fde3e
+source-git-commit: 7557b9957c87f63c2646be13842ea450035792be
 workflow-type: tm+mt
-source-wordcount: '376'
+source-wordcount: '397'
 ht-degree: 0%
 
 ---
@@ -17,14 +17,14 @@ Os deep links permitem redirecionar as pessoas para conteúdo (recursos) especí
 O processo funciona assim:
 
 1. O usuário do Marketo coloca um URI personalizado na Ação de toque para sua mensagem de push.
-1. Quando uma pessoa toca na mensagem de push em seu dispositivo, o SDK do MME do Marketo aciona um evento com o URI personalizado.
+1. Quando uma pessoa toca na mensagem de push em seu dispositivo, o Marketo MME SDK aciona um evento com o URI personalizado.
 1. Em seguida, o aplicativo processa o evento e redireciona a pessoa para o conteúdo apropriado no aplicativo.
 
 Isso requer a definição de uma estrutura URI personalizada para o aplicativo, o registro do esquema no manifesto do aplicativo e a adição de código para processar eventos de deep link e direcionar para o local adequado no aplicativo.
 
 Para o iOS, consulte a documentação do Apple em [Definindo um esquema de URL personalizado para seu aplicativo](https://developer.apple.com/documentation/xcode/defining-a-custom-url-scheme-for-your-app).
 
-Para o Android, consulte a documentação do Google em [Habilitar deep links para conteúdo do aplicativo](https://developer.android.com/training/app-links/deep-linking).
+Para o Android, consulte a documentação do Google em [Habilitar deep links para conteúdo do aplicativo](https://developer.android.com/training/app-links/deep-linking?hl=pt-br).
 
 Para aplicativos PhoneGap, o deep linking não é tão direto como com aplicativos nativos iOS ou Android, mas há plug-ins que permitem que seu aplicativo híbrido responda a esquemas de URL personalizados de deep link e links universais/de aplicativos no iOS e no Android. Considere [estes plug-ins](https://cordova.apache.org/plugins/?q=deeplink).
 

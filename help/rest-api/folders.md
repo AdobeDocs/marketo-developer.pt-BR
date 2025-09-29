@@ -1,11 +1,11 @@
 ---
 title: Pastas
 feature: REST API
-description: Manipular pastas com a API do Marketo.
+description: Guia da API REST do Marketo para pastas que abrangem criação, atualização, exclusão, consulta por id e nome, navegação em massa com raiz, espaço de trabalho, maxDepth e paginação.
 exl-id: 4b55c256-ef0a-42b4-9548-ff8a4106f064
-source-git-commit: 66add4c38d0230c36d57009de985649bb67fde3e
+source-git-commit: 7557b9957c87f63c2646be13842ea450035792be
 workflow-type: tm+mt
-source-wordcount: '1008'
+source-wordcount: '1025'
 ht-degree: 1%
 
 ---
@@ -64,8 +64,8 @@ O parâmetro de tipo é obrigatório e deve ser &quot;Folder&quot; ou &quot;Prog
 - Email
 - Modelo de e-mail
 - Página de destino
-- Modelo de página
-- Bloco de conteúdo
+- Modelo de página de destino
+- Snippet
 - Arquivo
 
 ### Por nome
@@ -211,7 +211,7 @@ O caminho de uma pasta mostra sua hierarquia na árvore de pastas, semelhante a 
 
 ## Criar e atualizar
 
-[A criação de pastas](https://developer.adobe.com/marketo-apis/api/asset/#tag/Folders/operation/createFolderUsingPOST) é simples e executada com um POST application/x-www-form-urlencoded que tem dois parâmetros obrigatórios, &quot;name&quot;, uma cadeia de caracteres e &quot;parent&quot;, o pai no qual criar a pasta, que é um objeto JSON inserido com dois membros, id e tipo, seja Pasta ou Programa, dependendo do tipo da pasta de destino. Opcionalmente, &quot;descrição&quot;, uma string, também pode ser incluída e pode ter até 2000 caracteres.
+[A criação de pastas](https://developer.adobe.com/marketo-apis/api/asset/#tag/Folders/operation/createFolderUsingPOST) é simples e executada com um aplicativo/x-www-form-urlencoded POST que tem dois parâmetros obrigatórios, &quot;name&quot;, uma cadeia de caracteres e &quot;parent&quot;, o pai em que a pasta será criada, que é um objeto JSON inserido com dois membros, id e tipo, seja Pasta ou Programa, dependendo do tipo da pasta de destino. Opcionalmente, &quot;descrição&quot;, uma string, também pode ser incluída e pode ter até 2000 caracteres.
 
 ```
 POST /rest/asset/v1/folders.json

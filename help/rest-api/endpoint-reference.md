@@ -1,11 +1,11 @@
 ---
 title: Referência do ponto de extremidade
 feature: REST API
-description: Referências de endpoint da API do Marketo
+description: Lista abrangente de endpoints da API REST do Marketo com métodos, URIs e permissões necessárias em atividades, exportação em massa, identidade, clientes potenciais, ativos e usuários.
 exl-id: 27d16b6f-865a-4e40-ab9c-cbabe2927472
-source-git-commit: 981ed9b254f277d647a844803d05a1a2549cbaed
+source-git-commit: 7557b9957c87f63c2646be13842ea450035792be
 workflow-type: tm+mt
-source-wordcount: '4448'
+source-wordcount: '4464'
 ht-degree: 28%
 
 ---
@@ -200,25 +200,25 @@ Esta é uma lista abrangente de endpoints da REST API.
 | Cancelar aprovação do modelo de página | Modelos de páginas de destino | POST | /rest/asset/v1/landingPageTemplate/{id}/unapprove.json | Ativo de leitura-gravação |
 | Atualizar conteúdo do modelo da página de aterrissagem | Modelos de páginas de destino | POST | /rest/asset/v1/landingPageTemplate/{id}/content.json | Ativo de leitura-gravação |
 | Atualizar metadados do modelo da página de aterrissagem | Modelos de páginas de destino | POST | /rest/asset/v1/landingPageTemplate/{id}.json | Ativo de leitura-gravação |
-| Aprovar rascunho da página de destino | Páginas de aterrissagem | POST | /rest/asset/v1/landingPage/{id}/approveDraft.json | Ativo de leitura-gravação |
-| Clonar página | Páginas de aterrissagem | POST | /rest/asset/v1/landingPage/{id}/clone.json | Ativo de leitura-gravação |
-| Criar páginas de destino | Páginas de aterrissagem | POST | /rest/asset/v1/landingPages.json | Ativo de leitura-gravação |
-| Excluir página de destino | Páginas de aterrissagem | POST | /rest/asset/v1/landingPage/{id}/delete.json | Ativo de leitura-gravação |
-| Descartar rascunho da página inicial | Páginas de aterrissagem | POST | /rest/asset/v1/landingPage/{id}/discardDraft.json | Ativo de leitura-gravação |
-| Obter página inicial por ID | Páginas de aterrissagem | GET | /rest/asset/v1/landingPage/{id}.json | Ativo somente leitura |
-| Obter página inicial por nome | Páginas de aterrissagem | GET | /rest/asset/v1/landingPage/byName.json | Ativo somente leitura |
-| Obter variáveis de página inicial | Páginas de aterrissagem | GET | /rest/asset/v1/landingPage/{id}/variables.json | Ativo somente leitura |
-| Obter páginas de destino | Páginas de aterrissagem | GET | /rest/asset/v1/landingPages.json | Ativo somente leitura |
-| Visualizar página de destino | Páginas de aterrissagem | GET | /rest/asset/v1/landingPage/{id}/preview.json | Ativo somente leitura |
-| Cancelar aprovação da página | Páginas de aterrissagem | POST | /rest/asset/v1/landingPage/{id}/unapprove.json | Ativo de leitura-gravação |
-| Atualizar metadados da página de aterrissagem | Páginas de aterrissagem | POST | /rest/asset/v1/{id}.json | Ativo de leitura-gravação |
-| Atualizar variáveis de landing page | Páginas de aterrissagem | POST | /rest/asset/v1/landingPage/{id}/variable/{variableId}.json | Ativo de leitura-gravação |
-| Criar regras de redirecionamento de página inicial | Páginas de aterrissagem | POST | /rest/asset/v1/redirectRules.json | Regras de redirecionamento para leitura e gravação |
-| Excluir regra de redirecionamento de página inicial | Páginas de aterrissagem | POST | /rest/asset/v1/redirectRule/{id}/delete.json | Regras de redirecionamento para leitura e gravação |
-| Obter regras de redirecionamento de página de aterrissagem | Páginas de aterrissagem | GET | /rest/asset/v1/redirectRules.json | Regras de redirecionamento somente para leitura |
-| Obter regra de redirecionamento de página inicial por ID | Páginas de aterrissagem | GET | /rest/asset/v1/redirectRule/{id}.json | Regras de redirecionamento somente para leitura |
-| Atualizar regra de redirecionamento de página inicial | Páginas de aterrissagem | POST | /rest/asset/v1/redirectRule/{id}.json | Regras de redirecionamento para leitura e gravação |
-| Obter domínios de página de aterrissagem | Páginas de aterrissagem | GET | /rest/asset/v1/landingPageDomains.json | Regras de redirecionamento somente para leitura |
+| Aprovar rascunho da página de destino | Páginas de destino | POST | /rest/asset/v1/landingPage/{id}/approveDraft.json | Ativo de leitura-gravação |
+| Clonar página | Páginas de destino | POST | /rest/asset/v1/landingPage/{id}/clone.json | Ativo de leitura-gravação |
+| Criar páginas de destino | Páginas de destino | POST | /rest/asset/v1/landingPages.json | Ativo de leitura-gravação |
+| Excluir página de destino | Páginas de destino | POST | /rest/asset/v1/landingPage/{id}/delete.json | Ativo de leitura-gravação |
+| Descartar rascunho da página inicial | Páginas de destino | POST | /rest/asset/v1/landingPage/{id}/discardDraft.json | Ativo de leitura-gravação |
+| Obter página inicial por ID | Páginas de destino | GET | /rest/asset/v1/landingPage/{id}.json | Ativo somente leitura |
+| Obter página inicial por nome | Páginas de destino | GET | /rest/asset/v1/landingPage/byName.json | Ativo somente leitura |
+| Obter variáveis de página inicial | Páginas de destino | GET | /rest/asset/v1/landingPage/{id}/variables.json | Ativo somente leitura |
+| Obter páginas de destino | Páginas de destino | GET | /rest/asset/v1/landingPages.json | Ativo somente leitura |
+| Visualizar página de destino | Páginas de destino | GET | /rest/asset/v1/landingPage/{id}/preview.json | Ativo somente leitura |
+| Cancelar aprovação da página | Páginas de destino | POST | /rest/asset/v1/landingPage/{id}/unapprove.json | Ativo de leitura-gravação |
+| Atualizar metadados da página de aterrissagem | Páginas de destino | POST | /rest/asset/v1/{id}.json | Ativo de leitura-gravação |
+| Atualizar variáveis de landing page | Páginas de destino | POST | /rest/asset/v1/landingPage/{id}/variable/{variableId}.json | Ativo de leitura-gravação |
+| Criar regras de redirecionamento de página inicial | Páginas de destino | POST | /rest/asset/v1/redirectRules.json | Regras de redirecionamento para leitura e gravação |
+| Excluir regra de redirecionamento de página inicial | Páginas de destino | POST | /rest/asset/v1/redirectRule/{id}/delete.json | Regras de redirecionamento para leitura e gravação |
+| Obter regras de redirecionamento de página de aterrissagem | Páginas de destino | GET | /rest/asset/v1/redirectRules.json | Regras de redirecionamento somente para leitura |
+| Obter regra de redirecionamento de página inicial por ID | Páginas de destino | GET | /rest/asset/v1/redirectRule/{id}.json | Regras de redirecionamento somente para leitura |
+| Atualizar regra de redirecionamento de página inicial | Páginas de destino | POST | /rest/asset/v1/redirectRule/{id}.json | Regras de redirecionamento para leitura e gravação |
+| Obter domínios de página de aterrissagem | Páginas de destino | GET | /rest/asset/v1/landingPageDomains.json | Regras de redirecionamento somente para leitura |
 | Associar lead | Leads | POST | /rest/v1/leads/{id}/associate.json | Lead de leitura-gravação |
 | Alterar status do programa de clientes potenciais | Leads | POST | /rest/v1/leads/programs/{programId}/status.json | Lead de leitura-gravação |
 | Excluir clientes em potencial | Leads | POST | /rest/v1/leads.json | Lead de leitura-gravação |
@@ -306,19 +306,19 @@ Esta é uma lista abrangente de endpoints da REST API.
 | Obter lista inteligente por ID | Listas inteligentes | GET | /rest/asset/v1/smartList/{id}.json | Ativo somente leitura |
 | Obter lista inteligente por nome | Listas inteligentes | GET | /rest/asset/v1/smartList/byName.json | Ativo somente leitura |
 | Obter listas inteligentes | Listas inteligentes | GET | /rest/asset/v1/smartLists.json | Ativo somente leitura |
-| Aprovar rascunho do trecho | Bl. conteúdo | POST | /rest/asset/v1/snippet/{id}/approveDraft.json | Ativo de leitura-gravação |
-| Clonar bloco de conteúdo | Bl. conteúdo | POST | /rest/asset/v1/snippet/{id}/clone.json | Ativo de leitura-gravação |
-| Criar trecho | Bl. conteúdo | POST | /rest/asset/v1/snippets.json | Ativo de leitura-gravação |
-| Excluir bloco de conteúdo | Bl. conteúdo | POST | /rest/asset/v1/snippet/{id}/delete.json | Ativo de leitura-gravação |
-| Descartar rascunho de trecho | Bl. conteúdo | POST | /rest/asset/v1/snippet/{id}/discardDraft.json | Ativo de leitura-gravação |
-| Obter conteúdo dinâmico | Bl. conteúdo | GET | /rest/asset/v1/snippet/{id}/dynamicContent.json | Ativo somente leitura |
-| Obter trecho por ID | Bl. conteúdo | GET | /rest/asset/v1/snippet/{id}.json | Ativo somente leitura |
-| Obter conteúdo do trecho | Bl. conteúdo | GET | /rest/asset/v1/snippet/{id}/content.json | Ativo somente leitura |
-| Obter trechos | Bl. conteúdo | GET | /rest/asset/v1/snippets.json | Ativo somente leitura |
-| Bloco de conteúdo de cancelamento de aprovação | Bl. conteúdo | POST | /rest/asset/v1/snippet/{id}/unapprove.json | Ativo de leitura-gravação |
-| Atualizar conteúdo do trecho | Bl. conteúdo | POST | /rest/asset/v1/snippet/{id}/content.json | Ativo de leitura-gravação |
-| Atualizar conteúdo dinâmico do trecho | Bl. conteúdo | POST | /rest/asset/v1/snippet/{id}/dynamicContent/{segmentId}.json | Ativo de leitura-gravação |
-| Atualizar metadados de trecho | Bl. conteúdo | POST | /rest/asset/v1/snippet/{id}.json | Ativo de leitura-gravação |
+| Aprovar rascunho do trecho | Snippets | POST | /rest/asset/v1/snippet/{id}/approveDraft.json | Ativo de leitura-gravação |
+| Clonar bloco de conteúdo | Snippets | POST | /rest/asset/v1/snippet/{id}/clone.json | Ativo de leitura-gravação |
+| Criar trecho | Snippets | POST | /rest/asset/v1/snippets.json | Ativo de leitura-gravação |
+| Excluir bloco de conteúdo | Snippets | POST | /rest/asset/v1/snippet/{id}/delete.json | Ativo de leitura-gravação |
+| Descartar rascunho de trecho | Snippets | POST | /rest/asset/v1/snippet/{id}/discardDraft.json | Ativo de leitura-gravação |
+| Obter conteúdo dinâmico | Snippets | GET | /rest/asset/v1/snippet/{id}/dynamicContent.json | Ativo somente leitura |
+| Obter trecho por ID | Snippets | GET | /rest/asset/v1/snippet/{id}.json | Ativo somente leitura |
+| Obter conteúdo do trecho | Snippets | GET | /rest/asset/v1/snippet/{id}/content.json | Ativo somente leitura |
+| Obter trechos | Snippets | GET | /rest/asset/v1/snippets.json | Ativo somente leitura |
+| Bloco de conteúdo de cancelamento de aprovação | Snippets | POST | /rest/asset/v1/snippet/{id}/unapprove.json | Ativo de leitura-gravação |
+| Atualizar conteúdo do trecho | Snippets | POST | /rest/asset/v1/snippet/{id}/content.json | Ativo de leitura-gravação |
+| Atualizar conteúdo dinâmico do trecho | Snippets | POST | /rest/asset/v1/snippet/{id}/dynamicContent/{segmentId}.json | Ativo de leitura-gravação |
+| Atualizar metadados de trecho | Snippets | POST | /rest/asset/v1/snippet/{id}.json | Ativo de leitura-gravação |
 | Adicionar à lista | Listas estáticas | POST | /rest/v1/lists/{listId}/leads.json | Lead de leitura-gravação |
 | Criar lista estática | Listas estáticas | POST | /asset/v1/staticLists.json | Ativo de leitura-gravação |
 | Excluir lista estática | Listas estáticas | POST | /asset/v1/staticList/{id}/delete.json | Ativo de leitura-gravação |

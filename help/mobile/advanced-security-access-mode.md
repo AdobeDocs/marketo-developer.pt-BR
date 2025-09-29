@@ -1,18 +1,18 @@
 ---
 title: Modo de Acesso de Segurança Avançada
 feature: Mobile Marketing
-description: Detalhes sobre o Modo de Acesso de Segurança Avançada
+description: Saiba mais sobre o Modo de acesso de segurança avançado para Marketo Mobile SDK, com geração de assinatura HMAC, configuração de ponto de extremidade de servidor, uso de ID de dispositivo e exemplos de iOS e Android
 exl-id: bd4730ff-708b-465e-b494-485a4dbf67ff
-source-git-commit: 66add4c38d0230c36d57009de985649bb67fde3e
+source-git-commit: 7557b9957c87f63c2646be13842ea450035792be
 workflow-type: tm+mt
-source-wordcount: '303'
+source-wordcount: '321'
 ht-degree: 0%
 
 ---
 
 # Modo de Acesso de Segurança Avançada
 
-O SDK do Marketo expõe os métodos para definir e remover a assinatura de segurança. Também há um método de utilitário para recuperar a ID do dispositivo. A ID do dispositivo deve ser passada juntamente com o email, após o logon, para o servidor do cliente para uso no cálculo da assinatura de segurança. O SDK deve atualizar o novo endpoint de ocorrência, apontando para o algoritmo listado acima, para recuperar os campos necessários para instanciar o objeto de assinatura. Definir essa assinatura no SDK é uma etapa necessária se o Modo de acesso de segurança tiver sido habilitado no Marketo Mobile Admin.
+O Marketo SDK expõe os métodos para definir e remover a assinatura de segurança. Também há um método de utilitário para recuperar a ID do dispositivo. A ID do dispositivo deve ser passada juntamente com o email, após o logon, para o servidor do cliente para uso no cálculo da assinatura de segurança. O SDK deve selecionar o novo endpoint de ocorrência, apontando para o algoritmo listado acima, para recuperar os campos necessários para instanciar o objeto de assinatura. Definir essa assinatura no SDK é uma etapa necessária se o Modo de acesso de segurança tiver sido ativado no Marketo Mobile Admin.
 
 ## Configuração do Modo de Acesso Seguro
 
@@ -61,7 +61,7 @@ if __name__ == '__main__':
     print 'HMAC is ', hmac_string
 ```
 
-O SDK do Marketo expõe novos métodos para definir e remover a assinatura de segurança. Também há um método de utilitário para recuperar a ID do dispositivo. A ID do dispositivo deve ser passada juntamente com o email, após o logon, para o servidor do cliente para uso no cálculo da assinatura de segurança. O SDK deve atualizar o novo endpoint de ocorrência, apontando para o algoritmo listado acima, para recuperar os campos necessários para instanciar o objeto de assinatura. Definir essa assinatura no SDK é uma etapa necessária se o Modo de acesso de segurança tiver sido habilitado no Marketo Mobile Admin.
+O Marketo SDK expõe novos métodos para definir e remover a assinatura de segurança. Também há um método de utilitário para recuperar a ID do dispositivo. A ID do dispositivo deve ser passada juntamente com o email, após o logon, para o servidor do cliente para uso no cálculo da assinatura de segurança. O SDK deve selecionar o novo endpoint de ocorrência, apontando para o algoritmo listado acima, para recuperar os campos necessários para instanciar o objeto de assinatura. Definir essa assinatura no SDK é uma etapa necessária se o Modo de acesso de segurança tiver sido ativado no Marketo Mobile Admin.
 
 ### iOS
 

@@ -1,18 +1,18 @@
 ---
 title: Tipos de campos
 feature: REST API
-description: Uma lista de tipos de campo do Marketo
+description: Lista abrangente de tipos de campo do Marketo com definições, exemplos e formatos, incluindo datetime ISO 8601, limites de área de texto, moeda e booleano.
 exl-id: a0ba9e02-ed42-4be3-9cdd-a97fee9a726e
-source-git-commit: 3649db037a95cfd20ff0a2c3d81a3b40d0095c39
+source-git-commit: 7557b9957c87f63c2646be13842ea450035792be
 workflow-type: tm+mt
-source-wordcount: '307'
+source-wordcount: '322'
 ht-degree: 8%
 
 ---
 
 # Tipos de campos
 
-Esta é uma descrição dos tipos de campo no Marketo. Informações adicionais sobre tipos de campo podem ser encontradas [aqui](https://experienceleague.adobe.com/pt-br/docs/marketo/using/product-docs/administration/field-management/custom-field-type-glossary). Informações adicionais sobre limites de tipo de campo podem ser encontradas [aqui](https://nation.marketo.com/t5/knowledgebase/marketo-field-limits-by-field-type/ta-p/251613).
+Esta é uma descrição dos tipos de campo no Marketo. Informações adicionais sobre tipos de campo podem ser encontradas [aqui](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/administration/field-management/custom-field-type-glossary). Informações adicionais sobre limites de tipo de campo podem ser encontradas [aqui](https://nation.marketo.com/t5/knowledgebase/marketo-field-limits-by-field-type/ta-p/251613).
 
 | Tipo de campo | Descrição | Exemplo |
 | --- | --- | --- |
@@ -20,7 +20,7 @@ Esta é uma descrição dos tipos de campo no Marketo. Informações adicionais
 | Email | Um campo de sequência de caracteres que aceita endereços de email | <example@example.com> |
 | Flutuante | Um campo de número que contém Números Reais e pode usar uma casa decimal. | 10,4 |
 | Inteiro | Números inteiros | 10 |
-| Fórmula | Campos cujos valores são gerados pela manipulação de dados de outros campos presentes em um registro de cliente potencial. Elas não são exportadas e não podem ser usadas em Campanhas inteligentes. | Veja este [artigo](https://experienceleague.adobe.com/pt-br/docs/marketo/using/product-docs/administration/field-management/create-and-use-a-concatenated-string-formula-field) |
+| Fórmula | Campos cujos valores são gerados pela manipulação de dados de outros campos presentes em um registro de cliente potencial. Elas não são exportadas e não podem ser usadas em Campanhas inteligentes. | Veja este [artigo](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/administration/field-management/create-and-use-a-concatenated-string-formula-field) |
 | Porcentagem | Uma porcentagem expressa como um número inteiro | 30 |
 | URL | Um campo de texto que restringe a entrada para URLs, incluindo o protocolo do URL. | <http://example.com/> |
 | Telefone | Número de telefone | 111-111-1111 |

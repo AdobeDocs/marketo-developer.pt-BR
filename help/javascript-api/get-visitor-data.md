@@ -1,12 +1,12 @@
 ---
 title: Obter dados do visitante
-description: Obter dados do visitante
+description: Obtenha identificação de visitantes em tempo real usando a API de contexto de usuário do RTP com parâmetros, exemplo de retorno de chamada e respostas de amostra para segmentos, ABM e localização.
 feature: Javascript
 exl-id: 39a2446d-8a31-461e-bbe6-a7edf24b4d52
-source-git-commit: 66add4c38d0230c36d57009de985649bb67fde3e
+source-git-commit: 7557b9957c87f63c2646be13842ea450035792be
 workflow-type: tm+mt
-source-wordcount: '184'
-ht-degree: 5%
+source-wordcount: '203'
+ht-degree: 4%
 
 ---
 
@@ -14,15 +14,15 @@ ht-degree: 5%
 
 Esse método é usado para obter dados de identificação do visitante em tempo real.
 
-- Você deve se tornar um cliente do Web Personalization e implantar a [tag RTP](https://experienceleague.adobe.com/pt-br/docs/marketo/using/product-docs/web-personalization/rtp-tag-implementation/deploy-the-rtp-javascript) no site antes de usar a API de Contexto de Usuário.
+- Você deve se tornar um cliente do Web Personalization e implantar a [tag RTP](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/web-personalization/rtp-tag-implementation/deploy-the-rtp-javascript) no site antes de usar a API de Contexto de Usuário.
 - O RTP não suporta listas de contas nomeadas de Marketing Baseado em Conta. As listas e os códigos ABM pertencem apenas às listas de contas carregadas (arquivos CSV) gerenciadas no RTP.
 
 Se ocorrer um erro, haverá uma mensagem de erro como parte da resposta JSON. Se um código 500 for retornado, entre em contato com o suporte com a solicitação feita.
 
 | Parâmetro | Opcional/Obrigatório | Tipo | Descrição |
 |---|---|---|---|
-| `get` | Obrigatório | Sequência de caracteres | Ação do método. |
-| `visitor` | Obrigatório | Sequência de caracteres | Nome do método. |
+| `get` | Obrigatório | String | Ação do método. |
+| `visitor` | Obrigatório | String | Nome do método. |
 | `callback` | Obrigatório | Função | Função de retorno de chamada a ser acionada para cada campanha retornada. |
 
 ## Exemplos

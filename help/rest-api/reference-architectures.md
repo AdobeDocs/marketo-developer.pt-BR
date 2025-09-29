@@ -1,11 +1,11 @@
 ---
 title: Arquiteturas de referência
 feature: REST API
-description: Material de referência que discute a arquitetura do Marketo.
+description: Explore arquiteturas de referência da Marketo com práticas recomendadas para sincronizar dados com sistemas externos, incluindo integrações de CRM e data warehouse.
 exl-id: ba413814-d81a-4c55-a5d0-4386d87038fe
-source-git-commit: 66add4c38d0230c36d57009de985649bb67fde3e
+source-git-commit: 7557b9957c87f63c2646be13842ea450035792be
 workflow-type: tm+mt
-source-wordcount: '31'
+source-wordcount: '44'
 ht-degree: 0%
 
 ---

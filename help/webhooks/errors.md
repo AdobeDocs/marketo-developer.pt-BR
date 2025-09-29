@@ -1,11 +1,11 @@
 ---
 title: Erros
 feature: Webhooks
-description: Códigos de erro para Webhooks
+description: Saiba mais sobre os códigos de erro do Marketo webhook, por que as respostas 2xx são necessárias para atualizar os campos de lead e como capturar e lidar com erros com o Webhook é chamado.
 exl-id: adce40c3-87b1-4f31-8995-eb64e8a72b55
-source-git-commit: 66add4c38d0230c36d57009de985649bb67fde3e
+source-git-commit: 7557b9957c87f63c2646be13842ea450035792be
 workflow-type: tm+mt
-source-wordcount: '235'
+source-wordcount: '256'
 ht-degree: 2%
 
 ---

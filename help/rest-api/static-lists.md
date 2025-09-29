@@ -1,11 +1,11 @@
 ---
 title: Listas estáticas
 feature: REST API, Static Lists
-description: Execute operações CRUD em listas estáticas.
+description: Use as APIs REST do Marketo para consultar, criar, atualizar e excluir listas estáticas, com endpoints para ID, nome e navegação, escopo de pasta, paginação e filtros de data.
 exl-id: 20679fd2-fae2-473e-84bc-cb4fdf2f5151
-source-git-commit: 66add4c38d0230c36d57009de985649bb67fde3e
+source-git-commit: 7557b9957c87f63c2646be13842ea450035792be
 workflow-type: tm+mt
-source-wordcount: '741'
+source-wordcount: '760'
 ht-degree: 1%
 
 ---
@@ -133,7 +133,7 @@ GET /rest/asset/v1/staticLists.json?folder={"id":13,"type":"Folder"}
 
 ## Criar e atualizar
 
-[A criação de uma lista estática](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Static-Lists/createStaticListUsingPOST) é executada com um POST application/x-www-form-urlencoded com dois parâmetros obrigatórios. O parâmetro `folder` é usado para especificar a pasta pai na qual a lista estática será criada e é formatado como um objeto JSON contendo id e tipo. O parâmetro `name` é usado para nomear a lista estática e deve ser exclusivo. Opcionalmente, o parâmetro `description` pode ser usado para descrever a lista estática.
+[A criação de uma lista estática](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Static-Lists/createStaticListUsingPOST) é executada com um POST application/x-www-form-urlencoded com dois parâmetros necessários. O parâmetro `folder` é usado para especificar a pasta pai na qual a lista estática será criada e é formatado como um objeto JSON contendo id e tipo. O parâmetro `name` é usado para nomear a lista estática e deve ser exclusivo. Opcionalmente, o parâmetro `description` pode ser usado para descrever a lista estática.
 
 ```
 POST /rest/asset/v1/staticLists.json

@@ -1,20 +1,20 @@
 ---
-title: Triggers
-description: Triggers
+title: Acionadores
+description: Use os acionadores RTP no Web Personalization para executar funções no estado rtp, incluindo userContextReady, com sintaxe, parâmetros e um exemplo de local.
 feature: Javascript
 exl-id: 588836fa-1e4d-41f3-aec5-5cd17eb16071
-source-git-commit: 3649db037a95cfd20ff0a2c3d81a3b40d0095c39
+source-git-commit: 7557b9957c87f63c2646be13842ea450035792be
 workflow-type: tm+mt
-source-wordcount: '80'
-ht-degree: 13%
+source-wordcount: '100'
+ht-degree: 10%
 
 ---
 
-# Triggers
+# Acionadores
 
 Adiciona a capacidade de acionar funções em determinado estado do objeto rtp global.
 
-Você deve ser um cliente do Web Personalization e implantar a [tag RTP](https://experienceleague.adobe.com/pt-br/docs/marketo/using/product-docs/web-personalization/rtp-tag-implementation/deploy-the-rtp-javascript) no site antes de usar a API de Contexto de Usuário.
+Você deve ser um cliente do Web Personalization e implantar a [tag RTP](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/web-personalization/rtp-tag-implementation/deploy-the-rtp-javascript) no site antes de usar a API de Contexto de Usuário.
 
 ## Uso
 

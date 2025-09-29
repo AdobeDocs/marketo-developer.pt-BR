@@ -1,11 +1,11 @@
 ---
 title: Ativos
 feature: REST API
-description: Uma API para trabalhar com ativos do Marketo.
+description: Visão geral das APIs REST do Marketo Asset para consultar por ID ou nome, navegar com paginação e criar ou atualizar pastas, emails, formulários, modelos, arquivos e tokens.
 exl-id: 4273a5b1-1904-46e8-b583-fc6f46b388d2
-source-git-commit: 66add4c38d0230c36d57009de985649bb67fde3e
+source-git-commit: 7557b9957c87f63c2646be13842ea450035792be
 workflow-type: tm+mt
-source-wordcount: '876'
+source-wordcount: '894'
 ht-degree: 2%
 
 ---
@@ -20,11 +20,11 @@ Os ativos da Marketo incluem:
 
 - Pastas
 - Programas
-- E-mails
-- Modelos de e-mail
-- Páginas de aterrissagem
-- Modelos de páginas
-- Bl. conteúdo
+- Emails
+- Modelos de email
+- Páginas de destino
+- Modelos de páginas de destino
+- Snippets
 - Formulários
 - Tokens
 - Arquivos

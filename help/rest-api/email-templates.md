@@ -1,20 +1,20 @@
 ---
-title: Modelos de e-mail
+title: Modelos de email
 feature: REST API
-description: Crie modelos de email com as APIs do Marketo.
+description: Saiba como criar e gerenciar modelos de email da API REST do Marketo, incluindo requisitos do HTML, consulta por ID ou nome e pastas de navegação
 exl-id: 0ecf4da6-eb7e-43c1-8d5c-0517c43b47c8
-source-git-commit: 66add4c38d0230c36d57009de985649bb67fde3e
+source-git-commit: 7557b9957c87f63c2646be13842ea450035792be
 workflow-type: tm+mt
-source-wordcount: '569'
+source-wordcount: '585'
 ht-degree: 2%
 
 ---
 
-# Modelos de e-mail
+# Modelos de email
 
 [Referência de Ponto de Extremidade de Modelo de Email](https://developer.adobe.com/marketo-apis/api/asset/#tag/Email-Templates)
 
-Modelos de email formam a base para cada novo email no Marketo.  Embora os emails possam ser desvinculados dos modelos por meio da substituição de HTML, eles devem ser criados inicialmente com um modelo como base.  Os modelos são criados como documentos de HTML puro no Marketo com metadados como nomes e descrições.  Há poucas restrições no conteúdo, mas o HTML do modelo deve ser válido e deve conter pelo menos uma seção editável, que siga os requisitos [descritos aqui](https://experienceleague.adobe.com/pt-br/docs/marketo/using/product-docs/email-marketing/general/functions-in-the-editor/add-editable-sections-to-email-templates-v1-0).
+Modelos de email formam a base para cada novo email no Marketo.  Embora os emails possam ser desvinculados dos modelos por meio da substituição do HTML, eles devem ser criados inicialmente com um modelo como base.  Os modelos são criados como documentos puros do HTML no Marketo com metadados como nomes e descrições.  Há poucas restrições no conteúdo, mas a HTML do modelo deve ser válida e deve conter pelo menos uma seção editável, que siga os requisitos [descritos aqui](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/email-marketing/general/functions-in-the-editor/add-editable-sections-to-email-templates-v1-0).
 
 ## Consultar
 
@@ -192,9 +192,9 @@ Consultar o próprio registro retornará apenas metadados sobre o registro. Para
 
 ## Criar e atualizar
 
-[Criar](https://developer.adobe.com/marketo-apis/api/asset/#tag/Email-Templates/operation/createEmailTemplateUsingPOST) ou [atualizar](https://developer.adobe.com/marketo-apis/api/asset/#tag/Email-Templates/operation/updateEmailTemplateContentUsingPOST) um modelo é relativamente simples. O conteúdo de cada modelo é armazenado como um documento HTML e deve ser passado para o Marketo usando um tipo de dados multipart/form de POST. Você deve passar o cabeçalho Content-Type apropriado que inclua um limite conforme descrito nas RFCs para [multipart](https://www.w3.org/Protocols/rfc1341/7_2_Multipart.html) e [multipart/form-data](https://www.ietf.org/rfc/rfc2388.txt).
+[Criar](https://developer.adobe.com/marketo-apis/api/asset/#tag/Email-Templates/operation/createEmailTemplateUsingPOST) ou [atualizar](https://developer.adobe.com/marketo-apis/api/asset/#tag/Email-Templates/operation/updateEmailTemplateContentUsingPOST) um modelo é relativamente simples. O conteúdo de cada modelo é armazenado como um documento do HTML e deve ser passado para o Marketo usando um tipo de dados multipart/form de POST. Você deve passar o cabeçalho Content-Type apropriado que inclua um limite conforme descrito nas RFCs para [multipart](https://www.w3.org/Protocols/rfc1341/7_2_Multipart.html) e [multipart/form-data](https://www.ietf.org/rfc/rfc2388.txt).
 
-A criação de um template requer a inclusão de três parâmetros: nome, pasta, conteúdo. Um parâmetro de descrição opcional pode ser incluído.  O documento HTML é transmitido no parâmetro de conteúdo, que também deve incluir o parâmetro de nome de arquivo convencional como parte de seu cabeçalho Content-Disposition.
+A criação de um template requer a inclusão de três parâmetros: nome, pasta, conteúdo. Um parâmetro de descrição opcional pode ser incluído.  O documento do HTML é transmitido no parâmetro de conteúdo, que também deve incluir o parâmetro de nome de arquivo convencional como parte de seu cabeçalho Content-Disposition.
 
 ```
 POST /rest/asset/v1/emailTemplates.json
@@ -299,7 +299,7 @@ Content-Type: text/html
 
 ## Atualizar metadados
 
-Para [atualizar os metadados](https://developer.adobe.com/marketo-apis/api/asset/#tag/Email-Templates/operation/updateEmailTemplateUsingPOST), o nome e a descrição de um modelo, você pode usar o mesmo ponto de extremidade para atualizar o conteúdo, mas passar um POST de aplicativo/x-www-url-formencoded com os parâmetros name e description.
+Para [atualizar os metadados](https://developer.adobe.com/marketo-apis/api/asset/#tag/Email-Templates/operation/updateEmailTemplateUsingPOST), o nome e a descrição de um modelo, você pode usar o mesmo ponto de extremidade para atualizar o conteúdo, mas enviar uma POSTAGEM codificada por aplicativo/x-www-url-formencoded, com os parâmetros de nome e descrição.
 
 ```
 POST /rest/asset/v1/emailTemplate/{id}.json
@@ -459,7 +459,7 @@ POST /rest/asset/v1/emailTemplate/{id}/delete.json
 
 ## Clonar
 
-O Marketo fornece um método simples para [clonar um Modelo de email](https://developer.adobe.com/marketo-apis/api/asset/#tag/Email-Templates/operation/cloneTemplateUsingPOST). Diferentemente da criação de, esse tipo de solicitação é feita com um POST application/x-www-url-formencoded e usa dois parâmetros obrigatórios, name e folder, um objeto JSON incorporado com id e type.  A descrição também é um parâmetro opcional.
+O Marketo fornece um método simples para [clonar um Modelo de email](https://developer.adobe.com/marketo-apis/api/asset/#tag/Email-Templates/operation/cloneTemplateUsingPOST). Diferentemente da criação de, esse tipo de solicitação é feita com um aplicativo/x-www-url-formencoded POST e usa dois parâmetros obrigatórios, nome e pasta, um objeto JSON incorporado com id e tipo.  A descrição também é um parâmetro opcional.
 
 ```
 POST /rest/asset/v1/emailTemplate/{id}/clone.json

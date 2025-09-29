@@ -1,11 +1,11 @@
 ---
 title: Acompanhamento de lead
-description: API de rastreamento de lead
+description: Saiba como incorporar o Marketo Munchkin JavaScript, rastrear visitas e cliques, gerenciar leads conhecidos e anônimos, cookies entre domínios e opção de não participação nas Campanhas inteligentes.
 feature: Munchkin Tracking Code, Javascript
 exl-id: 7ece5133-9d32-4be3-a940-4ac0310c4d8b
-source-git-commit: 8ad3e3f0958ea705375651b1c8a75967d807ca80
+source-git-commit: 7557b9957c87f63c2646be13842ea450035792be
 workflow-type: tm+mt
-source-wordcount: '766'
+source-wordcount: '786'
 ht-degree: 0%
 
 ---
@@ -28,7 +28,7 @@ Há três tipos de código de rastreamento disponíveis:
 
 Alguns sistemas de gerenciamento de conteúdo podem ter restrições ou métodos específicos ao incorporar scripts arbitrários.
 
-Para referência, sua página final deve incluir código semelhante a este em `<head>` do seu documento HTML:
+Para referência, sua página final deve incluir um código semelhante a este no `<head>` de seu documento do HTML:
 
 ```html
 <head>
@@ -100,7 +100,7 @@ Os cookies do Munchkin são específicos para cada domínio de segundo nível, o
 
 ## Beta
 
-Para aceitar o canal beta do Munchkin para suas páginas de aterrissagem, acesse o menu [Admin -> Treasure Chest](https://experienceleague.adobe.com/pt-br/docs/marketo/using/product-docs/administration/settings/enable-or-disable-treasure-chest-features) e ative a configuração &quot;Munchkin Beta nas páginas de aterrissagem&quot;. Isso fornece novos trechos de código no **[!UICONTROL Administrador]** ->  Menu **[!UICONTROL Munchkin]** para permitir que você use a versão beta em sites externos.
+Para aceitar o canal beta do Munchkin para suas páginas de aterrissagem, acesse o menu [Admin -> Treasure Chest](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/administration/settings/enable-or-disable-treasure-chest-features) e ative a configuração &quot;Munchkin Beta nas páginas de aterrissagem&quot;. Isso fornece novos trechos de código no **[!UICONTROL Administrador]** ->  Menu **[!UICONTROL Munchkin]** para permitir que você use a versão beta em sites externos.
 
 ## Recusar
 

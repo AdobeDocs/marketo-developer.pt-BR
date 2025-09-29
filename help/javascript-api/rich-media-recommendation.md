@@ -1,12 +1,12 @@
 ---
 title: Recomendação de rich media
-description: Recomendação de rich media
+description: Configure a Recomendação de mídia avançada usando a tag RTP de conteúdo preditivo do Marketo, os divs template1 template2 template3, o GET para preencher e o SET para configurar categorias.
 feature: Javascript
 exl-id: ee92e46d-e529-40a2-a0d0-ee233916f004
-source-git-commit: 3649db037a95cfd20ff0a2c3d81a3b40d0095c39
+source-git-commit: 7557b9957c87f63c2646be13842ea450035792be
 workflow-type: tm+mt
-source-wordcount: '812'
-ht-degree: 5%
+source-wordcount: '831'
+ht-degree: 4%
 
 ---
 
@@ -21,7 +21,7 @@ As tags e chamadas de API a seguir devem ser configuradas na página em que voc�
 1. No corpo da página
    1. Coloque a tag de modelo (classe div) no local onde deseja que o modelo apareça
 
-Mais informações disponíveis [aqui](https://experienceleague.adobe.com/pt-br/docs/marketo/using/product-docs/predictive-content/enabling-predictive-content/enable-predictive-content-for-web-rich-media).
+Mais informações disponíveis [aqui](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/predictive-content/enabling-predictive-content/enable-predictive-content-for-web-rich-media).
 
 ## Tag de modelo
 
