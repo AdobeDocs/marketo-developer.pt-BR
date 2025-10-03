@@ -3,9 +3,9 @@ title: Leads
 feature: REST API
 description: Explore os recursos da API REST do Marketo Leads, incluindo Descrever, consultar por ID ou filtro, campos padrão, limites e recuperação de ECIDs.
 exl-id: 0a2f7c38-02ae-4d97-acfe-9dd108a1f733
-source-git-commit: 7557b9957c87f63c2646be13842ea450035792be
+source-git-commit: cc4bd7c18124bb039386a1cec06b9f1da0d047cb
 workflow-type: tm+mt
-source-wordcount: '3351'
+source-wordcount: '3411'
 ht-degree: 3%
 
 ---
@@ -768,7 +768,12 @@ Aqui podemos ver os detalhes da atividade &quot;Preencher formulário&quot; corr
 
 ## Mesclar
 
-Às vezes, é necessário mesclar registros duplicados, e o Marketo facilita isso por meio da API de mesclagem de leads. A mesclagem de clientes potenciais combinará seus logs de atividades, programas, campanhas e associações de listas e informações de CRM, bem como mesclará todos os valores de campo em um único registro. A Mesclagem de Clientes Potenciais utiliza uma ID de cliente potencial como parâmetro de caminho e um único `leadId` como parâmetro de consulta ou uma lista de IDs separadas por vírgulas no parâmetro `leadIds`.
+>[!NOTE]
+>A partir de 31 de março de 2026, as chamadas que incluírem mais de 25 IDs no parâmetro `leadIds` de uma chamada de API de Mesclagem de Leads resultarão em um código de erro 1080 e a chamada será ignorada. As tarefas que exigem a fusão de mais de 25 registros em um só devem ser divididas em várias tarefas para garantir o sucesso dessas chamadas.
+>
+
+Às vezes, é necessário mesclar registros duplicados, e o Marketo facilita isso por meio da API de mesclagem de leads. A mesclagem de clientes potenciais combinará seus logs de atividades, programas, campanhas e associações de listas e informações de CRM, bem como mesclará todos os valores de campo em um único registro. A Mesclagem de Clientes Potenciais utiliza uma ID de cliente potencial como parâmetro de caminho e um único `leadId` como parâmetro de consulta ou uma lista de 25 IDs separadas por vírgula no parâmetro `leadIds`
+
 
 ### Solicitação
 
@@ -814,7 +819,7 @@ Associação
 Os registros de clientes potenciais também podem ser recuperados com base na associação a uma lista estática ou a um programa. Além disso, você pode recuperar todas as listas estáticas, programas ou campanhas inteligentes das quais um lead é membro.
 
 A estrutura de resposta e os parâmetros opcionais são idênticos aos de Obter leads por tipo de filtro, embora filterType e filterValues não possam ser usados com essa API.
-Para acessar a ID da lista por meio da interface do usuário do Marketo, navegue até a lista. A lista `id` está na URL da lista estática, `https://app-**&#x200B;**.marketo.com/#ST1001A1`. Neste exemplo, 1001 é o `id` da lista.
+Para acessar a ID da lista por meio da interface do usuário do Marketo, navegue até a lista. A lista `id` está na URL da lista estática, `https://app-****.marketo.com/#ST1001A1`. Neste exemplo, 1001 é o `id` da lista.
 
 ### Solicitação
 
