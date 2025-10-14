@@ -1060,7 +1060,7 @@ Digamos que você tenha dados adicionais sobre seus leads que não se encaixam n
 
 ### Como atualizar um campo personalizado por meio da API REST
 
-Na seção anterior, criamos um campo personalizado chamado `myCustomField` com a cadeia de caracteres de tipo de dados. Para atualizar o valor desse campo, usamos o endpoint da API REST chamado Criar / Atualizar leads. Antes de fazer uma solicitação para a API REST, é necessário autenticar. Isso está fora do escopo deste artigo, mas informações detalhadas [ estão disponíveis no site de desenvolvedores do Marketo](/help/rest-api/authentication.md).
+Na seção anterior, criamos um campo personalizado chamado `myCustomField` com a cadeia de caracteres de tipo de dados. Para atualizar o valor desse campo, usamos o endpoint da API REST chamado Criar / Atualizar leads. Antes de fazer uma solicitação para a API REST, é necessário autenticar. Isso está fora do escopo deste artigo, mas informações detalhadas [&#x200B; estão disponíveis no site de desenvolvedores do Marketo](/help/rest-api/authentication.md).
 
 **Ponto de extremidade**
 
@@ -5710,7 +5710,7 @@ processStats(
 );
 ```
 
-Como você pode ver, o serviço da Web simplesmente encapsulou o conteúdo dos dois arquivos de saída do nosso aplicativo. Criamos uma resposta de serviço Web fictícia usando [Mocky](https://designer.mocky.io). Um exemplo do serviço Web no qual o modelo está [aqui.A criação ](http://www.mocky.io/v2/5627b2f9270000f2226eec63?month=10&year=2015&account=111-AAA-222&callback=processStats) deste serviço Web foi deixada como um exercício para o leitor: **Página da Web do Painel**. Agora, basta uma página da Web que chame nosso serviço Web e formate os dados. Para usar o padrão JSONP, basta adicionar uma tag `<script>` que chame o serviço Web:
+Como você pode ver, o serviço da Web simplesmente encapsulou o conteúdo dos dois arquivos de saída do nosso aplicativo. Criamos uma resposta de serviço Web fictícia usando [Mocky](https://designer.mocky.io). Um exemplo do serviço Web no qual o modelo está [aqui.A criação &#x200B;](http://www.mocky.io/v2/5627b2f9270000f2226eec63?month=10&year=2015&account=111-AAA-222&callback=processStats) deste serviço Web foi deixada como um exercício para o leitor: **Página da Web do Painel**. Agora, basta uma página da Web que chame nosso serviço Web e formate os dados. Para usar o padrão JSONP, basta adicionar uma tag `<script>` que chame o serviço Web:
 
 `<script src="http: //<hostname>/stats?month=10&year=2015&account=284-RPR-133&callback=processStats"></script>`
 
@@ -8991,7 +8991,7 @@ Em janeiro de 2020, lançaremos novas APIs REST, aprimoraremos as APIs existente
 * Adição da capacidade de criar programaticamente definições de esquema de Objeto personalizado. Isso permite definir um objeto personalizado uma vez e provisioná-lo para quantas instâncias forem necessárias. Isso permite que os usuários aproveitem efetivamente a sandbox e os modelos de centro de excelência. Também permite que os ISVs simplifiquem o processo de integração do cliente. Você precisa de um tipo de assinatura apropriado para acessar a API de metadados de objeto personalizado.
 * Adicionada a capacidade de importar e exportar membros do programa em massa. Esse novo conjunto de endpoints segue o padrão da API REST do Marketo existente para criar trabalhos assíncronos de processamento em massa. Os registros de Membros do programa podem conter campos personalizados de Membros do programa e/ou campos de clientes potenciais.
 * Adição do endpoint Obter campos de membro do programa de formulário disponíveis para oferecer suporte ao uso de Campos personalizados de membro do programa como Campos de formulário. Isso retorna uma lista de todos os campos personalizados de membros do programa que podem ser usados em um Formulário Marketo.
-* Adicionado o [Obter Modelo de Email Usado por um ponto de extremidade ](/help/rest-api/email-templates.md) que retorna uma lista de ativos de email que dependem de um determinado modelo de email. Isso permite compreender rapidamente o impacto de uma possível alteração de modelo de email e lidar mais facilmente com essas dependências.
+* Adicionado o [Obter Modelo de Email Usado por um ponto de extremidade &#x200B;](/help/rest-api/email-templates.md) que retorna uma lista de ativos de email que dependem de um determinado modelo de email. Isso permite compreender rapidamente o impacto de uma possível alteração de modelo de email e lidar mais facilmente com essas dependências.
 
 Publicado em _2020-01-17_ por _David_
 
