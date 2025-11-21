@@ -1,11 +1,11 @@
 ---
 title: Acompanhamento de lead
-description: Saiba como incorporar o Marketo Munchkin JavaScript, rastrear visitas e cliques, gerenciar leads conhecidos e anônimos, cookies entre domínios e opção de não participação nas Campanhas inteligentes.
+description: Saiba como incorporar o Marketo Munchkin JavaScript, rastrear visitas e cliques, gerenciar leads conhecidos e anônimos, cookies entre domínios e recusar campanhas inteligentes.
 feature: Munchkin Tracking Code, Javascript
 exl-id: 7ece5133-9d32-4be3-a940-4ac0310c4d8b
-source-git-commit: 7557b9957c87f63c2646be13842ea450035792be
+source-git-commit: c1b9763835b25584f0c085274766b68ddf5c7ae2
 workflow-type: tm+mt
-source-wordcount: '786'
+source-wordcount: '787'
 ht-degree: 0%
 
 ---
@@ -90,17 +90,17 @@ Caso o domínio de nível superior tenha duas partes, como `.co.uk`, adicione um
 
 O cookie do Munchkin usa a chave `_mkto_trk` e tem um valor seguindo este padrão:
 
-`id:561\-HYG\-937&token:_mch\-marketo.com\-1374552656411\-90718`
+`id:561-HYG-937&token:_mch-marketo.com-1374552656411-90718`
 
-ou
+Ou
 
-`id:561\-HYG\-937&token:_mch\-marketo.com\-97bf4361ef4433921a6da262e8df45a`
+`id:561-HYG-937&token:_mch-marketo.com-97bf4361ef4433921a6da262e8df45a`
 
 Os cookies do Munchkin são específicos para cada domínio de segundo nível, ou seja, `example.com`. A duração padrão do cookie é de 2 anos (730 dias).
 
 ## Beta
 
-Para aceitar o canal beta do Munchkin para suas páginas de aterrissagem, acesse o menu [Admin -> Treasure Chest](https://experienceleague.adobe.com/pt-br/docs/marketo/using/product-docs/administration/settings/enable-or-disable-treasure-chest-features) e ative a configuração &quot;Munchkin Beta nas páginas de aterrissagem&quot;. Isso fornece novos trechos de código no **[!UICONTROL Administrador]** ->  Menu **[!UICONTROL Munchkin]** para permitir que você use a versão beta em sites externos.
+Para aceitar o canal beta do Munchkin para suas páginas de aterrissagem, acesse o menu [Admin -> Treasure Chest](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/administration/settings/enable-or-disable-treasure-chest-features) e ative a configuração &quot;Munchkin Beta nas páginas de aterrissagem&quot;. Isso fornece novos trechos de código no **[!UICONTROL Administrador]** ->  Menu **[!UICONTROL Munchkin]** para permitir que você use a versão beta em sites externos.
 
 ## Recusar
 

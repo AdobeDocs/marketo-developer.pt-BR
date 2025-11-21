@@ -3,10 +3,10 @@ title: Importação de leads em massa
 feature: REST API
 description: Crie e monitore importações assíncronas de leads em massa no Marketo com CSV, TSV ou SSV.
 exl-id: 615f158b-35f9-425a-b568-0a7041262504
-source-git-commit: 7557b9957c87f63c2646be13842ea450035792be
+source-git-commit: c1b9763835b25584f0c085274766b68ddf5c7ae2
 workflow-type: tm+mt
-source-wordcount: '812'
-ht-degree: 0%
+source-wordcount: '795'
+ht-degree: 1%
 
 ---
 
@@ -18,13 +18,13 @@ Para grandes quantidades de registros de clientes potenciais, eles podem ser imp
 
 ## Limites de processamento
 
-Você pode enviar mais de uma solicitação de importação em massa, com limitações. Cada solicitação é adicionada como um trabalho a uma fila FIFO para ser processada. No máximo dois trabalhos são processados ao mesmo tempo. São permitidos no máximo dez trabalhos na fila em um determinado momento (incluindo os 2 que estão sendo processados no momento). Se você exceder o máximo de dez tarefas, um erro &quot;1016, Muitas importações&quot; será retornado.
+Você pode enviar mais de uma solicitação de importação em massa, com limitações. Cada solicitação é adicionada como um trabalho a uma fila FIFO para ser processada. No máximo dois trabalhos são processados ao mesmo tempo. São permitidos no máximo 10 trabalhos na fila em um determinado momento (incluindo os dois que estão sendo processados no momento). Se você exceder o máximo de dez trabalhos, um erro `1016, Too many imports` será retornado.
 
 ## Importar arquivo
 
 A primeira linha do arquivo deve ser um cabeçalho que lista os campos da API REST correspondentes para mapear os valores de cada linha. Um arquivo típico seguiria este padrão básico:
 
-```
+```csv
 email,firstName,lastName
 test@example.com,John,Doe
 ```
@@ -37,7 +37,7 @@ Esse tipo de solicitação pode ser difícil de implementar, portanto, é altame
 
 ## Criação de um trabalho
 
-Para fazer uma solicitação de importação em massa, defina o cabeçalho de tipo de conteúdo como &quot;multipart/form-data&quot; e inclua pelo menos um parâmetro de arquivo com o conteúdo do arquivo e um parâmetro de formato com o valor &quot;csv&quot;, &quot;tsv&quot; ou &quot;ssv&quot; indicando o formato do arquivo.
+Para fazer uma solicitação de importação em massa, você deve definir o cabeçalho de tipo de conteúdo como `multipart/form-data` e incluir pelo menos um parâmetro `file` com o conteúdo do arquivo e um parâmetro `format` com o valor `csv`, `tsv` ou `ssv`, indicando o formato do arquivo.
 
 ```
 POST /bulk/v1/leads.json?format=csv
@@ -54,7 +54,7 @@ Host: <munchkinId>.mktorest.com
 Content-Disposition: form-data; name="file"; filename="leads.csv"
 Content-Type: text/csv
 
-FirstName,LastName,Email,Company
+firstName,lastName,email,company
 Able,Baker,ablebaker@marketo.com,Marketo
 Charlie,Dog,charliedog@marketo.com,Marketo
 Easy,Fox,easyfox@marketo.com,Marketo
@@ -75,16 +75,16 @@ Easy,Fox,easyfox@marketo.com,Marketo
 }
 ```
 
-Este ponto de extremidade usa [multipart/form-data como o tipo de conteúdo](https://www.w3.org/Protocols/rfc1341/7_2_Multipart.html). Isso pode ser difícil de corrigir, portanto, a prática recomendada é usar uma biblioteca de suporte HTTP para o idioma de sua escolha. Uma maneira simples de fazer isso com cURL a partir da linha de comando é semelhante a:
+Este ponto de extremidade usa [multipart/form-data como o tipo de conteúdo](https://www.w3.org/Protocols/rfc1341/7_2_Multipart.html). Uma prática recomendada é usar uma biblioteca de suporte HTTP para o idioma de sua escolha a fim de garantir o uso correto. O exemplo a seguir é uma maneira simples de fazer isso com cURL a partir da linha de comando:
 
 ```
 curl -i -F format=csv -F file=@lead_data.csv -F access_token=<Access Token> <REST API Endpoint Base URL>/bulk/v1/leads.json
 ```
 
-Onde o arquivo de importação &quot;lead_data.csv&quot; contém o seguinte:
+Onde o arquivo de importação `lead_data.csv` contém o seguinte:
 
 ```
-FirstName,LastName,Email,Company
+firstName,lastName,email,company
 Able,Baker,ablebaker@marketo.com,Marketo
 Charlie,Dog,charliedog@marketo.com,Marketo
 Easy,Fox,easyfox@marketo.com,Marketo
@@ -130,19 +130,19 @@ Se o trabalho tiver sido concluído, você terá uma listagem do número de linh
 
 ## Falhas
 
-As falhas são indicadas pelo atributo &quot;numOfRowsFailed&quot; na resposta Obter Status de Cliente Potencial de Importação. Se &quot;numOfRowsFailed&quot; for maior que zero, esse valor indicará o número de falhas que ocorreram.
+As falhas são indicadas pelo atributo `numOfRowsFailed` na resposta Obter Status de Lead de Importação. Se `numOfRowsFailed` for maior que zero, esse valor indicará o número de falhas que ocorreram.
 
-Para recuperar os registros e as causas de linhas com falha, você deverá recuperar o arquivo de falha:
+Para recuperar os registros e as causas de linhas com falha, você deve recuperar o arquivo com falha:
 
 ```
 GET /bulk/v1/leads/batch/{id}/failures.json
 ```
 
-A API responde com um arquivo indicando quais linhas falharam, juntamente com uma mensagem indicando por que o registro falhou. O formato do arquivo é o mesmo especificado no parâmetro &quot;format&quot; durante a criação do trabalho. Um campo adicional é anexado a cada registro com uma descrição da falha.
+A API responde com um arquivo indicando quais linhas falharam, juntamente com uma mensagem indicando por que o registro falhou. O formato do arquivo é igual ao especificado no parâmetro `format` durante a criação do trabalho. Um campo adicional é anexado a cada registro com uma descrição da falha.
 
 ## Avisos
 
-Os avisos são indicados pelo atributo &quot;numOfRowsWithWarning&quot; na resposta Obter Status de Cliente Potencial de Importação. Se &quot;numOfRowsWithWarning&quot; for maior que zero, esse valor indicará o número de avisos que ocorreram.
+Os avisos são indicados pelo atributo `numOfRowsWithWarning` em uma resposta Obter Status de Cliente Potencial de Importação. Se `numOfRowsWithWarning` for maior que zero, esse valor indicará o número de avisos que ocorreram.
 
 Para recuperar os registros e as causas de linhas de aviso, recupere o arquivo de aviso:
 
@@ -150,4 +150,4 @@ Para recuperar os registros e as causas de linhas de aviso, recupere o arquivo d
 GET /bulk/v1/leads/batch/{id}/warnings.json
 ```
 
-A API responde com um arquivo indicando quais linhas produziram avisos, juntamente com uma mensagem indicando por que o registro falhou. O formato do arquivo é o mesmo especificado no parâmetro &quot;format&quot; durante a criação do trabalho. Um campo adicional é anexado a cada registro com uma descrição do aviso.
+A API responde com um arquivo indicando quais linhas produziram avisos, juntamente com uma mensagem indicando por que o registro falhou. O formato do arquivo é igual ao especificado no parâmetro `format` durante a criação do trabalho. Um campo adicional é anexado a cada registro com uma descrição do aviso.
