@@ -55,7 +55,7 @@ O token de acesso deve ser enviado como um cabeçalho HTTP.
 
 >[!IMPORTANT]
 >
->O suporte para autenticação usando o parâmetro de consulta `access_token` será removido em 31 de março de 2026. Se o projeto usar um parâmetro de consulta para passar o token de acesso, ele deverá ser atualizado para usar o [Cabeçalho de autorização](https://experienceleague.adobe.com/en/docs/marketo-developer/marketo/rest/authentication#using-an-access-token) o mais rápido possível. O novo desenvolvimento deve usar o cabeçalho `Authorization` exclusivamente.
+>O suporte para autenticação usando o parâmetro de consulta `access_token` será removido em 31 de março de 2026. Se o projeto usar um parâmetro de consulta para passar o token de acesso, ele deverá ser atualizado para usar o [Cabeçalho de autorização](https://experienceleague.adobe.com/pt-br/docs/marketo-developer/marketo/rest/authentication#using-an-access-token) o mais rápido possível. O novo desenvolvimento deve usar o cabeçalho `Authorization` exclusivamente.
 
 ### Alternar para o cabeçalho de Autorização
 
