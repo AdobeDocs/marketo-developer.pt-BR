@@ -3,10 +3,10 @@ title: Campos padrão
 feature: REST API, Field Management
 description: Navegue pela lista completa de campos de clientes em potencial padrão do Marketo com nomes, rótulos e descrições de REST e SOAP, além de como recuperá-los por meio da API de descrição de clientes em potencial.
 exl-id: 147dbdff-4bc9-4ab3-8918-c4de3e1aa97a
-source-git-commit: 7557b9957c87f63c2646be13842ea450035792be
+source-git-commit: d674384b3ab979df2322ece3f02155259d05431a
 workflow-type: tm+mt
-source-wordcount: '1161'
-ht-degree: 28%
+source-wordcount: '727'
+ht-degree: 24%
 
 ---
 
@@ -47,33 +47,6 @@ Você pode recuperar a lista de todos os nomes de campos com suporte disponívei
 | mainPhone | MainPhone | Telefone principal | Número de telefone principal da empresa do cliente potencial |
 | jigsawContactId | Marketo - ID do contato do Jigsaw | Marketo - ID Data.com | ID Data.com do lead, se disponível |
 | jigsawContactStatus | Marketo - Status do contato do Jigsaw | Marketo - Status Data.com | Status Data.com do lead, se disponível |
-| facebookDisplayName | MarketoSocialFacebookDisplayName | Marketo - Nome de exibição no perfil social do Facebook | Nome para exibição do Facebook do lead. Sistema preenchido durante a entrada em redes sociais |
-| FacebookId | MarketoSocialFacebookID | ID social do Marketo no Facebook | ID do Facebook do lead. Sistema preenchido durante a entrada em redes sociais |
-| facebookPhotoURL | MarketoSocialFacebookPhotoURL | Marketo - URL da foto no perfil social do Facebook | URL da foto de perfil do Facebook do lead. Sistema preenchido durante a entrada em redes sociais |
-| facebookProfileURL | MarketoSocialFacebookProfileURL | Marketo - URL do perfil social do Facebook | URL do perfil do Facebook do lead. Sistema preenchido durante a entrada em redes sociais |
-| facebookReach | MarketoSocialFacebookReach | Marketo - Alcance do perfil social do Facebook | O alcance do Facebook do lead. Sistema preenchido durante a entrada em redes sociais |
-| FacebookReferredEnrollments | MarketoSocialFacebookReferredEnrollments | Marketo - Inscrições por indicação no perfil social do Facebook | Número de inscrições referenciadas atribuídas ao lead pelo Facebook. Gerenciado pelo sistema |
-| facebookReferredVisits | MarketoSocialFacebookReferredVisits | Marketo - Visitas por indicação no perfil social do Facebook | Número de visitas referenciadas atribuídas ao lead por meio do Facebook. Gerenciado pelo sistema |
-| gênero | MarketoSocialGender | Marketo - Gênero em perfil social | Gênero do lead. Sistema preenchido durante a entrada em redes sociais |
-| lastReferredEnrollment | MarketoSocialLastReferredEnrollment | Marketo - Última inscrição por indicação em perfil social | Data da última consulta concluída. Gerenciado pelo sistema |
-| lastReferredVisit | MarketoSocialLastReferredVisit | Marketo - Última visita por indicação em perfil social | Data da última visita indicada. Gerenciado pelo sistema |
-| linkedInDisplayName | MarketoSocialLinkedInDisplayName | Marketo - Nome de exibição no perfil social do LinkedIn | Nome de exibição do LinkedIn do lead. Sistema preenchido durante a entrada em redes sociais |
-| linkedInId | MarketoSocialLinkedInId | ID social do Marketo no LinkedIn | ID do LinkedIn do lead. Sistema preenchido durante a entrada em redes sociais |
-| linkedInPhotoURL | MarketoSocialLinkedInPhotoURL | Marketo - URL da foto no perfil social do LinkedIn | URL da foto do LinkedIn do lead. Sistema preenchido durante a entrada em redes sociais |
-| linkedInProfileURL | MarketoSocialLinkedInProfileURL | Marketo - URL do perfil social do LinkedIn | Perfil do LinkedIn do cliente potencial. Sistema preenchido durante a entrada em redes sociais |
-| linkedInReach | MarketoSocialLinkedInReach | Marketo - Alcance do perfil social do LinkedIn | Alcance do LinkedIn do lead. Sistema preenchido durante a entrada em redes sociais |
-| linkedInReferredEnrollments | MarketoSocialLinkedInReferredEnrollments | Marketo - Inscrições por indicação no perfil social do LinkedIn | Número de inscrições referenciadas atribuídas ao lead por meio do LinkedIn. Gerenciado pelo sistema |
-| linkedInReferredVisits | MarketoSocialLinkedInReferredVisits | Marketo - Visitas por indicação no perfil social do LinkedIn | Número de visitas referenciadas atribuídas ao lead por meio do LinkedIn. Gerenciado pelo sistema |
-| syndicationId |  - | Marketo - ID de distribuição social | ID do Marketo Social interno do lead. Gerenciado pelo sistema |
-| totalReferredEnrollments | MarketoSocialTotalReferredEnrollments | Marketo - Total de inscrições por indicação em perfil social | Número total de inscrições de referência concluídas atribuídas ao cliente potencial |
-| totalReferredVisits | MarketoSocialTotalReferredVisits | Marketo - Total de visitas por indicação em perfil social | Número total de visitas referenciadas atribuídas ao cliente potencial |
-| twitterDisplayName | MarketoSocialTwitterDisplayName | Marketo - Nome de exibição no perfil social do Twitter | Nome para exibição do Twitter do lead. Sistema preenchido durante a entrada em redes sociais |
-| twitterId | MarketingSocialTwitterId | ID social do Marketo no Twitter | ID do Twitter do lead. Sistema preenchido durante a entrada em redes sociais |
-| twitterPhotoURL | MarketoSocialTwitterPhotoURL | Marketo - URL da foto no perfil social do Twitter | URL da foto do Twitter do lead. Sistema preenchido durante a entrada em redes sociais |
-| twitterProfileURL | MarketoSocialTwitterProfileURL | Marketo - URL do perfil social do Twitter | URL do perfil do Twitter do lead. Sistema preenchido durante a entrada em redes sociais |
-| twitterReach | MarketoSocialTwitterReach | Marketo - Alcance do perfil social do Twitter | Alcance do Twitter do lead. Sistema preenchido durante a entrada em redes sociais |
-| twitterReferredEnrollments | MarketoSocialTwitterReferredEnrollments | Marketo - Inscrições por indicação no perfil social do Twitter | Número de inscrições referenciadas atribuídas ao lead por meio do Twitter. Gerenciado pelo sistema |
-| twitterReferredVisits | MarketoSocialTwitterReferredVisits | Marketo - Visitas por indicação no perfil social do Twitter | Número de visitas referenciadas atribuídas ao lead por meio do Twitter. Gerenciado pelo sistema |
 | middleName | MiddleName | Nome do meio | Nome do Meio do Cliente Potencial |
 | mobilePhone | MobilePhone | Número do celular | Número de celular do lead |
 | numberOfEmployees | NumberOfEmployees | Núm. funcionários | Número de funcionários da empresa do cliente potencial |

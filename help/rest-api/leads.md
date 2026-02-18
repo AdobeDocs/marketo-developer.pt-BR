@@ -3,7 +3,7 @@ title: Leads
 feature: REST API
 description: Explore os recursos da API REST do Marketo Leads, incluindo Descrever, consultar por ID ou filtro, campos padrão, limites e recuperação de ECIDs.
 exl-id: 0a2f7c38-02ae-4d97-acfe-9dd108a1f733
-source-git-commit: 37973f51f1f0a08da967bdd07aaa47188b208adb
+source-git-commit: d674384b3ab979df2322ece3f02155259d05431a
 workflow-type: tm+mt
 source-wordcount: '3409'
 ht-degree: 3%
@@ -619,7 +619,6 @@ POST /rest/v1/leads/push.json
              "firstName": "Theresa",
              "website": "www.brexit.com",
              "leadScore": 45,
-             "marketoSocialFacebookProfileURL": "http://www.facebook.com/id/23434456",
              "jobTitle": "Prime Minister"
          },
          {
@@ -628,7 +627,6 @@ POST /rest/v1/leads/push.json
              "firstName": "Justin",
              "website": "www.take-off-eh.com",
              "leadScore": 92,
-             "marketoSocialFacebookProfileURL": "http://www.facebook.com/id/42434",
              "jobTitle": "Sonny"
          }
      ]
@@ -819,7 +817,7 @@ Associação
 Os registros de clientes potenciais também podem ser recuperados com base na associação a uma lista estática ou a um programa. Além disso, você pode recuperar todas as listas estáticas, programas ou campanhas inteligentes das quais um lead é membro.
 
 A estrutura de resposta e os parâmetros opcionais são idênticos aos de Obter leads por tipo de filtro, embora filterType e filterValues não possam ser usados com essa API.
-Para acessar a ID da lista por meio da interface do usuário do Marketo, navegue até a lista. A lista `id` está na URL da lista estática, `https://app-**&#x200B;**.marketo.com/#ST1001A1`. Neste exemplo, 1001 é o `id` da lista.
+Para acessar a ID da lista por meio da interface do usuário do Marketo, navegue até a lista. A lista `id` está na URL da lista estática, `https://app-****.marketo.com/#ST1001A1`. Neste exemplo, 1001 é o `id` da lista.
 
 ### Solicitação
 
