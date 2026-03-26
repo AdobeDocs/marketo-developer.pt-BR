@@ -14,7 +14,7 @@ ht-degree: 6%
 
 A API do JavaScript do Web Personalization estende a capacidade de personalização automatizada da plataforma. Ele permite o rastreamento de eventos e a personalização dinâmica de uma página da Web. Recursos adicionais: [Eventos de Dados Personalizados](custom-data-events.md), [Conteúdo Dinâmico](web-personalization.md), [Obter Dados do Visitante](get-visitor-data.md), [Excluir Marca para Bots Específicos](#exclude_tag_for_specific_bots).
 
-- Você deve se tornar um cliente do Web Personalization e implantar a [tag RTP](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/web-personalization/rtp-tag-implementation/deploy-the-rtp-javascript) no site antes de usar a API de Contexto de Usuário.
+- Você deve se tornar um cliente do Web Personalization e implantar a [tag RTP](https://experienceleague.adobe.com/pt-br/docs/marketo/using/product-docs/web-personalization/rtp-tag-implementation/deploy-the-rtp-javascript) no site antes de usar a API de Contexto de Usuário.
 - O RTP não suporta listas de contas nomeadas de Marketing Baseado em Conta. As listas e os códigos ABM pertencem apenas às listas de contas carregadas (arquivos CSV) gerenciadas no RTP.
 
 ## Configuração de tag
