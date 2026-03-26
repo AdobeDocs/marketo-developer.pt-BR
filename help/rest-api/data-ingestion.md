@@ -1,12 +1,12 @@
 ---
 title: Assimilação de dados
 feature: REST API, Dynamic Content
-description: Use a API de assimilação de dados do Marketo para upserts de alto volume e baixa latência de Pessoas e Objetos personalizados com autenticação de cabeçalho OAuth, eventos de status assíncronos e tentativas.
+description: Use a API de assimilação de dados do Marketo para assimilação de alto volume e baixa latência de pessoas, objetos personalizados, empresas e membros do programa.
 exl-id: 1d501916-53ac-42d8-a804-abb4ab01c7e8
-source-git-commit: 7557b9957c87f63c2646be13842ea450035792be
+source-git-commit: 6145067629ce78175af3b7464807a0fa100c7b57
 workflow-type: tm+mt
-source-wordcount: '978'
-ht-degree: 11%
+source-wordcount: '1786'
+ht-degree: 15%
 
 ---
 
@@ -16,7 +16,7 @@ A API de assimilação de dados é um serviço de alto volume, baixa latência e
 
 Os dados são assimilados enviando solicitações que são executadas de forma assíncrona. O status da solicitação pode ser recuperado assinando-se a eventos do [Fluxo de Dados de Observação do Marketo](https://developer.adobe.com/events/docs/guides/using/marketo/marketo-observability-data-stream-setup).
 
-As interfaces são oferecidas para dois tipos de objeto: Pessoas, Objetos personalizados. A operação de registro é somente &quot;inserir ou atualizar&quot;.
+As interfaces são oferecidas para quatro tipos de objetos: Pessoas, Objetos Personalizados, Empresas e Membros do Programa. A operação de registro é somente &quot;inserir ou atualizar&quot;, exceto para Membros do Programa que também suportam exclusão.
 
 >[!NOTE]
 >
@@ -35,9 +35,20 @@ Exemplo de token de acesso pelo cabeçalho:
 A assimilação de dados usa o mesmo modelo de permissões que a API REST do Marketo e não requer permissões especiais adicionais para uso, embora permissões específicas sejam necessárias para cada endpoint.
 
 | Terminal | Permissão |
-|-|-|
+| --- | --- |
 | Pessoas | Lead de leitura-gravação |
 | Objetos personalizados | Objeto personalizado de leitura-gravação |
+| Empresas | Empresa de leitura-gravação |
+| Membros do programa | Lead de leitura-gravação |
+
+## Tipos de objeto suportados
+
+| Tipo de objeto | Operações suportadas |
+| --- | --- |
+| Pessoas | Substituir (inserir ou atualizar) |
+| Objetos personalizados | Substituir (inserir ou atualizar) |
+| Empresas | Sincronizar (`createOnly`, `updateOnly`, `createOrUpdate`) |
+| Membros do programa | Sincronizar (substituir status), Excluir (remover do programa) |
 
 ## Cabeçalhos
 
@@ -46,15 +57,15 @@ A assimilação de dados usa os seguintes cabeçalhos HTTP personalizados.
 ### Solicitação
 
 | Chave | Valor | Obrigatório | Descrição |
-| - | - | - | - |
-| X-Correlation-Id | Sequência de caracteres arbitrária (comprimento máximo de 255 caracteres). | Não | Pode ser usado para rastrear solicitações pelo sistema.  Consulte Fluxo de dados de observação do Marketo |
-| X-Request-Source | Sequência de caracteres arbitrária (comprimento máximo de 50 caracteres). | Não | Pode ser usado para rastrear a origem de solicitações por meio do sistema.  Consulte Fluxo de dados de observação do Marketo |
+| --- | --- | --- | --- |
+| `X-Correlation-Id` | Sequência de caracteres arbitrária (comprimento máximo de 255 caracteres). | Não | Pode ser usado para rastrear solicitações pelo sistema. Consulte Fluxo de dados de observação do Marketo |
+| `X-Request-Source` | Sequência de caracteres arbitrária (comprimento máximo de 50 caracteres). | Não | Pode ser usado para rastrear a origem de solicitações por meio do sistema. Consulte Fluxo de dados de observação do Marketo |
 
 ### Resposta
 
 | Chave | Valor | Obrigatório |
-| - | - | - |
-| X-Request-Id | Identificador exclusivo da solicitação. | Sim |
+| --- | --- | --- |
+| `X-Request-Id` | Identificador exclusivo da solicitação. | Sim |
 
 ## Solicitações
 
@@ -73,6 +84,14 @@ Exemplo de URL para Pessoas:
 Exemplo de URL para objetos personalizados:
 
 `https://mkto-ingestion-api.adobe.io/subscriptions/556-RJS-213/customobjects/purchases`
+
+Exemplo de URL para Empresas:
+
+`https://mkto-ingestion-api.adobe.io/subscriptions/556-RJS-213/companies`
+
+Exemplo de URL para Membros do Programa:
+
+`https://mkto-ingestion-api.adobe.io/subscriptions/556-RJS-213/programmembers`
 
 ### Respostas
 
@@ -102,7 +121,7 @@ Quando uma chamada produz um erro, um status diferente de 202 é retornado junto
 Abaixo estão os códigos de erro reutilizados do Adobe Developer Gateway.
 
 | Código de status HTTP | error_code | mensagem |
-| - | - | - |
+| --- | --- | --- |
 | 401 | 401013 | O token de Oauth é inválido |
 | 403 | 403010 | Token de Oauth ausente |
 | 404 | 404040 | Recurso não encontrado |
@@ -111,7 +130,7 @@ Abaixo estão os códigos de erro reutilizados do Adobe Developer Gateway.
 Abaixo estão códigos de erro exclusivos à API de assimilação de dados e compostos de três segmentos.  Os primeiros três dígitos são o status (retornado pelo Adobe Developer Gateway), seguido por um zero &quot;0&quot;, seguido por três dígitos.
 
 | Código de status HTTP | error_code | mensagem |
-| - | - | - |
+| --- | --- | --- |
 | 400 | 4000801 | Solicitação inválida |
 | 400 | 4000802 | Dados inválidos |
 | 403 | 4030801 | Não autorizado |
@@ -122,33 +141,33 @@ Abaixo estão códigos de erro exclusivos à API de assimilação de dados e com
 
 Quando um erro transitório é detectado, o serviço repete a operação três vezes.  A primeira tentativa ocorre após um período de espera de 5 minutos, a segunda após mais 30 minutos e, por fim, a terceira após mais 30 minutos.  As tentativas ocorrem por vários motivos, principalmente quando um serviço dependente atinge o tempo limite ou não está disponível temporariamente.
 
-## Endpoints
+## Pontos de acesso
 
-Os endpoints de assimilação estão disponíveis para Pessoas e Objetos personalizados.
+Os endpoints de assimilação estão disponíveis para Pessoas, Objetos personalizados, Empresas e Membros do programa.
 
 ### Pessoas
 
 Ponto de extremidade usado para substituir registros de pessoa.
 
 | Método | Caminho |
-| - | - |
+| --- | --- |
 | POST | /subscriptions/{munchkinId}/pessoas |
 
 #### Cabeçalhos
 
 | Chave | Valor |
-| - | - |
-| Tipo de conteúdo | application/json |
-| X-Mkto-User-Token | {accessToken} |
+| --- | --- |
+| `Content-Type` | application/json |
+| `X-Mkto-User-Token` | {accessToken} |
 
 #### Corpo da solicitação
 
 | Chave | Tipo de dados | Obrigatório | Valor | Valor padrão |
-| - | - | - | - | - |
-| prioridade | String | Não | Prioridade da solicitação: normal ou alta | normal |
-| partitionName | String | Não | Nome da partição da pessoa | Padrão |
-| dedupeFields | Objeto | Não | Atributos para desduplicar em. Um ou dois nomes de atributo são permitidos. <br/> Dois atributos são usados em uma operação AND. Por exemplo, se `email` e `firstName` forem especificados, ambos serão usados para procurar uma pessoa usando a operação AND. <br/>Os atributos com suporte são: `id`, `email`, `sfdcAccountId`, `sfdcContactId`, `sfdcLeadId` `sfdcLeadOwnerId`, Atributos personalizados (somente tipo &quot;string&quot; e &quot;integer&quot;), `email` |
-| pessoas | Matriz de objeto | Sim | Lista de pares de nome-valor do atributo para a pessoa | - |
+| --- | --- | --- | --- | --- |
+| `priority` | String | Não | Prioridade da solicitação: normal ou alta | normal |
+| `partitionName` | String | Não | Nome da partição da pessoa | Padrão |
+| `dedupeFields` | Objeto | Não | Atributos para desduplicar em. Um ou dois nomes de atributo são permitidos. <br/> Dois atributos são usados em uma operação AND. Por exemplo, se `email` e `firstName` forem especificados, ambos serão usados para procurar uma pessoa usando a operação AND. <br/>Os atributos suportados são: `id`, `email`, `sfdcAccountId`, `sfdcContactId`, `sfdcLeadId` `sfdcLeadOwnerId`, Atributos personalizados (somente tipo &quot;string&quot; e &quot;integer&quot;), `email` |  |
+| `persons` | Matriz de objeto | Sim | Lista de pares de nome-valor do atributo para a pessoa | - |
 
 As permissões necessárias são `Read-Write Lead`.
 
@@ -177,12 +196,14 @@ As permissões necessárias são `Read-Write Lead`.
       {
          "email": "brooklyn.parker@karnv.com",
          "firstName": "Brooklyn",
-         "lastName": "Parker"
+         "lastName": "Parker",
+         "company": "Karnv"
       },
       {
          "email": "johnny.neal@yvu30.com",
          "firstName": "Johnny",
-         "lastName": "Neal"
+         "lastName": "Neal",
+         "company": "Acme Inc"
       }
    ]
 }
@@ -195,26 +216,26 @@ As permissões necessárias são `Read-Write Lead`.
 
 ### Objetos personalizados
 
-Ponto de extremidade usado para substituir registros de objeto personalizados
+Ponto de extremidade usado para substituir registros de objeto personalizados.
 
 | Método | Caminho |
-| - | - |
+| --- | --- |
 | POST | `/subscriptions/{munchkinId}/customobjects/{customObjectAPIName}` |
 
 #### Cabeçalhos
 
 | Chave | Valor |
-| - | - |
-| Tipo de conteúdo | application/json |
-| X-Mkto-User-Token | {accessToken} |
+| --- | --- |
+| `Content-Type` | application/json |
+| `X-Mkto-User-Token` | {accessToken} |
 
 #### Corpo da solicitação
 
 | Chave | Tipo de dados | Obrigatório | Valor | Valor padrão |
-| - |- | - | - | - |
-| prioridade | String | Não | Prioridade da solicitação: normal, alta | normal |
-| dedupeBy | String | Não | Atributos a serem desduplicados em: dedupeFields, marketoGUID | dedupeFields |
-| customObjects | Matriz de objeto | Sim | Lista de pares nome-valor do atributo do objeto. | - |
+| --- | --- | --- | --- | --- |
+| `priority` | String | Não | Prioridade da solicitação: normal, alta | normal |
+| `dedupeBy` | String | Não | Atributos a serem desduplicados em: dedupeFields, marketoGUID | dedupeFields |
+| `customObjects` | Matriz de objeto | Sim | Lista de pares nome-valor do atributo do objeto. | - |
 
 As permissões necessárias são `Read-Write Custom Object`.
 
@@ -261,24 +282,322 @@ Se um campo de link para uma Pessoa for especificado na solicitação e essa Pes
 `HTTP/1.1 202`
 `X-Request-ID: WOUBf3fHJNU6sTmJqLL281lOmAEpMZFw`
 
+### Empresas
+
+Ponto de extremidade usado para sincronizar registros da empresa. Oferece suporte a operações de criação, atualização e substituição com desduplicação por ID de empresa externa ou ID interna da Marketo.
+
+| Método | Caminho |
+| --- | --- |
+| POST | `/subscriptions/{munchkinId}/companies` |
+
+#### Cabeçalhos
+
+| Chave | Valor | Obrigatório |
+| --- | --- | --- |
+| `Content-Type` | application/json | Sim |
+| `X-Mkto-User-Token` | {accessToken} | Sim |
+| `X-Correlation-Id` | Sequência de caracteres arbitrária (comprimento máximo de 255 caracteres) | Não |
+| `X-Request-Source` | Sequência de caracteres arbitrária (comprimento máximo de 50 caracteres) | Não |
+
+#### Corpo da solicitação
+
+| Chave | Tipo de dados | Obrigatório | Valor | Valor padrão |
+| --- | --- | --- | --- | --- |
+| `action` | String | Não | Sincronizar ação: `createOnly`, `updateOnly` ou `createOrUpdate` | `createOrUpdate` |
+| `dedupeBy` | String | Não | Campo para desduplicar em: `dedupeFields` ou `idField` (não diferencia maiúsculas de minúsculas). Para `createOnly` e `createOrUpdate`, somente `dedupeFields` é permitido. Para `updateOnly`, ambos são permitidos. | `dedupeFields` |
+| `input` | Matriz de objeto | Sim | Lista de pares nome-valor do atributo da empresa. Aceita a chave JSON `input` ou `companies`. | - |
+
+Cada objeto de empresa na matriz `input` oferece suporte aos seguintes campos:
+
+| Chave | Tipo de dados | Obrigatório | Descrição |
+| --- | --- | --- | --- |
+| `externalCompanyId` | String | Condicional | Identificador de empresa externa. Necessário quando `dedupeBy` é `dedupeFields`. Não permitido quando `dedupeBy` é `idField`. |
+| `id` | Longo | Condicional | ID da empresa interna da Marketo. Necessário quando `dedupeBy` é `idField` e `action` é `updateOnly`. Não permitido quando `dedupeBy` é `dedupeFields`. |
+| `company` | String | Não | Nome da empresa. |
+| (qualquer campo) | Qualquer | Não | Outros campos padrão ou personalizados da empresa conforme definidos por [Descrever Empresas](companies.md). Os nomes de campos não diferenciam maiúsculas de minúsculas. |
+
+As permissões necessárias são `Read-Write Company`.
+
+### Exemplo de empresas
+
+#### Solicitação
+
+`POST /subscriptions/{munchkinId}/companies`
+
+#### Cabeçalhos
+
+`Content-Type: application/json`
+`X-Mkto-User-Token: {accessToken}`
+
+#### Corpo
+
+```json
+{
+   "action": "createOrUpdate",
+   "dedupeBy": "dedupeFields",
+   "input": [
+      {
+         "externalCompanyId": "ext-company-001",
+         "company": "Acme Corporation",
+         "industry": "Technology",
+         "numberOfEmployees": 5000,
+         "annualRevenue": 100000000
+      },
+      {
+         "externalCompanyId": "ext-company-002",
+         "company": "Globex Industries",
+         "industry": "Manufacturing",
+         "numberOfEmployees": 1200
+      }
+   ]
+}
+```
+
+#### Resposta
+
+`HTTP/1.1 202`
+`X-Request-ID: WOUBf3fHJNU6sTmJqLL281lOmAEpMZFw`
+
+### Exemplo de atualização por ID de empresas
+
+```json
+{
+   "action": "updateOnly",
+   "dedupeBy": "idField",
+   "input": [
+      {
+         "id": 12345,
+         "company": "Acme Corporation (Renamed)",
+         "numberOfEmployees": 5500
+      }
+   ]
+}
+```
+
+### Regras de validação de empresas
+
+| Regra | Detalhe |
+| --- | --- |
+| ação | Deve ser um de: `createOnly`, `updateOnly`, `createOrUpdate`. Diferenciação de maiúsculas e minúsculas. |
+| dedupeBy | Deve ser `dedupeFields` ou `idField` (não diferencia maiúsculas de minúsculas). O padrão é `dedupeFields`. |
+| ação dedupeBy + | `createOnly` e `createOrUpdate` permitem somente `dedupeFields`. `updateOnly` permite `dedupeFields` e `idField`. |
+| Quando `dedupeBy=dedupeFields` | Cada empresa deve ter `externalCompanyId`. O campo `id` não deve estar presente. |
+| Quando `dedupeBy=idField` | Cada empresa deve ter `id`. O campo `externalCompanyId` não deve estar presente. |
+| `input` / `companies` | Não pode ser nulo ou vazio. |
+| Máximo de objetos por solicitação | 1,000 |
+
+### Membros do Programa (Sincronizar)
+
+Ponto de extremidade usado para sincronizar o status do membro do programa, adicionar leads aos programas ou atualizar o status do programa.
+
+| Método | Caminho |
+| --- | --- |
+| POST | `/subscriptions/{munchkinId}/programmembers` |
+
+#### Cabeçalhos
+
+| Chave | Valor | Obrigatório |
+| --- | --- | --- |
+| Tipo de conteúdo | application/json | Sim |
+| X-Mkto-User-Token | {accessToken} | Sim |
+| X-Correlation-Id | Sequência de caracteres arbitrária (comprimento máximo de 255 caracteres) | Não |
+| X-Request-Source | Sequência de caracteres arbitrária (comprimento máximo de 50 caracteres) | Não |
+
+#### Corpo da solicitação
+
+| Chave | Tipo de dados | Obrigatório | Valor | Valor padrão |
+| --- | --- | --- | --- | --- |
+| programas | Matriz de objeto | Sim | Lista de operações do programa. Cada especifica um programa, um status de público-alvo e os leads para a sincronização. | - |
+
+Cada objeto na matriz `programs` contém:
+
+| Chave | Tipo de dados | Obrigatório | Descrição |
+| --- | --- | --- | --- |
+| programId | Longo | Sim | A ID do programa Marketo. Deve ser um número inteiro positivo. |
+| status | String | Sim | O status do membro do programa a ser definido, por exemplo `"Member"` ou `"Influenced"`. Aceita a chave JSON `statusName` ou `status`. O valor não deve ser `"Not in Program"`; use o ponto de extremidade de exclusão. |
+| membros | Matriz de objeto | Sim | Lista de referências de clientes potenciais a serem adicionadas ou atualizadas no programa. Aceita a chave JSON `input` ou `members`. |
+
+Cada objeto na matriz `members` contém:
+
+| Chave | Tipo de dados | Obrigatório | Descrição |
+| --- | --- | --- | --- |
+| leadId | Longo | Sim | A ID do lead Marketo. |
+| (qualquer campo) | Qualquer | Não | Campos adicionais de membros personalizados do programa. Os nomes de campos não diferenciam maiúsculas de minúsculas. |
+
+As permissões necessárias são `Read-Write Lead`.
+
+### Exemplo de sincronização de Membros do Programa
+
+#### Solicitação
+
+`POST /subscriptions/{munchkinId}/programmembers`
+
+#### Cabeçalhos
+
+`Content-Type: application/json`
+`X-Mkto-User-Token: {accessToken}`
+
+#### Corpo
+
+```json
+{
+   "programs": [
+      {
+         "programId": 1001,
+         "status": "Member",
+         "members": [
+            {
+               "leadId": 10001
+            },
+            {
+               "leadId": 10002
+            }
+         ]
+      },
+      {
+         "programId": 1002,
+         "status": "Influenced",
+         "members": [
+            {
+               "leadId": 10003
+            }
+         ]
+      }
+   ]
+}
+```
+
+#### Resposta
+
+`HTTP/1.1 202`
+`X-Request-ID: e3d92152-0fb1-444a-8f8f-29d5a2338598`
+
+### Regras de validação de sincronização de Membros do Programa
+
+| Regra | Detalhe |
+| --- | --- |
+| programas | Não pode ser nulo ou vazio. |
+| programId | Obrigatório. Deve ser um número inteiro positivo. |
+| status | Obrigatório. Não pode ficar em branco. Não deve ser `"Not in Program"` (não diferencia maiúsculas de minúsculas). Em vez disso, use o terminal delete. |
+| membros | Não pode ser nulo ou vazio. |
+| leadId | Obrigatório para cada membro na matriz de entrada. |
+| Máximo de clientes em potencial por solicitação | 1.000 membros totais em todos os programas. |
+
+### Membros do programa (excluir)
+
+Ponto de extremidade usado para remover clientes em potencial de programas. Isso define o status de associação do cliente potencial como `"Not in Program"` e remove o membro desse programa.
+
+>[!NOTE]
+>
+>Esse endpoint usa POST em vez de DELETE porque a solicitação requer um corpo JSON com dados estruturados.
+
+| Método | Caminho |
+| --- | --- |
+| POST | `/subscriptions/{munchkinId}/programmembers/delete` |
+
+#### Cabeçalhos
+
+| Chave | Valor | Obrigatório |
+| --- | --- | --- |
+| Tipo de conteúdo | application/json | Sim |
+| X-Mkto-User-Token | {accessToken} | Sim |
+| X-Correlation-Id | Sequência de caracteres arbitrária (comprimento máximo de 255 caracteres) | Não |
+| X-Request-Source | Sequência de caracteres arbitrária (comprimento máximo de 50 caracteres) | Não |
+
+#### Corpo da solicitação
+
+| Chave | Tipo de dados | Obrigatório | Valor | Valor padrão |
+| --- | --- | --- | --- | --- |
+| programas | Matriz de objeto | Sim | Lista de operações de exclusão de programas. Cada especifica um programa e os clientes em potencial a serem removidos. | - |
+
+Cada objeto na matriz `programs` contém:
+
+| Chave | Tipo de dados | Obrigatório | Descrição |
+| --- | --- | --- | --- |
+| programId | Longo | Sim | A ID do programa Marketo. Deve ser um número inteiro positivo. |
+| membros | Matriz de objeto | Sim | Lista de referências de clientes potenciais a serem removidas do programa. Aceita a chave JSON `input` ou `members`. |
+
+Cada objeto na matriz `members` contém:
+
+| Chave | Tipo de dados | Obrigatório | Descrição |
+| --- | --- | --- | --- |
+| leadId | Longo | Sim | A ID do lead Marketo. |
+
+As permissões necessárias são `Read-Write Lead`.
+
+### Exemplo de exclusão de membros do programa
+
+#### Solicitação
+
+`POST /subscriptions/{munchkinId}/programmembers/delete`
+
+#### Cabeçalhos
+
+`Content-Type: application/json`
+`X-Mkto-User-Token: {accessToken}`
+
+#### Corpo
+
+```json
+{
+   "programs": [
+      {
+         "programId": 1001,
+         "members": [
+            {
+               "leadId": 10001
+            },
+            {
+               "leadId": 10002
+            }
+         ]
+      },
+      {
+         "programId": 1002,
+         "members": [
+            {
+               "leadId": 10003
+            }
+         ]
+      }
+   ]
+}
+```
+
+#### Resposta
+
+`HTTP/1.1 202`
+`X-Request-ID: a1b2c3d4-e5f6-7890-abcd-ef1234567890`
+
+### Membros do Programa excluem regras de validação
+
+| Regra | Detalhe |
+| --- | --- |
+| programas | Não pode ser nulo ou vazio. |
+| programId | Obrigatório. Deve ser um número inteiro positivo. |
+| membros | Não pode ser nulo ou vazio. |
+| leadId | Obrigatório para cada membro na matriz de entrada. |
+| Máximo de clientes em potencial por solicitação | 1.000 membros totais em todos os programas. |
+
 ## Limites
 
-Esta é uma lista de uso de medidas de proteção:
+Esta é uma lista atualizada de medidas de proteção:
 
 * Tamanho máximo da solicitação: 1 MB
 * Máximo de objetos por solicitação por tipo de objeto: 1.000
 * Máximo de solicitações por segundo por ID de cliente: 5.000
 * Máximo de objetos por dia: 10.000.000
 
+Esses limites se aplicam uniformemente a Pessoas, Objetos Personalizados, Empresas e Membros do Programa. Para membros do programa, &quot;objetos por solicitação&quot; é o número total de referências de clientes potenciais em todos os programas em uma única solicitação.
+
 ## API de assimilação de dados versus API REST
 
 Esta é uma lista de diferenças entre a API de assimilação de dados e outras APIs REST do Marketo:
 
-* Esta não é uma interface CRUD completa, ela suporta somente upsert
 * Para autenticar, você deve passar o token de acesso usando o cabeçalho `X-Mkto-User-Token`
 * O nome de domínio da URL é `mkto-ingestion-api.adobe.io`
 * O caminho da URL começa com `/subscriptions/MunchkinId`
 * Não há parâmetros de consulta
 * Se a chamada for bem-sucedida, um status 202 será retornado e o corpo da resposta ficará vazio
-* Se a chamada falhar, um status diferente de 202 será retornado e o corpo da resposta conterá `{ "error_code" : "Error Code", "message" : "Message" }`
+* Se uma chamada falhar, um status diferente de 202 será retornado e o corpo da resposta conterá `{ "error_code" : "Error Code", "message" : "Message" }`
 * A ID da solicitação é retornada pelo cabeçalho `X-Request-Id`

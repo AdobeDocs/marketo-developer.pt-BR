@@ -3,7 +3,7 @@ title: Filtros de tipo de atividade
 feature: SOAP
 description: Navegue por todos os filtros de tipo de atividade compatíveis com chamadas do SOAP, desde cliques em emails e preenchimentos de formulário até alterações em campanhas do SFDC e atualizações de oportunidades.
 exl-id: d661bb41-5615-4394-ade0-29254e48f7eb
-source-git-commit: 7557b9957c87f63c2646be13842ea450035792be
+source-git-commit: 6145067629ce78175af3b7464807a0fa100c7b57
 workflow-type: tm+mt
 source-wordcount: '226'
 ht-degree: 83%
@@ -13,7 +13,7 @@ ht-degree: 83%
 # Filtros de tipo de atividade
 
 | Adicionar à lista |
-|-------------------------------------|
+| --- |
 | Adicionar à criação |
 | Adicionar à oportunidade |
 | Adicionar ao segmento |

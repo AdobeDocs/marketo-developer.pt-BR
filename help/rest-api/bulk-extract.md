@@ -3,9 +3,9 @@ title: Extração em massa
 feature: REST API
 description: Saiba como usar a API REST de extração em massa do Marketo para exportar clientes em potencial, atividades, membros de programas e objetos personalizados, com OAuth, filas de trabalhos e limites diários de 500 MB.
 exl-id: 6a15c8a9-fd85-4c7d-9f65-8b2e2cba22ff
-source-git-commit: 7557b9957c87f63c2646be13842ea450035792be
+source-git-commit: 6145067629ce78175af3b7464807a0fa100c7b57
 workflow-type: tm+mt
-source-wordcount: '1702'
+source-wordcount: '1723'
 ht-degree: 1%
 
 ---
@@ -118,7 +118,7 @@ Quando criamos o trabalho, ele retorna uma ID de trabalho no atributo `exportId`
 Cada endpoint de criação de trabalho compartilha alguns parâmetros comuns para configurar o formato de arquivo, nomes de campo e filtro de um trabalho de extração em massa. Cada subtipo de trabalho de extração pode ter parâmetros adicionais:
 
 | Parâmetro | Tipo de dados | Observações |
-|---|---|---|
+| --- | --- | --- |
 | formato | String | Determina o formato de arquivo dos dados extraídos com opções para valores separados por vírgula, valores separados por tabulação e valores separados por ponto e vírgula. Aceita um dos seguintes: CSV, SSV, TSV. O formato é padronizado como CSV. |
 | columnHeaderNames | Objeto | Permite definir os nomes dos cabeçalhos de coluna no arquivo retornado. Cada chave do membro é o nome do cabeçalho da coluna a ser renomeado, e o valor é o novo nome do cabeçalho da coluna. Por exemplo, &quot;columnHeaderNames&quot;: { &quot;firstName&quot;: &quot;First Name&quot;, &quot;lastName&quot;: &quot;Last Name&quot; }, |
 | filtro | Objeto | Filtro aplicado ao trabalho de extração. Os tipos e as opções variam entre os tipos de trabalho. |

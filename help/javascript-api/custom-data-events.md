@@ -3,9 +3,9 @@ title: Eventos de dados personalizados
 description: Envie eventos personalizados com a API RTP JavaScript para Web Personalization, com parâmetros, cadeia de caracteres ou dados de matriz de até quatro itens e acionadores com base em cliques.
 feature: Javascript
 exl-id: ef7cab9c-3bd0-450e-9247-9324b1e6f9ab
-source-git-commit: 7557b9957c87f63c2646be13842ea450035792be
+source-git-commit: 6145067629ce78175af3b7464807a0fa100c7b57
 workflow-type: tm+mt
-source-wordcount: '243'
+source-wordcount: '263'
 ht-degree: 3%
 
 ---
@@ -14,10 +14,10 @@ ht-degree: 3%
 
 Esse método envia eventos personalizados para rastreamento e personalização em tempo real. Eles podem ser usados para enviar dados de terceiros ou para acionar seu próprio evento personalizado com base no comportamento do visitante. Os eventos de dados personalizados são contados uma vez na sessão de um visitante.
 
-Você deve se tornar um cliente do Web Personalization e implantar a [tag RTP](https://experienceleague.adobe.com/pt-br/docs/marketo/using/product-docs/web-personalization/rtp-tag-implementation/deploy-the-rtp-javascript) no site antes de usar a API de Contexto de Usuário.
+Você deve se tornar um cliente do Web Personalization e implantar a [tag RTP](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/web-personalization/rtp-tag-implementation/deploy-the-rtp-javascript) no site antes de usar a API de Contexto de Usuário.
 
 | Parâmetro | Opcional/Obrigatório | Tipo | Descrição |
-|---|---|---|---|
+| --- | --- | --- | --- |
 | `send` | Obrigatório | String | Ação do método. |
 | `event` | Obrigatório | String | Nome do método. |
 | `customData` | Obrigatório | Sequência de caracteres ou matriz | Dados personalizados. |

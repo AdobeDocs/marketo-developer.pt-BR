@@ -3,9 +3,9 @@ title: Importação em massa
 feature: REST API
 description: Importação em massa do Marketo para carregar clientes em potencial, objetos personalizados e membros do programa por meio de uploads de várias partes, criação de trabalhos assíncronos, status de pesquisa e falhas de manuseio.
 exl-id: f7922fd2-8408-4d04-8955-0f8f58914d24
-source-git-commit: 7557b9957c87f63c2646be13842ea450035792be
+source-git-commit: 6145067629ce78175af3b7464807a0fa100c7b57
 workflow-type: tm+mt
-source-wordcount: '610'
+source-wordcount: '660'
 ht-degree: 2%
 
 ---
@@ -93,7 +93,7 @@ Quando enviarmos o trabalho, ele retornará um batchId, que podemos usar para ve
 Cada endpoint de criação de trabalho compartilha alguns parâmetros comuns para configurar o formato de arquivo, nomes de campo e filtro de um trabalho de extração em massa.  Cada subtipo de trabalho de extração pode ter parâmetros adicionais:
 
 | Parâmetro | Tipo de dados | Observações |
-|---|---|---|
+| --- | --- | --- |
 | formato | String | Determina o formato de arquivo dos dados importados com opções para valores separados por vírgula, valores separados por tabulação e valores separados por ponto e vírgula. Aceita um dos seguintes: CSV, SSV, TSV. O formato é padronizado como CSV. |
 | arquivo | String | Os dados são especificados por meio de dados de formulário de várias partes no arquivo. |
 

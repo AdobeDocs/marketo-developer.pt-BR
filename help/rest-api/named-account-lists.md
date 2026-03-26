@@ -3,9 +3,9 @@ title: Listas de contas nomeadas
 feature: REST API
 description: Saiba como gerenciar Listas de contas nomeadas do Marketo com a API REST, incluindo permissões, campos, filtragem e endpoints para consultar, criar, atualizar e excluir.
 exl-id: 98f42780-8329-42fb-9cd8-58e5dbea3809
-source-git-commit: 7557b9957c87f63c2646be13842ea450035792be
+source-git-commit: 6145067629ce78175af3b7464807a0fa100c7b57
 workflow-type: tm+mt
-source-wordcount: '716'
+source-wordcount: '746'
 ht-degree: 2%
 
 ---
@@ -14,7 +14,7 @@ ht-degree: 2%
 
 [Referência de Ponto de Extremidade de Listas de Contas Nomeadas](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Named-Account-Lists)
 
-[Listas de contas nomeadas](https://experienceleague.adobe.com/pt-br/docs/marketo/using/product-docs/target-account-management/target/account-lists) no Marketo representam coleções de contas nomeadas. Eles podem ser usados para uma grande variedade de casos, incluindo categorização, enriquecimento de dados e filtragem inteligente de campanha. As APIs da Lista de contas nomeadas permitem o gerenciamento remoto desses ativos de lista e sua associação.
+[Listas de contas nomeadas](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/target-account-management/target/account-lists) no Marketo representam coleções de contas nomeadas. Eles podem ser usados para uma grande variedade de casos, incluindo categorização, enriquecimento de dados e filtragem inteligente de campanha. As APIs da Lista de contas nomeadas permitem o gerenciamento remoto desses ativos de lista e sua associação.
 `Content`
 
 ## Permissões
@@ -27,7 +27,7 @@ As Listas de contas nomeadas têm um número limitado de campos padrão e não s
 `Named Account List Field`
 
 | Nome | Tipo de dados | Atualizável | Observações |
-|---|---|---|---|
+| --- | --- | --- | --- |
 | marketoGUID | String | Falso | Identificador de sequência de caracteres exclusivo da lista de contas nomeadas. Este campo é gerenciado pelo sistema e não é permitido como um campo ao criar um registro. Campo usado por &quot;dedupeBy&quot;:&quot;idField&quot; ao criar ou atualizar. |
 | name | String | Verdadeiro | Nome da lista. Campo usado por &quot;dedupeBy&quot;:&quot;dedupeFields&quot; ao executar uma criação ou atualização. |
 | createdAt | Data/hora | Falso | Data e hora de criação da lista. Este campo é gerenciado pelo sistema e não é permitido como um campo ao criar ou atualizar um registro. |

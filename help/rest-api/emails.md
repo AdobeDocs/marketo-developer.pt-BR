@@ -3,9 +3,9 @@ title: Emails
 feature: REST API
 description: Saiba como usar a API REST do Marketo Asset para consultar e gerenciar ativos de email por ID, nome ou navegação de pasta, com observações sobre conteúdo preditivo e limites de teste A/B.
 exl-id: 6875730d-c74a-42cf-a3d2-dad7a3ac535d
-source-git-commit: 7557b9957c87f63c2646be13842ea450035792be
+source-git-commit: 6145067629ce78175af3b7464807a0fa100c7b57
 workflow-type: tm+mt
-source-wordcount: '1971'
+source-wordcount: '2301'
 ht-degree: 1%
 
 ---
@@ -14,13 +14,13 @@ ht-degree: 1%
 
 [Referência de Ponto de Extremidade de Email](https://developer.adobe.com/marketo-apis/api/asset/#tag/Emails) Um conjunto completo de pontos de extremidade REST é fornecido para manipular ativos de email.
 
-Observação: se você estiver usando o [Conteúdo Preditivo do Marketo](https://experienceleague.adobe.com/pt-br/docs/marketo/using/product-docs/predictive-content/working-with-predictive-content/understanding-predictive-content), os seguintes pontos de extremidade falharão se fizerem referência a um email com conteúdo preditivo: [Obter Conteúdo de Email](https://developer.adobe.com/marketo-apis/api/asset/#tag/Emails/operation/getEmailContentByIdUsingGET), [Atualizar Seção de Conteúdo de Email](https://developer.adobe.com/marketo-apis/api/asset/#tag/Emails/operation/updateEmailComponentContentUsingPOST), [Aprovar Rascunho de Email](https://developer.adobe.com/marketo-apis/api/asset/#tag/Emails/operation/approveDraftUsingPOST). A chamada retorna um código de erro 709 e a mensagem de erro correspondente.
+Observação: se você estiver usando o [Conteúdo Preditivo do Marketo](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/predictive-content/working-with-predictive-content/understanding-predictive-content), os seguintes pontos de extremidade falharão se fizerem referência a um email com conteúdo preditivo: [Obter Conteúdo de Email](https://developer.adobe.com/marketo-apis/api/asset/#tag/Emails/operation/getEmailContentByIdUsingGET), [Atualizar Seção de Conteúdo de Email](https://developer.adobe.com/marketo-apis/api/asset/#tag/Emails/operation/updateEmailComponentContentUsingPOST), [Aprovar Rascunho de Email](https://developer.adobe.com/marketo-apis/api/asset/#tag/Emails/operation/approveDraftUsingPOST). A chamada retorna um código de erro 709 e a mensagem de erro correspondente.
 
 ## Consultar
 
 O padrão de consulta para emails é idêntico ao dos modelos, permitindo consultas [por id](https://developer.adobe.com/marketo-apis/api/asset/#tag/Emails/operation/getEmailByIdUsingGET), [por nome](https://developer.adobe.com/marketo-apis/api/asset/#tag/Emails/operation/getEmailByNameUsingGET) e [navegação](https://developer.adobe.com/marketo-apis/api/asset/#tag/Emails/operation/getEmailUsingGET) e para filtragem com base na pasta com as APIs de navegação e por nome.
 
-Observação: se um email fizer parte de um programa de email que está usando o [Teste A/B](https://experienceleague.adobe.com/pt-br/docs/marketo/using/product-docs/email-marketing/email-programs/email-program-actions/email-test-a-b-test/add-an-a-b-test), esse email não estará disponível para consulta usando os seguintes pontos de extremidade: [Obter Email por Id](https://developer.adobe.com/marketo-apis/api/asset/#tag/Emails/operation/getEmailByIdUsingGET), [Obter Email por Nome](https://developer.adobe.com/marketo-apis/api/asset/#tag/Emails/operation/getEmailByNameUsingGET), [Obter Emails](https://developer.adobe.com/marketo-apis/api/asset/#tag/Emails/operation/getEmailUsingGET). A chamada indica sucesso, mas conterá o seguinte aviso: &quot;Nenhum ativo encontrado para os critérios de pesquisa fornecidos&quot;.
+Observação: se um email fizer parte de um programa de email que está usando o [Teste A/B](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/email-marketing/email-programs/email-program-actions/email-test-a-b-test/add-an-a-b-test), esse email não estará disponível para consulta usando os seguintes pontos de extremidade: [Obter Email por Id](https://developer.adobe.com/marketo-apis/api/asset/#tag/Emails/operation/getEmailByIdUsingGET), [Obter Email por Nome](https://developer.adobe.com/marketo-apis/api/asset/#tag/Emails/operation/getEmailByNameUsingGET), [Obter Emails](https://developer.adobe.com/marketo-apis/api/asset/#tag/Emails/operation/getEmailUsingGET). A chamada indica sucesso, mas conterá o seguinte aviso: &quot;Nenhum ativo encontrado para os critérios de pesquisa fornecidos&quot;.
 
 ### Por ID
 
@@ -151,7 +151,7 @@ GET /rest/asset/v1/email/byName.json?name=My Email&folder={"id":1056,"type"="Fol
 
 ### Navegar
 
-A navegação de pastas funciona como outros pontos de extremidade de navegação da API de ativos e permite a filtragem opcional em `status`, `folder`, `earliestUpdatedAt`/`latestUpdatedAt`, `maxReturn` e `offset`. `status` está Aprovado ou Rascunho. `folder` é um objeto JSON contendo `id` e `type`. `maxReturn` é um número inteiro que limita o número de resultados (o padrão é 20, o máximo é 200) e `offset` é um número inteiro que pode ser usado com `maxReturn` para ler grandes conjuntos de resultados (o padrão é 0).
+A navegação de pastas funciona como outros pontos de extremidade de navegação da API de ativos e permite filtragem opcional em `status`, `folder`, `earliestUpdatedAt`/`latestUpdatedAt`, `maxReturn` e `offset`. `status` é Aprovado ou Rascunho. `folder` é um objeto JSON contendo `id` e `type`. `maxReturn` é um inteiro que limita o número de resultados (o padrão é 20, o máximo é 200) e `offset` é um inteiro que pode ser usado com `maxReturn` para ler grandes conjuntos de resultados (o padrão é 0).
 
 ```
 GET /rest/asset/v1/emails.json?maxReturn=3&folder={"id":341,"type":"Folder"}
@@ -484,7 +484,7 @@ Observação: se a cópia automática no texto estiver desativada para um trecho
 
 ## Módulos
 
-No Editor de email 1.0, um módulo é uma seção do seu email definida no modelo. Os módulos podem conter qualquer combinação de elementos, variáveis e outro conteúdo HTML, conforme descrito [aqui](https://experienceleague.adobe.com/pt-br/docs/marketo/using/product-docs/email-marketing/general/email-editor-2/email-template-syntax#EmailTemplateSyntax-Modules). O Marketo oferece um conjunto de APIs para gerenciar módulos em um email. Para endpoints relacionados ao módulo que exigem o método HTTP POST, o corpo é formatado como &quot;application/x-www-form-urlencoded&quot; (não como JSON).
+No Editor de email 1.0, um módulo é uma seção do seu email definida no modelo. Os módulos podem conter qualquer combinação de elementos, variáveis e outro conteúdo HTML, conforme descrito [aqui](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/email-marketing/general/email-editor-2/email-template-syntax#EmailTemplateSyntax-Modules). O Marketo oferece um conjunto de APIs para gerenciar módulos em um email. Para endpoints relacionados ao módulo que exigem o método HTTP POST, o corpo é formatado como &quot;application/x-www-form-urlencoded&quot; (não como JSON).
 
 A maioria dos endpoints relacionados ao módulo exigem um &quot;moduleId&quot; como parâmetro de caminho. Esta é uma string que descreve o módulo. moduleIds são retornados pelo ponto de extremidade [Obter Conteúdo de Email](https://developer.adobe.com/marketo-apis/api/asset/#tag/Emails/operation/getEmailContentByIdUsingGET) como o atributo &quot;htmlId&quot; (consulte a seção [Consulta](#modules_query) abaixo).
 
@@ -710,7 +710,7 @@ A matriz de resultados contém elementos que descrevem os módulos e os elemento
 Continuando com o exemplo &quot;Esqueleto&quot; acima, a tabela a seguir contém um resumo das moduleIds e seus índices correspondentes contidos no email.
 
 | moduleId (também conhecido como htmlId) | Índice |
-|---|---|
+| --- | --- |
 | espaçador | 0 |
 | imagem livre | 1 |
 | vídeo | 2 |
@@ -796,7 +796,7 @@ POST /rest/asset/v1/email/{id}/content/{moduleId}/duplicate.json
 
 #### Reorganizar
 
-[Reorganize a matriz de módulos](https://developer.adobe.com/marketo-apis/api/asset/#tag/Emails/operation/rearrangeModulesUsingPOST)que contém todos os módulos e a posição desejada no email para cada um deles. Cada elemento de matriz contém um objeto JSON do seguinte formato:  { &quot;index&quot;: &lt;_index_>, &quot;moduleId&quot;: &quot;&lt;_moduleId_>&quot; }, onde &lt;_index_> é o número de ordem do módulo com base em zero e &lt;_moduleId_> é o moduleId.
+[Reorganize a matriz de módulos](https://developer.adobe.com/marketo-apis/api/asset/#tag/Emails/operation/rearrangeModulesUsingPOST)que contém todos os módulos e a posição desejada no email para cada um deles. Cada elemento de matriz contém um objeto JSON do seguinte formato:  { &quot;index&quot;: &lt;_index_>, &quot;moduleId&quot;: &quot;&lt;_moduleId_>&quot; }, onde &lt;_index_> é o número de ordem do módulo baseado em zero e &lt;_moduleId_> é o moduleId.
 
 ```
 POST /rest/asset/v1/email/{id}/content/rearrange.json
@@ -856,7 +856,7 @@ name=MarketoVideo
 
 ## Variáveis
 
-No Editor de email 1.0, as variáveis são usadas para armazenar valores para elementos em seu email. Cada variável é definida adicionando uma sintaxe específica do Marketo à sua HTML, conforme descrito [aqui](https://experienceleague.adobe.com/pt-br/docs/marketo/using/product-docs/email-marketing/general/email-editor-2/email-template-syntax#EmailTemplateSyntax-Variables). O Marketo oferece um conjunto de APIs para gerenciar variáveis em um email.
+No Editor de email 1.0, as variáveis são usadas para armazenar valores para elementos em seu email. Cada variável é definida adicionando uma sintaxe específica do Marketo à sua HTML, conforme descrito [aqui](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/email-marketing/general/email-editor-2/email-template-syntax#EmailTemplateSyntax-Variables). O Marketo oferece um conjunto de APIs para gerenciar variáveis em um email.
 
 ### Consultar
 
@@ -1112,7 +1112,7 @@ value=2
 }
 ```
 
-No exemplo a seguir, atualizamos uma variável local chamada &quot;ctaLinkText&quot; para um valor de &quot;Clique neste botão!&quot; no moduleId &quot;CTA&quot;.
+No exemplo a seguir, atualizamos uma variável local chamada &quot;ctaLinkText&quot; para um valor de &quot;Clique neste botão!&quot; no moduleId &quot;CTA&quot;.
 
 ```
 POST /rest/asset/v1/email/1032/variable/ctaLinkText.json

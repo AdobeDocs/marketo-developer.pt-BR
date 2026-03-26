@@ -3,9 +3,9 @@ title: Extração de membros do programa em massa
 feature: REST API
 description: Use as APIs REST de extração de membros do programa em massa do Marketo para exportar registros grandes de membros para ETL, data warehouse e arquivamento, com permissões e metadados de campo.
 exl-id: 6e0a6bab-2807-429d-9c91-245076a34680
-source-git-commit: 7557b9957c87f63c2646be13842ea450035792be
+source-git-commit: 6145067629ce78175af3b7464807a0fa100c7b57
 workflow-type: tm+mt
-source-wordcount: '1160'
+source-wordcount: '1284'
 ht-degree: 4%
 
 ---
@@ -235,7 +235,7 @@ Os membros do programa oferecem suporte a várias opções de filtro. Vários ti
     <tr>
       <td>isExhausted</td>
       <td>Booleano</td>
-      <td>Aceita um booleano usado para filtrar registros de associação de programa para <a href="https://experienceleague.adobe.com/pt-br/docs/marketo/using/product-docs/email-marketing/drip-nurturing/using-engagement-programs/people-who-have-exhausted-content">pessoas que esgotaram o conteúdo</a>.</td>
+      <td>Aceita um booleano usado para filtrar registros de associação de programa para <a href="https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/email-marketing/drip-nurturing/using-engagement-programs/people-who-have-exhausted-content">pessoas que esgotaram o conteúdo</a>.</td>
     </tr>
     <tr>
       <td>NurtureCadence</td>
@@ -319,7 +319,7 @@ O ponto de extremidade Criar Trabalho do Membro do Programa de Exportação forn
 - Especificar o formato do arquivo exportado
 
 | Parâmetro | Tipo de dados | Obrigatório | Observações |
-|---|---|---|---|
+| --- | --- | --- | --- |
 | campos | Matriz[Cadeia de Caracteres] | Sim | O parâmetro fields aceita uma matriz JSON de cadeias de caracteres. Os campos listados são incluídos no arquivo exportado. Os seguintes tipos de campo podem ser exportados:`LeadCustom` `LeadProgram` MemberCustom `ProgramMember`. Especifique um campo usando seu nome de API REST, que pode ser recuperado usando Descrever lead2 e/ou Descrever endpoints de membros do programa. |
 | columnHeaderNames | Objeto | Não | Um objeto JSON que contém pares de valores chave de nomes de campos e cabeçalhos de coluna. A chave deve ser o nome de um campo incluído no trabalho de exportação. O valor é o nome do cabeçalho de coluna exportado para esse campo. |
 | formato | String | Não | Aceita um dos seguintes: CSV, TSV, SSV. O arquivo exportado é renderizado como um arquivo de valores separados por vírgula, valores separados por tabulação ou valores separados por espaço, respectivamente, se definido. O padrão é CSV, caso não esteja definido. |

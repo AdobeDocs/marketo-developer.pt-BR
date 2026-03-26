@@ -3,9 +3,9 @@ title: Práticas recomendadas de integração do Marketo
 feature: REST API
 description: Práticas recomendadas para integrações de API do Marketo, abrangendo cotas, limites de taxa e simultaneidade, agrupamento, importação e exportação em massa, armazenamento em cache e planejamento de latência.
 exl-id: 1e418008-a36b-4366-a044-dfa9fe4b5f82
-source-git-commit: 7557b9957c87f63c2646be13842ea450035792be
+source-git-commit: 6145067629ce78175af3b7464807a0fa100c7b57
 workflow-type: tm+mt
-source-wordcount: '966'
+source-wordcount: '1012'
 ht-degree: 0%
 
 ---
@@ -39,7 +39,7 @@ Para garantir o melhor desempenho para suas integrações, ao executar inserçõ
 Determinar suas tolerâncias de latência ou o tempo máximo que pode decorrer antes de enviar uma chamada de API informará muitas, se não a maioria, das decisões tomadas ao projetar sua integração com o Marketo. O Marketo fornece vários métodos e opções de configuração diferentes, adequados para casos de uso diferentes e classes de latência diferentes. Por exemplo, uma integração em tempo real para notificar um vendedor de um usuário que está se inscrevendo em uma avaliação só pode enviar lotes de um se for necessário acompanhamento imediato. No entanto, a maioria dos casos não exige isso e pode tolerar latência adicional e pode ser gerenciada com mais eficiência por meio de chamadas de enfileiramento e em lote.
 
 | Latência Aceitável | Métodos preferidos | Observações |
-|---|---|---|
+| --- | --- | --- |
 | Baixa (&lt;10s) | APIs síncronas (em lote ou sem lote) | Verifique se o caso de uso exige isso. O envio de chamadas imediatas e síncronas para casos de uso de alto volume pode consumir rapidamente uma cota diária de API e potencialmente exceder os limites de taxa e simultaneidade. |
 | Medium(10s - 60m) | APIs síncronas (em lote) | Para integrações de dados de entrada com o Marketo, é altamente recomendado usar uma fila com um limite de idade e tamanho. Quando um desses limites for atingido, limpe a fila e envie sua solicitação de API com os registros acumulados. Isso é um forte comprometimento entre velocidade e eficiência, garantindo que suas solicitações ocorram na cadência necessária, enquanto o agrupamento de quantos registros a idade da fila permitir. |
 | Alta(>60m) | Importação/exportação em massa (se houver suporte) | Para integrações de dados de entrada, os registros devem ser enfileirados e enviados por meio de APIs em massa do Marketo, sempre que disponíveis. |
@@ -55,7 +55,7 @@ Como a capacidade é compartilhada entre todos os serviços de API e usuários e
 Os resultados das seguintes operações geralmente podem ser armazenados em cache no lado do cliente por um dia ou mais, pois são alterados com pouca frequência:
 
 - Resultados das operações de Descrever
-- [Tipos de atividade](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Activities/operation/getAllActivityTypesUsingGET)
+- [Tipos de atividades](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Activities/operation/getAllActivityTypesUsingGET)
 - [Partições](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Leads/operation/getLeadPartitionsUsingGET)
 
 O armazenamento em cache de determinados tipos de ativos, como programas, emails e pastas, também é apropriado para determinados casos de uso, como enriquecimento de dados para registros de lead ou de atividade.

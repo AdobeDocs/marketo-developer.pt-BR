@@ -3,9 +3,9 @@ title: getLeadChanges
 feature: SOAP
 description: Saiba como usar a API getLeadChanges do Marketo SOAP para recuperar atividades de alteração de lead com filtros, leadSelector, paginação e exemplos XML.
 exl-id: 23445684-d8d9-407b-8f19-cb69e806795c
-source-git-commit: 7557b9957c87f63c2646be13842ea450035792be
+source-git-commit: 6145067629ce78175af3b7464807a0fa100c7b57
 workflow-type: tm+mt
-source-wordcount: '419'
+source-wordcount: '418'
 ht-degree: 3%
 
 ---

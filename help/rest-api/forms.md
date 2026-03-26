@@ -3,18 +3,18 @@ title: Formulários
 feature: REST API, Forms
 description: Guia da API REST do Marketo Forms para criar e gerenciar formulários, recuperar por id ou nome, navegar com filtros de status e gerenciar campos, conjuntos de campos e regras.
 exl-id: 2e5dfa70-3163-4ab4-b269-3112417714c3
-source-git-commit: 7557b9957c87f63c2646be13842ea450035792be
+source-git-commit: 6145067629ce78175af3b7464807a0fa100c7b57
 workflow-type: tm+mt
-source-wordcount: '1616'
+source-wordcount: '1823'
 ht-degree: 2%
 
 ---
 
 # Formulários
 
-[Referência de Ponto de Extremidade do Forms](https://developer.adobe.com/marketo-apis/api/asset/#tag/Forms)
+[Referência de endpoint do Forms](https://developer.adobe.com/marketo-apis/api/asset/#tag/Forms)
 
-[Referência de Ponto de Extremidade de Campos de Formulário](https://developer.adobe.com/marketo-apis/api/asset/#tag/Form-Fields)
+[Referência do ponto final dos campos de formulário](https://developer.adobe.com/marketo-apis/api/asset/#tag/Form-Fields)
 
 O Marketo Forms tem um conjunto complexo de endpoints que permite o controle total do gerenciamento de formulários a partir de sistemas remotos. A estrutura dos formulários pode ser complexa, pois há vários tipos diferentes de objetos que devem ser gerenciados como parte de um formulário: Forms, Campos, Conjuntos de campos, Regras de visibilidade e Regras de página de acompanhamento.
 
@@ -290,7 +290,7 @@ Ao editar campos ou seu comportamento dentro de um formulário, a lista de campo
 ### Tipos de campos
 
 | Tipo de interface | Nome da API |
-|--------------|-----------------|
+| --- | --- |
 | Caixas de seleção | caixa de seleção |
 | Botão de opção | rádio |
 | Área de texto | textarea |
@@ -918,7 +918,7 @@ Para obter a lista completa de operadores disponíveis, consulte a página de re
 
 ## Acompanhamento
 
-Os formulários do Marketo podem ter um comportamento dinâmico de página de acompanhamento, em que as regras para redirecionar para uma determinada página ou para permanecer na página atual podem ser aplicadas com base no conteúdo dos campos designados no envio. As regras podem ser chamadas de Regras de página de agradecimento ou Regras de página de acompanhamento alternadamente. Essas regras são representadas como uma matriz JSON com os membros `followupType`, `followupValue`, `operator`, `subjectField`, `values` e `default`. `default` é um valor booleano para o qual somente um registro na matriz pode ser verdadeiro. Quando um visitante se qualifica para nenhuma outra regra, a regra designada como padrão é usada. `followupType` pode ser lp ou url, em que lp indica uma ID de página de aterrissagem da Marketo para `followupValue`, e url indicará uma URL para outra página. O operador é usado para comparar o valor do campo de assunto com a lista de valores fornecida.
+Os formulários do Marketo podem ter um comportamento dinâmico de página de acompanhamento, em que as regras para redirecionar para uma determinada página ou para permanecer na página atual podem ser aplicadas com base no conteúdo dos campos designados no envio. As regras podem ser chamadas de Regras de página de agradecimento ou Regras de página de acompanhamento alternadamente. Essas regras são representadas como uma matriz JSON com os membros `followupType`, `followupValue`, `operator`, `subjectField`, `values` e `default`. `default` é um valor booleano para o qual somente um registro na matriz pode ser verdadeiro. Quando um visitante se qualifica para nenhuma outra regra, a regra designada como padrão é usada. `followupType` pode ser lp ou url, em que lp indica uma ID de página de aterrissagem do Marketo para `followupValue`, e url indicará uma URL para outra página. O operador é usado para comparar o valor do campo de assunto com a lista de valores fornecida.
 
 ## Botão Enviar
 

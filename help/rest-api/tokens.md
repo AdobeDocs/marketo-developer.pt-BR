@@ -3,10 +3,10 @@ title: Tokens
 feature: REST API, Tokens
 description: Gerenciar Meus tokens do Marketo com a API REST do ativo. Consulte tipos de dados compatíveis, obter por pasta ou programa, criar ou atualizar via POST codificado em formulário e excluir por nome.
 exl-id: 4f8d87d7-ba2a-4c90-8b39-4d20679d404a
-source-git-commit: 7557b9957c87f63c2646be13842ea450035792be
+source-git-commit: 6145067629ce78175af3b7464807a0fa100c7b57
 workflow-type: tm+mt
-source-wordcount: '320'
-ht-degree: 4%
+source-wordcount: '364'
+ht-degree: 3%
 
 ---
 
@@ -21,7 +21,7 @@ Os tokens no Marketo são strings especiais semelhantes a códigos de atalho, qu
 Os tokens podem ser criados com os seguintes tipos de dados:
 
 | Tipo | Descrição |
-|---------------|----------------------------------------------------|
+| --- | --- |
 | data | Valor da data do formulário &quot;dd-MM-yyyy&quot; |
 | número | Um número inteiro ou de ponto flutuante |
 | Texto formatado | Uma string do HTML |

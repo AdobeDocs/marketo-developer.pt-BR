@@ -5,10 +5,10 @@ breadcrumb-title: Guia do desenvolvedor do [!DNL Marketo]
 role: Admin
 feature-set: "Marketo Engage"
 index: true
-source-git-commit: f314f153c80416bbccc4328756e71c07e696dd00
+source-git-commit: 73fa4c85ecabd4cfd24bc6591aad11dc4e75010a
 workflow-type: tm+mt
-source-wordcount: '251'
-ht-degree: 41%
+source-wordcount: '277'
+ht-degree: 39%
 
 ---
 
@@ -102,6 +102,8 @@ ht-degree: 41%
       - [Funções da oportunidade](rest-api/opportunity-roles.md)
       - [Membros do programa](rest-api/program-members.md)
       - [Vendedores](rest-api/sales-persons.md)
+      - [Lista estática](rest-api/list-membership.md)
+      - [Uso](rest-api/usage.md)
    - [Tokens de paginação](rest-api/paging-tokens.md)
    - [Desempenho](rest-api/performance.md)
    - [Arquiteturas de referência](rest-api/reference-architectures.md)
@@ -155,7 +157,7 @@ ht-degree: 41%
    - [Erros](webhooks/errors.md)
    - [Mapeamentos de resposta](webhooks/response-mappings.md)
    - [Webhooks](webhooks/webhooks.md)
-- [Bibliotecas de Clientes](https://github.com/Marketo/Community-Supported-Client-Libraries)
+- [Bibliotecas de clientes](https://github.com/Marketo/Community-Supported-Client-Libraries)
 - [Fluxos de dados](https://developer.adobe.com/events/docs/guides/using/marketo/marketo-data-streams)
 - [Scripts de e-mails](email-scripting.md)
 - [Exemplos de script de email](examples.md)

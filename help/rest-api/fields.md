@@ -3,9 +3,9 @@ title: Campos
 feature: REST API, Field Management
 description: Saiba mais sobre a nomenclatura de campos do lead REST e do SOAP, campos de lista por meio de REST Descrever lead, mapeamento de recursos, por que o sfdcId é nulo e use o sfdcLeadId ou o sfdcContactId.
 exl-id: 9033f32a-c7cb-4bbf-abcf-38ca4112139f
-source-git-commit: 7557b9957c87f63c2646be13842ea450035792be
+source-git-commit: 6145067629ce78175af3b7464807a0fa100c7b57
 workflow-type: tm+mt
-source-wordcount: '212'
+source-wordcount: '213'
 ht-degree: 6%
 
 ---
@@ -23,7 +23,7 @@ Recupere a lista de todos os nomes de campo com suporte disponíveis em seus reg
 Às vezes, é difícil saber qual tipo de nome de campo você deve usar ao aproveitar um recurso específico relacionado à integração. Veja a seguir uma referência rápida para quais recursos usam os tipos de nome de campo REST ou SOAP.
 
 | Recurso | Tipo de nome de campo a ser usado |
-|--- |--- |
+| --- | --- |
 | API de rastreamento de lead (Munchkin) | SOAP |
 | API do Forms 2.0 | SOAP |
 | Importação de lista (UI) | SOAP |

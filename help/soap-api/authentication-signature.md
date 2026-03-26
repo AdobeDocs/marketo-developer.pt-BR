@@ -3,9 +3,9 @@ title: Assinatura de autenticação
 feature: SOAP
 description: Guia para a autenticação da API do Marketo SOAP usando HMAC-SHA1 por HTTPS, campos de cabeçalho obrigatórios, formato de carimbo de data e hora e exemplos de solicitação e respostas de erro
 exl-id: d6bed8ee-77fa-440c-8f35-a71cf77f45d3
-source-git-commit: 7557b9957c87f63c2646be13842ea450035792be
+source-git-commit: 6145067629ce78175af3b7464807a0fa100c7b57
 workflow-type: tm+mt
-source-wordcount: '225'
+source-wordcount: '232'
 ht-degree: 3%
 
 ---

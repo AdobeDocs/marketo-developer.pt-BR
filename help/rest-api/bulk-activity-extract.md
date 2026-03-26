@@ -3,10 +3,10 @@ title: Extração de atividade em massa
 feature: REST API
 description: API REST de extração de atividade em massa do Marketo para exportar dados de atividade em alto volume usando um intervalo de datas de 31 dias, atividade e filtros de atributo principal para ETL e CRM.
 exl-id: 6bdfa78e-bc5b-4eea-bcb0-e26e36cf6e19
-source-git-commit: 7557b9957c87f63c2646be13842ea450035792be
+source-git-commit: 6145067629ce78175af3b7464807a0fa100c7b57
 workflow-type: tm+mt
-source-wordcount: '1351'
-ht-degree: 7%
+source-wordcount: '1571'
+ht-degree: 6%
 
 ---
 
@@ -74,7 +74,7 @@ Exemplo de corpo da solicitação:
 | Remover da lista | Nome da lista estática | [Obter Lista Estática por Id](https://developer.adobe.com/marketo-apis/api/asset/#tag/Static-Lists/operation/getStaticListByIdUsingGET) | Lista estática |
 | Preenchimento de formulário | Nome do formulário | [Obter formulário por ID](https://developer.adobe.com/marketo-apis/api/asset/#tag/Sales-Persons/operation/describeUsingGET_5) | Formulário da Web |
 
-Observe que você deve usar &quot;&lt;<em>programa</em>>.notação &lt;<em>asset</em>>&quot; para especificar o nome dos seguintes grupos de ativos: Programa de marketing, Lista estática, Formulário web. Por exemplo, um formulário com o nome &quot;Saída MPS&quot; que reside abaixo de um programa com o nome &quot;GL_OP_ALL_2021&quot; seria especificado como &quot;GL_OP_ALL_2021.Saída MPS&quot;.
+Observe que você deve usar a notação &quot;&lt;<em>programa</em>>.&lt;<em>ativo</em>>&quot; para especificar o nome dos seguintes grupos de ativos: Programa de marketing, Lista estática, Formulário web. Por exemplo, um formulário com o nome &quot;Saída MPS&quot; que reside abaixo de um programa com o nome &quot;GL_OP_ALL_2021&quot; seria especificado como &quot;GL_OP_ALL_2021.Saída MPS&quot;.
 
 Exemplo de corpo da solicitação:
 
@@ -95,12 +95,12 @@ Exemplo de corpo da solicitação:
 }
 ```
 
-Ao usar `primaryAttributeValues`, o filtro `activityTypeIds` deve estar presente e conter somente IDs de atividade que correspondam ao grupo de ativos correspondente. Por exemplo, se você estiver filtrando ativos de Formulários da Web, somente a ID de tipo de atividade &quot;Preencher Formulário&quot; será permitida em `activityTypeIds`. `primaryAttributeValues` e `primaryAttributeValueIds` não podem ser usados juntos.
+Ao usar `primaryAttributeValues`, o filtro `activityTypeIds` deve estar presente e conter somente IDs de atividade que correspondam ao grupo de ativos correspondente. Por exemplo, se você estiver filtrando ativos de Formulários Web, somente a ID de tipo de atividade &quot;Preencher Formulário&quot; será permitida em `activityTypeIds`. `primaryAttributeValues` e `primaryAttributeValueIds` não podem ser usados juntos.
 
 ## Opções
 
 | Parâmetro | Tipo de dados | Obrigatório | Observações |
-|---|---|---|---|
+| --- | --- | --- | --- |
 | filtro | Matriz[Objeto] | Sim | Aceita uma matriz de filtros. Exatamente um filtro `createdAt` deve ser incluído na matriz. Um filtro `activityTypeIds` opcional pode ser incluído. Os filtros são aplicados ao conjunto de atividades acessível e o conjunto de atividades resultante é retornado pelo trabalho de exportação. |
 | formato | String | Não | Aceita um dos seguintes: CSV, TSV, SSV O arquivo exportado é renderizado como um arquivo de valores separados por vírgula, valores separados por tabulação ou valores separados por espaço, respectivamente, se definido. O padrão é CSV, caso não esteja definido. |
 | columnHeaderNames | Objeto | Não | Um objeto JSON que contém pares de valores chave de nomes de campos e cabeçalhos de coluna. A chave deve ser o nome de um campo incluído no trabalho de exportação. O valor é o nome do cabeçalho de coluna exportado para esse campo. |

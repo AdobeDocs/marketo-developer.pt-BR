@@ -3,16 +3,16 @@ title: Extração de chumbo em massa
 feature: REST API
 description: Saiba como usar as APIs REST de extração de lead em massa do Marketo para exportar leads em massa com filtros de data, lista e lista inteligente, campos personalizados e formatos CSV/TSV.
 exl-id: 42796e89-5468-463e-9b67-cce7e798677b
-source-git-commit: 7557b9957c87f63c2646be13842ea450035792be
+source-git-commit: 6145067629ce78175af3b7464807a0fa100c7b57
 workflow-type: tm+mt
-source-wordcount: '1195'
+source-wordcount: '1273'
 ht-degree: 2%
 
 ---
 
 # Extração de chumbo em massa
 
-[Referência de Ponto de Extremidade de Extração de Cliente Potencial em Massa](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Bulk-Export-Leads)
+[Referência de Ponto de Extremidade de Extração de Lead em Massa](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Bulk-Export-Leads)
 
 O conjunto de Extração de lead em massa de APIs REST fornece uma interface programática para recuperar grandes conjuntos de registros de lead/pessoa do Marketo. Além disso, ele pode ser usado para recuperar clientes potenciais de forma incremental com base na data de criação do registro, na atualização mais recente, na associação de lista estática ou na associação de lista inteligente. A interface recomendada para casos de uso que exigem intercâmbio contínuo de dados entre o Marketo e um ou mais sistemas externos, para fins de ETL, data warehouse e arquivamento.
 
@@ -25,7 +25,7 @@ As APIs de Extração de lead em massa exigem que o usuário da API responsável
 Os clientes em potencial são compatíveis com várias opções de filtro. Determinados filtros, incluindo `updatedAt`, `smartListName` e `smartListId`, exigem componentes de infraestrutura adicionais que ainda não foram implementados em todas as assinaturas. Somente um tipo de filtro pode ser especificado por trabalho de exportação.
 
 | Tipo de filtro | Tipo de dados | Observações |
-|---|---|---|
+| --- | --- | --- |
 | createdAt | Date Range | Aceita um objeto JSON com os membros `startAt` e `endAt`. `startAt` aceita um datetime que representa a marca d&#39;água inferior e `endAt` aceita um datetime que representa a marca d&#39;água superior. O intervalo deve ser de 31 dias ou menos. Os datetimes devem estar em um formato ISO-8601, sem milissegundos. Os trabalhos com esse tipo de filtro retornam todos os registros acessíveis que foram criados dentro do intervalo de datas. |
 | updatedAt* | Date Range | Aceita um objeto JSON com os membros `startAt` e `endAt`. `startAt` aceita um datetime que representa a marca d&#39;água inferior e `endAt` aceita um datetime que representa a marca d&#39;água superior. O intervalo deve ser de 31 dias ou menos. Os datetimes devem estar em um formato ISO-8601, sem milissegundos. Observação: esse filtro não filtra no campo &quot;updatedAt&quot; visível, que reflete somente atualizações em campos padrão. Ela filtra com base em quando a atualização de campo mais recente foi feita em um registro de cliente potencialJobs com esse tipo de filtro retorna todos os registros acessíveis que foram atualizados mais recentemente dentro do intervalo de datas. |
 | staticListName | String | Aceita o nome de uma lista estática. Os trabalhos com esse tipo de filtro retornam todos os registros acessíveis que são membros da lista estática no momento em que o trabalho começa a ser processado. Recupere nomes de lista estáticos usando o ponto de extremidade Get Lists. |
@@ -40,7 +40,7 @@ O tipo de filtro não está disponível para algumas assinaturas. Se não estive
 O ponto de extremidade Criar trabalho de lead de exportação fornece várias opções de formatação, dando ao usuário a capacidade de incluir campos específicos no arquivo exportado, a capacidade de renomear cabeçalhos de coluna desses campos e o formato do arquivo exportado.
 
 | Parâmetro | Tipo de dados | Obrigatório | Observações |
-|---|---|---|---|
+| --- | --- | --- | --- |
 | campos | Matriz[Cadeia de Caracteres] | Sim | O parâmetro fields aceita uma matriz JSON de cadeias de caracteres. Cada string deve ser o nome da API REST de um campo de lead Marketo. Os campos listados são incluídos no arquivo exportado. O cabeçalho de coluna para cada campo será o nome da API REST de cada campo, a menos que seja substituído por columnHeader. Observação: quando o recurso [!DNL Adobe Experience Cloud Audience Sharing] é habilitado, ocorre um processo de sincronização de cookies que associa a [!DNL Adobe Experience Cloud] ID (ECID) a clientes potenciais do Marketo. Você pode especificar o campo &quot;ecids&quot; para incluir ECIDs no arquivo de exportação. |
 | columnHeaderNames | Objeto | Não | Um objeto JSON que contém pares de valores chave de nomes de campos e cabeçalhos de coluna. A chave deve ser o nome de um campo incluído no trabalho de exportação. Esse é o nome da API do campo que pode ser recuperado chamando Descrever lead. O valor é o nome do cabeçalho de coluna exportado para esse campo. |
 | formato | String | Não | Aceita um dos seguintes: CSV, TSV, SSV. O arquivo exportado é renderizado como um arquivo de valores separados por vírgula, valores separados por tabulação ou valores separados por espaço, respectivamente, se definido. O padrão é CSV, caso não esteja definido. |

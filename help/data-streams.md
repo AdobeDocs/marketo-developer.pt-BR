@@ -2,10 +2,10 @@
 title: Fluxos de dados
 description: Visão geral dos fluxos de dados do Marketo Engage, permitindo atividades de clientes potenciais quase em tempo real e eventos de auditoria de usuários, diminuindo os limites da API para clientes da camada de desempenho
 exl-id: 5617b6a5-ebc8-4d97-a290-e3b87f83e360
-source-git-commit: 7557b9957c87f63c2646be13842ea450035792be
+source-git-commit: 6145067629ce78175af3b7464807a0fa100c7b57
 workflow-type: tm+mt
-source-wordcount: '1620'
-ht-degree: 2%
+source-wordcount: '1719'
+ht-degree: 3%
 
 ---
 
@@ -44,7 +44,7 @@ Ao fornecer visualizações sobre alterações de lead, os clientes podem tomar 
 Lista de atividades transmitidas:
 
 | AtingirMetaNaReferência | ClickPredictiveContent | ReceivedForwardToFriendEmail |
-|--- |--- |--- |
+| --- | --- | --- |
 | AddToList | ClickRTPCallToAction | ReceiveSalesEmail |
 | AddToNurture | ClickSalesEmail | ReferToSocialApp |
 | AddToOpportunity | ClickSharedLink | RemoverDaLista |
@@ -79,7 +79,7 @@ Um bom caso de uso para assinar esse fluxo seria:
 Lista de eventos de auditoria de usuários transmitidos:
 
 | COMPONENTE | LISTA DE TIPOS DE EVENTO |
-|--- |--- |
+| --- | --- |
 | Programa padrão | clonar, criar, excluir, editar canal, exportar, modificar configuração de programa, modificar token de programa, renomear |
 | Email | aprovar, clonar, criar, excluir, editar, mover, renomear, cancelar aprovação |
 | Programa de e-mail em lote | aprovar, childUpdate, clonar, criar, excluir, editar, editar canal, modificar programação de programa, modificar configuração de programa, modificar token de programa, renomear, cancelar aprovação |
@@ -139,7 +139,7 @@ Atualmente, o centro de notificações no Marketo pode ser configurado para envi
 Lista de eventos de notificação:
 
 | COMPONENTE | LISTA DE TIPOS DE EVENTO |
-|--- |--- |
+| --- | --- |
 | Notificação | interrupção da campanha, falha da campanha, promoção (programa esgotado), falha de sincronização do salesforce, grupo de teste (resultado do teste A/B), serviços da web (cota diária) |
 
 Exemplo de evento de notificação:
@@ -279,5 +279,5 @@ Para começar a usar os serviços da Adobe, adicione uma API, eventos ou tempo d
 ## Documentação pública
 
 - [Fluxos de dados do Marketo](https://developer.adobe.com/events/docs/guides/using/marketo/marketo-data-streams/)
-- [Introdução a eventos e webhooks do Adobe IO](https://developer.adobe.com/events/docs/guides/)
-- [Blog de Fluxos de Dados](https://blog.developer.adobe.com/introducing-the-adobe-marketo-engage-data-streams-61198b567fbb)
+- [Introdução aos eventos e webhooks do Adobe IO](https://developer.adobe.com/events/docs/guides/)
+- [Blog de fluxos de dados](https://blog.developer.adobe.com/introducing-the-adobe-marketo-engage-data-streams-61198b567fbb)

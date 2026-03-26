@@ -3,16 +3,16 @@ title: Regras de redirecionamento de páginas
 feature: REST API, Landing Pages
 description: Use as APIs REST do Marketo Asset para criar, consultar, atualizar e excluir regras de redirecionamento de página de aterrissagem com filtros, paginação, opções de nome de host e destinos que não sejam da Marketo.
 exl-id: f63aa5ef-5872-4401-be75-6fb9b2977734
-source-git-commit: 7557b9957c87f63c2646be13842ea450035792be
+source-git-commit: 6145067629ce78175af3b7464807a0fa100c7b57
 workflow-type: tm+mt
-source-wordcount: '655'
+source-wordcount: '776'
 ht-degree: 3%
 
 ---
 
 # Regras de redirecionamento de páginas
 
-[Referência de Ponto de Extremidade de Regras de Redirecionamento de Página de Aterrissagem](https://developer.adobe.com/marketo-apis/api/asset/#tag/Landing-Page-Redirect-Rules)
+[Referência de ponto de extremidade das regras de redirecionamento da landing page](https://developer.adobe.com/marketo-apis/api/asset/#tag/Landing-Page-Redirect-Rules)
 
 O Marketo oferece um conjunto de APIs REST para executar operações CRUD em URLs de redirecionamento de página inicial. Essas APIs seguem o padrão de interface padrão para APIs de ativos, fornecendo as opções Consultar, Criar, Atualizar e Excluir.
 
@@ -143,7 +143,7 @@ O parâmetro `hostname` especifica o nome de host da página de aterrissagem. De
 O parâmetro `redirectFrom` especifica a página de aterrissagem de origem. Esse é um objeto JSON que contém um par tipo/valor que determina se a origem é uma página de aterrissagem do Marketo ou uma página de aterrissagem que não seja do Marketo. O atributo `type` pode ser &quot;landingPageId&quot; ou &quot;path&quot;.
 
 | Parâmetro | Opcional/Obrigatório | Tipo | Descrição |
-|---|---|---|---|
+| --- | --- | --- | --- |
 | &#39;get&#39; | Obrigatório | String | Ação do método. |
 | &#39;visitante&#39; | Obrigatório | String | Nome do método. |
 | retorno de chamada | Obrigatório | Função | Função de retorno de chamada a ser acionada para cada campanha retornada. |
@@ -151,11 +151,11 @@ O parâmetro `redirectFrom` especifica a página de aterrissagem de origem. Esse
 O parâmetro `redirectTo` especifica a página de destino. Esse é um objeto JSON que contém um par tipo/valor que determina se a origem é uma página de aterrissagem do Marketo ou uma página de aterrissagem que não seja do Marketo. O atributo `type` pode ser &quot;landingPageId&quot; ou &quot;url&quot;.
 
 | Tipo de landing page | tipo redirectTo | Exemplo |
-|---|---|---|
+| --- | --- | --- |
 | Marketo | landingPageId | {&quot;type&quot;:&quot;landingPageId&quot;,&quot;value&quot;:&quot;1774&quot;} |
 | Não Marketo | url | {&quot;type&quot;:&quot;url&quot;,&quot;value&quot;:&quot;www.contactLogs.com&quot;} |
 
-Mais informações sobre como criar regras de redirecionamento de página de destino podem ser encontradas [aqui](https://experienceleague.adobe.com/docs/marketo/using/product-docs/demand-generation/landing-pages/landing-page-actions/redirect-a-marketo-landing-page-to-another-page.html?lang=pt-BR).
+Mais informações sobre como criar regras de redirecionamento de página de destino podem ser encontradas [aqui](https://experienceleague.adobe.com/docs/marketo/using/product-docs/demand-generation/landing-pages/landing-page-actions/redirect-a-marketo-landing-page-to-another-page.html).
 
 ```
 POST /rest/asset/v1/redirectRules.json

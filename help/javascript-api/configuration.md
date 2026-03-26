@@ -3,10 +3,10 @@ title: Configuração
 description: Configure o Marketo Munchkin com a API do JavaScript. Saiba mais sobre as configurações do Munchkin.init como altIds, anonymizeIP, asyncOnly, vida do cookie, domainLevel, API do Beacon.
 feature: Munchkin Tracking Code, Javascript
 exl-id: 4700ce7b-f624-4f27-871e-9a050f203973
-source-git-commit: 7557b9957c87f63c2646be13842ea450035792be
+source-git-commit: 6145067629ce78175af3b7464807a0fa100c7b57
 workflow-type: tm+mt
-source-wordcount: '563'
-ht-degree: 3%
+source-wordcount: '613'
+ht-degree: 4%
 
 ---
 
@@ -27,7 +27,7 @@ O objeto de definições de configuração pode conter qualquer número de propr
 ## Propriedades
 
 | Nome | Tipo de dados | Descrição |
-|---|---|---|
+| --- | --- | --- |
 | altIds | Matriz | Aceita uma matriz de sequências de caracteres da Munchkin ID. Quando ativado, duplica todas as atividades da Web nas assinaturas direcionadas, com base na Munchkin ID. |
 | anonymizeIP | Booleano | Torna anônimo o endereço IP registrado no Marketo para novos visitantes. |
 | apiOnly | Booleano | Se definida como true, a função `Munchkin.Init()` não chamará `visitsWebPage`. Isso é útil para aplicativos web de página única que precisam de controle total sobre cada evento `visitsWebPage`. |
@@ -40,7 +40,7 @@ O objeto de definições de configuração pode conter qualquer número de propr
 | domainSelectorV2 | Booleano | Se definido como verdadeiro, o utiliza um método aprimorado para determinar como definir o atributo de domínio do cookie. |
 | httpsOnly | Booleano | O padrão é false. Quando definido como true, define o cookie para usar a configuração Secure quando a página rastreada foi veiculada via https. |
 | useBeaconAPI | Booleano | O padrão é false. Quando definido como verdadeiro, usa a [API Beacon](https://developer.mozilla.org/en-US/docs/Web/API/Beacon_API) para enviar solicitações de não bloqueio em vez de [XMLHttpRequest](https://developer.mozilla.org/pt-BR/docs/Web/API/XMLHttpRequest). Se o navegador não suportar essa API, o Munchkin voltará a usar XMLHttpRequest. |
-| wsInfo | String | Usa uma string para direcionar um espaço de trabalho. Essa ID de espaço de trabalho é obtida selecionando o Workspace no menu Admin > Integração > Munchkin. Essa configuração se aplica somente à criação inicial de um registro de lead anônimo. Depois que o valor do cookie do Munchkin tiver sido estabelecido para esse registro de lead, o parâmetro wsInfo não poderá ser usado para alterar sua partição. Como essa configuração afeta apenas clientes potenciais anônimos, ela só é relevante para [Visitantes Anônimos em Relatórios da Web](https://experienceleague.adobe.com/pt-br/docs/marketo/using/product-docs/reporting/basic-reporting/report-activity/display-people-or-anonymous-visitors-in-web-reports) específicos da partição. |
+| wsInfo | String | Usa uma string para direcionar um espaço de trabalho. Essa ID de espaço de trabalho é obtida selecionando o Workspace no menu Admin > Integração > Munchkin. Essa configuração se aplica somente à criação inicial de um registro de lead anônimo. Depois que o valor do cookie do Munchkin tiver sido estabelecido para esse registro de lead, o parâmetro wsInfo não poderá ser usado para alterar sua partição. Como essa configuração afeta apenas clientes potenciais anônimos, ela só é relevante para [Visitantes Anônimos em Relatórios da Web](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/reporting/basic-reporting/report-activity/display-people-or-anonymous-visitors-in-web-reports) específicos da partição. |
 
 ## Exemplos
 
