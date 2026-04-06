@@ -5,10 +5,10 @@ breadcrumb-title: Guia do desenvolvedor do [!DNL Marketo]
 role: Admin
 feature-set: "Marketo Engage"
 index: true
-source-git-commit: 73fa4c85ecabd4cfd24bc6591aad11dc4e75010a
+source-git-commit: 6dc068f92d5b0c94035ca484fd1508dfe87bbd76
 workflow-type: tm+mt
-source-wordcount: '277'
-ht-degree: 39%
+source-wordcount: '284'
+ht-degree: 38%
 
 ---
 
@@ -54,10 +54,13 @@ ht-degree: 39%
       - [Ativos](rest-api/assets.md)
       - [Conteúdo dinâmico](rest-api/dynamic-content.md)
       - [Emails](rest-api/emails.md)
+      - [Emails (Novo)](rest-api/emails-new.md)
       - [Modelos de email](rest-api/email-templates.md)
+      - [Modelos de email (Novo)](rest-api/email-templates-new.md)
       - [Arquivos](rest-api/files.md)
       - [Pastas](rest-api/folders.md)
       - [Formulários](rest-api/forms.md)
+      - [Fragmentos (novo)](rest-api/fragments.md)
       - [Páginas de destino](rest-api/landing-pages.md)
       - [Regras de redirecionamento de páginas](rest-api/landing-page-redirect-rules.md)
       - [Modelos de páginas de destino](rest-api/landing-page-templates.md)

@@ -3,16 +3,16 @@ title: Leads
 feature: REST API
 description: Explore os recursos da API REST do Marketo Leads, incluindo Descrever, consultar por ID ou filtro, campos padrão, limites e recuperação de ECIDs.
 exl-id: 0a2f7c38-02ae-4d97-acfe-9dd108a1f733
-source-git-commit: d674384b3ab979df2322ece3f02155259d05431a
+source-git-commit: 66154fa4aa37190a49dcc62f57debef5e1e829a1
 workflow-type: tm+mt
-source-wordcount: '3409'
+source-wordcount: '3457'
 ht-degree: 3%
 
 ---
 
 # Leads
 
-[Referência de Ponto de Extremidade de Cliente Potencial](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Leads)
+[Referência de Ponto de Extremidade de Clientes Potenciais](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Leads)
 
 A API do líder da Marketo fornece um grande conjunto de recursos para aplicativos CRUD simples contra registros de clientes potenciais, bem como a capacidade de modificar a associação de um cliente potencial em listas estáticas e programas e iniciar o processamento de Campanha inteligente para clientes potenciais.
 
@@ -95,7 +95,7 @@ Para esse método, sempre haverá um único registro na primeira posição da ma
 
 Obter Clientes Potenciais por Tipo de Filtro retornará o mesmo tipo de registro, mas pode retornar até 300 por página. Ela requer os parâmetros de consulta `filterType` e `filterValues`.
 
-`filterType` aceita qualquer campo personalizado ou a maioria dos campos usados com frequência. Chame o ponto de extremidade `Describe2` para obter uma lista abrangente de campos pesquisáveis permitidos para uso em `filterType`. Ao pesquisar por Campo Personalizado, somente os seguintes tipos de dados são suportados: `string`, `email`, `integer`. Você pode obter detalhes de campo (descrição, tipo etc.) usando o método Descrever mencionado acima.
+`filterType` aceita qualquer campo personalizado ou a maioria dos campos usados com frequência. Chame o ponto de extremidade `Describe2` para obter uma lista abrangente de campos pesquisáveis permitidos para uso em `filterType`. Ao pesquisar por Campo Personalizado, somente os seguintes tipos de dados são suportados: `string`, `email`, `integer`. Você pode obter detalhes do campo (descrição, tipo etc.) usando o método Descrever acima mencionado.
 
 `filterValues` aceita até 300 valores em formato separado por vírgulas. A chamada procura registros em que o campo do cliente potencial corresponde a um dos `filterValues` incluídos. Se o número de clientes potenciais correspondentes ao filtro de cliente potencial for maior que 1.000, será retornado o erro: &quot;1003, Muitos resultados correspondem ao filtro&quot;.
 
@@ -221,7 +221,7 @@ POST /rest/v1/leads.json
 }
 ```
 
-Nesta solicitação, você vê dois campos importantes, `action` e `lookupField`.  `action` especifica o tipo de operação da solicitação e pode ser `createOrUpdate`, `createOnly`, `updateOnly` ou `createDuplicate`. Se for omitido, a ação assumirá `createOrUpdate` como padrão.  O parâmetro `lookupField` especifica a chave a ser usada quando a ação for `createOrUpdate` ou `updateOnly`. Se `lookupField` for omitido, a chave padrão será `email`.
+Nesta solicitação, você vê dois campos importantes, `action` e `lookupField`. `action` especifica o tipo de operação da solicitação e pode ser `createOrUpdate`, `createOnly`, `updateOnly` ou `createDuplicate`. Se for omitido, a ação assumirá `createOrUpdate` como padrão.  O parâmetro `lookupField` especifica a chave a ser usada quando a ação for `createOrUpdate` ou `updateOnly`. Se `lookupField` for omitido, a chave padrão será `email`.
 
 Por padrão, a partição padrão é usada. Opcionalmente, você pode especificar o parâmetro `partitionName`, que só funciona se a ação for `createOnly` ou `createOrUpdate`. Para que `partitionName` funcione como critério de desduplicação adicional, ele deve fazer parte do tipo de origem nas regras de desduplicação personalizadas. Durante uma operação de atualização, se um cliente em potencial não existir na partição especificada, um erro será retornado. Se o usuário somente API não tiver permissão para acessar a partição especificada, um erro será retornado.
 
@@ -816,8 +816,10 @@ Associação
 
 Os registros de clientes potenciais também podem ser recuperados com base na associação a uma lista estática ou a um programa. Além disso, você pode recuperar todas as listas estáticas, programas ou campanhas inteligentes das quais um lead é membro.
 
-A estrutura de resposta e os parâmetros opcionais são idênticos aos de Obter leads por tipo de filtro, embora filterType e filterValues não possam ser usados com essa API.
-Para acessar a ID da lista por meio da interface do usuário do Marketo, navegue até a lista. A lista `id` está na URL da lista estática, `https://app-**&#x200B;**.marketo.com/#ST1001A1`. Neste exemplo, 1001 é o `id` da lista.
+A estrutura de resposta e os parâmetros opcionais são idênticos aos de Obter clientes em potencial por tipo de filtro, embora `filterType` e `filterValues` não possam ser usados com essa API.
+Para acessar a ID da lista por meio da interface do usuário do Marketo, navegue até a lista. A lista `id` está na URL da lista estática, `https://app-****.marketo.com/#ST1001A1`. Neste exemplo, 1001 é o `id` da lista.
+
+## Obter Programas por ID de Cliente Potencial
 
 ### Solicitação
 
@@ -855,6 +857,8 @@ GET /rest/v1/list/{listId}/leads.json?batchSize=3
     ]
 }
 ```
+
+## Obter Listas por ID de Cliente Potencial
 
 O ponto de extremidade Obter Listas por Id de Cliente Potencial pega o parâmetro de caminho `id` do registro de cliente potencial e retorna todos os registros de lista estática dos quais o cliente potencial é membro.
 

@@ -3,9 +3,9 @@ title: Pastas
 feature: REST API
 description: Guia da API REST do Marketo para pastas que abrangem criação, atualização, exclusão, consulta por id e nome, navegação em massa com raiz, espaço de trabalho, maxDepth e paginação.
 exl-id: 4b55c256-ef0a-42b4-9548-ff8a4106f064
-source-git-commit: 7557b9957c87f63c2646be13842ea450035792be
+source-git-commit: 31a503b3892ed41b3defe3f4956cb5ee0c3d4c3e
 workflow-type: tm+mt
-source-wordcount: '1025'
+source-wordcount: '1099'
 ht-degree: 1%
 
 ---
@@ -59,7 +59,7 @@ GET /rest/asset/v1/folder/{id}.json?type=Folder
 }
 ```
 
-O parâmetro de tipo é obrigatório e deve ser &quot;Folder&quot; ou &quot;Program&quot;.  O tipo determina se a pesquisa na pasta é feita com base em uma ID de pasta ou uma ID de programa. Para esse endpoint, somente um único registro é retornado na matriz de resultados. Observe o parâmetro folderType na resposta. Isso pode indicar vários tipos diferentes de pastas. As pastas de Atividades do Marketo têm um tipo de Pasta de marketing ou Programa, que pode conter vários tipos diferentes de ativos, enquanto as pastas do Design Studio têm um tipo correspondente ao tipo de ativo que elas podem conter. Por exemplo, uma pasta com folderType de &quot;Email&quot; pode conter apenas emails ou outras subpastas, que podem ter um folderType de email ou Modelo de email. Os tipos podem incluir:
+O parâmetro de tipo é obrigatório e deve ser &quot;Folder&quot; ou &quot;Program&quot;.  O tipo determina se a pesquisa na pasta é feita com base em uma ID de pasta ou uma ID de programa. Para esse endpoint, somente um único registro é retornado na matriz de resultados. Observe o parâmetro `folderType` na resposta. Isso pode indicar vários tipos diferentes de pastas. As pastas de Atividades do Marketo têm um tipo de Pasta de marketing ou Programa, que pode conter vários tipos diferentes de ativos, enquanto as pastas do Design Studio têm um tipo correspondente ao tipo de ativo que elas podem conter. Por exemplo, uma pasta com `folderType` de &quot;Email&quot; pode conter apenas Emails ou outras subpastas, que podem ter um `folderType` de Email ou Modelo de email. Os tipos podem incluir:
 
 - Email
 - Modelo de e-mail

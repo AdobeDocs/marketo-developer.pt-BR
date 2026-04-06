@@ -3,9 +3,9 @@ title: Notificações por push
 feature: Mobile Marketing
 description: Guia para ativar notificações por push do iOS com o Marketo, de certificados APNs e configuração do Xcode à integração, registro de token e manuseio de Marketo SDK.
 exl-id: 41d657d8-9eea-4314-ab24-fd4cb2be7f61
-source-git-commit: 7557b9957c87f63c2646be13842ea450035792be
+source-git-commit: 9002bcd494ba125fdc7d3ef5f02385465b6eb5a6
 workflow-type: tm+mt
-source-wordcount: '1344'
+source-wordcount: '1338'
 ht-degree: 0%
 
 ---
@@ -32,7 +32,7 @@ Há três etapas para ativar as notificações por push:
 1. Selecione o identificador de aplicativo que você está usando para compilar o aplicativo.![](assets/push-appid.png)
 1. Crie e faça upload do CSR para gerar o certificado de push. ![](assets/push-ssl.png)
 1. Baixe o certificado no computador local e clique duas vezes para instalá-lo. ![](assets/certificate-download.png)
-1. Abra &quot;Acesso ao chaveiro&quot;, clique com o botão direito no certificado e exporte 2 itens para o arquivo `.p12`.![cadeia_de_chaves](assets/key-chain.png)
+1. Abra &quot;Acesso ao chaveiro&quot;, clique com o botão direito no certificado e exporte 2 itens para o arquivo `.p12`.![chaveiro](assets/key-chain.png)
 1. Faça upload desse arquivo por meio do Marketo Admin Console para configurar as notificações.
 1. Atualizar perfis de provisionamento de aplicativo.
 
@@ -285,7 +285,7 @@ Veja a seguir um registro de atividades do Marketo no Marketo que mostra eventos
    <uses-permission android:name="com.google.android.c2dm.permission.RECEIVE" />
    ```
 
-1. Configuração do FCM com HTTPv1 (o Google tem [protocolo XMPP descontinuado](https://firebase.google.com/docs/cloud-messaging/xmpp-server-ref) em 12 de junho de 2023 e será removido em junho de 2024)
+1. Configuração do FCM com HTTPv1
 
 - Habilitar MME FCM HTTPv1 no gerenciador de recursos do Marketo ![](assets/feature-manager.png)
    - Faça upload do arquivo Json da conta de serviço para o aplicativo em MLM.

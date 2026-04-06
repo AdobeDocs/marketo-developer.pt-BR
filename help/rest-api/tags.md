@@ -3,16 +3,16 @@ title: Tags
 feature: REST API, Tags
 description: Consulte tipos de tag, obtenha valores permitidos por nome, atualize ou exclua tags de programa no Marketo por meio da API de ativos REST, com exemplos de solicitação.
 exl-id: 64731d1a-a749-4d6f-b336-16c733d002f0
-source-git-commit: 7557b9957c87f63c2646be13842ea450035792be
+source-git-commit: b2b1027ccf8016c2e4c081753842a6febac832ec
 workflow-type: tm+mt
-source-wordcount: '221'
-ht-degree: 2%
+source-wordcount: '258'
+ht-degree: 1%
 
 ---
 
 # Tags
 
-[Referência de Ponto de Extremidade de Marcas](https://developer.adobe.com/marketo-apis/api/asset/#tag/Tags)
+[Referência de ponto de extremidade de tags](https://developer.adobe.com/marketo-apis/api/asset/#tag/Tags)
 
 Tags são campos definidos pelo usuário para programas. Cada tag pode se aplicar a um ou mais tipos de programas e pode ser obrigatória ou opcional, dependendo de como a tag foi definida. As tags também podem fornecer uma lista de valores permitidos que devem ser selecionados para uso.
 
@@ -97,7 +97,7 @@ POST /rest/asset/v1/program/{id}/tag/{tagType}.json?tagValue=David
 }
 ```
 
-As marcas podem ser atualizadas em massa usando o ponto de extremidade [Atualizar Metadados do Programa](https://developer.adobe.com/marketo-apis/api/asset/#tag/Programs/operation/updateProgramUsingPOST). Um exemplo disso pode ser encontrado [aqui](programs.md#update).
+As marcas podem ser atualizadas em massa usando o ponto de extremidade [Atualizar Metadados do Programa](https://developer.adobe.com/marketo-apis/api/asset/#tag/Programs/operation/updateProgramUsingPOST). Um exemplo está disponível na [seção de atualização de programas](programs.md#update).
 
 ## Excluir
 

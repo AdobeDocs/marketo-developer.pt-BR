@@ -3,9 +3,9 @@ title: Assimilação de dados
 feature: REST API, Dynamic Content
 description: Use a API de assimilação de dados do Marketo para assimilação de alto volume e baixa latência de pessoas, objetos personalizados, empresas e membros do programa.
 exl-id: 1d501916-53ac-42d8-a804-abb4ab01c7e8
-source-git-commit: 6145067629ce78175af3b7464807a0fa100c7b57
+source-git-commit: 6dc068f92d5b0c94035ca484fd1508dfe87bbd76
 workflow-type: tm+mt
-source-wordcount: '1786'
+source-wordcount: '1789'
 ht-degree: 15%
 
 ---
@@ -116,7 +116,7 @@ Date: Wed, 18 Oct 2023 18:56:49 GMT
 
 ### Erro
 
-Quando uma chamada produz um erro, um status diferente de 202 é retornado junto com um corpo de resposta com detalhes adicionais sobre o erro.  O corpo da resposta é application/json e contém um único objeto com os membros error_code e message.
+Quando uma chamada produz um erro, um status diferente de 202 é retornado junto com um corpo de resposta com detalhes adicionais sobre o erro. O corpo da resposta é `application/json` e contém um único objeto com os membros `error_code` e `message`.
 
 Abaixo estão os códigos de erro reutilizados do Adobe Developer Gateway.
 
@@ -139,7 +139,16 @@ Abaixo estão códigos de erro exclusivos à API de assimilação de dados e com
 
 ## Tentativas
 
-Quando um erro transitório é detectado, o serviço repete a operação três vezes.  A primeira tentativa ocorre após um período de espera de 5 minutos, a segunda após mais 30 minutos e, por fim, a terceira após mais 30 minutos.  As tentativas ocorrem por vários motivos, principalmente quando um serviço dependente atinge o tempo limite ou não está disponível temporariamente.
+Quando um erro transitório é detectado, o serviço repete a operação. As tentativas ocorrem por vários motivos, principalmente quando um serviço dependente atinge o tempo limite ou não está disponível temporariamente.
+
+Intervalos de repetição:
+
+* Operação inicial e primeira tentativa : 5 minutos
+* 1º e 2º : 15 min
+* 2º e 3º : 20 min
+* 3º e 4º : 20 min
+* 4º e 5º : 2 horas
+* após a 5ª tentativa -> 3 horas
 
 ## Pontos de acesso
 
@@ -166,7 +175,7 @@ Ponto de extremidade usado para substituir registros de pessoa.
 | --- | --- | --- | --- | --- |
 | `priority` | String | Não | Prioridade da solicitação: normal ou alta | normal |
 | `partitionName` | String | Não | Nome da partição da pessoa | Padrão |
-| `dedupeFields` | Objeto | Não | Atributos para desduplicar em. Um ou dois nomes de atributo são permitidos. <br/> Dois atributos são usados em uma operação AND. Por exemplo, se `email` e `firstName` forem especificados, ambos serão usados para procurar uma pessoa usando a operação AND. <br/>Os atributos suportados são: `id`, `email`, `sfdcAccountId`, `sfdcContactId`, `sfdcLeadId` `sfdcLeadOwnerId`, Atributos personalizados (somente tipo &quot;string&quot; e &quot;integer&quot;), `email` |  |
+| `dedupeFields` | Objeto | Não | Atributos para desduplicar em. Um ou dois nomes de atributo são permitidos. <br/> Dois atributos são usados em uma operação AND. Por exemplo, se `email` e `firstName` forem especificados, ambos serão usados para procurar uma pessoa usando a operação AND. <br/>Os atributos com suporte são: `id`, `email`, `sfdcAccountId`, `sfdcContactId`, `sfdcLeadId` `sfdcLeadOwnerId`, Atributos personalizados (somente tipo &quot;string&quot; e &quot;integer&quot;), `email` |  |
 | `persons` | Matriz de objeto | Sim | Lista de pares de nome-valor do atributo para a pessoa | - |
 
 As permissões necessárias são `Read-Write Lead`.
@@ -239,7 +248,7 @@ Ponto de extremidade usado para substituir registros de objeto personalizados.
 
 As permissões necessárias são `Read-Write Custom Object`.
 
-Se um campo de link para uma Pessoa for especificado na solicitação e essa Pessoa não existir, várias tentativas ocorrerão. Se essa pessoa for adicionada durante a janela de nova tentativa (65 minutos), a atualização será bem-sucedida. Por exemplo, se o campo de link for email em Pessoa e a Pessoa não existir, ocorrerão novas tentativas.
+Se um campo de link para uma Pessoa for especificado na solicitação e essa Pessoa não existir, várias tentativas ocorrerão. Se essa pessoa for adicionada durante a janela de nova tentativa (65 minutos), a atualização será bem-sucedida. Por exemplo, se o campo de link for `email` em Pessoa e a Pessoa não existir, ocorrerão novas tentativas.
 
 ### Exemplo de Objetos personalizados
 
@@ -407,7 +416,7 @@ Ponto de extremidade usado para sincronizar o status do membro do programa, adic
 
 | Chave | Tipo de dados | Obrigatório | Valor | Valor padrão |
 | --- | --- | --- | --- | --- |
-| programas | Matriz de objeto | Sim | Lista de operações do programa. Cada especifica um programa, um status de público-alvo e os leads para a sincronização. | - |
+| Programas | Matriz de objeto | Sim | Lista de operações do programa. Cada especifica um programa, um status de público-alvo e os leads para a sincronização. | - |
 
 Cada objeto na matriz `programs` contém:
 
@@ -476,7 +485,7 @@ As permissões necessárias são `Read-Write Lead`.
 
 | Regra | Detalhe |
 | --- | --- |
-| programas | Não pode ser nulo ou vazio. |
+| Programas | Não pode ser nulo ou vazio. |
 | programId | Obrigatório. Deve ser um número inteiro positivo. |
 | status | Obrigatório. Não pode ficar em branco. Não deve ser `"Not in Program"` (não diferencia maiúsculas de minúsculas). Em vez disso, use o terminal delete. |
 | membros | Não pode ser nulo ou vazio. |
@@ -508,7 +517,7 @@ Ponto de extremidade usado para remover clientes em potencial de programas. Isso
 
 | Chave | Tipo de dados | Obrigatório | Valor | Valor padrão |
 | --- | --- | --- | --- | --- |
-| programas | Matriz de objeto | Sim | Lista de operações de exclusão de programas. Cada especifica um programa e os clientes em potencial a serem removidos. | - |
+| Programas | Matriz de objeto | Sim | Lista de operações de exclusão de programas. Cada especifica um programa e os clientes em potencial a serem removidos. | - |
 
 Cada objeto na matriz `programs` contém:
 
@@ -573,7 +582,7 @@ As permissões necessárias são `Read-Write Lead`.
 
 | Regra | Detalhe |
 | --- | --- |
-| programas | Não pode ser nulo ou vazio. |
+| Programas | Não pode ser nulo ou vazio. |
 | programId | Obrigatório. Deve ser um número inteiro positivo. |
 | membros | Não pode ser nulo ou vazio. |
 | leadId | Obrigatório para cada membro na matriz de entrada. |
