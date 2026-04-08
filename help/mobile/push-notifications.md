@@ -3,7 +3,7 @@ title: Notificações por push
 feature: Mobile Marketing
 description: Guia para ativar notificações por push do iOS com o Marketo, de certificados APNs e configuração do Xcode à integração, registro de token e manuseio de Marketo SDK.
 exl-id: 41d657d8-9eea-4314-ab24-fd4cb2be7f61
-source-git-commit: 9002bcd494ba125fdc7d3ef5f02385465b6eb5a6
+source-git-commit: 14ca3ca1f1aa07bb3e54802003190a4a2b4fbcb9
 workflow-type: tm+mt
 source-wordcount: '1338'
 ht-degree: 0%
@@ -24,7 +24,7 @@ Há três etapas para ativar as notificações por push:
 
 ### Configurar notificações por push na conta de desenvolvedor do Apple
 
-1. Faça logon no Apple Developer [Member Center](http://developer.apple.com/membercenter).
+1. Faça logon no Apple Developer [Member Center](https://developer.apple.com/membercenter).
 1. Clique em &quot;Certificados, Identificadores e Perfis&quot;.
 1. Clique na pasta &quot;Certificados->Todos&quot; abaixo de &quot;iOS, tvOS, watchOS&quot;.
 1. Selecione o &quot;+&quot; na tela superior esquerda ao lado dos certificados ![](assets/certificates-plus.png)
