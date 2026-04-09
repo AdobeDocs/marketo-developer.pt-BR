@@ -3,18 +3,18 @@ title: Campanhas inteligentes
 feature: REST API, Smart Campaigns
 description: Saiba como usar as APIs REST do Marketo para campanhas inteligentes, incluindo query por id ou nome, filtros de navegação, criar exclusão de clone e acionadores de agendamento ou solicitação
 exl-id: 540bdf59-b102-4081-a3d7-225494a19fdd
-source-git-commit: 7557b9957c87f63c2646be13842ea450035792be
+source-git-commit: 74964e90ddc68a611706afcad1f6016d05b060d6
 workflow-type: tm+mt
-source-wordcount: '1012'
+source-wordcount: '1196'
 ht-degree: 1%
 
 ---
 
 # Campanhas inteligentes
 
-[Referência de Ponto de Extremidade de Campanhas Inteligentes (Ativo)](https://developer.adobe.com/marketo-apis/api/asset/#tag/Smart-Campaigns)
+[Referência de ponto de extremidade de campanhas inteligentes (Ativo)](https://developer.adobe.com/marketo-apis/api/asset/#tag/Smart-Campaigns)
 
-[Referência de Ponto de Extremidade de Campanhas (Clientes Potenciais)](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Campaigns)
+[Referência De Endpoint De Campanhas (Clientes Potenciais)](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Campaigns)
 
 O Marketo oferece um conjunto de APIs REST para executar operações em campanhas inteligentes. Essas APIs seguem o padrão de interface padrão para APIs de ativos, fornecendo opções de consulta, criação, clonagem e exclusão. Além disso, você pode gerenciar a execução inteligente da campanha agendando campanhas em lote ou solicitando campanhas de acionador.
 
@@ -369,11 +369,11 @@ POST /rest/asset/v1/smartCampaign/{id}/delete.json
 
 As campanhas inteligentes em lote são iniciadas em um horário específico e afetam um conjunto específico de clientes potenciais de uma só vez.
 
-## Agendar
+## Cronograma
 
 Use o ponto de extremidade [Agendar Campanha](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Campaigns/operation/scheduleCampaignUsingPOST) para agendar uma campanha em lote para execução imediata ou em uma data futura. A campanha `id` é um parâmetro de caminho necessário. Os parâmetros opcionais são `tokens`, `runAt` e `cloneToProgram` que são passados no corpo da solicitação como application/json.
 
-O parâmetro de matriz de tokens é uma matriz de Meus tokens que substitui os tokens de programa existentes. Após a execução da campanha, os tokens são descartados.  Cada item da matriz de token contém pares de nome/valor. O nome do token deve ser formatado como &quot;{{my.name}}&quot;.
+O parâmetro de matriz de tokens é uma matriz de Meus tokens que substitui os tokens de programa existentes. Após a execução da campanha, os tokens são descartados.  Cada item da matriz de token contém pares de nome/valor. O nome do token deve ser formatado como &quot;`{{my.name}}`&quot;.
 
 O parâmetro datetime runAt especifica quando executar a campanha. Se não especificado, a campanha será executada 5 minutos após o endpoint ser chamado. O valor datetime não pode ser posterior a dois anos.
 
@@ -426,7 +426,7 @@ Use o ponto de extremidade [Solicitar Campanha](https://developer.adobe.com/mark
 
 Este ponto de extremidade requer uma campanha `id` como parâmetro de caminho e um parâmetro de matriz de inteiros `leads` contendo ids de cliente potencial. É permitido um máximo de 100 clientes em potencial por chamada.
 
-Opcionalmente, o parâmetro de matriz `tokens` pode ser usado para substituir Meus Tokens locais no programa pai da campanha. `tokens` aceita no máximo 100 tokens. Cada item da matriz `tokens` contém um par nome/valor. O nome do token deve ser formatado como &quot;{{my.name}}&quot;. Se você usar [Adicionar um Token do Sistema como um Link em uma abordagem de Email](https://experienceleague.adobe.com/pt-br/docs/marketo/using/product-docs/email-marketing/general/using-tokens/add-a-system-token-as-a-link-in-an-email) para adicionar o token do sistema &quot;viewAsWebpageLink&quot;, não será possível substituí-lo usando `tokens`. Em vez disso, use [Adicionar uma Exibição como Link da Página da Web para uma abordagem de Email](https://experienceleague.adobe.com/pt-br/docs/marketo/using/product-docs/email-marketing/general/functions-in-the-editor/add-a-view-as-web-page-link-to-an-email) que permite substituir &quot;viewAsWebPageLink&quot; usando `tokens`.
+Opcionalmente, o parâmetro de matriz `tokens` pode ser usado para substituir Meus Tokens locais no programa pai da campanha. `tokens` aceita no máximo 100 tokens. Cada item da matriz `tokens` contém um par nome/valor. O nome do token deve ser formatado como &quot;`{{my.name}}`&quot;. Se você usar [Adicionar um Token do Sistema como um Link em uma abordagem de Email](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/email-marketing/general/using-tokens/add-a-system-token-as-a-link-in-an-email) para adicionar o token do sistema &quot;viewAsWebpageLink&quot;, não será possível substituí-lo usando `tokens`. Em vez disso, use [Adicionar uma Exibição como Link da Página da Web para uma abordagem de Email](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/email-marketing/general/functions-in-the-editor/add-a-view-as-web-page-link-to-an-email) que permite substituir &quot;viewAsWebPageLink&quot; usando `tokens`.
 
 Os parâmetros `leads` e `tokens` são passados no corpo da solicitação como application/json.
 
