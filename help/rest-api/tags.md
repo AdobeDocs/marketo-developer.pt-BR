@@ -3,7 +3,7 @@ title: Tags
 feature: REST API, Tags
 description: Consulte tipos de tag, obtenha valores permitidos por nome, atualize ou exclua tags de programa no Marketo por meio da API de ativos REST, com exemplos de solicitação.
 exl-id: 64731d1a-a749-4d6f-b336-16c733d002f0
-source-git-commit: b2b1027ccf8016c2e4c081753842a6febac832ec
+source-git-commit: e2606d6cb12c572603ff069617de58417e43ca63
 workflow-type: tm+mt
 source-wordcount: '258'
 ht-degree: 1%
@@ -22,7 +22,7 @@ As tags são consultadas com o padrão de ativo padrão, mas não têm um termin
 
 ### Obter tags
 
-```
+```http
 GET /rest/asset/v1/tagTypes.json
 ```
 
@@ -54,7 +54,7 @@ GET /rest/asset/v1/tagTypes.json
 
 ### Por nome
 
-```
+```http
 GET /rest/asset/v1/tagType/byName.json?name=AAA1 Required Tag Type
 ```
 
@@ -79,7 +79,7 @@ GET /rest/asset/v1/tagType/byName.json?name=AAA1 Required Tag Type
 
 O ponto de extremidade [Atualizar Marca do Programa](https://developer.adobe.com/marketo-apis/api/asset/#tag/Programs/operation/updateProgramUsingPOST) permite atualizar o valor de um determinado tipo de marca. O ponto de extremidade usa os parâmetros de caminho `id` e `tagType`, que especificam a ID do programa, e o tipo de marca a ser atualizado. Um parâmetro de consulta `tagValue` é usado para especificar o novo valor para o tipo de marca. Todos os parâmetros são obrigatórios.
 
-```
+```http
 POST /rest/asset/v1/program/{id}/tag/{tagType}.json?tagValue=David
 ```
 
@@ -103,7 +103,7 @@ As marcas podem ser atualizadas em massa usando o ponto de extremidade [Atualiza
 
 O ponto de extremidade [Excluir Marca do Programa](https://developer.adobe.com/marketo-apis/api/asset/#tag/Programs/operation/deleteProgramUsingPOST) permite excluir um tipo de marca não necessário. O ponto de extremidade usa os parâmetros de caminho `id` e `tagType`, que especificam a ID do programa e o tipo de marca a ser excluído.
 
-```
+```http
 POST /rest/asset/v1/program/{id}/tag/{tagType}/delete.json
 ```
 

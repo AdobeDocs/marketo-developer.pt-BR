@@ -3,10 +3,10 @@ title: Scripts de e-mails
 feature: Email Programs
 description: Saiba como criar scripts de emails dinâmicos do Marketo usando tokens, variáveis, ferramentas do Velocity e testar o com Enviar amostra e Visualização de email do Apache.
 exl-id: ff396f8b-80c2-4c87-959e-fb8783c391bf
-source-git-commit: d674384b3ab979df2322ece3f02155259d05431a
+source-git-commit: e2606d6cb12c572603ff069617de58417e43ca63
 workflow-type: tm+mt
-source-wordcount: '969'
-ht-degree: 0%
+source-wordcount: '1115'
+ht-degree: 1%
 
 ---
 
@@ -20,13 +20,13 @@ OBSERVAÇÃO: é altamente recomendável que você leia o [Guia do usuário do V
 
 As variáveis sempre recebem o prefixo &#39;$&#39; e são definidas e atualizadas usando #set:
 
-```
+```velocity
 #set($variable = "value")
 ```
 
 Seus valores podem ser recuperados por meio de vários tipos de referência diferentes com comportamentos diferentes:
 
-```
+```text
 $variable ##outputs 'value'
 $variablename ##outputs '$variablename'
 ${variable}name ##outputs 'valuename'
@@ -34,7 +34,7 @@ ${variable}name ##outputs 'valuename'
 
 Também há uma notação de referência silenciosa, em que há um `!` Incluído após o `$`. Normalmente, quando a velocidade encontra uma referência indefinida, a string que representa a referência é deixada no lugar. Com a notação de referência silenciosa, se uma referência indefinida for encontrada, nenhum valor será emitido:
 
-```
+```velocity
 ##Defined Reference
 
 #set($foo = "bar")
@@ -56,18 +56,18 @@ Para obter mais informações sobre como fazer referência a variáveis, consult
 O projeto Apache Velocity disponibiliza a funcionalidade por meio das [Ferramentas do Velocity](https://velocity.apache.org/tools/devel/apidocs/overview-summary.html). Eles são apenas invólucros para objetos Java e expõem seus métodos por meio de variáveis globais que são disponibilizadas para todos os scripts.
 
 - [AlternatorTool](https://velocity.apache.org/tools/devel/apidocs/org/apache/velocity/tools/generic/AlternatorTool.html)
-- [FerramentaDeDataDeComparação](https://velocity.apache.org/tools/devel/apidocs/org/apache/velocity/tools/generic/ComparisonDateTool.html)
+- [FerramentaDataComparação](https://velocity.apache.org/tools/devel/apidocs/org/apache/velocity/tools/generic/ComparisonDateTool.html)
 - [FerramentaConversão](https://velocity.apache.org/tools/devel/apidocs/org/apache/velocity/tools/generic/ConversionTool.html)
-- [FerramentaDeData](https://velocity.apache.org/tools/devel/apidocs/org/apache/velocity/tools/generic/DateTool.html)
+- [FerramentaData](https://velocity.apache.org/tools/devel/apidocs/org/apache/velocity/tools/generic/DateTool.html)
 - [FerramentaExibição](https://velocity.apache.org/tools/devel/apidocs/org/apache/velocity/tools/generic/DisplayTool.html)
 - [FerramentaMatemática](https://velocity.apache.org/tools/devel/apidocs/org/apache/velocity/tools/generic/MathTool.html)
 - [FerramentaNúmero](https://velocity.apache.org/tools/devel/apidocs/org/apache/velocity/tools/generic/NumberTool.html)
-- [FerramentaEscape](https://velocity.apache.org/tools/devel/apidocs/org/apache/velocity/tools/generic/EscapeTool.html)
+- [EscapeTool](https://velocity.apache.org/tools/devel/apidocs/org/apache/velocity/tools/generic/EscapeTool.html)
 - [LoopTool](https://velocity.apache.org/tools/devel/apidocs/org/apache/velocity/tools/generic/LoopTool.html)
 
 Por exemplo, para usar um método de `ComparisonDateTool`, acesse se for da variável `$date` em um token de script:
 
-```
+```velocity
 #set($birthday = $convert.parseDate("2015-08-07","yyyy-MM-dd"))
 ##use whenIs to determine how many days away it is
 $date.whenIs($birthday).days ##outputs 1
@@ -107,11 +107,11 @@ O comprimento combinado de todos os tokens de script de email em um determinado 
 
 - As variáveis referenciadas no script de email devem existir no Marketo em um dos objetos disponíveis para o script.
 - Você pode fazer referência a objetos personalizados de primeiro e segundo nível que se originam de seu CRM integrado nativamente e que estão diretamente conectados ao cliente potencial ou contato, mas não a objetos personalizados de terceiro nível. Objetos personalizados não podem ser pais do cliente potencial ou da empresa
-- Para objetos personalizados do Marketo, você pode fazer referência a objetos personalizados de segundo nível com relacionamento Pai-Filho. Por exemplo `Lead <- Parent <- Child`. Não é possível fazer referência a objetos personalizados de segundo nível com uma relação Edge-Bridge. por exemplo, `Lead <- Bridge -> Edge`
+- Para objetos personalizados do Marketo, você pode fazer referência a objetos personalizados de segundo nível com relacionamento Pai-Filho. Por exemplo `Lead <- Parent <- Child`. Não é possível fazer referência a objetos personalizados de segundo nível com uma relação Edge-Bridge. e.g.,  `Lead <- Bridge -> Edge`
 - Você pode fazer referência a objetos personalizados conectados a um cliente potencial, contato ou conta, mas não a mais de um.
 - Objetos personalizados só podem ser referenciados por meio de uma única conexão, cliente potencial, contato ou conta
 - Você deve marcar a caixa no editor de scripts para os campos que você está usando, caso contrário eles não serão processados
-- Para cada objeto personalizado, os dez registros atualizados mais recentes por pessoa/contato estão disponíveis no tempo de execução e são ordenados da atualização mais recente (em 0) para a atualização mais antiga (em 9). Você pode aumentar o número de registros disponíveis por [seguindo as instruções](https://experienceleague.adobe.com/pt-br/docs/marketo/using/product-docs/administration/email-setup/change-custom-object-retrieval-limits-in-velocity-scripting).
+- Para cada objeto personalizado, os dez registros atualizados mais recentes por pessoa/contato estão disponíveis no tempo de execução e são ordenados da atualização mais recente (em 0) para a atualização mais antiga (em 9). Você pode aumentar o número de registros disponíveis por [seguindo as instruções](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/administration/email-setup/change-custom-object-retrieval-limits-in-velocity-scripting).
 - Se você incluir mais de um script de email em um email, eles serão executados de cima para baixo. O escopo das variáveis definidas no primeiro script a ser executado estará disponível nos scripts subsequentes.
 - Referência de ferramentas: [https://velocity.apache.org/tools/2.0/index.html](https://velocity.apache.org/tools/2.0/index.html)
 - Uma observação sobre tokens que contêm caracteres de nova linha &quot;\\n&quot; ou &quot;\\r\\n&quot;. Quando um email é enviado por meio do Send Sample ou por uma Campanha em lote, os caracteres de nova linha em tokens são substituídos por espaços. Quando o email é enviado por meio do Trigger Campaign, os caracteres de nova linha são deixados intocados.

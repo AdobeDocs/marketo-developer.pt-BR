@@ -3,7 +3,7 @@ title: Ativos
 feature: REST API
 description: Visão geral das APIs REST do Marketo Asset para consultar por ID ou nome, navegar com paginação e criar ou atualizar pastas, emails, formulários, modelos, arquivos e tokens.
 exl-id: 4273a5b1-1904-46e8-b583-fc6f46b388d2
-source-git-commit: 31a503b3892ed41b3defe3f4956cb5ee0c3d4c3e
+source-git-commit: e2606d6cb12c572603ff069617de58417e43ca63
 workflow-type: tm+mt
 source-wordcount: '898'
 ht-degree: 2%
@@ -42,7 +42,7 @@ Em certos casos, o endpoint de navegação para alguns tipos de ativos não reto
 
 ### Por ID
 
-```
+```http
 GET /rest/asset/v1/folder/{id}.json?type=Folder
 ```
 
@@ -83,7 +83,7 @@ GET /rest/asset/v1/folder/{id}.json?type=Folder
 
 Por motivos técnicos, as APIs de ativos não podem pesquisar nomes de ativos que contenham vírgulas (,).  Recomenda-se que sua convenção de nomenclatura exclua vírgulas para todos os tipos de ativos.
 
-```
+```http
 GET /rest/asset/v1/file/byName.json?name=My File
 ```
 
@@ -119,7 +119,7 @@ Navegar pelos ativos sempre permitirá dois parâmetros de consulta:
 - offset - Um deslocamento inteiro do qual retornar resultados.
 - maxReturn - Limita o número de registros retornados.  O padrão é 20 se não estiver definido e o máximo é 200.
 
-```
+```http
 GET /rest/asset/v1/emailTemplates.json?offset=10&maxReturn=50
 ```
 
@@ -179,15 +179,15 @@ Para tipos de ativos simples como Pastas, Tokens e Arquivos, normalmente há ape
 
 Por exemplo, veja como criar um token:
 
-```
+```http
 POST /rest/asset/v1/folder/{id}/tokens.json
 ```
 
-```
+```text
 Content-Type: application/x-www-form-urlencoded
 ```
 
-```
+```text
 name=April Fools&value=2015-04-01&type=date&folderType=Folder
 ```
 
@@ -218,15 +218,15 @@ name=April Fools&value=2015-04-01&type=date&folderType=Folder
 
 Para atualizar uma pasta, faça o seguinte:
 
-```
+```http
 POST /rest/asset/v1/folder/{id}.json
 ```
 
-```
+```text
 Content-Type: application/x-www-form-urlencoded
 ```
 
-```
+```sql
 type=Folder&description=This is a test (update 01)
 ```
 
@@ -271,15 +271,15 @@ Por exemplo, para criar uma Landing page, você deverá chamar seu endpoint de c
 
 Primeiro, as landing pages exigem a criação de um ativo de landing page usando um modelo principal.  Isso cria uma nova landing page contendo o conteúdo padrão do template para cada seção de conteúdo.
 
-```
+```http
 POST rest/asset/v1/landingPages.json
 ```
 
-```
+```text
 Content-Type: application/x-www-form-urlencoded
 ```
 
-```
+```text
 name=createLandingPage&folder={"type": "Folder", "id": 11}&template=1&description=this is a test&workspace=default&title=test create&keywords=awesome&formPrefill=false
 ```
 
@@ -320,7 +320,7 @@ name=createLandingPage&folder={"type": "Folder", "id": 11}&template=1&descriptio
 
 Para preencher o conteúdo de uma página de aterrissagem, você deve recuperar a lista de seções de conteúdo e executar atualizações individuais para qualquer seção que se desvie do modelo.
 
-```
+```http
 GET /rest/asset/v1/landingPage/{id}/content.json
 ```
 
@@ -352,7 +352,7 @@ GET /rest/asset/v1/landingPage/{id}/content.json
 
 #### Atualizar seção
 
-```
+```http
 POST /rest/asset/v1/landingPage/{id}/content/{contentId}.json?type=Form&value=1
 ```
 
@@ -374,7 +374,7 @@ POST /rest/asset/v1/landingPage/{id}/content/{contentId}.json?type=Form&value=1
 
 Muitos tipos de ativos têm um sistema de rascunho e aprovação associado, incluindo emails, landing pages, trechos, Forms e seus modelos correspondentes.  Tentar aprovar um ativo o avaliará em relação a um conjunto específico de regras de validação e, em seguida, o definirá para um estado aprovado ou retornará um motivo de falha.  Para esses tipos de ativos, sempre que uma atualização é feita no conteúdo de um ativo específico, as alterações são feitas em um rascunho do ativo, que não afeta a versão aprovada.  Isso permite que as alterações no conteúdo sejam feitas com segurança sem afetar as versões em tempo real do ativo.  As alterações podem ser aplicadas à versão ao vivo usando o endpoint de aprovação.  Isso também limpa o estado de rascunho do ativo até que qualquer atualização adicional seja aplicada.
 
-```
+```http
 POST /rest/asset/v1/emailTemplate/{id}/approveDraft.json
 ```
 
@@ -406,7 +406,7 @@ A aprovação bem-sucedida substitui a versão ao vivo anterior pela versão atu
 
 Descartar rascunhos também está disponível por meio de um endpoint para cada tipo de ativo válido.  Usar isso em um ativo que está em um estado aprovado com rascunho descartará o rascunho atual e todas as alterações pendentes que ele tiver.  Usar isso em um ativo que atualmente não tem uma versão aprovada não fará nada e retornará um erro.  Os ativos somente de rascunho podem ser excluídos, mas não podem ser descartados.
 
-```
+```http
 POST /rest/asset/v1/emailTemplate/{id}/discardDraft.json
 ```
 
@@ -436,7 +436,7 @@ POST /rest/asset/v1/emailTemplate/{id}/discardDraft.json
 
 O Assets também pode ser desaprovado se estiver em um estado somente aprovado.  Isso removerá todas as versões ativas do ativo e retornará o ativo a um estado somente de rascunho, além de descartar qualquer rascunho associado.  Essa ação só poderá ser executada na maioria dos ativos se não estiver em uso em nenhum lugar do Marketo, como um email referido em uma etapa do fluxo Enviar email ou um trecho incorporado em um email.
 
-```
+```http
 POST /rest/asset/v1/email/{id}/unapprove.json
 ```
 
@@ -458,7 +458,7 @@ POST /rest/asset/v1/email/{id}/unapprove.json
 
 O Assets com estados de aprovação e rascunho, exceto de formulários, não pode ser excluído enquanto for aprovado e deve ser cancelado antes da exclusão.  As exclusões geralmente só podem ser realizadas quando um ativo não é aprovado e está fora de uso e, no caso de pastas, está vazio de ativos.  Uma exceção notável são programas, que podem ser excluídos junto com todo o seu conteúdo secundário, desde que o programa e seu conteúdo não estejam em uso em nenhum lugar fora dos limites do programa.
 
-```
+```http
 POST /rest/asset/v1/program/{id}/delete.json
 ```
 

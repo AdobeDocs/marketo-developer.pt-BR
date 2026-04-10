@@ -3,7 +3,7 @@ title: Listas de contas nomeadas
 feature: REST API
 description: Saiba como gerenciar Listas de contas nomeadas do Marketo com a API REST, incluindo permissões, campos, filtragem e endpoints para consultar, criar, atualizar e excluir.
 exl-id: 98f42780-8329-42fb-9cd8-58e5dbea3809
-source-git-commit: 6145067629ce78175af3b7464807a0fa100c7b57
+source-git-commit: e2606d6cb12c572603ff069617de58417e43ca63
 workflow-type: tm+mt
 source-wordcount: '746'
 ht-degree: 2%
@@ -14,7 +14,7 @@ ht-degree: 2%
 
 [Referência de Ponto de Extremidade de Listas de Contas Nomeadas](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Named-Account-Lists)
 
-[Listas de contas nomeadas](https://experienceleague.adobe.com/pt-br/docs/marketo/using/product-docs/target-account-management/target/account-lists) no Marketo representam coleções de contas nomeadas. Eles podem ser usados para uma grande variedade de casos, incluindo categorização, enriquecimento de dados e filtragem inteligente de campanha. As APIs da Lista de contas nomeadas permitem o gerenciamento remoto desses ativos de lista e sua associação.
+[Listas de contas nomeadas](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/target-account-management/target/account-lists) no Marketo representam coleções de contas nomeadas. Eles podem ser usados para uma grande variedade de casos, incluindo categorização, enriquecimento de dados e filtragem inteligente de campanha. As APIs da Lista de contas nomeadas permitem o gerenciamento remoto desses ativos de lista e sua associação.
 `Content`
 
 ## Permissões
@@ -38,7 +38,7 @@ As Listas de contas nomeadas têm um número limitado de campos padrão e não s
 
 Consultar listas de contas é simples e fácil. Atualmente, há apenas dois filterTypes válidos para consultar listas de contas nomeadas: &quot;dedupeFields&quot; e &quot;idField&quot;. O campo para filtrar está definido no parâmetro `filterType` da consulta, e os valores estão definidos em `filterValues as` uma lista separada por vírgulas. Os filtros `nextPageToken` e `batchSize` também são parâmetros opcionais.
 
-```
+```http
 GET /rest/v1/namedAccountLists.json?filterType=idField&filterValues=dff23271-f996-47d7-984f-f2676861b5fb,dff23271-f996-47d7-984f-f2676861b5fc
 ```
 
@@ -77,7 +77,7 @@ O endpoint permite os dois tipos de ação padrão: &quot;createOnly&quot; e &qu
 
 O `dedupeBy parameter` opcional poderá ser especificado se a ação for `updateOnly`.  Os valores permitidos são &quot;dedupeFields&quot; (correspondente a &quot;name&quot;) ou &quot;idField&quot; (correspondente a &quot;marketoGUID&quot;).  Nos modos `createOnly`, somente &quot;name&quot; é permitido como o campo `dedupeBy`. É possível enviar até 300 registros de cada vez.
 
-```
+```http
 POST /rest/v1/namedAccountLists.json
 ```
 
@@ -119,7 +119,7 @@ POST /rest/v1/namedAccountLists.json
 
 A exclusão de Listas de Contas Nomeadas é simples e pode ser feita com base no `name` ou no `marketoGUID` da lista. Para selecionar a chave que deseja usar, passe &quot;dedupeFields&quot; para o nome ou &quot;idField&quot; para marketoGUID no membro `deleteB` da sua solicitação. Se desdefinido, o padrão será dedupeFields. É possível excluir até 300 registros de cada vez.
 
-```
+```http
 POST /rest/v1/namedAccountLists/delete.json
 ```
 
@@ -183,7 +183,7 @@ Consultar a associação de uma lista de contas nomeadas é simples, exigindo ap
 
 Se `field` não estiver definido, então`marketoGUI`,`nam`, `createdA` e`updatedA` serão retornados. `batchSiz` tem um valor máximo e padrão de 300.
 
-```
+```http
 GET /rest/v1/namedAccountList/{id}/namedAccounts.json
 ```
 
@@ -214,7 +214,7 @@ GET /rest/v1/namedAccountList/{id}/namedAccounts.json
 
 Contas nomeadas podem ser facilmente adicionadas a uma Lista de contas nomeadas. Contas só podem ser adicionadas usando marketoGUID. Você pode adicionar até 300 registros por vez.
 
-```
+```http
 POST /rest/v1/namedAccountList/{id}/namedAccounts.json
 ```
 
@@ -254,7 +254,7 @@ POST /rest/v1/namedAccountList/{id}/namedAccounts.json
 
 A remoção de registros de uma lista de contas tem um caminho diferente, mas a mesma interface, exigindo `marketoGUI` para cada registro que você deseja excluir. É possível remover até 300 registros de cada vez.
 
-```
+```http
 POST /rest/v1/namedAccountList/{id}/namedAccounts/remove.json
 ```
 

@@ -2,8 +2,8 @@
 title: Associação de Lista (Listas Estáticas)
 feature: REST API, Static Lists
 description: Use as APIs REST do Banco de Dados de Clientes Potenciais da Marketo para adicionar clientes potenciais a listas estáticas, remover clientes potenciais, recuperar membros da lista e verificar associação da lista.
-exl-id: 2a91b0f3-5ba1-4b0c-b5e7-a19ab9a7fdc3
-source-git-commit: 73fa4c85ecabd4cfd24bc6591aad11dc4e75010a
+exl-id: b8f74bcf-834a-44db-81fd-621048afeba4
+source-git-commit: e2606d6cb12c572603ff069617de58417e43ca63
 workflow-type: tm+mt
 source-wordcount: '482'
 ht-degree: 5%
@@ -31,7 +31,7 @@ O ponto de extremidade [Adicionar à Lista](https://developer.adobe.com/marketo-
 
 A resposta contém uma matriz `result` composta de objetos JSON com o status para cada ID de cliente potencial especificada na solicitação.
 
-```
+```http
 POST /rest/v1/lists/{listId}/leads.json?id=318594&id=318595
 ```
 
@@ -64,7 +64,7 @@ O ponto de extremidade [Remover da Lista](https://developer.adobe.com/marketo-ap
 
 A resposta contém uma matriz `result` composta de objetos JSON com o status para cada ID de cliente potencial especificada na solicitação.
 
-```
+```http
 DELETE /rest/v1/lists/{listId}/leads.json?id=318603&id=318595&id=999999
 ```
 
@@ -107,7 +107,7 @@ O parâmetro `fields` contém uma lista separada por vírgulas de nomes de campo
 
 A resposta contém uma matriz `result` composta de objetos JSON contendo os campos de cliente potencial especificados na solicitação.
 
-```
+```http
 GET /rest/v1/lists/{listId}/leads.json?batchSize=3
 ```
 
@@ -151,7 +151,7 @@ O ponto de extremidade [Membro da Lista](https://developer.adobe.com/marketo-api
 
 A resposta contém uma matriz `result` composta de objetos JSON com o status para cada ID de cliente potencial especificada na solicitação.
 
-```
+```http
 GET /rest/v1/lists/{listId}/leads/ismember.json?id=309901&id=318603&id=999999
 ```
 

@@ -3,7 +3,7 @@ title: Tokens
 feature: REST API, Tokens
 description: Gerenciar Meus tokens do Marketo com a API REST do ativo. Consulte tipos de dados compatíveis, obter por pasta ou programa, criar ou atualizar via POST codificado em formulário e excluir por nome.
 exl-id: 4f8d87d7-ba2a-4c90-8b39-4d20679d404a
-source-git-commit: 6145067629ce78175af3b7464807a0fa100c7b57
+source-git-commit: e2606d6cb12c572603ff069617de58417e43ca63
 workflow-type: tm+mt
 source-wordcount: '364'
 ht-degree: 3%
@@ -35,7 +35,7 @@ Esses são os únicos tipos de dados que podem ser usados ao criar um token via 
 
 [Obter Tokens por Id de Pasta](https://developer.adobe.com/marketo-apis/api/asset/#tag/Tokens/operation/getTokensByFolderIdUsingGET) usa `id` como parâmetro de caminho de um tipo de Programa ou Pasta. Este tipo é especificado pelo parâmetro `folderType`.
 
-```curl
+```http
 GET /rest/asset/v1/folder/{id}/tokens.json?folderType=Folder
 ```
 
@@ -68,15 +68,15 @@ GET /rest/asset/v1/folder/{id}/tokens.json?folderType=Folder
 
 O ponto de extremidade [Criar token](https://developer.adobe.com/marketo-apis/api/asset/#tag/Tokens/operation/addTokenTOFolderUsingPOST) cria tokens ou, se eles existirem, atualiza-os com os valores enviados. Os tokens são criados no contexto de uma pasta ou programa. O parâmetro de caminho `id` necessário é a identificação da pasta à qual o token será associado. `name`, `type`, `value` e `folderType` são parâmetros obrigatórios do token. Os dados são transmitidos como POST x-www-form-urlencoded, não como JSON. O campo `name` do token não pode exceder 50 caracteres.
 
-```
+```http
 POST /rest/asset/v1/folder/{id}/tokens.json
 ```
 
-```
+```text
 Content-Type: application/x-www-form-urlencoded
 ```
 
-```
+```text
 name=April Fools&type=date&value=2015-04-01&folderType=Folder
 ```
 
@@ -109,15 +109,15 @@ name=April Fools&type=date&value=2015-04-01&folderType=Folder
 
 [Excluir token por nome](https://developer.adobe.com/marketo-apis/api/asset/#tag/Tokens/operation/deleteTokenByNameUsingPOST) usa uma identificação como parâmetro de caminho de um tipo de programa ou pasta. Este tipo é especificado pelo parâmetro `folderType`. Os tokens são excluídos com base na pasta pai, o `name`, e o `type` do token, cada um deles é necessário. Os dados são transmitidos como POST x-www-form-urlencoded, não como JSON.
 
-```
+```http
 POST /rest/asset/v1/folder/{id}/tokens/delete.json
 ```
 
-```
+```text
 Content-Type: application/x-www-form-urlencoded
 ```
 
-```
+```text
 name=AprilFool - deverly&type=date&folderType=Program
 ```
 

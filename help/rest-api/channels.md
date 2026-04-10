@@ -3,16 +3,16 @@ title: Canais
 feature: REST API
 description: Saiba como consultar Canais do Marketo por meio da API REST do Assets, navegar com paginação ou buscar por nome, exibir status de progressão e entender as regras de tipo de programa.
 exl-id: ec6c279f-a7b4-4a7c-b980-1a68045f37ce
-source-git-commit: 7557b9957c87f63c2646be13842ea450035792be
+source-git-commit: e2606d6cb12c572603ff069617de58417e43ca63
 workflow-type: tm+mt
-source-wordcount: '144'
+source-wordcount: '151'
 ht-degree: 2%
 
 ---
 
 # Canais
 
-[Referência de Ponto de Extremidade de Canais](https://developer.adobe.com/marketo-apis/api/asset/#tag/Channels)
+[Referência de ponto de extremidade de canais](https://developer.adobe.com/marketo-apis/api/asset/#tag/Channels)
 
 Canais são um campo padrão e obrigatório para todos os tipos de programas. Cada tipo de canal só pode ser usado com o `applicableProgramType` especificado e fornece a lista de status de programas disponíveis que são válidos para membros de programas em cada programa. Se os status do programa de um canal forem alterados após a criação de um programa, a lista de status do programa para a qual um cliente potencial pode ser alterado corresponderá à lista fornecida pelo canal no momento, mas não alterará retroativamente o status do programa para nenhum registro de associação de programa existente.
 
@@ -22,7 +22,7 @@ Os canais podem ser consultados como ativos padrão, mas não têm um terminal p
 
 ### Navegar
 
-```
+```http
 GET /rest/asset/v1/channels.json?offset=10
 ```
 
@@ -120,7 +120,7 @@ GET /rest/asset/v1/channels.json?offset=10
 
 ### Por nome
 
-```
+```http
 GET /rest/asset/v1/channel/byName.json?name=Online Advertising
 ```
 

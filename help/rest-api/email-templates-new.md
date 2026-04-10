@@ -3,7 +3,7 @@ title: Modelos de email
 feature: REST API
 description: Use a API REST do Marketo Asset para consultar, criar, atualizar, clonar, excluir, aprovar e inspecionar dependências de modelos de email.
 exl-id: 50bb0047-d6ea-4c94-a900-18c37b17a147
-source-git-commit: 0e0a3e5a08e81f349044cbc327d1aba963ab30e4
+source-git-commit: e2606d6cb12c572603ff069617de58417e43ca63
 workflow-type: tm+mt
 source-wordcount: '292'
 ht-degree: 9%
@@ -38,7 +38,7 @@ Você pode recuperar metadados de modelo de email por ID de ativo ou com o endpo
 
 #### Solicitação
 
-```text
+```http
 GET /rest/asset/v2/emailtemplate/{id}
 ```
 
@@ -69,7 +69,7 @@ Os filtros suportados incluem `folderId`, `folderIds` repetido, `status`, `pageI
 
 #### Solicitação
 
-```text
+```http
 GET /rest/asset/v2/emailtemplate/filter?workspaceId=1001&name=Newsletter&pageIndex=0&pageSize=20
 ```
 
@@ -99,7 +99,7 @@ Crie um modelo de email enviando uma carga JSON. `name` e `appData` são obrigat
 
 ### Solicitação
 
-```text
+```http
 POST /rest/asset/v2/emailtemplate
 Content-Type: application/json
 ```
@@ -149,7 +149,7 @@ Atualizar um modelo por ID do ativo.
 
 ### Solicitação
 
-```text
+```http
 POST /rest/asset/v2/emailtemplate/{id}/update
 Content-Type: application/json
 ```
@@ -193,7 +193,7 @@ Os valores válidos de `action` são:
 
 ### Solicitação
 
-```text
+```http
 POST /rest/asset/v2/emailtemplate/state/transition
 Content-Type: application/json
 ```
@@ -213,7 +213,7 @@ Use o endpoint de clonagem para criar uma cópia de um template existente.
 
 ### Solicitação
 
-```text
+```http
 POST /rest/asset/v2/emailtemplate/clone
 Content-Type: application/json
 ```
@@ -236,7 +236,7 @@ Excluir um modelo por ID do ativo.
 
 ### Solicitação
 
-```text
+```http
 POST /rest/asset/v2/emailtemplate/{id}/delete
 Content-Type: application/json
 ```
@@ -249,7 +249,7 @@ Use o ponto de extremidade `usedby` para recuperar ativos que fazem referência 
 
 ### Solicitação
 
-```text
+```http
 POST /rest/asset/v2/emailtemplate/usedby
 Content-Type: application/json
 ```

@@ -3,9 +3,9 @@ title: Tokens de paginação
 feature: REST API
 description: Use os tokens de paginação da API REST do Marketo para recuperar atividades e leads, abrangendo tokens baseados em data e posição, ISO 8601 sinceDatetime e erros 414.
 exl-id: 63fbbf03-8daf-4add-85b0-a8546c825e5b
-source-git-commit: 7557b9957c87f63c2646be13842ea450035792be
+source-git-commit: e2606d6cb12c572603ff069617de58417e43ca63
 workflow-type: tm+mt
-source-wordcount: '370'
+source-wordcount: '424'
 ht-degree: 0%
 
 ---
@@ -29,7 +29,7 @@ Há dois tipos relacionados, mas distintos, de tokens de paginação fornecidos 
 
 O primeiro é um token de paginação que representa uma data. Eles são usados para recuperar atividades, alterações no valor dos dados e leads excluídos que ocorreram após a data representada pelo token de paginação. Esse tipo de token de paginação é gerado chamando o ponto de extremidade [Obter Token de Paginação](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Activities/operation/getActivitiesPagingTokenUsingGET) e incluindo um datetime.
 
-```
+```http
 GET /rest/v1/activities/pagingtoken.json?sinceDatetime=2014-10-06T13:22:17-08:00
 ```
 
@@ -59,7 +59,7 @@ Como `sinceDateTime` é um parâmetro de consulta, ele deve ser codificado em UR
 
 A cadeia de caracteres `nextPageToken` é fornecida para uma chamada [Obter atividades de cliente potencial](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Activities/operation/getLeadActivitiesUsingGET), [Obter alterações de cliente potencial](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Activities/operation/getLeadChangesUsingGET) ou [Obter clientes potenciais excluídos](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Activities/operation/getDeletedLeadsUsingGET), e as atividades são recuperadas após o datetime fornecido para a API Obter token de paginação.
 
-```
+```http
 GET /rest/v1/activities.json?nextPageToken=GIYDAOBNGEYS2MBWKQYDAORQGA5DAMBOGAYDAKZQGAYDALBQ&activityTypeIds=1&activityTypeIds=12
 ```
 

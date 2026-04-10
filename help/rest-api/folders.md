@@ -3,7 +3,7 @@ title: Pastas
 feature: REST API
 description: Guia da API REST do Marketo para pastas que abrangem criação, atualização, exclusão, consulta por id e nome, navegação em massa com raiz, espaço de trabalho, maxDepth e paginação.
 exl-id: 4b55c256-ef0a-42b4-9548-ff8a4106f064
-source-git-commit: 31a503b3892ed41b3defe3f4956cb5ee0c3d4c3e
+source-git-commit: e2606d6cb12c572603ff069617de58417e43ca63
 workflow-type: tm+mt
 source-wordcount: '1099'
 ht-degree: 1%
@@ -22,7 +22,7 @@ A consulta de pastas segue os tipos de consulta padrão para ativos de [por id](
 
 ### Por ID
 
-```
+```http
 GET /rest/asset/v1/folder/{id}.json?type=Folder
 ```
 
@@ -72,7 +72,7 @@ O parâmetro de tipo é obrigatório e deve ser &quot;Folder&quot; ou &quot;Prog
 
 [Consulta por nome](https://developer.adobe.com/marketo-apis/api/asset/#tag/Folders/operation/getFolderByNameUsingGET) também é permitida. O endpoint da consulta por nome tem o nome como o único parâmetro obrigatório. Name realiza uma correspondência exata da string com o campo de nome das pastas na instância e retorna resultados para cada pasta correspondente a esse nome. Ele também tem os parâmetros de consulta opcionais de &quot;tipo&quot;, que podem ser Pasta ou Programa, &quot;raiz&quot; da ID da pasta de pesquisa ou &quot;espaço de trabalho&quot; do nome do espaço de trabalho de pesquisa. Se o parâmetro raiz for definido, o parâmetro de tipo também deverá ser definido.
 
-```
+```http
 GET /rest/asset/v1/folder/byName.json?name=Test%2010%20-%20deverly
 ```
 
@@ -125,7 +125,7 @@ Como outros pontos de acesso de recuperação de ativos em massa, offset e maxRe
 - Espaço de trabalho - O nome do espaço de trabalho para o qual filtrar.
 - maxDepth - O número máximo de níveis a serem percorridos na hierarquia de pastas. Se definido como 0, somente a pasta especificada na raiz é retornada. Se não especificado, o valor padrão é 2.
 
-```
+```http
 GET /rest/asset/v1/folders.json?root={"id":14,"type":"Folder"}
 ```
 
@@ -213,15 +213,15 @@ O caminho de uma pasta mostra sua hierarquia na árvore de pastas, semelhante a 
 
 [A criação de pastas](https://developer.adobe.com/marketo-apis/api/asset/#tag/Folders/operation/createFolderUsingPOST) é simples e executada com um aplicativo/x-www-form-urlencoded POST que tem dois parâmetros obrigatórios, &quot;name&quot;, uma cadeia de caracteres e &quot;parent&quot;, o pai em que a pasta será criada, que é um objeto JSON inserido com dois membros, id e tipo, seja Pasta ou Programa, dependendo do tipo da pasta de destino. Opcionalmente, &quot;descrição&quot;, uma string, também pode ser incluída e pode ter até 2000 caracteres.
 
-```
+```http
 POST /rest/asset/v1/folders.json
 ```
 
-```
+```text
 Content-Type: application/x-www-form-urlencoded
 ```
 
-```
+```text
 parent={"id":416,"type":"Folder"}&name=Test 10 - deverly&description=This is a test
 ```
 
@@ -260,15 +260,15 @@ parent={"id":416,"type":"Folder"}&name=Test 10 - deverly&description=This is a t
 
 As atualizações em pastas são feitas por meio de um endpoint separado, e descrição, nome e `isArchive` são parâmetros opcionais para atualização. Se `isArchive` for alterado por uma atualização, isso resultará no arquivamento da pasta, se alterada para verdadeiro, ou no desarquivamento, se alterada para falso, na interface do usuário do Marketo. Os programas não podem ser atualizados com essa API.
 
-```
+```http
 POST /rest/asset/v1/folder/{id}.json
 ```
 
-```
+```text
 Content-Type: application/x-www-form-urlencoded
 ```
 
-```
+```sql
 type=Folder&description=This is a test (update 01)
 ```
 
@@ -309,7 +309,7 @@ type=Folder&description=This is a test (update 01)
 
 As exclusões podem ser feitas em pastas únicas se estiverem vazias, o que significa que elas não contêm ativos ou subpastas. Se uma pasta for do tipo Program ou tiver o campo isSystem definido como true, ela não poderá ser excluída com essa API.
 
-```
+```http
 POST /rest/asset/v1/folder/{id}/delete.json
 ```
 

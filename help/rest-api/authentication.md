@@ -3,7 +3,7 @@ title: Autenticação
 feature: REST API
 description: Autentique APIs REST do Marketo com OAuth 2.0 com duas pernas, crie e use tokens de acesso, alterne para o Cabeçalho de autorização, gerencie a expiração e manipule erros 601 e 602.
 exl-id: f89a8389-b50c-4e86-a9e4-6f6acfa98e7e
-source-git-commit: a0901d2c67aa42368f03494dc8157d2ae93b3dce
+source-git-commit: e2606d6cb12c572603ff069617de58417e43ca63
 workflow-type: tm+mt
 source-wordcount: '666'
 ht-degree: 0%
@@ -26,7 +26,7 @@ O `Identity URL` é encontrado no menu **[!UICONTROL Admin]** > **[!UICONTROL In
 
 Crie um token de acesso usando uma solicitação HTTP GET (ou POST) da seguinte maneira:
 
-```
+```http
 GET <Identity URL>/oauth/token?grant_type=client_credentials&client_id=<Client Id>&client_secret=<Client Secret>
 ```
 
@@ -55,7 +55,7 @@ O token de acesso deve ser enviado como um cabeçalho HTTP.
 
 >[!IMPORTANT]
 >
->O suporte para autenticação usando o parâmetro de consulta `access_token` será removido em 31 de julho de 2026. Se o projeto usar um parâmetro de consulta para passar o token de acesso, ele deverá ser atualizado para usar o [Cabeçalho de autorização](https://experienceleague.adobe.com/pt-br/docs/marketo-developer/marketo/rest/authentication#using-an-access-token) o mais rápido possível. O novo desenvolvimento deve usar o cabeçalho `Authorization` exclusivamente.
+>O suporte para autenticação usando o parâmetro de consulta `access_token` será removido em 31 de julho de 2026. Se o projeto usar um parâmetro de consulta para passar o token de acesso, ele deverá ser atualizado para usar o [Cabeçalho de autorização](https://experienceleague.adobe.com/en/docs/marketo-developer/marketo/rest/authentication#using-an-access-token) o mais rápido possível. O novo desenvolvimento deve usar o cabeçalho `Authorization` exclusivamente.
 
 ### Alternar para o cabeçalho de Autorização
 

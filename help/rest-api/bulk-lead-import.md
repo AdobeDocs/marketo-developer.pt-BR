@@ -3,10 +3,10 @@ title: Importação de leads em massa
 feature: REST API
 description: Crie e monitore importações assíncronas de leads em massa no Marketo com CSV, TSV ou SSV.
 exl-id: 615f158b-35f9-425a-b568-0a7041262504
-source-git-commit: c1b9763835b25584f0c085274766b68ddf5c7ae2
+source-git-commit: e2606d6cb12c572603ff069617de58417e43ca63
 workflow-type: tm+mt
-source-wordcount: '795'
-ht-degree: 1%
+source-wordcount: '825'
+ht-degree: 0%
 
 ---
 
@@ -39,17 +39,17 @@ Esse tipo de solicitação pode ser difícil de implementar, portanto, é altame
 
 Para fazer uma solicitação de importação em massa, você deve definir o cabeçalho de tipo de conteúdo como `multipart/form-data` e incluir pelo menos um parâmetro `file` com o conteúdo do arquivo e um parâmetro `format` com o valor `csv`, `tsv` ou `ssv`, indicando o formato do arquivo.
 
-```
+```http
 POST /bulk/v1/leads.json?format=csv
 ```
 
-```
+```text
 Content-Type: multipart/form-data; boundary=------WebKitFormBoundaryBQACkJZyaiIAXogC
 Content-Length: 311
 Host: <munchkinId>.mktorest.com
 ```
 
-```
+```text
 ------WebKitFormBoundaryBQACkJZyaiIAXogC
 Content-Disposition: form-data; name="file"; filename="leads.csv"
 Content-Type: text/csv
@@ -77,13 +77,13 @@ Easy,Fox,easyfox@marketo.com,Marketo
 
 Este ponto de extremidade usa [multipart/form-data como o tipo de conteúdo](https://www.w3.org/Protocols/rfc1341/7_2_Multipart.html). Uma prática recomendada é usar uma biblioteca de suporte HTTP para o idioma de sua escolha a fim de garantir o uso correto. O exemplo a seguir é uma maneira simples de fazer isso com cURL a partir da linha de comando:
 
-```
+```bash
 curl -i -F format=csv -F file=@lead_data.csv -F access_token=<Access Token> <REST API Endpoint Base URL>/bulk/v1/leads.json
 ```
 
 Onde o arquivo de importação `lead_data.csv` contém o seguinte:
 
-```
+```text
 firstName,lastName,email,company
 Able,Baker,ablebaker@marketo.com,Marketo
 Charlie,Dog,charliedog@marketo.com,Marketo
@@ -98,7 +98,7 @@ Observe, na resposta à nossa chamada, que não há uma lista de sucessos ou fal
 
 É prática recomendada pesquisar o trabalho a cada 5-30 segundos, dependendo da latência necessária e das limitações de chamada da API, para ver o status do trabalho de importação. Você pode fazer isso com a API Obter status de lead de importação.
 
-```
+```http
 GET /bulk/v1/leads/batch/{id}.json
 ```
 
@@ -134,7 +134,7 @@ As falhas são indicadas pelo atributo `numOfRowsFailed` na resposta Obter Statu
 
 Para recuperar os registros e as causas de linhas com falha, você deve recuperar o arquivo com falha:
 
-```
+```http
 GET /bulk/v1/leads/batch/{id}/failures.json
 ```
 
@@ -146,7 +146,7 @@ Os avisos são indicados pelo atributo `numOfRowsWithWarning` em uma resposta Ob
 
 Para recuperar os registros e as causas de linhas de aviso, recupere o arquivo de aviso:
 
-```
+```http
 GET /bulk/v1/leads/batch/{id}/warnings.json
 ```
 

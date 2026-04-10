@@ -3,7 +3,7 @@ title: Extração de chumbo em massa
 feature: REST API
 description: Saiba como usar as APIs REST de extração de lead em massa do Marketo para exportar leads em massa com filtros de data, lista e lista inteligente, campos personalizados e formatos CSV/TSV.
 exl-id: 42796e89-5468-463e-9b67-cce7e798677b
-source-git-commit: 6145067629ce78175af3b7464807a0fa100c7b57
+source-git-commit: e2606d6cb12c572603ff069617de58417e43ca63
 workflow-type: tm+mt
 source-wordcount: '1273'
 ht-degree: 2%
@@ -29,7 +29,7 @@ Os clientes em potencial são compatíveis com várias opções de filtro. Deter
 | createdAt | Date Range | Aceita um objeto JSON com os membros `startAt` e `endAt`. `startAt` aceita um datetime que representa a marca d&#39;água inferior e `endAt` aceita um datetime que representa a marca d&#39;água superior. O intervalo deve ser de 31 dias ou menos. Os datetimes devem estar em um formato ISO-8601, sem milissegundos. Os trabalhos com esse tipo de filtro retornam todos os registros acessíveis que foram criados dentro do intervalo de datas. |
 | updatedAt* | Date Range | Aceita um objeto JSON com os membros `startAt` e `endAt`. `startAt` aceita um datetime que representa a marca d&#39;água inferior e `endAt` aceita um datetime que representa a marca d&#39;água superior. O intervalo deve ser de 31 dias ou menos. Os datetimes devem estar em um formato ISO-8601, sem milissegundos. Observação: esse filtro não filtra no campo &quot;updatedAt&quot; visível, que reflete somente atualizações em campos padrão. Ela filtra com base em quando a atualização de campo mais recente foi feita em um registro de cliente potencialJobs com esse tipo de filtro retorna todos os registros acessíveis que foram atualizados mais recentemente dentro do intervalo de datas. |
 | staticListName | String | Aceita o nome de uma lista estática. Os trabalhos com esse tipo de filtro retornam todos os registros acessíveis que são membros da lista estática no momento em que o trabalho começa a ser processado. Recupere nomes de lista estáticos usando o ponto de extremidade Get Lists. |
-| staticListId | Inteiro | Aceita a id de uma lista estática. Os trabalhos com esse tipo de filtro retornam todos os registros acessíveis que são membros da lista estática no momento em que o trabalho começa a ser processado. Recupere ids de lista estáticas usando o ponto de extremidade Get Lists. |
+| staticListId | Número inteiro | Aceita a id de uma lista estática. Os trabalhos com esse tipo de filtro retornam todos os registros acessíveis que são membros da lista estática no momento em que o trabalho começa a ser processado. Recupere ids de lista estáticas usando o ponto de extremidade Get Lists. |
 | smartListName* | String | Aceita o nome de uma lista inteligente. Os trabalhos com esse tipo de filtro retornam todos os registros acessíveis que são membros das smart lists no momento em que o trabalho começa a ser processado. Recupere nomes de listas inteligentes usando o ponto de extremidade Obter Smart Lists. |
 | smartListId* | Inteiro | Aceita a ID de uma lista inteligente. Os trabalhos com esse tipo de filtro retornam todos os registros acessíveis que são membros das smart lists no momento em que o trabalho começa a ser processado. Recupere as IDs das listas inteligentes usando o ponto de extremidade Obter listas inteligentes. |
 
@@ -49,7 +49,7 @@ O ponto de extremidade Criar trabalho de lead de exportação fornece várias op
 
 Os parâmetros do trabalho são definidos antes do início da exportação usando o ponto de extremidade [Criar Trabalho de Cliente Potencial para Exportação](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Bulk-Export-Leads/operation/createExportLeadsUsingPOST). Devemos definir os `fields` necessários para a exportação, o tipo de parâmetros do `filter`, o `format` do arquivo e os nomes de cabeçalho de coluna, se houver.
 
-```
+```http
 POST /bulk/v1/leads/export/create.json
 ```
 
@@ -97,7 +97,7 @@ Esta solicitação começará a exportar um conjunto de clientes potenciais cria
 
 Isso retorna uma resposta de status indicando que o processo foi criado. A tarefa foi definida e criada, mas ainda não foi iniciada. Para fazer isso, o ponto de extremidade [Enfileirar Trabalho de Cliente Potencial de Exportação](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Bulk-Export-Leads/operation/enqueueExportLeadsUsingPOST) deve ser chamado usando o exportId da resposta do status de criação:
 
-```
+```http
 POST /bulk/v1/leads/export/{exportId}/enqueue.json
 ```
 
@@ -125,7 +125,7 @@ O status `Note:` só pode ser recuperado para trabalhos que foram criados pelo m
 
 Como esse é um endpoint assíncrono, depois de criar o trabalho, devemos pesquisar seu status para determinar seu progresso. Sondar usando o ponto de extremidade [Obter Status do Trabalho de Cliente Potencial para Exportação](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Bulk-Export-Leads/operation/getExportLeadsStatusUsingGET). O status só é atualizado uma vez a cada 60 segundos, portanto, uma frequência de polling inferior a essa não é recomendada e, em quase todos os casos, ainda é excessiva. Vamos dar uma olhada na pesquisa.
 
-```
+```http
 GET /bulk/v1/leads/export/{exportId}/status.json
 ```
 
@@ -160,7 +160,7 @@ O campo de status pode responder com qualquer um dos seguintes:
 
 Para recuperar o arquivo de uma exportação de clientes potenciais concluída, basta chamar o [Obter Arquivo de Cliente Potencial para Exportação](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Bulk-Export-Leads/operation/getExportLeadsFileUsingGET) com seu `exportId`.
 
-```
+```http
 GET /bulk/v1/leads/export/{exportId}/file.json
 ```
 
@@ -179,7 +179,7 @@ Para oferecer suporte à recuperação parcial e de fácil retomada dos dados ex
 
 Se um trabalho for configurado incorretamente ou se se tornar desnecessário, ele poderá ser facilmente cancelado usando o ponto de extremidade [Cancelar Trabalho de Cliente Potencial para Exportação](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Bulk-Export-Leads/operation/cancelExportLeadsUsingPOST):
 
-```
+```http
 POST /bulk/v1/leads/export/{exportId}/cancel.json
 ```
 

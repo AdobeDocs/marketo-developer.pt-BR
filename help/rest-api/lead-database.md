@@ -3,9 +3,9 @@ title: Banco de dados de leads
 feature: REST API, Database
 description: Guia para APIs de banco de dados de clientes potenciais da Marketo que abrangem objetos, métodos CRUD e Describe, padrões de consulta, limites de lote e restrições de integração de CRM.
 exl-id: e62e381f-916b-4d56-bc3d-0046219b68d3
-source-git-commit: 7557b9957c87f63c2646be13842ea450035792be
+source-git-commit: e2606d6cb12c572603ff069617de58417e43ca63
 workflow-type: tm+mt
-source-wordcount: '1357'
+source-wordcount: '1373'
 ht-degree: 1%
 
 ---
@@ -46,7 +46,7 @@ Para instâncias com uma integração de CRM nativa habilitada (Microsoft Dynami
 
 Para clientes potenciais, empresas, oportunidades, funções, vendedores e objetos personalizados, é fornecida uma API de descrição. Chamar essa opção recupera metadados para o objeto e uma lista de campos disponíveis para atualização e consulta. Descrever é uma parte essencial do design de uma integração adequada com o Marketo. Ele fornece metadados avançados sobre como os objetos podem ou não ter interação, bem como sobre como eles podem ser criados, atualizados e consultados. Além de Descrever Clientes Potenciais, cada um deles retorna uma lista de chaves disponíveis para `deduplication` no parâmetro de resposta `dedupeFields`. Uma lista de campos está disponível como chaves para consulta no parâmetro de resposta `searchableFields`.
 
-```
+```http
 GET /rest/v1/opportunities/roles/describe.json
 ```
 
@@ -136,7 +136,7 @@ Também há um parâmetro de resposta de campos, que fornecerá o nome de cada c
 
 Todos os objetos de banco de dados de clientes potenciais compartilham um padrão básico para consulta com chaves simples, onde apenas um campo é referenciado.
 
-```
+```http
 GET /rest/v1/{type}.json?filterType={field to query}&filterValues={comma-separated list of possible values}
 ```
 
@@ -149,7 +149,7 @@ Para todos os objetos, exceto clientes em potencial, você pode selecionar seu {
 
 Para ver um exemplo rápido, vamos ver as oportunidades de consulta:
 
-```
+```http
 GET /rest/v1/opportunities.json?filterType=idField&filterValues=dff23271-f996-47d7-984f-f2676861b5fa&dff23271-f996-47d7-984f-f2676861b5fc,dff23271-f996-47d7-984f-f2676861b5fb
 ```
 
@@ -188,15 +188,15 @@ Se o conjunto de registros na consulta exceder 300 ou o `batchSize` que foi espe
 
 Às vezes, como ao consultar por GUIDs, seu URI pode ser longo e exceder os 8 KB permitidos pelo serviço REST. Nesse caso, você deve usar o método HTTP POST em vez do GET e adicionar um parâmetro de consulta `_method=GET`. Além disso, o restante dos parâmetros de consulta devem ser passados no corpo POST como uma string &quot;application/x-www-form-urlencoded&quot; e passar o cabeçalho Content-type associado.
 
-```
+```http
 POST /rest/v1/opportunities.json?_method=GET
 ```
 
-```
+```text
 Content-Type: application/x-www-form-urlencoded
 ```
 
-```
+```text
 filterType=idField&filterValues=dff23271-f996-47d7-984f-f2676861b5fa&dff23271-f996-47d7-984f-f2676861b5fc,dff23271-f996-47d7-984f-f2676861b5fb,544fb7f5-2ddf-4fca-ae32-7e6ef1415e9f,f1ba41a2-69d1-4a35-9807-0e159d66f2c9,f7521272-3331-4a89-a768-222baff2f894
 ```
 
@@ -206,7 +206,7 @@ Além de URIs longos, esse parâmetro também é necessário ao consultar chaves
 
 O padrão para consultar chaves compostas é diferente das chaves simples, pois requer o envio de um POST com um corpo JSON. Isso não é necessário em todos os casos, apenas naqueles em que uma opção `dedupeFields` com vários campos é usada como `filterType`. Atualmente, as chaves compostas são usadas apenas por Funções de oportunidade e alguns objetos personalizados. Vamos ver um exemplo de uma consulta para Funções de oportunidade com a chave composta de `dedupeFields`:
 
-```
+```http
 POST /rest/v1/opportunities/roles.json?_method=GET
 ```
 
@@ -249,7 +249,7 @@ O único parâmetro necessário é uma matriz chamada `input` que contém até 3
 
 Ao passar uma lista de valores de campo, um valor de `null`, ou uma cadeia de caracteres vazia, é gravado no banco de dados como `null`.
 
-```
+```http
 POST /rest/v1/opportunities.json
 ```
 
@@ -301,7 +301,7 @@ Além da API de clientes potenciais, as chamadas para criar ou atualizar objetos
 
 A interface para exclusões é padrão para objetos de banco de dados de clientes potenciais além de clientes potenciais. Além da entrada, há apenas um parâmetro obrigatório `deleteBy,` que pode ter um valor de idField ou dedupeFields. Vamos analisar a exclusão de alguns objetos personalizados.
 
-```
+```http
 POST /rest/v1/customobjects/{name}/delete.json
 ```
 

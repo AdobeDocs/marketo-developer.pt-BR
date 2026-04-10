@@ -3,7 +3,7 @@ title: Notificações por push
 feature: Mobile Marketing
 description: Guia para ativar notificações por push do iOS com o Marketo, de certificados APNs e configuração do Xcode à integração, registro de token e manuseio de Marketo SDK.
 exl-id: 41d657d8-9eea-4314-ab24-fd4cb2be7f61
-source-git-commit: 14ca3ca1f1aa07bb3e54802003190a4a2b4fbcb9
+source-git-commit: e2606d6cb12c572603ff069617de58417e43ca63
 workflow-type: tm+mt
 source-wordcount: '1338'
 ht-degree: 0%
@@ -52,13 +52,13 @@ Importar sequência em `AppDelegate.h`.
 
 >[!TAB Objetivo C]
 
-```
+```objectivec
 #import <UserNotifications/UserNotifications.h>
 ```
 
 >[!TAB Swift]
 
-```
+```swift
 import UserNotifications
 ```
 
@@ -70,13 +70,13 @@ Adicione `UNUserNotificationCenterDelegate` a `AppDelegate` como mostrado abaixo
 
 >[!TAB Objetivo C]
 
-```
+```objectivec
 @interface AppDelegate : UIResponder <UIApplicationDelegate, UNUserNotificationCenterDelegate>
 ```
 
 >[!TAB Swift]
 
-```
+```swift
 class AppDelegate: UIResponder, UIApplicationDelegate , UNUserNotificationCenterDelegate
 ```
 
@@ -106,7 +106,7 @@ UNUserNotificationCenter *center = [UNUserNotificationCenter currentNotification
 
 >[!TAB Swift]
 
-```
+```swift
 func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
 
     UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound,    .badge]) { granted, error in
@@ -135,7 +135,7 @@ Registrar token de push com o Marketo. Para receber notificações por push do M
 
 >[!TAB Objetivo C]
 
-```
+```objectivec
 - (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
     // Register the push token with Marketo
     [[Marketo sharedInstance] registerPushDeviceToken:deviceToken];
@@ -144,7 +144,7 @@ Registrar token de push com o Marketo. Para receber notificações por push do M
 
 >[!TAB Swift]
 
-```
+```swift
 func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
     // Register the push token with Marketo
     Marketo.sharedInstance().registerPushDeviceToken(deviceToken)
@@ -159,13 +159,13 @@ O token também pode ter seu registro cancelado quando o usuário fizer logout.
 
 >[!TAB Objetivo C]
 
-```
+```objectivec
 [[Marketo sharedInstance] unregisterPushDeviceToken];
 ```
 
 >[!TAB Swift]
 
-```
+```swift
 Marketo.sharedInstance().unregisterPushDeviceToken
 ```
 
@@ -179,7 +179,7 @@ Lidar com a notificação por push. Para receber notificações por push do Mark
 
 >[!TAB Objetivo C]
 
-```
+```objectivec
 - (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo
 {
     [[Marketo sharedInstance] handlePushNotification:userInfo];
@@ -188,7 +188,7 @@ Lidar com a notificação por push. Para receber notificações por push do Mark
 
 >[!TAB Swift]
 
-```
+```swift
 func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable : Any]) {
     Marketo.sharedInstance().handlePushNotification(userInfo)
 }
@@ -204,7 +204,7 @@ Ao usar esse método, você pode apresentar alertas, sons ou aumentar o selo enq
 
 >[!TAB Objetivo C]
 
-```
+```objectivec
 -(void)userNotificationCenter:(UNUserNotificationCenter *)center
     willPresentNotification:(UNNotification *)notification
         withCompletionHandler:(void (^)(UNNotificationPresentationOptions options))completionHandler{
@@ -215,7 +215,7 @@ Ao usar esse método, você pode apresentar alertas, sons ou aumentar o selo enq
 
 >[!TAB Swift]
 
-```
+```swift
 func userNotificationCenter(_ center: UNUserNotificationCenter,
             willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (
     UNNotificationPresentationOptions) -> Void) {
@@ -233,7 +233,7 @@ O método será chamado no delegado quando o usuário responder à notificação
 
 >[!TAB Objetivo C]
 
-```
+```objectivec
 - (void)userNotificationCenter:(UNUserNotificationCenter *)center
 didReceiveNotificationResponse:(UNNotificationResponse *)response withCompletionHandler:(void(^)(void))completionHandler {
     [[Marketo sharedInstance] userNotificationCenter:center didReceiveNotificationResponse:response withCompletionHandler:completionHandler];
@@ -242,7 +242,7 @@ didReceiveNotificationResponse:(UNNotificationResponse *)response withCompletion
 
 >[!TAB Swift]
 
-```
+```swift
 func userNotificationCenter(_ center: UNUserNotificationCenter,
                                 didReceive response: UNNotificationResponse,
                                 withCompletionHandler

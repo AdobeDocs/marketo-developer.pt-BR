@@ -3,26 +3,26 @@ title: Empresas
 feature: REST API
 description: Use a API REST das Empresas Marketo para descrever, consultar e sincronizar registros da empresa, gerenciar campos e realizar a desduplicação por externalCompanyId e observar a sincronização de CRM como somente leitura.
 exl-id: 80e514a2-1c86-46a7-82bc-e4db702189b0
-source-git-commit: 7557b9957c87f63c2646be13842ea450035792be
+source-git-commit: e2606d6cb12c572603ff069617de58417e43ca63
 workflow-type: tm+mt
-source-wordcount: '582'
+source-wordcount: '676'
 ht-degree: 1%
 
 ---
 
 # Empresas
 
-[Referência de Ponto de Extremidade de Empresas](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Companies)
+[Referência de Empresa](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Companies)
 
 As empresas representam a organização à qual os registros de lead pertencem. Os clientes em potencial são adicionados a uma Empresa preenchendo o campo `externalCompanyId` correspondente com o uso dos pontos de extremidade [Sincronizar Clientes Potenciais](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Leads/operation/syncLeadUsingPOST) ou [Importação de Clientes Potenciais em Massa](bulk-lead-import.md). Depois que um cliente potencial é adicionado a uma empresa, não é possível excluí-lo dessa empresa (a menos que você adicione o cliente potencial a uma empresa diferente). Clientes potenciais vinculados a um registro de empresa herdarão diretamente os valores de um registro de empresa como se os valores existissem no próprio registro do cliente potencial.
 
-As APIs da empresa são acesso somente leitura para assinaturas com [Sincronização do SFDC](https://experienceleague.adobe.com/docs/marketo/using/product-docs/crm-sync/salesforce-sync/sfdc-sync-details/sfdc-sync-field-sync.html?lang=pt-BR) ou [Sincronização do Microsoft Dynamics](https://experienceleague.adobe.com/docs/marketo/using/product-docs/crm-sync/microsoft-dynamics/microsoft-dynamics-sync-details/microsoft-dynamics-sync-user-sync.html?lang=pt-BR) habilitadas.
+As APIs da empresa são acesso somente leitura para assinaturas com [Sincronização do SFDC](https://experienceleague.adobe.com/docs/marketo/using/product-docs/crm-sync/salesforce-sync/sfdc-sync-details/sfdc-sync-field-sync.html?lang=en) ou [Sincronização do Microsoft Dynamics](https://experienceleague.adobe.com/docs/marketo/using/product-docs/crm-sync/microsoft-dynamics/microsoft-dynamics-sync-details/microsoft-dynamics-sync-user-sync.html?lang=en) habilitadas.
 
 ## Descrever
 
 A descrição do objeto da empresa fornece todas as informações necessárias para interagir com ele.
 
-```
+```http
 GET /rest/v1/companies/describe.json
 ```
 
@@ -109,7 +109,7 @@ Se o parâmetro fields for omitido, o conjunto padrão de campos retornados ser�
 - updatedAt
 - createdAt
 
-```
+```http
 GET /rest/v1/companies.json?filterType=id&filterValues=3433,5345
 ```
 
@@ -138,11 +138,11 @@ GET /rest/v1/companies.json?filterType=id&filterValues=3433,5345
 
 O ponto de extremidade [Empresas de Sincronização](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Companies/operation/syncCompaniesUsingPOST) aceita o parâmetro `input` necessário que contém uma matriz de objetos da empresa. Assim como as oportunidades, há três modos para criar e atualizar empresas: createOnly, updateOnly e createOrUpdate.  Os modos estão especificados no parâmetro `action` da solicitação. Os parâmetros `dedupeBy` e `action` são opcionais e são padrão para os modos dedupeFields e createOrUpdate, respectivamente.
 
-```
+```http
 POST /rest/v1/companies.json
 ```
 
-```
+```text
 Content-Type: application/json
 ```
 
@@ -196,7 +196,7 @@ Consultar campos de empresa é simples. Você pode consultar um único campo de 
 
 O ponto de extremidade [Obter Campo da Empresa por Nome](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Companies/operation/getCompanyFieldByNameUsingGET) recupera metadados para um único campo no objeto da empresa. O parâmetro de caminho `fieldApiName` necessário especifica o nome da API do campo. A resposta é como o ponto de extremidade Descrever Empresa, mas contém metadados adicionais, como o atributo `isCustom`, que indica se o campo é um campo personalizado.
 
-```
+```http
 GET /rest/v1/companies/schema/fields/industry.json
 ```
 
@@ -225,7 +225,7 @@ GET /rest/v1/companies/schema/fields/industry.json
 
 O ponto de extremidade [Obter Campos de Empresa](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Companies/operation/getCompanyFieldsUsingGET) recupera metadados para todos os campos no objeto de empresa. Por padrão, no máximo 300 registros são retornados. Você pode usar o parâmetro de consulta `batchSize` para reduzir esse número. Se o atributo `moreResult` for true, significa que mais resultados estarão disponíveis. Continue a chamar esse endpoint até que o atributo moreResult retorne false, o que significa que não há resultados disponíveis. O `nextPageToken` retornado desta API deve sempre ser reutilizado para a próxima iteração desta chamada.
 
-```
+```http
 GET /rest/v1/companies/schema/fields.json?batchSize=5
 ```
 
@@ -303,11 +303,11 @@ GET /rest/v1/companies/schema/fields.json?batchSize=5
 
 Os critérios de exclusão estão especificados na matriz `input`, que contém uma lista de valores de pesquisa.  O método de exclusão está especificado no parâmetro `deleteBy`.  Os valores permitidos são: dedupeFields, idField.  O padrão é dedupeFields.
 
-```
+```text
 Content-Type: application/json
 ```
 
-```
+```http
 POST /rest/v1/companies/delete.json
 ```
 

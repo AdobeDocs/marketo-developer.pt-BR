@@ -3,9 +3,9 @@ title: Importação de Objeto Personalizado em Massa
 feature: Custom Objects
 description: Saiba como importar objetos personalizados do Marketo em massa via REST usando arquivos CSV, TSV ou SSV.
 exl-id: e795476c-14bc-4e8c-b611-1f0941a65825
-source-git-commit: 7557b9957c87f63c2646be13842ea450035792be
+source-git-commit: e2606d6cb12c572603ff069617de58417e43ca63
 workflow-type: tm+mt
-source-wordcount: '866'
+source-wordcount: '952'
 ht-degree: 0%
 
 ---
@@ -22,7 +22,7 @@ Você pode enviar mais de uma solicitação de importação em massa, dentro dos
 
 ## Exemplo de objeto personalizado
 
-Antes de usar a API em massa, você deve primeiro usar a interface do Administrador do Marketo para [criar seu objeto personalizado](https://experienceleague.adobe.com/pt-br/docs/marketo/using/product-docs/administration/marketo-custom-objects/create-marketo-custom-objects). Por exemplo, suponha que criamos um objeto personalizado &quot;Carro&quot; com campos &quot;Cor&quot;, &quot;Criar&quot;, &quot;Modelo&quot; e &quot;VIN&quot;. Abaixo estão as telas da interface do administrador mostrando o objeto personalizado. Você pode ver que usamos o campo VIN para desduplicação. Os nomes das APIs são destacados porque devem ser usados ao chamar pontos de extremidade relacionados à API em massa.
+Antes de usar a API em massa, você deve primeiro usar a interface do Administrador do Marketo para [criar seu objeto personalizado](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/administration/marketo-custom-objects/create-marketo-custom-objects). Por exemplo, suponha que criamos um objeto personalizado &quot;Carro&quot; com campos &quot;Cor&quot;, &quot;Criar&quot;, &quot;Modelo&quot; e &quot;VIN&quot;. Abaixo estão as telas da interface do administrador mostrando o objeto personalizado. Você pode ver que usamos o campo VIN para desduplicação. Os nomes das APIs são destacados porque devem ser usados ao chamar pontos de extremidade relacionados à API em massa.
 
 ![Inserir objeto personalizado](assets/bulk-insert-co-car-1.png)
 
@@ -34,7 +34,7 @@ Estes são os campos de objeto personalizados, conforme apresentados na interfac
 
 Você pode recuperar nomes de API de forma programática passando o nome da API do objeto personalizado para o ponto de extremidade [Descrever Objeto Personalizado](#describe).
 
-```
+```text
 /rest/v1/customobjects/{apiName}/describe.json
 ```
 
@@ -119,7 +119,7 @@ Você pode recuperar nomes de API de forma programática passando o nome da API 
 
 Agora suponha que você deseja importar três registros de objeto personalizado &quot;Carro&quot;. Usando o formato delimitado por vírgula (CSV), o arquivo pode ter esta aparência:
 
-```
+```text
 color,make,model,vin
 red,bmw,2002,WBA4R7C55HK895912
 yellow,bmw,320i,WBA4R7C30HK896061
@@ -132,18 +132,18 @@ A linha 1 é o cabeçalho e as linhas 2 a 4 são os registros de dados do objeto
 
 Para fazer a solicitação de importação em massa, você deve incluir o nome da API do objeto personalizado no caminho para o ponto de extremidade [Importar objetos personalizados](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Identity/operation/identityUsingPOST). Você também deve incluir um parâmetro &quot;file&quot; que faça referência ao nome do arquivo de importação e um parâmetro &quot;format&quot; que especifique como o arquivo de importação é delimitado (&quot;csv&quot;, &quot;tsv&quot; ou &quot;ssv&quot;).
 
-```
+```http
 POST /bulk/v1/customobjects/{apiName}/import.json?format=csv
 ```
 
-```
+```text
 Transfer-Encoding: chunked
 Content-Type: multipart/form-data; boundary=----WebKitFormBoundaryXjWP6BP8Ciq6bPeo
 Content-Length: 290
 Host: <munchkinId>.mktorest.com
 ```
 
-```
+```text
 ------WebKitFormBoundaryXjWP6BP8Ciq6bPeo
 Content-Disposition: form-data; name="file"; filename="custom_object_import.csv"
 Content-Type: text/csv
@@ -175,13 +175,13 @@ Observe que, na resposta à nossa chamada, não há nenhuma lista de sucessos ou
 
 Uma maneira simples de replicar a solicitação de importação em massa é usar o curl da linha de comando:
 
-```
+```bash
 curl -X POST -i -F format='csv' -F file='@custom_object_import.csv' -F access_token='<Access Token>' <REST API Endpoint URL>/bulk/v1/customobjects/car_c/import.json
 ```
 
 Onde o arquivo de importação &quot;custom_object_import.csv&quot; contém o seguinte:
 
-```
+```text
 color,make,model,vin
 red,bmw,2002,WBA4R7C55HK895912
 yellow,bmw,320i,WBA4R7C30HK896061
@@ -192,7 +192,7 @@ blue,bmw,325i,WBS3U9C52HP970604
 
 Após criar o trabalho de importação, você deve consultar seu status. É prática recomendada pesquisar o trabalho de importação a cada 5-30 segundos. Faça isso passando o nome da API do objeto personalizado e o `batchId` no caminho para o ponto de extremidade [Obter Status do Objeto Personalizado de Importação](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Bulk-Import-Custom-Objects/operation/getImportCustomObjectStatusUsingGET).
 
-```
+```http
 GET /bulk/v1/customobjects/{apiName}/import/{batchId}/status.json
 ```
 
@@ -224,13 +224,13 @@ As falhas são indicadas pelo atributo `numOfRowsFailed` na resposta [Obter Stat
 
 Continuando com o exemplo, podemos forçar uma falha modificando o cabeçalho e alterando &quot;vin&quot; para &quot; vin&quot; (adicionando um espaço entre a vírgula e &quot;vin&quot;).
 
-```
+```text
 color,make,model, vin
 ```
 
 Quando reimportamos e verificamos o status, vemos esta resposta com `numRowsFailed`: 3. Isso indica três falhas.
 
-```
+```http
 GET /bulk/v1/customobjects/car_c/import/{batchId}/status.json
 ```
 
@@ -256,11 +256,11 @@ GET /bulk/v1/customobjects/car_c/import/{batchId}/status.json
 
 Agora fazemos a chamada de endpoint Obter Falha de Importação de Objeto Personalizado para obter detalhes adicionais de falha:
 
-```
+```http
 GET /bulk/v1/customobjects/car_c/import/{batchId}/failures.json
 ```
 
-```
+```text
 color,make,model, vin,Import Failure Reason
 red,bmw,2002,WBA4R7C55HK895912,missing.dedupe.fields
 yellow,bmw,320i,WBA4R7C30HK896061,missing.dedupe.fields
@@ -273,6 +273,6 @@ E podemos ver que nosso campo de eliminação de duplicação `vin` está ausent
 
 Os avisos são indicados pelo atributo `numOfRowsWithWarning` na resposta Obter Status do Objeto Personalizado de Importação. Se numOfRowsWithWarning for maior que zero, esse valor indicará o número de avisos que ocorreram. Chame o ponto de extremidade [Obter Avisos de Importação de Objeto Personalizado](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Bulk-Import-Custom-Objects/operation/getImportCustomObjectWarningsUsingGET) para obter um arquivo com detalhes de aviso. Novamente, você deve passar o nome da API do objeto personalizado e `batchId` no caminho. Se nenhum arquivo de aviso existir, um código de status HTTP 404 será retornado.
 
-```
+```http
 GET /bulk/v1/customobjects/car_c/import/{batchId}/warnings.json
 ```

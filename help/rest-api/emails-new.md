@@ -3,7 +3,7 @@ title: Emails
 feature: REST API
 description: Use a API REST do Marketo Asset para consultar, criar, atualizar, clonar, excluir, aprovar e inspecionar dependências de ativos de email.
 exl-id: b41a3ae5-2b25-4103-84b4-320fc2c44bd6
-source-git-commit: 0e0a3e5a08e81f349044cbc327d1aba963ab30e4
+source-git-commit: e2606d6cb12c572603ff069617de58417e43ca63
 workflow-type: tm+mt
 source-wordcount: '497'
 ht-degree: 5%
@@ -38,7 +38,7 @@ Você pode recuperar metadados de email por ativo `id` ou com o ponto de extremi
 
 #### Solicitação
 
-```text
+```http
 GET /rest/asset/v2/email/{id}
 ```
 
@@ -95,7 +95,7 @@ Parâmetros de consulta compatíveis:
 
 #### Solicitação
 
-```text
+```http
 GET /rest/asset/v2/email/filter?workspaceId=1001&name=Spring%20Launch&status=draft&status=approved&pageIndex=0&pageSize=20
 ```
 
@@ -125,7 +125,7 @@ Crie um email enviando uma carga JSON. `name`, `appData` e `headers` são obriga
 
 ### Solicitação
 
-```text
+```http
 POST /rest/asset/v2/email
 Content-Type: application/json
 ```
@@ -192,7 +192,7 @@ Atualizar um email por ID de ativo. O corpo da solicitação usa o esquema `Upda
 
 ### Solicitação
 
-```text
+```http
 POST /rest/asset/v2/email/{id}/update
 Content-Type: application/json
 ```
@@ -240,7 +240,7 @@ Os valores válidos de `action` são:
 
 ### Solicitação
 
-```text
+```http
 POST /rest/asset/v2/email/state/transition
 Content-Type: application/json
 ```
@@ -260,7 +260,7 @@ Use o endpoint de clonagem para criar uma cópia de um email existente.
 
 ### Solicitação
 
-```text
+```http
 POST /rest/asset/v2/email/clone
 Content-Type: application/json
 ```
@@ -283,7 +283,7 @@ Excluir um email por ID do ativo.
 
 ### Solicitação
 
-```text
+```http
 POST /rest/asset/v2/email/{id}/delete
 Content-Type: application/json
 ```
@@ -296,7 +296,7 @@ Use o ponto de extremidade `usedby` para recuperar ativos que fazem referência 
 
 ### Solicitação
 
-```text
+```http
 POST /rest/asset/v2/email/usedby
 Content-Type: application/json
 ```

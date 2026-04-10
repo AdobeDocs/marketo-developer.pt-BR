@@ -3,9 +3,9 @@ title: Vendedores
 feature: REST API
 description: Guia da API REST do Marketo para registros de Vendedor com sincronização do SFDC ou Dynamics, usando externalSalesPersonId para relacionar-se a clientes potenciais e executar query, substituição, exclusão.
 exl-id: f8ed5aa5-63c1-4c5b-8683-bf47eed1ea18
-source-git-commit: 7557b9957c87f63c2646be13842ea450035792be
+source-git-commit: e2606d6cb12c572603ff069617de58417e43ca63
 workflow-type: tm+mt
-source-wordcount: '322'
+source-wordcount: '396'
 ht-degree: 0%
 
 ---
@@ -14,7 +14,7 @@ ht-degree: 0%
 
 [Referência de Ponto de Extremidade de Vendedor](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Sales-Persons)
 
-As APIs de Vendedor são acesso somente leitura para assinaturas com [Sincronização do SFDC](https://experienceleague.adobe.com/pt-br/docs/marketo/using/product-docs/crm-sync/salesforce-sync/sfdc-sync-details/sfdc-sync-field-sync) ou [Sincronização do Microsoft Dynamics](https://experienceleague.adobe.com/pt-br/docs/marketo/using/product-docs/crm-sync/microsoft-dynamics/microsoft-dynamics-sync-details/microsoft-dynamics-sync-user-sync) habilitada. Vendedores são um tipo de registro de pessoa que é o proprietário das vendas dos registros de lead. Eles estão relacionados aos registros de cliente potencial pelo campo externalSalesPersonId em cada registro de cliente potencial. Quando um cliente potencial é relacionado a um Vendedor por um campo externalSalesPersonId preenchido, os campos de pesquisa Proprietário do cliente potencial correspondentes são preenchidos para esse registro de cliente potencial no Marketo, permitindo o uso dos filtros e tokens correspondentes.
+As APIs de Vendedor são acesso somente leitura para assinaturas com [Sincronização do SFDC](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/crm-sync/salesforce-sync/sfdc-sync-details/sfdc-sync-field-sync) ou [Sincronização do Microsoft Dynamics](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/crm-sync/microsoft-dynamics/microsoft-dynamics-sync-details/microsoft-dynamics-sync-user-sync) habilitada. Vendedores são um tipo de registro de pessoa que é o proprietário das vendas dos registros de lead. Eles estão relacionados aos registros de cliente potencial pelo campo externalSalesPersonId em cada registro de cliente potencial. Quando um cliente potencial é relacionado a um Vendedor por um campo externalSalesPersonId preenchido, os campos de pesquisa Proprietário do cliente potencial correspondentes são preenchidos para esse registro de cliente potencial no Marketo, permitindo o uso dos filtros e tokens correspondentes.
 
 Vendedores estão relacionados a registros de Clientes potenciais usando o ponto de extremidade [Sincronizar Clientes Potenciais](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Leads/operation/syncLeadUsingPOST) e transmitindo o atributo externalSalesPersonId.
 
@@ -28,7 +28,7 @@ Os registros de Vendedor só podem ser editados por meio da API.
 
 A descrição dos registros de Vendedor segue o padrão padrão para objetos de banco de dados de lead.
 
-```
+```http
 GET /rest/v1/salespersons/describe.json
 ```
 
@@ -101,7 +101,7 @@ Por padrão, o `idField` dos Vendedores é &quot;id&quot; e o `dedupeFields` é 
 
 Vendedores usando o padrão de consulta padrão para chaves simples. Este exemplo mostra o email do usuário sendo usado como externalSalesPersonId. Por padrão, a consulta retorna todos os campos preenchidos para os registros retornados.
 
-```
+```http
 GET /rest/v1/salespersons.json?filterType=dedupeFields&filterValues=david@test.com,sam@test.com
 ```
 
@@ -132,7 +132,7 @@ GET /rest/v1/salespersons.json?filterType=dedupeFields&filterValues=david@test.c
 
 O padrão para atualizações é padrão.
 
-```
+```http
 POST /rest/v1/salespersons.json
 ```
 
@@ -185,7 +185,7 @@ A exclusão de vendedores não é permitida quando &quot;em uso&quot;. Nesse cas
 - Quando Vendedor está associado a Clientes Potenciais ativos
 - Quando o Vendedor está associado a uma Empresa que foi excluída
 
-```
+```http
 POST /rest/v1/salespersons/delete.json
 ```
 

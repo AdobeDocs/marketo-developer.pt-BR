@@ -3,16 +3,16 @@ title: Programas
 feature: REST API, Programs
 description: Guia de programas do Marketo para a API REST do Assets abrangendo tipos, canais, tags, status de membros e endpoints para obter por id ou nome, navegar e filtrar por status.
 exl-id: 30700de2-8f4a-4580-92f2-7036905deb80
-source-git-commit: 7557b9957c87f63c2646be13842ea450035792be
+source-git-commit: e2606d6cb12c572603ff069617de58417e43ca63
 workflow-type: tm+mt
-source-wordcount: '870'
-ht-degree: 2%
+source-wordcount: '979'
+ht-degree: 1%
 
 ---
 
 # Programas
 
-[Referência de Ponto de Extremidade de Programas](https://developer.adobe.com/marketo-apis/api/asset/#tag/Programs)
+[Referência de endpoint de programas](https://developer.adobe.com/marketo-apis/api/asset/#tag/Programs)
 
 Os programas são um componente organizacional principal das Atividades de marketing do Marketo. Eles podem ser primários da maioria dos tipos de ativos e permitem o rastreamento da associação e do sucesso dos clientes potenciais no contexto de iniciativas de marketing individuais. Os programas podem ser pais de todos os tipos de registros, exceto LP, Modelos de email e Arquivos.
 
@@ -40,7 +40,7 @@ O ponto de extremidade [Obter Programa por Id](https://developer.adobe.com/marke
 
 A Id do Programa pode ser obtida da URL do programa na interface do usuário, onde a URL será semelhante a `https://app-\*\*\*.marketo.com/#PG1001A1`. Nesta URL, o `id` é 1001. Ele sempre estará entre o primeiro conjunto de letras no URL e o segundo conjunto de letras.
 
-```
+```http
 GET /rest/asset/v1/program/{id}.json
 ```
 
@@ -84,7 +84,7 @@ GET /rest/asset/v1/program/{id}.json
 
 O ponto de extremidade [Obter Programa por Nome](https://developer.adobe.com/marketo-apis/api/asset/) requer um parâmetro de consulta `name`. Os parâmetros opcionais de consulta booleana são `includeTags` e `includeCosts`, que são usados para retornar marcas de programa e custos de programa, respectivamente.
 
-```
+```http
 GET /rest/asset/v1/program/byName.json?name=TestProgramName&includeTags=true
 ```
 
@@ -134,7 +134,7 @@ O parâmetro `maxReturn` opcional controla o número de programas a serem retorn
 
 Observe que as tags associadas a um programa não são retornadas por esse endpoint. As marcas de programa podem ser recuperadas usando [Obter Programas por Id](https://developer.adobe.com/marketo-apis/api/asset/#tag/Programs/operation/getProgramByIdUsingGET) ou [Obter Programas por Nome](https://developer.adobe.com/marketo-apis/api/asset/#tag/Programs/operation/getProgramByNameUsingGET).
 
-```
+```http
 GET /rest/asset/v1/programs.json
 ```
 
@@ -189,7 +189,7 @@ GET /rest/asset/v1/programs.json
 
 Os parâmetros `earliestUpdatedAt` e `latestUpdatedAt` do nosso ponto de extremidade [Obter Programas](https://developer.adobe.com/marketo-apis/api/asset/#tag/Sales-Persons/operation/describeUsingGET_5) permitem que você defina marcas d&#39;água de data e hora baixas e altas para retornar programas que foram atualizados ou criados inicialmente dentro do intervalo especificado.
 
-```
+```http
 GET /rest/asset/v1/programs.json?earliestUpdatedAt=2017-01-01T00:00:00-05:00&latestUpdatedAt=2017-01-30T00:00:00-05:00
 ```
 
@@ -282,7 +282,7 @@ O ponto de extremidade [Obter Programas por Marca](https://developer.adobe.com/m
 
 Há dois parâmetros obrigatórios, `tagType` que é o tipo de marca para filtrar e `tagValue` que é o valor da marca para filtrar.  Há um parâmetro `maxReturn` inteiro opcional que controla o número de programas a serem retornados (o máximo é 200, o padrão é 20) e um parâmetro `offset` inteiro opcional usado para resultados de paginação (o padrão é 0).  Os resultados são retornados em ordem aleatória.
 
-```
+```http
 GET /rest/asset/v1/program/byTag.json?tagType=Presenter&tagValue=Dennis
 ```
 
@@ -329,15 +329,15 @@ Ao criar ou atualizar um Programa de Email, um `startDate` e `endDate` também p
 
 ### Criar
 
-```
+```http
 POST /rest/asset/v1/programs.json
 ```
 
-```
+```text
 Content-Type: application/x-www-form-urlencoded
 ```
 
-```
+```text
 name=API Test Program&folder={"id":1035,"type":"Folder"}&description=Sample API Program&type=Default&channel=Email Blast&costs=[{"startDate":"2015-01-01","cost":2000}]
 ```
 
@@ -381,15 +381,15 @@ name=API Test Program&folder={"id":1035,"type":"Folder"}&description=Sample API 
 
 Ao atualizar os custos do programa, para acrescentar novos custos, adicione-os à matriz `costs`. Para executar uma atualização destrutiva, passe seus novos custos, juntamente com o parâmetro `costsDestructiveUpdate` definido como `true`. Para limpar todos os custos de um programa, não passe um parâmetro `costs` e apenas passe `costsDestructiveUpdate` definido como `true`.
 
-```
+```http
 POST /rest/asset/v1/program/{id}.json
 ```
 
-```
+```text
 Content-Type: application/x-www-form-urlencoded
 ```
 
-```
+```text
 description=This is an updated description&name=Updated Program Name&costs=[{"startDate":"2016-01-01","cost":200,"note":"Google Adwords"}]
 ```
 
@@ -445,7 +445,7 @@ Os Programas de e-mail podem ser aprovados ou não aprovados remotamente, o que 
 
 ### Aprovar
 
-```
+```http
 POST /rest/asset/v1/program/{id}/approve.json
 ```
 
@@ -465,7 +465,7 @@ POST /rest/asset/v1/program/{id}/approve.json
 
 ### Cancelar aprovação
 
-```
+```http
 POST /rest/asset/v1/program/{id}/unapprove.json
 ```
 
@@ -489,15 +489,15 @@ POST /rest/asset/v1/program/{id}/unapprove.json
 
 Programas que contêm determinados tipos de ativos não podem ser clonados por meio dessa API, incluindo Notificações por push, Mensagens no aplicativo, Relatórios e Social Assets. Os programas no aplicativo não podem ser clonados por meio dessa API.
 
-```
+```http
 POST /rest/asset/v1/program/{id}/clone.json
 ```
 
-```
+```text
 Content-Type: application/x-www-form-urlencoded
 ```
 
-```
+```text
 name=Cloned Program - PHP&folder={"id":5562,"type":"Folder"}&description=Description
 ```
 
@@ -536,7 +536,7 @@ name=Cloned Program - PHP&folder={"id":5562,"type":"Folder"}&description=Descrip
 
 A exclusão de programas segue o padrão de exclusão de ativos padrão.
 
-```
+```http
 POST /rest/asset/v1/program/{id}/delete.json
 ```
 

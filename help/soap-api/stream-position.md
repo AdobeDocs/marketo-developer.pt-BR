@@ -3,9 +3,9 @@ title: Posição do fluxo
 feature: SOAP
 description: Explica a posição do fluxo para paginar dados sequenciados por tempo no SOAP, formatos simples e complexos e usar em getLeadChanges, getLeadActivity e muito mais
 exl-id: c3a3fc1e-086b-4822-b2c7-2a7959db557c
-source-git-commit: 7557b9957c87f63c2646be13842ea450035792be
+source-git-commit: e2606d6cb12c572603ff069617de58417e43ca63
 workflow-type: tm+mt
-source-wordcount: '156'
+source-wordcount: '157'
 ht-degree: 0%
 
 ---
@@ -26,7 +26,7 @@ A posição do fluxo é usada para recuperar dados em lotes e permite que o cham
 
 ## Posição de fluxo simples
 
-```
+```xml
 <streamPosition>8UJZetaMb1V6uUZl+L7DcPP2jG+PMmtpF</streamPosition>
 ```
 

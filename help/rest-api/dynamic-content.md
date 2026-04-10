@@ -3,9 +3,9 @@ title: Conteúdo dinâmico
 feature: REST API, Dynamic Content
 description: Configure o conteúdo dinâmico do Marketo em nível de seção por meio das APIs REST usando segmentações para personalizar emails, páginas de aterrissagem e trechos com endpoints e exemplos
 exl-id: 8ab97624-5fb5-4a41-911f-ec8616dd43c9
-source-git-commit: 7557b9957c87f63c2646be13842ea450035792be
+source-git-commit: e2606d6cb12c572603ff069617de58417e43ca63
 workflow-type: tm+mt
-source-wordcount: '441'
+source-wordcount: '463'
 ht-degree: 2%
 
 ---
@@ -30,11 +30,11 @@ Observação: tanto os emails quanto as landing pages seguem esse padrão. Os tr
 
 O exemplo a seguir define a seção como conteúdo dinâmico, segmentado por segmentação 1001.
 
-```
+```http
 POST /rest/asset/v1/email/{id}/content/Q1-promotion-banner.json
 ```
 
-```
+```text
 type=DynamicContent&value=1001
 ```
 
@@ -56,11 +56,11 @@ Para adicionar conteúdo a segmentos individuais, devemos chamar o ponto de extr
 
 O exemplo a seguir define a seção para mostrar a imagem de banner especial para clientes potenciais no segmento Sudoeste, em vez do padrão. Se quisermos criar mais variações para mais segmentos, chamaremos esse endpoint novamente para cada segmento e seção.
 
-```
+```http
 POST /rest/asset/v1/email/{id}/dynamicContent/{dynamicContentId}.json
 ```
 
-```
+```text
 segment=Southwest&type=HTML&value=<img src='//www.example.com/SuperSpecialBannerForAmericanSouthwestLeads.jpg'/>
 ```
 
@@ -86,7 +86,7 @@ A segmentação é o núcleo do conteúdo dinâmico do Marketo. Uma segmentaçã
 
 As segmentações têm um endpoint de lista que retorna uma resposta com uma lista de segmentações disponíveis.
 
-```
+```http
 GET /rest/asset/v1/segmentation.json
 ```
 
@@ -133,7 +133,7 @@ GET /rest/asset/v1/segmentation.json
 
 As segmentações também têm um endpoint que retorna uma resposta com uma lista de segmentos de uma segmentação principal.
 
-```
+```http
 GET /rest/asset/v1/segmentation/1001/segments.json
 ```
 

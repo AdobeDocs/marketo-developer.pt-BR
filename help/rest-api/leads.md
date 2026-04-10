@@ -3,7 +3,7 @@ title: Leads
 feature: REST API
 description: Explore os recursos da API REST do Marketo Leads, incluindo Descrever, consultar por ID ou filtro, campos padrão, limites e recuperação de ECIDs.
 exl-id: 0a2f7c38-02ae-4d97-acfe-9dd108a1f733
-source-git-commit: 66154fa4aa37190a49dcc62f57debef5e1e829a1
+source-git-commit: e2606d6cb12c572603ff069617de58417e43ca63
 workflow-type: tm+mt
 source-wordcount: '3457'
 ht-degree: 3%
@@ -30,7 +30,7 @@ Descrever é a principal fonte da verdade sobre se os campos estão disponíveis
 
 ### Solicitação
 
-```
+```http
 GET /rest/v1/leads/describe.json
 ```
 
@@ -68,7 +68,7 @@ Como opção, você pode enviar um parâmetro de campos que contém uma lista se
 
 ### Solicitação
 
-```
+```http
 GET /rest/v1/lead/{id}.json
 ```
 
@@ -103,7 +103,7 @@ Se o tamanho total da solicitação GET exceder 8 KB, um erro HTTP será retorna
 
 ### Solicitação
 
-```
+```http
 GET /rest/v1/leads.json?filterType=id&filterValues=318581,318592
 ```
 
@@ -168,7 +168,7 @@ Além de recuperar dados de lead, você pode criar, atualizar e excluir registro
 
 ### Solicitação
 
-```
+```http
 POST /rest/v1/leads.json
 ```
 
@@ -247,7 +247,7 @@ O ponto de extremidade Obter Campo de Cliente Potencial por Nome recupera metada
 
 ### Solicitação
 
-```
+```http
 GET /rest/v1/leads/schema/fields/{fieldApiName}.json
 ```
 
@@ -279,7 +279,7 @@ O ponto de extremidade Obter campos de cliente potencial recupera metadados para
 
 ### Solicitação
 
-```
+```http
 GET /rest/v1/leads/schema/fields.json
 ```
 
@@ -426,7 +426,7 @@ Há algumas regras associadas ao nome e à nomenclatura `displayName`. O atribut
 
 ### Solicitação
 
-```
+```http
 POST /rest/v1/leads/schema/fields.json
 ```
 
@@ -557,7 +557,7 @@ O parâmetro de caminho `fieldApiName` necessário especifica o nome da API do c
 
 ### Solicitação
 
-```
+```http
 POST /rest/v1/leads/schema/fields/{fieldApiName}.json
 ```
 
@@ -600,7 +600,7 @@ Observação sobre atividades anônimas. Se desejar associar atividades anônima
 
 ### Solicitação
 
-```
+```http
 POST /rest/v1/leads/push.json
 ```
 
@@ -710,13 +710,13 @@ Novos clientes potenciais são criados na partição primária do espaço de tra
 
 ### Solicitação
 
-```
+```http
 POST /rest/v1/leads/submitForm.json
 ```
 
 ### Header
 
-```
+```text
 Content-Type: application/json
 ```
 
@@ -775,7 +775,7 @@ Aqui podemos ver os detalhes da atividade &quot;Preencher formulário&quot; corr
 
 ### Solicitação
 
-```
+```http
 POST /rest/v1/leads/{id}/merge.json?leadId=1324
 ```
 
@@ -798,7 +798,7 @@ Por meio do Rastreamento de leads (Munchkin), a Marketo registra a atividade dos
 
 ### Solicitação
 
-```
+```http
 POST /rest/v1/leads/{id}/associate.json?cookie=id:287-GTJ-838%26token:_mch-marketo.com-1396310362214-46169
 ```
 
@@ -817,13 +817,13 @@ Associação
 Os registros de clientes potenciais também podem ser recuperados com base na associação a uma lista estática ou a um programa. Além disso, você pode recuperar todas as listas estáticas, programas ou campanhas inteligentes das quais um lead é membro.
 
 A estrutura de resposta e os parâmetros opcionais são idênticos aos de Obter clientes em potencial por tipo de filtro, embora `filterType` e `filterValues` não possam ser usados com essa API.
-Para acessar a ID da lista por meio da interface do usuário do Marketo, navegue até a lista. A lista `id` está na URL da lista estática, `https://app-**&#x200B;**.marketo.com/#ST1001A1`. Neste exemplo, 1001 é o `id` da lista.
+Para acessar a ID da lista por meio da interface do usuário do Marketo, navegue até a lista. A lista `id` está na URL da lista estática, `https://app-****.marketo.com/#ST1001A1`. Neste exemplo, 1001 é o `id` da lista.
 
 ## Obter Programas por ID de Cliente Potencial
 
 ### Solicitação
 
-```
+```http
 GET /rest/v1/list/{listId}/leads.json?batchSize=3
 ```
 
@@ -864,7 +864,7 @@ O ponto de extremidade Obter Listas por Id de Cliente Potencial pega o parâmetr
 
 ### Solicitação
 
-```
+```http
 GET /rest/v1/leads/{id}/listMembership.json?batchSize=3
 ```
 
@@ -906,7 +906,7 @@ A estrutura de resposta é muito semelhante, pois cada item na matriz de resulta
 
 ### Solicitação
 
-```
+```http
 GET /rest/v1/leads/programs/{programId}.json?batchSize=3
 ```
 
@@ -980,7 +980,7 @@ O ponto de extremidade Obter Programas por ID de Cliente Potencial pega um parâ
 
 ### Solicitação
 
-```
+```http
 GET /rest/v1/leads/{id}/programMembership.json
 ```
 
@@ -1011,7 +1011,7 @@ O ponto de extremidade Obter campanhas inteligentes por ID do lead usa um parâm
 
 ### Solicitação
 
-```
+```http
 GET /rest/v1/leads/{id}/smartCampaignMembership.json?batchSize=3
 ```
 
@@ -1049,7 +1049,7 @@ A remoção de clientes em potencial é simples e direta usando o ponto de extre
 
 ### Solicitação
 
-```
+```http
 POST /rest/v1/leads/delete.json
 ```
 

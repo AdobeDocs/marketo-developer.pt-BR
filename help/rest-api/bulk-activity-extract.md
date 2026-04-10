@@ -3,7 +3,7 @@ title: Extração de atividade em massa
 feature: REST API
 description: API REST de extração de atividade em massa do Marketo para exportar dados de atividade em alto volume usando um intervalo de datas de 31 dias, atividade e filtros de atributo principal para ETL e CRM.
 exl-id: 6bdfa78e-bc5b-4eea-bcb0-e26e36cf6e19
-source-git-commit: b2b1027ccf8016c2e4c081753842a6febac832ec
+source-git-commit: e2606d6cb12c572603ff069617de58417e43ca63
 workflow-type: tm+mt
 source-wordcount: '1564'
 ht-degree: 6%
@@ -110,7 +110,7 @@ Ao usar `primaryAttributeValues`, o filtro `activityTypeIds` deve estar presente
 
 Para exportar registros, primeiro defina o trabalho e o conjunto de registros que deseja recuperar.  Crie o trabalho usando o ponto de extremidade [Criar Trabalho de Atividade de Exportação](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Bulk-Export-Activities/operation/createExportActivitiesUsingPOST).  Ao exportar atividades, há dois filtros principais que podem ser aplicados: `createdAt`, que é sempre obrigatório, e `activityTypeIds`, que é opcional.  O filtro `createdAt` é usado para definir um intervalo de datas em que as atividades foram criadas, usando os parâmetros `startAt` e `endAt`, que são campos de data e hora, e representam a data de criação mais antiga permitida e a data de criação mais recente permitida, respectivamente.  Você também pode filtrar apenas alguns tipos de atividades, usando o filtro `activityTypeIds`.  Isso é útil para remover resultados que não são relevantes para seu caso de uso.
 
-```
+```http
 POST /bulk/v1/activities/export/create.json
 ```
 
@@ -149,7 +149,7 @@ POST /bulk/v1/activities/export/create.json
 
 A tarefa agora tem um status de &quot;Criada&quot;, mas ainda não está na fila de processamento.  Para colocá-lo na fila para que ele possa começar a ser processado, chame o ponto de extremidade [Enfileirar Trabalho de Atividade de Exportação](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Bulk-Export-Activities/operation/enqueueExportActivitiesUsingPOST) usando a exportId da resposta de status de criação.
 
-```
+```http
 POST /bulk/v1/activities/export/{exportId}/enqueue.json
 ```
 
@@ -177,7 +177,7 @@ O status do trabalho só pode ser recuperado para trabalhos criados pelo mesmo u
 
 A Extração de atividade em massa do Marketo é um endpoint assíncrono, portanto, o status do trabalho deve ser sondado para determinar quando o trabalho é concluído.  Consulte usando o ponto de extremidade [Obter Status do Trabalho da Atividade de Exportação](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Bulk-Export-Activities/operation/getExportActivitiesStatusUsingGET) da seguinte maneira:
 
-```
+```http
 GET /bulk/v1/activities/export/{exportId}/status.json
 ```
 
@@ -215,7 +215,7 @@ O campo de status pode responder com um dos seguintes valores:
 
 Quando o trabalho for concluído, recupere seus dados usando o ponto de extremidade [Obter Arquivo de Atividade de Exportação](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Bulk-Export-Activities/operation/getExportActivitiesFileUsingGET).
 
-```
+```http
 GET /bulk/v1/activities/export/{exportId}/file.json
 ```
 
@@ -237,7 +237,7 @@ Para oferecer suporte à recuperação parcial e de fácil retomada de dados ext
 
 Se um trabalho for configurado incorretamente ou se se tornar desnecessário, ele poderá ser facilmente cancelado usando o ponto de extremidade [Cancelar Trabalho da Atividade de Exportação](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Bulk-Export-Activities/operation/cancelExportActivitiesUsingPOST):
 
-```
+```http
 POST /bulk/v1/activities/export/{exportId}/cancel.json
 ```
 

@@ -3,10 +3,10 @@ title: Ações Personalizadas
 feature: Mobile Marketing
 description: Saiba como enviar e relatar ações personalizadas com o Marketo Mobile SDK para iOS e Android, colocar em fila offline, acionar Campanhas inteligentes e atender aos 20 caracteres...
 exl-id: 8c2698ce-4e39-4b2b-9d36-0864c55be17a
-source-git-commit: 7557b9957c87f63c2646be13842ea450035792be
+source-git-commit: e2606d6cb12c572603ff069617de58417e43ca63
 workflow-type: tm+mt
-source-wordcount: '313'
-ht-degree: 0%
+source-wordcount: '336'
+ht-degree: 1%
 
 ---
 
@@ -14,7 +14,7 @@ ht-degree: 0%
 
 É possível rastrear a interação do usuário enviando ações personalizadas. Quando o aplicativo móvel chama o Marketo SDK para enviar uma ação personalizada, a ação personalizada é salva inicialmente no dispositivo. O Marketo SDK verifica se há conectividade de Internet adequada antes de enviar a ação personalizada. Como resultado, pode haver um atraso entre o momento em que a ação personalizada é enviada e o momento em que é recebida pelo Marketo.
 
-Ações personalizadas podem ser usadas como acionadores e filtros em Campanhas inteligentes. Para obter mais informações, consulte [Atividade no aplicativo móvel](https://experienceleague.adobe.com/pt-br/docs/marketo/using/product-docs/core-marketo-concepts/smart-campaigns/flow-actions/triggers-and-filters-for-mobile-smart-campaigns).
+Ações personalizadas podem ser usadas como acionadores e filtros em Campanhas inteligentes. Para obter mais informações, consulte [Atividade no aplicativo móvel](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/core-marketo-concepts/smart-campaigns/flow-actions/triggers-and-filters-for-mobile-smart-campaigns).
 
 ## Envio de ações personalizadas no iOS
 
@@ -24,14 +24,14 @@ Enviar ação personalizada.
 
 >[!TAB Objetivo C]
 
-```
+```objectivec
 Marketo *sharedInstance = [Marketo sharedInstance];
 [sharedInstance reportAction:@"Login" withMetaData:nil];
 ```
 
 >[!TAB Swift]
 
-```
+```swift
 sharedInstance.reportAction("Login", withMetaData:nil);
 ```
 
@@ -43,7 +43,7 @@ Enviar ação personalizada com metadados.
 
 >[!TAB Objetivo C]
 
-```
+```objectivec
 MarketoActionMetaData *meta = [[MarketoActionMetaData alloc] init];
 [meta setType:@"Shopping"];
 [meta setDetails:@"RedShirt"];
@@ -55,7 +55,7 @@ MarketoActionMetaData *meta = [[MarketoActionMetaData alloc] init];
 
 >[!TAB Swift]
 
-```
+```swift
 let meta = MarketoActionMetaData()
 meta.setType("Shopping");
 meta.setDetails("RedShirt");
@@ -73,13 +73,13 @@ Relatar todas as ações imediatamente (enviar todas as ações salvas).
 
 >[!TAB Objetivo C]
 
-```
+```objectivec
 [sharedInstance reportAll];
 ```
 
 >[!TAB Swift]
 
-```
+```swift
 sharedInstance.reportAll();
 ```
 

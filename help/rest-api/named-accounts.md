@@ -3,9 +3,9 @@ title: Contas nomeadas
 feature: REST API
 description: Guia do Marketo REST para CRUD em contas nomeadas para ABM, com descrever, consultar, criar exemplos de atualização, campos pesquisáveis, regras de desduplicação e sem vinculação de leads.
 exl-id: 2aa1d2a0-9e54-4a9a-abb1-0d0479ed3558
-source-git-commit: 7557b9957c87f63c2646be13842ea450035792be
+source-git-commit: e2606d6cb12c572603ff069617de58417e43ca63
 workflow-type: tm+mt
-source-wordcount: '697'
+source-wordcount: '730'
 ht-degree: 1%
 
 ---
@@ -22,7 +22,7 @@ Atualmente, as únicas funções relacionadas à ABM disponíveis por meio das A
 
 Descrever contas nomeadas retorna metadados relacionados ao uso de contas nomeadas por meio das APIs do Marketo, incluindo uma lista de campos pesquisáveis válidos ao consultar e uma lista de todos os campos disponíveis para uso da API. O `idField` de uma conta nomeada é sempre `marketoGUID`, e o único `dedupeField` disponível, e a chave para criação é o campo `name` do objeto.
 
-```
+```http
 GET /rest/v1/namedaccounts/describe.json
 ```
 
@@ -137,7 +137,7 @@ GET /rest/v1/namedaccounts/describe.json
 
 A consulta de contas nomeadas é baseada no uso de um filterType e um conjunto de até 300 filterValues separados por vírgula. `filterType` pode ser qualquer campo único retornado no membro `searchableFields` do resultado descrito para contas nomeadas, enquanto filterValues pode ser qualquer entrada válida para o tipo de dados do campo. Para retornar um conjunto específico de campos do, um parâmetro de campos deve ser transmitido, onde o valor é uma lista de campos separados por vírgulas a serem retornados na resposta. Como outras opções de consulta, o número máximo de registros para uma única página de consulta é 300, e registros adicionais no conjunto devem ser solicitados com o uso do nextPageToken retornado pela chamada.
 
-```
+```http
 GET /rest/v1/namedaccounts.json?filterType=name&filterValues=Google,Yahoo
 ```
 
@@ -168,11 +168,11 @@ GET /rest/v1/namedaccounts.json?filterType=name&filterValues=Google,Yahoo
 
 A criação e a atualização de contas nomeadas seguem o padrão de banco de dados de clientes potenciais padrão. Os registros devem ser passados no membro de entrada de um corpo JSON em uma solicitação POST. `input` é o único membro necessário, com `action` e `dedupeBy` como membros opcionais. É possível incluir até 300 registros na entrada. A ação pode ser createOnly, updateOnly ou createOrUpdate. Se não especificada, a ação padrão é createOrUpdate. dedupeBy só pode ser especificado quando a ação é updateOnly e aceita apenas um dedupeFields ou idField, que correspondem aos campos name e marketoGUID, respectivamente.
 
-```
+```http
 POST /rest/v1/namedaccounts.json
 ```
 
-```
+```text
 Content-Type: application/json
 ```
 
@@ -226,7 +226,7 @@ Consultar campos de conta nomeados é simples. Você pode consultar um único ca
 
 O ponto de extremidade [Obter Campo de Conta Nomeado por Nome](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Named-Accounts/operation/getNamedAccountFieldByNameUsingGET) recupera metadados para um único campo no objeto de conta nomeado. O parâmetro de caminho fieldApiName necessário especifica o nome da API do campo. A resposta é como o ponto de extremidade Descrever conta nomeada, mas contém metadados adicionais, como o atributo isCustom que indica se o campo é um campo personalizado.
 
-```
+```http
 GET /rest/v1/namedaccounts/schema/fields/annualRevenue.json
 ```
 
@@ -254,7 +254,7 @@ GET /rest/v1/namedaccounts/schema/fields/annualRevenue.json
 
 O ponto de extremidade [Obter Campos de Conta Nomeada](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Named-Accounts/operation/getNamedAccountFieldByNameUsingGET) recupera metadados para todos os campos no objeto de conta nomeado. Por padrão, no máximo 300 registros são retornados. Você pode usar o parâmetro de consulta batchSize para reduzir esse número. Se o atributo moreResult for true, significa que mais resultados estarão disponíveis. Continue a chamar esse endpoint até que o atributo moreResult retorne false, o que significa que não há resultados disponíveis. O nextPageToken retornado desta API deve ser sempre reutilizado para a próxima iteração desta chamada.
 
-```
+```http
 GET /rest/v1/namedaccounts/schema/fields.json?batchSize=5
 ```
 
@@ -333,11 +333,11 @@ GET /rest/v1/namedaccounts/schema/fields.json?batchSize=5
 
 As exclusões são feitas por meio de uma solicitação JSON POST e têm um membro de entrada obrigatório e um membro deleteBy opcional. deleteBy pode ser um dos &quot;dedupeFields&quot; ou &quot;idField&quot;, correspondendo a name ou marketoGUID, respectivamente, e assumirá dedupeFields como padrão, caso não esteja definido. O membro de entrada aceita uma matriz de até 300 registros, contendo um membro cada, seja name ou marketoGUID, dependendo da configuração de deleteBy.
 
-```
+```http
 POST /rest/v1/namedaccounts/delete.json
 ```
 
-```
+```text
 Content-Type: application/json
 ```
 

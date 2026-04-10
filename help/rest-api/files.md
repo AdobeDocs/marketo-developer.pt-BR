@@ -3,9 +3,9 @@ title: Arquivos
 feature: REST API
 description: Guia para consulta de arquivos da API REST do Marketo por id ou nome, navegação com pasta e deslocamento, criação ou atualização por upload multiparte, insertOnly, tipos MIME, sem transmissão
 exl-id: 17361cdc-2309-442c-803c-34ce187aee1a
-source-git-commit: 7557b9957c87f63c2646be13842ea450035792be
+source-git-commit: e2606d6cb12c572603ff069617de58417e43ca63
 workflow-type: tm+mt
-source-wordcount: '289'
+source-wordcount: '347'
 ht-degree: 1%
 
 ---
@@ -22,7 +22,7 @@ A consulta de arquivos é simples e segue os tipos de consulta padrão para ativ
 
 ### Por ID
 
-```
+```http
 GET /rest/asset/v1/file/{id}.json
 ```
 
@@ -55,7 +55,7 @@ GET /rest/asset/v1/file/{id}.json
 
 Especifique o nome do arquivo usando o parâmetro `name` necessário.
 
-```
+```http
 GET /rest/asset/v1/file/byName.json?name=foo.png
 ```
 
@@ -93,7 +93,7 @@ Há três parâmetros opcionais:
 - offset - número inteiro que especifica onde começar a recuperar as entradas (o padrão é 0); pode ser usado com o parâmetro maxReturn
 - maxReturn - número inteiro que especifica o número máximo de entradas para retornar (o padrão é 20, o máximo é 200)
 
-```
+```http
 GET /rest/asset/v1/files.json?folder={"id":436, "type": "Folder"}&maxReturn=3
 ```
 
@@ -157,11 +157,11 @@ GET /rest/asset/v1/files.json?folder={"id":436, "type": "Folder"}&maxReturn=3
 
 [A criação de um arquivo](https://developer.adobe.com/marketo-apis/api/asset/#tag/Files/operation/createFileUsingPOST) é feita com um tipo de solicitação multipart/form-data. No mínimo, o nome, a pasta e o arquivo são necessários na solicitação, com uma descrição opcional e um sinalizador insertOnly, que impede que uma chamada de criação atualize um arquivo existente com o mesmo nome. Para o parâmetro file, é necessário um &quot;nome de arquivo&quot; no cabeçalho Content-Disposition, além do parâmetro name. Você também deve passar um cabeçalho Content-Type para o arquivo, que será o tipo MIME que o Marketo usará para fornecer o arquivo.
 
-```
+```http
 POST /rest/asset/v1/files.json
 ```
 
-```
+```html
 ------WebKitFormBoundary2VyWOacQSupl4gUL
 Content-Disposition: form-data; name="file"; filename="marketo.html"
 Content-Type: text/html
@@ -210,11 +210,11 @@ This is a test file
 
 [A atualização de um arquivo](https://developer.adobe.com/marketo-apis/api/asset/#tag/File-Contents/operation/updateContentUsingPOST) pode ser feita com base em sua ID. O único parâmetro é um parâmetro de arquivo que tem os mesmos requisitos que a criação.
 
-```
+```http
 POST /rest/asset/v1/file/{id}/content.json
 ```
 
-```
+```html
 ------WebKitFormBoundary2VyWOacQSupl4gUL
 Content-Disposition: form-data; name="file"; filename="marketo.html"
 Content-Type: text/html

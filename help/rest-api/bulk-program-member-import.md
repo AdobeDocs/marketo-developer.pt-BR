@@ -3,16 +3,16 @@ title: Importação de Membros do Programa em Massa
 feature: REST API
 description: Saiba como importar membros do programa em massa por meio da API REST do Marketo usando arquivos CSV TSV ou SSV com menos de 10 MB, limites de fila, parâmetros necessários e status do trabalho de sondagem.
 exl-id: b0e1039a-fe9b-4fb7-9aa6-9980a06da673
-source-git-commit: 7557b9957c87f63c2646be13842ea450035792be
+source-git-commit: e2606d6cb12c572603ff069617de58417e43ca63
 workflow-type: tm+mt
-source-wordcount: '860'
+source-wordcount: '962'
 ht-degree: 0%
 
 ---
 
 # Importação de Membros do Programa em Massa
 
-[Referência de Ponto de Extremidade de Importação de Membro de Programa em Massa](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Bulk-Import-Program-Members)
+[Referência de Ponto de Extremidade de Importação de Membro do Programa em Massa](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Bulk-Import-Program-Members)
 
 Para grandes quantidades de registros de membros de programas, os membros de programas podem ser importados de forma assíncrona com a [API em massa](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Bulk-Import-Program-Members). Isso permite importar uma lista de registros para o Marketo usando um arquivo simples com os delimitadores (vírgula, tabulação ou ponto e vírgula). O arquivo pode conter qualquer número de registros, desde que o arquivo totalize menos de 10 MB. A operação de registro é somente &quot;inserir ou atualizar&quot;.
 
@@ -26,7 +26,7 @@ A primeira linha do arquivo deve ser um cabeçalho que lista os nomes da API RES
 
 Um arquivo típico seguiria este padrão básico:
 
-```
+```text
 email,firstName,lastName
 test@example.com,John,Doe
 ```
@@ -43,17 +43,17 @@ O parâmetro de caminho `programId` especifica o programa ao qual os membros sã
 
 Há três parâmetros de consulta necessários. O parâmetro `format` especifica o formato do arquivo de importação (CSV, TSV ou SSV), o parâmetro `programMemberStatus` especifica o status do programa para os membros que estão sendo adicionados ao programa e o parâmetro `file` contém o nome do arquivo de importação que contém registros de membros do programa.
 
-```
+```http
 POST /bulk/v1/program/{programId}/members/import.json?format=csv&programMemberStatus=On List
 ```
 
-```
+```text
 Content-Type: multipart/form-data; boundary=--------------------------118046853683028616211319
 Content-Length: 772
 Host: <munchkinId>.mktorest.com
 ```
 
-```
+```text
 ----------------------------118046853683028616211319
 Content-Disposition: form-data; name="file"; filename="Lead-House-Lannister.csv"
 Content-Type: text/csv
@@ -95,7 +95,7 @@ curl -i -F format='csv' -F programMemberStatus='On List' -F file='@Lead-House-La
 
 Onde o arquivo de importação &quot;Lead-House-Lannister.csv&quot; contém o seguinte:
 
-```
+```text
 firstName,lastName,email,title,company,leadScore
 Joanna,Lannister,Joanna@Lannister.com,Lannister,House Lannister,0
 Tywin,Lannister,Tywin@Lannister.com,Lannister,House Lannister,0
@@ -111,7 +111,7 @@ Lancel,Lannister,Lancel@Lannister.com,Lannister,House Lannister,0
 
 Após criar o trabalho de importação, você deve consultar seu status. É prática recomendada pesquisar o trabalho de importação a cada 5-30 segundos. Faça isso passando o parâmetro de caminho `batchId` para o ponto de extremidade [Obter Status de Membro do Programa de Importação](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Bulk-Import-Program-Members/operation/getImportProgramMemberStatusUsingGET).
 
-```
+```http
 GET /bulk/v1/program/members/import/{batchId}/status.json
 ```
 
@@ -143,7 +143,7 @@ As falhas são indicadas pelo atributo `numOfRowsFailed` na resposta [Obter Stat
 
 Use o ponto de extremidade Obter Falhas de Membro do Programa de Importação para recuperar registros e causas de linhas com falha transmitindo o parâmetro de caminho `batchId`.
 
-```
+```http
 GET /bulk/v1/program/members/import/{batchId}/failures.json
 ```
 
@@ -151,14 +151,14 @@ O endpoint responde com um arquivo indicando quais linhas falharam, juntamente c
 
 Por exemplo, suponha que você importe o seguinte arquivo com uma pontuação de lead inválida:
 
-```
+```text
 firstName,lastName,email,title,company,leadScore
 Aerys,Targaryen,Aerys@Targaryen.com,Targaryen,House Targaryen,TEXT_VALUE_IN_INTEGER_FIELD
 ```
 
 Ao verificar o status do trabalho, você vê `numOfRowsFailed` é 1, o que indica que ocorreu uma falha:
 
-```
+```http
 GET /bulk/v1/program/members/import/{batchId}/status.json
 ```
 
@@ -182,11 +182,11 @@ GET /bulk/v1/program/members/import/{batchId}/status.json
 
 Em seguida, recupere o arquivo de falhas para obter detalhes adicionais sobre a falha:
 
-```
+```http
 GET /bulk/v1/program/members/import/{batchId}/failures.json
 ```
 
-```
+```text
 firstName,lastName,email,title,company,leadScore,Import Failure Reason
 Aerys,Targaryen,Aerys@Targaryen.com,Targaryen,House Targaryen,TEXT_VALUE_IN_INTEGER_FIELD,Invalid data type in field Lead Score
 ```
@@ -197,7 +197,7 @@ Os avisos são indicados pelo atributo `numOfRowsWithWarning` na resposta [Obter
 
 Use o ponto de extremidade [Obter Avisos do Membro do Programa de Importação](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Bulk-Import-Program-Members/operation/getImportProgramMemberWarningsUsingGET) para recuperar registros e causas de linhas de aviso transmitindo o parâmetro de caminho `batchId`.
 
-```
+```http
 GET /bulk/v1/program/members/import/{batchId}/warnings.json
 ```
 
@@ -205,14 +205,14 @@ O endpoint responde com um arquivo indicando quais linhas produziram avisos, jun
 
 Por exemplo, suponha que você importe o seguinte arquivo com um endereço de email inválido:
 
-```
+```text
 firstName,lastName,email,title,company,leadScore
 Aerys,Targaryen,INVALID_EMAIL,Targaryen,House Targaryen,0
 ```
 
 Ao verificar o status do trabalho, você verá `numOfRowsWithWarning` is 1, que indica que ocorreu um aviso:
 
-```
+```http
 GET /bulk/v1/program/members/import/{batchId}/status.json
 ```
 
@@ -236,11 +236,11 @@ GET /bulk/v1/program/members/import/{batchId}/status.json
 
 Em seguida, recupere o arquivo de avisos para obter detalhes adicionais sobre o aviso:
 
-```
+```http
 GET /bulk/v1/program/members/import/{batchId}/warnings.json
 ```
 
-```
+```text
 firstName,lastName,email,title,company,leadScore,Import Warning Reason
 Aerys,Targaryen,INVALID_EMAIL,Targaryen,House Targaryen,0,Invalid email address
 ```
