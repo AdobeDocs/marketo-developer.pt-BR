@@ -3,7 +3,7 @@ title: Extração de chumbo em massa
 feature: REST API
 description: Saiba como usar as APIs REST de extração de lead em massa do Marketo para exportar leads em massa com filtros de data, lista e lista inteligente, campos personalizados e formatos CSV/TSV.
 exl-id: 42796e89-5468-463e-9b67-cce7e798677b
-source-git-commit: e2606d6cb12c572603ff069617de58417e43ca63
+source-git-commit: 59684e1c5a8082ad12f1e4bfc854c0d2dde35d2a
 workflow-type: tm+mt
 source-wordcount: '1273'
 ht-degree: 2%
@@ -12,7 +12,7 @@ ht-degree: 2%
 
 # Extração de chumbo em massa
 
-[Referência de Ponto de Extremidade de Extração de Lead em Massa](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Bulk-Export-Leads)
+[Referência de Ponto de Extremidade de Extração de Lead em Massa](https://developer.adobe.com/marketo-apis/api/mapi#tag/Bulk-Export-Leads)
 
 O conjunto de Extração de lead em massa de APIs REST fornece uma interface programática para recuperar grandes conjuntos de registros de lead/pessoa do Marketo. Além disso, ele pode ser usado para recuperar clientes potenciais de forma incremental com base na data de criação do registro, na atualização mais recente, na associação de lista estática ou na associação de lista inteligente. A interface recomendada para casos de uso que exigem intercâmbio contínuo de dados entre o Marketo e um ou mais sistemas externos, para fins de ETL, data warehouse e arquivamento.
 
@@ -47,7 +47,7 @@ O ponto de extremidade Criar trabalho de lead de exportação fornece várias op
 
 ## Criação de um trabalho
 
-Os parâmetros do trabalho são definidos antes do início da exportação usando o ponto de extremidade [Criar Trabalho de Cliente Potencial para Exportação](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Bulk-Export-Leads/operation/createExportLeadsUsingPOST). Devemos definir os `fields` necessários para a exportação, o tipo de parâmetros do `filter`, o `format` do arquivo e os nomes de cabeçalho de coluna, se houver.
+Os parâmetros do trabalho são definidos antes do início da exportação usando o ponto de extremidade [Criar Trabalho de Cliente Potencial para Exportação](https://developer.adobe.com/marketo-apis/api/mapi#tag/Bulk-Export-Leads/operation/createExportLeadsUsingPOST). Devemos definir os `fields` necessários para a exportação, o tipo de parâmetros do `filter`, o `format` do arquivo e os nomes de cabeçalho de coluna, se houver.
 
 ```http
 POST /bulk/v1/leads/export/create.json
@@ -95,7 +95,7 @@ Esta solicitação começará a exportar um conjunto de clientes potenciais cria
 }
 ```
 
-Isso retorna uma resposta de status indicando que o processo foi criado. A tarefa foi definida e criada, mas ainda não foi iniciada. Para fazer isso, o ponto de extremidade [Enfileirar Trabalho de Cliente Potencial de Exportação](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Bulk-Export-Leads/operation/enqueueExportLeadsUsingPOST) deve ser chamado usando o exportId da resposta do status de criação:
+Isso retorna uma resposta de status indicando que o processo foi criado. A tarefa foi definida e criada, mas ainda não foi iniciada. Para fazer isso, o ponto de extremidade [Enfileirar Trabalho de Cliente Potencial de Exportação](https://developer.adobe.com/marketo-apis/api/mapi#tag/Bulk-Export-Leads/operation/enqueueExportLeadsUsingPOST) deve ser chamado usando o exportId da resposta do status de criação:
 
 ```http
 POST /bulk/v1/leads/export/{exportId}/enqueue.json
@@ -123,7 +123,7 @@ Isso responde com uma `status` de &quot;Em fila&quot;, após a qual será defini
 
 O status `Note:` só pode ser recuperado para trabalhos que foram criados pelo mesmo usuário da API.
 
-Como esse é um endpoint assíncrono, depois de criar o trabalho, devemos pesquisar seu status para determinar seu progresso. Sondar usando o ponto de extremidade [Obter Status do Trabalho de Cliente Potencial para Exportação](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Bulk-Export-Leads/operation/getExportLeadsStatusUsingGET). O status só é atualizado uma vez a cada 60 segundos, portanto, uma frequência de polling inferior a essa não é recomendada e, em quase todos os casos, ainda é excessiva. Vamos dar uma olhada na pesquisa.
+Como esse é um endpoint assíncrono, depois de criar o trabalho, devemos pesquisar seu status para determinar seu progresso. Sondar usando o ponto de extremidade [Obter Status do Trabalho de Cliente Potencial para Exportação](https://developer.adobe.com/marketo-apis/api/mapi#tag/Bulk-Export-Leads/operation/getExportLeadsStatusUsingGET). O status só é atualizado uma vez a cada 60 segundos, portanto, uma frequência de polling inferior a essa não é recomendada e, em quase todos os casos, ainda é excessiva. Vamos dar uma olhada na pesquisa.
 
 ```http
 GET /bulk/v1/leads/export/{exportId}/status.json
@@ -158,7 +158,7 @@ O campo de status pode responder com qualquer um dos seguintes:
 
 ## Recuperação de dados
 
-Para recuperar o arquivo de uma exportação de clientes potenciais concluída, basta chamar o [Obter Arquivo de Cliente Potencial para Exportação](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Bulk-Export-Leads/operation/getExportLeadsFileUsingGET) com seu `exportId`.
+Para recuperar o arquivo de uma exportação de clientes potenciais concluída, basta chamar o [Obter Arquivo de Cliente Potencial para Exportação](https://developer.adobe.com/marketo-apis/api/mapi#tag/Bulk-Export-Leads/operation/getExportLeadsFileUsingGET) com seu `exportId`.
 
 ```http
 GET /bulk/v1/leads/export/{exportId}/file.json
@@ -177,7 +177,7 @@ Para oferecer suporte à recuperação parcial e de fácil retomada dos dados ex
 
 ## Cancelar um trabalho
 
-Se um trabalho for configurado incorretamente ou se se tornar desnecessário, ele poderá ser facilmente cancelado usando o ponto de extremidade [Cancelar Trabalho de Cliente Potencial para Exportação](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Bulk-Export-Leads/operation/cancelExportLeadsUsingPOST):
+Se um trabalho for configurado incorretamente ou se se tornar desnecessário, ele poderá ser facilmente cancelado usando o ponto de extremidade [Cancelar Trabalho de Cliente Potencial para Exportação](https://developer.adobe.com/marketo-apis/api/mapi#tag/Bulk-Export-Leads/operation/cancelExportLeadsUsingPOST):
 
 ```http
 POST /bulk/v1/leads/export/{exportId}/cancel.json

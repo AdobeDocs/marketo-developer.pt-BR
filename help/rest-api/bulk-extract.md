@@ -3,9 +3,9 @@ title: Extração em massa
 feature: REST API
 description: Saiba como usar a API REST de extração em massa do Marketo para exportar clientes em potencial, atividades, membros de programas e objetos personalizados, com OAuth, filas de trabalhos e limites diários de 500 MB.
 exl-id: 6a15c8a9-fd85-4c7d-9f65-8b2e2cba22ff
-source-git-commit: e2606d6cb12c572603ff069617de58417e43ca63
+source-git-commit: 59684e1c5a8082ad12f1e4bfc854c0d2dde35d2a
 workflow-type: tm+mt
-source-wordcount: '1723'
+source-wordcount: '1724'
 ht-degree: 1%
 
 ---
@@ -53,7 +53,7 @@ As APIs de extração em massa são medidas com base no tamanho em disco dos dad
 
 A cota diária é de no máximo 500 MB por dia, compartilhados entre clientes potenciais, atividades, membros de programas e objetos personalizados. Quando a cota é excedida, você não pode Criar ou Enfileirar outro trabalho até que a cota diária seja redefinida à meia-noite [Hora Central](https://en.wikipedia.org/wiki/Central_Time_Zone). Até lá, é retornado o erro &quot;1029, Export daily quota aded&quot;. Além da cota diária, não há tamanho máximo de arquivo.
 
-Quando uma tarefa está na fila ou em processamento, ela é executada até a conclusão (exceto por um erro ou cancelamento de tarefa). Se uma tarefa falhar por algum motivo, você deverá recriá-la. Os arquivos são totalmente gravados somente quando um trabalho atinge o estado concluído (arquivos parciais nunca são gravados). Você pode verificar se um arquivo foi totalmente gravado calculando seu hash SHA-256 e comparando-o com a soma de verificação retornada pelos pontos de extremidade de status do trabalho.
+Quando uma tarefa está na fila ou em processamento, ela é executada até a conclusão (exceto por um erro ou cancelamento de tarefa). Se uma tarefa falhar por algum motivo, você deverá recriá-la. Os arquivos são totalmente gravados somente quando um trabalho atinge o estado concluído (arquivos parciais nunca são gravados). Você pode verificar se um arquivo foi totalmente gravado calculando-o como um hash SHA-256 e comparando-o com a soma de verificação retornada pelos pontos de extremidade de status do trabalho.
 
 Você pode determinar a quantidade total de discos usados para o dia atual, chamando Obter lead de exportação/atividade/tarefas de membro do programa. Esses endpoints retornam uma lista de todas as tarefas nos últimos sete dias. Você pode filtrar essa lista apenas para os trabalhos concluídos no dia atual (usando os atributos `status` e `finishedAt`). Em seguida, some os tamanhos dos arquivos desses trabalhos para produzir a quantidade total usada. Não há como excluir um arquivo para recuperar espaço em disco.
 

@@ -3,7 +3,7 @@ title: Arquivos
 feature: REST API
 description: Guia para consulta de arquivos da API REST do Marketo por id ou nome, navegação com pasta e deslocamento, criação ou atualização por upload multiparte, insertOnly, tipos MIME, sem transmissão
 exl-id: 17361cdc-2309-442c-803c-34ce187aee1a
-source-git-commit: e2606d6cb12c572603ff069617de58417e43ca63
+source-git-commit: 59684e1c5a8082ad12f1e4bfc854c0d2dde35d2a
 workflow-type: tm+mt
 source-wordcount: '347'
 ht-degree: 1%
@@ -12,13 +12,13 @@ ht-degree: 1%
 
 # Arquivos
 
-[Referência de Ponto de Extremidade de Arquivos](https://developer.adobe.com/marketo-apis/api/asset/#tag/Files)
+[Referência de Ponto de Extremidade de Arquivos](https://developer.adobe.com/marketo-apis/api/asset#tag/Files)
 
 As assinaturas do Marketo permitem o armazenamento de arquivos arbitrários como imagens, scripts, documentos e folhas de estilos. Todos esses podem ser trabalhados remotamente por meio da REST API. O armazenamento disponível nas assinaturas do Marketo não é otimizado para aplicativos com uso intenso de largura de banda, portanto, devem ser usadas alternativas para os aplicativos adequados de transmissão contínua de áudio e vídeo.
 
 ## Consultar
 
-A consulta de arquivos é simples e segue os tipos de consulta padrão para ativos de [por id](https://developer.adobe.com/marketo-apis/api/asset/#tag/Files/operation/getFileByIdUsingGET), [por nome](https://developer.adobe.com/marketo-apis/api/asset/#tag/Files/operation/getFileByNameUsingGET) e [navegação](https://developer.adobe.com/marketo-apis/api/asset/#tag/Files/operation/getFilesUsingGET).
+A consulta de arquivos é simples e segue os tipos de consulta padrão para ativos de [por id](https://developer.adobe.com/marketo-apis/api/asset#tag/Files/operation/getFileByIdUsingGET), [por nome](https://developer.adobe.com/marketo-apis/api/asset#tag/Files/operation/getFileByNameUsingGET) e [navegação](https://developer.adobe.com/marketo-apis/api/asset#tag/Files/operation/getFilesUsingGET).
 
 ### Por ID
 
@@ -155,7 +155,7 @@ GET /rest/asset/v1/files.json?folder={"id":436, "type": "Folder"}&maxReturn=3
 
 ## Criar e atualizar
 
-[A criação de um arquivo](https://developer.adobe.com/marketo-apis/api/asset/#tag/Files/operation/createFileUsingPOST) é feita com um tipo de solicitação multipart/form-data. No mínimo, o nome, a pasta e o arquivo são necessários na solicitação, com uma descrição opcional e um sinalizador insertOnly, que impede que uma chamada de criação atualize um arquivo existente com o mesmo nome. Para o parâmetro file, é necessário um &quot;nome de arquivo&quot; no cabeçalho Content-Disposition, além do parâmetro name. Você também deve passar um cabeçalho Content-Type para o arquivo, que será o tipo MIME que o Marketo usará para fornecer o arquivo.
+[A criação de um arquivo](https://developer.adobe.com/marketo-apis/api/asset#tag/Files/operation/createFileUsingPOST) é feita com um tipo de solicitação multipart/form-data. No mínimo, o nome, a pasta e o arquivo são necessários na solicitação, com uma descrição opcional e um sinalizador insertOnly, que impede que uma chamada de criação atualize um arquivo existente com o mesmo nome. Para o parâmetro file, é necessário um &quot;nome de arquivo&quot; no cabeçalho Content-Disposition, além do parâmetro name. Você também deve passar um cabeçalho Content-Type para o arquivo, que será o tipo MIME que o Marketo usará para fornecer o arquivo.
 
 ```http
 POST /rest/asset/v1/files.json
@@ -208,7 +208,7 @@ This is a test file
 }
 ```
 
-[A atualização de um arquivo](https://developer.adobe.com/marketo-apis/api/asset/#tag/File-Contents/operation/updateContentUsingPOST) pode ser feita com base em sua ID. O único parâmetro é um parâmetro de arquivo que tem os mesmos requisitos que a criação.
+[A atualização de um arquivo](https://developer.adobe.com/marketo-apis/api/asset#tag/File-Contents/operation/updateContentUsingPOST) pode ser feita com base em sua ID. O único parâmetro é um parâmetro de arquivo que tem os mesmos requisitos que a criação.
 
 ```http
 POST /rest/asset/v1/file/{id}/content.json

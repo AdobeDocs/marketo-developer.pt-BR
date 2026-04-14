@@ -3,7 +3,7 @@ title: Contas nomeadas
 feature: REST API
 description: Guia do Marketo REST para CRUD em contas nomeadas para ABM, com descrever, consultar, criar exemplos de atualização, campos pesquisáveis, regras de desduplicação e sem vinculação de leads.
 exl-id: 2aa1d2a0-9e54-4a9a-abb1-0d0479ed3558
-source-git-commit: e2606d6cb12c572603ff069617de58417e43ca63
+source-git-commit: 59684e1c5a8082ad12f1e4bfc854c0d2dde35d2a
 workflow-type: tm+mt
 source-wordcount: '730'
 ht-degree: 1%
@@ -12,7 +12,7 @@ ht-degree: 1%
 
 # Contas nomeadas
 
-[Referência de Ponto de Extremidade de Contas Nomeadas](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Named-Accounts)
+[Referência de Ponto de Extremidade de Contas Nomeadas](https://developer.adobe.com/marketo-apis/api/mapi#tag/Named-Accounts)
 
 O Marketo oferece um conjunto de APIs para executar operações CRUD em contas nomeadas para uso com o Marketo ABM. Essas APIs seguem o padrão de interface padrão para APIs de banco de dados de clientes potenciais, fornecendo as opções Descrever, Criar/Atualizar, Excluir e Consultar.
 
@@ -224,7 +224,7 @@ Consultar campos de conta nomeados é simples. Você pode consultar um único ca
 
 #### Por nome
 
-O ponto de extremidade [Obter Campo de Conta Nomeado por Nome](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Named-Accounts/operation/getNamedAccountFieldByNameUsingGET) recupera metadados para um único campo no objeto de conta nomeado. O parâmetro de caminho fieldApiName necessário especifica o nome da API do campo. A resposta é como o ponto de extremidade Descrever conta nomeada, mas contém metadados adicionais, como o atributo isCustom que indica se o campo é um campo personalizado.
+O ponto de extremidade [Obter Campo de Conta Nomeado por Nome](https://developer.adobe.com/marketo-apis/api/mapi#tag/Named-Accounts/operation/getNamedAccountFieldByNameUsingGET) recupera metadados para um único campo no objeto de conta nomeado. O parâmetro de caminho fieldApiName necessário especifica o nome da API do campo. A resposta é como o ponto de extremidade Descrever conta nomeada, mas contém metadados adicionais, como o atributo isCustom que indica se o campo é um campo personalizado.
 
 ```http
 GET /rest/v1/namedaccounts/schema/fields/annualRevenue.json
@@ -252,7 +252,7 @@ GET /rest/v1/namedaccounts/schema/fields/annualRevenue.json
 
 #### Navegar
 
-O ponto de extremidade [Obter Campos de Conta Nomeada](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Named-Accounts/operation/getNamedAccountFieldByNameUsingGET) recupera metadados para todos os campos no objeto de conta nomeado. Por padrão, no máximo 300 registros são retornados. Você pode usar o parâmetro de consulta batchSize para reduzir esse número. Se o atributo moreResult for true, significa que mais resultados estarão disponíveis. Continue a chamar esse endpoint até que o atributo moreResult retorne false, o que significa que não há resultados disponíveis. O nextPageToken retornado desta API deve ser sempre reutilizado para a próxima iteração desta chamada.
+O ponto de extremidade [Obter Campos de Conta Nomeada](https://developer.adobe.com/marketo-apis/api/mapi#tag/Named-Accounts/operation/getNamedAccountFieldByNameUsingGET) recupera metadados para todos os campos no objeto de conta nomeado. Por padrão, no máximo 300 registros são retornados. Você pode usar o parâmetro de consulta batchSize para reduzir esse número. Se o atributo moreResult for true, significa que mais resultados estarão disponíveis. Continue a chamar esse endpoint até que o atributo moreResult retorne false, o que significa que não há resultados disponíveis. O nextPageToken retornado desta API deve ser sempre reutilizado para a próxima iteração desta chamada.
 
 ```http
 GET /rest/v1/namedaccounts/schema/fields.json?batchSize=5

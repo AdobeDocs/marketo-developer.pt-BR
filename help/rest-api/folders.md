@@ -3,7 +3,7 @@ title: Pastas
 feature: REST API
 description: Guia da API REST do Marketo para pastas que abrangem criação, atualização, exclusão, consulta por id e nome, navegação em massa com raiz, espaço de trabalho, maxDepth e paginação.
 exl-id: 4b55c256-ef0a-42b4-9548-ff8a4106f064
-source-git-commit: e2606d6cb12c572603ff069617de58417e43ca63
+source-git-commit: 59684e1c5a8082ad12f1e4bfc854c0d2dde35d2a
 workflow-type: tm+mt
 source-wordcount: '1099'
 ht-degree: 1%
@@ -12,13 +12,13 @@ ht-degree: 1%
 
 # Pastas
 
-[Referência de Ponto de Extremidade de Pastas](https://developer.adobe.com/marketo-apis/api/asset/#tag/Folders)
+[Referência de Ponto de Extremidade de Pastas](https://developer.adobe.com/marketo-apis/api/asset#tag/Folders)
 
 As pastas são o principal ativo organizacional no Marketo e todos os outros tipos de ativos têm pelo menos uma pasta como principal. Essa pasta pai pode ser uma Pasta puramente organizacional ou um Programa, que tem uma relação funcional com outros tipos de ativos e também pode ser o pai de outros ativos. As pastas podem ser criadas, consultadas, atualizadas e excluídas por meio da API, além de permitir a recuperação de uma lista de seus conteúdos. Embora os Programas possam ser retornados por meio da consulta à API Pastas, a criação, atualização e exclusão de programas deve ser executada por meio da API Programas.
 
 ## Consultar
 
-A consulta de pastas segue os tipos de consulta padrão para ativos de [por id](https://developer.adobe.com/marketo-apis/api/asset/#tag/Folders/operation/getFolderByIdUsingGET), [por nome](https://developer.adobe.com/marketo-apis/api/asset/#tag/Folders/operation/getFolderByNameUsingGET) e [navegação](https://developer.adobe.com/marketo-apis/api/asset/#tag/Folders/operation/getFolderUsingGET).
+A consulta de pastas segue os tipos de consulta padrão para ativos de [por id](https://developer.adobe.com/marketo-apis/api/asset#tag/Folders/operation/getFolderByIdUsingGET), [por nome](https://developer.adobe.com/marketo-apis/api/asset#tag/Folders/operation/getFolderByNameUsingGET) e [navegação](https://developer.adobe.com/marketo-apis/api/asset#tag/Folders/operation/getFolderUsingGET).
 
 ### Por ID
 
@@ -70,7 +70,7 @@ O parâmetro de tipo é obrigatório e deve ser &quot;Folder&quot; ou &quot;Prog
 
 ### Por nome
 
-[Consulta por nome](https://developer.adobe.com/marketo-apis/api/asset/#tag/Folders/operation/getFolderByNameUsingGET) também é permitida. O endpoint da consulta por nome tem o nome como o único parâmetro obrigatório. Name realiza uma correspondência exata da string com o campo de nome das pastas na instância e retorna resultados para cada pasta correspondente a esse nome. Ele também tem os parâmetros de consulta opcionais de &quot;tipo&quot;, que podem ser Pasta ou Programa, &quot;raiz&quot; da ID da pasta de pesquisa ou &quot;espaço de trabalho&quot; do nome do espaço de trabalho de pesquisa. Se o parâmetro raiz for definido, o parâmetro de tipo também deverá ser definido.
+[Consulta por nome](https://developer.adobe.com/marketo-apis/api/asset#tag/Folders/operation/getFolderByNameUsingGET) também é permitida. O endpoint da consulta por nome tem o nome como o único parâmetro obrigatório. Name realiza uma correspondência exata da string com o campo de nome das pastas na instância e retorna resultados para cada pasta correspondente a esse nome. Ele também tem os parâmetros de consulta opcionais de &quot;tipo&quot;, que podem ser Pasta ou Programa, &quot;raiz&quot; da ID da pasta de pesquisa ou &quot;espaço de trabalho&quot; do nome do espaço de trabalho de pesquisa. Se o parâmetro raiz for definido, o parâmetro de tipo também deverá ser definido.
 
 ```http
 GET /rest/asset/v1/folder/byName.json?name=Test%2010%20-%20deverly
@@ -113,12 +113,12 @@ Ao pesquisar por nome, é importante observar que as Atividades de marketing e o
 
 ### Navegar
 
-As pastas também podem ser [recuperadas em massa](https://developer.adobe.com/marketo-apis/api/asset/#tag/Folders/operation/getFolderUsingGET). O parâmetro &quot;root&quot; pode ser usado para especificar a pasta pai na qual a consulta será executada e é formatado como um objeto JSON incorporado como o valor do parâmetro de consulta. A raiz tem dois membros:
+As pastas também podem ser [recuperadas em massa](https://developer.adobe.com/marketo-apis/api/asset#tag/Folders/operation/getFolderUsingGET). O parâmetro &quot;root&quot; pode ser usado para especificar a pasta pai na qual a consulta será executada e é formatado como um objeto JSON incorporado como o valor do parâmetro de consulta. A raiz tem dois membros:
 
 1. id - a id da pasta ou do programa.
 1. Tipo - Pasta ou Programa, dependendo do tipo da pasta raiz do navegador.
 
-Se a pasta raiz não for conhecida ou o objetivo for recuperar todas as pastas em uma determinada área, a raiz pode ser especificada como as áreas &quot;Atividades de marketing&quot;, &quot;Design Studio&quot; ou &quot;Banco de dados de clientes potenciais&quot;. As IDs para cada uma delas podem ser recuperadas por meio da API [Obter pasta por nome](https://developer.adobe.com/marketo-apis/api/asset/#tag/Folders/operation/getFolderByNameUsingGET) e especificando o nome da área desejada.
+Se a pasta raiz não for conhecida ou o objetivo for recuperar todas as pastas em uma determinada área, a raiz pode ser especificada como as áreas &quot;Atividades de marketing&quot;, &quot;Design Studio&quot; ou &quot;Banco de dados de clientes potenciais&quot;. As IDs para cada uma delas podem ser recuperadas por meio da API [Obter pasta por nome](https://developer.adobe.com/marketo-apis/api/asset#tag/Folders/operation/getFolderByNameUsingGET) e especificando o nome da área desejada.
 
 Como outros pontos de acesso de recuperação de ativos em massa, offset e maxReturn são parâmetros opcionais para paginação.   Outros parâmetros opcionais são:
 
@@ -211,7 +211,7 @@ O caminho de uma pasta mostra sua hierarquia na árvore de pastas, semelhante a 
 
 ## Criar e atualizar
 
-[A criação de pastas](https://developer.adobe.com/marketo-apis/api/asset/#tag/Folders/operation/createFolderUsingPOST) é simples e executada com um aplicativo/x-www-form-urlencoded POST que tem dois parâmetros obrigatórios, &quot;name&quot;, uma cadeia de caracteres e &quot;parent&quot;, o pai em que a pasta será criada, que é um objeto JSON inserido com dois membros, id e tipo, seja Pasta ou Programa, dependendo do tipo da pasta de destino. Opcionalmente, &quot;descrição&quot;, uma string, também pode ser incluída e pode ter até 2000 caracteres.
+[A criação de pastas](https://developer.adobe.com/marketo-apis/api/asset#tag/Folders/operation/createFolderUsingPOST) é simples e executada com um aplicativo/x-www-form-urlencoded POST que tem dois parâmetros obrigatórios, &quot;name&quot;, uma cadeia de caracteres e &quot;parent&quot;, o pai em que a pasta será criada, que é um objeto JSON inserido com dois membros, id e tipo, seja Pasta ou Programa, dependendo do tipo da pasta de destino. Opcionalmente, &quot;descrição&quot;, uma string, também pode ser incluída e pode ter até 2000 caracteres.
 
 ```http
 POST /rest/asset/v1/folders.json

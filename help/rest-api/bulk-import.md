@@ -3,9 +3,9 @@ title: Importação em massa
 feature: REST API
 description: Importação em massa do Marketo para carregar clientes em potencial, objetos personalizados e membros do programa por meio de uploads de várias partes, criação de trabalhos assíncronos, status de pesquisa e falhas de manuseio.
 exl-id: f7922fd2-8408-4d04-8955-0f8f58914d24
-source-git-commit: e2606d6cb12c572603ff069617de58417e43ca63
+source-git-commit: 59684e1c5a8082ad12f1e4bfc854c0d2dde35d2a
 workflow-type: tm+mt
-source-wordcount: '660'
+source-wordcount: '661'
 ht-degree: 2%
 
 ---
@@ -46,7 +46,7 @@ A importação em massa é uma operação de registro &quot;inserir ou atualizar
 
 ## Criação de um trabalho
 
-As APIs de importação em massa do Marketo usam o conceito de um trabalho para executar a importação de dados. Vamos analisar a criação de um trabalho de importação de clientes potenciais simples usando o ponto de extremidade [Importar clientes potenciais](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Bulk-Import-Leads/operation/importLeadUsingPOST).  Observe que este ponto de extremidade usa [multipart/form-data como o tipo de conteúdo](https://www.w3.org/Protocols/rfc1341/7_2_Multipart.html). Isso pode ser difícil de corrigir, portanto, a prática recomendada é usar uma biblioteca de suporte HTTP para o idioma de sua escolha.  Se você está apenas molhando os pés, sugerimos que use [curl](https://curl.se/).
+As APIs de importação em massa do Marketo usam o conceito de um trabalho para executar a importação de dados. Vamos analisar a criação de um trabalho de importação de clientes potenciais simples usando o ponto de extremidade [Importar clientes potenciais](https://developer.adobe.com/marketo-apis/api/mapi#tag/Bulk-Import-Leads/operation/importLeadUsingPOST).  Observe que este ponto de extremidade usa [multipart/form-data como o tipo de conteúdo](https://www.w3.org/Protocols/rfc1341/7_2_Multipart.html). Isso pode ser difícil de corrigir, portanto, a prática recomendada é usar uma biblioteca de suporte HTTP para o idioma de sua escolha.  Se você está apenas molhando os pés, sugerimos que use [curl](https://curl.se/).
 
 ```http
 POST /bulk/v1/leads.json?format=csv
@@ -99,7 +99,7 @@ Cada endpoint de criação de trabalho compartilha alguns parâmetros comuns par
 
 ## Status do trabalho de pesquisa
 
-É simples determinar o status do trabalho usando o ponto de extremidade [Obter Status de Cliente Potencial de Importação](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Bulk-Import-Leads/operation/getImportLeadStatusUsingGET).
+É simples determinar o status do trabalho usando o ponto de extremidade [Obter Status de Cliente Potencial de Importação](https://developer.adobe.com/marketo-apis/api/mapi#tag/Bulk-Import-Leads/operation/getImportLeadStatusUsingGET).
 
 ```http
 GET /bulk/v1/leads/batch/{batchId}.json
@@ -129,7 +129,7 @@ O membro interno `status` indicará o progresso do trabalho e poderá ser um dos
 
 As falhas são indicadas pelo atributo `numOfRowsFailed` na resposta Obter Status de Lead de Importação. Se `numOfRowsFailed` for maior que zero, esse valor indicará o número de falhas que ocorreram.
 
-Para recuperar os registros e as causas de linhas com falha, você deverá recuperar o arquivo de falha usando o ponto de extremidade [Obter Falhas de Importação de Cliente Potencial](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Bulk-Import-Leads/operation/getImportLeadFailuresUsingGET).
+Para recuperar os registros e as causas de linhas com falha, você deverá recuperar o arquivo de falha usando o ponto de extremidade [Obter Falhas de Lead de Importação](https://developer.adobe.com/marketo-apis/api/mapi#tag/Bulk-Import-Leads/operation/getImportLeadFailuresUsingGET).
 
 ```http
 GET /bulk/v1/leads/batch/{batchId}/failures.json

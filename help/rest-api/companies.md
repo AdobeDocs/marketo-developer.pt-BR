@@ -3,7 +3,7 @@ title: Empresas
 feature: REST API
 description: Use a API REST das Empresas Marketo para descrever, consultar e sincronizar registros da empresa, gerenciar campos e realizar a desduplicação por externalCompanyId e observar a sincronização de CRM como somente leitura.
 exl-id: 80e514a2-1c86-46a7-82bc-e4db702189b0
-source-git-commit: e2606d6cb12c572603ff069617de58417e43ca63
+source-git-commit: 59684e1c5a8082ad12f1e4bfc854c0d2dde35d2a
 workflow-type: tm+mt
 source-wordcount: '676'
 ht-degree: 1%
@@ -12,11 +12,11 @@ ht-degree: 1%
 
 # Empresas
 
-[Referência de Empresa](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Companies)
+[Referência de Empresa](https://developer.adobe.com/marketo-apis/api/mapi#tag/Companies)
 
-As empresas representam a organização à qual os registros de lead pertencem. Os clientes em potencial são adicionados a uma Empresa preenchendo o campo `externalCompanyId` correspondente com o uso dos pontos de extremidade [Sincronizar Clientes Potenciais](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Leads/operation/syncLeadUsingPOST) ou [Importação de Clientes Potenciais em Massa](bulk-lead-import.md). Depois que um cliente potencial é adicionado a uma empresa, não é possível excluí-lo dessa empresa (a menos que você adicione o cliente potencial a uma empresa diferente). Clientes potenciais vinculados a um registro de empresa herdarão diretamente os valores de um registro de empresa como se os valores existissem no próprio registro do cliente potencial.
+As empresas representam a organização à qual os registros de lead pertencem. Os clientes em potencial são adicionados a uma Empresa preenchendo o campo `externalCompanyId` correspondente com o uso dos pontos de extremidade [Sincronizar Clientes Potenciais](https://developer.adobe.com/marketo-apis/api/mapi#tag/Leads/operation/syncLeadUsingPOST) ou [Importação de Clientes Potenciais em Massa](bulk-lead-import.md). Depois que um cliente potencial é adicionado a uma empresa, não é possível excluí-lo dessa empresa (a menos que você adicione o cliente potencial a uma empresa diferente). Clientes potenciais vinculados a um registro de empresa herdarão diretamente os valores de um registro de empresa como se os valores existissem no próprio registro do cliente potencial.
 
-As APIs da empresa são acesso somente leitura para assinaturas com [Sincronização do SFDC](https://experienceleague.adobe.com/docs/marketo/using/product-docs/crm-sync/salesforce-sync/sfdc-sync-details/sfdc-sync-field-sync.html?lang=pt-BR) ou [Sincronização do Microsoft Dynamics](https://experienceleague.adobe.com/docs/marketo/using/product-docs/crm-sync/microsoft-dynamics/microsoft-dynamics-sync-details/microsoft-dynamics-sync-user-sync.html?lang=pt-BR) habilitadas.
+As APIs da empresa são acesso somente leitura para assinaturas com [Sincronização do SFDC](https://experienceleague.adobe.com/docs/marketo/using/product-docs/crm-sync/salesforce-sync/sfdc-sync-details/sfdc-sync-field-sync.html?lang=en) ou [Sincronização do Microsoft Dynamics](https://experienceleague.adobe.com/docs/marketo/using/product-docs/crm-sync/microsoft-dynamics/microsoft-dynamics-sync-details/microsoft-dynamics-sync-user-sync.html?lang=en) habilitadas.
 
 ## Descrever
 
@@ -98,7 +98,7 @@ GET /rest/v1/companies/describe.json
 
 ## Consultar
 
-O padrão para [empresas de consulta](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Companies/operation/getCompaniesUsingGET) segue de perto o da API de clientes potenciais com a restrição adicionada de que o parâmetro `filterType` aceita os campos listados na matriz searchableFields da chamada Descrever Empresas, ou dedupeFields.
+O padrão para [empresas de consulta](https://developer.adobe.com/marketo-apis/api/mapi#tag/Companies/operation/getCompaniesUsingGET) segue de perto o da API de clientes potenciais com a restrição adicionada de que o parâmetro `filterType` aceita os campos listados na matriz searchableFields da chamada Descrever Empresas, ou dedupeFields.
 
 `filterType` e `filterValues` são parâmetros de consulta obrigatórios.  `fields`, `nextPageToken` e `batchSize` são parâmetros opcionais.  Os parâmetros funcionam da mesma forma que os parâmetros correspondentes nas APIs de clientes potenciais e oportunidades. Ao solicitar uma lista de `fields`, se um determinado campo for solicitado, mas não for retornado, o valor será considerado nulo.
 
@@ -136,7 +136,7 @@ GET /rest/v1/companies.json?filterType=id&filterValues=3433,5345
 
 ## Criar e atualizar
 
-O ponto de extremidade [Empresas de Sincronização](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Companies/operation/syncCompaniesUsingPOST) aceita o parâmetro `input` necessário que contém uma matriz de objetos da empresa. Assim como as oportunidades, há três modos para criar e atualizar empresas: createOnly, updateOnly e createOrUpdate.  Os modos estão especificados no parâmetro `action` da solicitação. Os parâmetros `dedupeBy` e `action` são opcionais e são padrão para os modos dedupeFields e createOrUpdate, respectivamente.
+O ponto de extremidade [Empresas de Sincronização](https://developer.adobe.com/marketo-apis/api/mapi#tag/Companies/operation/syncCompaniesUsingPOST) aceita o parâmetro `input` necessário que contém uma matriz de objetos da empresa. Assim como as oportunidades, há três modos para criar e atualizar empresas: createOnly, updateOnly e createOrUpdate.  Os modos estão especificados no parâmetro `action` da solicitação. Os parâmetros `dedupeBy` e `action` são opcionais e são padrão para os modos dedupeFields e createOrUpdate, respectivamente.
 
 ```http
 POST /rest/v1/companies.json
@@ -194,7 +194,7 @@ Consultar campos de empresa é simples. Você pode consultar um único campo de 
 
 #### Por nome
 
-O ponto de extremidade [Obter Campo da Empresa por Nome](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Companies/operation/getCompanyFieldByNameUsingGET) recupera metadados para um único campo no objeto da empresa. O parâmetro de caminho `fieldApiName` necessário especifica o nome da API do campo. A resposta é como o ponto de extremidade Descrever Empresa, mas contém metadados adicionais, como o atributo `isCustom`, que indica se o campo é um campo personalizado.
+O ponto de extremidade [Obter Campo da Empresa por Nome](https://developer.adobe.com/marketo-apis/api/mapi#tag/Companies/operation/getCompanyFieldByNameUsingGET) recupera metadados para um único campo no objeto da empresa. O parâmetro de caminho `fieldApiName` necessário especifica o nome da API do campo. A resposta é como o ponto de extremidade Descrever Empresa, mas contém metadados adicionais, como o atributo `isCustom`, que indica se o campo é um campo personalizado.
 
 ```http
 GET /rest/v1/companies/schema/fields/industry.json
@@ -223,7 +223,7 @@ GET /rest/v1/companies/schema/fields/industry.json
 
 #### Navegar
 
-O ponto de extremidade [Obter Campos de Empresa](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Companies/operation/getCompanyFieldsUsingGET) recupera metadados para todos os campos no objeto de empresa. Por padrão, no máximo 300 registros são retornados. Você pode usar o parâmetro de consulta `batchSize` para reduzir esse número. Se o atributo `moreResult` for true, significa que mais resultados estarão disponíveis. Continue a chamar esse endpoint até que o atributo moreResult retorne false, o que significa que não há resultados disponíveis. O `nextPageToken` retornado desta API deve sempre ser reutilizado para a próxima iteração desta chamada.
+O ponto de extremidade [Obter Campos de Empresa](https://developer.adobe.com/marketo-apis/api/mapi#tag/Companies/operation/getCompanyFieldsUsingGET) recupera metadados para todos os campos no objeto de empresa. Por padrão, no máximo 300 registros são retornados. Você pode usar o parâmetro de consulta `batchSize` para reduzir esse número. Se o atributo `moreResult` for true, significa que mais resultados estarão disponíveis. Continue a chamar esse endpoint até que o atributo moreResult retorne false, o que significa que não há resultados disponíveis. O `nextPageToken` retornado desta API deve sempre ser reutilizado para a próxima iteração desta chamada.
 
 ```http
 GET /rest/v1/companies/schema/fields.json?batchSize=5

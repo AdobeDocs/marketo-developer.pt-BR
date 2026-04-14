@@ -3,7 +3,7 @@ title: Tags
 feature: REST API, Tags
 description: Consulte tipos de tag, obtenha valores permitidos por nome, atualize ou exclua tags de programa no Marketo por meio da API de ativos REST, com exemplos de solicitação.
 exl-id: 64731d1a-a749-4d6f-b336-16c733d002f0
-source-git-commit: e2606d6cb12c572603ff069617de58417e43ca63
+source-git-commit: 59684e1c5a8082ad12f1e4bfc854c0d2dde35d2a
 workflow-type: tm+mt
 source-wordcount: '258'
 ht-degree: 1%
@@ -12,7 +12,7 @@ ht-degree: 1%
 
 # Tags
 
-[Referência de ponto de extremidade de tags](https://developer.adobe.com/marketo-apis/api/asset/#tag/Tags)
+[Referência de ponto de extremidade de tags](https://developer.adobe.com/marketo-apis/api/asset#tag/Tags)
 
 Tags são campos definidos pelo usuário para programas. Cada tag pode se aplicar a um ou mais tipos de programas e pode ser obrigatória ou opcional, dependendo de como a tag foi definida. As tags também podem fornecer uma lista de valores permitidos que devem ser selecionados para uso.
 
@@ -77,7 +77,7 @@ GET /rest/asset/v1/tagType/byName.json?name=AAA1 Required Tag Type
 
 ## Atualização
 
-O ponto de extremidade [Atualizar Marca do Programa](https://developer.adobe.com/marketo-apis/api/asset/#tag/Programs/operation/updateProgramUsingPOST) permite atualizar o valor de um determinado tipo de marca. O ponto de extremidade usa os parâmetros de caminho `id` e `tagType`, que especificam a ID do programa, e o tipo de marca a ser atualizado. Um parâmetro de consulta `tagValue` é usado para especificar o novo valor para o tipo de marca. Todos os parâmetros são obrigatórios.
+O ponto de extremidade [Atualizar Marca do Programa](https://developer.adobe.com/marketo-apis/api/asset#tag/Programs/operation/updateProgramUsingPOST) permite atualizar o valor de um determinado tipo de marca. O ponto de extremidade usa os parâmetros de caminho `id` e `tagType`, que especificam a ID do programa, e o tipo de marca a ser atualizado. Um parâmetro de consulta `tagValue` é usado para especificar o novo valor para o tipo de marca. Todos os parâmetros são obrigatórios.
 
 ```http
 POST /rest/asset/v1/program/{id}/tag/{tagType}.json?tagValue=David
@@ -97,11 +97,11 @@ POST /rest/asset/v1/program/{id}/tag/{tagType}.json?tagValue=David
 }
 ```
 
-As marcas podem ser atualizadas em massa usando o ponto de extremidade [Atualizar Metadados do Programa](https://developer.adobe.com/marketo-apis/api/asset/#tag/Programs/operation/updateProgramUsingPOST). Um exemplo está disponível na [seção de atualização de programas](programs.md#update).
+As marcas podem ser atualizadas em massa usando o ponto de extremidade [Atualizar Metadados do Programa](https://developer.adobe.com/marketo-apis/api/asset#tag/Programs/operation/updateProgramUsingPOST). Um exemplo está disponível na [seção de atualização de programas](programs.md#update).
 
 ## Excluir
 
-O ponto de extremidade [Excluir Marca do Programa](https://developer.adobe.com/marketo-apis/api/asset/#tag/Programs/operation/deleteProgramUsingPOST) permite excluir um tipo de marca não necessário. O ponto de extremidade usa os parâmetros de caminho `id` e `tagType`, que especificam a ID do programa e o tipo de marca a ser excluído.
+O ponto de extremidade [Excluir Marca do Programa](https://developer.adobe.com/marketo-apis/api/asset#tag/Programs/operation/deleteProgramUsingPOST) permite excluir um tipo de marca não necessário. O ponto de extremidade usa os parâmetros de caminho `id` e `tagType`, que especificam a ID do programa e o tipo de marca a ser excluído.
 
 ```http
 POST /rest/asset/v1/program/{id}/tag/{tagType}/delete.json

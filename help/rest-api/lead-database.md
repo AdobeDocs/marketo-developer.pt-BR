@@ -3,7 +3,7 @@ title: Banco de dados de leads
 feature: REST API, Database
 description: Guia para APIs de banco de dados de clientes potenciais da Marketo que abrangem objetos, métodos CRUD e Describe, padrões de consulta, limites de lote e restrições de integração de CRM.
 exl-id: e62e381f-916b-4d56-bc3d-0046219b68d3
-source-git-commit: e2606d6cb12c572603ff069617de58417e43ca63
+source-git-commit: 59684e1c5a8082ad12f1e4bfc854c0d2dde35d2a
 workflow-type: tm+mt
 source-wordcount: '1373'
 ht-degree: 1%
@@ -32,7 +32,7 @@ A maioria desses objetos inclui pelo menos os métodos Create, Read, Update e De
 
 ## API
 
-Para obter uma lista completa dos pontos de extremidade da API do Banco de Dados Principal, incluindo parâmetros e informações de modelagem, consulte a [Referência de Ponto de Extremidade da API do Banco de Dados Principal](https://developer.adobe.com/marketo-apis/api/mapi/).
+Para obter uma lista completa dos pontos de extremidade da API do Banco de Dados Principal, incluindo parâmetros e informações de modelagem, consulte a [Referência de Ponto de Extremidade da API do Banco de Dados Principal](https://developer.adobe.com/marketo-apis/api/mapi).
 
 Para instâncias com uma integração de CRM nativa habilitada (Microsoft Dynamics ou Salesforce.com), as APIs Empresa, Oportunidade, Função Oportunidade e Vendedor estão desabilitadas. Os registros são gerenciados por meio do CRM quando ativados e não podem ser acessados ou atualizados por meio das APIs do Marketo.
 

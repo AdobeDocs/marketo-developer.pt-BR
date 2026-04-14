@@ -3,7 +3,7 @@ title: Modelos de email
 feature: REST API
 description: Use a API REST do Marketo Asset para consultar, criar, atualizar, clonar, excluir, aprovar e inspecionar dependências de modelos de email.
 exl-id: 50bb0047-d6ea-4c94-a900-18c37b17a147
-source-git-commit: e2606d6cb12c572603ff069617de58417e43ca63
+source-git-commit: 59684e1c5a8082ad12f1e4bfc854c0d2dde35d2a
 workflow-type: tm+mt
 source-wordcount: '292'
 ht-degree: 9%
@@ -12,7 +12,7 @@ ht-degree: 9%
 
 # Modelos de email
 
-[Referência de endpoint de modelo de email](https://developer.adobe.com/marketo-apis/api/asset/#tag/Email-Templates)
+[Referência de endpoint de modelo de email](https://developer.adobe.com/marketo-apis/api/asset#tag/Email-Templates)
 
 Os modelos de email definem a estrutura e o layout reutilizável usados ao criar emails.
 

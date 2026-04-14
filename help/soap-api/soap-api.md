@@ -3,7 +3,7 @@ title: API SOAP
 feature: SOAP
 description: A API do Marketo SOAP será descontinuada após 31 de outubro de 2025. Saiba como migrar para REST, recuperar o WSDL, consulte cotas, limites de taxa e configuração de autenticação.
 exl-id: 6618cc82-15ae-4030-aa00-438e635d8369
-source-git-commit: a0901d2c67aa42368f03494dc8157d2ae93b3dce
+source-git-commit: ff0a95e838cecd1d8b1f90ca029a320043824242
 workflow-type: tm+mt
 source-wordcount: '269'
 ht-degree: 1%
@@ -36,10 +36,10 @@ Nossa recomendação é que os tamanhos dos lotes não sejam maiores que 300. N�
 
 ## Configurações da API do SOAP no Marketo
 
-1. Vá para a seção **[!UICONTROL Admin]** e clique em **[!UICONTROL Serviços da Web]**.
+1. Vá para a seção **[!UICONTROL Admin]** e selecione **[!UICONTROL Serviços da Web]**.
 
 ![admin-web-services2](assets/admin-web-services2.png)
 
-1. Defina uma [!UICONTROL Chave de Criptografia] apropriada, clique em **[!UICONTROL Salvar Alterações]** e use os valores de [!UICONTROL Ponto de Extremidade], [!UICONTROL ID de Usuário] e [!UICONTROL Chave de Criptografia] da API do SOAP para gerar a [assinatura de autenticação](authentication-signature.md) correta para cada chamada de API do SOAP.
+1. Defina uma [!UICONTROL Chave de Criptografia] apropriada, selecione **[!UICONTROL Salvar Alterações]** e use os valores de [!UICONTROL Ponto de Extremidade], [!UICONTROL ID de Usuário] e [!UICONTROL Chave de Criptografia] da API do SOAP para gerar a [assinatura de autenticação](authentication-signature.md) correta para cada chamada de API do SOAP.
 
 ![admin-web-services3](assets/admin-web-services3.png)

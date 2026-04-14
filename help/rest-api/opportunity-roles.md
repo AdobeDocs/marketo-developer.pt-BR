@@ -3,7 +3,7 @@ title: Funções da oportunidade
 feature: REST API
 description: Gerencie funções de oportunidade do Marketo por meio da API REST, incluindo descrever, consultas com campos de desduplicação compostos, criar exclusão de atualização, tempos limite e nenhuma sincronização de CRM.
 exl-id: 2ba84f4d-82d0-4368-94e8-1fc6d17b69ed
-source-git-commit: e2606d6cb12c572603ff069617de58417e43ca63
+source-git-commit: 59684e1c5a8082ad12f1e4bfc854c0d2dde35d2a
 workflow-type: tm+mt
 source-wordcount: '279'
 ht-degree: 0%
@@ -12,7 +12,7 @@ ht-degree: 0%
 
 # Funções da oportunidade
 
-[Referência de Ponto de Extremidade de Funções da Oportunidade](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Opportunities/operation/getOpportunityRolesUsingGET)
+[Referência de Ponto de Extremidade de Funções da Oportunidade](https://developer.adobe.com/marketo-apis/api/mapi#tag/Opportunities/operation/getOpportunityRolesUsingGET)
 
 Os clientes em potencial estão vinculados às oportunidades por meio do objeto `opportunityRole` intermediário.
 

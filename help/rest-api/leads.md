@@ -3,16 +3,16 @@ title: Leads
 feature: REST API
 description: Explore os recursos da API REST do Marketo Leads, incluindo Descrever, consultar por ID ou filtro, campos padrão, limites e recuperação de ECIDs.
 exl-id: 0a2f7c38-02ae-4d97-acfe-9dd108a1f733
-source-git-commit: e2606d6cb12c572603ff069617de58417e43ca63
+source-git-commit: 59684e1c5a8082ad12f1e4bfc854c0d2dde35d2a
 workflow-type: tm+mt
-source-wordcount: '3457'
+source-wordcount: '3460'
 ht-degree: 3%
 
 ---
 
 # Leads
 
-[Referência de Ponto de Extremidade de Clientes Potenciais](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Leads)
+[Referência de Ponto de Extremidade de Clientes Potenciais](https://developer.adobe.com/marketo-apis/api/mapi#tag/Leads)
 
 A API do líder da Marketo fornece um grande conjunto de recursos para aplicativos CRUD simples contra registros de clientes potenciais, bem como a capacidade de modificar a associação de um cliente potencial em listas estáticas e programas e iniciar o processamento de Campanha inteligente para clientes potenciais.
 
@@ -58,7 +58,7 @@ GET /rest/v1/leads/describe.json
 }
 ```
 
-Normalmente, as respostas incluem um conjunto muito maior de campos na matriz de resultados, mas nós os omitimos para fins de demonstração. Cada item na matriz de resultados corresponde a um campo disponível no registro de lead e terá, no mínimo, uma id, um displayName e um tipo de dados. Os objetos filho rest e soap podem ou não estar presentes em um determinado campo, e sua presença indicará se o campo é válido para uso nas APIs REST ou SOAP. A propriedade `readOnly` indica se o campo é somente leitura por meio da API correspondente (REST ou SOAP). A propriedade length indica o comprimento máximo do campo, se presente. A propriedade dataType indica o tipo de dados do campo.
+Normalmente, as respostas incluem um conjunto muito maior de campos no array de resultados, mas estamos omitindo-os para fins de demonstração. Cada item na matriz de resultados corresponde a um campo disponível no registro de lead e terá, no mínimo, uma id, um displayName e um tipo de dados. Os objetos filho rest e soap podem ou não estar presentes em um determinado campo, e sua presença indicará se o campo é válido para uso nas APIs REST ou SOAP. A propriedade `readOnly` indica se o campo é somente leitura por meio da API correspondente (REST ou SOAP). A propriedade length indica o comprimento máximo do campo, se presente. A propriedade dataType indica o tipo de dados do campo.
 
 ## Consultar
 
@@ -95,7 +95,7 @@ Para esse método, sempre haverá um único registro na primeira posição da ma
 
 Obter Clientes Potenciais por Tipo de Filtro retornará o mesmo tipo de registro, mas pode retornar até 300 por página. Ela requer os parâmetros de consulta `filterType` e `filterValues`.
 
-`filterType` aceita qualquer campo personalizado ou a maioria dos campos usados com frequência. Chame o ponto de extremidade `Describe2` para obter uma lista abrangente de campos pesquisáveis permitidos para uso em `filterType`. Ao pesquisar por Campo Personalizado, somente os seguintes tipos de dados são suportados: `string`, `email`, `integer`. Você pode obter detalhes do campo (descrição, tipo etc.) usando o método Descrever acima mencionado.
+`filterType` aceita qualquer campo personalizado ou a maioria dos campos usados com frequência. Chame o ponto de extremidade `Describe2` para obter uma lista abrangente de campos pesquisáveis permitidos para uso em `filterType`. Ao pesquisar por Campo Personalizado, somente os seguintes tipos de dados são suportados: `string`, `email`, `integer`. Você pode obter detalhes de campo (descrição, tipo e assim por diante) usando o método Descrever mencionado acima.
 
 `filterValues` aceita até 300 valores em formato separado por vírgulas. A chamada procura registros em que o campo do cliente potencial corresponde a um dos `filterValues` incluídos. Se o número de clientes potenciais correspondentes ao filtro de cliente potencial for maior que 1.000, será retornado o erro: &quot;1003, Muitos resultados correspondem ao filtro&quot;.
 
@@ -160,7 +160,7 @@ Além de recuperar dados de lead, você pode criar, atualizar e excluir registro
 
 >[!NOTE]
 >
-> Não há suporte para a atualização de campos da Empresa usando o ponto de extremidade [Clientes Potenciais de Sincronização](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Leads/operation/syncLeadUsingPOST). Em vez disso, use o ponto de extremidade [Sincronizar Empresas](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Companies/operation/syncCompaniesUsingPOST).
+> Não há suporte para a atualização de campos da Empresa usando o ponto de extremidade [Clientes Potenciais de Sincronização](https://developer.adobe.com/marketo-apis/api/mapi#tag/Leads/operation/syncLeadUsingPOST). Em vez disso, use o ponto de extremidade [Sincronizar Empresas](https://developer.adobe.com/marketo-apis/api/mapi#tag/Companies/operation/syncCompaniesUsingPOST).
 
 >[!NOTE]
 >
@@ -767,6 +767,7 @@ Aqui podemos ver os detalhes da atividade &quot;Preencher formulário&quot; corr
 ## Mesclar
 
 >[!NOTE]
+>
 >A partir de 31 de março de 2026, as chamadas que incluírem mais de 25 IDs no parâmetro `leadIds` de uma chamada de API de Mesclagem de Leads resultarão em um código de erro 1080 e a chamada será ignorada. As tarefas que exigem a fusão de mais de 25 registros em um só devem ser divididas em várias tarefas para garantir o sucesso dessas chamadas.
 >
 
@@ -817,7 +818,7 @@ Associação
 Os registros de clientes potenciais também podem ser recuperados com base na associação a uma lista estática ou a um programa. Além disso, você pode recuperar todas as listas estáticas, programas ou campanhas inteligentes das quais um lead é membro.
 
 A estrutura de resposta e os parâmetros opcionais são idênticos aos de Obter clientes em potencial por tipo de filtro, embora `filterType` e `filterValues` não possam ser usados com essa API.
-Para acessar a ID da lista por meio da interface do usuário do Marketo, navegue até a lista. A lista `id` está na URL da lista estática, `https://app-**&#x200B;**.marketo.com/#ST1001A1`. Neste exemplo, 1001 é o `id` da lista.
+Para acessar a ID da lista por meio da interface do usuário do Marketo, navegue até a lista. A lista `id` está na URL da lista estática, `https://app-****.marketo.com/#ST1001A1`. Neste exemplo, 1001 é o `id` da lista.
 
 ## Obter Programas por ID de Cliente Potencial
 

@@ -3,9 +3,9 @@ title: Campos padrão
 feature: REST API, Field Management
 description: Navegue pela lista completa de campos de clientes em potencial padrão do Marketo com nomes, rótulos e descrições de REST e SOAP, além de como recuperá-los por meio da API de descrição de clientes em potencial.
 exl-id: 147dbdff-4bc9-4ab3-8918-c4de3e1aa97a
-source-git-commit: d674384b3ab979df2322ece3f02155259d05431a
+source-git-commit: ff0a95e838cecd1d8b1f90ca029a320043824242
 workflow-type: tm+mt
-source-wordcount: '727'
+source-wordcount: '742'
 ht-degree: 24%
 
 ---
@@ -14,7 +14,7 @@ ht-degree: 24%
 
 Esta é uma lista de campos padrão disponíveis no Marketo que podem ser acessados por meio da API.
 
-Você pode recuperar a lista de todos os nomes de campos com suporte disponíveis em seus registros de cliente potencial usando o ponto de extremidade REST [Descrever cliente potencial](https://developer.adobe.com/marketo-apis/api/mapi/).
+Você pode recuperar a lista de todos os nomes de campos com suporte disponíveis em seus registros de cliente potencial usando o ponto de extremidade REST [Descrever cliente potencial](https://developer.adobe.com/marketo-apis/api/mapi).
 
 | Nome da API REST | Nome da API SOAP | Rótulo intuitivo | Descrição |
 | --- | --- | --- | --- |
@@ -53,7 +53,7 @@ Você pode recuperar a lista de todos os nomes de campos com suporte disponívei
 | telefone | Telefone | Número de telefone | Número de Telefone do Cliente Potencial |
 | postalCode | PostalCode | Código postal | CEP do cliente potencial |
 | avaliação | Classificação | Classificação do lead | Avaliação de marketing/vendas do cliente potencial |
-| saudação | Saudação | Saudação | Saudação preferida do lead, ou seja, Senhor, Erros... etc. |
+| saudação | Saudação | Saudação | Saudação preferida do lead, que é Senhor, Misses... e assim por diante |
 | sicCode | SICCode | Código SIC | Código de Classificação Industrial Padrão da empresa do lead |
 | site | Site | Site |  |
 | estado | Estado | Estado | Estado do lead |

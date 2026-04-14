@@ -3,9 +3,9 @@ title: Ativos
 feature: REST API
 description: Visão geral das APIs REST do Marketo Asset para consultar por ID ou nome, navegar com paginação e criar ou atualizar pastas, emails, formulários, modelos, arquivos e tokens.
 exl-id: 4273a5b1-1904-46e8-b583-fc6f46b388d2
-source-git-commit: e2606d6cb12c572603ff069617de58417e43ca63
+source-git-commit: 59684e1c5a8082ad12f1e4bfc854c0d2dde35d2a
 workflow-type: tm+mt
-source-wordcount: '898'
+source-wordcount: '899'
 ht-degree: 2%
 
 ---
@@ -265,7 +265,7 @@ type=Folder&description=This is a test (update 01)
 
 Outros ativos têm estruturas mais complexas e exigem atualizações em subseções adicionais ou objetos filho e, em seguida, precisam passar por aprovação antes de serem colocados em uso.  Esses tipos de ativos incluem Forms, Emails, Modelos de email, Páginas de aterrissagem e Modelos de página de aterrissagem.  Cada um deles terá um único endpoint para a criação de um registro e, depois, endpoints adicionais para a atualização de metadados, conteúdo e seções de conteúdo.
 
-Por exemplo, para criar uma Landing page, você deverá chamar seu endpoint de criação com uma ID de modelo e recuperar suas seções de conteúdo e atualizar cada uma individualmente para adicionar conteúdo, antes de aprová-lo para que ele possa ser implantado em tempo real.
+Por exemplo, para criar uma Landing page, você deverá chamar seu endpoint de criação com uma ID de modelo e recuperar suas seções de conteúdo, além de atualizar cada uma individualmente para adicionar conteúdo, antes de aprová-lo para que ele possa ser implantado em tempo real.
 
 ### Criação complexa
 

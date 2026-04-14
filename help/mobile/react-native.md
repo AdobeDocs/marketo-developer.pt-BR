@@ -3,9 +3,9 @@ title: React Native
 feature: Mobile Marketing
 description: Instale e configure o Marketo SDK em aplicativos do React Native com as etapas Android Gradle e iOS CocoaPods, ponte de módulo nativo, push e associação de lead.
 exl-id: 462fd32e-91f1-4582-93f2-9efe4d4761ff
-source-git-commit: e2606d6cb12c572603ff069617de58417e43ca63
+source-git-commit: 59684e1c5a8082ad12f1e4bfc854c0d2dde35d2a
 workflow-type: tm+mt
-source-wordcount: '854'
+source-wordcount: '857'
 ht-degree: 1%
 
 ---
@@ -16,7 +16,7 @@ Este artigo fornece informações sobre como instalar e configurar o SDK nativo 
 
 ## Pré-requisitos
 
-[Adicione um aplicativo ao Administrador do Marketo](https://experienceleague.adobe.com/pt-br/docs/marketo/using/product-docs/mobile-marketing/admin/add-a-mobile-app) (obtenha a Chave Secreta e a ID do Munchkin do aplicativo).
+[Adicione um aplicativo ao Administrador do Marketo](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/mobile-marketing/admin/add-a-mobile-app) (obtenha a Chave Secreta e a ID do Munchkin do aplicativo).
 
 ## Integração do SDK
 
@@ -47,7 +47,7 @@ Em seguida, sincronize seu projeto com os arquivos Gradle.
 
 #### Integração do iOS SDK
 
-Antes de criar uma ponte para o seu projeto do React Native, é importante configurar nosso SDK no seu projeto Xcode.
+Antes de criar uma ponte para o seu projeto React Native, é importante configurar nosso SDK no seu projeto Xcode.
 
 **Integração com o SDK - Usando CocoaPods**
 
@@ -83,7 +83,7 @@ Para baixá-lo e instalá-lo, inicie um terminal de linha de comando no Mac e ex
 
 Às vezes, um aplicativo do React Native precisa acessar uma API de plataforma nativa que não está disponível por padrão no JavaScript, por exemplo, as APIs nativas para acessar o Apple ou o Google Pay. Talvez você queira reutilizar algumas bibliotecas Objetive-C, Swift, Java ou C++ existentes sem ter que reimplementá-las no JavaScript ou escrever algum código multithread de alto desempenho para coisas como processamento de imagem.
 
-O sistema NativeModule expõe instâncias de classes Java/Objetive-C/C++ (nativas) para JavaScript (JS) como objetos JS, permitindo assim executar código nativo arbitrário de dentro do JS. Embora não esperemos que esse recurso faça parte do processo de desenvolvimento normal, é essencial que ele exista. Se o React Native não exportar uma API nativa de que seu aplicativo JS precisa, você mesmo poderá exportá-la!
+O sistema NativeModule expõe instâncias de classes Java/Objetive-C/C++ (nativas) para JavaScript (JS) como objetos JS, permitindo assim executar código nativo arbitrário de dentro do JS. Embora não esperemos que este recurso faça parte do processo de desenvolvimento habitual, é essencial que exista. Se o React Native não exportar uma API nativa de que seu aplicativo JS precisa, você mesmo poderá exportá-la!
 
 A ponte do React Native é usada para a comunicação entre as camadas JSX e do aplicativo nativo. No nosso caso, o aplicativo host poderá gravar o código JSX que pode chamar os métodos do Marketo SDK.
 

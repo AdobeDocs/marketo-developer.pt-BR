@@ -1,9 +1,9 @@
 ---
 title: Referência do ponto de extremidade
 feature: REST API
-description: Lista abrangente de endpoints da API REST do Marketo com métodos, URIs e permissões necessárias em atividades, exportação em massa, identidade, clientes potenciais, ativos e usuários.
+description: Comprehensive Marketo REST API endpoint list with methods, URIs, and required permissions across activities, bulk export, identity, leads, assets, users.
 exl-id: 27d16b6f-865a-4e40-ab9c-cbabe2927472
-source-git-commit: 6145067629ce78175af3b7464807a0fa100c7b57
+source-git-commit: 9c10469ffa3b763552d176329a426ef51eebe0f1
 workflow-type: tm+mt
 source-wordcount: '4793'
 ht-degree: 29%
@@ -14,24 +14,24 @@ ht-degree: 29%
 
 Abaixo estão links para as referências da API REST do Marketo.
 
-- [Ativo](https://developer.adobe.com/marketo-apis/api/asset/)
+- [Ativo](https://developer.adobe.com/marketo-apis/api/asset)
 - [Identidade](https://developer.adobe.com/marketo-apis/api/identity/)
-- [Banco de dados de leads](https://developer.adobe.com/marketo-apis/api/mapi/)
+- [Banco de dados de leads](https://developer.adobe.com/marketo-apis/api/mapi)
 - [Gerenciamento de usuários](https://developer.adobe.com/marketo-apis/api/user/)
 
 ## Lista de Pontos de Extremidade {#endpoint_list}
 
 Esta é uma lista abrangente de endpoints da REST API.
 
-| Nome | Grupo | Método | URI | Permissão necessária |
+| Nome | Grupo | Método | URI | Required Permission |
 | --- | --- | --- | --- | --- |
 | Adicionar atividades personalizadas | Atividades | POST | /rest/v1/activities/external.json | Atividade de leitura-gravação |
-| Aprovar tipo de atividade personalizada | Atividades | POST | /rest/v1/activities/external/type/{apiName}/approve.json | Metadados de atividade de leitura e gravação |
+| Approve Custom Activity Type | Atividades | POST | /rest/v1/activities/external/type/{apiName}/approve.json | Metadados de atividade de leitura e gravação |
 | Criar atributos personalizados de tipo de atividade | Atividades | POST | /rest/v1/activities/external/type/{apiName}/attributes/create.json | Metadados de atividade de leitura e gravação |
-| Criar tipos de atividade personalizados | Atividades | POST | /rest/v1/activities/external/type.json | Metadados de atividade de leitura e gravação |
+| Create Custom Activity Types | Atividades | POST | /rest/v1/activities/external/type.json | Metadados de atividade de leitura e gravação |
 | Excluir tipo de atividade personalizado | Atividades | POST | /rest/v1/activities/external/type/{apiName}/delete.json | Metadados de atividade de leitura e gravação |
-| Excluir atributos de tipo de atividade personalizados | Atividades | POST | /rest/v1/activities/external/type/{apiName}/attributes/delete.json | Metadados de atividade de leitura e gravação |
-| Descrever tipo de atividade personalizado | Atividades | GET | /rest/v1/activities/external/type/{apiName}/describe.json | Metadados de atividade somente de leitura |
+| Delete Custom Activity Type Attributes | Atividades | POST | /rest/v1/activities/external/type/{apiName}/attributes/delete.json | Metadados de atividade de leitura e gravação |
+| Describe Custom Activity Type | Atividades | GET | /rest/v1/activities/external/type/{apiName}/describe.json | Metadados de atividade somente de leitura |
 | Descartar rascunho de tipo de atividade personalizado | Atividades | POST | /rest/v1/activities/external/type/{apiName}/discardDraft.json | Metadados de atividade de leitura e gravação |
 | Obter tipos de atividade | Atividades | GET | /rest/v1/activities/types.json | Atividade somente de leitura |
 | Obter Tipos de Atividades Personalizadas | Atividades | GET | /rest/v1/activities/external/types.json | Metadados de atividade somente de leitura |

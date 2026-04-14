@@ -3,10 +3,10 @@ title: Serviços personalizados
 feature: REST API
 description: Crie os Serviços personalizados da Marketo, defina funções e permissões somente para API, obtenha a ID do cliente e o Segredo do cliente no LaunchPoint e obtenha os tokens de acesso.
 exl-id: 38b05c4c-4404-4c30-a7cb-d31b28a3a72e
-source-git-commit: 7557b9957c87f63c2646be13842ea450035792be
+source-git-commit: 1f01457919b9fe110b98603f5b8c0996ba8aee4b
 workflow-type: tm+mt
-source-wordcount: '1002'
-ht-degree: 6%
+source-wordcount: '1053'
+ht-degree: 8%
 
 ---
 
@@ -18,7 +18,7 @@ Um Serviço personalizado fornece credenciais para autenticar com o Marketo. Sã
 
 A primeira etapa na criação de um Serviço personalizado é criar uma função que pode ser aplicada ao usuário relevante somente API. Isso é feito no menu **[!UICONTROL Administrador]** > **[!UICONTROL Usuários e funções]** > **[!UICONTROL Funções]**.
 
-Funções são containers para permissões individuais que permitem ou restringem o acesso a determinadas funções. Em assinaturas com Espaços de Trabalho e Partições habilitados, as permissões são concedidas por espaço de trabalho. Se um usuário tiver permissão em um espaço de trabalho, mas não em outro, ele só poderá executar as ações permitidas nesse espaço de trabalho. Para criar uma função, clique no botão Nova função.
+Funções são containers para permissões individuais que permitem ou restringem o acesso a determinadas funções. Em assinaturas com Espaços de Trabalho e Partições habilitados, as permissões são concedidas por espaço de trabalho. Se um usuário tiver permissão em um espaço de trabalho, mas não em outro, ele só poderá executar as ações permitidas nesse espaço de trabalho. Para criar uma função, selecione **[!UICONTROL Nova Função]**.
 
 ![Usuários e funções](assets/admin-users-and-roles-roles.png)
 
@@ -42,15 +42,15 @@ Depois de criar uma função, você deve criar um usuário &quot;Somente API&quo
 
 >[!MORELIKETHIS]
 >
->Para criar um usuário Somente API, vá para o menu **[!UICONTROL Administrador]** > **[!UICONTROL Usuários e Funções]** > **[!UICONTROL Usuários]** e clique em [!UICONTROL Convidar Novo Usuário].
+>Para criar um usuário Somente API, vá para o menu **[!UICONTROL Admin]** > **[!UICONTROL Usuários e Funções]** > **[!UICONTROL Usuários]** e selecione **[!UICONTROL Convidar Novo Usuário]**.
 
 ![Novas Informações do Usuário](assets/new-user-info.png)
 
-Dê ao usuário um nome descritivo e um endereço de email (ele não deve ser válido), com base no serviço e no aplicativo para os quais será usado. Preencha os campos obrigatórios no menu da caixa de diálogo, clique na caixa de seleção &quot;Somente API&quot; e conceda uma de suas funções de API ao usuário. Isso atribui as permissões dessa função definidas para o usuário.
+Dê ao usuário um nome descritivo e um endereço de email (ele não deve ser válido), com base no serviço e no aplicativo para os quais será usado. Preencha os campos obrigatórios no menu da caixa de diálogo, marque a caixa de seleção **[!UICONTROL Somente API]** e conceda uma de suas funções de API ao usuário. Isso atribui as permissões dessa função definidas para o usuário.
 
 ![Novas permissões de usuário](assets/new-user-permissions.png)
 
-Por fim, clique em &quot;Enviar&quot; para criar o usuário somente API.
+Finalmente, selecione **[!UICONTROL Enviar]** para criar o usuário somente API.
 
 Ao provisionar um novo aplicativo com credenciais, considere criar um novo usuário para o serviço, mesmo que ele tenha o mesmo conjunto de permissões que outra integração existente. As estatísticas e erros de uso de chamadas de API são rastreados por usuário, portanto, o provisionamento de um usuário para cada aplicativo pode ajudar a isolar o uso e os problemas de aplicativos específicos. Isso é útil caso encontre problemas ao atingir os limites diários de chamada da API ou erros resultantes de chamadas da API feitas por integrações.
 
@@ -58,7 +58,7 @@ Ao provisionar um novo aplicativo com credenciais, considere criar um novo usuá
 
 Os Serviços personalizados fornecem as credenciais reais, a ID do cliente e o segredo do cliente, necessárias para executar a autenticação com uma instância do Marketo. Para provisionar um, vá para o menu **[!UICONTROL Admin]** > **[!UICONTROL Integrações]** > **[!UICONTROL LaunchPoint]** e selecione **[!UICONTROL Novo Serviço]**.
 
-Dê um nome descritivo ao serviço e, na lista &quot;Serviço&quot;, selecione o &quot;Personalizado&quot;. Forneça uma descrição detalhada ao seu serviço, selecione um usuário apropriado na lista Somente Usuário de API e clique em [!UICONTROL Criar].
+Dê um nome descritivo ao serviço e, na lista &quot;Serviço&quot;, selecione o &quot;Personalizado&quot;. Forneça uma descrição detalhada ao seu serviço, selecione um usuário apropriado na lista Somente Usuário de API e selecione **[!UICONTROL Criar]**.
 
 ![Novo Serviço Personalizado](assets/admin-launchpoint-new-service.png)
 

@@ -3,22 +3,22 @@ title: Snippets
 feature: REST API, Snippets
 description: API REST do Marketo Asset para obter fragmentos, abrangendo a consulta por ID e navegar com status, obtendo conteúdo, criando e atualizando HTML, Texto e conteúdo dinâmico.
 exl-id: 87901c29-ee59-4224-848d-3bd6a6c52718
-source-git-commit: e2606d6cb12c572603ff069617de58417e43ca63
+source-git-commit: 59684e1c5a8082ad12f1e4bfc854c0d2dde35d2a
 workflow-type: tm+mt
-source-wordcount: '511'
+source-wordcount: '512'
 ht-degree: 2%
 
 ---
 
 # Snippets
 
-[Referência de ponto final do trecho](https://developer.adobe.com/marketo-apis/api/asset/#tag/Snippets)
+[Referência de ponto final do trecho](https://developer.adobe.com/marketo-apis/api/asset#tag/Snippets)
 
-Os trechos são componentes reutilizáveis do HTML que podem ser incorporados a emails e páginas de aterrissagem e segmentados para conteúdo dinâmico. Os trechos não têm modelos associados e podem ser criados e implantados em outros ativos dentro do Marketo.
+Os trechos são componentes reutilizáveis do HTML que podem ser incorporados a emails e páginas de aterrissagem e segmentados para conteúdo dinâmico. Os snippets não têm modelos associados e podem ser criados e implantados em outros ativos dentro do Marketo.
 
 ## Consultar
 
-A consulta de trechos segue o padrão padrão para ativos, exceto por não ter um método Por nome. Os métodos [Por Id](https://developer.adobe.com/marketo-apis/api/asset/#tag/Snippets/operation/getSnippetByIdUsingGET) e [Procurar](https://developer.adobe.com/marketo-apis/api/asset/#tag/Snippets/operation/getSnippetUsingGET) permitem o uso do campo de status para recuperar versões aprovadas ou de rascunho do trecho.
+A consulta de trechos segue o padrão padrão para ativos, exceto por não ter um método Por nome. Os métodos [Por Id](https://developer.adobe.com/marketo-apis/api/asset#tag/Snippets/operation/getSnippetByIdUsingGET) e [Procurar](https://developer.adobe.com/marketo-apis/api/asset#tag/Snippets/operation/getSnippetUsingGET) permitem o uso do campo de status para recuperar versões aprovadas ou de rascunho do trecho.
 
 ### Por ID
 
@@ -143,7 +143,7 @@ A chamada retorna uma lista de seções de conteúdo,  que consistem em seçõe
 
 ## Criar e atualizar
 
-Os trechos seguem o padrão de criação de ativos complexos, em que a chamada para [criar trecho](https://developer.adobe.com/marketo-apis/api/asset/#tag/Snippets/operation/createSnippetUsingPOST) e seu conteúdo são feitos separadamente, portanto, a primeira chamada deve ser para o endpoint de criação, com uma descrição opcional.   Os dados são transmitidos como x-www-form-urlencoded, não como JSON.
+Os trechos seguem o padrão de criação de ativos complexos, em que a chamada para [criar trecho](https://developer.adobe.com/marketo-apis/api/asset#tag/Snippets/operation/createSnippetUsingPOST) e seu conteúdo são feitos separadamente, portanto, a primeira chamada deve ser para o endpoint de criação, com uma descrição opcional.   Os dados são transmitidos como x-www-form-urlencoded, não como JSON.
 
 ```http
 POST /rest/asset/v1/snippets.json
@@ -211,7 +211,7 @@ type=HTML&content=draft testUpdateSnippetContent1 HTML Content
 }
 ```
 
-[A atualização dos metadados](https://developer.adobe.com/marketo-apis/api/asset/#tag/Snippets/operation/updateSnippetUsingPOST) também é feita pela ID. Somente o nome e a descrição podem ser atualizados:
+[A atualização dos metadados](https://developer.adobe.com/marketo-apis/api/asset#tag/Snippets/operation/updateSnippetUsingPOST) também é feita pela ID. Somente o nome e a descrição podem ser atualizados:
 
 ```http
 POST /rest/asset/v1/snippet/{id}.json
@@ -400,7 +400,7 @@ POST /rest/asset/v1/snippet/{id}/discardDraft.json
 
 ## Clonar
 
-[Clonar um trecho](https://developer.adobe.com/marketo-apis/api/asset/#tag/Snippets/operation/cloneSnippetUsingPOST) com a API é simples e segue o padrão, com um nome obrigatório, uma identificação do trecho e da pasta originais, bem como uma descrição opcional.  Se não existir nenhuma versão aprovada, a versão de rascunho será clonada.
+[Clonar um trecho](https://developer.adobe.com/marketo-apis/api/asset#tag/Snippets/operation/cloneSnippetUsingPOST) com a API é simples e segue o padrão, com um nome obrigatório, uma identificação do trecho e da pasta originais, bem como uma descrição opcional.  Se não existir nenhuma versão aprovada, a versão de rascunho será clonada.
 
 ```http
 POST /rest/asset/v1/snippet/{id}/clone.json
