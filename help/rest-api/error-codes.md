@@ -114,7 +114,7 @@ Uma chamada de API que retorna esse código de resposta não é contabilizada em
     <tr>
       <td><a name="603"></a>603</td>
       <td>Acesso negado</td>
-      <td>A autenticação foi bem-sucedida, mas o usuário não tem permissão suficiente para chamar essa API. [Permissões adicionais](custom-services.md) podem precisar ser atribuídas à função de usuário, ou o <a href="https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/administration/additional-integrations/create-an-allowlist-for-ip-based-api-access">Incluo na lista de permissões para Acesso à API Baseada em IP</a> pode estar habilitado.</td>
+      <td>A autenticação foi bem-sucedida, mas o usuário não tem permissão suficiente para chamar essa API. [Permissões adicionais](custom-services.md) podem precisar ser atribuídas à função de usuário, ou o <a href="https://experienceleague.adobe.com/pt-br/docs/marketo/using/product-docs/administration/additional-integrations/create-an-allowlist-for-ip-based-api-access">Incluo na lista de permissões para Acesso à API Baseada em IP</a> pode estar habilitado.</td>
     </tr>
     <tr>
       <td><a name="604"></a>604*</td>
