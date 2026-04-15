@@ -3,9 +3,9 @@ title: Servidor MCP
 description: Saiba como conectar um assistente de IA ao Marketo usando o servidor MCP. Configure o Claude Desktop, o Cursor, o Código Claude ou o Código VS com suas credenciais do Marketo.
 hidefromtoc: true
 exl-id: ab446e56-6250-4af5-b03e-162991d09a5c
-source-git-commit: 3fe1c3e9fe572ef68d20ba10f93535aac9a98602
+source-git-commit: d659eb0f604a68d03d5b00c0109d59ff321415df
 workflow-type: tm+mt
-source-wordcount: '1324'
+source-wordcount: '1303'
 ht-degree: 1%
 
 ---
@@ -30,7 +30,6 @@ Você precisa dos seguintes valores da sua instância [!DNL Marketo]:
 - **ID do cliente**
 - **Segredo do cliente**
 - **ID da Conta da Munchkin**
-- **Ponto de Extremidade da API REST**
 
 Se já os tiver, pule para [Configurar a ferramenta de IA](#configure-your-ai-tool).
 
@@ -44,11 +43,6 @@ Se já os tiver, pule para [Configurar a ferramenta de IA](#configure-your-ai-to
 
 1. Vá para **[!UICONTROL Admin]** > **[!UICONTROL Munchkin]**.
 1. Copie a **[!UICONTROL ID da Conta da Munchkin]**. O formato é `XXX-XXX-XXX` e corresponde ao prefixo da URL da instância.
-
-### Endpoint REST API
-
-1. Vá para **[!UICONTROL Admin]** > **[!UICONTROL Serviços da Web]**.
-1. Em **[!UICONTROL REST API]**, copie a URL **[!UICONTROL Endpoint]**. O formato é `https://XXX-XXX-XXX.mktorest.com`.
 
 ## Configurar a ferramenta de IA
 
