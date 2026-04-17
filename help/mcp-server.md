@@ -4,9 +4,9 @@ description: Saiba como conectar um assistente de IA ao Marketo usando o servido
 hidefromtoc: true
 badgeBeta: label="Beta" type="informative" tooltip="Este recurso está atualmente em uma versão beta antecipada"
 exl-id: ab446e56-6250-4af5-b03e-162991d09a5c
-source-git-commit: ad7c64f3e2cbc25db1c2ffe61e2d42b0acbbd573
+source-git-commit: b21ecb7a4dd2730807b0ad601b95fe387498f8f0
 workflow-type: tm+mt
-source-wordcount: '1312'
+source-wordcount: '1431'
 ht-degree: 1%
 
 ---
@@ -16,6 +16,12 @@ ht-degree: 1%
 O protocolo MCP é um padrão aberto que permite que as ferramentas de IA se comuniquem com serviços externos. O servidor MCP [!DNL Marketo] atua como uma ponte entre o assistente de IA e o [!DNL Marketo]. Ele expõe mais de 100 operações em formulários, programas, campanhas inteligentes, leads, emails, trechos, listas e pastas.
 
 Quando a ferramenta de IA chama o servidor MCP, o servidor executa a chamada à API REST correspondente em seu nome, usando as credenciais fornecidas em cada solicitação. Você não precisa instalar, implantar nem executar nenhum software do lado do servidor.
+
+>[!IMPORTANT]
+>
+>O protocolo de contexto de modelo (MCP) é um padrão de código aberto emergente e pode apresentar riscos de segurança ou confiabilidade. As integrações do servidor Adobe MCP e a documentação relacionada são fornecidas &quot;no estado em que se encontram&quot;, sem garantias de nenhum tipo.
+>Conectar clientes ou servidores MCP a produtos Adobe é uma configuração escolhida pelo cliente, e os clientes são responsáveis por avaliar a segurança e a adequação de qualquer integração MCP. O Adobe não é responsável por problemas resultantes de configuração incorreta, uso incorreto do MCP, vulnerabilidades em implementações de terceiros ou ações não intencionais executadas por meio de fluxos de trabalho habilitados para MCP.
+>Para reduzir os riscos, a Adobe incentiva o teste de integrações em um ambiente de sandbox antes do uso produtivo e a análise e validação cuidadosas de todas as ações e respostas iniciadas pelo MCP antes de confirmar ou confiar nelas.
 
 ## Pré-requisitos
 
