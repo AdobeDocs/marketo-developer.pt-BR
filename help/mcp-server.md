@@ -2,16 +2,20 @@
 title: Servidor MCP
 description: Saiba como conectar um assistente de IA ao Marketo usando o servidor MCP. Configure o Claude Desktop, o Cursor, o Código Claude ou o Código VS com suas credenciais do Marketo.
 hidefromtoc: true
-badgeBeta: label="Beta" type="informative" tooltip="Este recurso está atualmente em uma versão beta antecipada"
+badgeBeta: label="Beta" type="informative" tooltip="No momento, esse recurso está em uma versão beta fechada"
 exl-id: ab446e56-6250-4af5-b03e-162991d09a5c
-source-git-commit: b21ecb7a4dd2730807b0ad601b95fe387498f8f0
+source-git-commit: c21ba0db3115c453f8ec35e18d4a8fd4c1ad8745
 workflow-type: tm+mt
-source-wordcount: '1431'
+source-wordcount: '1428'
 ht-degree: 1%
 
 ---
 
 # [!DNL Marketo] Servidor MCP
+
+>[!NOTE]
+>
+>O servidor MCP está atualmente em uma versão beta fechada. Não está disponível para todos os usuários no momento.
 
 O protocolo MCP é um padrão aberto que permite que as ferramentas de IA se comuniquem com serviços externos. O servidor MCP [!DNL Marketo] atua como uma ponte entre o assistente de IA e o [!DNL Marketo]. Ele expõe mais de 100 operações em formulários, programas, campanhas inteligentes, leads, emails, trechos, listas e pastas.
 
@@ -222,7 +226,6 @@ Exemplo de prompts:
 
 | Erro | Causa | Corrigir |
 | ------- | ------- | ----- |
-| &quot;Endpoint do Marketo não fornecido&quot; | O cabeçalho `X-Marketo-Endpoint` está ausente da sua configuração. | Verifique novamente a configuração do MCP e confirme se todos os quatro cabeçalhos estão presentes. |
 | &quot;Credenciais do Marketo não fornecidas&quot; | Um ou mais de `X-Marketo-Client-Id`, `X-Marketo-Client-Secret` ou `X-Marketo-Munchkin-Id` está(ão) ausente(s). | Verifique se todos os quatro cabeçalhos estão presentes na sua configuração. |
 | &quot;Erro de autenticação&quot; | Suas credenciais são inválidas ou expiraram. | Verifique novamente a ID do Cliente e o Segredo do Cliente em **[!UICONTROL Admin]** > **[!UICONTROL LaunchPoint]**. |
 | &quot;403 Proibido&quot; | Sua Munchkin ID não está no incluo na lista de permissões do servidor. | Contate o administrador do MCP [!DNL Marketo] para adicionar sua Munchkin ID. |
