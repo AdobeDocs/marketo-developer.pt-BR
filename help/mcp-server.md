@@ -1,10 +1,9 @@
 ---
 title: Servidor MCP
 description: Saiba como conectar um assistente de IA ao Marketo usando o servidor MCP. Configure o Claude Desktop, o Cursor, o Código Claude ou o Código VS com suas credenciais do Marketo.
-hidefromtoc: true
 badgeBeta: label="Beta" type="informative" tooltip="No momento, esse recurso está em uma versão beta fechada"
 exl-id: ab446e56-6250-4af5-b03e-162991d09a5c
-source-git-commit: c21ba0db3115c453f8ec35e18d4a8fd4c1ad8745
+source-git-commit: 74f277aa200fa54bc386c067ec3302d144ec250a
 workflow-type: tm+mt
 source-wordcount: '1428'
 ht-degree: 1%
