@@ -1,8 +1,8 @@
 ---
 source-git-commit: 981ed9b254f277d647a844803d05a1a2549cbaed
 workflow-type: tm+mt
-source-wordcount: '483'
-ht-degree: 100%
+source-wordcount: '521'
+ht-degree: 94%
 
 ---
 # Contribuir com o artigo
@@ -11,7 +11,7 @@ Aceitamos contribuições de nossa comunidade e de funcionários da Adobe que es
 
 ## Código de conduta aberto da Adobe
 
-Este projeto adotou o [Código de conduta de código aberto da Adobe](code-of-conduct.md) ou o [Código de conduta do .NET Foundation](https://dotnetfoundation.org/code-of-conduct). Para obter mais informações, consulte o artigo [Contribuição](contributing.md).
+Esse projeto segue o [Código de conduta aberto da Adobe](code-of-conduct.md) ou o [Código de conduta da .NET Foundation](https://dotnetfoundation.org/code-of-conduct). Para obter mais informações, consulte o artigo [Contribuição](contributing.md).
 
 ## Como contribuir com o conteúdo da Adobe
 
@@ -26,8 +26,8 @@ Este projeto adotou o [Código de conduta de código aberto da Adobe](code-of-co
 Se você estiver contribuindo com uma pequena atualização:
 
 1. Navegue até o tópico que deseja editar.
-1. No banner “Este conteúdo foi útil?”, que aparece na parte inferior da janela do navegador clique em **Opções de feedback detalhadas**.
-1. Clique em **Sugerir uma edição** e envie uma solicitação de pull (PR) com suas alterações na interface do GitHub.
+1. No banner “Este conteúdo foi útil?”, banner que aparece na parte inferior da janela do navegador clique em **Opções detalhadas de feedback**.
+1. Clique em **Sugerir uma edição** e envie uma solicitação de pull com suas alterações na interface do GitHub.
 
    Consulte o [Guia do colaborador dos documentos da Adobe](https://experienceleague.adobe.com/docs/contributor/contributor-guide/introduction.html?lang=pt-BR) para obter mais informações.
 
@@ -54,7 +54,7 @@ Se você for um autor técnico, gerente de programa ou desenvolvedor da equipe d
 Todos os artigos neste repositório usam o GitHub Flavored Markdown. Se você não estiver familiarizado com o Markdown, consulte:
 
 * [Noções básicas sobre o Markdown](https://help.github.com/articles/getting-started-with-writing-and-formatting-on-github/)
-* [Página de consulta do Markdown para impressão](https://guides.github.com/pdfs/markdown-cheatsheet-online.pdf)
+* [Folha de consulta do markdown para impressão](https://guides.github.com/pdfs/markdown-cheatsheet-online.pdf)
 
 ## Rótulos
 
