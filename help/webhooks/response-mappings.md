@@ -3,9 +3,9 @@ title: Mapeamentos de resposta
 feature: Webhooks
 description: Os Webhooks do Marketo respondem aos mapeamentos para JSON e XML, mapeiam atributos para campos de clientes potenciais com nomes de API do SOAP, notação de pontos e matrizes e compatibilidade de tipo.
 exl-id: 95c6e33e-487c-464b-b920-3c67e248d84e
-source-git-commit: 7557b9957c87f63c2646be13842ea450035792be
+source-git-commit: d84b9d0f60734500f16bba237bdd95692d22abbb
 workflow-type: tm+mt
-source-wordcount: '481'
+source-wordcount: '485'
 ht-degree: 1%
 
 ---
@@ -28,11 +28,11 @@ As propriedades JSON são acessadas com notação de pontos e notação de matri
 { "foo":"bar"}
 ```
 
-Para acessar a propriedade `foo` em um mapeamento de resposta, use o `name` da propriedade, pois ela está no primeiro nível do objeto JSON, `foo`. Veja como isso se parece no Marketo:
+Para acessar a propriedade `foo` em um mapeamento de resposta, use o `name` da propriedade, pois ela está no primeiro nível do objeto JSON, `foo`. O código a seguir mostra a aparência no Marketo:
 
 ![Mapeamento de Resposta](assets/json-resp.png)
 
-Este é um exemplo mais complicado com uma matriz:
+Veja a seguir um exemplo mais complicado com uma matriz:
 
 ```json
 {
@@ -58,7 +58,7 @@ Queremos acessar a orderDate a partir do primeiro elemento da matriz orders. Par
 
 ## Mapeamentos XML
 
-Os valores podem ser acessados de elementos individuais em documentos XML. Usa notação de pontos semelhante aos mapeamentos JSON. Vamos ver este exemplo simples:
+Os valores podem ser acessados de elementos individuais em documentos XML. Usa notação de pontos semelhante aos mapeamentos JSON. Considere este exemplo simples:
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>

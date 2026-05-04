@@ -3,9 +3,9 @@ title: Webhooks
 feature: Webhooks
 description: Saiba como configurar webhooks do Marketo para chamar serviços de terceiros, definir modelos de carga, codificação, mapeamentos de resposta, tokens, cabeçalhos personalizados e dicas.
 exl-id: fd283c66-05a1-4aa4-8412-0d41b8d1e3c8
-source-git-commit: ff0a95e838cecd1d8b1f90ca029a320043824242
+source-git-commit: d84b9d0f60734500f16bba237bdd95692d22abbb
 workflow-type: tm+mt
-source-wordcount: '721'
+source-wordcount: '724'
 ht-degree: 3%
 
 ---
@@ -20,14 +20,14 @@ O Marketo permite o uso de Webhooks para comunicação com serviços da Web de t
 
 Cada webhook individual tem as seguintes propriedades:
 
-- [!UICONTROL URL] - Insira a URL usada para enviar sua solicitação ao serviço Web.
-- [!UICONTROL Tipo de Solicitação] - O método HTTP.
-- [!UICONTROL Modelo de carga] - Se desejar transmitir informações no corpo da POSTAGEM, insira o modelo. Use qualquer formato de dados compatível com HTTP POST, incluindo XML, JSON ou SOAP. O formato de serialização deve permitir aspas duplas em cadeias de caracteres. Para inserir um token no modelo, selecione **[!UICONTROL Inserir Token]**.  Os tokens do tipo string são automaticamente colocados entre aspas duplas.
-- [!UICONTROL Solicitar Codificação de Token] - Se os valores de token incluírem caracteres especiais (como um E comercial, &quot;&amp;&quot;), indique o formato da sua solicitação (JSON ou Formulário/Url). A codificação correta deve ser selecionada para o corpo para garantir que o Webhook se comunique corretamente com o serviço da Web.
-- [!UICONTROL Tipo de Resposta] - Selecione o formato da resposta recebida do serviço (JSON ou XML). O tipo de resposta correto deve ser selecionado para mapear propriedades da resposta de volta aos campos de cliente potencial no Marketo
-- [!UICONTROL Cabeçalhos Personalizados] - Acessados por meio de [!UICONTROL Ações de Webhooks] -> [!UICONTROL Definir Cabeçalho Personalizado], esse menu permite a adição de qualquer número de pares de Valores-Chave personalizados como Cabeçalhos HTTP.
+- **[!UICONTROL URL]** - Insira a URL usada para enviar sua solicitação ao serviço Web.
+- **[!UICONTROL Tipo de Solicitação]** - O método HTTP.
+- **[!UICONTROL Modelo de carga]** - Se desejar transmitir informações no corpo da POSTAGEM, insira o modelo. Use qualquer formato de dados compatível com HTTP POST, incluindo XML, JSON ou SOAP. O formato de serialização deve permitir aspas duplas em cadeias de caracteres. Para inserir um token no modelo, selecione **[!UICONTROL Inserir Token]**. Os tokens do tipo string são automaticamente colocados entre aspas duplas.
+- **[!UICONTROL Solicitar Codificação de Token]** - Se os valores de token incluírem caracteres especiais (como um E comercial, &quot;&amp;&quot;), indique o formato da sua solicitação (JSON ou Formulário/Url). A codificação correta deve ser selecionada para o corpo para garantir que o Webhook se comunique corretamente com o serviço da Web.
+- **[!UICONTROL Tipo de Resposta]** - Selecione o formato da resposta recebida do serviço (JSON ou XML). O tipo de resposta correto deve ser selecionado para mapear propriedades da resposta de volta aos campos de cliente potencial no Marketo.
+- **[!UICONTROL Cabeçalhos Personalizados]** - Acessados por meio de **[!UICONTROL Ações de Webhooks]** > **[!UICONTROL Definir Cabeçalho Personalizado]**, esse menu permite a adição de qualquer número de pares de Valores-Chave personalizados como Cabeçalhos HTTP.
 
-Os dados podem ser gravados de volta nos clientes potenciais a partir das respostas do serviço Web usando [Mapeamentos de Resposta](response-mappings.md)
+Os dados podem ser gravados de volta nos clientes potenciais a partir das respostas do serviço Web usando [Mapeamentos de Resposta](response-mappings.md).
 
 ## Tokens
 
@@ -51,6 +51,6 @@ Os webhooks permitem que o uso de qualquer número de campos de Cabeçalho perso
 - As atualizações por meio de mapeamentos de resposta só ocorrerão se o serviço da Web responder com um código de resposta HTTP 2xx. Outros tipos de códigos não resultarão em atualizações no registro.
 - Você pode usar os serviços da Web para executar enriquecimento, validação ou normalização de dados personalizados a partir de serviços internos ou externos.
 - O tempo de execução do Webhook está à mercê do tempo de resposta do serviço em uso e pode resultar em longos atrasos de execução da campanha. Mesmo que um serviço leve apenas 50 ms para ser executado, isso significa 1,5 hora quando executado 100.000 vezes.
-- O Marketo aguarda até 30 segundos por uma determinada chamada de serviço antes de encerrar a chamada (ou seja, tempo limite esgotado).
+- O Marketo aguarda até 30 segundos por uma determinada chamada de serviço antes de encerrar a chamada (também conhecido como tempo limite).
 - Os caracteres inseridos no campo URL são passados como gravados, por exemplo, &#39;&amp;&#39; é enviado como &#39;&amp;&#39;, &#39;%26&#39; é enviado como &#39;%26&#39;
    - Se um caractere precisar ser codificado por porcentagem quando for recebido pelo servidor do recipient, ele deverá ser passado explicitamente como a cadeia de caracteres que representa esse caractere

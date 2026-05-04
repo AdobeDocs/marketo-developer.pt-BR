@@ -3,9 +3,9 @@ title: Erros
 feature: Webhooks
 description: Saiba mais sobre os códigos de erro do Marketo webhook, por que as respostas 2xx são necessárias para atualizar os campos de lead e como capturar e lidar com erros com o Webhook é chamado.
 exl-id: adce40c3-87b1-4f31-8995-eb64e8a72b55
-source-git-commit: 6145067629ce78175af3b7464807a0fa100c7b57
+source-git-commit: d84b9d0f60734500f16bba237bdd95692d22abbb
 workflow-type: tm+mt
-source-wordcount: '257'
+source-wordcount: '255'
 ht-degree: 2%
 
 ---
@@ -25,11 +25,11 @@ Para que o Marketo mapeie valores de volta em um campo, o código de resposta do
 
 ## Erro ao capturar um Webhook
 
-Erros de Webhooks podem ser capturados e tratados pelo [!UICONTROL O Webhook é chamado] acionador:
+Erros de Webhooks podem ser capturados e tratados pelo **[!UICONTROL O Webhook é chamado]** acionador:
 
 ![Webhook chamado](assets/webhook-called.png)
 
-* Resposta - Resposta é a carga de resposta literal que foi recebida pela solicitação.
-* Tipo de erro - Corresponde à Frase do motivo da mensagem de status HTTP.
+* **Resposta** - Resposta é a carga de resposta literal que foi recebida pela solicitação.
+* **Tipo de Erro** - Isso corresponde à Frase de Motivo da mensagem de status HTTP.
 
 Eles podem ser usados para lidar e reagir a erros e exceções previsíveis. Dependendo do serviço com o qual você está integrando, pode ser possível recuperar certas classes de erros automaticamente, enquanto alertas podem ser criados para notificar os usuários sobre erros inesperados.
