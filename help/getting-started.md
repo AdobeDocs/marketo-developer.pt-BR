@@ -2,7 +2,7 @@
 title: Introdução
 description: Introdução às APIs do Marketo Engage e ao modelo de dados, incluindo leads, atividades, programas, tags, listas, orientação REST e aviso de desativação da SOAP.
 exl-id: 78c44c32-4e59-4d55-a45c-ef0d7dac814d
-source-git-commit: 59684e1c5a8082ad12f1e4bfc854c0d2dde35d2a
+source-git-commit: e3fd965eb0c1fe0968933577963bc6a935c0f26d
 workflow-type: tm+mt
 source-wordcount: '1510'
 ht-degree: 1%
@@ -101,3 +101,4 @@ APIs relacionadas: [REST](https://developer.adobe.com/marketo-apis/api/mapi#tag/
 Os registros de Vendedor e relacionamentos de cliente potencial podem ser gerenciados no Marketo quando não há integração de CRM nativa habilitada. Esses registros contêm informações básicas sobre o Vendedor, como Nome, Email e Cargo, que podem ser usadas para filtragem e tokens no Marketo quando um cliente potencial é de propriedade de um. A relação com um vendedor é gerenciada no nível de cliente potencial por meio do campo &quot;externalSalesPersonId&quot;, que deve ser atualizado por meio da API [Sincronizar Clientes Potenciais](https://developer.adobe.com/marketo-apis/api/mapi#tag/Leads/operation/syncLeadUsingPOST).
 
 APIs relacionadas: [REST](https://developer.adobe.com/marketo-apis/api/mapi#tag/Sales-Persons)
+
