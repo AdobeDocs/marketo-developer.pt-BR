@@ -3,16 +3,22 @@ title: Objetos personalizados
 feature: REST API, Custom Objects
 description: Saiba como criar e gerenciar objetos personalizados do Marketo por meio da API REST, incluindo lista e descrição de endpoints, metadados, relações, campos e consultas.
 exl-id: 88e8829b-f8f1-46d7-a753-5aa6e20e2c40
-source-git-commit: 59684e1c5a8082ad12f1e4bfc854c0d2dde35d2a
+TQID: https://experienceleague.adobe.com/NWm9CjFVqQdVDJRrnE4nA299-Lg53-JR7xvY-82dUqY
+product_v2: id: b27e5950-9033-45ac-9f86-eb22e567f615
+feature_v2: id: b3b8a63f-51fc-40f6-a7d2-a31c5d49fb45id: c5f60233-d5ea-4453-a799-0ad258b4d399id: d1d0a9cd-295d-4976-8c39-ddae266f240e
+subfeature_v2: id: ea4e3ff5-e7b9-4b4c-a5a0-dc27cc3f4275
+role_v2: id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
+topic_v2: id: a004cc84-67b9-4a33-a3a7-8ec7273ef4dcid: eddd9b14-83bd-4ff4-9072-54a4a484abb7
+source-git-commit: 00118a89f25a23b931fac671130932bb0e0e4e4e
 workflow-type: tm+mt
-source-wordcount: '3346'
+source-wordcount: 3346
 ht-degree: 0%
 
 ---
 
 # Objetos personalizados
 
-[**Referência de Ponto de Extremidade de Objeto Personalizado**](https://developer.adobe.com/marketo-apis/api/mapi#tag/Custom-Objects) O Marketo permite que os usuários definam Objetos Personalizados do Marketo relacionados a Objetos Padrão do Marketo (Clientes Potenciais, Empresas) ou outros Objetos Personalizados do Marketo.  Os Objetos Personalizados do Marketo podem ser criados usando a Interface do Usuário do Marketo, conforme descrito [aqui](https://experienceleague.adobe.com/pt-br/docs/marketo/using/product-docs/administration/marketo-custom-objects/create-marketo-custom-objects), ou usando a API de Metadados de Objeto Personalizado, conforme descrito abaixo.
+[**Referência de Ponto de Extremidade de Objeto Personalizado**](https://developer.adobe.com/marketo-apis/api/mapi#tag/Custom-Objects) O Marketo permite que os usuários definam Objetos Personalizados do Marketo relacionados a Objetos Padrão do Marketo (Clientes Potenciais, Empresas) ou outros Objetos Personalizados do Marketo.  Os Objetos Personalizados do Marketo podem ser criados usando a Interface do Usuário do Marketo, conforme descrito [aqui](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/administration/marketo-custom-objects/create-marketo-custom-objects), ou usando a API de Metadados de Objeto Personalizado, conforme descrito abaixo.
 
 É necessário um tipo apropriado de assinatura do Marketo para acessar a API de metadados de objeto personalizado.  Consulte seu CSM para obter detalhes.
 
@@ -263,7 +269,7 @@ POST /rest/v1/customobjects/{apiName}.json?_method=GET
 
 ## Criar e atualizar
 
-Use o ponto de extremidade [Sincronizar Objetos Personalizados](https://developer.adobe.com/marketo-apis/api/mapi#tag/Custom-Objects/operation/syncCustomObjectsUsingPOST) para criar ou atualizar objetos personalizados. Você pode especificar a operação usando o parâmetro `action`.  Até 300 registros podem ser criados ou atualizados em uma chamada.  Os valores usados na matriz `input` são amplamente baseados nas informações retornadas pelo ponto de extremidade [Descrever Objetos Personalizados](https://experienceleague.adobe.com/pt-br/docs/marketo-developer/marketo/rest/endpoint-reference#!/Custom_Objects/describeUsingGET_1). Em um objeto de carro de exemplo, há apenas um campo de desduplicação, `vin`.  Para atualizar ou criar registros ao usar o modo dedupeFields, cada registro em nossa matriz de entrada precisa incluir pelo menos um campo `vin`.
+Use o ponto de extremidade [Sincronizar Objetos Personalizados](https://developer.adobe.com/marketo-apis/api/mapi#tag/Custom-Objects/operation/syncCustomObjectsUsingPOST) para criar ou atualizar objetos personalizados. Você pode especificar a operação usando o parâmetro `action`.  Até 300 registros podem ser criados ou atualizados em uma chamada.  Os valores usados na matriz `input` são amplamente baseados nas informações retornadas pelo ponto de extremidade [Descrever Objetos Personalizados](https://experienceleague.adobe.com/en/docs/marketo-developer/marketo/rest/endpoint-reference#!/Custom_Objects/describeUsingGET_1). Em um objeto de carro de exemplo, há apenas um campo de desduplicação, `vin`.  Para atualizar ou criar registros ao usar o modo dedupeFields, cada registro em nossa matriz de entrada precisa incluir pelo menos um campo `vin`.
 
 ```http
 POST /rest/v1/customobjects/{apiName}.json
@@ -386,7 +392,7 @@ Assim como a atualização, seu resultado conterá um status para cada registro 
 
 ## Tipos de objeto personalizados
 
-A API de metadados de objeto personalizado permite gerenciar remotamente esquemas de objeto personalizados.  A API permite criar um novo Tipo de objeto personalizado ou modificar um existente.  Depois que o Tipo de objeto personalizado for criado ou modificado, ele deverá ser aprovado para uso.  Para obter mais informações sobre objetos personalizados, consulte a documentação do produto [aqui](https://experienceleague.adobe.com/pt-br/docs/marketo/using/home?lang=pt-BR).
+A API de metadados de objeto personalizado permite gerenciar remotamente esquemas de objeto personalizados.  A API permite criar um novo Tipo de objeto personalizado ou modificar um existente.  Depois que o Tipo de objeto personalizado for criado ou modificado, ele deverá ser aprovado para uso.  Para obter mais informações sobre objetos personalizados, consulte a documentação do produto [aqui](https://experienceleague.adobe.com/en/docs/marketo/using/home?lang=pt-BR).
 
 * Os tipos de objeto personalizados criados pela API não podem ser modificados usando a interface do usuário do Marketo
 * O número máximo de tipos de objetos personalizados permitidos é 10
@@ -395,7 +401,7 @@ A API de metadados de objeto personalizado permite gerenciar remotamente esquema
 
 ### Tipo de consulta
 
-Há duas maneiras de recuperar metadados de tipo de objeto personalizado: Descrever tipo de objeto personalizado, que retorna  o registro de um único tipo de objeto personalizado, e pode ser filtrado por estado de aprovação, e Tipos de objeto personalizados de lista, que retorna uma lista de todos os tipos de objeto personalizados na assinatura, e pode ser filtrado por nome e por estado de aprovação.
+Há duas maneiras de recuperar metadados de tipo de objeto personalizado: Descrever Tipo de Objeto Personalizado, que retorna o registro de um único tipo de objeto personalizado e pode ser filtrado por estado de aprovação, e Listar Tipos de Objeto Personalizados, que retorna uma lista de todos os tipos de objeto personalizados na assinatura e pode ser filtrado por nome e por estado de aprovação.
 
 ### Descrever tipo
 
@@ -514,11 +520,11 @@ Aqui podemos ver os seguintes atributos:
 
 * Metadados: state, displayName, description, apiName, idField, createdAt, updatedAt, dedupeFields, searchableFields, relacionamentos
 * Campos padrão: marketoGUID, createdAt, updatedAt
-* LeadId de campos personalizados, vin, make,  modelo, ano
+* LeadId, vin, make, model, year de campos personalizados
 
 ### Tipos de lista
 
-O ponto de extremidade [Listar Tipos de Objeto Personalizados](https://developer.adobe.com/marketo-apis/api/mapi#tag/Custom-Objects/operation/listCustomObjectTypesUsingGET) retorna metadados para todos os tipos de objeto personalizados disponíveis na instância de destino.  Observe que este ponto de extremidade é semelhante a [Listar Objetos Personalizados](https://experienceleague.adobe.com/docs/marketo-developer/marketo/soap/custom-objects/custom-objects.html?lang=pt-BR), mas é mais abrangente e inclui metadados adicionais, como estado, relações e campos. Se existir uma versão aprovada, ela será retornada.  Caso contrário, a versão de rascunho será retornada.  O parâmetro **state** opcional é usado para especificar a versão do tipo de objeto personalizado a ser retornado: **draft**, **approved** ou **approvedWithDraft**.  O parâmetro **names** opcional é usado para especificar nomes específicos de tipos de objetos personalizados a serem retornados; ele é estruturado como uma lista separada por vírgulas de nomes de API.
+O ponto de extremidade [Listar Tipos de Objeto Personalizados](https://developer.adobe.com/marketo-apis/api/mapi#tag/Custom-Objects/operation/listCustomObjectTypesUsingGET) retorna metadados para todos os tipos de objeto personalizados disponíveis na instância de destino.  Observe que este ponto de extremidade é semelhante a [Listar Objetos Personalizados](https://experienceleague.adobe.com/docs/marketo-developer/marketo/soap/custom-objects/custom-objects.html?lang=en), mas é mais abrangente e inclui metadados adicionais, como estado, relações e campos. Se existir uma versão aprovada, ela será retornada.  Caso contrário, a versão de rascunho será retornada.  O parâmetro **state** opcional é usado para especificar a versão do tipo de objeto personalizado a ser retornado: **draft**, **approved** ou **approvedWithDraft**.  O parâmetro **names** opcional é usado para especificar nomes específicos de tipos de objetos personalizados a serem retornados; ele é estruturado como uma lista separada por vírgulas de nomes de API.
 
 ```http
 GET /rest/v1/customobjects/schema.json?names=purchaseHistory
@@ -701,7 +707,7 @@ O ponto de extremidade [Sincronizar Tipo de Objeto Personalizado](https://develo
 
 Tenha cuidado ao nomear objetos personalizados. Ao criar um novo objeto personalizado, é recomendável adicionar prefixos ao nome com uma string que indique o nome da empresa (alfanumérico ou sublinhado permitido). Isso facilita a pesquisa do objeto personalizado na interface do MLM e também ajuda a não ter certeza de que o nome é exclusivo.
 
-Este é um exemplo de criação de um novo tipo de objeto personalizado com a API  Nomeie &quot;transaction&quot;.
+Este é um exemplo de criação de um novo tipo de objeto personalizado com o Nome da API &quot;transação&quot;.
 
 ```http
 POST /rest/v1/customobjects/schema.json
@@ -808,7 +814,7 @@ POST /rest/v1/customobjects/schema.json
 
 ## Aprovação de tipo
 
-Tipos de objetos personalizados devem ser aprovados antes de serem usados. Quando um novo tipo de objeto personalizado é criado usando o ponto de extremidade [Sincronizar Tipo de Objeto Personalizado](https://developer.adobe.com/marketo-apis/api/mapi#tag/Custom-Objects/operation/syncCustomObjectTypeUsingPOST), ele é criado como uma versão de rascunho. Quando terminar de adicionar campos personalizados, você deverá aprovar a versão de rascunho. Isso cria uma versão aprovada e exclui a versão de rascunho. Quando um tipo de objeto personalizado existente é modificado usando o ponto de extremidade Sincronizar tipo de objeto personalizado ou usando um dos pontos de extremidade Adicionar/Atualizar/Excluir campo de tipo de objeto personalizado, uma versão de rascunho é criada. Todas as modificações no tipo ou em seus campos afetam somente a versão de rascunho. Quando terminar a modificação, você deverá aprovar a versão preliminar. Isso substitui a versão aprovada pela versão de rascunho e exclui a versão de rascunho. Para obter mais informações sobre aprovação de objeto personalizado, consulte a documentação do produto [aqui](https://experienceleague.adobe.com/pt-br/docs/marketo/using/product-docs/administration/marketo-custom-objects/approve-a-custom-object).
+Tipos de objetos personalizados devem ser aprovados antes de serem usados. Quando um novo tipo de objeto personalizado é criado usando o ponto de extremidade [Sincronizar Tipo de Objeto Personalizado](https://developer.adobe.com/marketo-apis/api/mapi#tag/Custom-Objects/operation/syncCustomObjectTypeUsingPOST), ele é criado como uma versão de rascunho. Quando terminar de adicionar campos personalizados, você deverá aprovar a versão de rascunho. Isso cria uma versão aprovada e exclui a versão de rascunho. Quando um tipo de objeto personalizado existente é modificado usando o ponto de extremidade Sincronizar tipo de objeto personalizado ou usando um dos pontos de extremidade Adicionar/Atualizar/Excluir campo de tipo de objeto personalizado, uma versão de rascunho é criada. Todas as modificações no tipo ou em seus campos afetam somente a versão de rascunho. Quando terminar a modificação, você deverá aprovar a versão preliminar. Isso substitui a versão aprovada pela versão de rascunho e exclui a versão de rascunho. Para obter mais informações sobre aprovação de objeto personalizado, consulte a documentação do produto [aqui](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/administration/marketo-custom-objects/approve-a-custom-object).
 
 Depois que um tipo de objeto personalizado é aprovado, você não pode:
 
@@ -820,7 +826,7 @@ Por esses motivos, é importante considerar cuidadosamente o esquema e a conven�
 
 ### Aprovar tipo
 
-Use o ponto de extremidade [Aprovar Tipo de Objeto Personalizado](https://developer.adobe.com/marketo-apis/api/mapi#tag/Custom-Objects/operation/approveCustomObjectTypeUsingPOST) para publicar uma versão de rascunho como a nova versão aprovada.  **apiName** é o único parâmetro necessário como parâmetro de caminho.  Um tipo não pode ser aprovado a menos que esteja no estado de rascunho e satisfaça um conjunto de regras de validação descrito [aqui](https://experienceleague.adobe.com/pt-br/docs/marketo/using/product-docs/administration/marketo-custom-objects/approve-a-custom-object).
+Use o ponto de extremidade [Aprovar Tipo de Objeto Personalizado](https://developer.adobe.com/marketo-apis/api/mapi#tag/Custom-Objects/operation/approveCustomObjectTypeUsingPOST) para publicar uma versão de rascunho como a nova versão aprovada.  **apiName** é o único parâmetro necessário como parâmetro de caminho.  Um tipo não pode ser aprovado a menos que esteja no estado de rascunho e satisfaça um conjunto de regras de validação descrito [aqui](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/administration/marketo-custom-objects/approve-a-custom-object).
 
 ```http
 POST /rest/v1/customobjects/schema/{apiName}/approve.json
@@ -879,18 +885,18 @@ Você pode adicionar/alterar/excluir campos personalizados usando os pontos de e
 * Pelo menos 1 campo de desduplicação é necessário, no máximo 3 são permitidos
 * Os nomes de campos da API e os nomes de exibição podem conter caracteres alfanuméricos e sublinhado &quot;_&quot;
 
-Para obter mais informações sobre campos de objeto personalizados, consulte a documentação do produto [aqui](https://experienceleague.adobe.com/pt-br/docs/marketo/using/product-docs/administration/marketo-custom-objects/add-marketo-custom-object-fields).
+Para obter mais informações sobre campos de objeto personalizados, consulte a documentação do produto [aqui](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/administration/marketo-custom-objects/add-marketo-custom-object-fields).
 
 ### Adicionar campos
 
-O ponto de extremidade [Adicionar Campos Personalizados de Tipo de Objeto](https://developer.adobe.com/marketo-apis/api/mapi#tag/Custom-Objects/operation/addCustomObjectTypeFieldsUsingPOST) permite adicionar um ou mais campos ao objeto personalizado.  O corpo da solicitação contém uma matriz `input` com um ou mais elementos.  Cada elemento é um objeto JSON com atributos que descrevem um campo. O atributo necessário `name` é o nome da API do campo e deve ser exclusivo para o objeto personalizado.   A convenção é usar minúsculas ou camelCase para ajudar a distinguir entre outras strings de texto. O atributo necessário `displayName` é o nome legível do campo e deve ser exclusivo do objeto personalizado. O atributo `dataType` necessário é o tipo de dados do campo.  A  uma lista de tipos de dados permitidos pode ser obtida chamando o ponto de extremidade [Obter Tipos de Dados de Campo de Tipo de Objeto Personalizado](https://developer.adobe.com/marketo-apis/api/mapi#tag/Custom-Objects/operation/getCustomObjectTypeFieldDataTypesUsingGET).  Objetos personalizados podem conter campos com o tipo de dados &quot;link&quot;.  Os campos de link são usados para estabelecer relações entre objetos personalizados e outros tipos de objetos no sistema, por exemplo, Cliente Potencial, Empresa.  Mais informações sobre campos de link podem ser encontradas [aqui](https://experienceleague.adobe.com/pt-br/docs/marketo/using/product-docs/administration/marketo-custom-objects/add-marketo-custom-object-fields). O atributo `description` opcional é a descrição do campo. O atributo booleano `isDedupeField` opcional especifica se o campo é usado para desduplicação durante operações de atualização de objeto personalizado.  A configuração padrão é false.  Para relações um para muitos, é necessário um campo de desduplicação. O atributo de objeto `relatedTo` opcional especifica um campo de link.  Para relações um para muitos, este objeto contém um atributo `name` que é o &quot;objeto de link&quot; ou objeto pai para vincular, e um atributo `field` que é o &quot;campo de link&quot;,  ou o campo dentro do objeto pai a ser usado como atributo de chave.  Chame o ponto de extremidade [Obter Objetos Vinculáveis de Objeto Personalizado](https://developer.adobe.com/marketo-apis/api/mapi#tag/Custom-Objects/operation/getCustomObjectTypeLinkableObjectsUsingGET) para recuperar uma lista de objetos de link permitidos.  Para obter mais informações sobre campos de link, consulte a documentação do produto [aqui](https://experienceleague.adobe.com/pt-br/docs/marketo/using/product-docs/administration/marketo-custom-objects/add-marketo-custom-object-fields). Um objeto personalizado não pode se vincular a outro objeto personalizado que tenha um campo de link existente.
+O ponto de extremidade [Adicionar Campos Personalizados de Tipo de Objeto](https://developer.adobe.com/marketo-apis/api/mapi#tag/Custom-Objects/operation/addCustomObjectTypeFieldsUsingPOST) permite adicionar um ou mais campos ao objeto personalizado.  O corpo da solicitação contém uma matriz `input` com um ou mais elementos.  Cada elemento é um objeto JSON com atributos que descrevem um campo. O atributo necessário `name` é o nome da API do campo e deve ser exclusivo para o objeto personalizado.   A convenção é usar minúsculas ou camelCase para ajudar a distinguir entre outras strings de texto. O atributo necessário `displayName` é o nome legível do campo e deve ser exclusivo do objeto personalizado. O atributo `dataType` necessário é o tipo de dados do campo.  Uma lista de tipos de dados permitidos pode ser obtida chamando o ponto de extremidade [Obter Tipos de Dados de Campo de Tipo de Objeto Personalizado](https://developer.adobe.com/marketo-apis/api/mapi#tag/Custom-Objects/operation/getCustomObjectTypeFieldDataTypesUsingGET).  Objetos personalizados podem conter campos com o tipo de dados &quot;link&quot;.  Os campos de link são usados para estabelecer relações entre objetos personalizados e outros tipos de objetos no sistema, por exemplo, Cliente Potencial, Empresa.  Mais informações sobre campos de link podem ser encontradas [aqui](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/administration/marketo-custom-objects/add-marketo-custom-object-fields). O atributo `description` opcional é a descrição do campo. O atributo booleano `isDedupeField` opcional especifica se o campo é usado para desduplicação durante operações de atualização de objeto personalizado.  A configuração padrão é false.  Para relações um para muitos, é necessário um campo de desduplicação. O atributo de objeto `relatedTo` opcional especifica um campo de link.  Para relações um-para-muitos, este objeto contém um atributo `name` que é o &quot;objeto de link&quot; ou objeto pai para vincular, e um atributo `field` que é o &quot;campo de link&quot; ou o campo dentro do objeto pai para usar como atributo de chave.  Chame o ponto de extremidade [Obter Objetos Vinculáveis de Objeto Personalizado](https://developer.adobe.com/marketo-apis/api/mapi#tag/Custom-Objects/operation/getCustomObjectTypeLinkableObjectsUsingGET) para recuperar uma lista de objetos de link permitidos.  Para obter mais informações sobre campos de link, consulte a documentação do produto [aqui](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/administration/marketo-custom-objects/add-marketo-custom-object-fields). Um objeto personalizado não pode se vincular a outro objeto personalizado que tenha um campo de link existente.
 
 ### Relação um para muitos
 
-Para uma estrutura de objeto personalizado de um para muitos, use um campo de link em um objeto personalizado para conectá-lo a um objeto padrão: Cliente Potencial ou Empresa. Usando o exemplo do proprietário do carro na documentação do produto Marketo [aqui](https://experienceleague.adobe.com/pt-br/docs/marketo/using/product-docs/administration/marketo-custom-objects/add-marketo-custom-object-link-fields#AddMarketoCustomObjectLinkFields-CreateaLinkFieldforaOne-to-ManyStructure), criamos um objeto personalizado que contém informações relacionadas ao carro para conexão com clientes em potencial.
+Para uma estrutura de objeto personalizado de um para muitos, use um campo de link em um objeto personalizado para conectá-lo a um objeto padrão: Cliente Potencial ou Empresa. Usando o exemplo do proprietário do carro na documentação do produto Marketo [aqui](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/administration/marketo-custom-objects/add-marketo-custom-object-link-fields#AddMarketoCustomObjectLinkFields-CreateaLinkFieldforaOne-to-ManyStructure), criamos um objeto personalizado que contém informações relacionadas ao carro para conexão com clientes em potencial.
 
 1. Criar um objeto **Car**
-1. Adicionar campos ao objeto **Car**: desduplicar em **VIN**, vincular a **Lead**&#x200B;**/ID de Lead**
+1. Adicionar campos ao objeto **Car**: desduplicar em **VIN**, vincular a **Lead****/ID de Lead**
 1. Aprovar o objeto **Car**
 
 Primeiro, crie o tipo de objeto personalizado para conter informações específicas do carro.
@@ -988,13 +994,13 @@ POST /rest/v1/customobjects/schema/course/approve.json
 
 ### Relação muitos para muitos
 
-As relações muitos para muitos são representadas usando um objeto personalizado &quot;ponte&quot; ou intermediário entre um objeto personalizado padrão, como Cliente Potencial ou Empresa, e um objeto personalizado &quot;borda&quot;. O objeto de borda é a entidade principal que contém atributos descritivos (campos). O objeto de ponte contém os dados para resolver os relacionamentos de objeto usando dois campos de link.  Um campo de link aponta de volta para o objeto padrão principal como em um  configuração da relação um para muitos.  O outro campo de link aponta para o objeto de borda, que é um objeto personalizado sem links.  O objeto de ponte também pode conter atributos descritivos (campos). Usando o exemplo de inscrição no curso universitário da documentação do produto Marketo [aqui](https://experienceleague.adobe.com/pt-br/docs/marketo/using/product-docs/administration/marketo-custom-objects/add-marketo-custom-object-link-fields#AddMarketoCustomObjectLinkFields-CreateaLinkFieldforaOne-to-ManyStructure), criamos um objeto personalizado de borda para conter informações relacionadas ao curso e um objeto de ponte de inscrição usado para conectar Cursos com Clientes Potenciais. Estas são as etapas:
+As relações muitos para muitos são representadas usando um objeto personalizado &quot;ponte&quot; ou intermediário entre um objeto personalizado padrão, como Cliente Potencial ou Empresa, e um objeto personalizado &quot;borda&quot;. O objeto de borda é a entidade principal que contém atributos descritivos (campos). O objeto de ponte contém os dados para resolver os relacionamentos de objeto usando dois campos de link.  Um campo de link aponta de volta para o objeto padrão principal, como em uma configuração de relação um para muitos.  O outro campo de link aponta para o objeto de borda, que é um objeto personalizado sem links.  O objeto de ponte também pode conter atributos descritivos (campos). Usando o exemplo de inscrição no curso universitário da documentação do produto Marketo [aqui](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/administration/marketo-custom-objects/add-marketo-custom-object-link-fields#AddMarketoCustomObjectLinkFields-CreateaLinkFieldforaOne-to-ManyStructure), criamos um objeto personalizado de borda para conter informações relacionadas ao curso e um objeto de ponte de inscrição usado para conectar Cursos com Clientes Potenciais. Estas são as etapas:
 
 1. Criar um objeto de borda **Curso**
 1. Adicionar campos ao **Curso:** desduplicar em **ID do Curso**
 1. Aprovar **Curso**
 1. Criar um objeto de ponte de **Registro**
-1. Adicionar campos ao **Registro:** desduplicar em **ID de Registro**, vincular ao campo **Curso**&#x200B;**/ID do Curso** e vincular ao **Lead**&#x200B;**/ID do Cliente Potencial**
+1. Adicionar campos ao **Registro:** desduplicar em **ID de Registro**, vincular ao campo **Curso****/ID do Curso** e vincular ao **Lead****/ID do Cliente Potencial**
 1. Aprovar **Inscrição**
 
 Primeiro, crie o tipo de objeto de borda para conter informações específicas do curso:
@@ -1171,7 +1177,7 @@ POST /rest/v1/customobjects/schema/enrollment/approve.json
 }
 ```
 
-É possível preencher registros de objetos personalizados de forma programática usando [Sincronizar Objeto Personalizado](#create_and_update) ou [Importação de Objeto Personalizado em Massa](https://experienceleague.adobe.com/docs/marketo-developer/marketo/rest/bulk-import/bulk-custom-object-import.html?lang=pt-BR). Como alternativa, você pode usar a funcionalidade da interface do Marketo [Importar Dados de Objeto Personalizados](https://experienceleague.adobe.com/pt-br/docs/marketo/using/product-docs/administration/marketo-custom-objects/import-custom-object-data).
+É possível preencher registros de objetos personalizados de forma programática usando [Sincronizar Objeto Personalizado](#create_and_update) ou [Importação de Objeto Personalizado em Massa](https://experienceleague.adobe.com/docs/marketo-developer/marketo/rest/bulk-import/bulk-custom-object-import.html?lang=en). Como alternativa, você pode usar a funcionalidade da interface do Marketo [Importar Dados de Objeto Personalizados](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/administration/marketo-custom-objects/import-custom-object-data).
 
 ## Atualizar campo
 

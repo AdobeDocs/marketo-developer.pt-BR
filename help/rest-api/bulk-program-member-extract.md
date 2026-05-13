@@ -3,9 +3,14 @@ title: Extração de membros do programa em massa
 feature: REST API
 description: Use as APIs REST de extração de membros do programa em massa do Marketo para exportar registros grandes de membros para ETL, data warehouse e arquivamento, com permissões e metadados de campo.
 exl-id: 6e0a6bab-2807-429d-9c91-245076a34680
-source-git-commit: 59684e1c5a8082ad12f1e4bfc854c0d2dde35d2a
+TQID: https://experienceleague.adobe.com/w4qaVTKSe0EORaSiURB6WbJXi29JUdEgfkb2dnfuVFw
+product_v2: id: b27e5950-9033-45ac-9f86-eb22e567f615
+feature_v2: id: e64968b2-4ee5-47f9-8cae-0588f184b9eb
+role_v2: id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
+topic_v2: id: a004cc84-67b9-4a33-a3a7-8ec7273ef4dc
+source-git-commit: 00118a89f25a23b931fac671130932bb0e0e4e4e
 workflow-type: tm+mt
-source-wordcount: '1294'
+source-wordcount: 1294
 ht-degree: 4%
 
 ---
@@ -235,7 +240,7 @@ Os membros do programa oferecem suporte a várias opções de filtro. Vários ti
     <tr>
       <td>isExhausted</td>
       <td>Booleano</td>
-      <td>Aceita um booleano usado para filtrar registros de associação de programa para <a href="https://experienceleague.adobe.com/pt-br/docs/marketo/using/product-docs/email-marketing/drip-nurturing/using-engagement-programs/people-who-have-exhausted-content">pessoas que esgotaram o conteúdo</a>.</td>
+      <td>Aceita um booleano usado para filtrar registros de associação de programa para <a href="https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/email-marketing/drip-nurturing/using-engagement-programs/people-who-have-exhausted-content">pessoas que esgotaram o conteúdo</a>.</td>
     </tr>
     <tr>
       <td>NurtureCadence</td>

@@ -3,9 +3,14 @@ title: Modelos de email
 feature: REST API
 description: Saiba como criar e gerenciar modelos de email da API REST do Marketo, incluindo requisitos do HTML, consulta por ID ou nome e pastas de navegação
 exl-id: 0ecf4da6-eb7e-43c1-8d5c-0517c43b47c8
-source-git-commit: 59684e1c5a8082ad12f1e4bfc854c0d2dde35d2a
+TQID: https://experienceleague.adobe.com/jKQpibaRP7nAyIsDdjMf8VkNPi5AMFbe7I4Iiy3MGc0
+product_v2: id: b27e5950-9033-45ac-9f86-eb22e567f615
+feature_v2: id: f82558ea-6af5-44eb-a424-5b3389abb0a3
+role_v2: id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
+topic_v2: id: a004cc84-67b9-4a33-a3a7-8ec7273ef4dcid: bce87dde-a4ab-44c9-8a18-ad66e4ddb377
+source-git-commit: 00118a89f25a23b931fac671130932bb0e0e4e4e
 workflow-type: tm+mt
-source-wordcount: '725'
+source-wordcount: 725
 ht-degree: 1%
 
 ---
@@ -14,7 +19,7 @@ ht-degree: 1%
 
 [Referência de endpoint de modelo de email](https://developer.adobe.com/marketo-apis/api/asset#tag/Email-Templates)
 
-Modelos de email formam a base para cada novo email no Marketo.  Embora os emails possam ser desvinculados dos modelos por meio da substituição do HTML, eles devem ser criados inicialmente com um modelo como base.  Os modelos são criados como documentos puros do HTML no Marketo com metadados como nomes e descrições.  Há poucas restrições no conteúdo, mas a HTML do modelo deve ser válida e deve conter pelo menos uma seção editável, que siga os requisitos [descritos aqui](https://experienceleague.adobe.com/pt-br/docs/marketo/using/product-docs/email-marketing/general/functions-in-the-editor/add-editable-sections-to-email-templates-v1-0).
+Modelos de email formam a base para cada novo email no Marketo.  Embora os emails possam ser desvinculados dos modelos por meio da substituição do HTML, eles devem ser criados inicialmente com um modelo como base.  Os modelos são criados como documentos puros do HTML no Marketo com metadados como nomes e descrições.  Há poucas restrições no conteúdo, mas a HTML do modelo deve ser válida e deve conter pelo menos uma seção editável, que siga os requisitos [descritos aqui](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/email-marketing/general/functions-in-the-editor/add-editable-sections-to-email-templates-v1-0).
 
 ## Consultar
 
@@ -503,7 +508,7 @@ name=Sample Template 01 - deverly&folder={"id":12,"type":"Folder"}&description=T
 
 Use o ponto de extremidade [Obter Modelo de Email Usado por](https://developer.adobe.com/marketo-apis/api/asset#tag/Email-Templates/operation/getEmailTemplateUsedByUsingGET) para recuperar uma lista de emails que dependem de determinado modelo de email.  O parâmetro de caminho `id` especifica o modelo de email pai.
 
-Há 2 parâmetros opcionais. `maxReturn`  é um número inteiro que limita o número de resultados (o padrão é 20, o máximo é 200) e `offset` é um número inteiro que pode ser usado com `maxReturn` para ler grandes conjuntos de resultados (o padrão é 0).
+Há 2 parâmetros opcionais. `maxReturn` é um número inteiro que limita o número de resultados (o padrão é 20, o máximo é 200) e `offset` é um número inteiro que pode ser usado com `maxReturn` para ler grandes conjuntos de resultados (o padrão é 0).
 
 ```http
 GET /rest/asset/v1/emailTemplates/{id}/usedBy.json

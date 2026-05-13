@@ -3,9 +3,14 @@ title: Modelos de páginas de destino
 feature: REST API, Landing Pages
 description: Gerencie modelos de página de aterrissagem do Marketo por meio de endpoints da API REST para tipos guiados e de forma livre; consulte por ID ou nome; crie, atualize o HTML, clone e Munchkin.
 exl-id: f9d1255e-ec13-4b75-96d5-b4cc9457a51b
-source-git-commit: 59684e1c5a8082ad12f1e4bfc854c0d2dde35d2a
+TQID: https://experienceleague.adobe.com/U9K1MG-q2gIgJMgfM3lt1S4olETt8ln9seOIKZUncBY
+product_v2: id: b27e5950-9033-45ac-9f86-eb22e567f615
+feature_v2: id: f82558ea-6af5-44eb-a424-5b3389abb0a3
+role_v2: id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
+topic_v2: id: a004cc84-67b9-4a33-a3a7-8ec7273ef4dc
+source-git-commit: 00118a89f25a23b931fac671130932bb0e0e4e4e
 workflow-type: tm+mt
-source-wordcount: '703'
+source-wordcount: 703
 ht-degree: 1%
 
 ---
@@ -18,7 +23,7 @@ Os Modelos de página de aterrissagem são um recurso principal e uma dependênc
 
 ## Tipos de modelo
 
-O Marketo tem dois tipos de Modelos de página de aterrissagem: livre e guiado. Os modelos de página de aterrissagem de forma livre fornecem uma experiência de edição estruturada para páginas derivadas deles. Os modelos guiados fornecem uma experiência altamente estruturada, em que os tipos de elementos e os locais podem ser restritos no nível do modelo. Para obter mais informações sobre as diferenças, consulte [este documento](https://experienceleague.adobe.com/pt-br/docs/marketo/using/product-docs/demand-generation/landing-pages/understanding-landing-pages/understanding-free-form-vs-guided-landing-pages).
+O Marketo tem dois tipos de Modelos de página de aterrissagem: livre e guiado. Os modelos de página de aterrissagem de forma livre fornecem uma experiência de edição estruturada para páginas derivadas deles. Os modelos guiados fornecem uma experiência altamente estruturada, em que os tipos de elementos e os locais podem ser restritos no nível do modelo. Para obter mais informações sobre as diferenças, consulte [este documento](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/demand-generation/landing-pages/understanding-landing-pages/understanding-free-form-vs-guided-landing-pages).
 
 ## Consultar
 
@@ -118,7 +123,7 @@ O parâmetro de caminho `id` especifica a identificação do Modelo de página d
 
 O parâmetro `name` é usado para especificar o nome do novo Modelo de página de aterrissagem.
 
-O parâmetro `folder` é usado para especificar a pasta principal onde o novo Modelo de página de aterrissagem residirá. Ela está no formato de um objeto JSON incorporado que contém  `id` e `type`.
+O parâmetro `folder` é usado para especificar a pasta principal onde o novo Modelo de página de aterrissagem residirá. Isso está no formato de um objeto JSON inserido contendo `id` e `type`.
 
 O parâmetro `description` opcional é usado para descrever o novo Modelo de página de aterrissagem.
 
@@ -167,9 +172,9 @@ Os Modelos de página de aterrissagem seguem o modelo padrão de rascunho aprova
 
 Para que um modelo seja homologado, deve estar em conformidade com as regras do seu tipo, quer guiado de forma livre. Para obter mais informações sobre os requisitos para criar e aprovar modelos de seus respectivos tipos, consulte os respectivos documentos de criação:
 
-- [Modelos de página de aterrissagem de forma livre](https://experienceleague.adobe.com/pt-br/docs/marketo/using/product-docs/demand-generation/landing-pages/landing-page-templates/create-a-free-form-landing-page-template)
-- [Modelos de página de destino guiada](https://experienceleague.adobe.com/pt-br/docs/marketo/using/product-docs/demand-generation/landing-pages/landing-page-templates/create-a-guided-landing-page-template)
-- [Exemplos de modelo guiado](https://experienceleague.adobe.com/pt-br/docs/marketo/using/product-docs/demand-generation/landing-pages/landing-page-templates/guided-landing-page-template-list)
+- [Modelos de página de aterrissagem de forma livre](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/demand-generation/landing-pages/landing-page-templates/create-a-free-form-landing-page-template)
+- [Modelos de página de destino guiada](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/demand-generation/landing-pages/landing-page-templates/create-a-guided-landing-page-template)
+- [Exemplos de modelo guiado](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/demand-generation/landing-pages/landing-page-templates/guided-landing-page-template-list)
 
 ## Excluir
 

@@ -3,9 +3,14 @@ title: Configuração
 description: Configure o Marketo Munchkin com a API do JavaScript. Saiba mais sobre as configurações do Munchkin.init como altIds, anonymizeIP, asyncOnly, vida do cookie, domainLevel, API do Beacon.
 feature: Munchkin Tracking Code, Javascript
 exl-id: 4700ce7b-f624-4f27-871e-9a050f203973
-source-git-commit: 6145067629ce78175af3b7464807a0fa100c7b57
+TQID: https://experienceleague.adobe.com/ip2cCGgoa83v8m9GYLYXe132veYxS1C6UWX1iLB6X5Q
+product_v2: id: b27e5950-9033-45ac-9f86-eb22e567f615
+feature_v2: id: b3b8a63f-51fc-40f6-a7d2-a31c5d49fb45id: ea90ebee-5c84-42d9-8b21-006bdabc95a3
+role_v2: id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
+topic_v2: id: aa2f3246-cb95-4b30-8899-fdf7d73550cc
+source-git-commit: 00118a89f25a23b931fac671130932bb0e0e4e4e
 workflow-type: tm+mt
-source-wordcount: '613'
+source-wordcount: 614
 ht-degree: 4%
 
 ---
@@ -36,11 +41,11 @@ O objeto de definições de configuração pode conter qualquer número de propr
 | cookieAnon | Booleano | Se definido como falso, impede o rastreamento e a criação de cookies de novos leads anônimos. Os clientes potenciais têm cookies e são rastreados após preencher um formulário do Marketo ou clicando em um email do Marketo. O padrão é verdadeiro. |
 | cookieLifeDays | Inteiro | Define a data de expiração de qualquer cookie de rastreamento do Munchkin recém-criado para este número de dias no futuro. O padrão é 730 dias (2 anos). |
 | customName | String | Nome de página personalizado. Somente para uso do sistema. |
-| <a name="domainlevel"></a>domainLevel | Inteiro | Define o número de partes do domínio da página a serem usadas ao definir o atributo de domínio do cookie. Por exemplo, suponha que o domínio da página atual seja &quot;www.example.com&quot;.domainLevel: 2 definirá o atributo de domínio do cookie como &quot;.example.com&quot;domainLevel: 3 definirá o atributo de domínio do cookie como &quot;.www.example.com&quot;Background:Munchkin gerenciará automaticamente determinados domínios de nível superior com duas letras. O padrão é duas partes nos casos normais em que o domínio de nível superior é de três letras. Por exemplo &quot;www.example.com&quot;, as duas partes mais à direita são usadas para definir o cookie, &quot;.example.com&quot;.Para códigos de país com duas letras, como &quot;.jp&quot;, &quot;.us&quot;, &quot;.cn&quot; e &quot;.uk&quot;, o código assume três partes como padrão. Por exemplo, &quot;www.example.co.jp&quot; usará três partes de domínio mais à direita, &quot;.example.co.jp&quot;. Se o padrão de domínio exigir um comportamento diferente, isso deverá ser especificado usando o parâmetro `domainLevel`. |
+| <a name="domainlevel"></a>domainLevel | Inteiro | Define o número de partes do domínio da página a serem usadas ao definir o atributo de domínio do cookie.Por exemplo, suponha que o domínio da página atual seja &quot;www.example.com&quot;.domainLevel: 2 definirá o atributo de domínio do cookie como &quot;.example.com&quot;domainLevel: 3 definirá o atributo de domínio do cookie como &quot;.www.example.com&quot;Background:Munchkin gerenciará automaticamente determinados domínios de nível superior com duas letras. O padrão é duas partes nos casos normais em que o domínio de nível superior é de três letras. Por exemplo &quot;www.example.com&quot;, as duas partes mais à direita são usadas para definir o cookie, &quot;.example.com&quot;.Para códigos de país com duas letras, como &quot;.jp&quot;, &quot;.us&quot;, &quot;.cn&quot; e &quot;.uk&quot;, o código assume três partes como padrão. Por exemplo, &quot;www.example.co.jp&quot; usará três partes de domínio mais à direita, &quot;.example.co.jp&quot;. Se o padrão de domínio exigir um comportamento diferente, isso deverá ser especificado usando o parâmetro `domainLevel`. |
 | domainSelectorV2 | Booleano | Se definido como verdadeiro, o utiliza um método aprimorado para determinar como definir o atributo de domínio do cookie. |
 | httpsOnly | Booleano | O padrão é false. Quando definido como true, define o cookie para usar a configuração Secure quando a página rastreada foi veiculada via https. |
 | useBeaconAPI | Booleano | O padrão é false. Quando definido como verdadeiro, usa a [API Beacon](https://developer.mozilla.org/en-US/docs/Web/API/Beacon_API) para enviar solicitações de não bloqueio em vez de [XMLHttpRequest](https://developer.mozilla.org/pt-BR/docs/Web/API/XMLHttpRequest). Se o navegador não suportar essa API, o Munchkin voltará a usar XMLHttpRequest. |
-| wsInfo | String | Usa uma string para direcionar um espaço de trabalho. Essa ID de espaço de trabalho é obtida selecionando o Workspace no menu Admin > Integração > Munchkin. Essa configuração se aplica somente à criação inicial de um registro de lead anônimo. Depois que o valor do cookie do Munchkin tiver sido estabelecido para esse registro de lead, o parâmetro wsInfo não poderá ser usado para alterar sua partição. Como essa configuração afeta apenas clientes potenciais anônimos, ela só é relevante para [Visitantes Anônimos em Relatórios da Web](https://experienceleague.adobe.com/pt-br/docs/marketo/using/product-docs/reporting/basic-reporting/report-activity/display-people-or-anonymous-visitors-in-web-reports) específicos da partição. |
+| wsInfo | String | Usa uma string para direcionar um espaço de trabalho. Essa ID de espaço de trabalho é obtida selecionando o Workspace no menu Admin > Integração > Munchkin. Essa configuração se aplica somente à criação inicial de um registro de lead anônimo. Depois que o valor do cookie do Munchkin tiver sido estabelecido para esse registro de lead, o parâmetro wsInfo não poderá ser usado para alterar sua partição. Como essa configuração afeta apenas clientes potenciais anônimos, ela só é relevante para [Visitantes Anônimos em Relatórios da Web](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/reporting/basic-reporting/report-activity/display-people-or-anonymous-visitors-in-web-reports) específicos da partição. |
 
 ## Exemplos
 

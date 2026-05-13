@@ -3,9 +3,14 @@ title: Scripts de e-mails
 feature: Email Programs
 description: Saiba como criar scripts de emails dinâmicos do Marketo usando tokens, variáveis, ferramentas do Velocity e testar o com Enviar amostra e Visualização de email do Apache.
 exl-id: ff396f8b-80c2-4c87-959e-fb8783c391bf
-source-git-commit: 6b813020fec6727dc2fe3b4dfe1c98146447e704
+TQID: https://experienceleague.adobe.com/xFDjbGWGoWg4Ik6xqoU4L51FG5-1STZ5a0x0KpmwGd4
+product_v2: id: b27e5950-9033-45ac-9f86-eb22e567f615
+feature_v2: id: d1d0a9cd-295d-4976-8c39-ddae266f240eid: e64968b2-4ee5-47f9-8cae-0588f184b9eb
+role_v2: id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
+topic_v2: id: eddd9b14-83bd-4ff4-9072-54a4a484abb7
+source-git-commit: 00118a89f25a23b931fac671130932bb0e0e4e4e
 workflow-type: tm+mt
-source-wordcount: '1116'
+source-wordcount: 1116
 ht-degree: 0%
 
 ---
@@ -113,7 +118,7 @@ O comprimento combinado de todos os tokens de script de email em um determinado 
 - Você pode fazer referência a objetos personalizados conectados a um cliente potencial, contato ou conta, mas não a mais de um.
 - Objetos personalizados só podem ser referenciados por meio de uma única conexão, cliente potencial, contato ou conta
 - Marque a caixa no editor de scripts para os campos que você está usando, ou eles não são processados
-- Para cada objeto personalizado, os dez registros atualizados mais recentes por pessoa/contato estão disponíveis no tempo de execução e são ordenados da atualização mais recente (em 0) para a atualização mais antiga (em 9). Você pode aumentar o número de registros disponíveis por [seguindo as instruções](https://experienceleague.adobe.com/pt-br/docs/marketo/using/product-docs/administration/email-setup/change-custom-object-retrieval-limits-in-velocity-scripting).
+- Para cada objeto personalizado, os dez registros atualizados mais recentes por pessoa/contato estão disponíveis no tempo de execução e são ordenados da atualização mais recente (em 0) para a atualização mais antiga (em 9). Você pode aumentar o número de registros disponíveis por [seguindo as instruções](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/administration/email-setup/change-custom-object-retrieval-limits-in-velocity-scripting).
 - Se você incluir mais de um script de email em um email, eles serão executados de cima para baixo. O escopo das variáveis definidas no primeiro script a ser executado está disponível nos scripts subsequentes.
 - Referência de ferramentas: [https://velocity.apache.org/tools/2.0/index.html](https://velocity.apache.org/tools/2.0/index.html)
 - Uma observação sobre tokens que contêm caracteres de nova linha &quot;\n&quot; ou &quot;\r\n&quot;. Quando um email é enviado por meio do Send Sample ou por uma Campanha em lote, os caracteres de nova linha em tokens são substituídos por espaços. Quando o email é enviado por meio do Trigger Campaign, os caracteres de nova linha são deixados intocados.

@@ -3,9 +3,14 @@ title: Emails
 feature: REST API
 description: Saiba como usar a API REST do Marketo Asset para consultar e gerenciar ativos de email por ID, nome ou navegação de pasta, com observações sobre conteúdo preditivo e limites de teste A/B.
 exl-id: 6875730d-c74a-42cf-a3d2-dad7a3ac535d
-source-git-commit: 59684e1c5a8082ad12f1e4bfc854c0d2dde35d2a
+TQID: https://experienceleague.adobe.com/t2FyPbwS836MvOe5rL0rVS7ibtzzZMmXwmgHBDZEr8Q
+product_v2: id: b27e5950-9033-45ac-9f86-eb22e567f615
+feature_v2: id: c5f60233-d5ea-4453-a799-0ad258b4d399id: e64968b2-4ee5-47f9-8cae-0588f184b9ebid: f82558ea-6af5-44eb-a424-5b3389abb0a3
+role_v2: id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
+topic_v2: id: a004cc84-67b9-4a33-a3a7-8ec7273ef4dc
+source-git-commit: 00118a89f25a23b931fac671130932bb0e0e4e4e
 workflow-type: tm+mt
-source-wordcount: '2301'
+source-wordcount: 2301
 ht-degree: 1%
 
 ---
@@ -14,13 +19,13 @@ ht-degree: 1%
 
 [Referência de Ponto de Extremidade de Email](https://developer.adobe.com/marketo-apis/api/asset#tag/Emails) Um conjunto completo de pontos de extremidade REST é fornecido para manipular ativos de email.
 
-Observação: se você estiver usando o [Conteúdo Preditivo do Marketo](https://experienceleague.adobe.com/pt-br/docs/marketo/using/product-docs/predictive-content/working-with-predictive-content/understanding-predictive-content), os seguintes pontos de extremidade falharão se fizerem referência a um email com conteúdo preditivo: [Obter Conteúdo de Email](https://developer.adobe.com/marketo-apis/api/asset#tag/Emails/operation/getEmailContentByIdUsingGET), [Atualizar Seção de Conteúdo de Email](https://developer.adobe.com/marketo-apis/api/asset#tag/Emails/operation/updateEmailComponentContentUsingPOST), [Aprovar Rascunho de Email](https://developer.adobe.com/marketo-apis/api/asset#tag/Emails/operation/approveDraftUsingPOST). A chamada retorna um código de erro 709 e a mensagem de erro correspondente.
+Observação: se você estiver usando o [Conteúdo Preditivo do Marketo](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/predictive-content/working-with-predictive-content/understanding-predictive-content), os seguintes pontos de extremidade falharão se fizerem referência a um email com conteúdo preditivo: [Obter Conteúdo de Email](https://developer.adobe.com/marketo-apis/api/asset#tag/Emails/operation/getEmailContentByIdUsingGET), [Atualizar Seção de Conteúdo de Email](https://developer.adobe.com/marketo-apis/api/asset#tag/Emails/operation/updateEmailComponentContentUsingPOST), [Aprovar Rascunho de Email](https://developer.adobe.com/marketo-apis/api/asset#tag/Emails/operation/approveDraftUsingPOST). A chamada retorna um código de erro 709 e a mensagem de erro correspondente.
 
 ## Consultar
 
 O padrão de consulta para emails é idêntico ao dos modelos, permitindo consultas [por id](https://developer.adobe.com/marketo-apis/api/asset#tag/Emails/operation/getEmailByIdUsingGET), [por nome](https://developer.adobe.com/marketo-apis/api/asset#tag/Emails/operation/getEmailByNameUsingGET) e [navegação](https://developer.adobe.com/marketo-apis/api/asset#tag/Emails/operation/getEmailUsingGET) e para filtragem com base na pasta com as APIs de navegação e por nome.
 
-Observação: se um email fizer parte de um programa de email que está usando o [Teste A/B](https://experienceleague.adobe.com/pt-br/docs/marketo/using/product-docs/email-marketing/email-programs/email-program-actions/email-test-a-b-test/add-an-a-b-test), esse email não estará disponível para consulta usando os seguintes pontos de extremidade: [Obter Email por Id](https://developer.adobe.com/marketo-apis/api/asset#tag/Emails/operation/getEmailByIdUsingGET), [Obter Email por Nome](https://developer.adobe.com/marketo-apis/api/asset#tag/Emails/operation/getEmailByNameUsingGET), [Obter Emails](https://developer.adobe.com/marketo-apis/api/asset#tag/Emails/operation/getEmailUsingGET). A chamada indica sucesso, mas conterá o seguinte aviso: &quot;Nenhum ativo encontrado para os critérios de pesquisa fornecidos&quot;.
+Observação: se um email fizer parte de um programa de email que está usando o [Teste A/B](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/email-marketing/email-programs/email-program-actions/email-test-a-b-test/add-an-a-b-test), esse email não estará disponível para consulta usando os seguintes pontos de extremidade: [Obter Email por Id](https://developer.adobe.com/marketo-apis/api/asset#tag/Emails/operation/getEmailByIdUsingGET), [Obter Email por Nome](https://developer.adobe.com/marketo-apis/api/asset#tag/Emails/operation/getEmailByNameUsingGET), [Obter Emails](https://developer.adobe.com/marketo-apis/api/asset#tag/Emails/operation/getEmailUsingGET). A chamada indica sucesso, mas conterá o seguinte aviso: &quot;Nenhum ativo encontrado para os critérios de pesquisa fornecidos&quot;.
 
 ### Por ID
 
@@ -484,7 +489,7 @@ Observação: se a cópia automática no texto estiver desativada para um trecho
 
 ## Módulos
 
-No Editor de email 1.0, um módulo é uma seção do seu email definida no modelo. Os módulos podem conter qualquer combinação de elementos, variáveis e outro conteúdo HTML, conforme descrito [aqui](https://experienceleague.adobe.com/pt-br/docs/marketo/using/product-docs/email-marketing/general/email-editor-2/email-template-syntax#EmailTemplateSyntax-Modules). O Marketo oferece um conjunto de APIs para gerenciar módulos em um email. Para endpoints relacionados ao módulo que exigem o método HTTP POST, o corpo é formatado como &quot;application/x-www-form-urlencoded&quot; (não como JSON).
+No Editor de email 1.0, um módulo é uma seção do seu email definida no modelo. Os módulos podem conter qualquer combinação de elementos, variáveis e outro conteúdo HTML, conforme descrito [aqui](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/email-marketing/general/email-editor-2/email-template-syntax#EmailTemplateSyntax-Modules). O Marketo oferece um conjunto de APIs para gerenciar módulos em um email. Para endpoints relacionados ao módulo que exigem o método HTTP POST, o corpo é formatado como &quot;application/x-www-form-urlencoded&quot; (não como JSON).
 
 A maioria dos endpoints relacionados ao módulo exigem um &quot;moduleId&quot; como parâmetro de caminho. Esta é uma string que descreve o módulo. moduleIds são retornados pelo ponto de extremidade [Obter Conteúdo de Email](https://developer.adobe.com/marketo-apis/api/asset#tag/Emails/operation/getEmailContentByIdUsingGET) como o atributo &quot;htmlId&quot; (consulte a seção [Consulta](#modules_query) abaixo).
 
@@ -796,7 +801,7 @@ POST /rest/asset/v1/email/{id}/content/{moduleId}/duplicate.json
 
 #### Reorganizar
 
-[Reorganize a matriz de módulos](https://developer.adobe.com/marketo-apis/api/asset#tag/Emails/operation/rearrangeModulesUsingPOST)que contém todos os módulos e a posição desejada no email para cada um deles. Cada elemento de matriz contém um objeto JSON do seguinte formato:  { &quot;index&quot;: &lt;_index_>, &quot;moduleId&quot;: &quot;&lt;_moduleId_>&quot; }, onde &lt;_index_> é o número de ordem do módulo baseado em zero e &lt;_moduleId_> é o moduleId.
+[Reorganize a matriz de módulos](https://developer.adobe.com/marketo-apis/api/asset#tag/Emails/operation/rearrangeModulesUsingPOST)que contém todos os módulos e a posição desejada no email para cada um deles. Cada elemento de matriz contém um objeto JSON do seguinte formato: { &quot;index&quot;: &lt;_index_>, &quot;moduleId&quot;: &quot;&lt;_moduleId_>&quot; }, onde &lt;_index_> é o número de ordem do módulo com base em zero e &lt;_moduleId_> é o moduleId.
 
 ```http
 POST /rest/asset/v1/email/{id}/content/rearrange.json
@@ -856,7 +861,7 @@ name=MarketoVideo
 
 ## Variáveis
 
-No Editor de email 1.0, as variáveis são usadas para armazenar valores para elementos em seu email. Cada variável é definida adicionando uma sintaxe específica do Marketo à sua HTML, conforme descrito [aqui](https://experienceleague.adobe.com/pt-br/docs/marketo/using/product-docs/email-marketing/general/email-editor-2/email-template-syntax#EmailTemplateSyntax-Variables). O Marketo oferece um conjunto de APIs para gerenciar variáveis em um email.
+No Editor de email 1.0, as variáveis são usadas para armazenar valores para elementos em seu email. Cada variável é definida adicionando uma sintaxe específica do Marketo à sua HTML, conforme descrito [aqui](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/email-marketing/general/email-editor-2/email-template-syntax#EmailTemplateSyntax-Variables). O Marketo oferece um conjunto de APIs para gerenciar variáveis em um email.
 
 ### Consultar
 

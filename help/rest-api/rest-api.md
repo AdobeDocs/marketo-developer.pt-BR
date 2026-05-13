@@ -3,9 +3,13 @@ title: API REST
 feature: REST API
 description: Saiba como usar a API REST do Marketo, configurar usuários da API e o LaunchPoint, exibir cotas e limites, autenticar com o cabeçalho de autorização e recuperar leads.
 exl-id: 4b9beaf0-fc04-41d7-b93a-a1ae3147ce67
-source-git-commit: 59684e1c5a8082ad12f1e4bfc854c0d2dde35d2a
+TQID: https://experienceleague.adobe.com/GqhWI816wWX-2zf89wWj-GXpg9i615HRFVl2ljdYVj0
+product_v2: id: b27e5950-9033-45ac-9f86-eb22e567f615
+feature_v2: id: b13bd2ad-8e65-49e5-9691-2a0d31067b35id: c5f60233-d5ea-4453-a799-0ad258b4d399id: e64968b2-4ee5-47f9-8cae-0588f184b9eb
+role_v2: id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
+source-git-commit: 00118a89f25a23b931fac671130932bb0e0e4e4e
 workflow-type: tm+mt
-source-wordcount: '896'
+source-wordcount: 896
 ht-degree: 2%
 
 ---
@@ -28,7 +32,7 @@ Essas APIs geralmente se encaixam em duas categorias amplas: [Banco de Dados Pri
 
 - **Cota Diária:** as assinaturas recebem 50.000 chamadas de API por dia (o que é redefinido diariamente a 12:00AM CST). Você pode aumentar sua cota diária por meio do gerente da conta.
 - **Limite de Taxa:** O acesso à API por instância é limitado a 100 chamadas por 20 segundos.
-- **Limite de simultaneidade:**  Máximo de dez chamadas de API simultâneas.
+- **Limite de Simultaneidade:** Máximo de dez chamadas de API simultâneas.
 
 O tamanho das chamadas padrão é limitado a um comprimento de URI de 8 KB e um tamanho de corpo de 1 MB, embora o corpo possa ser de 10 MB para nossas APIs em massa. Se houver um erro na sua chamada, a API normalmente ainda retornará um código de status 200, mas a resposta JSON conterá um membro &quot;success&quot; com um valor de `false` e uma matriz de erros no membro &quot;errors&quot;. Mais sobre os erros [aqui](error-codes.md).
 

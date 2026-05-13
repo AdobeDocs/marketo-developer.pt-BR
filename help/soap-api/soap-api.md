@@ -3,9 +3,13 @@ title: API SOAP
 feature: SOAP
 description: A API do Marketo SOAP será descontinuada após 31 de outubro de 2025. Saiba como migrar para REST, recuperar o WSDL, consulte cotas, limites de taxa e configuração de autenticação.
 exl-id: 6618cc82-15ae-4030-aa00-438e635d8369
-source-git-commit: ff0a95e838cecd1d8b1f90ca029a320043824242
+TQID: https://experienceleague.adobe.com/Atnarr7XLzW3B2R5I8nLtayeE5kt3Bd4T46K6yIPc-8
+product_v2: id: b27e5950-9033-45ac-9f86-eb22e567f615
+feature_v2: id: e64968b2-4ee5-47f9-8cae-0588f184b9eb
+role_v2: id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
+source-git-commit: 00118a89f25a23b931fac671130932bb0e0e4e4e
 workflow-type: tm+mt
-source-wordcount: '269'
+source-wordcount: 269
 ht-degree: 1%
 
 ---
@@ -30,7 +34,7 @@ Não use o ponto final definido no WSDL. Cada instância do Marketo tem um ponto
 
 - **Cota Diária:** A maioria das assinaturas recebe 10.000 chamadas de API por dia (o que é redefinido diariamente a uma CST de 12:00AM). Você pode aumentar sua cota diária por meio do gerente da conta.
 - **Limite de Taxa:** Acesso à API por instância limitado a 100 chamadas por 20 segundos.
-- **Limite de simultaneidade:**  Máximo de dez chamadas de API simultâneas.
+- **Limite de Simultaneidade:** Máximo de dez chamadas de API simultâneas.
 
 Nossa recomendação é que os tamanhos dos lotes não sejam maiores que 300. Não há suporte para tamanhos maiores e isso pode resultar em tempos limite e, em casos extremos, em limitação.
 

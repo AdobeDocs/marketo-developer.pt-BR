@@ -3,9 +3,14 @@ title: Ações Personalizadas
 feature: Mobile Marketing
 description: Saiba como enviar e relatar ações personalizadas com o Marketo Mobile SDK para iOS e Android, colocar em fila offline, acionar Campanhas inteligentes e atender aos 20 caracteres...
 exl-id: 8c2698ce-4e39-4b2b-9d36-0864c55be17a
-source-git-commit: e2606d6cb12c572603ff069617de58417e43ca63
+TQID: https://experienceleague.adobe.com/yZKzdm-dH0cYPGGKE-Z-4KcbhGIwyFl0Z9vEqcv1QXI
+product_v2: id: b27e5950-9033-45ac-9f86-eb22e567f615
+feature_v2: id: a7170d27-32ab-462b-a333-269abc654483
+role_v2: id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
+topic_v2: id: a004cc84-67b9-4a33-a3a7-8ec7273ef4dcid: c1579802-ddd4-4214-8a91-97b2066abe11id: d095671a-1355-40aa-8b5f-06c33c68080b
+source-git-commit: 00118a89f25a23b931fac671130932bb0e0e4e4e
 workflow-type: tm+mt
-source-wordcount: '336'
+source-wordcount: 336
 ht-degree: 1%
 
 ---
@@ -14,7 +19,7 @@ ht-degree: 1%
 
 É possível rastrear a interação do usuário enviando ações personalizadas. Quando o aplicativo móvel chama o Marketo SDK para enviar uma ação personalizada, a ação personalizada é salva inicialmente no dispositivo. O Marketo SDK verifica se há conectividade de Internet adequada antes de enviar a ação personalizada. Como resultado, pode haver um atraso entre o momento em que a ação personalizada é enviada e o momento em que é recebida pelo Marketo.
 
-Ações personalizadas podem ser usadas como acionadores e filtros em Campanhas inteligentes. Para obter mais informações, consulte [Atividade no aplicativo móvel](https://experienceleague.adobe.com/pt-br/docs/marketo/using/product-docs/core-marketo-concepts/smart-campaigns/flow-actions/triggers-and-filters-for-mobile-smart-campaigns).
+Ações personalizadas podem ser usadas como acionadores e filtros em Campanhas inteligentes. Para obter mais informações, consulte [Atividade no aplicativo móvel](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/core-marketo-concepts/smart-campaigns/flow-actions/triggers-and-filters-for-mobile-smart-campaigns).
 
 ## Envio de ações personalizadas no iOS
 

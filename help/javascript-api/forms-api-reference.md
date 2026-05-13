@@ -3,9 +3,13 @@ title: Referência da API do Forms
 description: Referência abrangente para a API do Marketo Forms 2.0, detalhando métodos MktoForms2 e Form, parâmetros, retornos de chamada e retornos para carregar e renderizar formulários.
 feature: Forms, Javascript
 exl-id: 0f8d242f-0b27-4087-b080-3d41ebaa25b3
-source-git-commit: 7557b9957c87f63c2646be13842ea450035792be
+TQID: https://experienceleague.adobe.com/wLuN1H8tDFEihPqcAfoG-Y80d4Kw1BoSskVQu4Bgss0
+product_v2: id: b27e5950-9033-45ac-9f86-eb22e567f615
+feature_v2: id: b0bb9048-d951-48d8-8232-45cf248a7e27
+role_v2: id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
+source-git-commit: 00118a89f25a23b931fac671130932bb0e0e4e4e
 workflow-type: tm+mt
-source-wordcount: '1345'
+source-wordcount: 1352
 ht-degree: 2%
 
 ---
@@ -182,7 +186,7 @@ Há dois objetos principais com os quais você interagirá usando a API do Forms
     </tr>
     <tr valign="top">
       <td>.submittable(canSubmit) <em>também disponível como:</em> <em>.submitable(canSubmit)</em></td>
-      <td>Obtém ou define se o formulário pode ser enviado. Se chamado sem argumentos, ele obtém o valor; se chamado com um argumento, ele define o valor. Isso pode ser usado para impedir que um formulário seja enviado, enquanto outros critérios fora do formulário normal devem ser atendidos.</td>
+      <td>Obtém ou define se o formulário pode ser enviado. Se chamado sem argumentos, ele obtém o valor. Se chamado com um argumento, ele define o valor.Isso pode ser usado para impedir que um formulário seja enviado, enquanto outros critérios fora do formulário normal devem ser atendidos.</td>
       <td>canSubmit (opcional)(Booleano) - Define o formulário como enviado ou não.</td>
       <td>Booleano ou objeto de formulário - Se chamado sem argumentos, retorna um booleano indicando se o formulário é enviado. Se chamado com um argumento, retorna este Objeto de formulário para fins de encadeamento. </td>
     </tr>

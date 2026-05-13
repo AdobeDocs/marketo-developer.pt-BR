@@ -3,9 +3,14 @@ title: Importação de Objeto Personalizado em Massa
 feature: Custom Objects
 description: Saiba como importar objetos personalizados do Marketo em massa via REST usando arquivos CSV, TSV ou SSV.
 exl-id: e795476c-14bc-4e8c-b611-1f0941a65825
-source-git-commit: 59684e1c5a8082ad12f1e4bfc854c0d2dde35d2a
+TQID: https://experienceleague.adobe.com/C1LKLZDEvv95XXH3AEoxIXsLK55tgKTrvyxvs4LnYWw
+product_v2: id: b27e5950-9033-45ac-9f86-eb22e567f615
+feature_v2: id: d1d0a9cd-295d-4976-8c39-ddae266f240e
+role_v2: id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
+topic_v2: id: eddd9b14-83bd-4ff4-9072-54a4a484abb7
+source-git-commit: 00118a89f25a23b931fac671130932bb0e0e4e4e
 workflow-type: tm+mt
-source-wordcount: '953'
+source-wordcount: 953
 ht-degree: 0%
 
 ---
@@ -14,7 +19,7 @@ ht-degree: 0%
 
 [Referência de Ponto de Extremidade de Importação de Objeto Personalizado em Massa](https://developer.adobe.com/marketo-apis/api/mapi#tag/Bulk-Import-Custom-Objects)
 
-Quando você tem muitos registros de objeto personalizados para  importação, é prática recomendada importá-los de forma assíncrona usando a API em massa. Isso é feito importando um arquivo simples que contém registros delimitados (vírgula, tabulação ou ponto e vírgula). O arquivo pode conter qualquer número de registros, desde que seu tamanho seja inferior a 10 MB (caso contrário, um formato HTTP  413 (o código de status é retornado). O conteúdo do arquivo depende da definição do objeto personalizado. A primeira linha sempre contém um cabeçalho que lista os campos para os quais mapear valores de cada linha. Todos os nomes de campos no cabeçalho devem corresponder a um nome de API (conforme discutido abaixo). As linhas restantes contêm os dados a serem importados, um registro por linha. A operação de registro é somente &quot;inserir ou atualizar&quot;.
+Quando você tem muitos registros de objeto personalizados para importar, é uma prática recomendada importá-los de forma assíncrona usando a API em massa. Isso é feito importando um arquivo simples que contém registros delimitados (vírgula, tabulação ou ponto e vírgula). O arquivo pode conter qualquer número de registros, desde que seu tamanho seja inferior a 10 MB (caso contrário, um código de status HTTP 413 será retornado). O conteúdo do arquivo depende da definição do objeto personalizado. A primeira linha sempre contém um cabeçalho que lista os campos para os quais mapear valores de cada linha. Todos os nomes de campos no cabeçalho devem corresponder a um nome de API (conforme discutido abaixo). As linhas restantes contêm os dados a serem importados, um registro por linha. A operação de registro é somente &quot;inserir ou atualizar&quot;.
 
 ## Limites de processamento
 
@@ -22,7 +27,7 @@ Você pode enviar mais de uma solicitação de importação em massa, dentro dos
 
 ## Exemplo de objeto personalizado
 
-Antes de usar a API em massa, você deve primeiro usar a interface do Administrador do Marketo para [criar seu objeto personalizado](https://experienceleague.adobe.com/pt-br/docs/marketo/using/product-docs/administration/marketo-custom-objects/create-marketo-custom-objects). Por exemplo, suponha que criamos um objeto personalizado &quot;Carro&quot; com campos &quot;Cor&quot;, &quot;Criar&quot;, &quot;Modelo&quot; e &quot;VIN&quot;. Abaixo estão as telas da interface do administrador mostrando o objeto personalizado. Você pode ver que usamos o campo VIN para desduplicação. Os nomes das APIs são destacados porque devem ser usados ao chamar pontos de extremidade relacionados à API em massa.
+Antes de usar a API em massa, você deve primeiro usar a interface do Administrador do Marketo para [criar seu objeto personalizado](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/administration/marketo-custom-objects/create-marketo-custom-objects). Por exemplo, suponha que criamos um objeto personalizado &quot;Carro&quot; com campos &quot;Cor&quot;, &quot;Criar&quot;, &quot;Modelo&quot; e &quot;VIN&quot;. Abaixo estão as telas da interface do administrador mostrando o objeto personalizado. Você pode ver que usamos o campo VIN para desduplicação. Os nomes das APIs são destacados porque devem ser usados ao chamar pontos de extremidade relacionados à API em massa.
 
 ![Inserir objeto personalizado](assets/bulk-insert-co-car-1.png)
 
