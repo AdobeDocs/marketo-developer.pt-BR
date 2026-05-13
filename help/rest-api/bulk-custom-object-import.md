@@ -3,9 +3,18 @@ title: Importação de Objeto Personalizado em Massa
 feature: Custom Objects
 description: Saiba como importar objetos personalizados do Marketo em massa via REST usando arquivos CSV, TSV ou SSV.
 exl-id: e795476c-14bc-4e8c-b611-1f0941a65825
-source-git-commit: 59684e1c5a8082ad12f1e4bfc854c0d2dde35d2a
+TQID: https://experienceleague.adobe.com/C1LKLZDEvv95XXH3AEoxIXsLK55tgKTrvyxvs4LnYWw
+product_v2:
+  - id: b27e5950-9033-45ac-9f86-eb22e567f615
+feature_v2:
+  - id: d1d0a9cd-295d-4976-8c39-ddae266f240e
+role_v2:
+  - id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
+topic_v2:
+  - id: eddd9b14-83bd-4ff4-9072-54a4a484abb7
+source-git-commit: 00118a89f25a23b931fac671130932bb0e0e4e4e
 workflow-type: tm+mt
-source-wordcount: '953'
+source-wordcount: 953
 ht-degree: 0%
 
 ---
@@ -14,7 +23,7 @@ ht-degree: 0%
 
 [Referência de Ponto de Extremidade de Importação de Objeto Personalizado em Massa](https://developer.adobe.com/marketo-apis/api/mapi#tag/Bulk-Import-Custom-Objects)
 
-Quando você tem muitos registros de objeto personalizados para  importação, é prática recomendada importá-los de forma assíncrona usando a API em massa. Isso é feito importando um arquivo simples que contém registros delimitados (vírgula, tabulação ou ponto e vírgula). O arquivo pode conter qualquer número de registros, desde que seu tamanho seja inferior a 10 MB (caso contrário, um formato HTTP  413 (o código de status é retornado). O conteúdo do arquivo depende da definição do objeto personalizado. A primeira linha sempre contém um cabeçalho que lista os campos para os quais mapear valores de cada linha. Todos os nomes de campos no cabeçalho devem corresponder a um nome de API (conforme discutido abaixo). As linhas restantes contêm os dados a serem importados, um registro por linha. A operação de registro é somente &quot;inserir ou atualizar&quot;.
+Quando você tem muitos registros de objeto personalizados para importar, é uma prática recomendada importá-los de forma assíncrona usando a API em massa. Isso é feito importando um arquivo simples que contém registros delimitados (vírgula, tabulação ou ponto e vírgula). O arquivo pode conter qualquer número de registros, desde que seu tamanho seja inferior a 10 MB (caso contrário, um código de status HTTP 413 será retornado). O conteúdo do arquivo depende da definição do objeto personalizado. A primeira linha sempre contém um cabeçalho que lista os campos para os quais mapear valores de cada linha. Todos os nomes de campos no cabeçalho devem corresponder a um nome de API (conforme discutido abaixo). As linhas restantes contêm os dados a serem importados, um registro por linha. A operação de registro é somente &quot;inserir ou atualizar&quot;.
 
 ## Limites de processamento
 

@@ -3,9 +3,16 @@ title: Extração em massa
 feature: REST API
 description: Saiba como usar a API REST de extração em massa do Marketo para exportar clientes em potencial, atividades, membros de programas e objetos personalizados, com OAuth, filas de trabalhos e limites diários de 500 MB.
 exl-id: 6a15c8a9-fd85-4c7d-9f65-8b2e2cba22ff
-source-git-commit: 59684e1c5a8082ad12f1e4bfc854c0d2dde35d2a
+TQID: https://experienceleague.adobe.com/ECSchsjqp8fyxXbUGl5DgXHUkXuN0sIUc3yJfVaIe1E
+product_v2:
+  - id: b27e5950-9033-45ac-9f86-eb22e567f615
+feature_v2:
+  - id: f71e690b-4480-4b67-9ef5-88f42f9cdfdb
+role_v2:
+  - id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
+source-git-commit: 00118a89f25a23b931fac671130932bb0e0e4e4e
 workflow-type: tm+mt
-source-wordcount: '1724'
+source-wordcount: 1724
 ht-degree: 1%
 
 ---
@@ -125,7 +132,7 @@ Cada endpoint de criação de trabalho compartilha alguns parâmetros comuns par
 
 ## Recuperando tarefas
 
-Às vezes, você pode precisar recuperar seus trabalhos recentes. Isso é feito facilmente com Obter trabalhos de exportação para o tipo de objeto correspondente. Cada ponto de extremidade de Obter Trabalhos de Exportação oferece suporte a um campo de filtro `status`, um  `batchSize` para limitar o número de trabalhos retornados e `nextPageToken` para paginação por meio de conjuntos de resultados grandes. O filtro de status suporta cada status válido para um trabalho de exportação: Criado, Em fila, Processando, Cancelado, Concluído e Falha. O batchSize tem um máximo e o padrão de 300. Vamos obter a lista de Tarefas de exportação de clientes potenciais:
+Às vezes, você pode precisar recuperar seus trabalhos recentes. Isso é feito facilmente com Obter trabalhos de exportação para o tipo de objeto correspondente. Cada ponto de extremidade de Obter Trabalhos de Exportação oferece suporte a um campo de filtro `status`, um `batchSize` para limitar o número de trabalhos retornados e `nextPageToken` para paginação por meio de conjuntos de resultados grandes. O filtro de status suporta cada status válido para um trabalho de exportação: Criado, Em fila, Processando, Cancelado, Concluído e Falha. O batchSize tem um máximo e o padrão de 300. Vamos obter a lista de Tarefas de exportação de clientes potenciais:
 
 ```http
 GET /bulk/v1/leads/export.json?status=Completed,Failed

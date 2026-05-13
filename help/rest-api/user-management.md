@@ -3,9 +3,20 @@ title: Gerenciamento de usuários
 feature: REST API
 description: Guia das APIs de gerenciamento de usuários do Marketo para CRUD em usuários, autenticação baseada em cabeçalho, funções e espaços de trabalho, manipulação de código de status, formato de data e hora e pontos de extremidade de consulta.
 exl-id: 2a58f496-0fe6-4f7e-98ef-e9e5a017c2de
-source-git-commit: e2606d6cb12c572603ff069617de58417e43ca63
+TQID: https://experienceleague.adobe.com/V1NzpIl-peHBi9rqy8YwdJDh3O-dViIdF0cBsDSI-w8
+product_v2:
+  - id: b27e5950-9033-45ac-9f86-eb22e567f615
+feature_v2:
+  - id: b13bd2ad-8e65-49e5-9691-2a0d31067b35
+  - id: d1d0a9cd-295d-4976-8c39-ddae266f240e
+  - id: d65b4a73-87a3-4d56-b638-74e74d9939ce
+role_v2:
+  - id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
+topic_v2:
+  - id: eddd9b14-83bd-4ff4-9072-54a4a484abb7
+source-git-commit: 00118a89f25a23b931fac671130932bb0e0e4e4e
 workflow-type: tm+mt
-source-wordcount: '1581'
+source-wordcount: 1581
 ht-degree: 6%
 
 ---
@@ -429,7 +440,7 @@ O suporte de atualização para funções inclui a capacidade de adicionar e exc
 
 ## Adicionar Funções
 
-O ponto de extremidade [Adicionar Funções](https://developer.adobe.com/marketo-apis/api/user/#tag/User-Management/operation/addRolesUsingPOST) pega um único parâmetro de caminho `userid` e adiciona uma ou mais funções de usuário ao usuário correspondente. O corpo da solicitação contém uma lista de um ou mais objetos, cada um contendo um  `accessRoleId` e um atributo `workspaceId`. Se for bem-sucedido, toda a lista de pares de `accessRoleId/workspaceId` do usuário especificado será retornada.
+O ponto de extremidade [Adicionar Funções](https://developer.adobe.com/marketo-apis/api/user/#tag/User-Management/operation/addRolesUsingPOST) pega um único parâmetro de caminho `userid` e adiciona uma ou mais funções de usuário ao usuário correspondente. O corpo da solicitação contém uma lista de um ou mais objetos, cada um contendo um atributo `accessRoleId` e um `workspaceId`. Se for bem-sucedido, toda a lista de pares de `accessRoleId/workspaceId` do usuário especificado será retornada.
 
 ```http
 POST /userservice/management/v1/users/{userid}/roles/create.json
@@ -467,7 +478,7 @@ Content-Type: application/json
 
 ## Excluir Funções
 
-O ponto de extremidade [Excluir Funções](https://developer.adobe.com/marketo-apis/api/user/#tag/User-Management/operation/deleteRolesUsingPOST) pega um único parâmetro de caminho `userid` e exclui uma ou mais funções de usuário do usuário correspondente. O corpo da solicitação contém uma lista de um ou mais objetos, cada um contendo um  `accessRoleId` e um atributo `workspaceId`. Se for bem-sucedido, a lista restante de pares accessRoleId/workspaceId para o usuário especificado será retornada.
+O ponto de extremidade [Excluir Funções](https://developer.adobe.com/marketo-apis/api/user/#tag/User-Management/operation/deleteRolesUsingPOST) pega um único parâmetro de caminho `userid` e exclui uma ou mais funções de usuário do usuário correspondente. O corpo da solicitação contém uma lista de um ou mais objetos, cada um contendo um atributo `accessRoleId` e um `workspaceId`. Se for bem-sucedido, a lista restante de pares accessRoleId/workspaceId para o usuário especificado será retornada.
 
 ```http
 POST /userservice/management/v1/users/{userid}/roles/delete.json

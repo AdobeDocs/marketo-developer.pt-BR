@@ -3,9 +3,22 @@ title: Tipos de campos
 feature: REST API
 description: Lista abrangente de tipos de campo do Marketo com definições, exemplos e formatos, incluindo datetime ISO 8601, limites de área de texto, moeda e booleano.
 exl-id: a0ba9e02-ed42-4be3-9cdd-a97fee9a726e
-source-git-commit: 6145067629ce78175af3b7464807a0fa100c7b57
+TQID: https://experienceleague.adobe.com/Q-L1NCCS1caYip-niSrBAkp6k37ErzmsLCFvn7fRJW0
+product_v2:
+  - id: b27e5950-9033-45ac-9f86-eb22e567f615
+feature_v2:
+  - id: a7170d27-32ab-462b-a333-269abc654483
+  - id: c5f60233-d5ea-4453-a799-0ad258b4d399
+  - id: d1d0a9cd-295d-4976-8c39-ddae266f240e
+subfeature_v2:
+  - id: ad89fb33-8541-4339-afe7-bb13d1633714
+role_v2:
+  - id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
+topic_v2:
+  - id: eddd9b14-83bd-4ff4-9072-54a4a484abb7
+source-git-commit: 00118a89f25a23b931fac671130932bb0e0e4e4e
 workflow-type: tm+mt
-source-wordcount: '373'
+source-wordcount: 373
 ht-degree: 8%
 
 ---
@@ -24,7 +37,7 @@ Esta é uma descrição dos tipos de campo no Marketo. Informações adicionais
 | Porcentagem | Uma porcentagem expressa como um número inteiro | 30 |
 | URL | Um campo de texto que restringe a entrada para URLs, incluindo o protocolo do URL. | <http://example.com/> |
 | Telefone | Número de telefone | 111-111-1111 |
-| Área de texto | Texto mais longo. | Suporta até 30.000 bytes. Os caracteres ASCII padrão usam 1 byte por caractere (permitindo até 30.000 caracteres). Caracteres Unicode podem usar até 4 bytes por caractere (reduzindo o  número de caracteres permitidos até menos de 30.000 caracteres). |
+| Área de texto | Texto mais longo. | Suporta até 30.000 bytes. Os caracteres ASCII padrão usam 1 byte por caractere (permitindo até 30.000 caracteres). Caracteres Unicode podem usar até 4 bytes por caractere (reduzindo o número de caracteres permitidos para menos de 30.000 caracteres). |
 | String | Texto mais curto | Texto de até 255 caracteres |
 | Pontuação | Um campo inteiro que pode ser manipulado com a etapa de fluxo Alterar pontuação | 10 |
 | Booleano (caixa de seleção anterior) | Permite aos usuários selecionar um valor Verdadeiro (marcado) ou Falso (desmarcado). | Verdadeiro |
