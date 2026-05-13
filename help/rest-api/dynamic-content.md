@@ -4,9 +4,12 @@ feature: REST API, Dynamic Content
 description: Configure o conteúdo dinâmico do Marketo em nível de seção por meio das APIs REST usando segmentações para personalizar emails, páginas de aterrissagem e trechos com endpoints e exemplos
 exl-id: 8ab97624-5fb5-4a41-911f-ec8616dd43c9
 TQID: https://experienceleague.adobe.com/MwfPxu74qk0bPZMr6yuxQi--e3gMvP1tXQZ5iMil02o
-product_v2: id: b27e5950-9033-45ac-9f86-eb22e567f615
-feature_v2: id: c5f60233-d5ea-4453-a799-0ad258b4d399
-role_v2: id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
+product_v2:
+  - id: b27e5950-9033-45ac-9f86-eb22e567f615
+feature_v2:
+  - id: c5f60233-d5ea-4453-a799-0ad258b4d399
+role_v2:
+  - id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
 source-git-commit: 00118a89f25a23b931fac671130932bb0e0e4e4e
 workflow-type: tm+mt
 source-wordcount: 463

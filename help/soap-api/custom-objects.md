@@ -4,8 +4,10 @@ feature: SOAP
 description: Saiba como os Objetos personalizados do Marketo vinculam um lead a muitos registros, com estrutura, limites e chamadas de API do SOAP para obter, sincronizar, excluir, além de Smart List e uso de email.
 exl-id: 29d65841-4b44-4d94-b14e-c583d433d015
 TQID: https://experienceleague.adobe.com/Fy3h8qfKs8gizeakXkhoj5mJhib-QA2kYOu41YMIEZs
-product_v2: id: b27e5950-9033-45ac-9f86-eb22e567f615
-role_v2: id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
+product_v2:
+  - id: b27e5950-9033-45ac-9f86-eb22e567f615
+role_v2:
+  - id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
 source-git-commit: 00118a89f25a23b931fac671130932bb0e0e4e4e
 workflow-type: tm+mt
 source-wordcount: 286
