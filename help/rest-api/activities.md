@@ -4,17 +4,13 @@ feature: REST API
 description: Use a API REST de atividades do Marketo Engage para listar tipos de atividades, buscar atividades principais com tokens de paginação e lidar com alterações personalizadas e de valores de dados.
 exl-id: 1e69af23-2b0c-467a-897c-1dcf81343e73
 TQID: https://experienceleague.adobe.com/62keaj4uNoxIPCzr9AQzKrIsfuHBvC25knYisZRUvF4
-product_v2:
-  - id: b27e5950-9033-45ac-9f86-eb22e567f615
-feature_v2:
-  - id: c5f60233-d5ea-4453-a799-0ad258b4d399
-role_v2:
-  - id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
-topic_v2:
-  - id: a004cc84-67b9-4a33-a3a7-8ec7273ef4dc
-source-git-commit: 00118a89f25a23b931fac671130932bb0e0e4e4e
+product_v2: id: b27e5950-9033-45ac-9f86-eb22e567f615
+feature_v2: id: c5f60233-d5ea-4453-a799-0ad258b4d399
+role_v2: id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
+topic_v2: id: a004cc84-67b9-4a33-a3a7-8ec7273ef4dc
+source-git-commit: e71bcf289229867bc969345d79c8f014761aaaf9
 workflow-type: tm+mt
-source-wordcount: 2218
+source-wordcount: 2226
 ht-degree: 0%
 
 ---
@@ -33,7 +29,7 @@ A maioria das atividades será removida após algum período.
 
 Para recuperar uma lista de tipos disponíveis e suas definições para uma instância, você pode usar o ponto de extremidade [Obter Tipos de Atividade](https://developer.adobe.com/marketo-apis/api/mapi#tag/Activities/operation/getAllActivityTypesUsingGET).
 
-```http
+```
 GET /rest/v1/activities/types.json
 ```
 
@@ -90,9 +86,9 @@ Opcionalmente, você pode incluir um parâmetro de consulta `listId` para restri
 
 >[!CAUTION]
 >
->A partir de 30/12/2026, as chamadas para os pontos de extremidade `Get Lead Activities` e `Get Lead Changes` que incluem o parâmetro `listId` falharão (código de erro 1003) se as listas de destino contiverem 10.000 ou mais clientes potenciais. Para evitar interrupções do serviço, verifique se as chamadas têm o escopo correto para evitar esse limite.
+>A partir de 30/12/2026, as chamadas para os pontos de extremidade `Get Lead Activities` e `Get Lead Changes` que incluem o parâmetro `listId` falharão (código de erro 1003) se as listas de destino contiverem 10.000 ou mais clientes potenciais. Para evitar interrupções do serviço, verifique se as chamadas têm o escopo correto para evitar esse limite. Consulte o [Guia de migração](migration.md).
 
-```http
+```
 GET /rest/v1/activities.json?activityTypeIds=1&nextPageToken=WQV2VQVPPCKHC6AQYVK7JDSA3I3LCWXH3Y6IIZ7YSGQLXHCPVE5Q====
 ```
 
@@ -155,7 +151,7 @@ Para atividades de Alteração do valor de dados, é fornecida uma versão espec
 
 >[!CAUTION]
 >
->A partir de 30/12/2026, as chamadas para os pontos de extremidade `Get Lead Activities` e `Get Lead Changes` que incluem o parâmetro `listId` falharão (código de erro 1003) se as listas de destino contiverem 10.000 ou mais clientes potenciais. Para evitar interrupções do serviço, verifique se as chamadas têm o escopo correto para evitar esse limite.
+>A partir de 30/12/2026, as chamadas para os pontos de extremidade `Get Lead Activities` e `Get Lead Changes` que incluem o parâmetro `listId` falharão (código de erro 1003) se as listas de destino contiverem 10.000 ou mais clientes potenciais. Para evitar interrupções do serviço, verifique se as chamadas têm o escopo correto para evitar esse limite. Consulte o [Guia de migração](migration.md).
 
 ```http
 GET /rest/v1/activities/leadchanges.json?nextPageToken=GIYDAOBNGEYS2MBWKQYDAORQGA5DAMBOGAYDAKZQGAYDALBQ&fields=firstName,lastName,department
