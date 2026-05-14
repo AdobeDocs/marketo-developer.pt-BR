@@ -8,10 +8,10 @@ product_v2:
   - id: b27e5950-9033-45ac-9f86-eb22e567f615
 role_v2:
   - id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
-source-git-commit: 00118a89f25a23b931fac671130932bb0e0e4e4e
+source-git-commit: e71bcf289229867bc969345d79c8f014761aaaf9
 workflow-type: tm+mt
-source-wordcount: 34
-ht-degree: 5%
+source-wordcount: 79
+ht-degree: 2%
 
 ---
 
@@ -21,3 +21,7 @@ As chamadas de SOAP a seguir podem ser usadas para interagir com Atividades.
 
 - [getLeadActivities](getleadactivity.md)
 - [getLeadChanges](getleadchanges.md)
+
+>[!CAUTION]
+>
+>A partir de 30/12/2026, as chamadas para os pontos de extremidade `Get Lead Activities` e `Get Lead Changes` que incluem o parâmetro `listId` falharão (código de erro 1003) se as listas de destino contiverem 10.000 ou mais clientes potenciais. Para evitar interrupções do serviço, verifique se as chamadas têm o escopo correto para evitar esse limite. Consulte o [Guia de migração](migration.md).
