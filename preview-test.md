@@ -1,10 +1,10 @@
 ---
 title: Teste de visualização de EXL
 description: Exemplos de sintaxe de marcação do Adobe EXL para testar a visualização da extensão.
-source-git-commit: 8f7ff2e1b6d0a4d8f63affb7bd1a2d0abbcc118c
+source-git-commit: 87d2584ed0ef2c1fa219f2a3ad120c91dc5491e0
 workflow-type: tm+mt
-source-wordcount: '343'
-ht-degree: 8%
+source-wordcount: '359'
+ht-degree: 11%
 
 ---
 
@@ -93,6 +93,14 @@ Use seções que podem ser recolhidas para conteúdo opcional ou avançado que, 
 
 +++
 
+## Ajuda contextual
+
+A Ajuda contextual está oculta da visualização. Veja!
+>[!CONTEXTUALHELP]
+>id="models_insights_undefinedchannels"
+>title="Canais indefinidos"
+>abstract="Canais indefinidos são incluídos, mas não têm conversões atribuídas."
+
 ## Vídeo incorporado
 
 >[!VIDEO](https://video.tv.adobe.com/v/3427028/?quality=12&learn=on)
@@ -173,5 +181,6 @@ function greet(name) {
 
 | Coluna um | Coluna dois | Coluna três |
 | --- | --- | --- |
-| Linha 1, célula 1 | Linha 1, célula 2 | Linha 1, célula 3 |
+| [!UICONTROL Linha 1], célula 1 | Linha 1, célula 2 | [!DNL Row 1, cell 3] |
 | Linha 2, célula 1 | Linha 2, célula 2 | Linha 2, célula 3 |
+

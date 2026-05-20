@@ -4,16 +4,11 @@ feature: Email Programs
 description: Saiba como criar scripts de emails dinâmicos do Marketo usando tokens, variáveis, ferramentas do Velocity e testar o com Enviar amostra e Visualização de email do Apache.
 exl-id: ff396f8b-80c2-4c87-959e-fb8783c391bf
 TQID: https://experienceleague.adobe.com/xFDjbGWGoWg4Ik6xqoU4L51FG5-1STZ5a0x0KpmwGd4
-product_v2:
-  - id: b27e5950-9033-45ac-9f86-eb22e567f615
-feature_v2:
-  - id: d1d0a9cd-295d-4976-8c39-ddae266f240e
-  - id: e64968b2-4ee5-47f9-8cae-0588f184b9eb
-role_v2:
-  - id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
-topic_v2:
-  - id: eddd9b14-83bd-4ff4-9072-54a4a484abb7
-source-git-commit: 00118a89f25a23b931fac671130932bb0e0e4e4e
+product_v2: id: b27e5950-9033-45ac-9f86-eb22e567f615
+feature_v2: id: d1d0a9cd-295d-4976-8c39-ddae266f240eid: e64968b2-4ee5-47f9-8cae-0588f184b9eb
+role_v2: id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
+topic_v2: id: eddd9b14-83bd-4ff4-9072-54a4a484abb7
+source-git-commit: 4fbd04f9942f903ab8b44e9740a806b74a4ffaf4
 workflow-type: tm+mt
 source-wordcount: 1116
 ht-degree: 0%
@@ -22,7 +17,7 @@ ht-degree: 0%
 
 # Scripts de e-mails
 
-OBSERVAÇÃO: é altamente recomendável que você leia o [Guia do usuário do Velocity](https://velocity.apache.org/engine/devel/user-guide.html) para obter uma explicação detalhada do comportamento da Linguagem de modelo do Velocity.
+OBSERVAÇÃO: é altamente recomendável que você leia o [Guia do usuário do Velocity](https://velocity.apadche.org/engine/devel/user-guide.html) para obter uma explicação detalhada do comportamento da Linguagem de modelo do Velocity.
 
 [Apache Velocity](https://velocity.apache.org/) é uma linguagem criada em Java projetada para modelagem e script de conteúdo HTML. O Marketo permite que ele seja usado no contexto de emails usando tokens de script. Esse recurso dá acesso aos dados armazenados em Oportunidades e Objetos personalizados e permite a criação de conteúdo dinâmico em emails. A Velocity oferece um fluxo de controle padrão de alto nível com if/else, for e for para permitir a manipulação condicional e iterativa do conteúdo.
 
@@ -44,7 +39,7 @@ ${variable}name ##outputs 'valuename'
 
 
 
-Também há uma notação de referência silenciosa, em que há um `!` Incluído após o `$`. Normalmente, quando a velocidade encontra uma referência indefinida, a string que representa a referência é deixada no lugar. Com a notação de interferência silenciosa, se uma referência indefinida for encontrada, nenhum valor será emitido:
+Também há uma notação de referência silenciosa, em que há um `!` incluído após o `$`. Normalmente, quando a velocidade encontra uma referência indefinida, a string que representa a referência é deixada no lugar. Com a notação de referência silenciosa, se uma referência indefinida for encontrada, nenhum valor será emitido:
 
 ```velocity
 ##Defined Reference
@@ -105,7 +100,7 @@ Depois de definir o script em um Meu token de programa, você pode referenciá-l
 
 ![Script de email](assets/email-script-marketo-email.png)
 
-Você pode testar seu script usando a ação de email [!UICONTROL Enviar Email de Exemplo] no designer de email do Marketo. Para que o script seja processado corretamente, você deve selecionar um cliente potencial existente a ser representado no campo [!UICONTROL Cliente Potencial]. Se você estiver testando com `$TriggerObject`, é possível selecionar o objeto de acionamento por meio do parâmetro [!UICONTROL Acionador]. Esse processo usa os dados do objeto atualizado mais recentemente desse tipo como a variável `$TriggerObject`.
+Você pode testar seu script usando a ação de email [!UICONTROL Enviar Email de Exemplo] no designer de email do Marketo. Para que o script continue corretamente, você deve selecionar um cliente potencial existente a ser representado no campo [!UICONTROL Cliente Potencial]. Se você estiver testando com `$TriggerObject`, é possível selecionar o objeto de acionamento por meio do parâmetro [!UICONTROL Acionador]. Esse processo usa os dados do objeto atualizado mais recentemente desse tipo como a variável `$TriggerObject`.
 
 ![Script de Email de Teste](assets/velocity-test.png)
 
@@ -123,7 +118,7 @@ O comprimento combinado de todos os tokens de script de email em um determinado 
 - Você pode fazer referência a objetos personalizados conectados a um cliente potencial, contato ou conta, mas não a mais de um.
 - Objetos personalizados só podem ser referenciados por meio de uma única conexão, cliente potencial, contato ou conta
 - Marque a caixa no editor de scripts para os campos que você está usando, ou eles não são processados
-- Para cada objeto personalizado, os dez registros atualizados mais recentes por pessoa/contato estão disponíveis no tempo de execução e são ordenados da atualização mais recente (em 0) para a atualização mais antiga (em 9). Você pode aumentar o número de registros disponíveis por [seguindo as instruções](https://experienceleague.adobe.com/pt-br/docs/marketo/using/product-docs/administration/email-setup/change-custom-object-retrieval-limits-in-velocity-scripting).
+- Para cada objeto personalizado, os dez registros atualizados mais recentes por pessoa/contato estão disponíveis no tempo de execução e são ordenados da atualização mais recente (em 0) para a atualização mais antiga (em 9). Você pode aumentar o número de registros disponíveis por [seguindo as instruções](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/administration/email-setup/change-custom-object-retrieval-limits-in-velocity-scripting).
 - Se você incluir mais de um script de email em um email, eles serão executados de cima para baixo. O escopo das variáveis definidas no primeiro script a ser executado está disponível nos scripts subsequentes.
 - Referência de ferramentas: [https://velocity.apache.org/tools/2.0/index.html](https://velocity.apache.org/tools/2.0/index.html)
 - Uma observação sobre tokens que contêm caracteres de nova linha &quot;\n&quot; ou &quot;\r\n&quot;. Quando um email é enviado por meio do Send Sample ou por uma Campanha em lote, os caracteres de nova linha em tokens são substituídos por espaços. Quando o email é enviado por meio do Trigger Campaign, os caracteres de nova linha são deixados intocados.
