@@ -4,13 +4,11 @@ feature: REST API, Dynamic Content, Static Lists
 description: Use a API de assimilação de dados do Marketo para assimilação de alto volume e baixa latência de pessoas, objetos personalizados, empresas, membros de programas e listas.
 exl-id: 1d501916-53ac-42d8-a804-abb4ab01c7e8
 TQID: https://experienceleague.adobe.com/xby7hs-CSLrVzy-FXEBi1FeU1-ca7vI4kB85BYJ9snk
-product_v2:
-  - id: b27e5950-9033-45ac-9f86-eb22e567f615
-role_v2:
-  - id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
-source-git-commit: 4fbd04f9942f903ab8b44e9740a806b74a4ffaf4
+product_v2: id: b27e5950-9033-45ac-9f86-eb22e567f615
+role_v2: id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
+source-git-commit: 1a8345909b679b5651c94a68f8d29950ed47f6ed
 workflow-type: tm+mt
-source-wordcount: 2178
+source-wordcount: 2191
 ht-degree: 16%
 
 ---
@@ -22,6 +20,8 @@ A API de assimilação de dados é um serviço de alto volume, baixa latência e
 Os dados são assimilados enviando solicitações que são executadas de forma assíncrona. O status da solicitação pode ser recuperado assinando-se a eventos do [Fluxo de Dados de Observação do Marketo](https://developer.adobe.com/events/docs/guides/using/marketo/marketo-observability-data-stream-setup).
 
 As interfaces são oferecidas para cinco tipos de objetos: Pessoas, Objetos Personalizados, Empresas, Membros do Programa e Listas (Listas Estáticas). A operação de registro é somente &quot;inserir ou atualizar&quot;, exceto para Membros do Programa que também suportam operações de exclusão, e Listas que suportam operações de adição e remoção.
+
+Leia a [documentação da API de assimilação de dados](https://developer.adobe.com/marketo-apis/api/data-ingestion).
 
 >[!NOTE]
 >
