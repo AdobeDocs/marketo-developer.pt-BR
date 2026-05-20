@@ -1,17 +1,17 @@
 ---
 title: Assimilação de dados
-feature: REST API, Dynamic Content
-description: Use a API de assimilação de dados do Marketo para assimilação de alto volume e baixa latência de pessoas, objetos personalizados, empresas e membros do programa.
+feature: REST API, Dynamic Content, Static Lists
+description: Use a API de assimilação de dados do Marketo para assimilação de alto volume e baixa latência de pessoas, objetos personalizados, empresas, membros de programas e listas.
 exl-id: 1d501916-53ac-42d8-a804-abb4ab01c7e8
 TQID: https://experienceleague.adobe.com/xby7hs-CSLrVzy-FXEBi1FeU1-ca7vI4kB85BYJ9snk
 product_v2:
   - id: b27e5950-9033-45ac-9f86-eb22e567f615
 role_v2:
   - id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
-source-git-commit: 00118a89f25a23b931fac671130932bb0e0e4e4e
+source-git-commit: 4fbd04f9942f903ab8b44e9740a806b74a4ffaf4
 workflow-type: tm+mt
-source-wordcount: 1789
-ht-degree: 15%
+source-wordcount: 2178
+ht-degree: 16%
 
 ---
 
@@ -21,7 +21,7 @@ A API de assimilação de dados é um serviço de alto volume, baixa latência e
 
 Os dados são assimilados enviando solicitações que são executadas de forma assíncrona. O status da solicitação pode ser recuperado assinando-se a eventos do [Fluxo de Dados de Observação do Marketo](https://developer.adobe.com/events/docs/guides/using/marketo/marketo-observability-data-stream-setup).
 
-As interfaces são oferecidas para quatro tipos de objetos: Pessoas, Objetos Personalizados, Empresas e Membros do Programa. A operação de registro é somente &quot;inserir ou atualizar&quot;, exceto para Membros do Programa que também suportam exclusão.
+As interfaces são oferecidas para cinco tipos de objetos: Pessoas, Objetos Personalizados, Empresas, Membros do Programa e Listas (Listas Estáticas). A operação de registro é somente &quot;inserir ou atualizar&quot;, exceto para Membros do Programa que também suportam operações de exclusão, e Listas que suportam operações de adição e remoção.
 
 >[!NOTE]
 >
@@ -45,6 +45,7 @@ A assimilação de dados usa o mesmo modelo de permissões que a API REST do Mar
 | Objetos personalizados | Objeto personalizado de leitura-gravação |
 | Empresas | Empresa de leitura-gravação |
 | Membros do programa | Lead de leitura-gravação |
+| Listas | Lead de leitura-gravação |
 
 ## Tipos de objeto suportados
 
@@ -54,6 +55,7 @@ A assimilação de dados usa o mesmo modelo de permissões que a API REST do Mar
 | Objetos personalizados | Substituir (inserir ou atualizar) |
 | Empresas | Sincronizar (`createOnly`, `updateOnly`, `createOrUpdate`) |
 | Membros do programa | Sincronizar (substituir status), Excluir (remover do programa) |
+| Listas | Adicionar à lista, Remover da lista |
 
 ## Cabeçalhos
 
@@ -97,6 +99,10 @@ Exemplo de URL para Empresas:
 Exemplo de URL para Membros do Programa:
 
 `https://mkto-ingestion-api.adobe.io/subscriptions/556-RJS-213/programmembers`
+
+Exemplo de URL para Listas:
+
+`https://mkto-ingestion-api.adobe.io/subscriptions/556-RJS-213/lists`
 
 ### Respostas
 
@@ -157,7 +163,7 @@ Intervalos de repetição:
 
 ## Pontos de acesso
 
-Os endpoints de assimilação estão disponíveis para Pessoas, Objetos personalizados, Empresas e Membros do programa.
+Os endpoints de assimilação estão disponíveis para Pessoas, Objetos personalizados, Empresas, Membros de programas e Listas.
 
 ### Pessoas
 
@@ -181,7 +187,7 @@ Ponto de extremidade usado para substituir registros de pessoa.
 | `priority` | String | Não | Prioridade da solicitação: normal ou alta | normal |
 | `partitionName` | String | Não | Nome da partição da pessoa | Padrão |
 | `dedupeFields` | Objeto | Não | Atributos para desduplicar em. Um ou dois nomes de atributo são permitidos. <br/> Dois atributos são usados em uma operação AND. Por exemplo, se `email` e `firstName` forem especificados, ambos serão usados para procurar uma pessoa usando a operação AND. <br/>Os atributos com suporte são: `id`, `email`, `sfdcAccountId`, `sfdcContactId`, `sfdcLeadId` `sfdcLeadOwnerId`, Atributos personalizados (somente tipo &quot;string&quot; e &quot;integer&quot;), `email` |  |
-| `persons` | Matriz de objeto | Sim | Lista de pares de nome-valor do atributo para a pessoa | - |
+| `persons` | Matriz de objeto | Sim | Lista de pares de nome-valor do atributo para a pessoa | – |
 
 As permissões necessárias são `Read-Write Lead`.
 
@@ -249,7 +255,7 @@ Ponto de extremidade usado para substituir registros de objeto personalizados.
 | --- | --- | --- | --- | --- |
 | `priority` | String | Não | Prioridade da solicitação: normal, alta | normal |
 | `dedupeBy` | String | Não | Atributos a serem desduplicados em: dedupeFields, marketoGUID | dedupeFields |
-| `customObjects` | Matriz de objeto | Sim | Lista de pares nome-valor do atributo do objeto. | - |
+| `customObjects` | Matriz de objeto | Sim | Lista de pares nome-valor do atributo do objeto. | – |
 
 As permissões necessárias são `Read-Write Custom Object`.
 
@@ -319,7 +325,7 @@ Ponto de extremidade usado para sincronizar registros da empresa. Oferece suport
 | --- | --- | --- | --- | --- |
 | `action` | String | Não | Sincronizar ação: `createOnly`, `updateOnly` ou `createOrUpdate` | `createOrUpdate` |
 | `dedupeBy` | String | Não | Campo para desduplicar em: `dedupeFields` ou `idField` (não diferencia maiúsculas de minúsculas). Para `createOnly` e `createOrUpdate`, somente `dedupeFields` é permitido. Para `updateOnly`, ambos são permitidos. | `dedupeFields` |
-| `input` | Matriz de objeto | Sim | Lista de pares nome-valor do atributo da empresa. Aceita a chave JSON `input` ou `companies`. | - |
+| `input` | Matriz de objeto | Sim | Lista de pares nome-valor do atributo da empresa. Aceita a chave JSON `input` ou `companies`. | – |
 
 Cada objeto de empresa na matriz `input` oferece suporte aos seguintes campos:
 
@@ -421,7 +427,7 @@ Ponto de extremidade usado para sincronizar o status do membro do programa, adic
 
 | Chave | Tipo de dados | Obrigatório | Valor | Valor padrão |
 | --- | --- | --- | --- | --- |
-| Programas | Matriz de objeto | Sim | Lista de operações do programa. Cada especifica um programa, um status de público-alvo e os leads para a sincronização. | - |
+| Programas | Matriz de objeto | Sim | Lista de operações do programa. Cada especifica um programa, um status de público-alvo e os leads para a sincronização. | – |
 
 Cada objeto na matriz `programs` contém:
 
@@ -522,7 +528,7 @@ Ponto de extremidade usado para remover clientes em potencial de programas. Isso
 
 | Chave | Tipo de dados | Obrigatório | Valor | Valor padrão |
 | --- | --- | --- | --- | --- |
-| Programas | Matriz de objeto | Sim | Lista de operações de exclusão de programas. Cada especifica um programa e os clientes em potencial a serem removidos. | - |
+| Programas | Matriz de objeto | Sim | Lista de operações de exclusão de programas. Cada especifica um programa e os clientes em potencial a serem removidos. | – |
 
 Cada objeto na matriz `programs` contém:
 
@@ -593,6 +599,159 @@ As permissões necessárias são `Read-Write Lead`.
 | leadId | Obrigatório para cada membro na matriz de entrada. |
 | Máximo de clientes em potencial por solicitação | 1.000 membros totais em todos os programas. |
 
+### Listas (Adicionar à Lista)
+
+Endpoint usado para adicionar leads a uma lista estática. Os clientes potenciais são identificados pela ID de cliente potencial do Marketo.
+
+| Método | Caminho |
+| --- | --- |
+| POST | `/subscriptions/{munchkinId}/lists` |
+
+#### Cabeçalhos
+
+| Chave | Valor | Obrigatório |
+| --- | --- | --- |
+| `Content-Type` | application/json | Sim |
+| `X-Mkto-User-Token` | {accessToken} | Sim |
+| `X-Correlation-Id` | Sequência de caracteres arbitrária (comprimento máximo de 255 caracteres) | Não |
+| `X-Request-Source` | Sequência de caracteres arbitrária (comprimento máximo de 50 caracteres) | Não |
+
+#### Corpo da solicitação
+
+| Chave | Tipo de dados | Obrigatório | Valor | Valor padrão |
+| --- | --- | --- | --- | --- |
+| `listId` | Longo | Sim | A ID da lista estática do Marketo. Deve ser um número inteiro positivo. | – |
+| `leads` | Matriz de objeto | Sim | Lista de referências de cliente potencial a serem adicionadas à lista. Aceita a chave JSON `input` ou `leads`. | – |
+
+Cada objeto na matriz de entrada contém:
+
+| Chave | Tipo de dados | Obrigatório | Descrição |
+| --- | --- | --- | --- |
+| `leadId` | Longo | Sim | A ID do lead Marketo. Aceita a chave JSON `leadId` ou `id`. |
+
+As permissões necessárias são `Read-Write Lead`.
+
+### Listas adicionam à lista de exemplo
+
+#### Solicitação
+
+`POST /subscriptions/{munchkinId}/lists`
+
+#### Cabeçalhos
+
+`Content-Type: application/json`
+`X-Mkto-User-Token: {accessToken}`
+
+#### Corpo
+
+```json
+{
+   "listId": 1001,
+   "leads": [
+      {
+         "leadId": 10001
+      },
+      {
+         "leadId": 10002
+      },
+      {
+         "leadId": 10003
+      }
+   ]
+}
+```
+
+#### Resposta
+
+`HTTP/1.1 202`
+`X-Request-ID: WOUBf3fHJNU6sTmJqLL281lOmAEpMZFw`
+
+### Lista adicionada às regras de validação da lista
+
+| Regra | Detalhe |
+| --- | --- |
+| listId | Obrigatório. Deve ser um número inteiro positivo (> 0). |
+| clientes potenciais | Obrigatório. Não pode ser nulo ou vazio. |
+| leadId | Necessário para cada lead na matriz de entrada. |
+| Máximo de clientes em potencial por solicitação | 1.000 leads totais no array de entrada. |
+
+### Listas (Remover da Lista)
+
+Endpoint usado para remover leads de uma lista estática. Os clientes potenciais são identificados pela ID de cliente potencial do Marketo.
+
+>[!NOTE]
+>
+>Esse endpoint usa POST em vez de DELETE porque a solicitação requer um corpo JSON com dados estruturados.
+
+| Método | Caminho |
+| --- | --- |
+| POST | `/subscriptions/{munchkinId}/lists/remove` |
+
+#### Cabeçalhos
+
+| Chave | Valor | Obrigatório |
+| --- | --- | --- |
+| `Content-Type` | application/json | Sim |
+| `X-Mkto-User-Token` | {accessToken} | Sim |
+| `X-Correlation-Id` | Sequência de caracteres arbitrária (comprimento máximo de 255 caracteres) | Não |
+| `X-Request-Source` | Sequência de caracteres arbitrária (comprimento máximo de 50 caracteres) | Não |
+
+#### Corpo da solicitação
+
+| Chave | Tipo de dados | Obrigatório | Valor | Valor padrão |
+| --- | --- | --- | --- | --- |
+| `listId` | Longo | Sim | A ID da lista estática do Marketo. Deve ser um número inteiro positivo. | – |
+| `leads` | Matriz de objeto | Sim | Lista de referências de cliente potencial a serem removidas da lista. Aceita a chave JSON `input` ou `leads`. | – |
+
+Cada objeto na matriz de entrada contém:
+
+| Chave | Tipo de dados | Obrigatório | Descrição |
+| --- | --- | --- | --- |
+| `leadId` | Longo | Sim | A ID do lead Marketo. Aceita a chave JSON `leadId` ou `id`. |
+
+As permissões necessárias são `Read-Write Lead`.
+
+### Exemplo de listas remover da lista
+
+#### Solicitação
+
+`POST /subscriptions/{munchkinId}/lists/remove`
+
+#### Cabeçalhos
+
+`Content-Type: application/json`
+`X-Mkto-User-Token: {accessToken}`
+
+#### Corpo
+
+```json
+{
+   "listId": 1001,
+   "leads": [
+      {
+         "leadId": 10001
+      },
+      {
+         "leadId": 10002
+      }
+   ]
+}
+```
+
+#### Resposta
+
+`HTTP/1.1 202`
+`X-Request-ID: e3d92152-0fb1-444a-8f8f-29d5a2338598`
+
+### Listas removem das regras de validação da lista
+
+| Regra | Detalhe |
+| --- | --- |
+| listId | Obrigatório. Deve ser um número inteiro positivo (> 0). |
+| clientes potenciais | Obrigatório. Não pode ser nulo ou vazio. |
+| leadId | Necessário para cada lead na matriz de entrada. |
+| Máximo de clientes em potencial por solicitação | 1.000 leads totais no array de entrada. |
+
 ## Limites
 
 Esta é uma lista atualizada de medidas de proteção:
@@ -602,7 +761,7 @@ Esta é uma lista atualizada de medidas de proteção:
 * Máximo de solicitações por segundo por ID de cliente: 5.000
 * Máximo de objetos por dia: 10.000.000
 
-Esses limites se aplicam uniformemente a Pessoas, Objetos Personalizados, Empresas e Membros do Programa. Para membros do programa, &quot;objetos por solicitação&quot; é o número total de referências de clientes potenciais em todos os programas em uma única solicitação.
+Esses limites se aplicam uniformemente a Pessoas, Objetos Personalizados, Empresas, Membros de Programas e Listas. Para membros do programa, &quot;objetos por solicitação&quot; é o número total de referências de clientes potenciais em todos os programas em uma única solicitação. Para Listas, &quot;objetos por solicitação&quot; é o número de referências de cliente potencial na matriz de entrada.
 
 ## API de assimilação de dados versus API REST
 
