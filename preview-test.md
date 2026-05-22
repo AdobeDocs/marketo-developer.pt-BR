@@ -3,7 +3,7 @@ title: Teste de visualização de EXL
 description: Exemplos de sintaxe de marcação do Adobe EXL para testar a visualização da extensão.
 source-git-commit: 87d2584ed0ef2c1fa219f2a3ad120c91dc5491e0
 workflow-type: tm+mt
-source-wordcount: '359'
+source-wordcount: '356'
 ht-degree: 11%
 
 ---
