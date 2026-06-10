@@ -5,25 +5,13 @@ badgeBeta: label="Disponibilidade limitada" type="informative" tooltip="No momen
 exl-id: ab446e56-6250-4af5-b03e-162991d09a5c
 autotag-review: '2026-06-02T13:31:15.329Z'
 TQID: 'https://experienceleague.adobe.com/PJJm7yv8HmbwMB2fsnfDCXs8zprDJK5Q5z2uiiCJRZI'
-product_v2:
-  - id: b27e5950-9033-45ac-9f86-eb22e567f615
-feature_v2:
-  - id: a7170d27-32ab-462b-a333-269abc654483
-  - id: b0bb9048-d951-48d8-8232-45cf248a7e27
-  - id: b13bd2ad-8e65-49e5-9691-2a0d31067b35
-  - id: b3b8a63f-51fc-40f6-a7d2-a31c5d49fb45
-  - id: c2dbad80-0f5c-4d96-a798-2a65f93b8721
-  - id: dca84292-69e9-4116-a575-667d31fa060d
-  - id: e2290edd-b061-4880-9d79-dee306cf5aa9
-  - id: e64968b2-4ee5-47f9-8cae-0588f184b9eb
-  - id: f82558ea-6af5-44eb-a424-5b3389abb0a3
-role_v2:
-  - id: ff6a42d2-313e-452e-93a6-792e4fad9ff8
-topic_v2:
-  - id: bbbea26f-9621-49eb-9ab8-e06fb3bbce8c
-source-git-commit: 72329b0ee08402c02604d2b6868fdef88c532548
+product_v2: id: b27e5950-9033-45ac-9f86-eb22e567f615
+feature_v2: id: a7170d27-32ab-462b-a333-269abc654483id: b0bb9048-d951-48d8-8232-45cf248a7e27id: b13bd2ad-8e65-49e5-9691-2a0d31067b35id: b3b8a63f-51fc-40f6-a7d2-a31c5d49fb45id: c2dbad80-0f5c-4d96-a798-2a65f93b8721id: dca84292-69e9-4116-a575-667d31fa060did: e2290edd-b061-4880-9d79-dee306cf5aa9id: e64968b2-4ee5-47f9-8cae-0588f184b9ebid: f82558ea-6af5-44eb-a424-5b3389abb0a3
+role_v2: id: ff6a42d2-313e-452e-93a6-792e4fad9ff8
+topic_v2: id: bbbea26f-9621-49eb-9ab8-e06fb3bbce8c
+source-git-commit: e6cdee16bc2eaaec6b9741181409209586367601
 workflow-type: tm+mt
-source-wordcount: 1440
+source-wordcount: 1627
 ht-degree: 1%
 
 ---
@@ -47,15 +35,15 @@ Quando a ferramenta de IA chama o servidor MCP, o servidor executa a chamada à 
 
 ## Noções básicas sobre MCP
 
->Pense no MCP como uma porta USB-C para aplicativos de IA. Assim como o USB-C oferece uma maneira padronizada para conectar seus dispositivos a vários periféricos e acessórios, o MCP fornece uma maneira padronizada para conectar modelos de IA a diferentes fontes de dados e ferramentas. — [Protocolo de Contexto de Modelo](https://modelcontextprotocol.io/docs/getting-started/intro){target="_blank"}
+>Pense no MCP como uma porta USB-C para aplicativos de IA. Assim como o USB-C oferece uma maneira padronizada para conectar seus dispositivos a vários periféricos e acessórios, o MCP fornece uma maneira padronizada para conectar modelos de IA a fontes de dados e ferramentas. — [Protocolo de Contexto de Modelo](https://modelcontextprotocol.io/docs/getting-started/intro){target="_blank"}
 
 O MCP permite que uma ferramenta de IA se conecte a vários serviços externos ao mesmo tempo. Por exemplo, um assistente de IA pode:
 
 * Conectar-se a um processador de texto para geração de documentos assistidos por IA
-* Conecte-se a aplicativos de modelagem 3D, como o Blender, para criar animações
-* Conecte-se ao After Effects para edição de vídeo
+* Conecte-se a ferramentas de animação, como o Blender, para criar visualizações
+* Conecte-se ao Adobe After Effects para edição de vídeo
 
-O MCP é um protocolo de comunicação — um padrão aberto que qualquer aplicativo pode implementar para expor seus dados e ações às ferramentas de IA.
+O MCP é um protocolo de comunicação: um padrão aberto que qualquer aplicativo pode implementar para expor seus dados e ações às ferramentas de IA.
 
 ## O que o MCP [!DNL Marketo Engage] faz ou não faz
 
@@ -66,14 +54,14 @@ Compreender o escopo do MCP ajuda a definir expectativas antes de conectar sua f
 * Fornecer acesso aos dados e recursos do [!DNL Marketo] por meio de APIs REST padrão
 * Executar chamadas de API em seu nome usando credenciais fornecidas com cada solicitação
 * Suporte a vários usuários simultâneos, cada um conectado com suas próprias credenciais
-* Manipule a atualização automática do token OAuth — não é necessário gerenciar a expiração do token
+* Manipule a atualização automática do token OAuth. Não é necessário gerenciar a expiração do token
 * Operar em ambientes isolados de locatários para que seus dados nunca cruzem com a sessão de outro usuário
 
 **O MCP não:**
 
-* Usar, hospedar ou executar qualquer modelo de IA ou de aprendizado de máquina — todo o processamento de IA acontece na ferramenta de IA, não no MCP
+* Use, hospede ou execute modelos de aprendizado de máquina ou IA. Todo o processamento de IA acontece na ferramenta de IA, não no MCP
 * Treine ou aprenda com quaisquer dados, incluindo os dados do cliente
-* Gerar previsões, recomendações ou decisões — a tomada de decisões é responsabilidade da ferramenta ou do usuário downstream da IA
+* Gerar previsões, recomendações ou decisões. A tomada de decisões é da responsabilidade do utilizador ou da ferramenta de IA a jusante
 * Armazenar ou reter credenciais, dados de solicitação ou estado de sessão entre solicitações
 * Exigir a instalação, implantação ou gerenciamento de qualquer software do lado do servidor
 
@@ -83,7 +71,7 @@ O MCP pode transmitir dados, incluindo campos potencialmente confidenciais, depe
 
 * Uma instância [!DNL Marketo] com acesso à API REST habilitado
 * Acesso de administrador para criar credenciais de API no [!DNL Marketo] LaunchPoint
-* Uma das seguintes ferramentas de IA: Claude Desktop, Cursor, Claude Code (CLI) ou VS Code com o GitHub Copilot
+* Uma das seguintes ferramentas de IA: Claude Desktop, Cursor, Codex, Claude Code (CLI) ou VS Code com o GitHub Copilot
 * Acesso de rede à URL do servidor MCP: `https://marketo-mcp.adobe.io/mcp`
 
 ## Obter credenciais do Marketo
@@ -109,13 +97,19 @@ Se já os tiver, pule para [Configurar a ferramenta de IA](#configure-your-ai-to
 
 ## Configurar a ferramenta de IA
 
-Cada ferramenta de IA lê a configuração do servidor MCP de um local diferente. Encontre sua ferramenta abaixo e siga as etapas para adicionar o servidor MCP [!DNL Marketo].
+Cada ferramenta de IA tem uma configuração ligeiramente diferente. Exemplos de conexão são fornecidos para ferramentas comuns.
+
+* [Claude Desktop](#claude-desktop)
+* [Cursor](#cursor)
+* [CLI do Claude Code](#claude-code)
+* [OpenAI Codex](#codex)
+* [VSCode com GitHub Copilot](#vscode)
 
 >[!TIP]
 >
->Para conectar a várias instâncias do [!DNL Marketo], adicione entradas separadas na configuração do MCP com nomes exclusivos — por exemplo, `marketo-prod` e `marketo-staging` — cada uma com as credenciais correspondentes.
+>Para se conectar a várias instâncias do [!DNL Marketo], adicione entradas separadas na configuração do MCP com nomes exclusivos: `marketo-prod` e `marketo-staging`, cada uma com as credenciais correspondentes.
 
-### Claude Desktop
+### Claude Desktop {#claude-desktop}
 
 Para se conectar ao Claude Desktop, baixe o [marketo-mcp-bridge.zip](assets/marketo-mcp-bridge.zip) e descompacte-o. Coloque `marketo-mcp-bridge.mjs` em um local conhecido para que você possa consultar na próxima etapa.
 
@@ -149,9 +143,13 @@ Você também precisará de:
 
 1. Reiniciar o Claude Desktop
 
-### Cursor
+### Cursor {#cursor}
 
 Se a configuração do MCP do cursor já contiver outros servidores, adicione a entrada `marketo` em `mcpServers`. O exemplo a seguir mostra o bloco `mcpServers` completo em **[!UICONTROL Configurações]** > **[!UICONTROL MCP]** ou `.cursor/mcp.json` no diretório do projeto:
+
+>[!BEGINTABS]
+
+>[!TAB Credenciais do cliente Marketo]
 
 ```json
 {
@@ -169,11 +167,34 @@ Se a configuração do MCP do cursor já contiver outros servidores, adicione a 
 }
 ```
 
+>[!TAB Token IMS]
+
+```json
+{
+  "mcpServers": {
+    "marketo": {
+      "type": "http",
+      "url": "https://marketo-mcp.adobe.io/mcp",
+      "headers": {
+        "Authorization": "Bearer YOUR-IMS-TOKEN",
+        "x-gw-ims-org-id": "YOUR-IMS-ORG-ID"
+      }
+    }
+  }
+}
+```
+
+>[!ENDTABS]
+
 Reiniciar o cursor.
 
-### Código Claude (CLI)
+### Código Claude (CLI) {#claude-code}
 
 Execute o seguinte comando no terminal, substituindo suas credenciais:
+
+>[!BEGINTABS]
+
+>[!TAB Credenciais do cliente Marketo]
 
 ```bash
 claude mcp add --transport http marketo \
@@ -183,9 +204,48 @@ claude mcp add --transport http marketo \
   --header "X-Marketo-Munchkin-Id: YOUR-MUNCHKIN-ID"
 ```
 
-### Código VS com Copilot do GitHub
+>[!TAB Token IMS]
+
+```bash
+claude mcp add --transport http marketo \
+  https://marketo-mcp.adobe.io/mcp \
+  --header "Authorization: Bearer YOUR-IMS-TOKEN" \
+  --header "x-gw-ims-org-id: YOUR-IMS-ORG-ID"
+```
+
+>[!ENDTABS]
+
+### OpenAI Codex {#codex}
+
+1. Vá para Configurações > Servidores MCP > Adicionar servidor
+1. Adicionar a URL do servidor: `https://marketo-mcp.adobe.io/mcp`
+1. Adicione os cabeçalhos para seu método de autenticação:
+
+>[!BEGINTABS]
+
+>[!TAB Credenciais do cliente Marketo]
+
+* X-Marketo-Client-Id: &quot;YOUR-CLIENT-ID&quot;
+* X-Marketo-Client-Secret: &quot;YOUR-CLIENT-SECRET&quot;
+* X-Marketo-Munchkin-Id: &quot;YOUR-MUNCHKIN-ID&quot;
+
+>[!TAB Token IMS]
+
+* Autorização: &quot;Bearer YOUR-IMS-TOKEN&quot;
+* x-gw-ims-org-id: &quot;YOUR-IMS-ORG-ID&quot;
+
+>[!ENDTABS]
+
+1. Clique em Salvar para concluir o processo.
+
+
+### Código VS com Copilot do GitHub {#vscode}
 
 Pressione **[!UICONTROL Ctrl+Shift+P]** (ou **[!UICONTROL Cmd+Shift+P]** no macOS), digite **[!UICONTROL MCP: Abrir Configuração de Usuário]** e pressione Enter. Isso abre `mcp.json`. Adicionar a entrada `marketo` dentro do objeto `servers`:
+
+>[!BEGINTABS]
+
+>[!TAB Credenciais do cliente Marketo]
 
 ```json
 {
@@ -203,9 +263,28 @@ Pressione **[!UICONTROL Ctrl+Shift+P]** (ou **[!UICONTROL Cmd+Shift+P]** no macO
 }
 ```
 
+>[!TAB Token IMS]
+
+```json
+{
+  "servers": {
+    "marketo": {
+      "type": "http",
+      "url": "https://marketo-mcp.adobe.io/mcp",
+      "headers": {
+        "Authorization": "Bearer YOUR-IMS-TOKEN",
+        "x-gw-ims-org-id": "YOUR-IMS-ORG-ID"
+      }
+    }
+  }
+}
+```
+
+>[!ENDTABS]
+
 >[!NOTE]
 >
->Para fins de segurança, use a interpolação da variável de ambiente nos arquivos de configuração em vez de colar as credenciais diretamente. Você pode fazer referência a variáveis usando sintaxe como `${MARKETO_CLIENT_SECRET}` e defini-las em seu ambiente. Isso impede que as credenciais sejam armazenadas em texto sem formatação em arquivos que possam ser confirmados no controle de versão.
+>Para fins de segurança, use a interpolação da variável de ambiente nos arquivos de configuração em vez de colar as credenciais diretamente. Você pode fazer referência a variáveis usando sintaxe como `${MARKETO_CLIENT_SECRET}` e defini-las em seu ambiente. Isso impede que as credenciais sejam armazenadas em texto sem formatação em arquivos com controle de versão.
 
 ## Operações disponíveis
 
@@ -263,7 +342,7 @@ Exemplo de prompts:
 
 ### Estrutura da instância
 
-Navegue por pastas, canais, tipos de marcas e tipos de atividades para entender sua configuração do [!DNL Marketo].
+Para entender sua configuração do [!DNL Marketo], navegue por pastas, canais, tipos de tags e tipos de atividades.
 
 Exemplo de prompts:
 
@@ -284,9 +363,10 @@ Exemplo de prompts:
 
 | Erro | Causa | Corrigir |
 | ------- | ------- | ----- |
-| &quot;Credenciais do Marketo não fornecidas&quot; | Um ou mais de `X-Marketo-Client-Id`, `X-Marketo-Client-Secret` ou `X-Marketo-Munchkin-Id` está(ão) ausente(s). | Verifique se todos os quatro cabeçalhos estão presentes na sua configuração. |
-| &quot;Erro de autenticação&quot; | Suas credenciais são inválidas ou expiraram. | Verifique novamente a ID do Cliente e o Segredo do Cliente em **[!UICONTROL Admin]** > **[!UICONTROL LaunchPoint]**. |
-| &quot;403 Proibido&quot; | Sua Munchkin ID não está no incluo na lista de permissões do servidor. | Contate o administrador do MCP [!DNL Marketo] para adicionar sua Munchkin ID. |
+| &quot;Credenciais do Marketo não fornecidas&quot; | Um ou mais de `X-Marketo-Client-Id`, `X-Marketo-Client-Secret` ou `X-Marketo-Munchkin-Id` está(ão) ausente(s). | Verifique se todos os cabeçalhos de credencial de cliente Marketo estão presentes em sua configuração. |
+| &quot;401 Não autorizado&quot; | Suas credenciais estão ausentes, inválidas ou expiradas. Com as credenciais do cliente Marketo, a ID do cliente ou o Segredo do cliente está incorreto. Com um token IMS, o token é inválido ou expirou. | Verifique as credenciais do método de autenticação. Para obter as credenciais do cliente, verifique novamente a **[!UICONTROL ID do Cliente]** e o **[!UICONTROL Segredo do Cliente]** em **[!UICONTROL Admin]** > **[!UICONTROL LaunchPoint]**. Para um token IMS, gere um novo token e atualize o cabeçalho `Authorization`. |
+| &quot;403 Proibido&quot; | Suas credenciais são válidas, mas a instância [!DNL Marketo] não está habilitada para acesso MCP. | Contate o administrador do MCP [!DNL Marketo] para habilitar o acesso ao MCP para sua ID de Conta da Munchkin. |
+| &quot;Muitas solicitações&quot; (limite de taxa) | Você enviou muitas solicitações em um curto período ou muitas solicitações ao mesmo tempo e atingiu os limites da API da instância [!DNL Marketo]. | Reduza a frequência e o número de solicitações enviadas de uma só vez e aguarde um pouco antes de tentar novamente. Use um usuário de API dedicado para rastrear e gerenciar sua cota. |
 | Tempo limite de conexão ou recusado | O servidor MCP está inacessível na sua rede. | Confirme se você pode acessar o URL do servidor do seu ambiente. Verifique os requisitos de VPN, se aplicável. |
 | As chamadas de ferramenta retornam resultados vazios | O usuário da API não tem permissões para o tipo de ativo solicitado. | Peça ao administrador do [!DNL Marketo] para revisar a função de usuário e as permissões da API. |
 
@@ -300,4 +380,4 @@ Exemplo de prompts:
 * **Isolamento de vários locatários.** Cada solicitação usa seu próprio conjunto de credenciais. Seus dados não fazem interseção com a sessão de nenhum outro usuário.
 * **incluo na lista de permissões de Munchkin ID.** O servidor só aceita solicitações para [!DNL Marketo] instâncias aprovadas. As solicitações que usam uma Munchkin ID não autorizada são rejeitadas com um erro 403.
 * **Limites de taxa de API.** O servidor MCP herda os limites de taxa da API da sua instância [!DNL Marketo]. Use um usuário de API dedicado para rastrear e gerenciar o consumo de cotas.
-* **Manter credenciais fora do controle de versão.** Use a interpolação de variável de ambiente (`${MARKETO_CLIENT_SECRET}`) se a ferramenta de IA permitir, de modo que as credenciais não sejam armazenadas em texto sem formatação em arquivos confirmados em um repositório.
+* **Manter credenciais fora do controle de versão.** Use a interpolação de variável de ambiente (`${MARKETO_CLIENT_SECRET}`) se a ferramenta de IA permitir, de modo que as credenciais não sejam armazenadas em texto sem formatação nos arquivos do repositório.
