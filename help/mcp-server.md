@@ -21,9 +21,9 @@ role_v2:
   - id: ff6a42d2-313e-452e-93a6-792e4fad9ff8
 topic_v2:
   - id: bbbea26f-9621-49eb-9ab8-e06fb3bbce8c
-source-git-commit: e6cdee16bc2eaaec6b9741181409209586367601
+source-git-commit: ccb8e413ee758584c082a272901d2e76b6b1d193
 workflow-type: tm+mt
-source-wordcount: 1627
+source-wordcount: 1718
 ht-degree: 1%
 
 ---
@@ -116,6 +116,7 @@ Cada ferramenta de IA tem uma configuração ligeiramente diferente. Exemplos de
 * [CLI do Claude Code](#claude-code)
 * [OpenAI Codex](#codex)
 * [VSCode com GitHub Copilot](#vscode)
+* [Outras ferramentas](#other-tools)
 
 >[!TIP]
 >
@@ -157,9 +158,27 @@ Você também precisará de:
 
 ### Cursor {#cursor}
 
-Se a configuração do MCP do cursor já contiver outros servidores, adicione a entrada `marketo` em `mcpServers`. O exemplo a seguir mostra o bloco `mcpServers` completo em **[!UICONTROL Configurações]** > **[!UICONTROL MCP]** ou `.cursor/mcp.json` no diretório do projeto:
+Se a configuração do MCP do cursor já contiver outros servidores, adicione a entrada `marketo` em `mcpServers`.
+O exemplo a seguir mostra o bloco `mcpServers` concluído em **[!UICONTROL Configurações]** > **[!UICONTROL MCP]** ou `.cursor/mcp.json` no diretório do projeto:
 
 >[!BEGINTABS]
+
+>[!TAB Token IMS]
+
+```json
+{
+  "mcpServers": {
+    "marketo": {
+      "type": "http",
+      "url": "https://marketo-mcp.adobe.io/mcp",
+      "headers": {
+        "Authorization": "Bearer YOUR-IMS-TOKEN",
+        "x-gw-ims-org-id": "YOUR-IMS-ORG-ID"
+      }
+    }
+  }
+}
+```
 
 >[!TAB Credenciais do cliente Marketo]
 
@@ -173,23 +192,6 @@ Se a configuração do MCP do cursor já contiver outros servidores, adicione a 
         "X-Marketo-Client-Id": "YOUR-CLIENT-ID",
         "X-Marketo-Client-Secret": "YOUR-CLIENT-SECRET",
         "X-Marketo-Munchkin-Id": "YOUR-MUNCHKIN-ID"
-      }
-    }
-  }
-}
-```
-
->[!TAB Token IMS]
-
-```json
-{
-  "mcpServers": {
-    "marketo": {
-      "type": "http",
-      "url": "https://marketo-mcp.adobe.io/mcp",
-      "headers": {
-        "Authorization": "Bearer YOUR-IMS-TOKEN",
-        "x-gw-ims-org-id": "YOUR-IMS-ORG-ID"
       }
     }
   }
@@ -206,6 +208,15 @@ Execute o seguinte comando no terminal, substituindo suas credenciais:
 
 >[!BEGINTABS]
 
+>[!TAB Token IMS]
+
+```bash
+claude mcp add --transport http marketo \
+  https://marketo-mcp.adobe.io/mcp \
+  --header "Authorization: Bearer YOUR-IMS-TOKEN" \
+  --header "x-gw-ims-org-id: YOUR-IMS-ORG-ID"
+```
+
 >[!TAB Credenciais do cliente Marketo]
 
 ```bash
@@ -214,15 +225,6 @@ claude mcp add --transport http marketo \
   --header "X-Marketo-Client-Id: YOUR-CLIENT-ID" \
   --header "X-Marketo-Client-Secret: YOUR-CLIENT-SECRET" \
   --header "X-Marketo-Munchkin-Id: YOUR-MUNCHKIN-ID"
-```
-
->[!TAB Token IMS]
-
-```bash
-claude mcp add --transport http marketo \
-  https://marketo-mcp.adobe.io/mcp \
-  --header "Authorization: Bearer YOUR-IMS-TOKEN" \
-  --header "x-gw-ims-org-id: YOUR-IMS-ORG-ID"
 ```
 
 >[!ENDTABS]
@@ -235,16 +237,16 @@ claude mcp add --transport http marketo \
 
 >[!BEGINTABS]
 
+>[!TAB Token IMS]
+
+* Autorização: &quot;Bearer YOUR-IMS-TOKEN&quot;
+* x-gw-ims-org-id: &quot;YOUR-IMS-ORG-ID&quot;
+
 >[!TAB Credenciais do cliente Marketo]
 
 * X-Marketo-Client-Id: &quot;YOUR-CLIENT-ID&quot;
 * X-Marketo-Client-Secret: &quot;YOUR-CLIENT-SECRET&quot;
 * X-Marketo-Munchkin-Id: &quot;YOUR-MUNCHKIN-ID&quot;
-
->[!TAB Token IMS]
-
-* Autorização: &quot;Bearer YOUR-IMS-TOKEN&quot;
-* x-gw-ims-org-id: &quot;YOUR-IMS-ORG-ID&quot;
 
 >[!ENDTABS]
 
@@ -256,6 +258,23 @@ claude mcp add --transport http marketo \
 Pressione **[!UICONTROL Ctrl+Shift+P]** (ou **[!UICONTROL Cmd+Shift+P]** no macOS), digite **[!UICONTROL MCP: Abrir Configuração de Usuário]** e pressione Enter. Isso abre `mcp.json`. Adicionar a entrada `marketo` dentro do objeto `servers`:
 
 >[!BEGINTABS]
+
+>[!TAB Token IMS]
+
+```json
+{
+  "servers": {
+    "marketo": {
+      "type": "http",
+      "url": "https://marketo-mcp.adobe.io/mcp",
+      "headers": {
+        "Authorization": "Bearer YOUR-IMS-TOKEN",
+        "x-gw-ims-org-id": "YOUR-IMS-ORG-ID"
+      }
+    }
+  }
+}
+```
 
 >[!TAB Credenciais do cliente Marketo]
 
@@ -275,28 +294,48 @@ Pressione **[!UICONTROL Ctrl+Shift+P]** (ou **[!UICONTROL Cmd+Shift+P]** no macO
 }
 ```
 
->[!TAB Token IMS]
-
-```json
-{
-  "servers": {
-    "marketo": {
-      "type": "http",
-      "url": "https://marketo-mcp.adobe.io/mcp",
-      "headers": {
-        "Authorization": "Bearer YOUR-IMS-TOKEN",
-        "x-gw-ims-org-id": "YOUR-IMS-ORG-ID"
-      }
-    }
-  }
-}
-```
-
 >[!ENDTABS]
 
 >[!NOTE]
 >
 >Para fins de segurança, use a interpolação da variável de ambiente nos arquivos de configuração em vez de colar as credenciais diretamente. Você pode fazer referência a variáveis usando sintaxe como `${MARKETO_CLIENT_SECRET}` e defini-las em seu ambiente. Isso impede que as credenciais sejam armazenadas em texto sem formatação em arquivos com controle de versão.
+
+### Outras ferramentas {#other-tools}
+
+O servidor MCP [!DNL Marketo] é hospedado pelo Adobe e exposto em uma URL pública. Qualquer cliente MCP que suporte servidores remotos por meio de transporte HTTP eficiente pode se conectar a ele.
+Você não precisa de uma ponte específica da ferramenta ou de qualquer software instalado localmente. Se sua ferramenta não estiver listada acima, use os detalhes de conexão abaixo para configurá-la manualmente.
+
+**Detalhes da conexão:**
+
+| Configuração | Valor |
+| ------- | ----- |
+| Transporte | HTTP (HTTP dinamizável) |
+| URL do servidor | `https://marketo-mcp.adobe.io/mcp` |
+
+**Cabeçalhos de autenticação:**
+
+Envie os cabeçalhos de um dos métodos de autenticação a seguir com cada solicitação. O local em que você insere o URL e os cabeçalhos do servidor depende da ferramenta. Consulte a documentação do MCP.
+
+>[!BEGINTABS]
+
+>[!TAB Token IMS]
+
+| Header | Valor |
+| ------ | ----- |
+| `Authorization` | `Bearer YOUR-IMS-TOKEN` |
+| `x-gw-ims-org-id` | Sua ID organizacional IMS |
+
+>[!TAB Credenciais do cliente Marketo]
+
+| Header | Valor |
+| ------ | ----- |
+| `X-Marketo-Client-Id` | Sua ID do cliente |
+| `X-Marketo-Client-Secret` | Segredo do cliente |
+| `X-Marketo-Munchkin-Id` | Sua ID de conta da Munchkin |
+
+>[!ENDTABS]
+
+Se a ferramenta aceitar uma configuração JSON, comece com os exemplos de [Cursor](#cursor) ou [Código VS](#vscode) e ajuste as chaves (`mcpServers`, `servers`) para corresponder ao esquema da ferramenta.
 
 ## Operações disponíveis
 
