@@ -5,25 +5,13 @@ badgeBeta: label="Disponibilidade limitada" type="informative" tooltip="No momen
 exl-id: ab446e56-6250-4af5-b03e-162991d09a5c
 autotag-review: '2026-06-02T13:31:15.329Z'
 TQID: 'https://experienceleague.adobe.com/PJJm7yv8HmbwMB2fsnfDCXs8zprDJK5Q5z2uiiCJRZI'
-product_v2:
-  - id: b27e5950-9033-45ac-9f86-eb22e567f615
-feature_v2:
-  - id: a7170d27-32ab-462b-a333-269abc654483
-  - id: b0bb9048-d951-48d8-8232-45cf248a7e27
-  - id: b13bd2ad-8e65-49e5-9691-2a0d31067b35
-  - id: b3b8a63f-51fc-40f6-a7d2-a31c5d49fb45
-  - id: c2dbad80-0f5c-4d96-a798-2a65f93b8721
-  - id: dca84292-69e9-4116-a575-667d31fa060d
-  - id: e2290edd-b061-4880-9d79-dee306cf5aa9
-  - id: e64968b2-4ee5-47f9-8cae-0588f184b9eb
-  - id: f82558ea-6af5-44eb-a424-5b3389abb0a3
-role_v2:
-  - id: ff6a42d2-313e-452e-93a6-792e4fad9ff8
-topic_v2:
-  - id: bbbea26f-9621-49eb-9ab8-e06fb3bbce8c
-source-git-commit: ccb8e413ee758584c082a272901d2e76b6b1d193
+product_v2: id: b27e5950-9033-45ac-9f86-eb22e567f615
+feature_v2: id: a7170d27-32ab-462b-a333-269abc654483id: b0bb9048-d951-48d8-8232-45cf248a7e27id: b13bd2ad-8e65-49e5-9691-2a0d31067b35id: b3b8a63f-51fc-40f6-a7d2-a31c5d49fb45id: c2dbad80-0f5c-4d96-a798-2a65f93b8721id: dca84292-69e9-4116-a575-667d31fa060did: e2290edd-b061-4880-9d79-dee306cf5aa9id: e64968b2-4ee5-47f9-8cae-0588f184b9ebid: f82558ea-6af5-44eb-a424-5b3389abb0a3
+role_v2: id: ff6a42d2-313e-452e-93a6-792e4fad9ff8
+topic_v2: id: bbbea26f-9621-49eb-9ab8-e06fb3bbce8c
+source-git-commit: 6ec3c35ba988834f3a66b45acaa42af7a92cce20
 workflow-type: tm+mt
-source-wordcount: 1718
+source-wordcount: 1765
 ht-degree: 1%
 
 ---
@@ -116,6 +104,7 @@ Cada ferramenta de IA tem uma configuração ligeiramente diferente. Exemplos de
 * [CLI do Claude Code](#claude-code)
 * [OpenAI Codex](#codex)
 * [VSCode com GitHub Copilot](#vscode)
+* [Glean](#glean)
 * [Outras ferramentas](#other-tools)
 
 >[!TIP]
@@ -299,6 +288,16 @@ Pressione **[!UICONTROL Ctrl+Shift+P]** (ou **[!UICONTROL Cmd+Shift+P]** no macO
 >[!NOTE]
 >
 >Para fins de segurança, use a interpolação da variável de ambiente nos arquivos de configuração em vez de colar as credenciais diretamente. Você pode fazer referência a variáveis usando sintaxe como `${MARKETO_CLIENT_SECRET}` e defini-las em seu ambiente. Isso impede que as credenciais sejam armazenadas em texto sem formatação em arquivos com controle de versão.
+
+### Glean {#glean}
+
+Para conectar o Glean ao Servidor MCP do Marketo Engage, os seguintes cabeçalhos personalizados devem ser configurados pela [equipe de suporte do Glean](https://docs.glean.com/release-notes/releases/2026-04-22-april-release#admin-features).
+
+| Header | Valor |
+| ------ | ----- |
+| `X-Marketo-Client-Id` | Sua ID do cliente |
+| `X-Marketo-Client-Secret` | Segredo do cliente |
+| `X-Marketo-Munchkin-Id` | Sua ID de conta da Munchkin |
 
 ### Outras ferramentas {#other-tools}
 
