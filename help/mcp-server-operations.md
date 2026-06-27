@@ -12,9 +12,9 @@ feature_v2:
   - id: e64968b2-4ee5-47f9-8cae-0588f184b9eb
 topic_v2:
   - id: bbbea26f-9621-49eb-9ab8-e06fb3bbce8c
-source-git-commit: 08abe412b9750585f0b75364f20488bea767dcc2
+source-git-commit: 1a8728ec05e15bef1271274248ce9fc25b14c768
 workflow-type: tm+mt
-source-wordcount: 231
+source-wordcount: 264
 ht-degree: 4%
 
 ---
@@ -27,6 +27,8 @@ As seguintes operações estão disponíveis através do servidor MCP [!DNL Mark
 >[!NOTE]
 >
 >Essa lista continuará crescendo à medida que adicionamos outras ferramentas.
+
+Para obter informações sobre como os dados são tratados com a IA do Marketo e o servidor MCP do Marketo Engage, consulte a página [Informações de Dados](https://experienceleague.adobe.com/pt-br/docs/marketo/using/product-docs/marketo-ai/data-information).
 
 ## Exportação em massa
 
