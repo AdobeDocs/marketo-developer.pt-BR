@@ -21,9 +21,9 @@ role_v2:
   - id: ff6a42d2-313e-452e-93a6-792e4fad9ff8
 topic_v2:
   - id: bbbea26f-9621-49eb-9ab8-e06fb3bbce8c
-source-git-commit: 1a8728ec05e15bef1271274248ce9fc25b14c768
+source-git-commit: b28708e92f44082eb247d9053d6ebf2306739b38
 workflow-type: tm+mt
-source-wordcount: 1956
+source-wordcount: 2199
 ht-degree: 1%
 
 ---
@@ -46,7 +46,7 @@ Para obter mais informações sobre como os dados são tratados com a IA do Mark
 
 ## Noções básicas sobre MCP
 
->Pense no MCP como uma porta USB-C para aplicativos de IA. Assim como o USB-C oferece uma maneira padronizada para conectar seus dispositivos a vários periféricos e acessórios, o MCP fornece uma maneira padronizada para conectar modelos de IA a fontes de dados e ferramentas. — [Protocolo de Contexto de Modelo](https://modelcontextprotocol.io/docs/getting-started/intro){target="_blank"}
+>Pense no MCP como uma porta USB-C para aplicativos de IA. O USB-C fornece uma maneira padronizada para conectar seus dispositivos a vários periféricos e acessórios, e o MCP fornece uma maneira padronizada para conectar modelos de IA a fontes de dados e ferramentas. — [Protocolo de Contexto de Modelo](https://modelcontextprotocol.io/docs/getting-started/intro){target="_blank"}
 
 O MCP permite que uma ferramenta de IA se conecte a vários serviços externos ao mesmo tempo. Por exemplo, um assistente de IA pode:
 
@@ -297,11 +297,11 @@ Pressione **[!UICONTROL Ctrl+Shift+P]** (ou **[!UICONTROL Cmd+Shift+P]** no macO
 
 >[!NOTE]
 >
->Para fins de segurança, use a interpolação da variável de ambiente nos arquivos de configuração em vez de colar as credenciais diretamente. Você pode fazer referência a variáveis usando sintaxe como `${MARKETO_CLIENT_SECRET}` e defini-las em seu ambiente. Isso impede que as credenciais sejam armazenadas em texto sem formatação em arquivos com controle de versão.
+>Para fins de segurança, use a interpolação da variável de ambiente nos arquivos de configuração em vez de colar as credenciais diretamente. Você pode fazer referência a variáveis usando sintaxe como `${MARKETO_CLIENT_SECRET}` e defini-las em seu ambiente. Isso impede o armazenamento de credenciais em texto sem formatação em arquivos com controle de versão.
 
 ### Glean {#glean}
 
-Para conectar o Glean ao Servidor MCP do Marketo Engage, os seguintes cabeçalhos personalizados devem ser configurados pela [equipe de suporte do Glean](https://docs.glean.com/release-notes/releases/2026-04-22-april-release#admin-features).
+Para conectar o Glean ao Servidor MCP do Marketo Engage, a [equipe de suporte do Glean](https://docs.glean.com/release-notes/releases/2026-04-22-april-release#admin-features) deve configurar os seguintes cabeçalhos personalizados.
 
 | Header | Valor |
 | ------ | ----- |
@@ -311,7 +311,7 @@ Para conectar o Glean ao Servidor MCP do Marketo Engage, os seguintes cabeçalho
 
 ### Outras ferramentas {#other-tools}
 
-O servidor MCP [!DNL Marketo] é hospedado pelo Adobe e exposto em uma URL pública. Qualquer cliente MCP que suporte servidores remotos por meio de transporte HTTP eficiente pode se conectar a ele.Você não precisa de uma ponte específica da ferramenta ou de qualquer software instalado localmente. Se sua ferramenta não estiver listada acima, use os detalhes de conexão abaixo para configurá-la manualmente.
+O Adobe hospeda o servidor MCP [!DNL Marketo] e o expõe em uma URL pública. Qualquer cliente MCP que suporte servidores remotos por meio de transporte HTTP eficiente pode se conectar a ele.Você não precisa de uma ponte específica da ferramenta ou de qualquer software instalado localmente. Se sua ferramenta não estiver listada acima, use os detalhes de conexão abaixo para configurá-la manualmente.
 
 **Detalhes da conexão:**
 
@@ -440,3 +440,28 @@ Exemplo de prompts:
 * **incluo na lista de permissões de Munchkin ID.** O servidor só aceita solicitações para [!DNL Marketo] instâncias aprovadas. As solicitações que usam uma Munchkin ID não autorizada são rejeitadas com um erro 403.
 * **Limites de taxa de API.** O servidor MCP herda os limites de taxa da API da sua instância [!DNL Marketo]. Use um usuário de API dedicado para rastrear e gerenciar o consumo de cotas.
 * **Manter credenciais fora do controle de versão.** Use a interpolação de variável de ambiente (`${MARKETO_CLIENT_SECRET}`) se a ferramenta de IA permitir, de modo que as credenciais não sejam armazenadas em texto sem formatação nos arquivos do repositório.
+
+## Governança e retenção de dados
+
+### Manuseio de credenciais
+
+* As credenciais do cliente não são persistentes no lado do servidor e são fornecidas pelo cliente por solicitação, o que ajuda a limitar a exposição da credencial no serviço.
+
+### Modelo de interação de API
+
+* Uso do agente: os agentes podem usar o servidor MCP para chamar APIs do Marketo compatíveis.
+* Alinhamento do modelo de autenticação: o serviço usa o mesmo modelo de autenticação de API externa documentado para APIs do Marketo.
+
+### Autenticação e autorização
+
+* Privilégio mínimo: as permissões efetivas são herdadas do usuário somente API do Marketo atribuído ao serviço LaunchPoint do cliente, permitindo a administração do privilégio mínimo na configuração Marketo do cliente.
+* Nenhuma persistência de token do lado do servidor: o serviço continua a evitar o armazenamento do lado do servidor de credenciais ou tokens do cliente.  
+
+### Registro e monitoramento
+
+* Registro de segurança: os registros JSON estruturados são roteados por meio do Fluent Bit para o Splunk, com mascaramento de dados confidenciais e filtragem adicional para oferecer suporte aos requisitos de conformidade.
+* Suporte de auditoria: esses controles oferecem suporte ao monitoramento contínuo da disponibilidade de serviços, eventos relevantes para a segurança e qualidade operacional.
+* Nenhum armazenamento secreto do lado do servidor: as credenciais do cliente não são armazenadas pela implantação do MCP e devem ser fornecidas pelos clientes por solicitação.
+* Manuseio de token: os tokens de acesso têm vida curta, as respostas de token são marcadas como sem armazenamento e os tokens são aceitos por meio de mecanismos de autorização padrão em vez de transmissão de sequência de consulta.
+* Acesso operacional com base em função: o acesso à implantação administrativa é regido pelas funções da infraestrutura do Adobe e pelos controles com base em grupo, enquanto as permissões do plano de dados são herdadas da configuração do usuário da API do Marketo do cliente.
+* Auditoria e capacidade de observação: registro, mascaramento, monitoramento e alertas de segurança estão habilitados para oferecer suporte à investigação, ao rastreamento da integridade do serviço e à supervisão operacional.
