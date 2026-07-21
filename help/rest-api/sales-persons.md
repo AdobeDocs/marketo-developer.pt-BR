@@ -21,7 +21,7 @@ ht-degree: 0%
 
 [Referência de Ponto de Extremidade de Vendedor](https://developer.adobe.com/marketo-apis/api/mapi#tag/Sales-Persons)
 
-As APIs de Vendedor fornecem acesso somente leitura para assinaturas com a [Sincronização do SFDC](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/crm-sync/salesforce-sync/sfdc-sync-details/sfdc-sync-field-sync) ou a [Sincronização do Microsoft Dynamics](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/crm-sync/microsoft-dynamics/microsoft-dynamics-sync-details/microsoft-dynamics-sync-user-sync) habilitada.
+As APIs de Vendedor fornecem acesso somente leitura para assinaturas com a [Sincronização do SFDC](https://experienceleague.adobe.com/pt-br/docs/marketo/using/product-docs/crm-sync/salesforce-sync/sfdc-sync-details/sfdc-sync-field-sync) ou a [Sincronização do Microsoft Dynamics](https://experienceleague.adobe.com/pt-br/docs/marketo/using/product-docs/crm-sync/microsoft-dynamics/microsoft-dynamics-sync-details/microsoft-dynamics-sync-user-sync) habilitada.
 
 Vendedores são registros pessoais que representam os proprietários de vendas dos registros de lead. O campo externalSalesPersonId em cada registro de Lead relaciona um Lead a um Vendedor. Quando esse campo é preenchido, o Marketo preenche os campos de pesquisa do Lead Owner correspondentes no registro de lead. Em seguida, você pode usar os filtros e tokens associados.
 

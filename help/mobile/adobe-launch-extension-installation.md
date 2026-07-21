@@ -26,7 +26,7 @@ Instale a extensão do Marketo [!DNL Adobe Launch] para enviar notificações po
 
 ## Pré-requisitos
 
-1. [Adicione um aplicativo ao Administrador do Marketo](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/mobile-marketing/admin/add-a-mobile-app) e obtenha a Chave Secreta e a ID do Munchkin do aplicativo.
+1. [Adicione um aplicativo ao Administrador do Marketo](https://experienceleague.adobe.com/pt-br/docs/marketo/using/product-docs/mobile-marketing/admin/add-a-mobile-app) e obtenha a Chave Secreta e a ID do Munchkin do aplicativo.
 1. [Configure a propriedade no [!DNL Adobe Launch] portal](https://experience.adobe.com/#/@amc/data-collection/home).
 1. Configure a Chave Secreta do aplicativo e a ID do Munchkin para a propriedade no portal [!DNL Adobe Launch].
 1. Opcional: [Configurar notificações por push](push-notifications.md).

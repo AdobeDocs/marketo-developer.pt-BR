@@ -27,7 +27,7 @@ ht-degree: 2%
 
 Use os endpoints REST de email para consultar e gerenciar ativos de email.
 
-Se um email contiver [Conteúdo preditivo do Marketo](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/predictive-content/working-with-predictive-content/understanding-predictive-content), os seguintes pontos de extremidade falharão com o código de erro 709 e uma mensagem de erro correspondente:
+Se um email contiver [Conteúdo preditivo do Marketo](https://experienceleague.adobe.com/pt-br/docs/marketo/using/product-docs/predictive-content/working-with-predictive-content/understanding-predictive-content), os seguintes pontos de extremidade falharão com o código de erro 709 e uma mensagem de erro correspondente:
 
 - [Obter conteúdo de email](https://developer.adobe.com/marketo-apis/api/asset#tag/Emails/operation/getEmailContentByIdUsingGET)
 - [Seção Atualizar conteúdo de email](https://developer.adobe.com/marketo-apis/api/asset#tag/Emails/operation/updateEmailComponentContentUsingPOST)
@@ -37,7 +37,7 @@ Se um email contiver [Conteúdo preditivo do Marketo](https://experienceleague.a
 
 Os emails têm suporte para os mesmos padrões de consulta dos modelos: [por id](https://developer.adobe.com/marketo-apis/api/asset#tag/Emails/operation/getEmailByIdUsingGET), [por nome](https://developer.adobe.com/marketo-apis/api/asset#tag/Emails/operation/getEmailByNameUsingGET) e por [navegação](https://developer.adobe.com/marketo-apis/api/asset#tag/Emails/operation/getEmailUsingGET). Os endpoints por nome e de navegação também são compatíveis com a filtragem de pastas.
 
-Se um email pertencer a um programa de email que use o [Teste A/B](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/email-marketing/email-programs/email-program-actions/email-test-a-b-test/add-an-a-b-test), os seguintes pontos de extremidade não retornarão esse email:
+Se um email pertencer a um programa de email que use o [Teste A/B](https://experienceleague.adobe.com/pt-br/docs/marketo/using/product-docs/email-marketing/email-programs/email-program-actions/email-test-a-b-test/add-an-a-b-test), os seguintes pontos de extremidade não retornarão esse email:
 
 - [Obter Email por ID](https://developer.adobe.com/marketo-apis/api/asset#tag/Emails/operation/getEmailByIdUsingGET)
 - [Obter email por nome](https://developer.adobe.com/marketo-apis/api/asset#tag/Emails/operation/getEmailByNameUsingGET)
@@ -535,7 +535,7 @@ Se a cópia automática para texto estiver desativada em um trecho incorporado, 
 
 ## Módulos
 
-No Editor de email 1.0, um módulo é uma seção de email definida no modelo. Os módulos podem conter elementos, variáveis e outro conteúdo HTML conforme descrito na [Sintaxe do modelo de email](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/email-marketing/general/email-editor-2/email-template-syntax#EmailTemplateSyntax-Modules).
+No Editor de email 1.0, um módulo é uma seção de email definida no modelo. Os módulos podem conter elementos, variáveis e outro conteúdo HTML conforme descrito na [Sintaxe do modelo de email](https://experienceleague.adobe.com/pt-br/docs/marketo/using/product-docs/email-marketing/general/email-editor-2/email-template-syntax#EmailTemplateSyntax-Modules).
 
 Use as APIs do módulo para gerenciar módulos em um email. Para pontos de extremidade de módulo que usam HTTP POST, formate o corpo da solicitação como `application/x-www-form-urlencoded`, não como JSON.
 
@@ -909,7 +909,7 @@ name=MarketoVideo
 
 ## Variáveis
 
-No Editor de email 1.0, as variáveis armazenam valores para elementos de email. Defina cada variável adicionando sintaxe específica do Marketo à HTML, conforme descrito em [Sintaxe do modelo de email](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/email-marketing/general/email-editor-2/email-template-syntax#EmailTemplateSyntax-Variables). Use as APIs variáveis para gerenciar variáveis em um email.
+No Editor de email 1.0, as variáveis armazenam valores para elementos de email. Defina cada variável adicionando sintaxe específica do Marketo à HTML, conforme descrito em [Sintaxe do modelo de email](https://experienceleague.adobe.com/pt-br/docs/marketo/using/product-docs/email-marketing/general/email-editor-2/email-template-syntax#EmailTemplateSyntax-Variables). Use as APIs variáveis para gerenciar variáveis em um email.
 
 ### Consultar
 

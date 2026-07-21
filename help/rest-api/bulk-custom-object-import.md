@@ -40,7 +40,7 @@ Se você exceder o máximo de 10 trabalhos, a API retornará um erro `1016, Too 
 
 ## Exemplo de objeto personalizado
 
-Antes de usar a API em massa, use a interface do Administrador do Marketo para [criar seu objeto personalizado](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/administration/marketo-custom-objects/create-marketo-custom-objects).
+Antes de usar a API em massa, use a interface do Administrador do Marketo para [criar seu objeto personalizado](https://experienceleague.adobe.com/pt-br/docs/marketo/using/product-docs/administration/marketo-custom-objects/create-marketo-custom-objects).
 
 Este exemplo usa um objeto personalizado `Car` com campos `Color`, `Make`, `Model` e `VIN`. O campo VIN é usado para desduplicação. As telas da interface do usuário do administrador destacam os nomes de API exigidos pelos endpoints de API em massa.
 

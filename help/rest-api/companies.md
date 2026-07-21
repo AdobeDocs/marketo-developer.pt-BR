@@ -27,7 +27,7 @@ As empresas representam as organizações às quais os registros de lead pertenc
 
 Não é possível remover um cliente potencial de uma empresa, a menos que você adicione o cliente potencial a uma empresa diferente. Clientes potenciais vinculados a um registro da empresa herdam valores desse registro como se os valores existissem no registro de cliente potencial.
 
-As APIs da empresa fornecem acesso somente leitura para assinaturas com a [Sincronização do SFDC](https://experienceleague.adobe.com/docs/marketo/using/product-docs/crm-sync/salesforce-sync/sfdc-sync-details/sfdc-sync-field-sync.html?lang=en) ou a [Sincronização do Microsoft Dynamics](https://experienceleague.adobe.com/docs/marketo/using/product-docs/crm-sync/microsoft-dynamics/microsoft-dynamics-sync-details/microsoft-dynamics-sync-user-sync.html?lang=en) habilitada.
+As APIs da empresa fornecem acesso somente leitura para assinaturas com a [Sincronização do SFDC](https://experienceleague.adobe.com/docs/marketo/using/product-docs/crm-sync/salesforce-sync/sfdc-sync-details/sfdc-sync-field-sync.html?lang=pt-BR) ou a [Sincronização do Microsoft Dynamics](https://experienceleague.adobe.com/docs/marketo/using/product-docs/crm-sync/microsoft-dynamics/microsoft-dynamics-sync-details/microsoft-dynamics-sync-user-sync.html?lang=pt-BR) habilitada.
 
 ## Descrever
 

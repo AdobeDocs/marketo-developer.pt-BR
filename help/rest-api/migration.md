@@ -28,7 +28,7 @@ Compartilhe este documento com as pessoas ou a equipe responsável pelas integra
 Dependendo do caso de uso, use uma destas opções de migração:
 
 * Limitar listas estáticas usadas para extração de atividade a 10.000 membros. Divida as listas existentes em listas menores para continuar pesquisando o mesmo público-alvo para atividades do.
-* Extraia atividades ou alterações no valor dos dados usando a Extração de atividade em massa ou os Fluxos de dados. Ingresse os resultados na associação de lista estática com [getLeadByListId](https://developer.adobe.com/marketo-apis/api/mapi#operation/getLeadsByListIdUsingGET_1) ou [Extração de Cliente Potencial em Massa](https://experienceleague.adobe.com/en/docs/marketo-developer/marketo/rest/bulk-extract/bulk-lead-extract).
+* Extraia atividades ou alterações no valor dos dados usando a Extração de atividade em massa ou os Fluxos de dados. Ingresse os resultados na associação de lista estática com [getLeadByListId](https://developer.adobe.com/marketo-apis/api/mapi#operation/getLeadsByListIdUsingGET_1) ou [Extração de Cliente Potencial em Massa](https://experienceleague.adobe.com/pt-br/docs/marketo-developer/marketo/rest/bulk-extract/bulk-lead-extract).
 
 ## O Que Acontecerá Se Eu Não Fizer Nada?
 

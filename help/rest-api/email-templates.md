@@ -26,7 +26,7 @@ ht-degree: 2%
 
 Cada novo email no Marketo é inicialmente baseado em um template de email. Embora seja possível desvincular posteriormente um email de seu modelo substituindo o HTML, você deve selecionar um modelo ao criar o email.
 
-Os modelos são documentos do HTML com metadados como nome e descrição. O modelo HTML deve ser válido e conter pelo menos uma seção editável que atenda aos [requisitos de seção editável](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/email-marketing/general/functions-in-the-editor/add-editable-sections-to-email-templates-v1-0).
+Os modelos são documentos do HTML com metadados como nome e descrição. O modelo HTML deve ser válido e conter pelo menos uma seção editável que atenda aos [requisitos de seção editável](https://experienceleague.adobe.com/pt-br/docs/marketo/using/product-docs/email-marketing/general/functions-in-the-editor/add-editable-sections-to-email-templates-v1-0).
 
 ## Consultar
 

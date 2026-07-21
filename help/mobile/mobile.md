@@ -32,4 +32,4 @@ O Marketo Mobile Engagement tem dois componentes:
 
    Use o Marketo para definir públicos, criar notificações, iniciar campanhas de mensagens direcionadas e exibir análises de clientes.
 
-Depois de integrar o Marketo SDK ao seu aplicativo móvel, você pode enviar notificações por push e mensagens no aplicativo móveis do Marketo. Para configurar e implantar mensagens móveis, consulte [Marketing para dispositivos móveis](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/mobile-marketing/admin/add-a-mobile-app) na documentação do produto.
+Depois de integrar o Marketo SDK ao seu aplicativo móvel, você pode enviar notificações por push e mensagens no aplicativo móveis do Marketo. Para configurar e implantar mensagens móveis, consulte [Marketing para dispositivos móveis](https://experienceleague.adobe.com/pt-br/docs/marketo/using/product-docs/mobile-marketing/admin/add-a-mobile-app) na documentação do produto.

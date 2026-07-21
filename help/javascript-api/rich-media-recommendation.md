@@ -28,7 +28,7 @@ Para exibir um modelo de Recomendação de mídia avançada, adicione as tags e 
 1. No corpo da página:
    1. Coloque a tag de modelo (classe div) onde deseja que o modelo apareça.
 
-Para obter mais informações, consulte [Habilitar Conteúdo Preditivo para Mídia da Web](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/predictive-content/enabling-predictive-content/enable-predictive-content-for-web-rich-media).
+Para obter mais informações, consulte [Habilitar Conteúdo Preditivo para Mídia da Web](https://experienceleague.adobe.com/pt-br/docs/marketo/using/product-docs/predictive-content/enabling-predictive-content/enable-predictive-content-for-web-rich-media).
 
 ## Tag de modelo
 

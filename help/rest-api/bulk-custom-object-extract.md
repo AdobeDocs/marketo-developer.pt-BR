@@ -27,7 +27,7 @@ As APIs REST de extração de objeto personalizado em massa recuperam grandes co
 
 A API exporta registros de objetos personalizados de primeiro nível do Marketo vinculados diretamente a clientes potenciais. Especifique o nome do objeto personalizado e uma lista de clientes potenciais vinculados. Para cada lead, a API grava registros de objeto personalizado vinculados correspondentes como linhas no arquivo de exportação.
 
-Você pode exibir dados do objeto personalizado na [guia Objeto Personalizado da página de detalhes do lead na interface do usuário do Marketo](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/administration/marketo-custom-objects/understanding-marketo-custom-objects).
+Você pode exibir dados do objeto personalizado na [guia Objeto Personalizado da página de detalhes do lead na interface do usuário do Marketo](https://experienceleague.adobe.com/pt-br/docs/marketo/using/product-docs/administration/marketo-custom-objects/understanding-marketo-custom-objects).
 
 ## Permissões
 

@@ -21,7 +21,7 @@ ht-degree: 3%
 
 [Referência de Ponto de Extremidade de Listas de Contas Nomeadas](https://developer.adobe.com/marketo-apis/api/mapi#tag/Named-Account-Lists)
 
-[Listas de Contas Nomeadas](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/target-account-management/target/account-lists) são coleções de contas nomeadas na Marketo. Use-os para categorização, enriquecimento de dados e filtragem de campanha inteligente.
+[Listas de Contas Nomeadas](https://experienceleague.adobe.com/pt-br/docs/marketo/using/product-docs/target-account-management/target/account-lists) são coleções de contas nomeadas na Marketo. Use-os para categorização, enriquecimento de dados e filtragem de campanha inteligente.
 
 As APIs da Lista de contas nomeadas permitem gerenciar remotamente os ativos de lista e seus membros.
 `Content`

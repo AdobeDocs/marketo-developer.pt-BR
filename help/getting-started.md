@@ -59,7 +59,7 @@ Os clientes potenciais podem interagir com sua organização de várias maneiras
 
 As atividades estão sempre relacionadas a clientes potenciais por leadId.
 
-Você também pode definir atividades personalizadas. Depois de criar e publicar uma atividade personalizada, você pode adicionar instâncias dela por meio da API do Marketo. Para obter mais informações, consulte [Noções básicas sobre atividades personalizadas](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/administration/marketo-custom-activities/understanding-custom-activities).
+Você também pode definir atividades personalizadas. Depois de criar e publicar uma atividade personalizada, você pode adicionar instâncias dela por meio da API do Marketo. Para obter mais informações, consulte [Noções básicas sobre atividades personalizadas](https://experienceleague.adobe.com/pt-br/docs/marketo/using/product-docs/administration/marketo-custom-activities/understanding-custom-activities).
 
 APIs relacionadas: [REST](https://developer.adobe.com/marketo-apis/api/mapi#tag/Activities), [JavaScript](javascript-api/lead-tracking.md#munchkin-behavior)
 
@@ -79,7 +79,7 @@ O grupo de tags e categoriza os dados do programa para relatórios. Use tags par
 
 Como administrador do Marketo, você pode criar tipos de tags obrigatórios e opcionais que os usuários selecionam ao criar um programa. Você define os valores possíveis para cada tipo de tag com base nos requisitos de relatórios da empresa.
 
-Por exemplo, crie um tipo de tag personalizado &quot;Região&quot; com valores como Nordeste e Sudeste para analisar qual região gera mais leads. Crie um tipo de tag &quot;Proprietário&quot; para comparar quais proprietários de programas, como Maria, David ou John, têm maior impacto na criação de leads e oportunidades. Para obter mais informações, consulte [Noções Básicas sobre Marcas](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/core-marketo-concepts/programs/working-with-programs/understanding-tags).
+Por exemplo, crie um tipo de tag personalizado &quot;Região&quot; com valores como Nordeste e Sudeste para analisar qual região gera mais leads. Crie um tipo de tag &quot;Proprietário&quot; para comparar quais proprietários de programas, como Maria, David ou John, têm maior impacto na criação de leads e oportunidades. Para obter mais informações, consulte [Noções Básicas sobre Marcas](https://experienceleague.adobe.com/pt-br/docs/marketo/using/product-docs/core-marketo-concepts/programs/working-with-programs/understanding-tags).
 
 APIs relacionadas: [REST](https://developer.adobe.com/marketo-apis/api/asset)
 
@@ -90,7 +90,7 @@ Listas organizam coleções de clientes potenciais. O Marketo fornece dois tipos
 - Uma lista estática é uma coleção fixa da qual um profissional de marketing pode adicionar ou remover leads.
 - Uma lista inteligente é uma coleção dinâmica baseada em características definidas.
 
-Por exemplo, uma lista inteligente chamada &quot;Todos os clientes potenciais que visitaram a página de preços em nosso site&quot; continua a crescer à medida que mais clientes potenciais visitam essa página. Para obter mais informações, consulte a [documentação do Marketo Engage](https://experienceleague.adobe.com/en/docs/marketo/using/home?lang=pt-BR).
+Por exemplo, uma lista inteligente chamada &quot;Todos os clientes potenciais que visitaram a página de preços em nosso site&quot; continua a crescer à medida que mais clientes potenciais visitam essa página. Para obter mais informações, consulte a [documentação do Marketo Engage](https://experienceleague.adobe.com/pt-br/docs/marketo/using/home?lang=pt-BR).
 
 APIs relacionadas: [REST](https://developer.adobe.com/marketo-apis/api/asset#tag/Static-Lists)
 
@@ -128,7 +128,7 @@ Os tokens definidos no nível de programa ou pasta são chamados de &quot;Meus t
 - Herdado: criado no nível da pasta da campanha e disponível para todos os programas nessa pasta.
 - Substituído: modificado com um valor personalizado no nível do Programa sem alterar o valor pai Meu Token no nível da pasta do Programa.
 
-Meus Tokens usam a convenção de nomenclatura `{{my.My Token}}`, com a palavra &quot;my&quot; no início do nome do token. Por exemplo, um tipo de Data Meu Token chamado EventDate tem o nome de token `{{my.EventDate}}`. Para obter mais informações, consulte [Entendendo Meus Tokens em um Programa](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/core-marketo-concepts/programs/tokens/understanding-my-tokens-in-a-program).
+Meus Tokens usam a convenção de nomenclatura `{{my.My Token}}`, com a palavra &quot;my&quot; no início do nome do token. Por exemplo, um tipo de Data Meu Token chamado EventDate tem o nome de token `{{my.EventDate}}`. Para obter mais informações, consulte [Entendendo Meus Tokens em um Programa](https://experienceleague.adobe.com/pt-br/docs/marketo/using/product-docs/core-marketo-concepts/programs/tokens/understanding-my-tokens-in-a-program).
 
 APIs relacionadas: [REST](https://developer.adobe.com/marketo-apis/api/asset#tag/Tokens)
 
@@ -136,7 +136,7 @@ APIs relacionadas: [REST](https://developer.adobe.com/marketo-apis/api/asset#tag
 
 Um objeto personalizado do Marketo cria uma relação um para muitos ou muitos para muitos (Edge-Bridge-Edge) entre o Marketo Leads e registros de objeto personalizado.
 
-Depois de criar e publicar um objeto personalizado do Marketo, você pode executar operações CRUD nele por meio da API do Marketo. Quando novos registros são adicionados, você pode usar um acionador de lista inteligente para responder. Você também pode usar dados de objetos personalizados como um filtro de lista inteligente para segmentação ou em emails por meio do [Script de email](email-scripting.md). Para obter mais informações sobre como criar objetos personalizados, consulte a [documentação do Marketo Engage](https://experienceleague.adobe.com/en/docs/marketo/using/home?lang=pt-BR).
+Depois de criar e publicar um objeto personalizado do Marketo, você pode executar operações CRUD nele por meio da API do Marketo. Quando novos registros são adicionados, você pode usar um acionador de lista inteligente para responder. Você também pode usar dados de objetos personalizados como um filtro de lista inteligente para segmentação ou em emails por meio do [Script de email](email-scripting.md). Para obter mais informações sobre como criar objetos personalizados, consulte a [documentação do Marketo Engage](https://experienceleague.adobe.com/pt-br/docs/marketo/using/home?lang=pt-BR).
 
 APIs relacionadas: [REST](https://developer.adobe.com/marketo-apis/api/mapi#tag/Custom-Objects)
 
