@@ -4,51 +4,60 @@ feature: Email Programs
 description: Guia para usar o Marketo Velocity com leads, oportunidades e objetos personalizados, campos de carregamento, acesso aos 10 principais da lista, relacionamentos com a SFDC e $TriggerObject.
 exl-id: 88c63d72-7aa5-4550-9e1a-887a479872e1
 TQID: https://experienceleague.adobe.com/PvLJb-AOk6DKaNINycpzk5ojZiL8UNcanRg3vXmsGCI
-product_v2:
-  - id: b27e5950-9033-45ac-9f86-eb22e567f615
-feature_v2:
-  - id: e2290edd-b061-4880-9d79-dee306cf5aa9
-  - id: e64968b2-4ee5-47f9-8cae-0588f184b9eb
-role_v2:
-  - id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
-topic_v2:
-  - id: b5ce8718-c3af-4fdb-a1a9-fca32f83a87c
-source-git-commit: 00118a89f25a23b931fac671130932bb0e0e4e4e
+product_v2: id: b27e5950-9033-45ac-9f86-eb22e567f615
+feature_v2: id: e2290edd-b061-4880-9d79-dee306cf5aa9id: e64968b2-4ee5-47f9-8cae-0588f184b9eb
+role_v2: id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
+topic_v2: id: b5ce8718-c3af-4fdb-a1a9-fca32f83a87c
+source-git-commit: 3e6d310c5aec1a3435424fb122b71d825db5af0e
 workflow-type: tm+mt
-source-wordcount: 532
-ht-degree: 0%
+source-wordcount: 452
+ht-degree: 1%
 
 ---
 
 # Objetos do Marketo
 
-A implementação do Velocity da Marketo pode operar em dados de várias fontes dentro da Marketo: clientes potenciais, oportunidades, objetos personalizados, aplicativo móvel e instalação de aplicativo móvel.
+A implementação do Velocity da Marketo pode usar dados destas fontes da Marketo:
+
+- Leads
+- Oportunidades
+- Objetos personalizados
+- Aplicativo móvel
+- Instalação do aplicativo móvel
 
 ## Carregando campos
 
-Para carregar um campo para uso em um script, esse campo deve ser marcado na lista correspondente no editor de token de script.
+Para usar um campo em um script, selecione o campo na lista correspondente no editor de token de script.
 
-Se você não carregar um campo e ele for referenciado no script, a execução do script falhará no tempo de execução. Você pode arrastar e soltar campos do menu de campos no script. Isso permite que eles sejam carregados e adiciona uma referência ao campo no cursor.
+Se um script referenciar um campo que não está carregado, o script falhará no tempo de execução. Arraste um campo do menu de campos para o script para carregá-lo e adicionar uma referência no cursor.
 
 ## Listas de Oportunidades e Objetos Personalizados
 
-Ao recuperar de Oportunidades ou Objetos personalizados, somente os 10 objetos atualizados mais recentemente de um tipo são carregados. O número de Objetos personalizados disponíveis pode ser aumentado seguindo as etapas descritas aqui. Eles são fornecidos como uma lista, com o nome de `<objectName>List` e são ordenados do registro atualizado mais para o menos recente. Portanto, para acessar o campo Valor da oportunidade que foi atualizada mais recentemente, use o seguinte:
+Para Oportunidades e Objetos personalizados, o Marketo carrega somente os 10 objetos atualizados mais recentemente de cada tipo. Você pode aumentar o número de Objetos personalizados disponíveis seguindo as etapas descritas aqui.
+
+O Marketo fornece os objetos em uma lista chamada `<objectName>List`, ordenados do registro atualizado mais recentemente para o registro atualizado menos recentemente. Para acessar o campo Valor da oportunidade atualizada mais recentemente, use:
 
 `${OpportunityList.get(0).Amount}`
 
-Neste exemplo, você faz referência ao objeto OpportunityList, usa o método get para acessar o registro indexado em 0 e, em seguida, recupera a propriedade Amount do objeto retornado. Se você arrastar um campo de uma oportunidade ou objeto personalizado para o editor, ele recuperará automaticamente o campo do registro indexado em 0.
+Este exemplo faz referência ao objeto OpportunityList, usa o método get para acessar o registro no índice 0 e recupera a propriedade Amount desse registro.
+
+Ao arrastar um campo Oportunidade ou Objeto personalizado para o editor, o Marketo recupera automaticamente o campo do registro no índice 0.
 
 ## Relações de objetos personalizados do SFDC
 
-Para estar disponível para uso, um objeto personalizado do SFDC deve ter apenas um relacionamento com o lead do Marketo. Os objetos geralmente são vinculados por meio do contato e da conta, portanto, é importante sincronizar objetos somente com o Marketo com a relação lead/contato ativada.
+Para usar um objeto personalizado do SFDC, o objeto deve ter apenas um relacionamento com o lead do Marketo. Os objetos geralmente são vinculados por meio do contato e da conta. Sincronizar somente objetos que tenham a relação cliente potencial/contato habilitada.
 
 ## Objetos do Trigger
 
-Quando uma campanha é acionada por meio da opção Adicionada à Oportunidade, Oportunidade Atualizada ou Adicionada aos acionadores `<Custom Object Name>`, uma variável especial é disponibilizada em Tokens de Script executados no contexto da campanha do acionador: `$TriggerObject` (sem suporte para `<Custom Object Name>` é o acionador Atualizado).  Se um token usando uma referência `$TriggerObject` for usado em uma campanha em lote, o envio de email falhará, pois esse objeto não está disponível em campanhas em lote de nenhum tipo.  Esta é uma referência ao objeto que acionou a campanha. O objeto contém todos os dados que o registro tem quando acessado por meio de um nome de variável diferente.
+Quando uma campanha usa o acionador Adicionado à Oportunidade, Oportunidade é Atualizada ou Adicionada ao `<Custom Object Name>`, a variável `$TriggerObject` fica disponível para Tokens de Script que são executados na campanha do acionador. Esta variável não tem suporte para o gatilho `<Custom Object Name>` is Updated.
 
-Por exemplo, se uma campanha foi acionada por meio de um Objeto personalizado para um pedido de produto, a ordem à qual o cliente potencial foi adicionado é exposta na variável `$TriggerObject`.
+Essa variável faz referência ao objeto que acionou a campanha. Ele contém os mesmos dados de registro que estão disponíveis quando você acessa o objeto por meio de outro nome de variável.
 
-Este é um exemplo de script para um email de acompanhamento de pedido:
+Não use um token que faça referência a `$TriggerObject` em uma campanha em lote. O objeto não está disponível em campanhas em lote e o envio de email falha.
+
+Por exemplo, se um Objeto personalizado de um pedido de produto acionar uma campanha, a variável `$TriggerObject` expõe a ordem à qual o cliente potencial foi adicionado.
+
+O exemplo a seguir mostra um script para um email de acompanhamento de pedido:
 
 ```html
 <div>
@@ -65,8 +74,8 @@ Este é um exemplo de script para um email de acompanhamento de pedido:
 </div>
 ```
 
-A vantagem de usar a variável `$TriggerObject` é que você não precisa dedicar nenhum código para determinar de quais objetos disponíveis você deseja obter seus dados locais.  O objeto é determinado pela ação de acionamento. Essa é a maneira mais explícita de escolher um objeto para referência e deve ser usada sempre que disponível e apropriada.
+A ação de acionamento determina o objeto. Não é necessário código adicional para determinar qual objeto disponível contém os dados locais. Use `$TriggerObject` quando estiver disponível e for apropriado porque ele identifica explicitamente o objeto para referência.
 
-Observação: ao usar o `$TriggerObject`, os campos devem ser verificados no painel de edição para que o objeto seja disponibilizado para o script.
+Observação: ao usar `$TriggerObject`, selecione os campos do objeto no painel de edição para torná-los disponíveis para o script.
 
-Observação 2: `$TriggerObject` funciona somente para acionadores &quot;Adicionados&quot; e não para acionadores &quot;Atualizados&quot;.
+Observação 2: `$TriggerObject` funciona somente para acionadores &quot;Adicionados&quot;, não para acionadores &quot;Atualizados&quot;.

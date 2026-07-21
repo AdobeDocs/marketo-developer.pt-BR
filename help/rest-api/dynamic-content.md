@@ -4,22 +4,19 @@ feature: REST API, Dynamic Content
 description: Configure o conteúdo dinâmico do Marketo em nível de seção por meio das APIs REST usando segmentações para personalizar emails, páginas de aterrissagem e trechos com endpoints e exemplos
 exl-id: 8ab97624-5fb5-4a41-911f-ec8616dd43c9
 TQID: https://experienceleague.adobe.com/MwfPxu74qk0bPZMr6yuxQi--e3gMvP1tXQZ5iMil02o
-product_v2:
-  - id: b27e5950-9033-45ac-9f86-eb22e567f615
-feature_v2:
-  - id: c5f60233-d5ea-4453-a799-0ad258b4d399
-role_v2:
-  - id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
-source-git-commit: 00118a89f25a23b931fac671130932bb0e0e4e4e
+product_v2: id: b27e5950-9033-45ac-9f86-eb22e567f615
+feature_v2: id: c5f60233-d5ea-4453-a799-0ad258b4d399
+role_v2: id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
+source-git-commit: 3e6d310c5aec1a3435424fb122b71d825db5af0e
 workflow-type: tm+mt
-source-wordcount: 463
-ht-degree: 2%
+source-wordcount: 329
+ht-degree: 3%
 
 ---
 
 # Conteúdo dinâmico
 
-O Marketo facilita o uso de conteúdo dinâmico por meio da segmentação de clientes potenciais em vários tipos de ativos:
+Use as segmentações de clientes potenciais para fornecer conteúdo dinâmico nestes tipos de ativos:
 
 - Emails
 - Páginas de destino
@@ -27,13 +24,17 @@ O Marketo facilita o uso de conteúdo dinâmico por meio da segmentação de cli
 
 ## Visão geral
 
-O conteúdo dinâmico é implementado no nível da seção, designando variações específicas de uma seção a ser disponibilizada para um cliente potencial com base em sua qualificação em um segmento dentro de uma segmentação escolhida. Se um conteúdo for configurado para distribuir conteúdo dinâmico com base em uma determinada segmentação, um cliente potencial observará que o conteúdo recebe a variação de conteúdo que corresponde ao segmento em que se enquadra, ou o conteúdo padrão, se não se qualificarem para um segmento.
+O conteúdo dinâmico opera no nível da seção. Cada seção pode fornecer variações para segmentos em uma segmentação selecionada.
+
+Quando um lead exibe o ativo, o Marketo exibe a variação do segmento do lead. Se o lead não se qualificar para um segmento, o Marketo exibe o conteúdo padrão.
 
 ## Exemplo
 
-Para demonstrar, vamos ver um exemplo de email, em que temos uma segmentação de Região (EUA) e queremos exibir uma promoção de evento somente para leads que estão no segmento Sudoeste, que inclui leads da Califórnia, Nevada, Utah, Colorado, Arizona e Novo México. Para fazer isso, criamos uma seção editável em nosso email com a ID &quot;Q1-promotion-banner&quot; em uma seção de DynamicContent. Para fazer isso, devemos usar o terminal [Atualizar Seção de Conteúdo de Email](https://developer.adobe.com/marketo-apis/api/asset#tag/Emails/operation/updateEmailComponentContentUsingPOST) para nosso email. O parâmetro `value` é usado para especificar a Id da segmentação.
+Esse exemplo usa uma segmentação de Região (EUA) para exibir uma promoção de evento para leads no segmento Sudoeste. O segmento inclui leads da Califórnia, Nevada, Utah, Colorado, Arizona e Novo México.
 
-Observação: tanto os emails quanto as landing pages seguem esse padrão. Os trechos têm um padrão diferente, detalhado na documentação da API de trechos.
+Use o ponto de extremidade [Atualizar Seção de Conteúdo de Email](https://developer.adobe.com/marketo-apis/api/asset#tag/Emails/operation/updateEmailComponentContentUsingPOST) para alterar a seção editável com ID `Q1-promotion-banner` para uma seção `DynamicContent`. O parâmetro `value` especifica a ID de segmentação.
+
+Emails e landing pages seguem esse padrão. Os trechos usam o padrão diferente descrito na documentação da API de trechos.
 
 O exemplo a seguir define a seção como conteúdo dinâmico, segmentado por segmentação 1001.
 
@@ -59,9 +60,9 @@ type=DynamicContent&value=1001
 }
 ```
 
-Para adicionar conteúdo a segmentos individuais, devemos chamar o ponto de extremidade [Atualizar Seção de Conteúdo Dinâmico de Email](https://developer.adobe.com/marketo-apis/api/asset#tag/Emails/operation/updateEmailDynamicContentUsingPOST) para a seção específica.
+Chame o ponto de extremidade [Atualizar Seção de Conteúdo Dinâmico de Email](https://developer.adobe.com/marketo-apis/api/asset#tag/Emails/operation/updateEmailDynamicContentUsingPOST) para adicionar conteúdo a um segmento em uma seção específica.
 
-O exemplo a seguir define a seção para mostrar a imagem de banner especial para clientes potenciais no segmento Sudoeste, em vez do padrão. Se quisermos criar mais variações para mais segmentos, chamaremos esse endpoint novamente para cada segmento e seção.
+A solicitação a seguir exibe um banner especial em vez do conteúdo padrão para clientes potenciais no segmento Sudoeste. Para criar mais variações, chame o endpoint para cada segmento e seção.
 
 ```http
 POST /rest/asset/v1/email/{id}/dynamicContent/{dynamicContentId}.json
@@ -87,11 +88,13 @@ segment=Southwest&type=HTML&value=<img src='//www.example.com/SuperSpecialBanner
 
 ## Segmentação
 
-A segmentação é o núcleo do conteúdo dinâmico do Marketo. Uma segmentação é uma lista definida pelo usuário de conjuntos individuais de regras que são avaliadas de cima para baixo em relação a todo o banco de dados de clientes potenciais. Um lead só pode ser um membro de um segmento em cada segmentação e será um membro do primeiro que se qualifica em cada segmentação. Se não se qualificar para um segmento, ele será membro do segmento Padrão e receberá o conteúdo padrão para qualquer parte do conteúdo dinâmico usando essa segmentação.
+Uma segmentação é uma lista definida pelo usuário de conjuntos de regras que o Marketo avalia de cima para baixo em relação ao banco de dados de clientes potenciais. Um lead pode pertencer a apenas um segmento em cada segmentação. O lead une o primeiro segmento para o qual se qualifica.
+
+Se o lead não se qualificar para outro segmento, ele se junta ao segmento Padrão e recebe o conteúdo padrão da segmentação.
 
 ### Lista
 
-As segmentações têm um endpoint de lista que retorna uma resposta com uma lista de segmentações disponíveis.
+Use o endpoint da lista para recuperar as segmentações disponíveis.
 
 ```http
 GET /rest/asset/v1/segmentation.json
@@ -138,7 +141,7 @@ GET /rest/asset/v1/segmentation.json
 }
 ```
 
-As segmentações também têm um endpoint que retorna uma resposta com uma lista de segmentos de uma segmentação principal.
+Use o endpoint de segmentos para recuperar os segmentos em uma segmentação principal.
 
 ```http
 GET /rest/asset/v1/segmentation/1001/segments.json

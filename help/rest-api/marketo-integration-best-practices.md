@@ -4,51 +4,48 @@ feature: REST API
 description: Práticas recomendadas para integrações de API do Marketo, abrangendo cotas, limites de taxa e simultaneidade, agrupamento, importação e exportação em massa, armazenamento em cache e planejamento de latência.
 exl-id: 1e418008-a36b-4366-a044-dfa9fe4b5f82
 TQID: https://experienceleague.adobe.com/Ld-rmFCwKSx-0W2-ceYICu0FQHK8BKAC1QgqtiOWDn4
-product_v2:
-  - id: b27e5950-9033-45ac-9f86-eb22e567f615
-feature_v2:
-  - id: b13bd2ad-8e65-49e5-9691-2a0d31067b35
-  - id: b3b8a63f-51fc-40f6-a7d2-a31c5d49fb45
-  - id: e64968b2-4ee5-47f9-8cae-0588f184b9eb
-  - id: f71e690b-4480-4b67-9ef5-88f42f9cdfdb
-role_v2:
-  - id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
-topic_v2:
-  - id: df401a2a-327d-468c-a5e4-b7b7ccd071a0
-source-git-commit: 00118a89f25a23b931fac671130932bb0e0e4e4e
+product_v2: id: b27e5950-9033-45ac-9f86-eb22e567f615
+feature_v2: id: b13bd2ad-8e65-49e5-9691-2a0d31067b35id: b3b8a63f-51fc-40f6-a7d2-a31c5d49fb45id: e64968b2-4ee5-47f9-8cae-0588f184b9ebid: f71e690b-4480-4b67-9ef5-88f42f9cdfdb
+role_v2: id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
+topic_v2: id: df401a2a-327d-468c-a5e4-b7b7ccd071a0
+source-git-commit: 3e6d310c5aec1a3435424fb122b71d825db5af0e
 workflow-type: tm+mt
-source-wordcount: 1013
+source-wordcount: 882
 ht-degree: 0%
 
 ---
 
 # Práticas recomendadas de integração do Marketo
 
+Projete integrações em torno dos limites da API compartilhada para sua instância do Marketo. Use o agrupamento, o armazenamento em cache e taxas de solicitação conservadoras para melhorar a taxa de transferência e a confiabilidade.
+
 ## Limites da API
 
-- **Cota Diária:** A maioria das assinaturas recebe 50.000 chamadas de API por dia (o que é redefinido diariamente a uma CST de 12:00AM). Você pode aumentar sua cota diária por meio do gerente da conta.
-- **Limite de Taxa:** Acesso à API por instância limitado a 100 chamadas por 20 segundos.
-- **Limite de Simultaneidade:** Máximo de dez chamadas de API simultâneas.
-- **Tamanho do Lote:** BD de Cliente Potencial - 300 registros; Consulta de Ativo - 200 registros
-- **Tamanho da Carga da API REST:** 1 MB
-- **Tamanho do Arquivo de Importação em Massa:** 10MB
-- **Tamanho Máximo de Lote do SOAP:** 300 registros
-- **Trabalhos de Extração em Massa:** 2 em execução; 10 em fila (inclusive)
+- **Cota diária:** A maioria das assinaturas tem 50.000 chamadas de API alocadas por dia. A cota é redefinida diariamente às 12h (CST). Entre em contato com o gerente da conta para aumentar a cota diária.
+- **Limite de taxa:** cada instância é limitada a 100 chamadas de API por 20 segundos.
+- **Limite de simultaneidade:** cada instância permite no máximo dez chamadas de API simultâneas.
+- **Tamanho do lote:** o BD de cliente potencial oferece suporte a 300 registros; a Consulta de Ativos oferece suporte a 200 registros.
+- **Tamanho da carga da API REST:** 1 MB.
+- **Tamanho do arquivo de importação em massa:** 10 MB.
+- **Tamanho máximo de lote do SOAP:** 300 registros.
+- **Trabalhos de extração em massa:** Dois em execução e dez em fila, inclusive.
 
 ## Dicas rápidas
 
-- Suponha que seu aplicativo concorra por recursos de cota, taxa e simultaneidade com outros aplicativos e defina limites de uso conservadores.
-- Use os métodos em massa e em lote do Marketo quando disponíveis e apropriados. Use apenas chamadas de registro ou resultado único quando necessário.
-- Use o [retrocesso exponencial](https://en.wikipedia.org/wiki/Exponential_backoff) para repetir chamadas de API que falham devido a limites de taxa ou simultaneidade.
-- Evite fazer chamadas de API simultâneas se o caso de uso não se beneficiar delas.
+- Defina limites de uso conservadores porque seu aplicativo compartilha recursos de cota, taxa e simultaneidade com outros aplicativos.
+- Use os métodos em massa e em lote do Marketo quando disponíveis. Use chamadas de registro único ou resultado único somente quando necessário.
+- Use o [retrocesso exponencial](https://en.wikipedia.org/wiki/Exponential_backoff) para repetir chamadas de API que falharam devido a limites de taxa ou simultaneidade.
+- Evite chamadas de API simultâneas, a menos que elas beneficiem seu caso de uso.
 
 ## Colocação em lote
 
-Para garantir o melhor desempenho para suas integrações, ao executar inserções ou atualizações, os registros devem ser agrupados no menor número de transações possível. Ao recuperar registros de um armazenamento de dados para envio, os registros devem sempre ser agregados antes do envio, em vez de enviar uma solicitação para cada alteração individual.
+Para inserções e atualizações, agrupe registros no menor número de transações possível. Ao recuperar registros de um armazenamento de dados, agregue-os antes do envio em vez de enviar uma solicitação para cada alteração.
 
 ## Latência Aceitável
 
-Determinar suas tolerâncias de latência ou o tempo máximo que pode decorrer antes de enviar uma chamada de API informará muitas, se não a maioria, das decisões tomadas ao projetar sua integração com o Marketo. O Marketo fornece vários métodos e opções de configuração diferentes, adequados para casos de uso diferentes e classes de latência diferentes. Por exemplo, uma integração em tempo real para notificar um vendedor de um usuário que está se inscrevendo em uma avaliação só pode enviar lotes de um se for necessário acompanhamento imediato. No entanto, a maioria dos casos não exige isso e pode tolerar latência adicional e pode ser gerenciada com mais eficiência por meio de chamadas de enfileiramento e em lote.
+Defina a latência aceitável — o tempo máximo antes do envio de uma chamada de API — ao projetar uma integração. Essa opção determina quais métodos e opções de configuração do Marketo se encaixam no caso de uso.
+
+Por exemplo, uma integração em tempo real que notifica um vendedor quando um usuário inicia uma avaliação pode enviar lotes de um quando é necessário acompanhamento imediato. A maioria dos casos de uso tolera mais latência e opera com mais eficiência enfileirando e agrupando chamadas.
 
 | Latência Aceitável | Métodos preferidos | Observações |
 | --- | --- | --- |
@@ -58,9 +55,11 @@ Determinar suas tolerâncias de latência ou o tempo máximo que pode decorrer a
 
 ## Limites diários
 
-Cada instância habilitada para API do Marketo tem uma alocação diária de pelo menos 10.000 chamadas de API REST por dia, mas geralmente tem 50.000 ou mais e 500 MB ou mais de capacidade de extração em massa. Embora a capacidade diária adicional possa ser adquirida como parte de uma assinatura do Marketo, o design do aplicativo deve considerar os limites comuns de assinaturas do Marketo.
+Cada instância do Marketo habilitada para API tem uma alocação diária de pelo menos 10.000 chamadas de API REST, embora 50.000 ou mais sejam comuns. Cada instância também tem 500 MB ou mais de capacidade de Extração em massa. A capacidade diária adicional pode ser adquirida como parte de uma assinatura do Marketo, mas os designs de aplicativos devem levar em conta os limites de assinatura comuns.
 
-Como a capacidade é compartilhada entre todos os serviços de API e usuários em uma instância, a prática recomendada é eliminar chamadas redundantes e agrupar registros em lote no menor número possível de chamadas. A maneira mais eficiente de chamar para importar registros é usando as APIs de importação em massa da Marketo, que estão disponíveis para [Clientes potenciais/Pessoas](https://developer.adobe.com/marketo-apis/api/mapi#tag/Bulk-Import-Leads/operation/importLeadUsingPOST) e [Objetos personalizados](https://developer.adobe.com/marketo-apis/api/mapi#tag/Snippets/operation/createSnippetUsingPOST). A Marketo também fornece Extração em massa para [Clientes potenciais](bulk-lead-extract.md) e [Atividades](bulk-activity-extract.md).
+A capacidade é compartilhada por todos os serviços e usuários da API em uma instância. Elimine chamadas redundantes e registros em lote no menor número possível de chamadas.
+
+O método de importação com maior eficiência de chamada é a API de importação em massa do Marketo, disponível para [Clientes potenciais/Pessoas](https://developer.adobe.com/marketo-apis/api/mapi#tag/Bulk-Import-Leads/operation/importLeadUsingPOST) e [Objetos personalizados](https://developer.adobe.com/marketo-apis/api/mapi#tag/Snippets/operation/createSnippetUsingPOST). A Marketo também fornece Extração em massa para [Clientes potenciais](bulk-lead-extract.md) e [Atividades](bulk-activity-extract.md).
 
 ### Armazenamento em cache
 
@@ -70,18 +69,24 @@ Os resultados das seguintes operações geralmente podem ser armazenados em cach
 - [Tipos de atividades](https://developer.adobe.com/marketo-apis/api/mapi#tag/Activities/operation/getAllActivityTypesUsingGET)
 - [Partições](https://developer.adobe.com/marketo-apis/api/mapi#tag/Leads/operation/getLeadPartitionsUsingGET)
 
-O armazenamento em cache de determinados tipos de ativos, como programas, emails e pastas, também é apropriado para determinados casos de uso, como enriquecimento de dados para registros de lead ou de atividade.
+Para casos de uso como lead ou enriquecimento de dados de atividade, você também pode armazenar em cache tipos de ativos como programas, emails e pastas.
 
 ## Limite de taxa
 
-Cada instância do Marketo tem um limite de taxa de 100 chamadas por 20 segundos, que é compartilhado entre todos os serviços de API de terceiros. Se esse limite for excedido, a API responderá com um código de erro 606 indicando que o limite de taxa foi excedido. Em geral, as integrações de terceiros devem limitar sua utilização a 50 chamadas por 20 segundos ou menos para permitir o uso correto dos limites de taxa por várias integrações de API e usuários. Embora possa ser apropriado saturar esse limite em certos casos, em geral, os aplicativos que usam lotes e direcionam seu throughput para menos que esse limite são mais responsivos e consistentes em sua operação, a um pequeno custo de latência aumentada.
+Cada instância do Marketo tem um limite de taxa compartilhado de 100 chamadas por 20 segundos em todos os serviços de API de terceiros. Se as chamadas excederem esse limite, a API retornará um código de erro 606.
+
+Em geral, limite cada integração de terceiros a 50 chamadas por 20 segundos ou menos para que várias integrações de API e usuários possam compartilhar a capacidade disponível. Alguns casos de uso podem precisar do limite completo. No entanto, os aplicativos que usam agrupamento e direcionam menor throughput geralmente são mais responsivos e consistentes, com um pequeno aumento na latência.
 
 ## Limite de simultaneidade
 
-Cada instância do Marketo tem um limite compartilhado de dez chamadas de API REST executadas simultaneamente. Assim como a cota diária e os limites de taxa, ela é compartilhada, portanto, você não deve supor que seu aplicativo será o consumidor exclusivo desse limite. O Marketo conta o número de chamadas simultâneas como aquelas que estão processando e que ainda não retornaram; portanto, quando uma chamada é retornada, ela não é mais contada em relação ao limite de chamadas simultâneas.
+Cada instância do Marketo tem um limite compartilhado de dez chamadas de API REST executadas simultaneamente. Não presuma que seu aplicativo é o único consumidor desse limite.
 
-A maioria dos casos de uso de integração não se beneficia de chamadas simultâneas. Portanto, considere se seu aplicativo se beneficia antes de decidir enviar solicitações simultâneas ao Marketo. Se você quiser implementar a simultaneidade, limite o número de solicitações simultâneas para cinco ou menos no design inicial e aumente isso somente depois de determinar que seu aplicativo requer mais.
+O Marketo conta as chamadas que estão sendo processadas e que ainda não foram retornadas. Quando uma chamada é retornada, ela não é mais contada para o limite de simultaneidade.
+
+A maioria das integrações não se beneficia de chamadas simultâneas. Se você implementar a simultaneidade, limite inicialmente o aplicativo a cinco ou menos solicitações simultâneas. Aumente o limite somente depois de determinar que o aplicativo requer mais.
 
 ## Erros
 
-Exceto por alguns casos raros, as solicitações de API retornam um código de status HTTP 200. Os erros de lógica de negócios também retornam um 200, mas contêm informações detalhadas no corpo da resposta. Consulte [Códigos de erro](error-codes.md) para obter uma explicação detalhada. A frase de motivo HTTP não deve ser avaliada, pois é opcional e está sujeita a alterações.
+Exceto em casos raros, as solicitações de API retornam o código de status HTTP 200. Os erros de lógica de negócios também retornam 200, mas incluem detalhes no corpo da resposta. Consulte [Códigos de erro](error-codes.md) para obter mais informações.
+
+Não avalie a frase de motivo HTTP porque ela é opcional e está sujeita a alterações.

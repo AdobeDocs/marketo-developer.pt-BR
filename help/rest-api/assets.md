@@ -4,28 +4,20 @@ feature: REST API
 description: Visão geral das APIs REST do Marketo Asset para consultar por ID ou nome, navegar com paginação e criar ou atualizar pastas, emails, formulários, modelos, arquivos e tokens.
 exl-id: 4273a5b1-1904-46e8-b583-fc6f46b388d2
 TQID: https://experienceleague.adobe.com/gRhXvFtG1FHtGJ4tFQxOyGMkEiOX0K1S0VpjcB6s6xM
-product_v2:
-  - id: b27e5950-9033-45ac-9f86-eb22e567f615
-feature_v2:
-  - id: b0bb9048-d951-48d8-8232-45cf248a7e27
-  - id: d65b4a73-87a3-4d56-b638-74e74d9939ce
-  - id: e64968b2-4ee5-47f9-8cae-0588f184b9eb
-  - id: f82558ea-6af5-44eb-a424-5b3389abb0a3
-role_v2:
-  - id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
-topic_v2:
-  - id: a004cc84-67b9-4a33-a3a7-8ec7273ef4dc
-  - id: bce87dde-a4ab-44c9-8a18-ad66e4ddb377
-source-git-commit: 00118a89f25a23b931fac671130932bb0e0e4e4e
+product_v2: id: b27e5950-9033-45ac-9f86-eb22e567f615
+feature_v2: id: b0bb9048-d951-48d8-8232-45cf248a7e27id: d65b4a73-87a3-4d56-b638-74e74d9939ceid: e64968b2-4ee5-47f9-8cae-0588f184b9ebid: f82558ea-6af5-44eb-a424-5b3389abb0a3
+role_v2: id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
+topic_v2: id: a004cc84-67b9-4a33-a3a7-8ec7273ef4dcid: bce87dde-a4ab-44c9-8a18-ad66e4ddb377
+source-git-commit: 3e6d310c5aec1a3435424fb122b71d825db5af0e
 workflow-type: tm+mt
-source-wordcount: 899
-ht-degree: 2%
+source-wordcount: 631
+ht-degree: 3%
 
 ---
 
 # Ativos
 
-O Marketo fornece APIs para interagir com a maioria dos ativos de marketing e organizacionais no Marketo.
+Use as APIs REST do Marketo Asset para consultar e gerenciar ativos de marketing e organizacionais.
 
 ## Ativos
 
@@ -49,9 +41,11 @@ Para obter uma lista completa de pontos de extremidade da API de ativos, incluin
 
 ## Consultar
 
-O Assets normalmente tem três padrões pelos quais eles podem ser recuperados: por id, por nome e pela navegação.  Por ID e por nome recuperará um único ativo para um determinado parâmetro, enquanto a navegação retornará e permitirá a paginação por toda a lista de ativos desse tipo.  Tipos individuais de ativos têm parâmetros variáveis pelos quais podem ser filtrados. Portanto, verifique seus documentos individuais para obter detalhes.
+As APIs de ativos normalmente oferecem suporte a três padrões de recuperação: por ID, por nome e pela navegação. As consultas por ID ou nome recuperam um ativo para o parâmetro especificado. Procurar endpoints retornam uma lista paginada de ativos desse tipo.
 
-Em certos casos, o endpoint de navegação para alguns tipos de ativos não retornará ativos secundários, como os valores permitidos para uma tag, e eles devem ser recuperados individualmente usando o endpoint Por nome ou Por ID para retornar o conjunto completo de metadados.  Outros podem ter endpoints totalmente separados para recuperar objetos dependentes como Campos de formulário.
+Os parâmetros de filtragem variam de acordo com o tipo de ativo. Consulte a documentação de cada tipo de ativo para ver os filtros compatíveis.
+
+Alguns endpoints de navegação não retornam ativos secundários, como os valores permitidos para uma tag. Recupere esses ativos individualmente por nome ou ID para obter os metadados completos. Outros tipos de ativos fornecem endpoints separados para objetos dependentes, como campos de formulário.
 
 ### Por ID
 
@@ -94,7 +88,7 @@ GET /rest/asset/v1/folder/{id}.json?type=Folder
 
 ### Por nome
 
-Por motivos técnicos, as APIs de ativos não podem pesquisar nomes de ativos que contenham vírgulas (,).  Recomenda-se que sua convenção de nomenclatura exclua vírgulas para todos os tipos de ativos.
+As APIs de ativo não podem procurar nomes de ativos que contenham vírgulas. Excluir vírgulas dos nomes de ativos.
 
 ```http
 GET /rest/asset/v1/file/byName.json?name=My File
@@ -125,12 +119,12 @@ GET /rest/asset/v1/file/byName.json?name=My File
 }
 ```
 
-### Navegar
+### Procurar
 
-Navegar pelos ativos sempre permitirá dois parâmetros de consulta:
+Os endpoints de procura de ativos são compatíveis com estes parâmetros de consulta:
 
-- offset - Um deslocamento inteiro do qual retornar resultados.
-- maxReturn - Limita o número de registros retornados.  O padrão é 20 se não estiver definido e o máximo é 200.
+- `offset` - Um deslocamento inteiro no qual começar a retornar resultados.
+- `maxReturn` - O número máximo de registros a retornar. O padrão é 20, e o máximo é 200.
 
 ```http
 GET /rest/asset/v1/emailTemplates.json?offset=10&maxReturn=50
@@ -188,9 +182,9 @@ GET /rest/asset/v1/emailTemplates.json?offset=10&maxReturn=50
 
 ## Criar e atualizar
 
-Para tipos de ativos simples como Pastas, Tokens e Arquivos, normalmente há apenas um único endpoint para criação e, em seguida, um endpoint adicional para atualizar registros por ID.  Os Assets são criados com um nome que é sempre obrigatório e, em seguida, todos os metadados e IDs são retornados pela resposta de criação ou atualização.
+Tipos de ativos simples, como pastas, tokens e arquivos, normalmente fornecem um endpoint para criação e outro para atualizações por ID. É necessário um nome ao criar um ativo. A resposta de criação ou atualização retorna a ID e os metadados do ativo.
 
-Por exemplo, veja como criar um token:
+A solicitação a seguir cria um token:
 
 ```http
 POST /rest/asset/v1/folder/{id}/tokens.json
@@ -229,7 +223,7 @@ name=April Fools&value=2015-04-01&type=date&folderType=Folder
 }
 ```
 
-Para atualizar uma pasta, faça o seguinte:
+A solicitação a seguir atualiza uma pasta:
 
 ```http
 POST /rest/asset/v1/folder/{id}.json
@@ -276,13 +270,13 @@ type=Folder&description=This is a test (update 01)
 }
 ```
 
-Outros ativos têm estruturas mais complexas e exigem atualizações em subseções adicionais ou objetos filho e, em seguida, precisam passar por aprovação antes de serem colocados em uso.  Esses tipos de ativos incluem Forms, Emails, Modelos de email, Páginas de aterrissagem e Modelos de página de aterrissagem.  Cada um deles terá um único endpoint para a criação de um registro e, depois, endpoints adicionais para a atualização de metadados, conteúdo e seções de conteúdo.
+Forms, emails, templates de email, landing pages e templates de landing page têm estruturas mais complexas. Cada tipo fornece um endpoint para a criação do ativo e endpoints adicionais para a atualização de suas seções de metadados, conteúdo e conteúdo.
 
-Por exemplo, para criar uma Landing page, você deverá chamar seu endpoint de criação com uma ID de modelo e recuperar suas seções de conteúdo, além de atualizar cada uma individualmente para adicionar conteúdo, antes de aprová-lo para que ele possa ser implantado em tempo real.
+Esses ativos devem ser aprovados antes do uso. Por exemplo, crie uma página de aterrissagem com uma ID de modelo, recupere suas seções de conteúdo, atualize cada seção necessária e aprove a página para implantação.
 
 ### Criação complexa
 
-Primeiro, as landing pages exigem a criação de um ativo de landing page usando um modelo principal.  Isso cria uma nova landing page contendo o conteúdo padrão do template para cada seção de conteúdo.
+Criar uma página de aterrissagem a partir de um modelo principal. A nova landing page contém o conteúdo padrão do template para cada seção.
 
 ```http
 POST rest/asset/v1/landingPages.json
@@ -331,7 +325,7 @@ name=createLandingPage&folder={"type": "Folder", "id": 11}&template=1&descriptio
 
 #### Obter Seções
 
-Para preencher o conteúdo de uma página de aterrissagem, você deve recuperar a lista de seções de conteúdo e executar atualizações individuais para qualquer seção que se desvie do modelo.
+Recupere as seções de conteúdo da página de aterrissagem. Atualize cada seção que deve diferir do modelo.
 
 ```http
 GET /rest/asset/v1/landingPage/{id}/content.json
@@ -385,7 +379,9 @@ POST /rest/asset/v1/landingPage/{id}/content/{contentId}.json?type=Form&value=1
 
 ## Aprovação
 
-Muitos tipos de ativos têm um sistema de rascunho e aprovação associado, incluindo emails, landing pages, trechos, Forms e seus modelos correspondentes.  Tentar aprovar um ativo o avaliará em relação a um conjunto específico de regras de validação e, em seguida, o definirá para um estado aprovado ou retornará um motivo de falha.  Para esses tipos de ativos, sempre que uma atualização é feita no conteúdo de um ativo específico, as alterações são feitas em um rascunho do ativo, que não afeta a versão aprovada.  Isso permite que as alterações no conteúdo sejam feitas com segurança sem afetar as versões em tempo real do ativo.  As alterações podem ser aplicadas à versão ao vivo usando o endpoint de aprovação.  Isso também limpa o estado de rascunho do ativo até que qualquer atualização adicional seja aplicada.
+Emails, landing pages, trechos, formulários e seus modelos usam um sistema de rascunho e aprovação. As atualizações de conteúdo alteram o rascunho sem afetar a versão aprovada em tempo real.
+
+O endpoint de aprovação valida o rascunho. Se a validação for bem-sucedida, o rascunho substituirá a versão ao vivo e o estado do rascunho será limpo. Se a validação falhar, o endpoint retornará o motivo.
 
 ```http
 POST /rest/asset/v1/emailTemplate/{id}/approveDraft.json
@@ -417,7 +413,9 @@ POST /rest/asset/v1/emailTemplate/{id}/approveDraft.json
 
 A aprovação bem-sucedida substitui a versão ao vivo anterior pela versão atualizada.
 
-Descartar rascunhos também está disponível por meio de um endpoint para cada tipo de ativo válido.  Usar isso em um ativo que está em um estado aprovado com rascunho descartará o rascunho atual e todas as alterações pendentes que ele tiver.  Usar isso em um ativo que atualmente não tem uma versão aprovada não fará nada e retornará um erro.  Os ativos somente de rascunho podem ser excluídos, mas não podem ser descartados.
+Cada tipo de ativo compatível fornece um terminal para descartar rascunhos. Para um ativo aprovado com um rascunho, esse endpoint descarta o rascunho e suas alterações pendentes.
+
+O endpoint retorna um erro se o ativo não tiver uma versão aprovada. É possível excluir um ativo somente rascunho, mas não descartá-lo.
 
 ```http
 POST /rest/asset/v1/emailTemplate/{id}/discardDraft.json
@@ -447,7 +445,9 @@ POST /rest/asset/v1/emailTemplate/{id}/discardDraft.json
 }
 ```
 
-O Assets também pode ser desaprovado se estiver em um estado somente aprovado.  Isso removerá todas as versões ativas do ativo e retornará o ativo a um estado somente de rascunho, além de descartar qualquer rascunho associado.  Essa ação só poderá ser executada na maioria dos ativos se não estiver em uso em nenhum lugar do Marketo, como um email referido em uma etapa do fluxo Enviar email ou um trecho incorporado em um email.
+Você pode cancelar a aprovação de um ativo que esteja em um estado somente aprovado. Desaprovar remove a versão ao vivo, retorna o ativo ao estado somente rascunho e descarta qualquer rascunho associado.
+
+Para a maioria dos tipos de ativos, o ativo não deve estar em uso. Por exemplo, não é possível cancelar a aprovação de um email referenciado por uma etapa do fluxo Enviar email ou um trecho incorporado em um email.
 
 ```http
 POST /rest/asset/v1/email/{id}/unapprove.json
@@ -469,7 +469,9 @@ POST /rest/asset/v1/email/{id}/unapprove.json
 
 ## Excluir
 
-O Assets com estados de aprovação e rascunho, exceto de formulários, não pode ser excluído enquanto for aprovado e deve ser cancelado antes da exclusão.  As exclusões geralmente só podem ser realizadas quando um ativo não é aprovado e está fora de uso e, no caso de pastas, está vazio de ativos.  Uma exceção notável são programas, que podem ser excluídos junto com todo o seu conteúdo secundário, desde que o programa e seu conteúdo não estejam em uso em nenhum lugar fora dos limites do programa.
+Exceto para formulários, os ativos com estados de aprovação e rascunho devem não ser aprovados antes da exclusão. Um ativo geralmente também deve ser não usado. Uma pasta deve estar vazia.
+
+Os programas são uma exceção. É possível excluir um programa e seu conteúdo filho se nem ele nem seu conteúdo forem usados fora do programa.
 
 ```http
 POST /rest/asset/v1/program/{id}/delete.json
@@ -491,4 +493,4 @@ POST /rest/asset/v1/program/{id}/delete.json
 
 ## Tempos limite
 
-As APIs de ativo têm um tempo limite de 300s
+As APIs de ativo têm um tempo limite de 300 segundos.

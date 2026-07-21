@@ -4,52 +4,44 @@ feature: REST API
 description: Saiba mais sobre a manipulação de erros da API REST do Marketo com HTTP 413 e 414, resposta 6xx 7xx, status de nível de registro, práticas recomendadas de registro, tentativas e limites.
 exl-id: a923c4d6-2bbc-4cb7-be87-452f39b464b6
 TQID: https://experienceleague.adobe.com/-bV6fjqJ8RkIBGX6gpVKMjGX1qYXR2g7VK3efpEQLDM
-product_v2:
-  - id: b27e5950-9033-45ac-9f86-eb22e567f615
-feature_v2:
-  - id: b13bd2ad-8e65-49e5-9691-2a0d31067b35
-  - id: c5f60233-d5ea-4453-a799-0ad258b4d399
-  - id: d1d0a9cd-295d-4976-8c39-ddae266f240e
-  - id: e64968b2-4ee5-47f9-8cae-0588f184b9eb
-role_v2:
-  - id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
-topic_v2:
-  - id: a004cc84-67b9-4a33-a3a7-8ec7273ef4dc
-  - id: cc72dcf1-72e1-48cc-b434-e7c27d62d67c
-  - id: eddd9b14-83bd-4ff4-9072-54a4a484abb7
-source-git-commit: 00118a89f25a23b931fac671130932bb0e0e4e4e
+product_v2: id: b27e5950-9033-45ac-9f86-eb22e567f615
+feature_v2: id: b13bd2ad-8e65-49e5-9691-2a0d31067b35id: c5f60233-d5ea-4453-a799-0ad258b4d399id: d1d0a9cd-295d-4976-8c39-ddae266f240eid: e64968b2-4ee5-47f9-8cae-0588f184b9eb
+role_v2: id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
+topic_v2: id: a004cc84-67b9-4a33-a3a7-8ec7273ef4dcid: cc72dcf1-72e1-48cc-b434-e7c27d62d67cid: eddd9b14-83bd-4ff4-9072-54a4a484abb7
+source-git-commit: 3e6d310c5aec1a3435424fb122b71d825db5af0e
 workflow-type: tm+mt
-source-wordcount: 2475
-ht-degree: 3%
+source-wordcount: 2255
+ht-degree: 4%
 
 ---
 
 # Códigos de erro
 
-Abaixo estão listas de códigos de erro da API REST e uma explicação de como os erros são retornados aos aplicativos.
+As APIs REST do Marketo retornam erros no nível HTTP, de resposta ou de registro. Esta página explica cada tipo de erro e lista os códigos de erro associados.
 
 ## Tratando e Registrando Exceções
 
-Ao desenvolver para o Marketo, é importante que as solicitações e respostas sejam registradas quando uma exceção inesperada for encontrada. Embora certos tipos de exceções, como autenticação expirada, possam ser manipulados com segurança por meio da reautenticação, outros podem exigir interações de suporte, e as solicitações e respostas sempre serão solicitadas nesse cenário.
+Registre solicitações e respostas quando a integração encontrar uma exceção inesperada. Algumas exceções, como a autenticação expirada, podem ser tratadas pela reautenticação. Outras exceções podem exigir assistência do suporte da, que solicitará os detalhes associados da solicitação e da resposta.
 
 ## Tipos de erro
 
-A API REST do Marketo pode retornar três tipos diferentes de erros em operação normal:
+A API REST do Marketo pode retornar três tipos de erros durante a operação normal:
 
-* Nível de HTTP: esses erros são indicados por um código `4xx`.
-* Nível de resposta: esses erros são incluídos na matriz &quot;erros&quot; da resposta JSON.
-* Nível de registro: esses erros são incluídos na matriz &quot;resultado&quot; da resposta JSON e são indicados em uma base de registro individual com o campo &quot;status&quot; e a matriz &quot;motivos&quot;.
+- **Nível HTTP:** Indicado por um código `4xx`.
+- **Nível de Resposta:** Incluído na matriz &quot;erros&quot; da resposta JSON.
+- **Nível de Registro:** Incluído na matriz &quot;result&quot; da resposta JSON e indicado para cada registro pelo campo &quot;status&quot; e matriz &quot;motivos&quot;.
 
-Para os tipos de erro de Nível de resposta e Nível de registro, um código de status HTTP 200 é retornado. Para todos os tipos de erro, a frase de motivo HTTP não deve ser avaliada, pois é opcional e está sujeita a alterações.
+Os erros de Nível de resposta e Nível de registro retornam o código de status HTTP 200. Para todos os tipos de erro, não avalie a frase de motivo HTTP porque ela é opcional e está sujeita a alterações.
 
 ### Erros de nível de HTTP
 
-Em circunstâncias normais de operação, o Marketo só deve retornar dois erros de código de status HTTP, `413 Request Entity Too Large` e `414 Request URI Too Long`. Ambos são recuperáveis ao capturar o erro, modificar a solicitação e tentar novamente, mas com práticas de codificação inteligente, você nunca deve encontrá-los na natureza.
+Durante a operação normal, o Marketo retorna dois erros de código de status HTTP: `413 Request Entity Too Large` e `414 Request URI Too Long`. Para se recuperar de qualquer erro, modifique a solicitação e tente novamente. Você pode evitar esses erros verificando os tamanhos das solicitações antes do envio.
 
-O Marketo retornará 413 se a Carga da solicitação exceder 1 MB, ou 10 MB no caso de Lead de importação. Na maioria dos cenários, é improvável atingir esses limites, mas adicionar uma verificação ao tamanho da solicitação e mover quaisquer registros, o que faz com que o limite seja excedido para uma nova solicitação, deve evitar quaisquer circunstâncias, que levam a esse erro ser retornado por quaisquer pontos de extremidade.
+O Marketo retorna 413 quando a carga da solicitação excede 1 MB ou 10 MB para Importar lead. Verifique o tamanho da solicitação antes de enviá-la. Se os registros fizerem com que a solicitação exceda o limite, mova esses registros para outra solicitação.
 
-O 414 será retornado quando o URI de uma solicitação GET exceder 8KB. Para evitá-lo, verifique o comprimento da sua cadeia de caracteres de consulta para ver se ela excede esse limite. Se isso fizer com que sua solicitação seja alterada para um método POST, insira sua cadeia de caracteres de consulta como o corpo da solicitação com o parâmetro adicional `_method=GET`. Isso abre mão da limitação nos URIs. É raro atingir esse limite na maioria dos casos, mas é um pouco comum ao recuperar grandes lotes de registros com valores de filtro individuais longos, como uma GUID.
-O ponto de extremidade [Identidade](https://developer.adobe.com/marketo-apis/api/identity/) pode retornar um erro 401 Não Autorizado. Normalmente, isso se deve a uma ID de cliente inválida ou a um Segredo do cliente inválido. Códigos de erro de nível HTTP
+O Marketo retorna 414 quando o URI de uma solicitação GET excede 8KB. Verifique o comprimento da sequência de consulta antes do envio. Se exceder o limite, altere o método de solicitação para POST, coloque a cadeia de caracteres de consulta no corpo da solicitação e adicione o parâmetro `_method=GET`. URIs longos são mais comuns ao recuperar lotes de registros grandes com valores de filtro longos, como um GUID.
+
+O ponto de extremidade [Identidade](https://developer.adobe.com/marketo-apis/api/identity/) pode retornar um erro 401 Não Autorizado, geralmente porque a ID do Cliente ou o Segredo do Cliente é inválido. A tabela a seguir lista códigos de erro de nível HTTP.
 
 <table>
   <thead>
@@ -75,7 +67,7 @@ O ponto de extremidade [Identidade](https://developer.adobe.com/marketo-apis/api
 
 #### Erros de nível de resposta
 
-Erros de nível de resposta estão presentes quando o parâmetro `success` da resposta é definido como false, e são estruturados como:
+Erros de Nível de Resposta ocorrem quando a resposta define o parâmetro `success` como false. Eles usam a seguinte estrutura:
 
 ```json
 {
@@ -90,7 +82,14 @@ Erros de nível de resposta estão presentes quando o parâmetro `success` da re
 }
 ```
 
-Cada objeto na matriz &quot;errors&quot; tem dois membros, `code`, que é um inteiro entre aspas de 601 a 799 e um `message` que fornece a razão do texto sem formatação para o erro. Os códigos 6xx sempre indicam que uma solicitação falhou completamente e não foi executada. Um exemplo é um 601, &quot;Token de acesso inválido&quot;, que pode ser recuperado através da reautenticação e transmissão do novo token de acesso com a solicitação. Os erros 7xx indicam que a solicitação falhou, seja porque nenhum dado foi retornado ou porque a solicitação foi parametrizada incorretamente, como a inclusão de uma data inválida ou a ausência de um parâmetro obrigatório.
+Cada objeto na matriz &quot;errors&quot; contém dois membros:
+
+- `code`: um inteiro entre aspas de 601 a 799.
+- `message`: O motivo de texto sem formatação para o erro.
+
+Um código 6xx indica que toda a solicitação falhou e não foi executada. Por exemplo, recupere-se de um erro 601 &quot;Token de acesso inválido&quot; ao autenticar novamente e passar o novo token de acesso com a solicitação.
+
+Um código 7xx indica que a solicitação falhou porque nenhum dado foi retornado ou os parâmetros de solicitação eram inválidos. As causas incluem uma data inválida ou um parâmetro obrigatório ausente.
 
 #### Códigos de erro de nível de resposta
 
@@ -130,7 +129,7 @@ Cada objeto na matriz &quot;errors&quot; tem dois membros, `code`, que é um int
     <tr>
       <td><a name="603"></a>603</td>
       <td>Acesso negado</td>
-      <td>A autenticação foi bem-sucedida, mas o usuário não tem permissão suficiente para chamar essa API. [Permissões adicionais](custom-services.md) podem precisar ser atribuídas à função de usuário, ou o <a href="https://experienceleague.adobe.com/pt-br/docs/marketo/using/product-docs/administration/additional-integrations/create-an-allowlist-for-ip-based-api-access">Incluo na lista de permissões para Acesso à API Baseada em IP</a> pode estar habilitado.</td>
+      <td>A autenticação foi bem-sucedida, mas o usuário não tem permissão suficiente para chamar essa API. [Permissões adicionais](custom-services.md) podem precisar ser atribuídas à função de usuário, ou o <a href="https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/administration/additional-integrations/create-an-allowlist-for-ip-based-api-access">Incluo na lista de permissões para Acesso à API Baseada em IP</a> pode estar habilitado.</td>
     </tr>
     <tr>
       <td><a name="604"></a>604*</td>
@@ -140,7 +139,7 @@ Cada objeto na matriz &quot;errors&quot; tem dois membros, `code`, que é um int
     <tr>
       <td><a name="605"></a>605*</td>
       <td>Método HTTP não suportado</td>
-      <td>O GET não é compatível com o ponto de extremidade Sync Leads. O POST deve ser usado.</td>
+      <td>Não há suporte para GET no ponto de extremidade Sincronizar Clientes Potenciais. O POST deve ser usado.</td>
     </tr>
     <tr>
       <td><a name="606"></a>606</td>
@@ -271,7 +270,7 @@ Cada objeto na matriz &quot;errors&quot; tem dois membros, `code`, que é um int
 
 ### Nível de registro {#record_level_errors}
 
-Os erros no nível do registro indicam que não foi possível concluir uma operação para um registro individual, mas a própria solicitação era válida. Uma resposta com erros de nível de registro segue este padrão:
+Erros de nível de registro indicam que a solicitação era válida, mas não foi possível concluir a operação para um registro individual. Uma resposta com erros de Nível de registro segue este padrão:
 
 #### Resposta
 
@@ -301,216 +300,219 @@ Os erros no nível do registro indicam que não foi possível concluir uma opera
 }
 ```
 
-Os registros incluídos na matriz de resultados das chamadas são ordenados da mesma forma que a matriz de entrada de uma solicitação.
-Cada registro em uma solicitação bem-sucedida pode ter êxito ou falha individualmente, o que é indicado pelo campo de status de cada registro incluído na matriz de resultados de uma resposta. O campo &quot;status&quot; desses registros será &quot;ignorado&quot; e uma matriz &quot;reason&quot; estará presente. Cada motivo contém um membro &quot;código&quot; e um membro &quot;mensagem&quot;. O código é sempre 1xxx e a mensagem indica por que o registro foi ignorado. Um exemplo seria quando uma solicitação Sincronizar clientes em potencial tem &quot;ação&quot; definida como &quot;createOnly&quot;, mas já existe um cliente em potencial para uma das chaves nos registros enviados. Esse caso retorna um código 1005 e uma mensagem de &quot;Lead já existe&quot; conforme exibido acima.
+Os registros na matriz de resultados aparecem na mesma ordem que os registros na matriz de entrada de solicitação. Cada registro pode ter êxito ou falha independentemente, conforme indicado pelo campo de status.
+
+Para um registro com falha, o campo &quot;status&quot; é &quot;skipped&quot; e o registro inclui uma matriz &quot;reason&quot;. Cada motivo contém um membro &quot;code&quot; e um membro &quot;message&quot;. O código é sempre 1xxx e a mensagem explica por que o registro foi ignorado.
+
+Por exemplo, se uma solicitação Sincronizar clientes em potencial definir &quot;action&quot; como &quot;createOnly&quot; e um cliente em potencial já existir para uma das chaves enviadas, a resposta retornará o código 1005 e a mensagem &quot;O cliente em potencial já existe&quot;, como mostrado acima.
 
 #### Códigos de erro de nível de registro
 
 >[!NOTE]
 >
 ><table>
-><tbody>
->    <tr>
->      <td>Código de resposta</td>
->      <td>Descrição</td>
->      <td>Comentário</td>
->    </tr>
->    <tr>
->      <td><a name="1001"></a>1001</td>
->      <td>Valor inválido ‘%s’. Obrigatório do tipo ‘%s’</td>
->      <td>O erro é gerado sempre que um valor de parâmetro tem uma incompatibilidade de tipo. Por exemplo, o valor da string especificado para um parâmetro inteiro.</td>
->    </tr>
->    <tr>
->      <td><a name="1002"></a>1002</td>
->      <td>Valor ausente para o parâmetro obrigatório ‘%s’</td>
->      <td>O erro é gerado quando um parâmetro obrigatório está ausente na solicitação</td>
->    </tr>
->    <tr>
->      <td><a name="1003"></a>1003</td>
->      <td>Dados inválidos</td>
->      <td>Quando os dados enviados não são de um tipo válido para o endpoint ou modo especificado, como quando a ID é enviada para um cliente potencial com a ação designada como createOnly ou ao usar a Campanha de solicitação em uma campanha em lote.</td>
->    </tr>
->    <tr>
->      <td><a name="1004"></a>1004</td>
->      <td>Lead não encontrado</td>
->      <td>Para syncLead, quando a ação for "updateOnly" e se o lead não for encontrado</td>
->    </tr>
->    <tr>
->      <td><a name="1005"></a>1005</td>
->      <td>O cliente em potencial já existe</td>
->      <td>Para syncLead, quando a ação for "createOnly" e um lead já existir</td>
->    </tr>
->    <tr>
->      <td><a name="1006"></a>1006</td>
->      <td>Campo ‘%s’ não encontrado</td>
->      <td>Um campo incluído na chamada não é válido.</td>
->    </tr>
->    <tr>
->      <td><a name="1007"></a>1007</td>
->      <td>Vários leads correspondem aos critérios de pesquisa</td>
->      <td>Vários clientes em potencial correspondem aos critérios de pesquisa. As atualizações só podem ser executadas quando a chave corresponde a um único registro</td>
->    </tr>
->    <tr>
->      <td><a name="1008"></a>1008</td>
->      <td>Acesso negado à partição ‘%s’</td>
->      <td>O usuário do serviço personalizado não tem acesso a um espaço de trabalho com a partição em que o registro existe.</td>
->    </tr>
->    <tr>
->      <td><a name="1009"></a>1009</td>
->      <td>O nome da partição deve ser especificado</td>
->      <td></td>
->    </tr>
->    <tr>
->      <td><a name="1010"></a>1010</td>
->      <td>Atualização de partição não permitida</td>
->      <td>O registro especificado já existe em uma partição de cliente potencial separada.</td>
->    </tr>
->    <tr>
->      <td><a name="1011"></a>1011</td>
->      <td>O campo ‘%s’ não é suportado</td>
->      <td>Quando o campo de pesquisa ou "filterType" é especificado com campos padrão sem suporte (por exemplo: firstName, lastName)</td>
->    </tr>
->    <tr>
->      <td><a name="1012"></a>1012</td>
->      <td>Valor de cookie inválido ‘%s’</td>
->      <td>Pode ocorrer ao chamar o <a href="https://developer.adobe.com/marketo-apis/api/mapi#tag/Leads/operation/associateLeadUsingPOST">Associar lead</a> com um valor inválido para o parâmetro "cookie".
->        Isso também ocorre ao chamar <a href="https://developer.adobe.com/marketo-apis/api/mapi#tag/Leads/operation/getLeadsByFilterUsingGET">Obter clientes em potencial por Tipo de filtro</a> com "filterType=cookies" e um valor inválido para o parâmetro "filterValues".</td>
->    </tr>
->    <tr>
->      <td><a name="1013"></a>1013</td>
->      <td>Objeto não encontrado</td>
->      <td>Obter objeto (lista, campanha) por id retorna este código de erro</td>
->    </tr>
->    <tr>
->      <td><a name="1014"></a>1014</td>
->      <td>Falha ao criar objeto</td>
->      <td>Falha ao criar objeto (lista)</td>
->    </tr>
->    <tr>
->      <td><a name="1015"></a>1015</td>
->      <td>Cliente em potencial não está na lista</td>
->      <td>O cliente em potencial designado não é um membro da lista de público alvo</td>
->    </tr>
->    <tr>
->      <td><a name="1016"></a>1016</td>
->      <td>Muitas importações</td>
->      <td>Há muitas importações na fila. Um máximo de 10 é permitido</td>
->    </tr>
->    <tr>
->      <td><a name="1017"></a>1017</td>
->      <td>O objeto já existe</td>
->      <td>Falha na criação porque o registro já existe</td>
->    </tr>
->    <tr>
->      <td><a name="1018"></a>1018</td>
->      <td>CRM Habilitado</td>
->      <td>A ação não pôde ser executada porque a instância tem uma integração nativa do CRM habilitada.</td>
->    </tr>
->    <tr>
->      <td><a name="1019"></a>1019</td>
->      <td>Importação em andamento</td>
->      <td>A lista de destino já está sendo importada para</td>
->    </tr>
->    <tr>
->      <td><a name="1020"></a>1020</td>
->      <td>Muitos clones para o programa</td>
->      <td>A assinatura atingiu o uso alocado de "cloneToProgramName" no Programa de agendamento para o dia</td>
->    </tr>
->    <tr>
->      <td><a name="1021"></a>1021</td>
->      <td>Atualização de empresa não permitida</td>
->      <td>Atualização da empresa não permitida durante syncLead</td>
->    </tr>
->    <tr>
->      <td><a name="1022"></a>1022</td>
->      <td>Objeto em uso</td>
->      <td>A exclusão não é permitida quando um objeto está em uso por outro objeto</td>
->    </tr>
->    <tr>
->      <td><a name="1025"></a>1025</td>
->      <td>Status do programa não encontrado</td>
->      <td>Foi especificado um status para Alterar o status do programa de cliente potencial que não corresponde a um status disponível para o canal do programa.</td>
->    </tr>
->    <tr>
->      <td><a name="1026"></a>1026</td>
->      <td>Objeto personalizado não habilitado</td>
->      <td>A ação não pôde ser executada, pois a instância não tem a integração de objetos personalizados habilitada.</td>
->    </tr>
->    <tr>
->      <td><a name="1027"></a>1027</td>
->      <td>Limite máximo de tipos de atividade atingido</td>
->      <td>A assinatura atingiu o número máximo de tipos de atividades personalizadas disponíveis.</td>
->    </tr>
->    <tr>
->      <td><a name="1028"></a>1028</td>
->      <td>Limite máximo de campos atingido</td>
->      <td>As atividades personalizadas têm no máximo 20 atributos secundários.</td>
->    </tr>
->    <tr>
->      <td><a name="1029"></a>1029</td>
->      <td><ul>
->          <li>Muitos trabalhos na fila</li>
->          <li>Exportação de cota diária excedida</li>
->          <li>Tarefa já na fila</li>
->        </ul></td>
->      <td><ul>
->          <li>As assinaturas podem ter no máximo 10 trabalhos de extração em massa na fila em um determinado momento.</li>
->          <li>Por padrão, os trabalhos de extração são limitados a 500 MB por dia (é redefinido diariamente às 12h00 CST).</li>
->          <li>A ID de exportação já foi colocada na fila.</li>
->        </ul></td>
->    </tr>
->    <tr>
->      <td><a name="1035"></a>1035</td>
->      <td>Tipo de filtro incompatível</td>
->      <td>Em algumas assinaturas, os seguintes tipos de filtro de Extração de lead em massa não são compatíveis: updatedAt, smartListId, smartListName.</td>
->    </tr>
->    <tr>
->      <td><a name="1036"></a>1036</td>
->      <td>Objeto duplicado encontrado na entrada</td>
->      <td>Foi feita uma chamada para atualizar dois ou mais registros usando a mesma chave estrangeira. Por exemplo, uma chamada de Empresas de sincronização usando a mesma externalCompanyId para mais de uma empresa.</td>
->    </tr>
->    <tr>
->      <td><a name="1037"></a>1037</td>
->      <td>O lead foi ignorado</td>
->      <td>O cliente em potencial foi ignorado porque já está neste status ou já passou dele.</td>
->    </tr>
->    <tr>
->      <td><a name="1042"></a>1042</td>
->      <td>Data runAt inválida</td>
->      <td>A data runAt especificada para o Schedule Campaign estava muito distante no futuro (o máximo é 2 anos).</td>
->    </tr>
->    <tr>
->      <td><a name="1048"></a>1048</td>
->      <td>Falha ao descartar rascunho de objeto personalizado</td>
->      <td>Foi feita uma chamada para descartar a versão de rascunho de um objeto personalizado.</td>
->    </tr>
->    <tr>
->      <td><a name="1049"></a>1049</td>
->      <td>Falha ao criar atividade</td>
->      <td>Matriz de atributos muito longa.
->        A matriz de atributos passada para o registro excedeu o comprimento máximo de 65.536 bytes</td>
->    </tr>
->    <tr>
->      <td><a name="1076"></a>1076</td>
->      <td>A chamada <a href="https://developer.adobe.com/marketo-apis/api/mapi#tag/Leads/operation/mergeLeadsUsingPOST">Mesclar clientes em potencial</a> com o sinalizador mergeInCRM é 4.</td>
->      <td>Você está criando um registro duplicado. É recomendável usar um registro existente.
->        Essa é a mensagem de erro, que o Marketo recebe ao mesclar no Salesforce.</td>
->    </tr>
->    <tr>
->      <td><a name="1077"></a>1077</td>
->      <td>A chamada <a href="https://developer.adobe.com/marketo-apis/api/mapi#tag/Leads/operation/mergeLeadsUsingPOST">Mesclar clientes em potencial</a> falhou devido ao comprimento do "Campo SFDC"</td>
->      <td>Uma chamada de Mesclagem de leads com mergeInCRM definido como true falhou porque o "Campo SFDC" excede o limite de caracteres permitidos. Para corrigir, reduza o comprimento de "SFDC Field" ou defina mergeInCRM como false.</td>
->    </tr>
->    <tr>
->      <td><a name="1078"></a>1078</td>
->      <td>A chamada <a href="https://developer.adobe.com/marketo-apis/api/mapi#tag/Leads/operation/mergeLeadsUsingPOST">Mesclar clientes em potencial</a> falhou devido à entidade excluída, não a um cliente potencial/contato ou a critérios de filtro de campo não correspondem.</td>
->      <td>Falha na mesclagem; não é possível executar a operação de mesclagem no CRM sincronizado nativamente
->        Essa é a mensagem de erro, que o Marketo recebe ao mesclar no Salesforce.</td>
->    </tr>
->    <tr>
->      <td><a name="1079"></a>1079</td>
->      <td>A chamada <a href="https://developer.adobe.com/marketo-apis/api/mapi#tag/Leads/operation/mergeLeadsUsingPOST">Mesclar clientes em potencial</a> falhou devido ao conflito de URL personalizado em registros duplicados</td>
->      <td>Uma chamada de Mesclar leads especificou muitos leads com a mesma URL personalizada. Para resolver, use a interface do usuário do Marketo Engage para mesclar esses registros.</td>
->    </tr>
->  </tbody>
-></table>
+<tbody>
+    <tr>
+      <td>Código de resposta</td>
+      <td>Descrição</td>
+      <td>Comentário</td>
+    </tr>
+    <tr>
+      <td><a name="1001"></a>1001</td>
+      <td>Valor inválido ‘%s’. Obrigatório do tipo ‘%s’</td>
+      <td>O erro é gerado sempre que um valor de parâmetro tem uma incompatibilidade de tipo. Por exemplo, o valor da string especificado para um parâmetro inteiro.</td>
+    </tr>
+    <tr>
+      <td><a name="1002"></a>1002</td>
+      <td>Valor ausente para o parâmetro obrigatório ‘%s’</td>
+      <td>O erro é gerado quando um parâmetro obrigatório está ausente na solicitação</td>
+    </tr>
+    <tr>
+      <td><a name="1003"></a>1003</td>
+      <td>Dados inválidos</td>
+      <td>Quando os dados enviados não são de um tipo válido para o endpoint ou modo especificado, como quando a ID é enviada para um cliente potencial com a ação designada como createOnly ou ao usar a Campanha de solicitação em uma campanha em lote.</td>
+    </tr>
+    <tr>
+      <td><a name="1004"></a>1004</td>
+      <td>Lead não encontrado</td>
+      <td>Para syncLead, quando a ação for "updateOnly" e se o lead não for encontrado</td>
+    </tr>
+    <tr>
+      <td><a name="1005"></a>1005</td>
+      <td>O cliente em potencial já existe</td>
+      <td>Para syncLead, quando a ação for "createOnly" e um lead já existir</td>
+    </tr>
+    <tr>
+      <td><a name="1006"></a>1006</td>
+      <td>Campo ‘%s’ não encontrado</td>
+      <td>Um campo incluído na chamada não é válido.</td>
+    </tr>
+    <tr>
+      <td><a name="1007"></a>1007</td>
+      <td>Vários leads correspondem aos critérios de pesquisa</td>
+      <td>Vários clientes em potencial correspondem aos critérios de pesquisa. As atualizações só podem ser executadas quando a chave corresponde a um único registro</td>
+    </tr>
+    <tr>
+      <td><a name="1008"></a>1008</td>
+      <td>Acesso negado à partição ‘%s’</td>
+      <td>O usuário do serviço personalizado não tem acesso a um espaço de trabalho com a partição em que o registro existe.</td>
+    </tr>
+    <tr>
+      <td><a name="1009"></a>1009</td>
+      <td>O nome da partição deve ser especificado</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td><a name="1010"></a>1010</td>
+      <td>Atualização de partição não permitida</td>
+      <td>O registro especificado já existe em uma partição de cliente potencial separada.</td>
+    </tr>
+    <tr>
+      <td><a name="1011"></a>1011</td>
+      <td>O campo ‘%s’ não é suportado</td>
+      <td>Quando o campo de pesquisa ou "filterType" é especificado com campos padrão sem suporte (por exemplo: firstName, lastName)</td>
+    </tr>
+    <tr>
+      <td><a name="1012"></a>1012</td>
+      <td>Valor de cookie inválido ‘%s’</td>
+      <td>Pode ocorrer ao chamar o <a href="https://developer.adobe.com/marketo-apis/api/mapi#tag/Leads/operation/associateLeadUsingPOST">Associar lead</a> com um valor inválido para o parâmetro "cookie".
+        Isso também ocorre ao chamar <a href="https://developer.adobe.com/marketo-apis/api/mapi#tag/Leads/operation/getLeadsByFilterUsingGET">Obter clientes em potencial por tipo de filtro</a> com "filterType=cookies" e um valor inválido para o parâmetro "filterValues".</td>
+    </tr>
+    <tr>
+      <td><a name="1013"></a>1013</td>
+      <td>Objeto não encontrado</td>
+      <td>Obter objeto (lista, campanha) por id retorna este código de erro</td>
+    </tr>
+    <tr>
+      <td><a name="1014"></a>1014</td>
+      <td>Falha ao criar objeto</td>
+      <td>Falha ao criar objeto (lista)</td>
+    </tr>
+    <tr>
+      <td><a name="1015"></a>1015</td>
+      <td>Cliente em potencial não está na lista</td>
+      <td>O cliente em potencial designado não é um membro da lista de público alvo</td>
+    </tr>
+    <tr>
+      <td><a name="1016"></a>1016</td>
+      <td>Muitas importações</td>
+      <td>Há muitas importações na fila. Um máximo de 10 é permitido</td>
+    </tr>
+    <tr>
+      <td><a name="1017"></a>1017</td>
+      <td>O objeto já existe</td>
+      <td>Falha na criação porque o registro já existe</td>
+    </tr>
+    <tr>
+      <td><a name="1018"></a>1018</td>
+      <td>CRM Habilitado</td>
+      <td>A ação não pôde ser executada porque a instância tem uma integração nativa do CRM habilitada.</td>
+    </tr>
+    <tr>
+      <td><a name="1019"></a>1019</td>
+      <td>Importação em andamento</td>
+      <td>A lista de destino já está sendo importada para</td>
+    </tr>
+    <tr>
+      <td><a name="1020"></a>1020</td>
+      <td>Muitos clones para o programa</td>
+      <td>A assinatura atingiu o uso alocado de "cloneToProgramName" no Programa de agendamento para o dia</td>
+    </tr>
+    <tr>
+      <td><a name="1021"></a>1021</td>
+      <td>Atualização de empresa não permitida</td>
+      <td>Atualização da empresa não permitida durante syncLead</td>
+    </tr>
+    <tr>
+      <td><a name="1022"></a>1022</td>
+      <td>Objeto em uso</td>
+      <td>A exclusão não é permitida quando um objeto está em uso por outro objeto</td>
+    </tr>
+    <tr>
+      <td><a name="1025"></a>1025</td>
+      <td>Status do programa não encontrado</td>
+      <td>Foi especificado um status para Alterar o status do programa de cliente potencial que não corresponde a um status disponível para o canal do programa.</td>
+    </tr>
+    <tr>
+      <td><a name="1026"></a>1026</td>
+      <td>Objeto personalizado não habilitado</td>
+      <td>A ação não pôde ser executada, pois a instância não tem a integração de objetos personalizados habilitada.</td>
+    </tr>
+    <tr>
+      <td><a name="1027"></a>1027</td>
+      <td>Limite máximo de tipos de atividade atingido</td>
+      <td>A assinatura atingiu o número máximo de tipos de atividades personalizadas disponíveis.</td>
+    </tr>
+    <tr>
+      <td><a name="1028"></a>1028</td>
+      <td>Limite máximo de campos atingido</td>
+      <td>As atividades personalizadas têm no máximo 20 atributos secundários.</td>
+    </tr>
+    <tr>
+      <td><a name="1029"></a>1029</td>
+      <td><ul>
+          <li>Muitos trabalhos na fila</li>
+          <li>Exportação de cota diária excedida</li>
+          <li>Tarefa já na fila</li>
+        </ul></td>
+      <td><ul>
+          <li>As assinaturas podem ter no máximo 10 trabalhos de extração em massa na fila em um determinado momento.</li>
+          <li>Por padrão, os trabalhos de extração são limitados a 500 MB por dia (é redefinido diariamente às 12h00 CST).</li>
+          <li>A ID de exportação já foi colocada na fila.</li>
+        </ul></td>
+    </tr>
+    <tr>
+      <td><a name="1035"></a>1035</td>
+      <td>Tipo de filtro incompatível</td>
+      <td>Em algumas assinaturas, os seguintes tipos de filtro de Extração de lead em massa não são compatíveis: updatedAt, smartListId, smartListName.</td>
+    </tr>
+    <tr>
+      <td><a name="1036"></a>1036</td>
+      <td>Objeto duplicado encontrado na entrada</td>
+      <td>Foi feita uma chamada para atualizar dois ou mais registros usando a mesma chave estrangeira. Por exemplo, uma chamada de Empresas de sincronização usando a mesma externalCompanyId para mais de uma empresa.</td>
+    </tr>
+    <tr>
+      <td><a name="1037"></a>1037</td>
+      <td>O lead foi ignorado</td>
+      <td>O cliente em potencial foi ignorado porque já está neste status ou já passou dele.</td>
+    </tr>
+    <tr>
+      <td><a name="1042"></a>1042</td>
+      <td>Data runAt inválida</td>
+      <td>A data runAt especificada para o Schedule Campaign estava muito distante no futuro (o máximo é 2 anos).</td>
+    </tr>
+    <tr>
+      <td><a name="1048"></a>1048</td>
+      <td>Falha ao descartar rascunho de objeto personalizado</td>
+      <td>Foi feita uma chamada para descartar a versão de rascunho de um objeto personalizado.</td>
+    </tr>
+    <tr>
+      <td><a name="1049"></a>1049</td>
+      <td>Falha ao criar atividade</td>
+      <td>Matriz de atributos muito longa.
+        A matriz de atributos passada para o registro excedeu o comprimento máximo de 65.536 bytes</td>
+    </tr>
+    <tr>
+      <td><a name="1076"></a>1076</td>
+      <td>A chamada <a href="https://developer.adobe.com/marketo-apis/api/mapi#tag/Leads/operation/mergeLeadsUsingPOST">Mesclar clientes em potencial</a> com o sinalizador mergeInCRM é 4.</td>
+      <td>Você está criando um registro duplicado. É recomendável usar um registro existente.
+        Essa é a mensagem de erro, que o Marketo recebe ao mesclar no Salesforce.</td>
+    </tr>
+    <tr>
+      <td><a name="1077"></a>1077</td>
+      <td>A chamada <a href="https://developer.adobe.com/marketo-apis/api/mapi#tag/Leads/operation/mergeLeadsUsingPOST">Mesclar clientes em potencial</a> falhou devido ao comprimento do "Campo SFDC"</td>
+      <td>Uma chamada de Mesclagem de leads com mergeInCRM definido como true falhou porque o "Campo SFDC" excede o limite de caracteres permitidos. Para corrigir, reduza o comprimento de "SFDC Field" ou defina mergeInCRM como false.</td>
+    </tr>
+    <tr>
+      <td><a name="1078"></a>1078</td>
+      <td>A chamada <a href="https://developer.adobe.com/marketo-apis/api/mapi#tag/Leads/operation/mergeLeadsUsingPOST">Mesclar clientes em potencial</a> falhou devido à entidade excluída, não a um cliente potencial/contato ou a critérios de filtro de campo não correspondem.</td>
+      <td>Falha na mesclagem; não é possível executar a operação de mesclagem no CRM sincronizado nativamente
+        Essa é a mensagem de erro, que o Marketo recebe ao mesclar no Salesforce.</td>
+    </tr>
+    <tr>
+      <td><a name="1079"></a>1079</td>
+      <td>A chamada <a href="https://developer.adobe.com/marketo-apis/api/mapi#tag/Leads/operation/mergeLeadsUsingPOST">Mesclar clientes em potencial</a> falhou devido ao conflito de URL personalizado em registros duplicados</td>
+      <td>Uma chamada de Mesclar leads especificou muitos leads com a mesma URL personalizada. Para resolver, use a interface do usuário do Marketo Engage para mesclar esses registros.</td>
+    </tr>
+  </tbody>
+</table>

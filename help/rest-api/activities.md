@@ -4,34 +4,32 @@ feature: REST API
 description: Use a API REST de atividades do Marketo Engage para listar tipos de atividades, buscar atividades principais com tokens de paginação e lidar com alterações personalizadas e de valores de dados.
 exl-id: 1e69af23-2b0c-467a-897c-1dcf81343e73
 TQID: https://experienceleague.adobe.com/62keaj4uNoxIPCzr9AQzKrIsfuHBvC25knYisZRUvF4
-product_v2:
-  - id: b27e5950-9033-45ac-9f86-eb22e567f615
-feature_v2:
-  - id: c5f60233-d5ea-4453-a799-0ad258b4d399
-role_v2:
-  - id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
-topic_v2:
-  - id: a004cc84-67b9-4a33-a3a7-8ec7273ef4dc
-source-git-commit: e71bcf289229867bc969345d79c8f014761aaaf9
+product_v2: id: b27e5950-9033-45ac-9f86-eb22e567f615
+feature_v2: id: c5f60233-d5ea-4453-a799-0ad258b4d399
+role_v2: id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
+topic_v2: id: a004cc84-67b9-4a33-a3a7-8ec7273ef4dc
+source-git-commit: 3e6d310c5aec1a3435424fb122b71d825db5af0e
 workflow-type: tm+mt
-source-wordcount: 2226
+source-wordcount: 1758
 ht-degree: 0%
 
 ---
 
 # Atividades
 
-O Marketo permite uma grande variedade de tipos de atividades relacionadas a registros de clientes potenciais.  Quase todas as alterações, ações ou etapas de fluxo são registradas no log de atividades de um lead e podem ser recuperadas por meio da API ou aproveitadas nos filtros e acionadores da Smart List e do Smart Campaign.  As atividades são sempre relacionadas ao registro de lead por meio do leadId, correspondente ao campo Id do registro, e também têm uma ID exclusiva própria.
+O Marketo oferece suporte a vários tipos de atividades relacionadas a registros de clientes potenciais. Quase todas as etapas de alteração, ação ou fluxo são registradas no log de atividades de um lead. Você pode recuperar essas atividades por meio da API ou usá-las em filtros e acionadores de Smart List e Smart Campaign.
 
-Há um número muito grande de tipos de atividades potenciais, que podem variar de assinatura para assinatura, e têm definições exclusivas para cada um. Embora cada atividade tenha seu próprio e exclusivo `id`, `leadId` e `activityDate`, os valores `primaryAttributeValueId` e `primaryAttributeValue` variam em seu significado.
+Cada atividade tem um `id` exclusivo e se conecta a um registro de cliente potencial por meio de `leadId`, que corresponde ao campo de ID do registro. Toda atividade também tem um `activityDate`.
 
-O Marketo também permite a criação de Tipos de atividade personalizados por meio da API de metadados de atividades personalizadas. A adição de atividades personalizadas é feita por meio da API Adicionar atividades personalizadas.
+Os tipos de atividades disponíveis variam de acordo com a assinatura e cada tipo tem sua própria definição. O significado de `primaryAttributeValueId` e `primaryAttributeValue` depende do tipo de atividade.
+
+Use a API de metadados de atividades personalizadas para criar Tipos de atividade personalizados. Use a API Adicionar atividades personalizadas para adicionar registros de atividades personalizadas.
 
 A maioria das atividades será removida após algum período.
 
 ## Descrever
 
-Para recuperar uma lista de tipos disponíveis e suas definições para uma instância, você pode usar o ponto de extremidade [Obter Tipos de Atividade](https://developer.adobe.com/marketo-apis/api/mapi#tag/Activities/operation/getAllActivityTypesUsingGET).
+Use o ponto de extremidade [Obter Tipos de Atividade](https://developer.adobe.com/marketo-apis/api/mapi#tag/Activities/operation/getAllActivityTypesUsingGET) para recuperar os tipos de atividade disponíveis e suas definições para uma instância.
 
 ```
 GET /rest/v1/activities/types.json
@@ -80,13 +78,20 @@ GET /rest/v1/activities/types.json
 }
 ```
 
-As respostas do mundo real incluem muito mais definições. Neste exemplo, o tipo mostrado é um &quot;Formulário de preenchimento&quot;, que tem um atributo principal de &quot;ID de formulário da Web&quot;, que se refere à Marketo ID do formulário que foi preenchido e pode ser usado para se relacionar a esse ativo específico no Marketo. Além disso, há definições para cada um dos atributos possíveis de um registro de atividade específico desse tipo e seus tipos de dados. Observe que, se o campo estiver vazio, esse atributo específico será omitido de um registro de atividade individual.
+As respostas reais incluem mais definições. Este exemplo mostra o tipo de atividade &quot;Preencher formulário&quot;. Seu atributo principal, &quot;ID de formulário da Web&quot;, se refere à Marketo ID do formulário enviado e vincula a atividade a esse ativo.
+
+A resposta também define cada atributo possível para o tipo de atividade e seu tipo de dados. Se um campo estiver vazio, esse atributo será omitido do registro de atividade individual.
 
 ## Consultar
 
-Para recuperar atividades do Marketo, chame o ponto de extremidade [Obter atividades de cliente potencial](https://developer.adobe.com/marketo-apis/api/mapi#tag/Activities/operation/getLeadActivitiesUsingGET). Primeiro, é necessário recuperar um token de paginação para o datetime a partir do qual você deseja começar a recuperar atividades. Em seguida, você passa o token de paginação no parâmetro de consulta `nextPageToken`. Além disso, você passa até dez IDs de tipo de atividade no parâmetro de consulta `activityTypeIds` como uma lista separada por vírgulas.
+Use o ponto de extremidade [Obter Atividades de Cliente Potencial](https://developer.adobe.com/marketo-apis/api/mapi#tag/Activities/operation/getLeadActivitiesUsingGET) para recuperar atividades. Primeiro, recupere um token de paginação para a data e hora em que a recuperação da atividade deve começar. Passe esse token no parâmetro de consulta `nextPageToken`.
 
-Opcionalmente, você pode incluir um parâmetro de consulta `listId` para restringir sua pesquisa apenas aos registros incluídos em uma lista estática específica, ou um parâmetro de consulta `leadIds` e pesquisar atividades somente de um conjunto especificado de clientes potenciais. Você pode passar até 30 `leadIds` como uma lista separada por vírgulas.
+Transmita até dez IDs de tipo de atividade como uma lista separada por vírgulas no parâmetro de consulta `activityTypeIds`.
+
+Opcionalmente, restrinja a consulta a um destes parâmetros:
+
+- `listId` limita os resultados a registros em uma lista estática específica.
+- `leadIds` limita os resultados a atividades para até 30 clientes potenciais, fornecidos em uma lista separada por vírgulas.
 
 >[!CAUTION]
 >
@@ -138,20 +143,20 @@ GET /rest/v1/activities.json?activityTypeIds=1&nextPageToken=WQV2VQVPPCKHC6AQYVK
 }
 ```
 
-Para a primeira chamada, use a API Obter Token de Paginação para obter `nextPageToken`. Para chamadas subsequentes a este ponto de extremidade, use o `nextPageToken returned` da resposta. Este ponto de extremidade sempre retorna `the nextPageToken`.
+Para a primeira chamada, use a API Obter Token de Paginação para obter `nextPageToken`. Para cada chamada subsequente, passe o `nextPageToken` retornado pela resposta anterior. Este ponto de extremidade sempre retorna `nextPageToken`.
 
-Se o atributo `moreResult` for true, significa que mais resultados estarão disponíveis. Continue a chamar este ponto de extremidade até que o atributo `moreResult` retorne falso, o que significa que não há resultados disponíveis. O `nextPageToken` retornado desta API deve sempre ser reutilizado para a próxima iteração desta chamada.
+Se `moreResult` for verdadeiro, mais resultados estarão disponíveis. Continue chamando o ponto de extremidade com o `nextPageToken` retornado até que `moreResult` seja falso.
 
-Em alguns casos, essa API pode responder com menos de 300 itens de atividade, mas também pode ter o atributo `moreResult` definido como verdadeiro.  Isso indica que há mais atividades que podem ser retornadas e que o ponto de extremidade pode ser consultado para atividades mais recentes incluindo a `nextPageToken` retornada em uma chamada subsequente.
+A API pode retornar menos de 300 itens de atividade ao configurar `moreResult` como verdadeiro. Nesse caso, inclua o `nextPageToken` retornado em outra chamada para recuperar atividades mais recentes.
 
-Observe que em cada item da matriz de resultados, o atributo inteiro `id` está sendo substituído pelo atributo da cadeia de caracteres `marketoGUID` como identificador exclusivo.
+Em cada item da matriz de resultados, o atributo de cadeia de caracteres `marketoGUID` substitui o atributo inteiro `id` como identificador exclusivo.
 
 ### Alterações no valor dos dados
 
-Para atividades de Alteração do valor de dados, é fornecida uma versão especializada da API de atividades. O ponto de extremidade [Obter Alterações de Cliente Potencial](https://developer.adobe.com/marketo-apis/api/mapi#tag/Activities/operation/getLeadChangesUsingGET) retorna somente atividades de registros de Alteração de Valor de Dados para campos de cliente potencial. A interface é a mesma da API Obter atividades principais, com duas diferenças:
+Use o ponto de extremidade [Obter Alterações de Cliente Potencial](https://developer.adobe.com/marketo-apis/api/mapi#tag/Activities/operation/getLeadChangesUsingGET) para recuperar registros de Alteração de Valor de Dados para campos de cliente potencial. Sua interface difere da API Obter atividades de lead de duas maneiras:
 
-* Não há um parâmetro `activityTypeIds`, pois o ponto de extremidade retorna apenas as atividades Alteração do Valor dos Dados e Novo Cliente Potencial.
-* O parâmetro de consulta `fields` é obrigatório, no qual você pode passar uma lista de campos separada por vírgulas para indicar para quais campos deseja recuperar alterações.
+- O ponto de extremidade não tem parâmetro `activityTypeIds` porque retorna somente a Alteração do Valor dos Dados e novas atividades de cliente potencial.
+- O parâmetro de consulta `fields` necessário aceita uma lista de campos separada por vírgulas cujas alterações você deseja recuperar.
 
 >[!CAUTION]
 >
@@ -201,13 +206,13 @@ GET /rest/v1/activities/leadchanges.json?nextPageToken=GIYDAOBNGEYS2MBWKQYDAORQG
 }
 ```
 
-Cada atividade na resposta tem uma matriz de campos, incluindo uma lista de alterações na atividade, que especificará os `id` e `name` do campo alterados, bem como os valores novos e antigos relativos à alteração.
+Cada atividade na resposta tem uma matriz de campos que lista suas alterações. Cada alteração especifica os `id` e `name` do campo, juntamente com os valores novos e antigos.
 
-Observe que em cada item da matriz de resultados, o atributo inteiro `id` está sendo substituído pelo atributo da cadeia de caracteres `marketoGUID` como identificador exclusivo.
+Em cada item da matriz de resultados, o atributo de cadeia de caracteres `marketoGUID` substitui o atributo inteiro `id` como identificador exclusivo.
 
 ### Clientes potenciais excluídos
 
-Também há um ponto de extremidade especial [Obter clientes em potencial excluídos](https://developer.adobe.com/marketo-apis/api/mapi#tag/Activities/operation/getDeletedLeadsUsingGET) para recuperar atividades excluídas da Marketo.
+Use o ponto de extremidade [Obter Clientes Potenciais Excluídos](https://developer.adobe.com/marketo-apis/api/mapi#tag/Activities/operation/getDeletedLeadsUsingGET) para recuperar atividades de cliente potencial excluídas da Marketo.
 
 ```http
 GET /rest/v1/activities/deletedleads.json?nextPageToken=GIYDAOBNGEYS2MBWKQYDAORQGA5DAMBOGAYDAKZQGAYDALBQ
@@ -244,26 +249,30 @@ GET /rest/v1/activities/deletedleads.json?nextPageToken=GIYDAOBNGEYS2MBWKQYDAORQ
 }
 ```
 
-Observe que em cada item da matriz de resultados, o atributo inteiro `id` está sendo substituído pelo atributo da cadeia de caracteres `marketoGUID` como identificador exclusivo.
+Em cada item da matriz de resultados, o atributo de cadeia de caracteres `marketoGUID` substitui o atributo inteiro `id` como identificador exclusivo.
 
 ### Página pelos resultados
 
-Por padrão, os endpoints mencionados nesta seção retornam 300 itens de atividade por vez.  Se o atributo `moreResult` for true, mais resultados estarão disponíveis. Chame o ponto de extremidade até que o atributo `moreResult` retorne false, o que significa que não há mais resultados disponíveis. O `nextPageToken` retornado deste ponto de extremidade deve sempre ser reutilizado para a próxima iteração desta chamada.
+Por padrão, os endpoints nesta seção retornam 300 itens de atividade de cada vez. Se `moreResult` for verdadeiro, mais resultados estarão disponíveis. Passar o `nextPageToken` retornado em cada chamada subsequente até `moreResult` ser falso.
 
-Em alguns casos, esse ponto de extremidade pode responder com menos de 300 itens de atividade, mas também pode ter o atributo `moreResult` definido como verdadeiro.  Isso indica que há atividades adicionais que podem ser retornadas e que o ponto de extremidade pode ser consultado para atividades mais recentes incluindo a `nextPageToken` retornada em uma chamada subsequente. Observe que `nextPageToken` precisa ser Codificado por URL na solicitação.
+Um ponto de extremidade pode retornar menos de 300 itens de atividade ao configurar `moreResult` como verdadeiro. Nesse caso, inclua o `nextPageToken` retornado em outra chamada para recuperar atividades mais recentes. Codificação de URL `nextPageToken` na solicitação.
 
 ## Tipos de atividades personalizadas
 
-As Atividades personalizadas funcionam como atividades padrão, exceto que o esquema é gerenciado por terceiros e não pelo Marketo. As instâncias de atividades personalizadas estão vinculadas aos registros de clientes potenciais por meio do `leadId` da mesma forma que as atividades padrão, mas os atributos primário e secundário são definidos arbitrariamente. Quando um tipo de atividade personalizado é aprovado, um acionador e um filtro de Smart List correspondentes são criados, para que os clientes potenciais possam ser processados com base nos dados de atividade personalizados atuais ou históricos.
+As Atividades personalizadas funcionam como atividades padrão, mas terceiros gerenciam seus esquemas. Os registros de atividade personalizados são vinculados aos registros de clientes potenciais por meio de `leadId`, e seus atributos primário e secundário são definidos pelo usuário.
 
-* Número máximo de atividades personalizadas: 10
-* Número máximo de atributos por atividade personalizada: 20
+Quando um tipo de atividade personalizada é aprovado, o Marketo cria um acionador e filtro de Smart List correspondente. Em seguida, você pode processar clientes em potencial com base nos dados de atividade personalizados atuais ou históricos.
 
-A recuperação de dados de atividades personalizadas é feita da mesma forma que as atividades padrão, por meio da API [Obter atividades de cliente potencial](https://developer.adobe.com/marketo-apis/api/mapi#tag/Activities/operation/getLeadActivitiesUsingGET).
+- Máximo de atividades personalizadas: 10
+- Máximo de atributos por atividade personalizada: 20
+
+Recupere dados de atividades personalizadas por meio da API [Obter Atividades de Cliente Potencial](https://developer.adobe.com/marketo-apis/api/mapi#tag/Activities/operation/getLeadActivitiesUsingGET), da mesma forma que recupera atividades padrão.
 
 ## Tipos de consulta
 
-Além do ponto de extremidade padrão Obter Tipos de Atividade, os pontos de extremidade [Obter Tipos de Atividade Personalizados](https://developer.adobe.com/marketo-apis/api/mapi#tag/Activities/operation/getCustomActivityTypeUsingGET) e [Descrever Tipo de Atividade Personalizado](https://developer.adobe.com/marketo-apis/api/mapi#tag/Activities/operation/describeCustomActivityTypeUsingGET) retornam detalhes sobre os tipos de atividade provisionados na instância do Marketo e metadados relativos aos atributos de determinado tipo. O [Get Activity Types](https://developer.adobe.com/marketo-apis/api/mapi#tag/Activities/operation/getAllActivityTypesUsingGET) normal ainda retorna metadados sobre atividades personalizadas, mas não indica se um determinado tipo é personalizado.
+Use [Obter Tipos de Atividade Personalizados](https://developer.adobe.com/marketo-apis/api/mapi#tag/Activities/operation/getCustomActivityTypeUsingGET) para recuperar detalhes sobre os tipos provisionados em uma instância do Marketo. Use [Descrever Tipo de Atividade Personalizada](https://developer.adobe.com/marketo-apis/api/mapi#tag/Activities/operation/describeCustomActivityTypeUsingGET) para recuperar metadados de atributo para um tipo específico.
+
+O ponto de extremidade padrão [Obter Tipos de Atividade](https://developer.adobe.com/marketo-apis/api/mapi#tag/Activities/operation/getAllActivityTypesUsingGET) também retorna metadados de atividade personalizados, mas não identifica se um tipo é personalizado.
 
 ### Obter tipos
 
@@ -293,7 +302,7 @@ GET /rest/v1/activities/external/types.json
 
 ### Descrever tipos
 
-Para descrições de tipo, você deve passar `apiName` como parâmetro de caminho. Por padrão, você obtém a versão aprovada da atividade. Opcionalmente, você pode passar o parâmetro `draft=true` para recuperar a versão de rascunho da atividade.
+Para descrever um tipo, passe `apiName` como um parâmetro de caminho. Por padrão, o endpoint retorna a versão aprovada da atividade. Para recuperar a versão de rascunho, passe o parâmetro `draft=true` opcional.
 
 ```http
 GET /rest/v1/activities/external/type/{apiName}/describe.json
@@ -341,25 +350,23 @@ GET /rest/v1/activities/external/type/{apiName}/describe.json
 
 ## Criar tipo
 
-Cada tipo de atividade personalizado requer um nome de exibição, nome da API, nome do acionador, nome do filtro e atributo principal.
+Cada tipo de atividade personalizado requer um nome de exibição, nome da API, nome do acionador, nome do filtro e atributo principal. Use as diretrizes a seguir para manter os tipos consistentes com as convenções do Marketo e evitar colisões de nomes:
 
-Para garantir a consistência de seus tipos com as convenções do Marketo e evitar colisões, é importante seguir algumas diretrizes ao criar seus tipos:
+- **Nome para Exibição:** Descreva brevemente o que um registro de atividade representa, como &quot;Enviar Email&quot; ou &quot;Alterar Valor dos Dados&quot;. Use o formulário infinitivo, como &quot;Participar do evento&quot;. Os nomes de exibição aceitam caracteres alfanuméricos, espaços e sublinhados e devem conter pelo menos uma letra.
 
-**Nome para Exibição:** O nome para exibição do tipo de atividade deve descrever resumidamente o que um registro de atividade representa, como &quot;Enviar Email&quot; ou &quot;Alterar Valor dos Dados&quot;. Normalmente, esses nomes devem estar no formato infinitivo, ou seja, &quot;Participar do evento&quot;.  Os nomes de exibição aceitam caracteres alfanuméricos, espaços e sublinhados. Os nomes para exibição devem conter pelo menos uma letra.
+- **Nome da API:** Use caracteres alfanuméricos, com um comprimento máximo de 255. Se você for um parceiro do LaunchPoint, inclua um namespace representativo nos nomes da API do tipo de atividade para evitar colisões com os tipos provisionados pelo cliente. Use minúsculas ou camelCase para distinguir nomes de API de outras strings.
 
-**Nome da API:** O nome da API é composto de caracteres alfanuméricos (tamanho máximo de 255). Se você for um parceiro do LaunchPoint, deve anexar um namespace representativo aos nomes da API do tipo de atividade. Isso evita colisões com tipos provisionados pelo cliente.  A convenção é usar todas as minúsculas ou camelCase para ajudar a distinguir entre outras strings de texto.
+- **Descrição:** Para atividades com comportamento não óbvio, explique o que o tipo de atividade representa em relação ao cliente potencial.
 
-**Descrição:** Para atividades que podem ter comportamento não óbvio, deve incluir uma descrição do que o tipo de atividade representa em relação ao cliente potencial.
+- **Nome do Acionador:** Forneça um nome exclusivo e legível no tempo presente de terceira pessoa, como &quot;Participa de um Evento&quot;. Os parceiros do LaunchPoint devem incluir o nome da empresa, como &quot;Participa do webinário - Acme Company&quot;.
 
-**Nome do Gatilho:** cada tipo de atividade deve ter um nome de gatilho exclusivo e legível. Os nomes dos acionadores devem estar no tempo presente de terceira pessoa, como &quot;Participa de um evento&quot;. Os parceiros do LaunchPoint devem incluir o nome da empresa na atividade, como &quot;Webinário de participantes - Empresa Acme&quot;.
+- **Nome do Filtro:** Forneça um nome exclusivo e legível no pretérito de terceiros, como &quot;Participou de um Evento&quot;. Os parceiros do LaunchPoint devem incluir o nome da empresa, como &quot;Webinário assistido - Acme Company&quot;.
 
-**Nome do Filtro:** Cada tipo de atividade deve ter um nome de filtro exclusivo e legível. Os nomes dos filtros devem estar no pretérito da terceira pessoa, como &quot;Participou de um evento&quot;. Os parceiros do LaunchPoint devem incluir o nome da empresa na atividade, ou seja, &quot;Webinário assistido - Acme Company&quot;.
+- **Atributo principal:** selecione o campo mais significativo para o tipo de atividade. Para uma atividade &quot;Evento assistido&quot;, esse campo é o nome do evento. O atributo primário é exibido por padrão como um parâmetro em cada acionador ou filtro do tipo de atividade. Seu valor também aparece no registro de atividades de uma pessoa sem exigir detalhamento na atividade.
 
-**Atributo principal:** O atributo principal de uma atividade personalizada deve ser o campo mais significativo para o tipo de atividade. Por exemplo, para uma atividade &quot;Evento assistido&quot;, esse seria o nome do evento. Os atributos primários são incluídos como parâmetros por padrão em cada instância de um acionador ou filtro para esse tipo de atividade, e o valor é exibido no log de atividades de um registro de pessoa sem exigir drill-down para a atividade.
+Um novo tipo de atividade personalizado é criado como rascunho. Aprove o tipo antes de adicionar registros de atividade desse tipo. As atualizações se aplicam à versão de rascunho e devem ser aprovadas antes de aparecerem na versão ao vivo. Depois que um tipo de atividade personalizado é aprovado e está em uso, os campos anteriores não podem ser alterados.
 
-Quando uma atividade personalizada é criada, ela é criada como um rascunho e deve ser aprovada antes de ser usada para adicionar registros de atividade desse tipo. Todas as atualizações são aplicadas implicitamente à versão de rascunho do tipo. Para refletir as alterações na versão ao vivo do tipo, ele deve ser aprovado. Quando um tipo de atividade personalizado é aprovado e está em uso, nenhuma alteração nos campos acima pode ser feita.
-
-Ao criar um tipo, o parâmetro de descrição é opcional, enquanto todos os parâmetros a seguir são obrigatórios: `apiName`, `name`, `triggerName`, `filterName`, `primaryAttribute`.
+Ao criar um tipo, o parâmetro de descrição é opcional. Os parâmetros necessários são `apiName`, `name`, `triggerName`, `filterName` e `primaryAttribute`.
 
 ```http
 POST /rest/v1/activities/external/type.json
@@ -405,7 +412,7 @@ POST /rest/v1/activities/external/type.json
 
 ## Tipo de atualização
 
-A atualização de um tipo é muito semelhante, exceto que apiName é o único parâmetro obrigatório como parâmetro de caminho.
+Para atualizar um tipo, passe o apiName necessário como um parâmetro de caminho. Outros campos podem ser fornecidos no corpo da solicitação.
 
 ```http
 POST /rest/v1/activities/external/type/{apiName}.json
@@ -450,23 +457,25 @@ POST /rest/v1/activities/external/type/{apiName}.json
 
 ## Aprovar tipo
 
-Os tipos podem ser gerenciados com Aprovar tipo de atividade personalizado, Descartar rascunho do tipo de atividade personalizado e Excluir tipo de atividade personalizado, da mesma forma que os ativos padrão do Marketo.
+Gerencie tipos com Aprovar tipo de atividade personalizado, Descartar rascunho do tipo de atividade personalizado e Excluir tipo de atividade personalizado, como você faria com os ativos padrão do Marketo.
 
 ## Atributos de tipo de atividade personalizados
 
-Cada tipo de atividade personalizado pode ter de 0 a 20 atributos secundários. Os atributos secundários podem ter qualquer tipo de campo válido para um campo do Marketo. Elas são adicionadas, atualizadas e removidas separadamente do tipo principal, mas podem ser editadas enquanto um tipo de atividade estiver em uso e depois aprovadas. Quando os campos são editados em um tipo em tempo real, todas as atividades desse tipo criadas após a aprovação têm o novo atributo secundário definido. As alterações não serão aplicadas retroativamente a atividades existentes que compartilhem esse tipo.
+Cada tipo de atividade personalizada pode ter de 0 a 20 atributos secundários. Um atributo secundário pode usar qualquer tipo de campo Marketo válido. Adicionar, atualizar e remover atributos secundários separadamente do tipo pai.
 
-Tenha cuidado com a remoção de atributos, pois isso afetará sua disponibilidade para uso nos filtros correspondentes.
+É possível editar atributos enquanto um tipo de atividade está em uso e, em seguida, aprovar as alterações. As atividades criadas após a aprovação usam o novo conjunto de atributos secundário. As alterações não se aplicam retroativamente a atividades existentes desse tipo.
 
-As atualizações feitas na lista de atributos secundária usam o nome da API de cada atributo como uma chave primária. O Nome da API de um atributo não pode ser alterado. Ele deve ser excluído e adicionado novamente com o nome da API desejado.
+A remoção de atributos também remove sua disponibilidade nos filtros correspondentes.
+
+As atualizações na lista de atributos secundária usam cada nome de API do atributo como a chave primária. Para alterar um Nome de API, exclua o atributo e adicione-o novamente com o nome de API desejado.
 
 Os tipos de dados válidos para atributos são: string, boolean, integer, float, link, email, currency, date, datetime, phone, text.
 
-Ao alterar o atributo primário de um tipo de atividade, qualquer atributo primário existente deve ser rebaixado, definindo-se primeiro `isPrimary` como falso.
+Antes de alterar o atributo primário de um tipo de atividade, rebaixe o atributo primário existente definindo `isPrimary` como falso.
 
 ### Criar atributos
 
-A criação de um atributo usa um parâmetro de caminho `apiName` necessário. Também são necessários os parâmetros `name` e `dataType`.`The description and` `isPrimary` parâmetros são opcionais.
+Para criar um atributo, passe o parâmetro de caminho `apiName` necessário. Os parâmetros `name` e `dataType` também são obrigatórios. A descrição e os parâmetros `isPrimary` são opcionais.
 
 ```http
 POST /rest/v1/activities/external/type/{apiName}/attributes/create.json
@@ -533,7 +542,7 @@ POST /rest/v1/activities/external/type/{apiName}/attributes/create.json
 
 ### Atualizar atributos
 
-Ao executar atualizações de atributos, o `apiName` do atributo é a chave primária. O parâmetro `apiName` deve existir para que a atualização seja bem-sucedida (ou seja, você não pode alterar o parâmetro `apiName` usando update).
+Ao atualizar atributos, o atributo `apiName` é a chave primária e já deve existir. Você não pode alterar `apiName` com uma atualização.
 
 ```http
 POST /rest/v1/activities/external/type/{apiName}/attributes/update.json
@@ -600,7 +609,7 @@ POST /rest/v1/activities/external/type/{apiName}/attributes/update.json
 
 ### Excluir atributos
 
-A exclusão de um atributo usa um parâmetro de caminho `apiName` necessário, que é o nome da API de atividade personalizada.  Também é necessário um parâmetro de atributo que seja uma matriz de objetos de atributo.  Cada objeto deve conter um parâmetro `apiName` que seja o nome da API do tipo de atividade personalizada.
+Para excluir um atributo, passe o parâmetro de caminho `apiName` necessário para a atividade personalizada. Além disso, passe o parâmetro de atributo obrigatório como uma matriz de objetos de atributo. Cada objeto deve conter um parâmetro `apiName` para o tipo de atividade personalizado.
 
 ```http
 POST /rest/v1/activities/external/type/{apiName}/attributes/delete.json
@@ -638,13 +647,17 @@ POST /rest/v1/activities/external/type/{apiName}/attributes/delete.json
 
 ## Adicionar atividades personalizadas
 
-As atividades personalizadas são registros gravados uma vez de atividades históricas relacionadas a registros individuais de pessoas no Marketo. Essas atividades têm um esquema gerenciado por administradores do Marketo ou remotamente por meio de uma integração de API. As atividades personalizadas são adicionadas aos registros de cliente potencial por meio do ponto de extremidade [Adicionar Atividades Personalizadas](https://developer.adobe.com/marketo-apis/api/mapi#tag/Activities/operation/addCustomActivityUsingPOST) e relacionadas a cada registro de cliente potencial por meio de seu campo `leadId`. As atividades personalizadas podem ser visualizadas na interface do usuário por meio do log de atividades do cliente potencial ou recuperadas pelo endpoint Obter atividades do cliente potencial especificando a ID do tipo de atividade personalizada.
+As atividades personalizadas são registros de atividades históricas (write-once) para registros individuais de pessoas. Os administradores do Marketo podem gerenciar o esquema no Marketo ou uma integração de API pode gerenciá-lo remotamente.
 
-As atividades personalizadas são apropriadas para registrar dados relacionados a um único registro pessoal e que não precisam ser atualizados ou substituídos. Um exemplo seria gravar uma pessoa participando de um evento como uma atividade &quot;Evento assistido&quot;. Para registros relacionados a uma pessoa que pode mudar, como inscrição de aluno, objetos personalizados devem ser usados, pois podem ser atualizados, o que não ocorre com atividades personalizadas.
+Use o ponto de extremidade [Adicionar atividades personalizadas](https://developer.adobe.com/marketo-apis/api/mapi#tag/Activities/operation/addCustomActivityUsingPOST) para adicionar atividades personalizadas a registros de clientes potenciais. O campo `leadId` associa cada atividade a um cliente potencial. Exibir atividades personalizadas no log de atividades do cliente potencial ou recuperá-las por meio de Obter atividades do cliente potencial especificando a ID do tipo de atividade personalizada.
 
-O membro de entrada é uma matriz de objetos de atividade. Um máximo de 300 registros de atividade podem ser enviados por vez.
+Use atividades personalizadas para dados relacionados a uma pessoa que não precisam ser atualizados ou substituídos. Por exemplo, registre a participação no evento como uma atividade &quot;Evento assistido&quot;.
 
-Os membros `leadId`, `activityDate`, `activityTypeId`, `primaryAttributeValue` e atributos são obrigatórios. A matriz de atributos deve conter o atributo não primário. Isso pode ser especificado usando name (nome do campo) ou apiName (nome da API) e o valor que corresponde ao valor que você está definindo.
+Use objetos personalizados para registros relacionados à pessoa que podem ser alterados, como inscrição de aluno. Objetos personalizados podem ser atualizados, mas atividades personalizadas não podem.
+
+O membro de entrada é uma matriz de objetos de atividade. É possível enviar no máximo 300 registros de atividade por vez.
+
+Os membros `leadId`, `activityDate`, `activityTypeId`, `primaryAttributeValue` e atributos são obrigatórios. A matriz de atributos deve conter o atributo não primário. Especifique-o com name (nome do campo) ou apiName (nome da API), e o valor para o valor a ser definido.
 
 ```http
 POST /rest/v1/activities/external.json
@@ -723,7 +736,7 @@ POST /rest/v1/activities/external.json
 
 ## Tempos limite
 
-Os endpoints de atividades têm um tempo limite de 30 s, a menos que indicado abaixo.
+Os endpoints de atividades têm um tempo limite de 30 s, exceto para os seguintes endpoints:
 
-* Obter token de paginação: 300s
-* Adicionar atividade personalizada: 90s
+- Obter token de paginação: 300s
+- Adicionar atividade personalizada: 90s

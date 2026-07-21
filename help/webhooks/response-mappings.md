@@ -4,42 +4,46 @@ feature: Webhooks
 description: Os Webhooks do Marketo respondem aos mapeamentos para JSON e XML, mapeiam atributos para campos de clientes potenciais com nomes de API do SOAP, notação de pontos e matrizes e compatibilidade de tipo.
 exl-id: 95c6e33e-487c-464b-b920-3c67e248d84e
 TQID: https://experienceleague.adobe.com/-OGDeKLPS1KmWGIKj6BGq5DGXoCSj5ip-dVr7-kKDro
-product_v2:
-  - id: b27e5950-9033-45ac-9f86-eb22e567f615
-feature_v2:
-  - id: c5f60233-d5ea-4453-a799-0ad258b4d399
-role_v2:
-  - id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
-source-git-commit: 00118a89f25a23b931fac671130932bb0e0e4e4e
+product_v2: id: b27e5950-9033-45ac-9f86-eb22e567f615
+feature_v2: id: c5f60233-d5ea-4453-a799-0ad258b4d399
+role_v2: id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
+source-git-commit: 3e6d310c5aec1a3435424fb122b71d825db5af0e
 workflow-type: tm+mt
-source-wordcount: 485
+source-wordcount: 374
 ht-degree: 1%
 
 ---
 
 # Mapeamentos de resposta
 
-O Marketo pode traduzir dados recebidos por um Webhook de dois tipos de conteúdo e retornar esses valores para um campo de cliente potencial: JSON e XML. O parâmetro Campo do Marketo sempre usará o [nome da API do SOAP](../rest-api/fields.md) do campo. Cada Webhook pode ter um número ilimitado de mapeamentos de resposta, que são adicionados e editados ao clicar no botão [!UICONTROL Editar] no painel Mapeamentos de Resposta do Webhook:
+O Marketo pode traduzir dados de webhook de JSON ou XML e gravar os valores para campos de cliente potencial. O parâmetro Campo do Marketo sempre usa o [nome da API do SOAP](../rest-api/fields.md) do campo.
+
+Cada webhook pode ter um número ilimitado de mapeamentos de resposta. Para adicionar ou editar mapeamentos, selecione [!UICONTROL Editar] no painel Mapeamentos de Resposta do webhook:
 
 ![Mapeamento de Resposta](assets/response-mapping.png)
 
-Os Mapeamentos de resposta são criados por meio de um emparelhamento de um &quot;Atributo de resposta&quot;, o caminho para a propriedade desejada no documento XML ou JSON e o &quot;Campo do Marketo&quot;, que especifica o campo Lead que tem o valor gravado nele a partir do Atributo de resposta.
+Um mapeamento de resposta emparelha esses valores:
 
-As chaves das propriedades devem consistir em caracteres alfanuméricos, traço (-), sublinhado (_), dois pontos (:) e espaço em branco para serem acessados por meio dos mapeamentos de resposta do Marketo.
+- &quot;Atributo de resposta&quot;: o caminho para a propriedade desejada no documento XML ou JSON.
+- &quot;Campo do Marketo&quot;: o campo de cliente potencial no qual o Marketo grava o valor do atributo de resposta.
+
+Para acessar uma propriedade por meio dos mapeamentos de resposta do Marketo, sua chave deve conter apenas caracteres alfanuméricos, traço (-), sublinhado (_), dois pontos (:) e espaço em branco.
 
 ## Mapeamentos JSON
 
-As propriedades JSON são acessadas com notação de pontos e notação de matriz. A notação de matriz no Marketo não aceitará sequências de caracteres como entrada e aceitará somente números inteiros. Para recuperar dados de um documento JSON, o tipo de resposta deve ser definido como JSON:
+Acesse propriedades JSON com a notação de pontos e a notação de matriz. A notação de matriz Marketo aceita apenas números inteiros, não sequências de caracteres.
+
+Para recuperar dados de um documento JSON, defina o tipo de resposta como JSON:
 
 ```json
 { "foo":"bar"}
 ```
 
-Para acessar a propriedade `foo` em um mapeamento de resposta, use o `name` da propriedade, pois ela está no primeiro nível do objeto JSON, `foo`. O código a seguir mostra a aparência no Marketo:
+A propriedade `foo` está no primeiro nível do objeto JSON. Usar sua propriedade `name`, `foo`, no mapeamento de resposta:
 
 ![Mapeamento de Resposta](assets/json-resp.png)
 
-Veja a seguir um exemplo mais complicado com uma matriz:
+O exemplo a seguir contém uma matriz:
 
 ```json
 {
@@ -61,11 +65,11 @@ Veja a seguir um exemplo mais complicado com uma matriz:
 }
 ```
 
-Queremos acessar a orderDate a partir do primeiro elemento da matriz orders. Para acessar esta propriedade, use o seguinte: `orders[0].orderDate`
+Para acessar orderDate a partir do primeiro elemento da matriz orders, use `orders[0].orderDate`.
 
 ## Mapeamentos XML
 
-Os valores podem ser acessados de elementos individuais em documentos XML. Usa notação de pontos semelhante aos mapeamentos JSON. Considere este exemplo simples:
+Acesse valores de elementos XML individuais usando a notação de pontos, semelhante aos mapeamentos JSON. Considere este exemplo:
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
@@ -74,9 +78,11 @@ Os valores podem ser acessados de elementos individuais em documentos XML. Usa n
 </example>
 ```
 
-Para acessar a propriedade foo aqui, use o seguinte: `example.foo`
+Para acessar a propriedade foo, use `example.foo`.
 
-O elemento de exemplo deve primeiro ser referenciado antes de acessar `foo`. Para acessar uma propriedade, todos os elementos na hierarquia devem ser referenciados no mapeamento. Os documentos XML com arrays são um pouco mais complicados. Use o exemplo a seguir:
+Referencie o elemento de exemplo antes de acessar `foo`. Um mapeamento deve fazer referência a cada elemento na hierarquia de propriedades.
+
+Para um documento XML com uma matriz, considere este exemplo:
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
@@ -93,8 +99,12 @@ O elemento de exemplo deve primeiro ser referenciado antes de acessar `foo`. Par
 </elementList>
 ```
 
-O documento consiste na matriz pai `elementList`, com filhos, elemento que contém uma propriedade: `foo`. Para fins de mapeamentos de resposta do Marketo, a matriz é referenciada como `elementList.element`, para que os filhos de elementList sejam acessados por `elementList.element[i]`. Para obter o valor de foo do primeiro filho de elementList, usamos este atributo de resposta: `elementList.element[0].foo` Isso retorna o valor &quot;baz&quot; ao nosso campo designado. Tentar acessar propriedades dentro de elementos que contêm nomes de elementos exclusivos e não exclusivos resulta em um comportamento indefinido. Cada elemento deve ser uma única propriedade ou uma matriz, os tipos não podem ser misturados.
+A matriz pai é `elementList`. Cada elemento filho contém a propriedade `foo`. Os mapeamentos de resposta do Marketo fazem referência à matriz como `elementList.element` e acessam seus filhos por meio de `elementList.element[i]`.
+
+Para obter o valor de foo do primeiro filho de elementList, use o atributo de resposta `elementList.element[0].foo`. Esse mapeamento retorna o valor &quot;baz&quot; para o campo designado.
+
+Acessar propriedades dentro de elementos que contêm nomes de elementos exclusivos e não exclusivos produz comportamento indefinido. Cada elemento deve ser uma única propriedade ou uma matriz. Não misture os tipos.
 
 ## Tipos
 
-Ao mapear atributos para campos, você deve garantir que o tipo na resposta do webhook seja compatível com o campo de destino. Por exemplo, se o valor na resposta for uma string e o campo selecionado for do tipo inteiro, o valor não será gravado. Leia sobre [Tipos de Campos](../rest-api/field-types.md).
+Ao mapear atributos para campos, verifique se o tipo de resposta do webhook é compatível com o campo de destino. Por exemplo, o Marketo não grava um valor de resposta de string em um campo do tipo inteiro. Para obter mais informações, consulte [Tipos de Campo](../rest-api/field-types.md).

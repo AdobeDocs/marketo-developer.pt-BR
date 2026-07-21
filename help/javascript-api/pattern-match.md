@@ -4,28 +4,22 @@ description: Use o utilitário RTP rtp.checkPattern para testar padrões de stri
 feature: Javascript
 exl-id: 4ebd13e3-375b-449b-850f-3b18f570ca75
 TQID: https://experienceleague.adobe.com/-HopUg6-2EchL9kJrPDbz62mRlrqYaXYdufILjkvP1Y
-product_v2:
-  - id: b27e5950-9033-45ac-9f86-eb22e567f615
-feature_v2:
-  - id: e2290edd-b061-4880-9d79-dee306cf5aa9
-  - id: ed6be6bb-75bb-4ea9-9a42-3bcaa65e1bcc
-role_v2:
-  - id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
-topic_v2:
-  - id: b5ce8718-c3af-4fdb-a1a9-fca32f83a87c
-  - id: e0eb8757-182f-49f3-94a4-1587d16f5094
-source-git-commit: 00118a89f25a23b931fac671130932bb0e0e4e4e
+product_v2: id: b27e5950-9033-45ac-9f86-eb22e567f615
+feature_v2: id: e2290edd-b061-4880-9d79-dee306cf5aa9id: ed6be6bb-75bb-4ea9-9a42-3bcaa65e1bcc
+role_v2: id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
+topic_v2: id: b5ce8718-c3af-4fdb-a1a9-fca32f83a87cid: e0eb8757-182f-49f3-94a4-1587d16f5094
+source-git-commit: 3e6d310c5aec1a3435424fb122b71d825db5af0e
 workflow-type: tm+mt
-source-wordcount: 171
-ht-degree: 5%
+source-wordcount: 188
+ht-degree: 4%
 
 ---
 
 # Correspondência de padrões
 
-A RTP expõe uma função de utilitário para verificar se o padrão corresponde a determinada string. O utilitário não pode ser usado em modo assíncrono porque retorna uma indicação de correspondência ou não.
+O RTP fornece uma função de utilitário que verifica se um padrão corresponde a uma string. O utilitário retorna um resultado correspondente de forma síncrona e não pode ser usado de forma assíncrona.
 
-Você deve se tornar um cliente do Web Personalization e implantar a [tag RTP](https://experienceleague.adobe.com/pt-br/docs/marketo/using/product-docs/web-personalization/rtp-tag-implementation/deploy-the-rtp-javascript) no site antes de usar a API de Contexto de Usuário.
+Você deve ser um cliente do Web Personalization e implantar a [tag RTP](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/web-personalization/rtp-tag-implementation/deploy-the-rtp-javascript) no site antes de usar a API de Contexto de Usuário.
 
 ## Uso
 
@@ -33,12 +27,12 @@ Você deve se tornar um cliente do Web Personalization e implantar a [tag RTP](h
 
 | Parâmetro | Opcional/Obrigatório | Tipo | Descrição |
 | --- | --- | --- | --- |
-| check_against | Obrigatório | String | Sequência de caracteres para corresponder ao padrão. Por exemplo: URL da página atual, nome do produto. |
-| padrão | Obrigatório | String | Adicionar % para curinga. O padrão pode ser :start com correspondência completa de containsfull |
+| check_against | Obrigatório | String | Sequência de caracteres para corresponder ao padrão, como o URL da página atual ou um nome de produto. |
+| padrão | Obrigatório | String | Padrão a corresponder. Adicione `%` como curinga para corresponder ao início, fim ou conteúdo de uma cadeia de caracteres. Omitir `%` para uma correspondência completa. |
 
 ## Exemplos
 
-Defina a variável personalizada no índice 1 se o URL da página atual terminar com &quot;productA&quot;.
+Este exemplo define uma variável personalizada no índice 1 quando o URL da página atual termina com &quot;productA&quot;.
 
 ```javascript
 if (rtp.checkPattern(window.location.href, '%productA')) {
@@ -46,7 +40,7 @@ if (rtp.checkPattern(window.location.href, '%productA')) {
 }
 ```
 
-O caminho do URL atual é &quot;/products/productB&quot;. Este exemplo verifica se o caminho contém &quot;produtos&quot; e define uma variável personalizada.
+No exemplo a seguir, o caminho do URL atual é &quot;/products/productB&quot;. O exemplo verifica se o caminho contém &quot;produtos&quot; e, em seguida, define uma variável personalizada.
 
 ```javascript
 var currentURLPath = '/products/productB';

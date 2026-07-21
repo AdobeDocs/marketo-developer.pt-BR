@@ -3,9 +3,9 @@ title: Fragmentos
 feature: REST API
 description: Use a API REST do Marketo Asset para consultar, criar, atualizar, clonar, excluir, aprovar e inspecionar dependências de fragmentos.
 exl-id: 9dd532d1-1dd7-4581-86dd-1943fab66cbb
-source-git-commit: e2606d6cb12c572603ff069617de58417e43ca63
+source-git-commit: 3e6d310c5aec1a3435424fb122b71d825db5af0e
 workflow-type: tm+mt
-source-wordcount: '272'
+source-wordcount: '282'
 ht-degree: 9%
 
 ---
@@ -61,10 +61,18 @@ GET /rest/asset/v2/fragment/{id}
 
 ### Filtro
 
-O endpoint de filtro permite pesquisar em um espaço de trabalho e restringir os resultados com parâmetros de consulta adicionais. `workspaceId` é obrigatório.
+O endpoint de filtro pesquisa em um espaço de trabalho. O parâmetro `workspaceId` é obrigatório.
 
-todo: fazer uma tabela
-Os filtros suportados incluem `folderId`, `folderIds` repetido, `status`, `pageIndex`, `pageSize`, `createdBy`, `createdAtStart`, `createdAtEnd`, `modifiedBy`, `modifiedAtStart`, `modifiedAtEnd`, `name`, `fragmentType`, `sortKey`, `sortOrder`, `isCreatedByMe`, `isModifiedByMe`, `scriptEngine`, `isValueNonNullable` e `includeArchived`.
+Use estes parâmetros opcionais para limitar ou organizar os resultados:
+
+* Pasta: `folderId` ou `folderIds` repetido
+* Status: repetido `status`
+* Paginação: `pageIndex` e `pageSize`
+* Criação: `createdBy`, `createdAtStart`, `createdAtEnd` e `isCreatedByMe`
+* Modificação: `modifiedBy`, `modifiedAtStart`, `modifiedAtEnd` e `isModifiedByMe`
+* Propriedades do fragmento: `name`, `fragmentType`, `scriptEngine` e `isValueNonNullable`
+* Classificação: `sortKey` e `sortOrder`
+* Conteúdo arquivado: `includeArchived`
 
 #### Solicitação
 

@@ -3,16 +3,13 @@ title: Fluxos de dados
 description: Visão geral dos fluxos de dados do Marketo Engage, permitindo atividades de clientes potenciais quase em tempo real e eventos de auditoria de usuários, diminuindo os limites da API para clientes da camada de desempenho
 exl-id: 5617b6a5-ebc8-4d97-a290-e3b87f83e360
 TQID: https://experienceleague.adobe.com/JnhN70HexjmNueZa9MAVrxjEhZ5yJatWqZiowl22quA
-product_v2:
-  - id: b27e5950-9033-45ac-9f86-eb22e567f615
-role_v2:
-  - id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
-topic_v2:
-  - id: e1e0219c-f879-479f-8427-888ed2a6e9c2
-source-git-commit: 00118a89f25a23b931fac671130932bb0e0e4e4e
+product_v2: id: b27e5950-9033-45ac-9f86-eb22e567f615
+role_v2: id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
+topic_v2: id: e1e0219c-f879-479f-8427-888ed2a6e9c2
+source-git-commit: 3e6d310c5aec1a3435424fb122b71d825db5af0e
 workflow-type: tm+mt
-source-wordcount: 1721
-ht-degree: 3%
+source-wordcount: 1347
+ht-degree: 4%
 
 ---
 
@@ -23,31 +20,33 @@ ht-degree: 3%
 >Informações atuais sobre fluxos de dados agora estão disponíveis em [Usando Fluxos de Dados](https://developer.adobe.com/events/docs/guides/using/marketo/marketo-data-streams#).
 >
 
-As organizações de marketing de nossos clientes dependem de Campanhas de marketing focadas e oportunas para manter-se a par de seus negócios e serem competitivas. Para dar suporte a decisões rápidas e permitir alterações estratégicas rapidamente, é importante ter dados que apóiem e impulsionem as principais decisões que oferecem campanhas focadas e direcionadas. Também há alguns clientes que realizam esforços de marketing nos níveis de seus segmentos de clientes, dentro e fora da Marketo Engage. Para dar suporte a esses diferentes esforços, a Marketo criou a capacidade de adquirir grandes volumes de dados em tempo quase real por meio dos Fluxos de dados.
+Os fluxos de dados fornecem grandes volumes de dados do Marketo Engage para sistemas externos em tempo quase real. Use dados transmitidos para apoiar decisões oportunas, campanhas direcionadas, processos de marketing externo e auditoria.
 
-Além do benefício dos dados quase em tempo real, há benefícios relacionados ao produto:
+Os fluxos de dados oferecem estes benefícios:
 
-- Alivia o gargalo dos limites da API, pois a transmissão é usada em vez disso.
-- Reduz o cenário de limites da API, gerando menos mensagens de alerta.
-- Não é necessário executar exportações em massa para extrair dados devido ao recurso de transmissão de dados.
+- Reduza a dependência de solicitações de API com taxa limitada.
+- Reduza os alertas de limite de API.
+- Fornecer dados sem executar exportações em massa.
 
 Os Fluxos de Dados estão disponíveis para quem comprou um [Pacote da Camada de Desempenho do Marketo Engage](https://nation.marketo.com/t5/product-documents/marketo-engage-performance-tiers/ta-p/328835).
 
 ## Visão Geral do Fluxo de Dados da Atividade de Cliente Potencial
 
-O Fluxo de dados de atividades de clientes potenciais fornece transmissão quase em tempo real de atividades de clientes potenciais de rastreamento de auditoria, nas quais grandes volumes de atividades de clientes potenciais podem ser enviados para o sistema externo de um cliente. Os fluxos permitem que os clientes auditem com eficiência eventos relacionados a clientes potenciais, padrões de uso, fornecem exibições de alterações de clientes potenciais e acionam processos e fluxos de trabalho com base nos diferentes tipos de eventos potenciais. Há mais de 144 tipos de atividades que podem ser assinadas e enviadas pelo fluxo.
+O Fluxo de Dados da Atividade do Cliente Potencial envia grandes volumes de dados da atividade do cliente potencial para um sistema externo em tempo quase real. Use o fluxo para auditar eventos de cliente potencial e padrões de uso, exibir alterações de cliente potencial e acionar workflows de eventos de cliente potencial.
 
-Tipos de dados de clientes potenciais transmitidos:
+É possível assinar mais de 144 tipos de atividades.
 
-1. Alterações de Cliente Potencial - todas as alterações em todos os campos e novos Clientes Potenciais
-1. Atividades de cliente potencial - todos os tipos de atividades de cliente potencial descritos no documento
-1. Clientes Potenciais Excluídos
-1. Todos os objetos personalizados no lead (se solicitado). É tudo ou nada neste momento.
+O fluxo pode incluir:
 
-Ao fornecer visualizações sobre alterações de lead, os clientes podem tomar decisões mais rápidas sobre suas estratégias de marketing gerais e criar campanhas direcionadas mais focadas. Alguns casos de uso populares seriam:
+1. Alterações em todos os campos de cliente potencial e clientes potenciais recém-criados.
+1. Todos os tipos de atividades de cliente potencial documentados.
+1. Clientes potenciais excluídos.
+1. Todos os objetos personalizados principais, quando solicitado. Não é possível selecionar objetos personalizados individuais.
 
-- Alertas personalizados: quando determinados clientes em potencial são encontrados com condições inconsistentes, eles podem ser adicionados à lista. Os fluxos de atividade podem coletá-los e enviar a atividade &quot;Adicionar à lista&quot; para que os clientes realizem qualquer ação de acompanhamento.
-- Alimentação de modelos de ML: alguns clientes planejam criar modelos de pontuação que usam insights de atividade e os retornam ao Marketo ou usam em seus próprios modelos de pontuação internos, conforme desejado. Ao pontuar um lead, os clientes podem informar ao Marketo para adicionar clientes às campanhas de criação para aumentar sua pontuação.
+Casos de uso comuns incluem:
+
+- Alertas personalizados: adicionar leads com condições inconsistentes a uma lista. O fluxo envia a atividade Adicionar à lista para um processo de acompanhamento.
+- Modelos de aprendizado de máquina: use insights de atividade em modelos de pontuação externos e envie pontuações à Marketo para influenciar campanhas de promoção ou outros processos.
 
 Lista de atividades transmitidas:
 
@@ -74,15 +73,17 @@ Lista de atividades transmitidas:
 | ClickEmail | OpenSalesEmail | VoteInPoll |
 | ClickLink | PushLeadToMarketo | WinSweepstakes |
 
-Observe que se for necessário transmitir os objetos personalizados, eles deverão ser todos os objetos personalizados relacionados ao cliente potencial. No momento, não há como selecionar quais são desejados.
+Ao transmitir objetos personalizados, inclua todos os objetos personalizados relacionados a leads. Não é possível selecionar objetos personalizados individuais.
 
 ## Visão geral do fluxo de dados de auditoria do usuário
 
-O Fluxo de dados de auditoria do usuário fornece rastreamento de auditoria quase em tempo real de alterações de ativos por usuários&#x200B;. Isso permite que um cliente auditore com eficiência eventos de ativos, forneça uma visualização das alterações do usuário e acione processos ou workflows com base em diferentes tipos de eventos de auditoria. As alterações de ativos quase em tempo real são enviadas por meio de eventos do Adobe I/O para um endpoint configurável. Os eventos de auditoria são divididos por tipo de ativo e podem assinar eventos de auditoria importantes para eles.
+O Fluxo de dados de auditoria do usuário rastreia as alterações do usuário em ativos em tempo quase real. Use-o para auditar eventos de ativos, exibir alterações de usuários e acionar processos de eventos de auditoria.
 
-Um bom caso de uso para assinar esse fluxo seria:
+O Adobe I/O Events envia as alterações para um endpoint configurável. Inscreva-se nos tipos de evento necessários para cada tipo de ativo.
 
-- Rastreamento de alterações ao usar vários sistemas de marketing: há alguns clientes que também realizam algum nível de atividades de marketing em outro sistema, como um CRM, como o Salesforce, e depois transmitem o lead para o Marketo. Às vezes, o lead é atualizado e sincronizado de um lado para o outro. Portanto, é importante rastrear quais sistemas fizeram alterações recentes.
+Um caso de uso é:
+
+- Rastreamento de alterações em sistemas de marketing: quando um CRM ou outro sistema troca clientes potenciais com o Marketo, use eventos de auditoria para identificar qual sistema fez a alteração mais recente.
 
 Lista de eventos de auditoria de usuários transmitidos:
 
@@ -142,7 +143,7 @@ Exemplo de evento de auditoria do usuário:
 
 O Fluxo de dados de notificação está disponível como parte das ofertas de nível de desempenho do Marketo Engage.
 
-Atualmente, o centro de notificações no Marketo pode ser configurado para enviar notificações a um endereço de email. O Fluxo de dados de notificação permite que as notificações sejam enviadas diretamente para um endpoint configurável por meio de eventos do Adobe I/O. As notificações são fornecidas por meio da interface do usuário hoje e podem ser referenciadas pelo sino laranja na parte superior direita da tela e esse fluxo pega essas notificações e as envia por um fluxo.
+O centro de notificações da Marketo pode enviar notificações para um endereço de email. O Fluxo de dados de notificação também envia essas notificações para um terminal configurável por meio do Adobe I/O Events. Essas são as mesmas notificações disponíveis no ícone de sino na interface do Marketo.
 
 Lista de eventos de notificação:
 
@@ -178,18 +179,18 @@ Exemplo de evento de notificação:
 
 ## Detalhes técnicos
 
-Esta seção fornece diretrizes sobre o que é necessário, como conectar e receber dados de transmissão para cada um dos fluxos. Há um certo nível de codificação e configuração envolvidas para cada um.
+As seções a seguir descrevem a configuração necessária para receber dados de cada fluxo. Cada fluxo requer configuração de endpoint e código de integração.
 
 ### Fluxo de Dados da Atividade do Cliente Potencial
 
-O Fluxo de atividades de lead fornece transmissão quase em tempo real dos eventos de atividade de lead da Marketo e envia as alterações do tipo de atividade que você assinou com os atributos configuráveis:
+O Fluxo de Atividades de Cliente Potencial envia eventos de atividade de cliente potencial inscritos com estas características de serviço:
 
-- Frequência de envios de dados a cada 2 segundos por padrão.
-- Lotes de 100 a 500 por assinatura.
-- O tempo limite do serviço REST do cliente é de 20 segundos com 3 tentativas a cada 3 minutos e ativado automaticamente após o sucesso. Caso contrário, depois disso, eles serão pausados. Quando estiver pausado, o serviço tentará novamente a cada 3 minutos, tentando reativar a menos que seja desprovisionado manualmente.
-- Retenção de dados em uma fila por até 7 dias.
+- Os dados são enviados a cada dois segundos por padrão.
+- Cada assinatura usa lotes de 100 a 500 registros.
+- O serviço REST do cliente tem um tempo limite de 20 segundos e três tentativas em intervalos de três minutos. Uma nova tentativa bem-sucedida habilita automaticamente o serviço. Após três falhas, o serviço é pausado e repetido a cada três minutos, a menos que seja desprovisionado manualmente.
+- Os dados em fila são retidos por até sete dias.
 
-Para implementar o Fluxo de Dados da Atividade Principal, siga estas etapas para os clientes:
+Para implementar o Fluxo de Dados de Atividade de Lead:
 
 1. Exponha um terminal HTTP que pode receber solicitações POST com um corpo JSON da Internet pública. O fluxo de dados de push da atividade envia solicitações para:
 1. Forneça o seguinte à Adobe:
@@ -200,7 +201,7 @@ Para implementar o Fluxo de Dados da Atividade Principal, siga estas etapas para
       1. Uma URL de provedor de identidade, ID do Cliente e Segredo do Cliente para OAuth [Autenticação de Credenciais do Cliente](https://www.oauth.com/oauth2-servers/access-tokens/client-credentials/)
       1. Um token de API, que pode ser incluído em solicitações enviadas pela sequência de dados da atividade principal em um cabeçalho http de autorização
 
-O Adobe ativa o fluxo de dados, momento em que os clientes começam a receber dados.
+O Adobe ativa o fluxo de dados após receber as informações necessárias. O endpoint começa a receber dados.
 
 Diagrama UML de uma chamada típica de Fluxo de Dados de Atividade Principal:
 
@@ -251,22 +252,22 @@ app.listen(port,()=>{
 })
 ```
 
-Uma amostra de código para um aplicativo que consome o Fluxo de Dados de Atividade de Cliente Potencial da Marketo pode ser encontrada [aqui](https://github.com/ihgrant/activity-stream-consumer-example).
+Consulte o [exemplo do consumidor de Fluxo de Dados de Atividade de Cliente Potencial](https://github.com/ihgrant/activity-stream-consumer-example) para obter o código do aplicativo de exemplo.
 
 ### Fluxo de dados de auditoria do usuário e fluxo de dados de notificação
 
-Os eventos de Auditoria de usuário são enviados ao Adobe IO e podem ser consumidos ao fazer logon com uma Adobe ID. Estas são as etapas a serem seguidas:
+Os eventos de Auditoria de usuário são enviados por meio do Adobe I/O. Para consumi-los com uma Adobe ID:
 
-1. Os clientes fornecem o seguinte à Adobe:
+1. Forneça as seguintes informações à Adobe:
    1. Adobe ID
    1. Marketo Munchkin ID para sua assinatura
-1. O cliente expõe um terminal REST para consumir eventos normalmente na forma de um webhook.
-1. Depois de fornecido, o Adobe habilita o fluxo para a assinatura do cliente.
-1. O cliente então configura o fluxo no Adobe IO (instruções a serem fornecidas)
+1. Exponha um terminal REST, normalmente um webhook, para consumir eventos.
+1. Depois de receber as informações do endpoint, o Adobe habilita o fluxo para a assinatura.
+1. Configure o fluxo no Adobe I/O.
    1. Esta etapa requer uma organização da Adobe
    1. Exige que o usuário da organização Adobe tenha a função de desenvolvedor ou administrador do sistema
 
-Para configurar o Adobe IO, consulte [Configuração de fluxos de dados de auditoria de usuário do Marketo com o Adobe IO](https://developer.adobe.com/events/docs/guides/using/marketo/marketo-user-audit-data-stream-setup#) na seção Documentação pública.
+Para configurar o Adobe I/O, consulte [Configuração de fluxos de dados de auditoria de usuário do Marketo com o Adobe I/O](https://developer.adobe.com/events/docs/guides/using/marketo/marketo-user-audit-data-stream-setup#).
 
 ### Configuração do fluxo de dados de auditoria do usuário no Marketo
 

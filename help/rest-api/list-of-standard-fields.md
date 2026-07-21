@@ -4,25 +4,21 @@ feature: REST API, Field Management
 description: Navegue pela lista completa de campos de clientes em potencial padrão do Marketo com nomes, rótulos e descrições de REST e SOAP, além de como recuperá-los por meio da API de descrição de clientes em potencial.
 exl-id: 147dbdff-4bc9-4ab3-8918-c4de3e1aa97a
 TQID: https://experienceleague.adobe.com/vu2wGk36XJ243vwavhfLE7Vc9vMIJKGx6vmVqMRgEDA
-product_v2:
-  - id: b27e5950-9033-45ac-9f86-eb22e567f615
-feature_v2:
-  - id: e64968b2-4ee5-47f9-8cae-0588f184b9eb
-  - id: f82558ea-6af5-44eb-a424-5b3389abb0a3
-role_v2:
-  - id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
-source-git-commit: 00118a89f25a23b931fac671130932bb0e0e4e4e
+product_v2: id: b27e5950-9033-45ac-9f86-eb22e567f615
+feature_v2: id: e64968b2-4ee5-47f9-8cae-0588f184b9ebid: f82558ea-6af5-44eb-a424-5b3389abb0a3
+role_v2: id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
+source-git-commit: 3e6d310c5aec1a3435424fb122b71d825db5af0e
 workflow-type: tm+mt
-source-wordcount: 742
+source-wordcount: 745
 ht-degree: 24%
 
 ---
 
 # Campos padrão
 
-Esta é uma lista de campos padrão disponíveis no Marketo que podem ser acessados por meio da API.
+A tabela a seguir lista os campos padrão do Marketo disponíveis por meio da API. Inclui o nome da API REST de cada campo, o nome da API SOAP, o rótulo e a descrição.
 
-Você pode recuperar a lista de todos os nomes de campos com suporte disponíveis em seus registros de cliente potencial usando o ponto de extremidade REST [Descrever cliente potencial](https://developer.adobe.com/marketo-apis/api/mapi).
+Use o ponto de extremidade REST [Descrever Cliente Potencial](https://developer.adobe.com/marketo-apis/api/mapi) para recuperar todos os nomes de campo suportados pelos seus registros de cliente potencial.
 
 | Nome da API REST | Nome da API SOAP | Rótulo intuitivo | Descrição |
 | --- | --- | --- | --- |

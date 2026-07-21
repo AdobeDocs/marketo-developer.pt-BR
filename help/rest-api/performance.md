@@ -4,24 +4,22 @@ feature: REST API
 description: Aumente o desempenho da API REST do Marketo com compactação HTTP. Ative o gzip para cortar a largura de banda; APIs em massa não são compatíveis e menos de 1024 bytes não são compactados.
 exl-id: 173a398a-9d36-4e8d-9dd3-7d0d375b085a
 TQID: https://experienceleague.adobe.com/foJCTd890HZtL-UzWx2cjRXwTxqgW56A79sB7FPEWis
-product_v2:
-  - id: b27e5950-9033-45ac-9f86-eb22e567f615
-role_v2:
-  - id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
-source-git-commit: 00118a89f25a23b931fac671130932bb0e0e4e4e
+product_v2: id: b27e5950-9033-45ac-9f86-eb22e567f615
+role_v2: id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
+source-git-commit: 3e6d310c5aec1a3435424fb122b71d825db5af0e
 workflow-type: tm+mt
-source-wordcount: 146
+source-wordcount: 131
 ht-degree: 1%
 
 ---
 
 # Desempenho
 
-Esta página contém uma lista de tópicos relacionados ao desempenho que você pode usar para aumentar o desempenho da sua integração.
+Use as opções de desempenho desta página para melhorar a eficiência da sua integração.
 
 ## Compactação HTTP
 
-A API REST do Marketo oferece suporte à compactação HTTP de corpos de resposta usando padrões definidos pela especificação HTTP 1.1. A ativação da compactação é recomendada porque reduz o uso da largura de banda e o tempo gasto na recuperação de dados.
+A API REST do Marketo é compatível com a compactação do corpo de resposta HTTP, conforme definido pela especificação HTTP 1.1. Permita a compactação para reduzir o uso da largura de banda e o tempo de recuperação dos dados.
 
 >[!NOTE]
 >
@@ -33,13 +31,13 @@ Para ativar a compactação, inclua o seguinte cabeçalho HTTP na solicitação:
 Accept-Encoding: gzip
 ```
 
-A API REST do Marketo compactará o corpo da resposta e incluirá este cabeçalho:
+A API REST do Marketo compacta o corpo da resposta e inclui o seguinte cabeçalho:
 
 ```html
 Content-Encoding: gzip
 ```
 
-Este é um exemplo usando o Curl para chamar o ponto de extremidade [Obter Clientes Potenciais por Tipo de Filtro](https://developer.adobe.com/marketo-apis/api/mapi#tag/Leads/operation/getLeadsByFilterUsingGET) para recuperar 5 clientes potenciais:
+O exemplo de cURL a seguir chama o ponto de extremidade [Obter Clientes Potenciais por Tipo de Filtro](https://developer.adobe.com/marketo-apis/api/mapi#tag/Leads/operation/getLeadsByFilterUsingGET) para recuperar cinco clientes potenciais:
 
 ```bash
 curl -H 'Accept-Encoding: gzip' 'https://123-ABC-456.mktorest.com/rest/v1/leads.json?filterType=id&filterValues=4,5,7,12,13'

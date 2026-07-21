@@ -4,19 +4,14 @@ feature: REST API, Landing Pages
 description: Use a API REST do Marketo para consultar metadados e conteúdo, criar, atualizar, aprovar, excluir e clonar páginas de aterrissagem, incluindo tipos guiados e de formato livre.
 exl-id: 2f986fb0-0a6b-469f-b199-1c526cd5a882
 TQID: https://experienceleague.adobe.com/NssOtB6BEMGOQzzauLI7AszLpN3fVcEeJcr9VNTkpJE
-product_v2:
-  - id: b27e5950-9033-45ac-9f86-eb22e567f615
-feature_v2:
-  - id: b0bb9048-d951-48d8-8232-45cf248a7e27
-  - id: f82558ea-6af5-44eb-a424-5b3389abb0a3
-role_v2:
-  - id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
-topic_v2:
-  - id: a004cc84-67b9-4a33-a3a7-8ec7273ef4dc
-source-git-commit: 00118a89f25a23b931fac671130932bb0e0e4e4e
+product_v2: id: b27e5950-9033-45ac-9f86-eb22e567f615
+feature_v2: id: b0bb9048-d951-48d8-8232-45cf248a7e27id: f82558ea-6af5-44eb-a424-5b3389abb0a3
+role_v2: id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
+topic_v2: id: a004cc84-67b9-4a33-a3a7-8ec7273ef4dc
+source-git-commit: 3e6d310c5aec1a3435424fb122b71d825db5af0e
 workflow-type: tm+mt
-source-wordcount: 1221
-ht-degree: 1%
+source-wordcount: 917
+ht-degree: 2%
 
 ---
 
@@ -24,13 +19,13 @@ ht-degree: 1%
 
 [Referência de ponto final de landing page](https://developer.adobe.com/marketo-apis/api/asset#tag/Landing-Pages)
 
-Páginas de aterrissagem são páginas da Web hospedadas pelo Marketo.
+As landing pages são páginas da Web hospedadas pelo Marketo. Use as APIs REST de páginas iniciais para consultar e gerenciar metadados, conteúdo, ciclo de vida e pré-visualização.
 
 ## Consultar
 
-Como a maioria dos outros ativos, as Páginas de Aterrissagem podem ser consultadas [pelo nome](https://developer.adobe.com/marketo-apis/api/asset#tag/Landing-Pages/operation/getLandingPageByNameUsingGET), [pela identificação](https://developer.adobe.com/marketo-apis/api/asset#tag/Landing-Pages/operation/getLandingPageByIdUsingGET) e pela [navegação](https://developer.adobe.com/marketo-apis/api/asset#tag/Landing-Pages/operation/browseLandingPagesUsingGET). Essas consultas só retornarão metadados, e a lista de seções de conteúdo de uma página de destino deve ser consultada separadamente pela ID da página de destino.
+Consulte as páginas de aterrissagem [por nome](https://developer.adobe.com/marketo-apis/api/asset#tag/Landing-Pages/operation/getLandingPageByNameUsingGET), [por ID](https://developer.adobe.com/marketo-apis/api/asset#tag/Landing-Pages/operation/getLandingPageByIdUsingGET) ou por [navegação](https://developer.adobe.com/marketo-apis/api/asset#tag/Landing-Pages/operation/browseLandingPagesUsingGET). Essas consultas retornam somente metadados. Consulte as seções de conteúdo de uma landing page separadamente por ID de página.
 
-Consultar o conteúdo da landing page retornará uma lista de seções de conteúdo disponíveis na landing page. Uma seção deve estar presente na lista de conteúdo de uma página para atualizar o conteúdo:
+A consulta de conteúdo da página de aterrissagem retorna as seções de conteúdo disponíveis. Uma seção deve aparecer nesta lista antes que você possa atualizá-la.
 
 ```http
 GET /rest/asset/v1/landingPage/{id}/content.json
@@ -62,13 +57,15 @@ GET /rest/asset/v1/landingPage/{id}/content.json
 }
 ```
 
-Os resultados serão diferentes entre modelos guiados e de formulário livre, já que as páginas de aterrissagem guiadas vêm com um conjunto de seções definidas pelo modelo do qual são derivadas, enquanto as páginas de formulário livre não vêm com seções predefinidas e seu conteúdo deve ser adicionado antes da edição.  Observe que o formato do atributo &quot;content&quot; pode variar dependendo do atributo &quot;type&quot; e se o campo é estático ou dinâmico.
+As páginas de aterrissagem guiadas incluem seções definidas pelo modelo. As páginas de forma livre não incluem seções predefinidas, portanto, adicione o conteúdo antes de editá-lo.
+
+O formato do atributo `content` depende do atributo `type` e se o campo é estático ou dinâmico.
 
 ## Criar e atualizar
 
-[As páginas de aterrissagem são criadas](https://developer.adobe.com/marketo-apis/api/asset#tag/Landing-Pages/operation/createLandingPageUsingPOST) fazendo referência a um modelo. Os únicos campos necessários para a criação são nome, modelo (a ID do modelo) e a pasta na qual colocar a página. Para obter metadados adicionais que podem ser preenchidos, consulte a referência do endpoint.
+[Criar uma página de aterrissagem](https://developer.adobe.com/marketo-apis/api/asset#tag/Landing-Pages/operation/createLandingPageUsingPOST) a partir de um modelo. O nome da página, a ID do modelo e a pasta de destino são obrigatórios. Consulte a referência do endpoint para obter metadados opcionais.
 
-Os tipos de conteúdo válidos para os pontos de extremidade do [conteúdo da página de aterrissagem](https://developer.adobe.com/marketo-apis/api/asset#tag/Landing-Page-Content) são: richText, HTML, Form, Image, Retangle, Snippet.
+Os pontos de extremidade do [conteúdo da página de aterrissagem](https://developer.adobe.com/marketo-apis/api/asset#tag/Landing-Page-Content) oferecem suporte a estes tipos de conteúdo: `richText`, `HTML`, `Form`, `Image`, `Rectangle` e `Snippet`.
 
 ```http
 POST rest/asset/v1/landingPages.json
@@ -119,25 +116,25 @@ Os metadados da página de aterrissagem podem ser atualizados com o [ponto de ex
 
 ## Aprovação
 
-As landing pages seguem o modelo padrão de rascunho aprovado, em que pode haver uma versão de rascunho e/ou uma versão aprovada. Sempre que as atualizações são aplicadas a uma página, elas são sempre aplicadas primeiro à versão de rascunho e só são vistas ao vivo quando a página é aprovada.
+As landing pages usam o rascunho padrão e o modelo aprovado. As atualizações se aplicam ao rascunho e ficam online somente após a aprovação.
 
 ## Excluir
 
-Para excluir uma página de aterrissagem, ela deve primeiro estar fora de uso e não ser referenciada por nenhum outro ativo do Marketo, bem como não ser aprovada. As páginas são excluídas individualmente com o ponto de extremidade [Excluir Página de Aterrissagem](https://developer.adobe.com/marketo-apis/api/asset#tag/Landing-Pages/operation/deleteLandingPageByIdUsingPOST). Páginas de aterrissagem com botões sociais incorporados não podem ser excluídas por meio dessa API.
+Antes de excluir uma página de aterrissagem, verifique se ela não foi aprovada e se nenhum outro ativo do Marketo faz referência a ela. Exclua páginas individualmente com o ponto de extremidade [Excluir Página de Aterrissagem](https://developer.adobe.com/marketo-apis/api/asset#tag/Landing-Pages/operation/deleteLandingPageByIdUsingPOST). Não é possível usar essa API para excluir páginas com botões sociais incorporados.
 
 ## Clonar
 
-O Marketo fornece um método simples para clonar uma Landing page. Esta é uma solicitação POST application/x-www-url-formencoded.
+Clonar uma página de aterrissagem com uma solicitação POST `application/x-www-url-formencoded`.
 
-O parâmetro de caminho `id` especifica a identificação da página de aterrissagem de origem a ser clonada.
+O parâmetro de caminho `id` especifica a página de aterrissagem de origem.
 
-O parâmetro `name` é usado para especificar o nome da nova Página de Aterrissagem.
+O parâmetro `name` especifica o nome da nova página de destino.
 
-O parâmetro `folder` é usado para especificar a pasta principal onde a nova Página de Aterrissagem é criada. Isso está no formato de um objeto JSON inserido contendo `id` e `type`.
+O parâmetro `folder` especifica a pasta pai. Passe-o como um objeto JSON inserido contendo `id` e `type`.
 
-O parâmetro `template` é usado para especificar a ID do modelo da página de aterrissagem de origem.
+O parâmetro `template` especifica a ID do modelo da página de aterrissagem de origem.
 
-O parâmetro `description` opcional é usado para descrever a nova Página de Aterrissagem.
+O parâmetro `description` opcional descreve a nova página de aterrissagem.
 
 ```http
 POST /rest/asset/v1/landingPage/{id}/clone.json
@@ -183,7 +180,9 @@ name=MyNewLandingPage&folder={"type":"Program","id":1119}&template=57
 
 ## Seção Gerenciar conteúdo
 
-As seções de conteúdo são ordenadas por sua propriedade index e, por fim, dispostas de acordo com as regras CSS aplicadas quando exibidas pelo cliente. As seções de conteúdo são incluídas e gerenciadas com os pontos de extremidade correspondentes da seção de conteúdo da [Adicionar](https://developer.adobe.com/marketo-apis/api/asset#tag/Landing-Page-Content/operation/addLandingPageContentUsingPOST), [Atualizar](https://developer.adobe.com/marketo-apis/api/asset#tag/Landing-Page-Content/operation/updateLandingPageContentUsingPOST) e [Excluir](https://developer.adobe.com/marketo-apis/api/asset#tag/Landing-Page-Content/operation/removeLandingPageContentUsingPOST) da página de aterrissagem e podem ser consultadas usando [Obter conteúdo da página de aterrissagem](https://developer.adobe.com/marketo-apis/api/asset#tag/Landing-Page-Content/operation/getLandingPageContentUsingGET). Cada seção tem um tipo e um parâmetro de valor. O tipo determina o que deve ser colocado no valor.  Para esses endpoints, os dados são transmitidos como POST x-www-form-urlencoded, não como JSON.
+As seções de conteúdo são ordenadas por sua propriedade `index` e exibidas de acordo com as regras CSS do cliente. Use os pontos de extremidade [Adicionar](https://developer.adobe.com/marketo-apis/api/asset#tag/Landing-Page-Content/operation/addLandingPageContentUsingPOST), [Atualizar](https://developer.adobe.com/marketo-apis/api/asset#tag/Landing-Page-Content/operation/updateLandingPageContentUsingPOST) e [Excluir](https://developer.adobe.com/marketo-apis/api/asset#tag/Landing-Page-Content/operation/removeLandingPageContentUsingPOST) para gerenciar seções. Use [Obter Conteúdo da Página de Aterrissagem](https://developer.adobe.com/marketo-apis/api/asset#tag/Landing-Page-Content/operation/getLandingPageContentUsingGET) para consultá-los.
+
+Cada seção tem `type` e `value` parâmetros. O `type` determina o esperado `value`. Transmita dados para esses pontos de extremidade como POST `x-www-form-urlencoded`, não como JSON.
 
 **Tipos de seção**
 
@@ -199,11 +198,15 @@ As seções de conteúdo são ordenadas por sua propriedade index e, por fim, di
 | SocialButton | A ID do botão social. |
 | Vídeo | A ID do vídeo. |
 
-Para páginas de forma livre, todas as seções de conteúdo desejadas devem ser adicionadas e serão incorporadas ao elemento div com a id `mktoContent`. Para páginas guiadas, uma lista de elementos predefinidos pode estar presente na lista do ponto de extremidade [Obter Conteúdo da Página de Aterrissagem](https://developer.adobe.com/marketo-apis/api/asset#tag/Landing-Page-Content/operation/getLandingPageContentUsingGET). É possível adicionar mais ou atualizar o [conteúdo](https://developer.adobe.com/marketo-apis/api/asset#tag/Landing-Page-Content/operation/updateLandingPageContentUsingPOST) por meio dos respectivos pontos de extremidade.
+Para páginas de formato livre, adicione cada seção de conteúdo necessária. O Marketo os incorpora no elemento `div` com a ID `mktoContent`.
+
+As páginas guiadas podem incluir elementos predefinidos retornados por [Obter Conteúdo da Página de Aterrissagem](https://developer.adobe.com/marketo-apis/api/asset#tag/Landing-Page-Content/operation/getLandingPageContentUsingGET). Use os pontos de extremidade correspondentes para adicionar elementos ou [atualizar seu conteúdo](https://developer.adobe.com/marketo-apis/api/asset#tag/Landing-Page-Content/operation/updateLandingPageContentUsingPOST).
 
 ### Conteúdo dinâmico
 
-Para criar uma seção de Conteúdo dinâmico, ela já deve estar presente na lista de conteúdo da página inicial. O ponto de extremidade [Atualizar Seção de Conteúdo da Página de Aterrissagem](https://developer.adobe.com/marketo-apis/api/asset#tag/Landing-Page-Content/operation/updateLandingPageContentUsingPOST) precisa ser usado para definir o tipo como &#39;DynamicContent&#39;. Quando uma seção é definida como conteúdo dinâmico, ela cria seções dinâmicas subjacentes na seção de conteúdo, todas herdam o tipo base do elemento convertido. Cada seção dinâmica também herda o conteúdo da seção convertida.
+Para tornar uma seção dinâmica, primeiro verifique se ela aparece na lista de conteúdo da página inicial. Em seguida, use [Atualizar Seção de Conteúdo da Página de Aterrissagem](https://developer.adobe.com/marketo-apis/api/asset#tag/Landing-Page-Content/operation/updateLandingPageContentUsingPOST) para definir seu tipo como `DynamicContent`.
+
+O Marketo cria seções dinâmicas subjacentes que herdam o tipo base e o conteúdo do elemento convertido.
 
 ```http
 GET /rest/asset/v1/landingPage/{id}/dynamicContent/RVMtNDg=.json
@@ -269,11 +272,11 @@ segment=New Segment&value=New Content
 
 ## Variáveis
 
-Um dos recursos introduzidos nas páginas de aterrissagem guiadas é a edição de variáveis.  As variáveis contêm valores para elementos em uma landing page.  As variáveis podem ser facilmente modificadas usando o editor de landing page, conforme mostrado abaixo:
+As páginas de aterrissagem guiadas são compatíveis com variáveis editáveis que contêm valores de elementos. Modifique variáveis no editor de páginas de destino:
 
 ![Variáveis de página de aterrissagem](assets/landing-page-variables.png)
 
-As variáveis são definidas como metatags dentro do elemento `<head>` de um modelo de página de aterrissagem de modo guiado. Há três tipos de variáveis disponíveis: String, Color e Boolean.  Este é um exemplo de três definições de variáveis:
+As variáveis são metatags no elemento `<head>` de um modelo de página de aterrissagem guiado. Os tipos suportados são String, Color e Boolean. O exemplo a seguir define uma variável de cada tipo:
 
 ```html
 <head>
@@ -284,7 +287,7 @@ As variáveis são definidas como metatags dentro do elemento `<head>` de um mod
 </head>
 ```
 
-Para obter mais informações, consulte a seção &quot;Variável editável&quot; na documentação [Criar um modelo de página de aterrissagem guiado](https://experienceleague.adobe.com/pt-br/docs/marketo/using/product-docs/demand-generation/landing-pages/landing-page-templates/create-a-guided-landing-page-template).
+Para obter mais informações, consulte a seção &quot;Variável editável&quot; na documentação [Criar um modelo de página de aterrissagem guiado](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/demand-generation/landing-pages/landing-page-templates/create-a-guided-landing-page-template).
 
 ### Consultar
 
@@ -320,7 +323,7 @@ GET /rest/asset/v1/landingPage/{id}/variables.json
 }
 ```
 
-Neste exemplo, a página de aterrissagem guiada contém 3 variáveis: stringVar, colorVar, boolVar.
+Esta página de aterrissagem guiada contém três variáveis: `stringVar`, `colorVar` e `boolVar`.
 
 ### Atualização
 
@@ -348,10 +351,10 @@ POST /rest/asset/v1/landingPage/{id}/variable/{variableId}.json?value={newValue}
 
 ## Visualizar página de destino
 
-A Marketo fornece o ponto de extremidade [Obter Conteúdo Total da Página de Aterrissagem](https://developer.adobe.com/marketo-apis/api/asset#tag/Landing-Pages/operation/getLandingPageFullContentUsingGET) para recuperar uma visualização ao vivo de uma página de aterrissagem como ela seria renderizada em um navegador. Há um parâmetro obrigatório, o parâmetro de caminho `id`, que é a ID da página de aterrissagem que você deseja visualizar. Há dois parâmetros de consulta opcionais adicionais:
+Use [Obter Conteúdo Completo da Página de Aterrissagem](https://developer.adobe.com/marketo-apis/api/asset#tag/Landing-Pages/operation/getLandingPageFullContentUsingGET) para recuperar uma visualização renderizada pelo navegador. O parâmetro de caminho `id` da página de aterrissagem é obrigatório. O endpoint também aceita dois parâmetros de consulta opcionais:
 
-- segmentação: aceita uma matriz de objetos JSON que contêm atributos segmentationId e segmentId. Quando definido, visualiza a página de aterrissagem como se você fosse um cliente potencial que correspondesse a esses segmentos.
-- leadId: aceita a ID de número inteiro de um lead. Quando definido, pré-visualiza a página de aterrissagem como se ela tivesse sido visualizada pelo lead designado.
+- `segmentation`: uma matriz de objetos JSON contendo `segmentationId` e `segmentId`. A visualização representa um lead que corresponde a esses segmentos.
+- `leadId`: uma ID de cliente em potencial de número inteiro. A visualização representa o lead especificado.
 
 ```http
 GET /rest/asset/v1/landingPage/{id}/fullContent.json?leadId=1001&segmentation=[{"segmentationId":1030,"segmentId":1103}]

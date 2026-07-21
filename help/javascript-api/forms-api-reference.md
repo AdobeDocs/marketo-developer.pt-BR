@@ -4,22 +4,21 @@ description: Referência abrangente para a API do Marketo Forms 2.0, detalhando 
 feature: Forms, Javascript
 exl-id: 0f8d242f-0b27-4087-b080-3d41ebaa25b3
 TQID: https://experienceleague.adobe.com/wLuN1H8tDFEihPqcAfoG-Y80d4Kw1BoSskVQu4Bgss0
-product_v2:
-  - id: b27e5950-9033-45ac-9f86-eb22e567f615
-feature_v2:
-  - id: b0bb9048-d951-48d8-8232-45cf248a7e27
-role_v2:
-  - id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
-source-git-commit: 00118a89f25a23b931fac671130932bb0e0e4e4e
+product_v2: id: b27e5950-9033-45ac-9f86-eb22e567f615
+feature_v2: id: b0bb9048-d951-48d8-8232-45cf248a7e27
+role_v2: id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
+source-git-commit: 3e6d310c5aec1a3435424fb122b71d825db5af0e
 workflow-type: tm+mt
-source-wordcount: 1352
+source-wordcount: 1337
 ht-degree: 2%
 
 ---
 
 # Referência da API do Forms
 
-Há dois objetos principais com os quais você interagirá usando a API do Forms 2.0. Os objetos `MktoForms2` e `Form`. O objeto `MktoForms2` é o namespace publicamente visível de nível superior para a funcionalidade Forms2 e contém funções para criar, carregar e buscar objetos Form.
+A API do Forms 2.0 fornece dois objetos principais: `MktoForms2` e `Form`.
+
+`MktoForms2` é o namespace público de nível superior para a funcionalidade Forms2. Ele contém funções que criam, carregam e recuperam objetos `Form`.
 
 ## Métodos MktoForms2
 
