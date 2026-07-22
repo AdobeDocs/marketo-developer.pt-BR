@@ -11,24 +11,24 @@ feature_v2:
   - id: c5f60233-d5ea-4453-a799-0ad258b4d399
 role_v2:
   - id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
-source-git-commit: 00118a89f25a23b931fac671130932bb0e0e4e4e
+source-git-commit: 3e6d310c5aec1a3435424fb122b71d825db5af0e
 workflow-type: tm+mt
-source-wordcount: 213
+source-wordcount: 194
 ht-degree: 6%
 
 ---
 
 # Campos
 
-A API REST e a API SOAP usam diferentes convenções de nomenclatura para campos de cliente potencial.
+A API REST e a API SOAP usam diferentes convenções de nomenclatura para campos de cliente potencial. Use a convenção de nome de campo exigida por cada recurso de integração.
 
 ## Recuperar a lista de nomes de campos
 
-Recupere a lista de todos os nomes de campo com suporte disponíveis em seus registros de cliente potencial usando o ponto de extremidade REST &quot;Descrever cliente potencial&quot;.
+Use o ponto de extremidade REST &#39;Descrever cliente potencial&#39; para recuperar todos os nomes de campo aceitos para registros de cliente potencial.
 
 ## Onde usar qual tipo de nome de campo?
 
-Às vezes, é difícil saber qual tipo de nome de campo você deve usar ao aproveitar um recurso específico relacionado à integração. Veja a seguir uma referência rápida para quais recursos usam os tipos de nome de campo REST ou SOAP.
+O tipo de nome de campo necessário depende do recurso de integração. A tabela a seguir identifica se cada recurso usa nomes de campo REST ou SOAP.
 
 | Recurso | Tipo de nome de campo a ser usado |
 | --- | --- |
@@ -43,4 +43,6 @@ Recupere a lista de todos os nomes de campo com suporte disponíveis em seus reg
 
 ### Por que o campo REST API sfdcId sempre retorna um valor nulo?
 
-O campo `sfdcId` é um campo de fórmula que foi incluído incorretamente no mapa de campos original para a API REST. Os registros recuperados por meio da API REST não calculam o valor de campos de fórmula, portanto, o valor sempre será nulo. Para capturar a ID real do SFDC, você deve usar os campos chamados `sfdcLeadId` e `sfdcContactId`.
+O campo `sfdcId` é um campo de fórmula incluído no mapa de campos original para a API REST. Os registros recuperados por meio da API REST não calculam valores de campo de fórmula, portanto, `sfdcId` sempre retorna nulo.
+
+Para recuperar a SFDC ID, use os campos `sfdcLeadId` e `sfdcContactId`.

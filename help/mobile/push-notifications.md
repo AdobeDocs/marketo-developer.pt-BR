@@ -12,50 +12,50 @@ role_v2:
   - id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
 topic_v2:
   - id: c1579802-ddd4-4214-8a91-97b2066abe11
-source-git-commit: 00118a89f25a23b931fac671130932bb0e0e4e4e
+source-git-commit: 3e6d310c5aec1a3435424fb122b71d825db5af0e
 workflow-type: tm+mt
-source-wordcount: 1338
-ht-degree: 0%
+source-wordcount: 1162
+ht-degree: 1%
 
 ---
 
 # Notificações por push
 
-Como ativar as Notificações por push.
+Ative notificações por push para aplicativos iOS ou Android que usam o Marketo Mobile SDK.
 
 ## Configurar notificação por push no iOS
 
 Há três etapas para ativar as notificações por push:
 
-1. Configure notificações por push na conta do desenvolvedor do Apple.
+1. Configure notificações por push em sua conta de desenvolvedor do Apple.
 1. Ative notificações por push no xCode.
 1. Ative notificações por push no aplicativo com o Marketo SDK.
 
 ### Configurar notificações por push na conta de desenvolvedor do Apple
 
 1. Faça logon no Apple Developer [Member Center](https://developer.apple.com/membercenter).
-1. Clique em &quot;Certificados, Identificadores e Perfis&quot;.
-1. Clique na pasta &quot;Certificados->Todos&quot; abaixo de &quot;iOS, tvOS, watchOS&quot;.
-1. Selecione o &quot;+&quot; na tela superior esquerda ao lado dos certificados ![](assets/certificates-plus.png)
-1. Ative a caixa de seleção &quot;Apple Push Notification service SSL (Sandbox &amp; Production)&quot; e selecione Continuar.
-1. Selecione o identificador de aplicativo que você está usando para compilar o aplicativo.![](assets/push-appid.png)
-1. Crie e faça upload do CSR para gerar o certificado de push. ![](assets/push-ssl.png)
-1. Baixe o certificado no computador local e clique duas vezes para instalá-lo. ![](assets/certificate-download.png)
-1. Abra &quot;Acesso ao chaveiro&quot;, clique com o botão direito no certificado e exporte 2 itens para o arquivo `.p12`.![chaveiro](assets/key-chain.png)
+1. Selecione &quot;Certificados, Identificadores e Perfis&quot;.
+1. Selecione a pasta &quot;Certificados->Todos&quot; em &quot;iOS, tvOS, watchOS&quot;.
+1. Selecione o &quot;+&quot; ao lado dos certificados no canto superior esquerdo. ![](assets/certificates-plus.png)
+1. Selecione &quot;Apple Push Notification service SSL (Sandbox &amp; Produção)&quot; e clique em Continuar.
+1. Selecione o identificador de aplicativo usado para compilar o aplicativo.![](assets/push-appid.png)
+1. Crie e faça upload de uma CSR para gerar o certificado de push. ![](assets/push-ssl.png)
+1. Baixe o certificado e clique duas vezes nele para instalar. ![](assets/certificate-download.png)
+1. Abra &quot;Acesso ao chaveiro&quot;, clique com o botão direito no certificado e exporte ambos os itens para o arquivo `.p12`.![chaveiro](assets/key-chain.png)
 1. Faça upload desse arquivo por meio do Marketo Admin Console para configurar as notificações.
 1. Atualizar perfis de provisionamento de aplicativo.
 
 ### Ativar notificações por push no xCode
 
-Ativar o recurso de notificação por push no projeto xCode.![](assets/push-xcode.png)
+Ative o recurso de notificação por push no projeto xCode.![](assets/push-xcode.png)
 
 ### Ativar notificações por push no aplicativo com o Marketo SDK
 
-Adicione o seguinte código ao arquivo `AppDelegate.m` para entregar notificações por push aos dispositivos do cliente.
+Adicione o seguinte código ao arquivo `AppDelegate.m` para entregar notificações por push a dispositivos clientes.
 
-**Observação** - Se estiver usando a extensão [!DNL Adobe Launch], use `ALMarketo` como nome de classe
+**Observação** - Se você usar a extensão [!DNL Adobe Launch], use `ALMarketo` como o nome de classe.
 
-Importar sequência em `AppDelegate.h`.
+Adicionar a seguinte importação a `AppDelegate.h`.
 
 >[!BEGINTABS]
 
@@ -91,7 +91,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate , UNUserNotificationCenter
 
 >[!ENDTABS]
 
-Iniciar serviço de notificação por push. Para ativar a notificação por push, adicione o código abaixo.
+Adicione o código a seguir para inicializar o serviço de notificação por push.
 
 >[!BEGINTABS]
 
@@ -134,11 +134,11 @@ func application(_ application: UIApplication, didFinishLaunchingWithOptions lau
 
 >[!ENDTABS]
 
-Chame esse método para iniciar o processo de registro com o Apple Push Service. Se o registro for bem-sucedido, o aplicativo chamará o método `application:didRegisterForRemoteNotificationsWithDeviceToken:` do objeto delegado do aplicativo e passará um token de dispositivo.
+Chame esse método para iniciar o registro com o Apple Push Service. Se o registro for bem-sucedido, o aplicativo chamará o método `application:didRegisterForRemoteNotificationsWithDeviceToken:` do objeto delegado do aplicativo e passará um token de dispositivo.
 
 Se o registro falhar, o aplicativo chamará o método `application:didFailToRegisterForRemoteNotificationsWithError:` do delegado do aplicativo.
 
-Registrar token de push com o Marketo. Para receber notificações por push do Marketo, você deve registrar o token do dispositivo no Marketo.
+Registre o token de push com o Marketo. O token do dispositivo deve ser registrado para receber notificações por push do Marketo.
 
 >[!BEGINTABS]
 
@@ -162,7 +162,7 @@ func application(_ application: UIApplication, didRegisterForRemoteNotifications
 
 >[!ENDTABS]
 
-O token também pode ter seu registro cancelado quando o usuário fizer logout.
+Também é possível cancelar o registro do token quando o usuário faz logoff.
 
 >[!BEGINTABS]
 
@@ -180,9 +180,9 @@ Marketo.sharedInstance().unregisterPushDeviceToken
 
 >[!ENDTABS]
 
-Para registrar novamente o token de push, extraia o código da etapa 3 em um método AppDelegate e chame do método de logon ViewController.
+Para registrar novamente o token de push, extraia o código da etapa 3 em um método AppDelegate. Chame esse método a partir do método de logon ViewController.
 
-Lidar com a notificação por push. Para receber notificações por push do Marketo, você deve registrar o token do dispositivo no Marketo.
+Manipule a notificação por push depois de registrar o token do dispositivo no Marketo.
 
 >[!BEGINTABS]
 
@@ -205,9 +205,9 @@ func application(_ application: UIApplication, didReceiveRemoteNotification user
 
 >[!ENDTABS]
 
-Adicione o seguinte método no AppDelegate
+Adicione o método a seguir ao AppDelegate.
 
-Ao usar esse método, você pode apresentar alertas, sons ou aumentar o selo enquanto o aplicativo está em primeiro plano. Você deve chamar o completionHandler de sua escolha neste método.
+Use esse método para exibir um alerta, reproduzir um som ou aumentar o selo enquanto o aplicativo está em primeiro plano. Chame o completionHandler apropriado neste método.
 
 >[!BEGINTABS]
 
@@ -234,9 +234,9 @@ func userNotificationCenter(_ center: UNUserNotificationCenter,
 
 >[!ENDTABS]
 
-Lidar com notificações por push recebidas recentemente no AppDelegate
+Lidar com notificações por push recém-recebidas no AppDelegate.
 
-O método será chamado no delegado quando o usuário responder à notificação abrindo o aplicativo, descartando a notificação ou escolhendo um UNNotificationAction. O delegado deve ser definido antes que o aplicativo retorne de applicationDidFinishLaunching:.
+O delegado chama esse método quando o usuário responde a uma notificação abrindo o aplicativo, descartando a notificação ou escolhendo um UNNotificationAction. Defina o delegado antes que o aplicativo retorne de applicationDidFinishLaunching:.
 
 >[!BEGINTABS]
 
@@ -262,23 +262,23 @@ func userNotificationCenter(_ center: UNUserNotificationCenter,
 
 >[!ENDTABS]
 
-Rastrear notificações por push
+Rastrear notificações por push.
 
-Se o aplicativo estiver sendo executado em segundo plano (ou não estiver ativo), o dispositivo receberá uma notificação por push, como mostrado abaixo. O Marketo rastreará quando o usuário tocar na notificação.
+Se o aplicativo estiver em segundo plano ou inativo, o dispositivo receberá uma notificação por push, como mostrado abaixo. O Marketo rastreia quando o usuário seleciona a notificação.
 
 ![celular8](assets/mobile8.png)
 
-Se o dispositivo receber uma notificação por push, ela será passada para o retorno de chamada `application:didReceiveRemoteNotification:` no delegado do aplicativo.
+Quando o dispositivo recebe uma notificação por push, ele transmite a notificação para o retorno de chamada `application:didReceiveRemoteNotification:` no delegado do aplicativo.
 
-Veja a seguir um registro de atividades do Marketo no Marketo que mostra eventos de aplicativo e eventos de notificação por push.
+O seguinte log de atividades do Marketo mostra eventos de aplicativo e eventos de notificação por push.
 
 ![celular9](assets/mobile9.png)
 
 ## Configurar notificação por push no Android
 
-1. Adicione a seguinte permissão dentro da tag do aplicativo.
+1. Adicione as seguintes permissões na tag do aplicativo.
 
-   Abra `AndroidManifest.xml` e adicione as seguintes permissões. Seu aplicativo deve solicitar as permissões &quot;INTERNET&quot; e &quot;ACCESS_NETWORK_STATE&quot;. Se seu aplicativo já solicitar essas permissões, ignore esta etapa.
+   Abra `AndroidManifest.xml` e adicione as seguintes permissões. Seu aplicativo deve solicitar as permissões &quot;INTERNET&quot; e &quot;ACCESS_NETWORK_STATE&quot;. Ignore esta etapa se o aplicativo já as solicitar.
 
    ```xml
    <uses‐permission android:name="android.permission.INTERNET"/>
@@ -294,16 +294,16 @@ Veja a seguir um registro de atividades do Marketo no Marketo que mostra eventos
    <uses-permission android:name="com.google.android.c2dm.permission.RECEIVE" />
    ```
 
-1. Configuração do FCM com HTTPv1
+1. Configurar o FCM com HTTPv1.
 
-- Habilitar MME FCM HTTPv1 no gerenciador de recursos do Marketo ![](assets/feature-manager.png)
+   - Ative o MME FCM HTTPv1 no gerenciador de recursos do Marketo. ![](assets/feature-manager.png)
    - Faça upload do arquivo Json da conta de serviço para o aplicativo em MLM.
-   - É possível baixar o arquivo Json da conta de serviço no console do Firebase.   ![](assets/fcm-console.png)
-   - Aguarde uma hora depois de fazer upload do arquivo Json da conta de serviço no Marketo antes de enviar as notificações por push.  
+   - Baixe o arquivo Json da conta de serviço no console do Firebase. ![](assets/fcm-console.png)
+   - Aguarde uma hora depois de fazer upload do arquivo Json da conta de serviço no Marketo antes de enviar as notificações por push.
 
 ## Dispositivos de teste Android
 
-Adicione a atividade Marketo no arquivo de manifesto dentro da tag do aplicativo.
+Adicione a atividade Marketo ao arquivo de manifesto dentro da tag do aplicativo.
 
 ```xml
 <activity android:name="com.marketo.MarketoActivity"  android:configChanges="orientation|screenSize">
@@ -318,7 +318,7 @@ Adicione a atividade Marketo no arquivo de manifesto dentro da tag do aplicativo
 
 ## Registrar serviço de push do Marketo
 
-1. Para receber notificações por push do Marketo, você deve adicionar o serviço de mensagens do Firebase ao `AndroidManifest.xml`. Adicione antes de fechar a tag do aplicativo.
+1. Adicione o serviço de mensagens do Firebase a `AndroidManifest.xml` antes de fechar a marca do aplicativo.
 
    ```xml
    <meta-data
@@ -332,7 +332,7 @@ Adicione a atividade Marketo no arquivo de manifesto dentro da tag do aplicativo
    </service>
    ```
 
-1. Adicione métodos do Marketo SDK no arquivo `MyFirebaseMessagingService` da seguinte maneira
+1. Adicione os métodos do Marketo SDK a `MyFirebaseMessagingService` da seguinte maneira.
 
    ```java
    import com.marketo.Marketo;
@@ -357,7 +357,7 @@ Adicione a atividade Marketo no arquivo de manifesto dentro da tag do aplicativo
    }
    ```
 
-   **Observação** - Se estiver usando a extensão do Adobe, adicione como abaixo
+   **Observação** - Se você usar a extensão do Adobe, adicione o seguinte código.
 
    ```java
    import com.marketo.Marketo;
@@ -380,7 +380,7 @@ Adicione a atividade Marketo no arquivo de manifesto dentro da tag do aplicativo
    }
    ```
 
-**OBSERVAÇÃO**: o FCM SDK adiciona automaticamente todas as permissões necessárias, bem como a funcionalidade do receptor necessária. Remova os seguintes elementos obsoletos (e possivelmente prejudiciais, pois podem causar duplicação de mensagem) do manifesto do aplicativo se você tiver usado versões anteriores do SDK
+**OBSERVAÇÃO**: o FCM SDK adiciona automaticamente as permissões e a funcionalidade do receptor necessárias. Se você usou uma versão anterior do SDK, remova os seguintes elementos obsoletos, o que pode causar duplicação de mensagens.
 
 ```xml
 <receiver android:name="com.marketo.MarketoBroadcastReceiver" android:permission="com.google.android.c2dm.permission.SEND">
@@ -398,7 +398,7 @@ Adicione a atividade Marketo no arquivo de manifesto dentro da tag do aplicativo
 <service android:name="com.marketo.MarketoIntentService"/>
 ```
 
-1. Inicializar o Marketo Push Depois de salvar a configuração acima, você deve inicializar a Notificação por push do Marketo. Crie ou abra a classe Application e copie/cole o código abaixo. Você pode obter a ID do remetente no console Firebase.
+1. Inicializar o Marketo Push. Depois de salvar a configuração, crie ou abra a classe Application e adicione o seguinte código. Obtenha a ID do remetente no Console Firebase.
 
    ```java
    Marketo marketoSdk = Marketo.getInstance(getApplicationContext());
@@ -407,7 +407,7 @@ Adicione a atividade Marketo no arquivo de manifesto dentro da tag do aplicativo
    marketoSdk.initializeMarketoPush(SENDER_ID,"ChannelName");
    ```
 
-   Se estiver usando a Extensão [!DNL Adobe Launch], use estas instruções
+   Se você usar a extensão [!DNL Adobe Launch], use o seguinte código.
 
    ```java
    // Enable push notification here. The push notification channel name can by any string
@@ -416,21 +416,21 @@ Adicione a atividade Marketo no arquivo de manifesto dentro da tag do aplicativo
 
    Se você não tiver um SENDER_ID, habilite o Serviço de Cloud Messaging do Google completando as etapas detalhadas neste [tutorial](https://developers.google.com/cloud-messaging/).
 
-   O token também pode ter seu registro cancelado quando o usuário fizer logout.
+   Também é possível cancelar o registro do token quando o usuário faz logoff.
 
    ```java
    marketoSdk.uninitializeMarketoPush();
    ```
 
-   Se estiver usando a extensão [!DNL Adobe Launch], use a instrução abaixo
+   Se você usar a extensão [!DNL Adobe Launch], use o seguinte código.
 
    ```java
    ALMarketo.uninitializeMarketoPush();
    ```
 
-   Observação: para registrar novamente o token de push, extraia o código da etapa 3 em um método AppDelegate e chame do método de logon ViewController.
+   Observação: para registrar novamente o token de push, extraia o código da etapa 3 em um método AppDelegate. Chame esse método a partir do método de logon ViewController.
 
-1. Definir ícone de notificação (opcional) Para configurar um ícone de notificação personalizado, o método a seguir deve ser chamado.
+1. Opcional: Defina um ícone de notificação. Chame o método a seguir para configurar um ícone de notificação personalizado.
 
    ```java
    MarketoConfig.Notification config = new MarketoConfig.Notification();
@@ -450,37 +450,35 @@ Adicione a atividade Marketo no arquivo de manifesto dentro da tag do aplicativo
 
 ## Solução de problemas
 
-A configuração de mensagens de push móveis envolve muitas etapas e a coordenação de desenvolvedores e profissionais de marketing. Se você estiver com dificuldades, há algumas coisas simples que você pode verificar.
-
-Depois de garantir que as coisas simples estejam corretas, você pode se aprofundar nos detalhes da programação.
+Se as mensagens de push móveis não funcionarem como esperado, verifique os problemas comuns de configuração antes de investigar os detalhes da implementação.
 
 ### A mensagem de push não está aparecendo
 
-Primeiro, verifique se as mensagens de push estão desativadas no fone. Os usuários móveis podem controlar se recebem ou não mensagens para qualquer aplicativo específico. Geralmente, os desenvolvedores (e profissionais de marketing) desativarão essas mensagens em algum momento durante o desenvolvimento. Portanto, a primeira coisa a verificar é se o recipient desativou as mensagens de push para o seu aplicativo.
+Verifique se as mensagens de push estão desabilitadas no dispositivo. Os usuários móveis podem controlar se recebem mensagens para cada aplicativo, e desenvolvedores ou profissionais de marketing podem desativar mensagens durante o desenvolvimento.
 
-Segundo, o aplicativo já está aberto e ativo no dispositivo? Quando seu aplicativo é o aplicativo ativo no dispositivo, as mensagens por push móveis não aparecem na tela. Em vez disso, elas são exibidas na área &quot;notificações locais&quot; do aplicativo.
+Verifique se o aplicativo está aberto e ativo. Quando o aplicativo está ativo, as mensagens por push móveis não aparecem na tela. Em vez disso, eles aparecem na área &quot;notificações locais&quot; do aplicativo.
 
 ### Exibir os logs de atividade no Marketo
 
-O primeiro local a ser observado ao rastrear um erro é nos logs de atividade do Marketo. Você pode usar os logs de atividades para verificar se uma mensagem foi enviada.
+Use os logs de atividade do Marketo para verificar se uma mensagem foi enviada.
 
-No registro de atividades, verifique os registros de atividade de uma pessoa que deveria receber uma mensagem. Se a mensagem foi enviada, haverá um registro no log de atividades. Caso contrário, o problema provavelmente ocorre devido à configuração do certificado do iOS ou da chave da API do Android no Marketo.
+Revise os registros de atividade para uma pessoa que deveria ter recebido a mensagem. Se a mensagem foi enviada, o log de atividades contém um registro. Se nenhum registro existir, verifique o certificado do iOS ou a configuração da chave da API do Android no Marketo.
 
 ### O certificado ou a chave é inválido
 
-Verifique novamente sua configuração para garantir que você tenha o certificado adequado carregado para Sandbox ou Produção. Às vezes, é melhor fazer com que o desenvolvedor reexporte os certificados (iOS) ou as chaves (Android) e, em seguida, recarregue-os no Marketo para garantir que estejam corretos.
+Verifique se o certificado correto está carregado para Sandbox ou Produção. Se necessário, exporte novamente os certificados do iOS ou as chaves do Android e recarregue-os no Marketo.
 
 ### Um certificado ou uma chave (iOS) está ausente no arquivo .p12
 
-Ao exportar o certificado, exporte a chave _e_ do certificado.
+Ao exportar o certificado, exporte a chave e o certificado.
 
 ### Provisionamento de perfis desatualizados (iOS)
 
-Sempre que você adicionar um novo dispositivo, deverá atualizar os perfis de provisionamento e gerar novos certificados. Verifique se o projeto Xcode aponta para os perfis e certificados corretos e importe esses certificados para a Marketo.
+Depois de adicionar um dispositivo, atualize os perfis de provisionamento e gere novos certificados. Aponte o projeto Xcode para os perfis e certificados corretos e importe os certificados para o Marketo.
 
 ### Não é possível carregar o certificado do iOS (IOS)
 
-Verifique se a senha usada ao exportar o certificado não contém espaços.  Por exemplo, em vez disso:
+Verifique se a senha usada para exportar o certificado não contém espaços. Por exemplo, em vez disso:
 
 `Hello World 123`
 
@@ -490,11 +488,11 @@ use isto:
 
 ### Solução de problemas de certificados iOS
 
-Para aplicativos de sandbox, você pode usar um certificado &quot;desenvolvedor&quot; ou &quot;universal&quot;. Mas para aplicativos de produção é necessário carregar um certificado válido de &quot;distribuição&quot; ou &quot;universal&quot;.
+Para aplicativos de sandbox, use um certificado &quot;desenvolvedor&quot; ou &quot;universal&quot;. Para aplicativos de produção, carregue um certificado válido de &quot;distribuição&quot; ou &quot;universal&quot;.
 
 ### Rejeição por push/token inválido
 
-Um token de registro existente pode deixar de ser válido em vários cenários, incluindo:
+Um token de registro pode se tornar inválido nos seguintes cenários:
 
 - Se o aplicativo cliente cancelar o registro no GCM.
 - Se o aplicativo cliente tiver o registro cancelado automaticamente, o que pode acontecer se o usuário desinstalar o aplicativo. Por exemplo, no iOS, se o Serviço de feedback APNS relatou o token APNS como inválido.

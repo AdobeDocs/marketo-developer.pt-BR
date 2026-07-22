@@ -8,10 +8,10 @@ product_v2:
   - id: b27e5950-9033-45ac-9f86-eb22e567f615
 role_v2:
   - id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
-source-git-commit: 00118a89f25a23b931fac671130932bb0e0e4e4e
+source-git-commit: 3e6d310c5aec1a3435424fb122b71d825db5af0e
 workflow-type: tm+mt
-source-wordcount: 364
-ht-degree: 3%
+source-wordcount: 290
+ht-degree: 4%
 
 ---
 
@@ -19,7 +19,9 @@ ht-degree: 3%
 
 [Referência de Ponto de Extremidade de Token](https://developer.adobe.com/marketo-apis/api/asset#tag/Tokens)
 
-Os tokens no Marketo são strings especiais semelhantes a códigos de atalho, que são substituídos por dados separados no tempo de execução. Há vários tipos de tokens disponíveis no Marketo, mas somente Meus tokens podem ser editados por meio da API. Meus tokens são tokens filhos que são locais para uma pasta ou programa específico. Os tokens podem ser lidos, criados e excluídos por meio da API.
+Os tokens são strings que o Marketo substitui por outros dados no tempo de execução. A API só pode editar Meus tokens, que são tokens secundários locais a uma pasta ou programa.
+
+Use a API de tokens para ler, criar, atualizar e excluir Meus tokens.
 
 ## Tipo de dados
 
@@ -34,11 +36,11 @@ Os tokens podem ser criados com os seguintes tipos de dados:
 | campanha do sfdc | Usado na integração do gerenciamento de campanhas do Salesforce |
 | texto | Uma string de texto |
 
-Esses são os únicos tipos de dados que podem ser usados ao criar um token via API.
+A API oferece suporte apenas a esses tipos de dados ao criar um token.
 
 ## Consultar
 
-[Obter Tokens por Id de Pasta](https://developer.adobe.com/marketo-apis/api/asset#tag/Tokens/operation/getTokensByFolderIdUsingGET) usa `id` como parâmetro de caminho de um tipo de Programa ou Pasta. Este tipo é especificado pelo parâmetro `folderType`.
+[Obter Tokens por ID de Pasta](https://developer.adobe.com/marketo-apis/api/asset#tag/Tokens/operation/getTokensByFolderIdUsingGET) usa a ID de um programa ou pasta como um parâmetro de caminho. Use o parâmetro `folderType` para especificar o tipo.
 
 ```http
 GET /rest/asset/v1/folder/{id}/tokens.json?folderType=Folder
@@ -71,7 +73,9 @@ GET /rest/asset/v1/folder/{id}/tokens.json?folderType=Folder
 
 ## Criar e atualizar
 
-O ponto de extremidade [Criar token](https://developer.adobe.com/marketo-apis/api/asset#tag/Tokens/operation/addTokenTOFolderUsingPOST) cria tokens ou, se eles existirem, atualiza-os com os valores enviados. Os tokens são criados no contexto de uma pasta ou programa. O parâmetro de caminho `id` necessário é a identificação da pasta à qual o token será associado. `name`, `type`, `value` e `folderType` são parâmetros obrigatórios do token. Os dados são transmitidos como POST x-www-form-urlencoded, não como JSON. O campo `name` do token não pode exceder 50 caracteres.
+O ponto de extremidade [Criar Token](https://developer.adobe.com/marketo-apis/api/asset#tag/Tokens/operation/addTokenTOFolderUsingPOST) cria um token ou atualiza um token existente com os valores enviados. Os tokens pertencem a uma pasta ou programa.
+
+O parâmetro de caminho `id` identifica a pasta pai. Os parâmetros `name`, `type`, `value` e `folderType` são obrigatórios. Transmita os dados como POST `x-www-form-urlencoded`, não como JSON. O token `name` não pode exceder 50 caracteres.
 
 ```http
 POST /rest/asset/v1/folder/{id}/tokens.json
@@ -112,7 +116,9 @@ name=April Fools&type=date&value=2015-04-01&folderType=Folder
 
 ## Excluir
 
-[Excluir token por nome](https://developer.adobe.com/marketo-apis/api/asset#tag/Tokens/operation/deleteTokenByNameUsingPOST) usa uma identificação como parâmetro de caminho de um tipo de programa ou pasta. Este tipo é especificado pelo parâmetro `folderType`. Os tokens são excluídos com base na pasta pai, o `name`, e o `type` do token, cada um deles é necessário. Os dados são transmitidos como POST x-www-form-urlencoded, não como JSON.
+[Excluir token por nome](https://developer.adobe.com/marketo-apis/api/asset#tag/Tokens/operation/deleteTokenByNameUsingPOST) usa a identificação de um programa ou pasta como um parâmetro de caminho. Use `folderType` para especificar o tipo.
+
+A pasta pai, o token `name` e o token `type` são obrigatórios. Transmita os dados como POST `x-www-form-urlencoded`, não como JSON.
 
 ```http
 POST /rest/asset/v1/folder/{id}/tokens/delete.json

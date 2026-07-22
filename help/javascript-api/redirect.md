@@ -15,18 +15,18 @@ topic_v2:
   - id: b5ce8718-c3af-4fdb-a1a9-fca32f83a87c
   - id: cdd65e7e-8839-44a2-bc21-0e03623b5dd1
   - id: e0eb8757-182f-49f3-94a4-1587d16f5094
-source-git-commit: 00118a89f25a23b931fac671130932bb0e0e4e4e
+source-git-commit: 3e6d310c5aec1a3435424fb122b71d825db5af0e
 workflow-type: tm+mt
-source-wordcount: 502
-ht-degree: 7%
+source-wordcount: 473
+ht-degree: 8%
 
 ---
 
 # Redirecionar
 
-A API de redirecionamento do RTP permite redirecionar públicos segmentados para um URL de destino.
+Use a API de redirecionamento RTP para enviar públicos segmentados para um URL de destino.
 
-- Você deve se tornar um cliente do Web Personalization e implantar a [tag RTP](https://experienceleague.adobe.com/pt-br/docs/marketo/using/product-docs/web-personalization/rtp-tag-implementation/deploy-the-rtp-javascript) no site antes de usar a API de Contexto de Usuário.
+- Você deve ser um cliente do Web Personalization e implantar a [tag RTP](https://experienceleague.adobe.com/pt-br/docs/marketo/using/product-docs/web-personalization/rtp-tag-implementation/deploy-the-rtp-javascript) no site antes de usar a API de Contexto de Usuário.
 - O RTP não suporta listas de contas nomeadas de Marketing Baseado em Conta. As listas e os códigos ABM pertencem apenas às listas de contas carregadas (arquivos CSV) gerenciadas no RTP.
 
 ## Uso
@@ -42,7 +42,7 @@ A API de redirecionamento do RTP permite redirecionar públicos segmentados para
 | redirect_url | Obrigatório | String | URL do Target para redirecionar visitantes que corresponderam à condição. |
 | redirect_matched_visitors | Opcional | Booleano | Se true, os visitantes correspondentes à condição serão redirecionados. Se for falso, os visitantes sem correspondência da condição serão redirecionados. Padrão: verdadeiro. |
 
-Organização, Setor, Listas ABM, Local, ISP, Segmentos correspondentes
+As condições de redirecionamento podem usar organizações, setores, listas de ABM, locais, ISPs ou segmentos correspondentes.
 
 | Condição | Hierarquia de dados | Exemplo |
 | --- | --- | --- |
@@ -59,10 +59,10 @@ Organização, Setor, Listas ABM, Local, ISP, Segmentos correspondentes
 
 ## Observações
 
-- Se a regra/condição de redirecionamento se basear em Firmographics (empresa, setor, localização), é possível inserir o código de redirecionamento antes do rtp(&#39;send&#39;, &#39;view&#39;) e do rtp(&#39;get&#39;,&#39;campaign&#39;) para reduzir a latência.
-- O redirecionamento via JavaScript é um redirecionamento no lado do navegador e depende do carregamento e da otimização do site para atingir a velocidade máxima.
-- A prática recomendada é definir o código de redirecionamento logo após a tag rtp e colocá-lo no cabeçalho.
-- Verifique se você não está executando um autoredirecionamento (há uma rede de segurança no rtp para bloquear chamadas de redirecionamento cíclicas).
+- Para reduzir a latência de um redirecionamento com base em Firmographics, como empresa, setor ou local, insira o código de redirecionamento antes de rtp(&#39;send&#39;, &#39;view&#39;) e rtp(&#39;get&#39;,&#39;campaign&#39;).
+- Coloque o código de redirecionamento imediatamente após a tag rtp no cabeçalho da página.
+- Otimize o carregamento do site para melhorar a velocidade do redirecionamento do JavaScript no lado do navegador.
+- Evite autoredirecionamentos. o rtp inclui uma proteção que bloqueia chamadas de redirecionamento cíclicas.
 
 ```html
 <!DOCTYPE html>
@@ -98,15 +98,15 @@ rtp('get','campaign');
 
 ## Como redirecionar visitantes rastreados
 
-1. Anexe um parâmetro ao final do URL de destino: ou seja, &lt;www.marketo.com?rtp=redirect>
-1. Crie um segmento chamado - &quot;Redirecionado pelo RTP&quot;
-1. Use o parâmetro &quot;Páginas específicas&quot; para direcionar os visitantes que visualizam qualquer página com o parâmetro mostrado abaixo.
+1. Anexe o parâmetro ao URL de destino, por exemplo, &lt;www.marketo.com?rtp=redirect>.
+1. Crie um segmento com o nome &quot;Redirecionado pelo RTP&quot;.
+1. Use o parâmetro &quot;Páginas específicas&quot; para direcionar os visitantes que visualizam uma página que contém o parâmetro.
 
 ![visitantes-redirecionados-de-rastreamento](assets/tracking-redirected-vistors.png)
 
 ## Como definir mais de uma condição com URLs de destino diferentes
 
-A chamada de redirecionamento oferece suporte a várias chamadas. Isso permite redirecionar com vários campos e criar condições complexas com URLs e valores diferentes.
+A chamada de redirecionamento oferece suporte a várias chamadas. Use várias chamadas para combinar campos e criar condições com URLs e valores diferentes.
 
 ### Uso
 

@@ -18,54 +18,60 @@ role_v2:
   - id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
 topic_v2:
   - id: eddd9b14-83bd-4ff4-9072-54a4a484abb7
-source-git-commit: 00118a89f25a23b931fac671130932bb0e0e4e4e
+source-git-commit: 3e6d310c5aec1a3435424fb122b71d825db5af0e
 workflow-type: tm+mt
-source-wordcount: 724
-ht-degree: 3%
+source-wordcount: 614
+ht-degree: 4%
 
 ---
 
 # Webhooks
 
-O Marketo permite o uso de Webhooks para comunicação com serviços da Web de terceiros. Webhooks são compatíveis com o uso dos verbos HTTP do GET ou POST para enviar ou recuperar dados de um URL específico. Para obter instruções detalhadas sobre a criação de Webhooks no aplicativo e como adicioná-los a Campanhas inteligentes, consulte os seguintes artigos:
+Os webhooks do Marketo se comunicam com serviços da Web de terceiros. Um webhook usa o verbo HTTP GET ou POST para enviar ou recuperar dados de um URL específico.
+
+Para obter instruções sobre como criar um webhook e adicioná-lo a uma Campanha Inteligente, consulte:
 
 - [Criar um webhook](https://experienceleague.adobe.com/pt-br/docs/marketo/using/product-docs/administration/additional-integrations/create-a-webhook)
 - [Chamar webhook](https://experienceleague.adobe.com/pt-br/docs/marketo/using/product-docs/core-marketo-concepts/smart-campaigns/flow-actions/call-webhook)
 - [Usar um webhook em uma campanha inteligente](https://experienceleague.adobe.com/pt-br/docs/marketo/using/product-docs/core-marketo-concepts/smart-campaigns/flow-actions/use-a-webhook-in-a-smart-campaign)
 
-Cada webhook individual tem as seguintes propriedades:
+Configure cada webhook com estas propriedades:
 
-- **[!UICONTROL URL]** - Insira a URL usada para enviar sua solicitação ao serviço Web.
+- **[!UICONTROL URL]** - A URL para a qual você envia a solicitação de serviço Web.
 - **[!UICONTROL Tipo de Solicitação]** - O método HTTP.
-- **[!UICONTROL Modelo de carga]** - Se desejar transmitir informações no corpo da POSTAGEM, insira o modelo. Use qualquer formato de dados compatível com HTTP POST, incluindo XML, JSON ou SOAP. O formato de serialização deve permitir aspas duplas em cadeias de caracteres. Para inserir um token no modelo, selecione **[!UICONTROL Inserir Token]**. Os tokens do tipo string são automaticamente colocados entre aspas duplas.
-- **[!UICONTROL Solicitar Codificação de Token]** - Se os valores de token incluírem caracteres especiais (como um E comercial, &quot;&amp;&quot;), indique o formato da sua solicitação (JSON ou Formulário/Url). A codificação correta deve ser selecionada para o corpo para garantir que o Webhook se comunique corretamente com o serviço da Web.
-- **[!UICONTROL Tipo de Resposta]** - Selecione o formato da resposta recebida do serviço (JSON ou XML). O tipo de resposta correto deve ser selecionado para mapear propriedades da resposta de volta aos campos de cliente potencial no Marketo.
-- **[!UICONTROL Cabeçalhos Personalizados]** - Acessados por meio de **[!UICONTROL Ações de Webhooks]** > **[!UICONTROL Definir Cabeçalho Personalizado]**, esse menu permite a adição de qualquer número de pares de Valores-Chave personalizados como Cabeçalhos HTTP.
+- **[!UICONTROL Modelo de carga]** - O modelo para informações enviadas no corpo da POSTAGEM. Use qualquer formato de dados compatível com HTTP POST, incluindo XML, JSON ou SOAP. O formato de serialização deve permitir aspas duplas em cadeias de caracteres. Para inserir um token, selecione **[!UICONTROL Inserir Token]**. O Marketo delimita automaticamente os tokens do tipo sequência de caracteres em aspas duplas.
+- **[!UICONTROL Codificação do token de solicitação]** - O formato de solicitação, JSON ou Form/Url, usado para codificar valores de token que incluem caracteres especiais, como um E comercial (&amp;). Selecione a codificação de corpo correta para que o webhook se comunique corretamente com o serviço da Web.
+- **[!UICONTROL Tipo de resposta]** - O formato de resposta, JSON ou XML. Selecione o tipo correto para mapear propriedades de resposta a campos de cliente potencial no Marketo.
+- **[!UICONTROL Cabeçalhos Personalizados]** - Pares de Valores-Chave adicionados como Cabeçalhos HTTP por meio de **[!UICONTROL Ações de Webhooks]** > **[!UICONTROL Definir Cabeçalho Personalizado]**. É possível adicionar qualquer número de cabeçalhos personalizados.
 
-Os dados podem ser gravados de volta nos clientes potenciais a partir das respostas do serviço Web usando [Mapeamentos de Resposta](response-mappings.md).
+Use [Mapeamentos de Resposta](response-mappings.md) para gravar dados de respostas do serviço Web em clientes potenciais.
 
 ## Tokens
 
-Todos os campos de saída em um Webhook (URL, Modelo e Cabeçalhos personalizados) preenchem o conteúdo de tokens no mesmo contexto da etapa de fluxo. Isso significa que os tokens de Cliente potencial e Sistema estão sempre disponíveis, enquanto os tokens de Acionador, Campanha e Programa estão disponíveis em seus respectivos escopos. Consulte artigos relacionados ao token:
+Todos os campos de webhook de saída, incluindo URL, Modelo e Cabeçalhos personalizados, preenchem o conteúdo do token no mesmo contexto da etapa de fluxo.
+
+Os tokens de Cliente Potencial e Sistema estão sempre disponíveis. Os tokens de Acionador, Campanha e Programa estão disponíveis nos respectivos escopos. Para obter mais informações, consulte:
 
 - [Visão geral de tokens](https://experienceleague.adobe.com/pt-br/docs/marketo/using/product-docs/demand-generation/landing-pages/personalizing-landing-pages/tokens-overview)
 - [Glossário de tokens do sistema](https://experienceleague.adobe.com/pt-br/docs/marketo/using/product-docs/email-marketing/general/using-tokens/system-tokens-glossary)
 - [Tokens de momentos interessantes](https://experienceleague.adobe.com/pt-br/docs/marketo/using/product-docs/marketo-sales-insight/msi-for-salesforce/features/tabs-in-the-msi-panel/interesting-moments/trigger-tokens-for-interesting-moments)
 
-Um caso comum para isso é quando um Programa ou Campanha é mapeado explicitamente para um recurso de terceiros. Uma ID pode ser definida no nível do programa como um `My Token` e depois passada para a solicitação do Webhook como um token.
+Por exemplo, quando um Programa ou Campanha é mapeado para um recurso de terceiros, defina uma ID no nível do Programa como `My Token`. Em seguida, transmita a ID para a solicitação do webhook como um token.
 
 ## Cabeçalhos personalizados
 
-Os webhooks permitem que o uso de qualquer número de campos de Cabeçalho personalizados seja enviado junto com a solicitação de saída. Eles podem ser adicionados através de **[!UICONTROL Ações de Webhooks]** > **[!UICONTROL Definir Cabeçalho Personalizado]**. Cada cabeçalho é registrado como um par de valores chave simples. Os tokens podem ser usados nessa área.
+Os webhooks podem enviar qualquer número de campos de Cabeçalho personalizado com uma solicitação de saída. Adicione cabeçalhos por meio de **[!UICONTROL Ações de Webhooks]** > **[!UICONTROL Definir Cabeçalho Personalizado]**.
+
+Cada cabeçalho é um par de valor-chave e pode conter tokens.
 
 ![Cabeçalhos personalizados](assets/custom-headers.png)
 
 ## Dicas
 
-- A etapa de fluxo do Webhook de chamadas só é válida em campanhas de acionador.
-- As atualizações por meio de mapeamentos de resposta só ocorrerão se o serviço da Web responder com um código de resposta HTTP 2xx. Outros tipos de códigos não resultarão em atualizações no registro.
+- Use a etapa de fluxo Webhook de chamada somente em campanhas de acionador.
+- Os mapeamentos de resposta atualizam um registro somente quando o serviço da Web retorna um código de resposta HTTP 2xx.
 - Você pode usar os serviços da Web para executar enriquecimento, validação ou normalização de dados personalizados a partir de serviços internos ou externos.
-- O tempo de execução do Webhook está à mercê do tempo de resposta do serviço em uso e pode resultar em longos atrasos de execução da campanha. Mesmo que um serviço leve apenas 50 ms para ser executado, isso significa 1,5 hora quando executado 100.000 vezes.
+- O tempo de execução do Webhook depende do tempo de resposta do serviço e pode causar longos atrasos de execução da campanha. Mesmo que um serviço leve apenas 50 ms para ser executado, 100.000 execuções levam 1,5 hora.
 - O Marketo aguarda até 30 segundos por uma determinada chamada de serviço antes de encerrar a chamada (também conhecido como tempo limite).
-- Os caracteres inseridos no campo URL são passados como gravados, por exemplo, &#39;&amp;&#39; é enviado como &#39;&amp;&#39;, &#39;%26&#39; é enviado como &#39;%26&#39;
-   - Se um caractere precisar ser codificado por porcentagem quando for recebido pelo servidor do recipient, ele deverá ser passado explicitamente como a cadeia de caracteres que representa esse caractere
+- O Marketo passa caracteres no campo URL como escritos. Por exemplo, &#39;&amp;&#39; é enviado como &#39;&amp;&#39; e &#39;%26&#39; é enviado como &#39;%26&#39;.
+  - Para enviar um caractere codificado por porcentagem para o servidor do recipient, passe explicitamente a cadeia de caracteres que representa esse caractere.

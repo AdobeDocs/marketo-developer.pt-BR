@@ -14,16 +14,16 @@ role_v2:
 topic_v2:
   - id: b5ce8718-c3af-4fdb-a1a9-fca32f83a87c
   - id: e0eb8757-182f-49f3-94a4-1587d16f5094
-source-git-commit: 00118a89f25a23b931fac671130932bb0e0e4e4e
+source-git-commit: 3e6d310c5aec1a3435424fb122b71d825db5af0e
 workflow-type: tm+mt
-source-wordcount: 116
+source-wordcount: 117
 ht-degree: 8%
 
 ---
 
 # Acionadores
 
-Adiciona a capacidade de acionar funções em determinado estado do objeto rtp global.
+Aciona as funções de execução quando o objeto global `rtp` atinge um estado especificado.
 
 Você deve ser um cliente do Web Personalization e implantar a [tag RTP](https://experienceleague.adobe.com/pt-br/docs/marketo/using/product-docs/web-personalization/rtp-tag-implementation/deploy-the-rtp-javascript) no site antes de usar a API de Contexto de Usuário.
 
@@ -38,7 +38,7 @@ Você deve ser um cliente do Web Personalization e implantar a [tag RTP](https:/
 
 ### Acionador Pronto para Contexto de Usuário
 
-Define uma variável personalizada com base na localização do usuário. Essa função é chamada quando o objeto global &quot;rtpUserContext&quot; está pronto.
+O gatilho `userContextReady` chama uma função quando o objeto global `rtpUserContext` está pronto. O exemplo a seguir define uma variável personalizada com base na localização do usuário.
 
 ```javascript
 rtp('userContextReady', function() {

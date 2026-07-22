@@ -8,9 +8,9 @@ product_v2:
   - id: b27e5950-9033-45ac-9f86-eb22e567f615
 role_v2:
   - id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
-source-git-commit: 00118a89f25a23b931fac671130932bb0e0e4e4e
+source-git-commit: 3e6d310c5aec1a3435424fb122b71d825db5af0e
 workflow-type: tm+mt
-source-wordcount: 1273
+source-wordcount: 1037
 ht-degree: 2%
 
 ---
@@ -19,40 +19,44 @@ ht-degree: 2%
 
 [Referência de Ponto de Extremidade de Extração de Lead em Massa](https://developer.adobe.com/marketo-apis/api/mapi#tag/Bulk-Export-Leads)
 
-O conjunto de Extração de lead em massa de APIs REST fornece uma interface programática para recuperar grandes conjuntos de registros de lead/pessoa do Marketo. Além disso, ele pode ser usado para recuperar clientes potenciais de forma incremental com base na data de criação do registro, na atualização mais recente, na associação de lista estática ou na associação de lista inteligente. A interface recomendada para casos de uso que exigem intercâmbio contínuo de dados entre o Marketo e um ou mais sistemas externos, para fins de ETL, data warehouse e arquivamento.
+As APIs REST de extração de lead em massa recuperam grandes conjuntos de registros de lead/pessoa da Marketo. Você também pode recuperar clientes em potencial de forma incremental com base na data de criação do registro, na atualização mais recente, na associação à lista estática ou na associação à lista inteligente.
+
+Use a extração de leads em massa para a troca contínua de dados entre a Marketo e sistemas externos, incluindo ETL, data warehouse e workflows de arquivamento.
 
 ## Permissões
 
-As APIs de Extração de lead em massa exigem que o usuário da API responsável tenha uma função com uma ou ambas as permissões de Lead somente leitura ou Lead de leitura e gravação.
+O usuário da API que é proprietário do trabalho deve ter uma função com a permissão Lead somente leitura, com a permissão Lead de leitura e gravação ou com ambas as permissões.
 
 ## Filtros
 
-Os clientes em potencial são compatíveis com várias opções de filtro. Determinados filtros, incluindo `updatedAt`, `smartListName` e `smartListId`, exigem componentes de infraestrutura adicionais que ainda não foram implementados em todas as assinaturas. Somente um tipo de filtro pode ser especificado por trabalho de exportação.
+Os trabalhos de exportação de clientes potenciais são compatíveis com vários tipos de filtro. Cada trabalho de exportação pode usar apenas um tipo de filtro.
+
+Os filtros `updatedAt`, `smartListName` e `smartListId` exigem uma infraestrutura que não está disponível em todas as assinaturas.
 
 | Tipo de filtro | Tipo de dados | Observações |
 | --- | --- | --- |
-| createdAt | Date Range | Aceita um objeto JSON com os membros `startAt` e `endAt`. `startAt` aceita um datetime que representa a marca d&#39;água inferior e `endAt` aceita um datetime que representa a marca d&#39;água superior. O intervalo deve ser de 31 dias ou menos. Os datetimes devem estar em um formato ISO-8601, sem milissegundos. Os trabalhos com esse tipo de filtro retornam todos os registros acessíveis que foram criados dentro do intervalo de datas. |
-| updatedAt* | Date Range | Aceita um objeto JSON com os membros `startAt` e `endAt`. `startAt` aceita um datetime que representa a marca d&#39;água inferior e `endAt` aceita um datetime que representa a marca d&#39;água superior. O intervalo deve ser de 31 dias ou menos. Os datetimes devem estar em um formato ISO-8601, sem milissegundos. Observação: esse filtro não filtra no campo &quot;updatedAt&quot; visível, que reflete somente atualizações em campos padrão. Ela filtra com base em quando a atualização de campo mais recente foi feita em um registro de cliente potencialJobs com esse tipo de filtro retorna todos os registros acessíveis que foram atualizados mais recentemente dentro do intervalo de datas. |
-| staticListName | String | Aceita o nome de uma lista estática. Os trabalhos com esse tipo de filtro retornam todos os registros acessíveis que são membros da lista estática no momento em que o trabalho começa a ser processado. Recupere nomes de lista estáticos usando o ponto de extremidade Get Lists. |
-| staticListId | Número inteiro | Aceita a id de uma lista estática. Os trabalhos com esse tipo de filtro retornam todos os registros acessíveis que são membros da lista estática no momento em que o trabalho começa a ser processado. Recupere ids de lista estáticas usando o ponto de extremidade Get Lists. |
-| smartListName* | String | Aceita o nome de uma lista inteligente. Os trabalhos com esse tipo de filtro retornam todos os registros acessíveis que são membros das smart lists no momento em que o trabalho começa a ser processado. Recupere nomes de listas inteligentes usando o ponto de extremidade Obter Smart Lists. |
-| smartListId* | Inteiro | Aceita a ID de uma lista inteligente. Os trabalhos com esse tipo de filtro retornam todos os registros acessíveis que são membros das smart lists no momento em que o trabalho começa a ser processado. Recupere as IDs das listas inteligentes usando o ponto de extremidade Obter listas inteligentes. |
+| createdAt | Date Range | Um objeto JSON com `startAt` e `endAt` membros. `startAt` é o datetime de marca d&#39;água baixa e `endAt` é o datetime de marca d&#39;água alta. Use valores de data e hora ISO-8601 sem milissegundos. O intervalo deve ser de 31 dias ou menos. A tarefa retorna todos os registros acessíveis criados dentro do intervalo de datas. |
+| updatedAt* | Date Range | Um objeto JSON com `startAt` e `endAt` membros. `startAt` é o datetime de marca d&#39;água baixa e `endAt` é o datetime de marca d&#39;água alta. Use valores de data e hora ISO-8601 sem milissegundos. O intervalo deve ser de 31 dias ou menos. Este filtro não usa o campo `updatedAt` visível, que reflete atualizações somente para campos padrão. Em vez disso, ele usa o tempo da atualização de campo mais recente para um registro de cliente potencial. O processo retorna todos os registros acessíveis atualizados mais recentemente dentro do intervalo de datas. |
+| staticListName | String | O nome de uma lista estática. A tarefa retorna todos os registros acessíveis que são membros da lista estática quando a tarefa começa a ser processada. Recupere nomes de lista estáticos usando o ponto de extremidade Obter Listas. |
+| staticListId | Número inteiro | A ID de uma lista estática. A tarefa retorna todos os registros acessíveis que são membros da lista estática quando a tarefa começa a ser processada. Recupere IDs de lista estáticas usando o ponto de extremidade Obter Listas. |
+| smartListName* | String | O nome de uma lista inteligente. A tarefa retorna todos os registros acessíveis que são membros da lista inteligente quando a tarefa começa a ser processada. Recupere nomes de listas inteligentes usando o ponto de extremidade Obter Smart Lists. |
+| smartListId* | Inteiro | A ID de uma lista inteligente. A tarefa retorna todos os registros acessíveis que são membros da lista inteligente quando a tarefa começa a ser processada. Recupere as IDs das listas inteligentes usando o ponto de extremidade Obter listas inteligentes. |
 
-O tipo de filtro não está disponível para algumas assinaturas. Se não estiver disponível para sua assinatura, você receberá um erro ao chamar o endpoint Criar trabalho de lead de exportação (&quot;1035, Tipo de filtro não suportado para assinatura de destino&quot;). Os clientes podem entrar em contato com o Suporte da Marketo para ativar essa funcionalidade em suas assinaturas.
+Os tipos de filtro marcados com um asterisco não estão disponíveis para algumas assinaturas. Se um tipo de filtro não estiver disponível para sua assinatura, o ponto de extremidade Criar trabalho de lead de exportação retornará o erro &quot;1035, Tipo de filtro não suportado para assinatura de destino&quot;. Entre em contato com o Suporte da Marketo para ativar essa funcionalidade para sua assinatura.
 
 ## Opções
 
-O ponto de extremidade Criar trabalho de lead de exportação fornece várias opções de formatação, dando ao usuário a capacidade de incluir campos específicos no arquivo exportado, a capacidade de renomear cabeçalhos de coluna desses campos e o formato do arquivo exportado.
+O ponto de extremidade Criar trabalho de lead de exportação fornece opções para selecionar campos exportados, renomear cabeçalhos de coluna e definir o formato de arquivo.
 
 | Parâmetro | Tipo de dados | Obrigatório | Observações |
 | --- | --- | --- | --- |
-| campos | Matriz[Cadeia de Caracteres] | Sim | O parâmetro fields aceita uma matriz JSON de cadeias de caracteres. Cada string deve ser o nome da API REST de um campo de lead Marketo. Os campos listados são incluídos no arquivo exportado. O cabeçalho de coluna para cada campo será o nome da API REST de cada campo, a menos que seja substituído por columnHeader. Observação: quando o recurso [!DNL Adobe Experience Cloud Audience Sharing] é habilitado, ocorre um processo de sincronização de cookies que associa a [!DNL Adobe Experience Cloud] ID (ECID) a clientes potenciais do Marketo. Você pode especificar o campo &quot;ecids&quot; para incluir ECIDs no arquivo de exportação. |
-| columnHeaderNames | Objeto | Não | Um objeto JSON que contém pares de valores chave de nomes de campos e cabeçalhos de coluna. A chave deve ser o nome de um campo incluído no trabalho de exportação. Esse é o nome da API do campo que pode ser recuperado chamando Descrever lead. O valor é o nome do cabeçalho de coluna exportado para esse campo. |
-| formato | String | Não | Aceita um dos seguintes: CSV, TSV, SSV. O arquivo exportado é renderizado como um arquivo de valores separados por vírgula, valores separados por tabulação ou valores separados por espaço, respectivamente, se definido. O padrão é CSV, caso não esteja definido. |
+| campos | Matriz[Cadeia de Caracteres] | Sim | Uma matriz JSON de cadeias de caracteres. Cada string deve ser o nome da API REST de um campo de lead Marketo. A exportação inclui cada campo listado e usa seu nome de API REST como o cabeçalho da coluna, a menos que `columnHeaderNames` o substitua. Quando o recurso [!DNL Adobe Experience Cloud Audience Sharing] está habilitado, um processo de sincronização de cookies associa a [!DNL Adobe Experience Cloud] ID (ECID) ao Marketo leads. Especifique o campo `ecids` para incluir ECIDs no arquivo de exportação. |
+| columnHeaderNames | Objeto | Não | Um objeto JSON de pares de valores-chave de campo e cabeçalho de coluna. Cada chave deve ser o nome da API de um campo incluído no trabalho de exportação. Recupere o nome da API chamando Descrever lead. Cada valor é o cabeçalho de coluna exportado para esse campo. |
+| formato | String | Não | O formato do arquivo de exportação: CSV para valores separados por vírgula, TSV para valores separados por tabulação ou SSV para valores separados por espaço. O padrão é CSV. |
 
 ## Criação de um trabalho
 
-Os parâmetros do trabalho são definidos antes do início da exportação usando o ponto de extremidade [Criar Trabalho de Cliente Potencial para Exportação](https://developer.adobe.com/marketo-apis/api/mapi#tag/Bulk-Export-Leads/operation/createExportLeadsUsingPOST). Devemos definir os `fields` necessários para a exportação, o tipo de parâmetros do `filter`, o `format` do arquivo e os nomes de cabeçalho de coluna, se houver.
+Use o ponto de extremidade [Criar Trabalho de Exportação de Cliente Potencial](https://developer.adobe.com/marketo-apis/api/mapi#tag/Bulk-Export-Leads/operation/createExportLeadsUsingPOST) para definir um trabalho de exportação. Especifique o `fields` a ser exportado, um tipo de `filter` e seus parâmetros, o arquivo `format` e qualquer nome de cabeçalho de coluna personalizado.
 
 ```http
 POST /bulk/v1/leads/export/create.json
@@ -76,13 +80,13 @@ POST /bulk/v1/leads/export/create.json
    "filter": {
       "createdAt": {
          "startAt": "2017-01-01T00:00:00Z",
-         "`endAt`": "2017-01-31T00:00:00Z"
+         "endAt": "2017-01-31T00:00:00Z"
       }
    }
 }
 ```
 
-Esta solicitação começará a exportar um conjunto de clientes potenciais criados entre 1º de janeiro de 2017 e 31 de janeiro de 2017, incluindo os valores dos campos `firstName`, `lastName`, `id` e `email` correspondentes.
+Essa solicitação cria um trabalho de exportação para clientes potenciais criados entre 1º de janeiro de 2017 e 31 de janeiro de 2017. A exportação inclui valores dos campos `firstName`, `lastName`, `id` e `email`.
 
 ```json
 {
@@ -100,7 +104,7 @@ Esta solicitação começará a exportar um conjunto de clientes potenciais cria
 }
 ```
 
-Isso retorna uma resposta de status indicando que o processo foi criado. A tarefa foi definida e criada, mas ainda não foi iniciada. Para fazer isso, o ponto de extremidade [Enfileirar Trabalho de Cliente Potencial de Exportação](https://developer.adobe.com/marketo-apis/api/mapi#tag/Bulk-Export-Leads/operation/enqueueExportLeadsUsingPOST) deve ser chamado usando o exportId da resposta do status de criação:
+A resposta confirma que o job foi criado, mas não foi iniciado. Para iniciar o trabalho, chame o ponto de extremidade [Enfileirar Trabalho de Cliente Potencial para Exportação](https://developer.adobe.com/marketo-apis/api/mapi#tag/Bulk-Export-Leads/operation/enqueueExportLeadsUsingPOST) com o `exportId` da resposta de criação.
 
 ```http
 POST /bulk/v1/leads/export/{exportId}/enqueue.json
@@ -122,13 +126,15 @@ POST /bulk/v1/leads/export/{exportId}/enqueue.json
 }
 ```
 
-Isso responde com uma `status` de &quot;Em fila&quot;, após a qual será definido como &quot;Processando&quot; quando houver um slot de exportação disponível.
+A resposta do enfileiramento tem um `status` de &quot;Em fila&quot;. Quando um slot de exportação se torna disponível, o status muda para &quot;Processando&quot;.
 
 ## Status do trabalho de pesquisa
 
-O status `Note:` só pode ser recuperado para trabalhos que foram criados pelo mesmo usuário da API.
+Você pode recuperar o status somente para trabalhos criados pelo mesmo usuário da API.
 
-Como esse é um endpoint assíncrono, depois de criar o trabalho, devemos pesquisar seu status para determinar seu progresso. Sondar usando o ponto de extremidade [Obter Status do Trabalho de Cliente Potencial para Exportação](https://developer.adobe.com/marketo-apis/api/mapi#tag/Bulk-Export-Leads/operation/getExportLeadsStatusUsingGET). O status só é atualizado uma vez a cada 60 segundos, portanto, uma frequência de polling inferior a essa não é recomendada e, em quase todos os casos, ainda é excessiva. Vamos dar uma olhada na pesquisa.
+Os trabalhos de exportação de clientes potenciais são executados de forma assíncrona. Sonde o ponto de extremidade [Obter Status do Trabalho de Cliente Potencial para Exportação](https://developer.adobe.com/marketo-apis/api/mapi#tag/Bulk-Export-Leads/operation/getExportLeadsStatusUsingGET) para acompanhar o progresso do trabalho.
+
+O status é atualizado apenas uma vez a cada 60 segundos. Não faça enquetes com mais frequência; em quase todos os casos, esse intervalo ainda é excessivo.
 
 ```http
 GET /bulk/v1/leads/export/{exportId}/status.json
@@ -150,9 +156,9 @@ GET /bulk/v1/leads/export/{exportId}/status.json
 }
 ```
 
-O endpoint de status responde indicando que o trabalho ainda está sendo processado, portanto, o arquivo ainda não está disponível para recuperação. Quando o status do trabalho for alterado para &quot;Concluído&quot;, ele foi preparado para download.
+Essa resposta mostra que a tarefa ainda está sendo processada, portanto, o arquivo não está disponível. Quando o status do trabalho muda para &quot;Concluído&quot;, o arquivo está pronto para download.
 
-O campo de status pode responder com qualquer um dos seguintes:
+O campo `status` pode retornar qualquer um dos seguintes valores:
 
 - Criado
 - Enfileirado
@@ -163,26 +169,26 @@ O campo de status pode responder com qualquer um dos seguintes:
 
 ## Recuperação de dados
 
-Para recuperar o arquivo de uma exportação de clientes potenciais concluída, basta chamar o [Obter Arquivo de Cliente Potencial para Exportação](https://developer.adobe.com/marketo-apis/api/mapi#tag/Bulk-Export-Leads/operation/getExportLeadsFileUsingGET) com seu `exportId`.
+Para recuperar uma exportação de clientes potenciais concluída, chame o ponto de extremidade [Obter Arquivo de Cliente Potencial para Exportação](https://developer.adobe.com/marketo-apis/api/mapi#tag/Bulk-Export-Leads/operation/getExportLeadsFileUsingGET) com o `exportId`.
 
 ```http
 GET /bulk/v1/leads/export/{exportId}/file.json
 ```
 
-A resposta contém um arquivo formatado da maneira que o trabalho foi configurado. O endpoint responde com o conteúdo do arquivo.
+O corpo da resposta contém o arquivo no formato configurado para o trabalho.
 
-Se um campo de cliente em potencial solicitado estiver vazio (não contiver dados), `null` será colocado no campo correspondente no arquivo de exportação. No exemplo abaixo, o campo de email do lead retornado está vazio.
+Se um campo de cliente potencial solicitado não contiver dados, o campo correspondente no arquivo de exportação conterá `null`. No exemplo a seguir, o lead retornado tem um campo de email vazio.
 
 ```csv
 firstName,lastName,email,cookies
 Russell,Wilson,null,_mch-localhost-1536605780000-12105
 ```
 
-Para oferecer suporte à recuperação parcial e de fácil retomada dos dados extraídos, o endpoint do arquivo oferece suporte opcional ao Intervalo do cabeçalho HTTP do tipo bytes. Se o cabeçalho não estiver definido, todo o conteúdo será retornado. Leia mais sobre como usar o cabeçalho Intervalo com a [Extração em massa](bulk-extract.md) do Marketo.
+Para recuperação parcial ou retomável, o ponto de extremidade do arquivo dá suporte ao cabeçalho HTTP `Range` opcional com o tipo `bytes`. Se você não definir o cabeçalho, o endpoint retornará todo o conteúdo. Saiba mais sobre como usar o cabeçalho `Range` com a [Extração em massa](bulk-extract.md) do Marketo.
 
 ## Cancelar um trabalho
 
-Se um trabalho for configurado incorretamente ou se se tornar desnecessário, ele poderá ser facilmente cancelado usando o ponto de extremidade [Cancelar Trabalho de Cliente Potencial para Exportação](https://developer.adobe.com/marketo-apis/api/mapi#tag/Bulk-Export-Leads/operation/cancelExportLeadsUsingPOST):
+Para cancelar um trabalho desnecessário ou configurado incorretamente, chame o ponto de extremidade [Cancelar Trabalho de Cliente Potencial para Exportação](https://developer.adobe.com/marketo-apis/api/mapi#tag/Bulk-Export-Leads/operation/cancelExportLeadsUsingPOST).
 
 ```http
 POST /bulk/v1/leads/export/{exportId}/cancel.json
@@ -203,4 +209,4 @@ POST /bulk/v1/leads/export/{exportId}/cancel.json
 }
 ```
 
-Isso responde com um status indicando que o trabalho foi cancelado.
+A resposta confirma que o processo foi cancelado.

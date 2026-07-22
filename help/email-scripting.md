@@ -13,28 +13,30 @@ role_v2:
   - id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
 topic_v2:
   - id: eddd9b14-83bd-4ff4-9072-54a4a484abb7
-source-git-commit: 4fbd04f9942f903ab8b44e9740a806b74a4ffaf4
+source-git-commit: 3e6d310c5aec1a3435424fb122b71d825db5af0e
 workflow-type: tm+mt
-source-wordcount: 1116
-ht-degree: 0%
+source-wordcount: 932
+ht-degree: 1%
 
 ---
 
 # Scripts de e-mails
 
-OBSERVAÇÃO: é altamente recomendável que você leia o [Guia do usuário do Velocity](https://velocity.apadche.org/engine/devel/user-guide.html) para obter uma explicação detalhada do comportamento da Linguagem de modelo do Velocity.
+Leia o [Guia do usuário do Velocity](https://velocity.apache.org/engine/devel/user-guide.html) para obter uma explicação detalhada do comportamento da linguagem de modelo do Velocity.
 
-[Apache Velocity](https://velocity.apache.org/) é uma linguagem criada em Java projetada para modelagem e script de conteúdo HTML. O Marketo permite que ele seja usado no contexto de emails usando tokens de script. Esse recurso dá acesso aos dados armazenados em Oportunidades e Objetos personalizados e permite a criação de conteúdo dinâmico em emails. A Velocity oferece um fluxo de controle padrão de alto nível com if/else, for e for para permitir a manipulação condicional e iterativa do conteúdo.
+[Apache Velocity](https://velocity.apache.org/) é uma linguagem baseada em Java para modelagem e script de conteúdo HTML. Use os tokens de script de email do Velocity in Marketo para acessar dados armazenados em oportunidades e objetos personalizados e criar conteúdo de email dinâmico.
+
+A Velocity fornece o fluxo de controle `if`/`else`, `for` e `foreach` para conteúdo condicional e iterativo.
 
 ## Variáveis
 
-As variáveis sempre recebem o prefixo &#39;$&#39; e são definidas e atualizadas usando #set:
+Prefixar variáveis com `$`. Criar ou atualizar com `#set`:
 
 ```velocity
 #set($variable = "value")
 ```
 
-Seus valores podem ser recuperados por meio de vários tipos de referência diferentes com comportamentos diferentes:
+Recupere valores de variável com tipos de referência que fornecem comportamentos diferentes:
 
 ```text
 $variable ##outputs 'value'
@@ -44,7 +46,7 @@ ${variable}name ##outputs 'valuename'
 
 
 
-Também há uma notação de referência silenciosa, em que há um `!` incluído após o `$`. Normalmente, quando a velocidade encontra uma referência indefinida, a string que representa a referência é deixada no lugar. Com a notação de referência silenciosa, se uma referência indefinida for encontrada, nenhum valor será emitido:
+A notação de referência silenciosa inclui `!` após `$`. Por padrão, a Velocity deixa a string de referência no lugar quando uma referência está indefinida. Uma referência silenciosa não emite valor quando está indefinida:
 
 ```velocity
 ##Defined Reference
@@ -65,7 +67,7 @@ Para obter mais informações sobre como fazer referência a variáveis, consult
 
 ## Ferramentas do Velocity
 
-O projeto Apache Velocity disponibiliza a funcionalidade por meio das [Ferramentas do Velocity](https://velocity.apache.org/tools/devel/apidocs/overview-summary.html). Essas ferramentas são apenas invólucros para objetos Java e expõem seus métodos por meio de variáveis globais que são disponibilizadas para todos os scripts.
+O projeto Apache Velocity fornece [Ferramentas do Velocity](https://velocity.apache.org/tools/devel/apidocs/overview-summary.html). Esses invólucros expõem métodos de objeto Java por meio de variáveis globais disponíveis para todos os scripts.
 
 - [AlternatorTool](https://velocity.apache.org/tools/devel/apidocs/org/apache/velocity/tools/generic/AlternatorTool.html)
 - [FerramentaDataComparação](https://velocity.apache.org/tools/devel/apidocs/org/apache/velocity/tools/generic/ComparisonDateTool.html)
@@ -87,29 +89,33 @@ $date.whenIs($birthday).days ##outputs 1
 
 ## Criação de um token de script
 
-O script do Velocity é incluído nos emails usando tokens de script de email. Crie-os em Atividades de marketing em uma pasta de marketing ou em um programa. Para que um token seja usado dentro de um email, o email deve ser filho de um programa que possua o token ou o herde de uma pasta de marketing. Para criar um token, navegue até uma pasta ou programa e selecione a guia [!UICONTROL Meus tokens]. No menu à direita, arraste a opção &quot;Script de email&quot; para a lista de tokens
+Adicione scripts do Velocity a emails com tokens de script de email. Crie um token em Atividades de marketing em uma pasta ou programa de marketing.
+
+Para usar um token, o email deve ser secundário ao programa que possui o token ou herdá-lo de uma pasta de marketing. Vá para uma pasta ou programa e selecione a guia [!UICONTROL Meus tokens]. Arraste a opção Script de email do menu direito para a lista de tokens.
 
 ![Token de Script](assets/script-token.png)
 
-Aqui, você pode editar o nome do token e abrir o editor por meio da opção [!UICONTROL Clique para editar]:
+Edite o nome do token e selecione [!UICONTROL Clique para Editar] para abrir o editor:
 
 ![Editar Script](assets/script-edit.png)
 
-Quando estiver no editor, você poderá criar um script com acesso a todas as variáveis em objetos acessíveis por script. Para obter uma referência de campo de um objeto, arraste-a da árvore direita para o script:
+No editor, crie um script que acesse variáveis em objetos acessíveis por script. Para adicionar uma referência de campo de objeto, arraste-a da árvore direita para o script:
 
 ![Editar token de script](assets/edit-script-token.png)
 
 ## Incorporação e teste do script
 
-Depois de definir o script em um Meu token de programa, você pode referenciá-lo em um determinado email usando o editor de email do Marketo.
+Depois de definir o script em um programa Meu token, faça referência a ele por um email no editor de email do Marketo.
 
 ![Script de email](assets/email-script-marketo-email.png)
 
-Você pode testar seu script usando a ação de email [!UICONTROL Enviar Email de Exemplo] no designer de email do Marketo. Para que o script continue corretamente, você deve selecionar um cliente potencial existente a ser representado no campo [!UICONTROL Cliente Potencial]. Se você estiver testando com `$TriggerObject`, é possível selecionar o objeto de acionamento por meio do parâmetro [!UICONTROL Acionador]. Esse processo usa os dados do objeto atualizado mais recentemente desse tipo como a variável `$TriggerObject`.
+Teste o script com a ação [!UICONTROL Enviar Email de Exemplo] no designer de email do Marketo. Selecione um cliente potencial existente no campo [!UICONTROL Cliente Potencial] para que o script seja processado corretamente.
+
+Ao testar `$TriggerObject`, selecione o objeto de disparo com o parâmetro [!UICONTROL Trigger]. O Marketo usa o objeto atualizado mais recentemente desse tipo como a variável `$TriggerObject`.
 
 ![Script de Email de Teste](assets/velocity-test.png)
 
-Você também pode usar a [!UICONTROL Visualização de email] para testar seu script. Para fazer isso, selecione **[!UICONTROL Exibir como: Detalhe de Cliente Potencial]** e selecione um cliente potencial em uma lista estática disponível. Essa abordagem tem a vantagem adicional de gerar quaisquer exceções que possam ter ocorrido durante a execução do script:
+Você também pode testar com [!UICONTROL Visualização de email]. Selecione **[!UICONTROL Exibir como: Detalhe de Cliente Potencial]** e selecione um cliente potencial em uma lista estática. A visualização também exibe exceções da execução do script:
 
 ![Exibir Email Como](assets/view-as.png)
 
@@ -123,11 +129,11 @@ O comprimento combinado de todos os tokens de script de email em um determinado 
 - Você pode fazer referência a objetos personalizados conectados a um cliente potencial, contato ou conta, mas não a mais de um.
 - Objetos personalizados só podem ser referenciados por meio de uma única conexão, cliente potencial, contato ou conta
 - Marque a caixa no editor de scripts para os campos que você está usando, ou eles não são processados
-- Para cada objeto personalizado, os dez registros atualizados mais recentes por pessoa/contato estão disponíveis no tempo de execução e são ordenados da atualização mais recente (em 0) para a atualização mais antiga (em 9). Você pode aumentar o número de registros disponíveis por [seguindo as instruções](https://experienceleague.adobe.com/pt-br/docs/marketo/using/product-docs/administration/email-setup/change-custom-object-retrieval-limits-in-velocity-scripting).
+- Para cada objeto personalizado, os dez registros atualizados mais recentes por pessoa/contato estão disponíveis no tempo de execução. Os registros são ordenados da última atualização no índice 0 para a mais antiga no índice 9. Você pode aumentar o número de registros disponíveis em [seguindo as instruções](https://experienceleague.adobe.com/pt-br/docs/marketo/using/product-docs/administration/email-setup/change-custom-object-retrieval-limits-in-velocity-scripting).
 - Se você incluir mais de um script de email em um email, eles serão executados de cima para baixo. O escopo das variáveis definidas no primeiro script a ser executado está disponível nos scripts subsequentes.
 - Referência de ferramentas: [https://velocity.apache.org/tools/2.0/index.html](https://velocity.apache.org/tools/2.0/index.html)
 - Uma observação sobre tokens que contêm caracteres de nova linha &quot;\n&quot; ou &quot;\r\n&quot;. Quando um email é enviado por meio do Send Sample ou por uma Campanha em lote, os caracteres de nova linha em tokens são substituídos por espaços. Quando o email é enviado por meio do Trigger Campaign, os caracteres de nova linha são deixados intocados.
-- Para garantir a análise adequada dos URLs, todo o caminho deve ser definido como uma variável e, em seguida, impresso, e a variável não deve ser impressa dentro de referências de URL. O protocolo (http:// ou https://) deve ser incluído e deve ser separado do restante do URL. A URL também deve fazer parte de uma marca de âncora (<a>) totalmente formada. O script deve gerar uma tag de âncora totalmente formada para que os links sejam rastreados. Os links não são rastreados se forem gerados a partir de um loop for ou foreach.
+- Para garantir a análise correta do URL, defina o caminho completo como uma variável e, em seguida, imprima-o. Não imprima variáveis dentro de referências de URL. Inclua o protocolo (`http://` ou `https://`) separadamente do restante da URL. Gerar uma marca de âncora (`<a>`) completa para que os links possam ser rastreados. Os links de saída de um loop `for` ou `foreach` não são rastreados.
 
 ```html
 <!-- Correct -->

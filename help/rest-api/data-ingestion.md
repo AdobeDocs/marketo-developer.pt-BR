@@ -8,20 +8,24 @@ product_v2:
   - id: b27e5950-9033-45ac-9f86-eb22e567f615
 role_v2:
   - id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
-source-git-commit: 1a8345909b679b5651c94a68f8d29950ed47f6ed
+source-git-commit: 3e6d310c5aec1a3435424fb122b71d825db5af0e
 workflow-type: tm+mt
-source-wordcount: 2191
+source-wordcount: 2151
 ht-degree: 16%
 
 ---
 
 # API de assimilação de dados
 
-A API de assimilação de dados é um serviço de alto volume, baixa latência e alta disponibilidade, projetado para lidar com a assimilação de grandes quantidades de dados pessoais e relacionados a pessoas de maneira eficiente e com atrasos mínimos.
+A API de assimilação de dados é um serviço de alto volume, baixa latência e altamente disponível. Use-a para assimilar grandes quantidades de dados pessoais e relacionados com pessoas com atraso mínimo.
 
-Os dados são assimilados enviando solicitações que são executadas de forma assíncrona. O status da solicitação pode ser recuperado assinando-se a eventos do [Fluxo de Dados de Observação do Marketo](https://developer.adobe.com/events/docs/guides/using/marketo/marketo-observability-data-stream-setup).
+As solicitações de assimilação de dados são executadas de forma assíncrona. Para recuperar o status da solicitação, assine os eventos do [Fluxo de dados de observação da Marketo](https://developer.adobe.com/events/docs/guides/using/marketo/marketo-observability-data-stream-setup).
 
-As interfaces são oferecidas para cinco tipos de objetos: Pessoas, Objetos Personalizados, Empresas, Membros do Programa e Listas (Listas Estáticas). A operação de registro é somente &quot;inserir ou atualizar&quot;, exceto para Membros do Programa que também suportam operações de exclusão, e Listas que suportam operações de adição e remoção.
+A API fornece interfaces para cinco tipos de objeto:
+
+- Pessoas, objetos personalizados e empresas oferecem suporte a operações de &quot;inserção ou atualização&quot;.
+- Os membros do programa oferecem suporte a operações de &quot;inserção ou atualização&quot; e exclusão.
+- Listas (Listas Estáticas) suportam operações de adição e remoção.
 
 Leia a [documentação da API de assimilação de dados](https://developer.adobe.com/marketo-apis/api/data-ingestion).
 
@@ -31,15 +35,15 @@ Leia a [documentação da API de assimilação de dados](https://developer.adobe
 
 ## Autenticação
 
-A API de assimilação de dados usa o mesmo método de autenticação OAuth 2.0 que a API REST do Marketo para gerar um token de acesso, mas o token de acesso deve ser passado pelo cabeçalho HTTP `X-Mkto-User-Token`. Não é possível passar o token de acesso por meio de um parâmetro de consulta.
+A API de assimilação de dados usa o mesmo método de autenticação OAuth 2.0 que a API REST do Marketo para gerar um token de acesso. Passe o token de acesso no cabeçalho HTTP `X-Mkto-User-Token`. Não é possível passá-lo como um parâmetro de consulta.
 
-Exemplo de token de acesso pelo cabeçalho:
+O exemplo a seguir passa um token de acesso no cabeçalho:
 
 `X-Mkto-User-Token: 11606815-aa7a-405a-80a1-f9683efa528b:ab`
 
 ## Permissões
 
-A assimilação de dados usa o mesmo modelo de permissões que a API REST do Marketo e não requer permissões especiais adicionais para uso, embora permissões específicas sejam necessárias para cada endpoint.
+A assimilação de dados usa o modelo de permissões da API REST do Marketo e não requer permissões adicionais. Cada endpoint requer uma permissão existente específica, como mostrado na tabela a seguir.
 
 | Terminal | Permissão |
 | --- | --- |
@@ -61,7 +65,7 @@ A assimilação de dados usa o mesmo modelo de permissões que a API REST do Mar
 
 ## Cabeçalhos
 
-A assimilação de dados usa os seguintes cabeçalhos HTTP personalizados.
+A assimilação de dados é compatível com os seguintes cabeçalhos HTTP personalizados.
 
 ### Solicitação
 
@@ -78,13 +82,13 @@ A assimilação de dados usa os seguintes cabeçalhos HTTP personalizados.
 
 ## Solicitações
 
-Use o método POST do HTTP para enviar dados ao servidor.
+Enviar dados para o servidor com o método POST do HTTP.
 
-A representação de dados é incluída no corpo da solicitação como application/json.
+Inclua os dados no corpo da solicitação como application/json.
 
-O nome do domínio é: `mkto-ingestion-api.adobe.io`
+Use o domínio `mkto-ingestion-api.adobe.io`.
 
-O caminho começa com `/subscriptions/MunchkinId`, onde MunchkinId é específico para sua instância do Marketo. Você pode encontrar sua Munchkin ID na interface do Marketo Engage em **Admin** > **Minha conta** > **Informações de suporte**.  O restante do caminho é usado para especificar o recurso de interesse.
+O caminho começa com `/subscriptions/MunchkinId`, onde MunchkinId é específico para sua instância do Marketo. Encontre sua Munchkin ID na interface do usuário do Marketo Engage em **Admin** > **Minha conta** > **Informações de suporte**. O restante do caminho especifica o recurso.
 
 Exemplo de URL para Pessoas:
 
@@ -108,7 +112,7 @@ Exemplo de URL para Listas:
 
 ### Respostas
 
-Todas as respostas retornam uma ID de solicitação exclusiva por meio do cabeçalho `X-Request-Id`.
+Cada resposta retorna uma ID de solicitação exclusiva no cabeçalho `X-Request-Id`.
 
 Exemplo de ID de solicitação via cabeçalho:
 
@@ -116,7 +120,7 @@ Exemplo de ID de solicitação via cabeçalho:
 
 ### Sucesso
 
-Quando uma chamada é bem-sucedida, um status 202 é retornado.  Nenhum corpo de resposta é retornado.
+Uma chamada bem-sucedida retorna o status 202 e sem corpo de resposta.
 
 Exemplo de resposta bem-sucedida:
 
@@ -129,9 +133,9 @@ Date: Wed, 18 Oct 2023 18:56:49 GMT
 
 ### Erro
 
-Quando uma chamada produz um erro, um status diferente de 202 é retornado junto com um corpo de resposta com detalhes adicionais sobre o erro. O corpo da resposta é `application/json` e contém um único objeto com os membros `error_code` e `message`.
+Quando uma chamada falha, ela retorna um status diferente de 202 e um corpo de resposta com detalhes do erro. O corpo da resposta `application/json` contém um objeto com `error_code` e `message` membros.
 
-Abaixo estão os códigos de erro reutilizados do Adobe Developer Gateway.
+Os códigos de erro a seguir são reutilizados do Adobe Developer Gateway.
 
 | Código de status HTTP | error_code | mensagem |
 | --- | --- | --- |
@@ -140,7 +144,7 @@ Abaixo estão os códigos de erro reutilizados do Adobe Developer Gateway.
 | 404 | 404040 | Recurso não encontrado |
 | 429 | 429001 | Limite de uso do serviço atingido |
 
-Abaixo estão códigos de erro exclusivos à API de assimilação de dados e compostos de três segmentos.  Os primeiros três dígitos são o status (retornado pelo Adobe Developer Gateway), seguido por um zero &quot;0&quot;, seguido por três dígitos.
+Os códigos de erro específicos da API de assimilação de dados contêm três segmentos: o status de três dígitos retornado pelo Adobe Developer Gateway, um zero &quot;0&quot; e três dígitos adicionais.
 
 | Código de status HTTP | error_code | mensagem |
 | --- | --- | --- |
@@ -152,24 +156,24 @@ Abaixo estão códigos de erro exclusivos à API de assimilação de dados e com
 
 ## Tentativas
 
-Quando um erro transitório é detectado, o serviço repete a operação. As tentativas ocorrem por vários motivos, principalmente quando um serviço dependente atinge o tempo limite ou não está disponível temporariamente.
+Quando o serviço detecta um erro transitório, ele repete a operação. Uma nova tentativa ocorre principalmente quando um serviço dependente atinge o tempo limite ou está temporariamente indisponível.
 
-Intervalos de repetição:
+O serviço usa os seguintes intervalos de repetição:
 
-* Operação inicial e primeira tentativa : 5 minutos
-* 1º e 2º : 15 min
-* 2º e 3º : 20 min
-* 3º e 4º : 20 min
-* 4º e 5º : 2 horas
-* após a 5ª tentativa -> 3 horas
+- Operação inicial até a primeira tentativa: 5 minutos
+- Primeira tentativa para segunda tentativa: 15 minutos
+- Segunda tentativa para a terceira tentativa: 20 minutos
+- Terceira tentativa para a quarta tentativa: 20 minutos
+- Quarta tentativa para a quinta tentativa: 2 horas
+- Após a quinta tentativa: 3 horas
 
 ## Pontos de acesso
 
-Os endpoints de assimilação estão disponíveis para Pessoas, Objetos personalizados, Empresas, Membros de programas e Listas.
+Os endpoints de assimilação estão disponíveis para Pessoas, Objetos personalizados, Empresas, Membros de programas e Listas. Cada seção de endpoint define a solicitação e fornece um exemplo.
 
 ### Pessoas
 
-Ponto de extremidade usado para substituir registros de pessoa.
+Use este endpoint para substituir registros de pessoa.
 
 | Método | Caminho |
 | --- | --- |
@@ -238,7 +242,7 @@ As permissões necessárias são `Read-Write Lead`.
 
 ### Objetos personalizados
 
-Ponto de extremidade usado para substituir registros de objeto personalizados.
+Use este endpoint para substituir registros de objeto personalizados.
 
 | Método | Caminho |
 | --- | --- |
@@ -306,7 +310,7 @@ Se um campo de link para uma Pessoa for especificado na solicitação e essa Pes
 
 ### Empresas
 
-Ponto de extremidade usado para sincronizar registros da empresa. Oferece suporte a operações de criação, atualização e substituição com desduplicação por ID de empresa externa ou ID interna da Marketo.
+Use este ponto de extremidade para sincronizar registros da empresa. Ela é compatível com operações de criação, atualização e substituição com desduplicação por ID de empresa externa ou ID interna da Marketo.
 
 | Método | Caminho |
 | --- | --- |
@@ -756,23 +760,23 @@ As permissões necessárias são `Read-Write Lead`.
 
 ## Limites
 
-Esta é uma lista atualizada de medidas de proteção:
+A API de assimilação de dados tem as seguintes medidas de proteção:
 
-* Tamanho máximo da solicitação: 1 MB
-* Máximo de objetos por solicitação por tipo de objeto: 1.000
-* Máximo de solicitações por segundo por ID de cliente: 5.000
-* Máximo de objetos por dia: 10.000.000
+- Tamanho máximo de solicitação: 1 MB
+- Máximo de objetos por solicitação para cada tipo de objeto: 1.000
+- Máximo de solicitações por segundo para cada ID de cliente: 5.000
+- Máximo de objetos por dia: 10.000.000
 
 Esses limites se aplicam uniformemente a Pessoas, Objetos Personalizados, Empresas, Membros de Programas e Listas. Para membros do programa, &quot;objetos por solicitação&quot; é o número total de referências de clientes potenciais em todos os programas em uma única solicitação. Para Listas, &quot;objetos por solicitação&quot; é o número de referências de cliente potencial na matriz de entrada.
 
 ## API de assimilação de dados versus API REST
 
-Esta é uma lista de diferenças entre a API de assimilação de dados e outras APIs REST do Marketo:
+A API de assimilação de dados difere de outras APIs REST do Marketo das seguintes maneiras:
 
-* Para autenticar, você deve passar o token de acesso usando o cabeçalho `X-Mkto-User-Token`
-* O nome de domínio da URL é `mkto-ingestion-api.adobe.io`
-* O caminho da URL começa com `/subscriptions/MunchkinId`
-* Não há parâmetros de consulta
-* Se a chamada for bem-sucedida, um status 202 será retornado e o corpo da resposta ficará vazio
-* Se uma chamada falhar, um status diferente de 202 será retornado e o corpo da resposta conterá `{ "error_code" : "Error Code", "message" : "Message" }`
-* A ID da solicitação é retornada pelo cabeçalho `X-Request-Id`
+- Passe o token de acesso no cabeçalho `X-Mkto-User-Token`.
+- Use o domínio `mkto-ingestion-api.adobe.io`.
+- Comece o caminho da URL com `/subscriptions/MunchkinId`.
+- Não use parâmetros de consulta.
+- Uma chamada bem-sucedida retorna o status 202 e um corpo de resposta vazio.
+- Uma chamada com falha retorna um status diferente de 202 e um corpo de resposta que contém `{ "error_code" : "Error Code", "message" : "Message" }`.
+- O cabeçalho `X-Request-Id` retorna a ID da solicitação.

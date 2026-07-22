@@ -13,10 +13,10 @@ role_v2:
 topic_v2:
   - id: a004cc84-67b9-4a33-a3a7-8ec7273ef4dc
   - id: bce87dde-a4ab-44c9-8a18-ad66e4ddb377
-source-git-commit: 00118a89f25a23b931fac671130932bb0e0e4e4e
+source-git-commit: 3e6d310c5aec1a3435424fb122b71d825db5af0e
 workflow-type: tm+mt
-source-wordcount: 512
-ht-degree: 2%
+source-wordcount: 386
+ht-degree: 3%
 
 ---
 
@@ -24,11 +24,11 @@ ht-degree: 2%
 
 [Referência de ponto final do trecho](https://developer.adobe.com/marketo-apis/api/asset#tag/Snippets)
 
-Os trechos são componentes reutilizáveis do HTML que podem ser incorporados a emails e páginas de aterrissagem e segmentados para conteúdo dinâmico. Os snippets não têm modelos associados e podem ser criados e implantados em outros ativos dentro do Marketo.
+Os trechos são componentes reutilizáveis do HTML que podem ser incorporados a emails e landing pages. Você pode segmentar trechos de conteúdo dinâmico. Os trechos não usam modelos e podem ser criados e implantados em outros ativos do Marketo.
 
 ## Consultar
 
-A consulta de trechos segue o padrão padrão para ativos, exceto por não ter um método Por nome. Os métodos [Por Id](https://developer.adobe.com/marketo-apis/api/asset#tag/Snippets/operation/getSnippetByIdUsingGET) e [Procurar](https://developer.adobe.com/marketo-apis/api/asset#tag/Snippets/operation/getSnippetUsingGET) permitem o uso do campo de status para recuperar versões aprovadas ou de rascunho do trecho.
+Trechos de consulta [por ID](https://developer.adobe.com/marketo-apis/api/asset#tag/Snippets/operation/getSnippetByIdUsingGET) ou por [navegação](https://developer.adobe.com/marketo-apis/api/asset#tag/Snippets/operation/getSnippetUsingGET). A API não fornece um método de consulta por nome. Ambos os pontos de extremidade aceitam o campo `status` para recuperar uma versão aprovada ou de rascunho.
 
 ### Por ID
 
@@ -124,7 +124,7 @@ GET /rest/asset/v1/snippets.json?maxReturn=3
 
 ## Conteúdo da consulta
 
-O conteúdo de um determinado trecho pode ser recuperado com base na ID do trecho.
+Recuperar conteúdo do trecho pela ID do trecho.
 
 ```http
 GET /rest/asset/v1/snippet/{id}/content.json
@@ -149,11 +149,11 @@ GET /rest/asset/v1/snippet/{id}/content.json
 }
 ```
 
-A chamada retorna uma lista de seções de conteúdo, que consistem em seções do tipo HTML ou DynamicContent e, opcionalmente, uma seção com um tipo de Texto.
+A resposta contém seções do tipo `HTML` ou `DynamicContent`. Ele também pode conter uma seção do tipo `Text`.
 
 ## Criar e atualizar
 
-Os trechos seguem o padrão de criação de ativos complexos, em que a chamada para [criar trecho](https://developer.adobe.com/marketo-apis/api/asset#tag/Snippets/operation/createSnippetUsingPOST) e seu conteúdo são feitos separadamente, portanto, a primeira chamada deve ser para o endpoint de criação, com uma descrição opcional.   Os dados são transmitidos como x-www-form-urlencoded, não como JSON.
+Crie o ativo de trecho e seu conteúdo separadamente. Primeiro, chame o ponto de extremidade [create snippet](https://developer.adobe.com/marketo-apis/api/asset#tag/Snippets/operation/createSnippetUsingPOST). A descrição é opcional. Passar dados como `x-www-form-urlencoded`, não como JSON.
 
 ```http
 POST /rest/asset/v1/snippets.json
@@ -193,7 +193,11 @@ name=Test Snippet 09 - deverly&folder={"id":395,"type":"Folder"}&description=Thi
 }
 ```
 
-A adição ou substituição de conteúdo em um trecho é feita por id. O conteúdo pode ser dos tipos Text, HTML ou DynamicContent. Se o tipo for Texto, o parâmetro de conteúdo será o endpoint de texto sem formatação, enquanto se for HTML, será o texto de marcação desejado. Se o tipo for definido como DynamicContent, o parâmetro de conteúdo deverá ser definido como a id da segmentação a ser associada ao trecho.
+Adicionar ou substituir conteúdo do trecho por ID. O tipo de conteúdo pode ser `Text`, `HTML` ou `DynamicContent`.
+
+- Para `Text`, passe o texto sem formatação no parâmetro `content`.
+- Para `HTML`, passe a marcação no parâmetro `content`.
+- Para `DynamicContent`, defina `content` como a ID da segmentação associada ao trecho.
 
 ```http
 POST /rest/asset/v1/snippet/{id}/content.json
@@ -221,7 +225,7 @@ type=HTML&content=draft testUpdateSnippetContent1 HTML Content
 }
 ```
 
-[A atualização dos metadados](https://developer.adobe.com/marketo-apis/api/asset#tag/Snippets/operation/updateSnippetUsingPOST) também é feita pela ID. Somente o nome e a descrição podem ser atualizados:
+Para [atualizar metadados](https://developer.adobe.com/marketo-apis/api/asset#tag/Snippets/operation/updateSnippetUsingPOST), especifique a ID do trecho. Você pode atualizar apenas o nome e a descrição.
 
 ```http
 POST /rest/asset/v1/snippet/{id}.json
@@ -263,7 +267,9 @@ name=Test Snippet&description=New Description
 
 ## Conteúdo dinâmico
 
-Os trechos seguem o padrão padrão para conteúdo dinâmico, mas representam apenas uma seção de conteúdo inteira por si só, de modo que cada trecho pode conter apenas uma seção dinâmica, com uma lista de seções internas opcionalmente para cada segmento na segmentação usada. O conteúdo dinâmico pode ser consultado somente pela ID do trecho, pois pode haver apenas uma seção de conteúdo dinâmico em um trecho.
+Um trecho representa uma seção de conteúdo completa e pode conter apenas uma seção dinâmica. Essa seção pode conter uma seção interna para cada segmento na segmentação associada.
+
+Como um trecho pode ter apenas uma seção dinâmica, consulte seu conteúdo dinâmico pela ID do trecho.
 
 ```http
 GET /rest/asset/v1/snippet/{id}/dynamicContent.json
@@ -318,7 +324,7 @@ GET /rest/asset/v1/snippet/{id}/dynamicContent.json
 
 ## Aprovação
 
-Os trechos têm endpoints disponíveis para aprovar, não aprovar e descartar rascunhos, que seguem o padrão de ativo padrão. Um trecho deve estar no status de rascunho para ser aprovado.
+Os trechos fornecem endpoints para aprovação, remoção de aprovação e descarte de rascunhos. Um trecho deve estar no status de rascunho antes da aprovação.
 
 ### Aprovar
 
@@ -410,7 +416,7 @@ POST /rest/asset/v1/snippet/{id}/discardDraft.json
 
 ## Clonar
 
-[Clonar um trecho](https://developer.adobe.com/marketo-apis/api/asset#tag/Snippets/operation/cloneSnippetUsingPOST) com a API é simples e segue o padrão, com um nome obrigatório, uma identificação do trecho e da pasta originais, bem como uma descrição opcional.  Se não existir nenhuma versão aprovada, a versão de rascunho será clonada.
+Para [clonar um trecho](https://developer.adobe.com/marketo-apis/api/asset#tag/Snippets/operation/cloneSnippetUsingPOST), forneça um nome, a ID do trecho de origem e uma pasta. A descrição é opcional. Se a origem não tiver uma versão aprovada, o endpoint clonará seu rascunho.
 
 ```http
 POST /rest/asset/v1/snippet/{id}/clone.json

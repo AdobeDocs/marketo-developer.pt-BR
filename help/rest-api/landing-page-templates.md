@@ -12,10 +12,10 @@ role_v2:
   - id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
 topic_v2:
   - id: a004cc84-67b9-4a33-a3a7-8ec7273ef4dc
-source-git-commit: 00118a89f25a23b931fac671130932bb0e0e4e4e
+source-git-commit: 3e6d310c5aec1a3435424fb122b71d825db5af0e
 workflow-type: tm+mt
-source-wordcount: 703
-ht-degree: 1%
+source-wordcount: 519
+ht-degree: 2%
 
 ---
 
@@ -23,19 +23,23 @@ ht-degree: 1%
 
 [Referência de endpoint de modelo de página de aterrissagem](https://developer.adobe.com/marketo-apis/api/asset#tag/Landing-Page-Templates)
 
-Os Modelos de página de aterrissagem são um recurso principal e uma dependência de páginas de aterrissagem individuais do Marketo. As landing pages derivam o esqueleto de seu conteúdo do template principal.
+Os modelos de página de aterrissagem são recursos principais das páginas de aterrissagem do Marketo. Cada landing page deriva sua estrutura de conteúdo inicial do template principal.
 
 ## Tipos de modelo
 
-O Marketo tem dois tipos de Modelos de página de aterrissagem: livre e guiado. Os modelos de página de aterrissagem de forma livre fornecem uma experiência de edição estruturada para páginas derivadas deles. Os modelos guiados fornecem uma experiência altamente estruturada, em que os tipos de elementos e os locais podem ser restritos no nível do modelo. Para obter mais informações sobre as diferenças, consulte [este documento](https://experienceleague.adobe.com/pt-br/docs/marketo/using/product-docs/demand-generation/landing-pages/understanding-landing-pages/understanding-free-form-vs-guided-landing-pages).
+O Marketo fornece modelos de página de aterrissagem guiados e de formato livre. Os modelos de forma livre fornecem uma experiência de edição estruturada livremente. Os modelos guiados podem restringir tipos de elementos e locais no nível do modelo.
+
+Para obter uma comparação detalhada, consulte [Noções básicas sobre páginas de forma livre vs. páginas de aterrissagem guiadas](https://experienceleague.adobe.com/pt-br/docs/marketo/using/product-docs/demand-generation/landing-pages/understanding-landing-pages/understanding-free-form-vs-guided-landing-pages).
 
 ## Consultar
 
-Os Modelos de Página de Aterrissagem são compatíveis com os tipos de consulta padrão para ativos de [por identificação](https://developer.adobe.com/marketo-apis/api/asset#tag/Landing-Page-Templates/operation/getLandingPageTemplateByIdUsingGET), [por nome](https://developer.adobe.com/marketo-apis/api/asset#tag/Landing-Page-Templates/operation/getLandingPageTemplateByNameUsingGET) e [navegação](https://developer.adobe.com/marketo-apis/api/asset#tag/Landing-Page-Templates/operation/getLandingPageTemplatesUsingGET). Esses endpoints retornam metadados para os modelos. A recuperação do conteúdo HTML de modelos deve ser feita com base em cada modelo por meio de sua id.
+Consulte os modelos de página de aterrissagem [por ID](https://developer.adobe.com/marketo-apis/api/asset#tag/Landing-Page-Templates/operation/getLandingPageTemplateByIdUsingGET), [por nome](https://developer.adobe.com/marketo-apis/api/asset#tag/Landing-Page-Templates/operation/getLandingPageTemplateByNameUsingGET) ou por [navegação](https://developer.adobe.com/marketo-apis/api/asset#tag/Landing-Page-Templates/operation/getLandingPageTemplatesUsingGET). Esses endpoints retornam metadados de modelo. Recupere o conteúdo do HTML separadamente para cada modelo por ID.
 
 ## Criar e atualizar
 
-Os modelos são criados como ativos vazios com metadados associados. Ao criar um modelo, um nome e uma pasta devem ser incluídos, juntamente com uma descrição opcional, templateType e o parâmetro enableMunchkin. templateType pode ser de forma livre ou guiado e o padrão é freeForm. Para ver as diferenças entre os tipos, consulte a seção Forma guiada versus Forma livre. enableMunchkin assume o padrão false e, quando ativado, impedirá que o rastreamento do Munchkin seja executado em qualquer landing page filho do template.
+Os modelos são criados como ativos vazios com metadados. Os parâmetros `name` e `folder` são obrigatórios. Os parâmetros `description`, `templateType` e `enableMunchkin` são opcionais.
+
+O valor `templateType` pode ser `freeform` ou `guided` e o padrão é `freeForm`. O valor padrão de `enableMunchkin` é `false`. Quando ativado, impede o rastreamento do Munchkin nas páginas de aterrissagem secundárias do modelo.
 
 ```http
 POST /rest/asset/v1/landingPageTemplates.json
@@ -75,15 +79,15 @@ name=New LPT - PHP&folder={"id":12,"type":"Folder"}
 }
 ```
 
-O conteúdo do modelo deve ser preenchido separadamente por meio do ponto de extremidade [Atualizar Conteúdo do Modelo de Página de Aterrissagem](https://developer.adobe.com/marketo-apis/api/asset#tag/Landing-Page-Templates/operation/updateLandingPageTemplateContentUsingPOST).
+Adicione o conteúdo do modelo separadamente com o ponto de extremidade [Atualizar Conteúdo do Modelo de Página de Aterrissagem](https://developer.adobe.com/marketo-apis/api/asset#tag/Landing-Page-Templates/operation/updateLandingPageTemplateContentUsingPOST).
 
 ### Atualizar metadados
 
-Os metadados dos modelos de página de aterrissagem podem ser atualizados por meio do [ponto de extremidade Atualizar metadados do modelo de página de aterrissagem](https://developer.adobe.com/marketo-apis/api/asset#tag/Landing-Page-Templates/operation/updateLpTemplateUsingPOST). O nome, a descrição e a configuração enableMunchkin podem ser atualizados dessa forma.
+Use o ponto de extremidade [Atualizar Metadados de Modelo de Página de Aterrissagem](https://developer.adobe.com/marketo-apis/api/asset#tag/Landing-Page-Templates/operation/updateLpTemplateUsingPOST) para alterar o nome, a descrição ou a configuração `enableMunchkin`.
 
 ### Atualizar conteúdo
 
-O conteúdo dos Modelos de página inicial é feito como uma atualização destrutiva na totalidade do conteúdo do HTML. O conteúdo deve ser passado como multipart/form-data, com o único parâmetro sendo nomeado content.
+A atualização do conteúdo do modelo substitui todo o conteúdo existente do HTML. Passe a substituição como `multipart/form-data` no parâmetro `content`.
 
 ```http
 POST /rest/asset/v1/landingPageTemplate/286/content.json
@@ -121,15 +125,15 @@ Content-Type: text/plain
 
 ## Clonar
 
-O Marketo fornece um método simples para clonar modelos de página de aterrissagem. Esta é uma solicitação POST application/x-www-url-formencoded.
+Clonar um modelo de página de aterrissagem com uma solicitação POST `application/x-www-url-formencoded`.
 
-O parâmetro de caminho `id` especifica a identificação do Modelo de página de aterrissagem de origem a ser clonado.
+O parâmetro de caminho `id` especifica o modelo de página de aterrissagem de origem.
 
-O parâmetro `name` é usado para especificar o nome do novo Modelo de página de aterrissagem.
+O parâmetro `name` especifica o nome do novo modelo de página de destino.
 
-O parâmetro `folder` é usado para especificar a pasta principal onde o novo Modelo de página de aterrissagem residirá. Isso está no formato de um objeto JSON inserido contendo `id` e `type`.
+O parâmetro `folder` especifica a pasta pai do novo modelo. Passe-o como um objeto JSON inserido contendo `id` e `type`.
 
-O parâmetro `description` opcional é usado para descrever o novo Modelo de página de aterrissagem.
+O parâmetro `description` opcional descreve o novo modelo.
 
 ```http
 POST /rest/asset/v1/landingPageTemplate/{id}/clone.json
@@ -172,9 +176,9 @@ name=Standard Template Clone&folder={"type": "Folder", "id": 732}
 
 ## Aprovação
 
-Os Modelos de página de aterrissagem seguem o modelo padrão de rascunho aprovado, em que pode haver uma versão de rascunho e/ou uma versão aprovada. Sempre que as atualizações forem aplicadas a um modelo, elas serão aplicadas primeiro à versão de rascunho e só serão exibidas ao vivo quando o modelo for aprovado.
+Os modelos de página de aterrissagem usam o rascunho padrão e o modelo aprovado. As atualizações se aplicam ao rascunho primeiro e ficam online somente após a aprovação do modelo.
 
-Para que um modelo seja homologado, deve estar em conformidade com as regras do seu tipo, quer guiado de forma livre. Para obter mais informações sobre os requisitos para criar e aprovar modelos de seus respectivos tipos, consulte os respectivos documentos de criação:
+Antes da aprovação, um modelo deve atender aos requisitos para seu tipo guiado ou de formato livre. Consulte estes recursos:
 
 - [Modelos de página de aterrissagem de forma livre](https://experienceleague.adobe.com/pt-br/docs/marketo/using/product-docs/demand-generation/landing-pages/landing-page-templates/create-a-free-form-landing-page-template)
 - [Modelos de página de destino guiada](https://experienceleague.adobe.com/pt-br/docs/marketo/using/product-docs/demand-generation/landing-pages/landing-page-templates/create-a-guided-landing-page-template)
@@ -182,4 +186,4 @@ Para que um modelo seja homologado, deve estar em conformidade com as regras do 
 
 ## Excluir
 
-Para excluir um template, ele deve estar fora de uso e não aprovado, o que significa que nenhuma landing page filho pode fazer referência a ele.  Os Modelos de página de aterrissagem com botões sociais incorporados não podem ser excluídos com esta API.
+Para excluir um modelo, verifique se ele não foi aprovado e se nenhuma landing page secundária faz referência a ele. Não é possível usar essa API para excluir modelos de página de aterrissagem com botões sociais incorporados.

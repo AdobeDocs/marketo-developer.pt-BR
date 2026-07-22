@@ -3,9 +3,9 @@ title: Emails
 feature: REST API
 description: Use a API REST do Marketo Asset para consultar, criar, atualizar, clonar, excluir, aprovar e inspecionar dependências de ativos de email.
 exl-id: b41a3ae5-2b25-4103-84b4-320fc2c44bd6
-source-git-commit: 59684e1c5a8082ad12f1e4bfc854c0d2dde35d2a
+source-git-commit: 3e6d310c5aec1a3435424fb122b71d825db5af0e
 workflow-type: tm+mt
-source-wordcount: '497'
+source-wordcount: '492'
 ht-degree: 5%
 
 ---
@@ -32,7 +32,7 @@ x-app-type: <app-type>
 
 ## Consultar
 
-Você pode recuperar metadados de email por ativo `id` ou com o ponto de extremidade de filtro.
+Recupere metadados de email por ativo `id` ou com o ponto de extremidade de filtro.
 
 ### Por ID
 
@@ -63,7 +63,7 @@ GET /rest/asset/v2/email/{id}
 
 ### Filtro
 
-O endpoint de filtro permite pesquisar em um espaço de trabalho e restringir os resultados com parâmetros de consulta adicionais.
+O endpoint de filtro pesquisa em um espaço de trabalho e oferece suporte a parâmetros de consulta adicionais.
 
 `workspaceId` é obrigatório.
 

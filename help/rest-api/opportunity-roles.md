@@ -10,9 +10,9 @@ feature_v2:
   - id: c5f60233-d5ea-4453-a799-0ad258b4d399
 role_v2:
   - id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
-source-git-commit: 00118a89f25a23b931fac671130932bb0e0e4e4e
+source-git-commit: 3e6d310c5aec1a3435424fb122b71d825db5af0e
 workflow-type: tm+mt
-source-wordcount: 279
+source-wordcount: 254
 ht-degree: 0%
 
 ---
@@ -21,13 +21,13 @@ ht-degree: 0%
 
 [Referência de Ponto de Extremidade de Funções da Oportunidade](https://developer.adobe.com/marketo-apis/api/mapi#tag/Opportunities/operation/getOpportunityRolesUsingGET)
 
-Os clientes em potencial estão vinculados às oportunidades por meio do objeto `opportunityRole` intermediário.
+Os links de objetos `opportunityRole` intermediários abrem oportunidades.
 
-As APIs de Função de Oportunidade são expostas apenas para assinaturas que não têm uma sincronização CRM nativa habilitada.
+As APIs de Função de Oportunidade estão disponíveis somente para assinaturas que não têm a sincronização CRM nativa habilitada.
 
 ## Descrever
 
-Assim como as oportunidades, uma chamada de descrição e as operações CRUD são expostas para funções de oportunidade.
+Assim como com as oportunidades, a API fornece uma chamada Descrever e operações CRUD para funções de oportunidade.
 
 ```http
 GET /rest/v1/opportunities/roles/describe.json
@@ -113,7 +113,9 @@ GET /rest/v1/opportunities/roles/describe.json
 
 ## Consultar
 
-Observe que `dedupeFields` e `searchableFields` são um pouco diferentes de oportunidades. `dedupeFields` realmente fornece uma chave composta, onde todos os três de `externalOpportunityId`, `leadId` e `role` são necessários. O link de oportunidade e de cliente potencial pelos campos de id devem existir na instância de destino para que a criação do registro seja bem-sucedida. Para `searchableFields`, `marketoGUID`, `leadId` e `externalOpportunityId` são válidos para consultas por conta própria e usam um padrão idêntico a Oportunidades, mas há uma opção adicional de usar a chave composta para consulta, o que requer o envio de um objeto JSON via POST, com o parâmetro de consulta adicional `_method=GET`.
+Os valores `dedupeFields` e `searchableFields` são diferentes de oportunidades. `dedupeFields` fornece uma chave composta que requer `externalOpportunityId`, `leadId` e `role`. Para que a criação do registro seja bem-sucedida, a oportunidade e o cliente potencial referenciados pelos campos de ID devem existir na instância de destino.
+
+Os `searchableFields` valores `marketoGUID`, `leadId` e `externalOpportunityId` são válidos para consultas individuais que usam o mesmo padrão de Oportunidades. Também é possível consultar pela chave composta. Esta consulta requer um objeto JSON enviado por POST com o parâmetro de consulta `_method=GET`.
 
 ```http
 POST /rest/v1/opportunities/roles.json?_method=GET
@@ -148,11 +150,11 @@ POST /rest/v1/opportunities/roles.json?_method=GET
 }
 ```
 
-Isso produz o mesmo tipo de resposta que uma consulta padrão do GET, basta ter uma interface diferente para fazer a solicitação.
+Essa solicitação produz o mesmo tipo de resposta que uma consulta GET padrão, mas usa uma interface de solicitação diferente.
 
 ## Criar e atualizar
 
-As funções de oportunidade têm a mesma interface para criar e atualizar registros como oportunidades.
+Criar e atualizar funções de oportunidade usando a mesma interface que as oportunidades.
 
 ```http
 POST /rest/v1/opportunities/roles.json
@@ -200,7 +202,9 @@ POST /rest/v1/opportunities/roles.json
 
 ## Excluir
 
-Você pode excluir funções de oportunidade por campos de desduplicação ou campo de id. Especifique usando o parâmetro deleteBy com um valor dedupeFields ou idField. Se não especificado, o padrão é dedupeFields. O corpo da solicitação contém uma matriz de entrada de funções de oportunidade a serem excluídas. São permitidas no máximo 300 funções de oportunidade por chamada.
+Excluir funções de oportunidade por campos de desduplicação ou campo de ID. Defina o parâmetro deleteBy como dedupeFields ou idField. O padrão é dedupeFields.
+
+O corpo da solicitação contém uma matriz de entrada de funções de oportunidade a serem excluídas. Cada chamada permite no máximo 300 funções de oportunidade.
 
 ```http
 POST /rest/v1/opportunities/roles/delete.json
@@ -235,6 +239,6 @@ POST /rest/v1/opportunities/roles/delete.json
 
 ## Tempos limite
 
-- Os endpoints de função da oportunidade têm um tempo limite de 30 s, a menos que observado abaixo
-   - Funções de oportunidade de sincronização: 60s
-   - Excluir funções de oportunidade: 60s
+- Os endpoints de função da oportunidade têm um tempo limite de 30 s, a menos que especificado de outra forma.
+- O tempo limite de Funções de Oportunidade de Sincronização é de 60s.
+- O tempo limite para Excluir Funções de Oportunidade é de 60s.

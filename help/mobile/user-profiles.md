@@ -8,23 +8,23 @@ product_v2:
   - id: b27e5950-9033-45ac-9f86-eb22e567f615
 role_v2:
   - id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
-source-git-commit: 00118a89f25a23b931fac671130932bb0e0e4e4e
+source-git-commit: 3e6d310c5aec1a3435424fb122b71d825db5af0e
 workflow-type: tm+mt
-source-wordcount: 103
+source-wordcount: 116
 ht-degree: 1%
 
 ---
 
 # Perfis de usuário
 
-Como criar perfis de usuário
+Crie ou atualize perfis de usuário com o Marketo Mobile SDK para iOS ou Android:
 
 1. [Criação de perfis de usuário no iOS](#ios_user_profiles)
 1. [Criação de perfis de usuário no Android](#android_user_profiles)
 
 ## Criação de perfis de usuário no iOS {#ios_user_profiles}
 
-Você pode criar perfis avançados enviando os campos do usuário, como mostrado abaixo.
+Crie um perfil e preencha os campos de usuário.
 
 ```objectivec
 MarketoLead *profile = [[MarketoLead alloc] init];
@@ -70,7 +70,7 @@ profile.setLinkedInId("linkedinid")
 profile.setTwitterId("twitterid")
 ```
 
-Adicione mais [campos padrão](../rest-api/list-of-standard-fields.md).
+Adicionar outros [campos padrão](../rest-api/list-of-standard-fields.md).
 
 >[!BEGINTABS]
 
@@ -94,7 +94,7 @@ profile.setFieldName("phone", withValue:"123.456.7890");
 
 >[!ENDTABS]
 
-Relatar perfil de usuário.
+Relate o perfil do usuário para criá-lo ou atualizá-lo.
 
 >[!BEGINTABS]
 
@@ -120,9 +120,9 @@ marketo.associateLead(profile)
 
 ## Criação de perfis de usuário no Android {#android_user_profiles}
 
-1. Criar perfil de usuário.
+1. Criar um perfil de usuário.
 
-   Você pode criar perfis avançados enviando campos de usuário como mostrado abaixo.
+   Crie um perfil e preencha os campos de usuário.
 
    ```java
    MarketoLead profile = new MarketoLead();
@@ -140,7 +140,7 @@ marketo.associateLead(profile)
    }
    ```
 
-1. Adicione mais [campos padrão](../rest-api/list-of-standard-fields.md).
+1. Adicionar outros [campos padrão](../rest-api/list-of-standard-fields.md).
 
    ```java
    // Add other custom fields
@@ -157,7 +157,7 @@ marketo.associateLead(profile)
    profile.setCustomField("linkedInDisplayName", "Android");
    ```
 
-1. Relatar perfil de usuário.
+1. Relate o perfil do usuário para criá-lo ou atualizá-lo.
 
    ```java
    MarketoLead profile = new MarketoLead();

@@ -10,9 +10,9 @@ feature_v2:
   - id: c5f60233-d5ea-4453-a799-0ad258b4d399
 role_v2:
   - id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
-source-git-commit: 00118a89f25a23b931fac671130932bb0e0e4e4e
+source-git-commit: 3e6d310c5aec1a3435424fb122b71d825db5af0e
 workflow-type: tm+mt
-source-wordcount: 396
+source-wordcount: 369
 ht-degree: 0%
 
 ---
@@ -21,19 +21,21 @@ ht-degree: 0%
 
 [Referência de Ponto de Extremidade de Vendedor](https://developer.adobe.com/marketo-apis/api/mapi#tag/Sales-Persons)
 
-As APIs de Vendedor são acesso somente leitura para assinaturas com [Sincronização do SFDC](https://experienceleague.adobe.com/pt-br/docs/marketo/using/product-docs/crm-sync/salesforce-sync/sfdc-sync-details/sfdc-sync-field-sync) ou [Sincronização do Microsoft Dynamics](https://experienceleague.adobe.com/pt-br/docs/marketo/using/product-docs/crm-sync/microsoft-dynamics/microsoft-dynamics-sync-details/microsoft-dynamics-sync-user-sync) habilitada. Vendedores são um tipo de registro de pessoa que é o proprietário das vendas dos registros de lead. Eles estão relacionados aos registros de cliente potencial pelo campo externalSalesPersonId em cada registro de cliente potencial. Quando um cliente potencial é relacionado a um Vendedor por um campo externalSalesPersonId preenchido, os campos de pesquisa Proprietário do cliente potencial correspondentes são preenchidos para esse registro de cliente potencial no Marketo, permitindo o uso dos filtros e tokens correspondentes.
+As APIs de Vendedor fornecem acesso somente leitura para assinaturas com a [Sincronização do SFDC](https://experienceleague.adobe.com/pt-br/docs/marketo/using/product-docs/crm-sync/salesforce-sync/sfdc-sync-details/sfdc-sync-field-sync) ou a [Sincronização do Microsoft Dynamics](https://experienceleague.adobe.com/pt-br/docs/marketo/using/product-docs/crm-sync/microsoft-dynamics/microsoft-dynamics-sync-details/microsoft-dynamics-sync-user-sync) habilitada.
 
-Vendedores estão relacionados a registros de Clientes potenciais usando o ponto de extremidade [Sincronizar Clientes Potenciais](https://developer.adobe.com/marketo-apis/api/mapi#tag/Leads/operation/syncLeadUsingPOST) e transmitindo o atributo externalSalesPersonId.
+Vendedores são registros pessoais que representam os proprietários de vendas dos registros de lead. O campo externalSalesPersonId em cada registro de Lead relaciona um Lead a um Vendedor. Quando esse campo é preenchido, o Marketo preenche os campos de pesquisa do Lead Owner correspondentes no registro de lead. Em seguida, você pode usar os filtros e tokens associados.
 
-Vendedores estão relacionados a Registros de oportunidade usando o ponto de extremidade [Sincronizar oportunidades](https://developer.adobe.com/marketo-apis/api/mapi#tag/Opportunities/operation/syncOpportunitiesUsingPOST) e transmitindo o atributo externalSalesPersonId.
+Relacione Vendedores a outros registros passando o atributo externalSalesPersonId para o ponto de extremidade correspondente:
 
-Os Vendedores estão relacionados aos registros da Empresa usando o ponto de extremidade [Sincronizar Empresas](https://developer.adobe.com/marketo-apis/api/mapi#tag/Companies/operation/syncCompaniesUsingPOST) e transmitindo o atributo externalSalesPersonId.
+- Registros de cliente potencial: [Sincronizar clientes potenciais](https://developer.adobe.com/marketo-apis/api/mapi#tag/Leads/operation/syncLeadUsingPOST).
+- Registros de oportunidade: [Sincronizar oportunidades](https://developer.adobe.com/marketo-apis/api/mapi#tag/Opportunities/operation/syncOpportunitiesUsingPOST).
+- Registros da empresa: [Sincronizar empresas](https://developer.adobe.com/marketo-apis/api/mapi#tag/Companies/operation/syncCompaniesUsingPOST).
 
 Os registros de Vendedor só podem ser editados por meio da API.
 
 ## Descrever
 
-A descrição dos registros de Vendedor segue o padrão padrão para objetos de banco de dados de lead.
+Descreva os registros de Vendedor usando o padrão padrão para objetos do Banco de Dados de Cliente Potencial.
 
 ```http
 GET /rest/v1/salespersons/describe.json
@@ -102,11 +104,13 @@ GET /rest/v1/salespersons/describe.json
 }
 ```
 
-Por padrão, o `idField` dos Vendedores é &quot;id&quot; e o `dedupeFields` é apenas &quot;externalSalesPersonId&quot;.
+Por padrão, o Vendedor `idField` é &quot;id&quot; e `dedupeFields` é &quot;externalSalesPersonId&quot;.
 
 ## Consultar
 
-Vendedores usando o padrão de consulta padrão para chaves simples. Este exemplo mostra o email do usuário sendo usado como externalSalesPersonId. Por padrão, a consulta retorna todos os campos preenchidos para os registros retornados.
+Consulte Vendedores usando o padrão de consulta padrão para chaves simples. O exemplo a seguir usa o email do usuário como externalSalesPersonId.
+
+Por padrão, a consulta retorna todos os campos preenchidos para os registros correspondentes.
 
 ```http
 GET /rest/v1/salespersons.json?filterType=dedupeFields&filterValues=david@test.com,sam@test.com
@@ -137,7 +141,7 @@ GET /rest/v1/salespersons.json?filterType=dedupeFields&filterValues=david@test.c
 
 ## Criar e atualizar
 
-O padrão para atualizações é padrão.
+Criar ou atualizar Vendedores usando o padrão de atualização padrão.
 
 ```http
 POST /rest/v1/salespersons.json
@@ -185,12 +189,12 @@ POST /rest/v1/salespersons.json
 
 ## Excluir
 
-O padrão para exclusões é padrão.
+Deletar Vendedores usando o padrão de deleção padrão.
 
-A exclusão de vendedores não é permitida quando &quot;em uso&quot;. Nesse caso, o Vendedor é ignorado. Exemplos:
+Não é possível excluir um Vendedor que esteja &quot;em uso&quot;. A solicitação ignora o Vendedor nos seguintes casos:
 
-- Quando Vendedor está associado a Clientes Potenciais ativos
-- Quando o Vendedor está associado a uma Empresa que foi excluída
+- O Vendedor está associado aos Clientes Potenciais ativos.
+- O Vendedor está associado a uma Empresa que foi excluída.
 
 ```http
 POST /rest/v1/salespersons/delete.json
@@ -244,6 +248,6 @@ POST /rest/v1/salespersons/delete.json
 
 ## Tempos limite
 
-- Os endpoints de pessoa de vendas têm um tempo limite de 30 s, a menos que indicado abaixo
-   - Sincronizar Profissionais de Vendas: 60s
-   - Excluir Vendedores: 60s
+- Os endpoints de Vendedor têm um tempo limite de 30 s, a menos que indicado de outra forma.
+- Sincronizar Vendedores tem um tempo limite de 60s.
+- Excluir Vendedores tem um tempo limite de 60s.

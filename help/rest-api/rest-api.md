@@ -12,18 +12,21 @@ feature_v2:
   - id: e64968b2-4ee5-47f9-8cae-0588f184b9eb
 role_v2:
   - id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
-source-git-commit: 00118a89f25a23b931fac671130932bb0e0e4e4e
+source-git-commit: 3e6d310c5aec1a3435424fb122b71d825db5af0e
 workflow-type: tm+mt
-source-wordcount: 896
+source-wordcount: 803
 ht-degree: 2%
 
 ---
 
 # API REST
 
-O Marketo expõe uma API REST que permite a execução remota de muitos dos recursos do sistema. Desde a criação de programas até a importação de leads em massa, há muitas opções que permitem o controle refinado de uma instância do Marketo.
+A API REST do Marketo fornece acesso remoto a vários recursos do sistema. Você pode usá-lo para criar programas, importar leads em massa e controlar uma instância do Marketo em um nível detalhado.
 
-Essas APIs geralmente se encaixam em duas categorias amplas: [Banco de Dados Principal](https://developer.adobe.com/marketo-apis/api/mapi) e [Ativo](https://developer.adobe.com/marketo-apis/api/asset). As APIs de banco de dados de clientes potenciais permitem a recuperação e a interação com registros de pessoas da Marketo e tipos de objetos associados, como Oportunidades e Empresas. As APIs de ativos permitem a interação com material de apoio de marketing e registros relacionados a fluxos de trabalho.
+As REST APIs se dividem em duas categorias amplas:
+
+- As APIs do [Banco de Dados de Clientes Potenciais](https://developer.adobe.com/marketo-apis/api/mapi) recuperam e interagem com registros de pessoas da Marketo e tipos de objetos associados, como Oportunidades e Empresas.
+- As APIs do [Ativo](https://developer.adobe.com/marketo-apis/api/asset) interagem com material de apoio de marketing e registros relacionados ao fluxo de trabalho.
 
 >[!NOTE]
 >
@@ -35,33 +38,35 @@ Essas APIs geralmente se encaixam em duas categorias amplas: [Banco de Dados Pri
 >Veja esta [Nação postagem](https://nation.marketo.com/t5/product-blogs/rest-api-double-slash-deprecation/ba-p/358616) sobre a descontinuação da barra dupla em URLs de gateway de API.
 >
 
-- **Cota Diária:** as assinaturas recebem 50.000 chamadas de API por dia (o que é redefinido diariamente a 12:00AM CST). Você pode aumentar sua cota diária por meio do gerente da conta.
-- **Limite de Taxa:** O acesso à API por instância é limitado a 100 chamadas por 20 segundos.
-- **Limite de Simultaneidade:** Máximo de dez chamadas de API simultâneas.
+- **Cota diária:** cada assinatura recebe 50.000 chamadas de API por dia. A cota é redefinida diariamente às 12h (CST). Entre em contato com o gerente da conta para aumentar a cota diária.
+- **Limite de taxa:** cada instância é limitada a 100 chamadas de API por 20 segundos.
+- **Limite de simultaneidade:** cada instância permite no máximo dez chamadas de API simultâneas.
 
-O tamanho das chamadas padrão é limitado a um comprimento de URI de 8 KB e um tamanho de corpo de 1 MB, embora o corpo possa ser de 10 MB para nossas APIs em massa. Se houver um erro na sua chamada, a API normalmente ainda retornará um código de status 200, mas a resposta JSON conterá um membro &quot;success&quot; com um valor de `false` e uma matriz de erros no membro &quot;errors&quot;. Mais sobre os erros [aqui](error-codes.md).
+As chamadas de API padrão têm um comprimento máximo de URI de 8 KB e um tamanho máximo de corpo de 1 MB. As chamadas de API em massa suportam um tamanho máximo de corpo de 10 MB.
+
+Quando uma chamada contém um erro, a API normalmente ainda retorna o código de status HTTP 200. A resposta JSON contém um membro `success` com valor `false` e uma matriz de erros no membro `errors`. Mais informações sobre erros estão disponíveis [aqui](error-codes.md).
 
 ## Introdução
 
-As etapas a seguir exigem privilégios de administrador na instância do Marketo.
+Você precisa de privilégios de administrador na instância do Marketo para concluir as etapas a seguir. Este fluxo de trabalho cria credenciais de API e as usa para recuperar um registro de cliente potencial.
 
-Na primeira chamada para o Marketo, você recupera um registro de lead. Para começar a trabalhar com o Marketo, você deve obter credenciais de API para fazer chamadas autenticadas para sua instância. Faça logon na sua instância e acesse o **[!UICONTROL Administrador]** -> **[!UICONTROL Usuários e Funções]**.
+Primeiro, crie um usuário da API e obtenha credenciais para chamadas autenticadas. Faça logon na sua instância e acesse **[!UICONTROL Administrador]** > **[!UICONTROL Usuários e Funções]**.
 
 ![Usuários e funções do administrador](assets/admin-users-and-roles.png)
 
-Clique na guia **[!UICONTROL Funções]**, em Novo Função e atribua pelo menos a permissão &quot;Líder Somente Leitura&quot; (ou &quot;Pessoa Somente Leitura&quot;) à função no grupo de APIs de Acesso. Certifique-se de dar a ele um nome descritivo e selecione **[!UICONTROL Criar]**.
+Selecione a guia **[!UICONTROL Funções]** e selecione Nova Função. Atribua à função pelo menos a permissão &quot;Lead somente leitura&quot; (ou &quot;Pessoa somente leitura&quot;) do grupo de APIs de acesso. Dê um nome descritivo à função e selecione **[!UICONTROL Criar]**.
 
 ![Nova Função](assets/new-role.png)
 
-Agora, volte para a guia [!UICONTROL Usuários] e selecione **[!UICONTROL Convidar novo usuário]**. Dê ao usuário um nome descritivo que indique que ele é um usuário da API, um Endereço de email e selecione **[!UICONTROL Avançar]**.
+Retorne à guia [!UICONTROL Usuários] e selecione **[!UICONTROL Convidar Novo Usuário]**. Insira um nome descritivo que identifique o usuário como um usuário da API, insira um endereço de email e selecione **[!UICONTROL Avançar]**.
 
 ![Novas Informações do Usuário](assets/new-user-info.png)
 
-Em seguida, marque a opção [!UICONTROL Somente API] e conceda ao usuário a função de API que você criou e selecione **[!UICONTROL Avançar]**.
+Selecione a opção [!UICONTROL Somente API], atribua a função de API que você criou e selecione **[!UICONTROL Avançar]**.
 
 ![Novas permissões de usuário](assets/new-user-permissions.png)
 
-Para concluir o processo de criação de usuário, selecione **[!UICONTROL Enviar]**.
+Selecione **[!UICONTROL Enviar]** para criar o usuário.
 
 ![Nova Mensagem de Usuário](assets/new-user-message.png)
 
@@ -69,23 +74,23 @@ Em seguida, vá para o menu [!UICONTROL Admin] e selecione **[!UICONTROL LaunchP
 
 ![Ponto de inicialização](assets/admin-launchpoint.png)
 
-Clique no menu **[!UICONTROL Novo]** e selecione **[!UICONTROL Novo serviço]**. Dê um nome descritivo ao seu serviço e selecione **[!UICONTROL Personalizado]** no menu suspenso [!UICONTROL Serviço]. Forneça uma descrição, selecione o novo usuário no menu suspenso [!UICONTROL Somente Usuário da API] e selecione **[!UICONTROL Criar]**.
+Selecione **[!UICONTROL Novo]** > **[!UICONTROL Novo serviço]**. Insira um nome descritivo e uma descrição e selecione **[!UICONTROL Personalizado]** no menu [!UICONTROL Serviço]. Selecione o novo usuário no menu [!UICONTROL Somente Usuário da API] e selecione **[!UICONTROL Criar]**.
 
 ![Novo Serviço de Ponto de Inicialização](assets/admin-launchpoint-new-service.png)
 
-Selecione **[!UICONTROL Exibir Detalhes]** para que o novo serviço acesse a ID do Cliente e o Segredo do Cliente. Por enquanto você pode selecionar **[!UICONTROL Obter token]** para gerar um token de acesso válido por uma hora. Salve o token em uma nota por enquanto.
+Selecione **[!UICONTROL Exibir Detalhes]** para que o novo serviço acesse a ID do Cliente e o Segredo do Cliente. Selecione **[!UICONTROL Obter Token]** para gerar um token de acesso válido por uma hora. Salve o token para a primeira chamada de API.
 
 ![Obter token](assets/get-token.png)
 
-Em seguida, vá para o menu **[!UICONTROL Admin]** e depois para **[!UICONTROL Serviços da Web]**.
+Vá para **[!UICONTROL Admin]** > **[!UICONTROL Serviços da Web]**.
 
 ![Serviços da Web](assets/admin-web-services.png)
 
-Localize o [!UICONTROL Ponto de extremidade] na caixa API REST e salve em uma observação por enquanto.
+Localize o [!UICONTROL Ponto de extremidade] na caixa API REST e salve-o para a primeira chamada de API.
 
 ![Ponto de extremidade REST](assets/admin-web-services-rest-endpoint-1.png)
 
-Ao fazer chamadas para métodos da API REST, um token de acesso deve ser incluído em cada chamada para que a chamada seja bem-sucedida. O token de acesso deve ser enviado como um cabeçalho HTTP.
+Todas as chamadas à API REST devem incluir um token de acesso em um cabeçalho HTTP.
 
 ```text
 Authorization: Bearer cdf01657-110d-4155-99a7-f986b2ff13a0:int
@@ -95,13 +100,13 @@ Authorization: Bearer cdf01657-110d-4155-99a7-f986b2ff13a0:int
 >
 >O suporte para autenticação usando o parâmetro de consulta **access_token** será removido em 30 de junho de 2025. Se o projeto usar um parâmetro de consulta para passar o token de acesso, ele deverá ser atualizado para usar o cabeçalho **Autorização** o mais rápido possível. O novo desenvolvimento deve usar o cabeçalho **Autorização** exclusivamente.
 
-Abra uma nova guia do navegador e insira o seguinte, usando as informações apropriadas para chamar [Obter clientes em potencial por Tipo de Filtro](https://developer.adobe.com/marketo-apis/api/mapi#tag/Leads/operation/getLeadsByFilterUsingGET)
+Abra uma nova guia do navegador e insira o seguinte URL. Substitua os espaços reservados pelo ponto de extremidade e endereço de email da sua instância para chamar [Obter Clientes Potenciais por Tipo de Filtro](https://developer.adobe.com/marketo-apis/api/mapi#tag/Leads/operation/getLeadsByFilterUsingGET).
 
 ```text
 <Your Endpoint URL>/rest/v1/leads.json?&filterType=email&filterValues=<Your Email Address>
 ```
 
-Se você não tiver um registro de cliente potencial com seu endereço de email no banco de dados, substitua-o por um que você sabe que está lá. Pressione Enter na barra de URL e você deverá obter uma resposta JSON semelhante a:
+Se o banco de dados não contiver um registro de cliente potencial com seu endereço de email, use o endereço de email de um cliente potencial existente. Envie o URL para receber uma resposta JSON semelhante ao seguinte exemplo:
 
 ```json
 {
@@ -122,6 +127,8 @@ Se você não tiver um registro de cliente potencial com seu endereço de email 
 
 ## Utilização da API
 
-Cada um dos usuários da API é relatado individualmente no relatório de uso da API, portanto, dividir os serviços da Web por usuário permite considerar facilmente o uso de cada uma de suas integrações. Se o número de chamadas de API para sua instância exceder o limite, causando falha nas chamadas subsequentes, o uso dessa prática permitirá considerar o volume de cada um dos serviços e avaliar como resolver o problema. Veja seu uso acessando **[!UICONTROL Admin]** -> **[!UICONTROL Integração]** > **[!UICONTROL Serviços da Web]** e clicando no número de chamadas nos últimos sete dias.
+O relatório de uso da API rastreia cada usuário da API separadamente. Atribuir um usuário separado a cada serviço da Web ajuda a identificar o uso da API de cada integração.
+
+Se as chamadas excederem seu limite de instância e as chamadas subsequentes falharem, use o relatório para identificar o volume de chamadas de cada serviço. Vá para **[!UICONTROL Admin]** > **[!UICONTROL Integração]** > **[!UICONTROL Serviços da Web]** e selecione o número de chamadas feitas nos últimos sete dias.
 
 Para os pontos de extremidade REST que retornam estatísticas de uso e erro diárias e dos últimos sete dias, consulte [Uso](usage.md).

@@ -12,32 +12,32 @@ role_v2:
   - id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
 topic_v2:
   - id: aa2f3246-cb95-4b30-8899-fdf7d73550cc
-source-git-commit: 00118a89f25a23b931fac671130932bb0e0e4e4e
+source-git-commit: 3e6d310c5aec1a3435424fb122b71d825db5af0e
 workflow-type: tm+mt
-source-wordcount: 663
+source-wordcount: 581
 ht-degree: 2%
 
 ---
 
 # Iônico
 
-Este tópico descreve como integrar o plug-in Cordova do Marketo. Não há suporte atualmente para o capacitor [!DNL Ionic].
+Integre o Plug-in Cordova do Marketo com um aplicativo [!DNL Ionic]. [!DNL Ionic] O capacitor não é compatível no momento.
 
 ## Pré-requisitos
 
-1. [Adicione um aplicativo ao Administrador do Marketo](https://experienceleague.adobe.com/pt-br/docs/marketo/using/product-docs/mobile-marketing/admin/add-a-mobile-app) (obtenha a Chave Secreta e a ID do Munchkin do aplicativo).
-1. Configurar notificações por push ([iOS](push-notifications.md) | [Android](push-notifications.md) ).
+1. [Adicione um aplicativo ao Administrador do Marketo](https://experienceleague.adobe.com/pt-br/docs/marketo/using/product-docs/mobile-marketing/admin/add-a-mobile-app) e obtenha a Chave Secreta e a ID do Munchkin do aplicativo.
+1. Configurar notificações por push para [iOS](push-notifications.md) ou [Android](push-notifications.md).
 1. Instale o [[!DNL Ionic]](https://ionicframework.com/getting-started/) e a [CLI do Cordova](https://cordova.apache.org/docs/en/latest/guide/cli/).
 
 ## Instruções de instalação
 
 ### Configurar o plug-in [!DNL Ionic] do Marketo
 
-1. Supondo que a CLI do Cordova esteja instalada, vá para o diretório de aplicativos [!DNL Ionic] e execute o seguinte comando para adicionar o Plug-in Marketo ao aplicativo:
+1. Vá para o diretório de aplicativos [!DNL Ionic] e execute o seguinte comando para adicionar o Plug-in do Marketo:
 
    `$ ionic plugin add https://github.com/Marketo/PhoneGapPlugin.git --variable APPLICATION_SECRET_KEY="YOUR_APPLICATION_SECRET"`
 
-1. Para confirmar que o plug-in foi adicionado ao aplicativo, execute o seguinte comando:
+1. Execute o seguinte comando para confirmar que o plug-in foi adicionado:
 
    `$ ionic plugin list com.marketo.plugin 0.X.0 "MarketoPlugin"`
 
@@ -47,7 +47,7 @@ Este tópico descreve como integrar o plug-in Cordova do Marketo. Não há supor
 
    `$ ionic plugin remove com.marketo.plugin`
 
-1. Para ler o plug-in, execute o seguinte comando:
+1. Para adicionar o plug-in novamente, execute o seguinte comando:
 
    `$ ionic plugin add https://github.com/Marketo/PhoneGapPlugin.git --variable APPLICATION_SECRET_KEY="YOUR_APPLICATION_SECRET"`
 
@@ -81,9 +81,9 @@ sharedInstance.trackPushNotfication(launchOptions)
 
 ### Inicializar a estrutura do Marketo
 
-Para garantir que a estrutura do Marketo seja iniciada na inicialização do aplicativo, adicione o seguinte código na função `onDeviceReady` no arquivo JavaScript principal.
+Para inicializar a estrutura do Marketo quando o aplicativo for iniciado, adicione o seguinte código na função `onDeviceReady` no arquivo JavaScript principal.
 
-Você deve passar `ionicCordova` como tipo de estrutura para [!DNL Ionic] Aplicativos Cordova.
+Passar `ionicCordova` como o tipo de estrutura para [!DNL Ionic] aplicativos Cordova.
 
 #### Sintaxe
 
@@ -106,14 +106,14 @@ marketo.onStart(
 
 #### Parâmetros
 
-- Retorno de Chamada com Êxito : função a ser executada se a estrutura do Marketo for inicializada com êxito.
-- Retorno de Chamada de Falha : função a ser executada se a estrutura do Marketo falhar ao inicializar.
-- MUNCHKIN ID : Munchkin ID recebida do Marketo no momento do registro.
-- CHAVE SECRETA : chave secreta recebida do Marketo no momento do registro.
+- Retorno de chamada bem-sucedido: Função a ser executada se a estrutura do Marketo for inicializada com sucesso.
+- Failure Callback: função a ser executada se a estrutura do Marketo falhar ao inicializar.
+- MUNCHKIN ID: Munchkin ID recebida do Marketo durante o registro.
+- SECRET KEY: chave secreta recebida do Marketo durante o registro.
 
 ### Inicializar notificação por push do Marketo
 
-Para garantir que a notificação por push do Marketo seja iniciada, adicione o seguinte código após a função inicializada no arquivo JavaScript principal.
+Para inicializar as notificações por push do Marketo, adicione o seguinte código após a função de inicialização no arquivo principal do JavaScript.
 
 #### Sintaxe
 
@@ -128,11 +128,11 @@ marketo.initializeMarketoPush(
 
 #### Parâmetros
 
-- Retorno de Chamada com Êxito : função a ser executada se a notificação por push do Marketo for inicializada com êxito.
-- Retorno de Chamada de Falha : função a ser executada se a notificação por push do Marketo falhar ao inicializar.
-- GCM_PROJECT_ID : ID do projeto GCM encontrada no [Console de desenvolvedores do Google](https://accounts.google.com/ServiceLogin?service=cloudconsole&passive=1209600&osid=1&continue=https://console.cloud.google.com/apis/dashboard&followup=https://console.cloud.google.com/apis/dashboard) após a criação do aplicativo.
+- Retorno de chamada bem-sucedido: função a ser executada se a notificação por push do Marketo for inicializada com sucesso.
+- Failure Callback: função a ser executada se a notificação por push do Marketo falhar ao inicializar.
+- GCM_PROJECT_ID: ID do projeto GCM encontrada no [Console de desenvolvedores do Google](https://accounts.google.com/ServiceLogin?service=cloudconsole&passive=1209600&osid=1&continue=https://console.cloud.google.com/apis/dashboard&followup=https://console.cloud.google.com/apis/dashboard) após a criação do aplicativo.
 
-O token também pode ser cancelado no logout.
+Você também pode cancelar o registro do token ao fazer logoff.
 
 ```javascript
 marketo.uninitializeMarketoPush(
@@ -143,7 +143,7 @@ marketo.uninitializeMarketoPush(
 
 ## Associar lead
 
-Você pode criar um cliente potencial do Marketo chamando a função associateLead.
+Chame a função associateLead para criar um lead Marketo.
 
 ### Sintaxe
 
@@ -157,9 +157,9 @@ marketo.associateLead(
 
 ### Parâmetros
 
-- Retorno de Chamada com Êxito : função a ser executada se o Marketo framework associar o lead com êxito.
-- Retorno de Chamada de Falha : função a ser executada se o Marketo framework falhar ao associar o lead.
-- Dados de Cliente Potencial : dados de cliente potencial no formato de cadeia de caracteres JSON.
+- Retorno de chamada de sucesso: função a ser executada se a estrutura do Marketo associar o lead com sucesso.
+- Retorno de chamada de falha: função a ser executada se a estrutura do Marketo falhar ao associar o lead.
+- Dados de lead: dados de lead no formato de string JSON.
 
 ### Exemplo
 
@@ -186,7 +186,7 @@ marketo.associateLead(
 
 ## Ação do relatório
 
-Você pode relatar qualquer ação realizada pelo usuário chamando a função `reportaction`.
+Chame a função `reportaction` para relatar uma ação do usuário.
 
 ### Sintaxe
 
@@ -201,10 +201,10 @@ marketo.reportaction(
 
 ### Parâmetros
 
-- Retorno de Chamada com Êxito : função a ser executada se a estrutura do Marketo relatar ação com êxito.
-- Retorno de Chamada de Falha : função a ser executada se a estrutura do Marketo falhar ao relatar a ação.
-- Nome da Ação : nome da ação.
-- Dados de Ação : dados de ação no formato de sequência JSON.
+- Retorno de chamada bem-sucedido: função a ser executada se a estrutura do Marketo relatar a ação com êxito.
+- Retorno de chamada de falha: função a ser executada se a estrutura do Marketo falhar ao relatar a ação.
+- Nome da ação: Nome da ação.
+- Dados de ação: dados de ação no formato de sequência JSON.
 
 ### Exemplo
 
@@ -227,7 +227,7 @@ marketo.reportaction(
 
 ## Relatório da sessão
 
-Vincule os tipos de evento &quot;pausar&quot; e &quot;retomar&quot; conforme mostrado abaixo para relatar eventos Start e Stop. Isso é usado para rastrear o tempo gasto no aplicativo móvel. Observação: isso é necessário no Android.
+Vincule os tipos de evento &quot;pausar&quot; e &quot;retomar&quot; para relatar eventos Start e Stop. Esses eventos rastreiam o tempo gasto no aplicativo móvel e são necessários no Android.
 
 ```javascript
 //Add the following code in your www/js/index.js
@@ -258,6 +258,9 @@ Há três maneiras de criar leads a partir de um aplicativo híbrido:
 1. API REST DO MARKETO
 1. Envio de formulários
 
-Dependendo do método usado, um lead recém-criado é reconhecido por acionadores e filtros diferentes. Clientes potenciais criados usando o MME SDK ou a API REST aparecem nos acionadores e filtros &quot;Clientes potenciais criados&quot;. Os clientes em potencial criados por envios de formulários aparecem nos acionadores e filtros &quot;Preencher formulário&quot;.
+Os acionadores e filtros que reconhecem um novo lead dependem do método de criação:
 
-A prática recomendada é manter a consistência com o método usado pelo aplicativo web ao criar leads. Se você já tiver um aplicativo Web que usa o envio de formulários como o mecanismo para criar clientes potenciais, use o mesmo mecanismo ao criar clientes potenciais no aplicativo híbrido. Se você já tiver um aplicativo Web que usa nossa API REST como o mecanismo para criar leads, use esse mesmo mecanismo ao criar leads no aplicativo híbrido. Nos casos em que você não usa o envio de formulários nem a API REST como um mecanismo para criar clientes em potencial no aplicativo Web, é possível considerar o uso do SDK MME para criar clientes em potencial no Marketo.
+- Clientes potenciais criados com o MME SDK ou a REST API aparecem nos acionadores e filtros &quot;Clientes potenciais criados&quot;.
+- Os clientes potenciais criados pelo envio do formulário aparecem nos acionadores e filtros &quot;Preencher formulário&quot;.
+
+Use o mesmo método de criação de leads no aplicativo híbrido e no aplicativo da Web. Se o aplicativo web usar o envio de formulário ou a API REST, use esse método no aplicativo híbrido. Se o aplicativo web não usar nenhum dos métodos, considere usar o SDK MME para criar leads no Marketo.

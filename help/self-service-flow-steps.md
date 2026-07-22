@@ -11,13 +11,21 @@ subfeature_v2:
   - id: ad89fb33-8541-4339-afe7-bb13d1633714
 role_v2:
   - id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
-source-git-commit: 00118a89f25a23b931fac671130932bb0e0e4e4e
+source-git-commit: 3e6d310c5aec1a3435424fb122b71d825db5af0e
 workflow-type: tm+mt
-source-wordcount: 112
+source-wordcount: 98
 ht-degree: 0%
 
 ---
 
 # Etapas de fluxo de autoatendimento
 
-As Etapas de fluxo de autoatendimento são um conjunto de recursos que permitem ao integrador implantar uma API da Web que pode ser usada como uma Etapa de fluxo nas Campanhas inteligentes do Marketo. Um Serviço de etapa de fluxo pode receber dados de cliente potencial e outros dados relacionados, fazer qualquer processamento necessário, incluindo a invocação de outros serviços da Web e, subsequentemente, gravar dados de cliente potencial e de atividade na Marketo por meio de um retorno de chamada. A documentação do desenvolvedor pode ser encontrada em [GitHub](https://github.com/adobe/Marketo-SSFS-Service-Provider-Interface).
+As Etapas de fluxo de autoatendimento permitem que um integrador implante uma API da Web como uma Etapa de fluxo nas Campanhas inteligentes do Marketo.
+
+Um Serviço de etapa de fluxo pode:
+
+- Receber lead e dados relacionados.
+- Processar os dados, incluindo a chamada de outros serviços da Web.
+- Gravar dados de lead e atividade na Marketo por meio de um retorno de chamada.
+
+Para obter detalhes sobre a implementação, consulte a [documentação do desenvolvedor no GitHub](https://github.com/adobe/Marketo-SSFS-Service-Provider-Interface).

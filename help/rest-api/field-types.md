@@ -16,16 +16,16 @@ role_v2:
   - id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
 topic_v2:
   - id: eddd9b14-83bd-4ff4-9072-54a4a484abb7
-source-git-commit: 00118a89f25a23b931fac671130932bb0e0e4e4e
+source-git-commit: 3e6d310c5aec1a3435424fb122b71d825db5af0e
 workflow-type: tm+mt
-source-wordcount: 373
+source-wordcount: 371
 ht-degree: 8%
 
 ---
 
 # Tipos de campos
 
-Esta é uma descrição dos tipos de campo no Marketo. Informações adicionais sobre tipos de campo podem ser encontradas [aqui](https://experienceleague.adobe.com/pt-br/docs/marketo/using/product-docs/administration/field-management/custom-field-type-glossary). Informações adicionais sobre limites de tipo de campo podem ser encontradas [aqui](https://nation.marketo.com/t5/knowledgebase/marketo-field-limits-by-field-type/ta-p/251613).
+A tabela a seguir descreve os tipos de campo disponíveis no Marketo. Para obter mais informações, consulte o [glossário de tipo de campo personalizado](https://experienceleague.adobe.com/pt-br/docs/marketo/using/product-docs/administration/field-management/custom-field-type-glossary) e o [Limites de campo do Marketo por tipo de campo](https://nation.marketo.com/t5/knowledgebase/marketo-field-limits-by-field-type/ta-p/251613).
 
 | Tipo de campo | Descrição | Exemplo |
 | --- | --- | --- |

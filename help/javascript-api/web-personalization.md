@@ -16,23 +16,25 @@ role_v2:
 topic_v2:
   - id: b5ce8718-c3af-4fdb-a1a9-fca32f83a87c
   - id: e0eb8757-182f-49f3-94a4-1587d16f5094
-source-git-commit: 00118a89f25a23b931fac671130932bb0e0e4e4e
+source-git-commit: 3e6d310c5aec1a3435424fb122b71d825db5af0e
 workflow-type: tm+mt
-source-wordcount: 452
+source-wordcount: 435
 ht-degree: 6%
 
 ---
 
 # Personalização na web
 
-A API do JavaScript do Web Personalization estende a capacidade de personalização automatizada da plataforma. Ele permite o rastreamento de eventos e a personalização dinâmica de uma página da Web. Recursos adicionais: [Eventos de Dados Personalizados](custom-data-events.md), [Conteúdo Dinâmico](web-personalization.md), [Obter Dados do Visitante](get-visitor-data.md), [Excluir Marca para Bots Específicos](#exclude_tag_for_specific_bots).
+A API do JavaScript do Web Personalization rastreia eventos e personaliza dinamicamente páginas da Web. Ele estende os recursos de personalização automatizada da plataforma.
 
-- Você deve se tornar um cliente do Web Personalization e implantar a [tag RTP](https://experienceleague.adobe.com/pt-br/docs/marketo/using/product-docs/web-personalization/rtp-tag-implementation/deploy-the-rtp-javascript) no site antes de usar a API de Contexto de Usuário.
+Os recursos relacionados incluem [Eventos de Dados Personalizados](custom-data-events.md), [Conteúdo Dinâmico](web-personalization.md), [Obter Dados do Visitante](get-visitor-data.md) e [Excluir Marca para Bots Específicos](#exclude_tag_for_specific_bots).
+
+- Você deve ser um cliente do Web Personalization e implantar a [tag RTP](https://experienceleague.adobe.com/pt-br/docs/marketo/using/product-docs/web-personalization/rtp-tag-implementation/deploy-the-rtp-javascript) no site antes de usar a API de Contexto de Usuário.
 - O RTP não suporta listas de contas nomeadas de Marketing Baseado em Conta. As listas e os códigos ABM pertencem apenas às listas de contas carregadas (arquivos CSV) gerenciadas no RTP.
 
 ## Configuração de tag
 
-A tag RTP deve ser inserida no cabeçalho da página personalizada.
+Insira a tag RTP no cabeçalho de cada página personalizada.
 
 ```javascript
 <!-- RTP tag -->
@@ -47,7 +49,7 @@ g.src=f;var b=h.getElementsByTagName("script")[0];b.parentNode.insertBefore(g,b)
 
 ## Configuração da conta
 
-Esse método é chamado automaticamente no nível da tag para definir a ID de conta relevante. Você pode definir a ID da conta quando quiser dividir entre domínios diferentes.
+A tag chama automaticamente esse método para definir a ID de conta relevante. Defina a ID da conta explicitamente quando quiser usar contas diferentes para domínios diferentes.
 
 | Parâmetro | Opcional/Obrigatório | Tipo | Descrição |
 | --- | --- | --- | --- |
@@ -61,9 +63,9 @@ rtp('setAccount', accountId);
 
 ## Funções de envio de eventos
 
-Esse método envia um evento de exibição, que é usado para rastreamento de página. No exemplo abaixo, o URL da página atual é rastreado como uma exibição de página do visitante.
+Esse método envia um evento de exibição para o rastreamento de página. A primeira chamada no exemplo a seguir rastreia o URL da página atual como uma exibição de página do visitante.
 
-Ao passar o parâmetro opcional &quot;page&quot; neste método, a página atual pode ser substituída.
+Passe o parâmetro opcional &quot;page&quot; para substituir a página atual, como mostrado na segunda chamada.
 
 | Parâmetro | Opcional/Obrigatório | Tipo | Descrição |
 | --- | --- | --- | --- |
@@ -82,9 +84,9 @@ rtp('send', 'view', page);
 
 ## Excluir tag para bots específicos (agentes do usuário)
 
-Para excluir navegadores específicos do envio de dados para a plataforma Web Personalization (no caso de bots identificados), adicione a seguinte instrução IF ao script de tag.
+Para impedir que bots identificados enviem dados para a plataforma Web Personalization, adicione a seguinte instrução `if` ao script de tag.
 
-No exemplo de código abaixo, &quot;Googlebot|msnbot&quot; é usado como exemplos de bot a serem excluídos das atividades do Web Personalization.
+Este exemplo exclui os agentes do usuário &quot;Googlebot|msnbot&quot; das atividades do Web Personalization.
 
 ```javascript
 <!-- RTP tag -->
@@ -104,7 +106,7 @@ if(navigator.userAgent.match(/.(Googlebot|msnbot)./gi) == null){
 
 ## Explicação das chamadas para o JavaScript
 
-Descrição do JavaScript que é adicionado a um site ao usar o Web Personalization e o Conteúdo preditivo.
+As tabelas a seguir descrevem a JavaScript adicionada a um site que usa Web Personalization e Conteúdo preditivo.
 
 ### JavaScript principal/dependente
 
@@ -115,7 +117,7 @@ Descrição do JavaScript que é adicionado a um site ao usar o Web Personalizat
 | jquery-custom-ui-min.js | v1.9.2 | Pode ser desativado entrando em contato com o Suporte ao cliente da Marketo |
 | query-ui-1.8.17-dialog.js | v1.9.2* | Pode ser desativado entrando em contato com o Suporte ao cliente da Marketo |
 
-*Usado somente se a interface do usuário do jQuery estiver ausente
+*Usado somente se a caixa de diálogo jQuery UI estiver ausente.
 
 ### JavaScript sob demanda
 

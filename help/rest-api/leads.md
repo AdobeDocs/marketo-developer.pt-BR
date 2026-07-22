@@ -15,9 +15,9 @@ role_v2:
   - id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
 topic_v2:
   - id: a004cc84-67b9-4a33-a3a7-8ec7273ef4dc
-source-git-commit: 00118a89f25a23b931fac671130932bb0e0e4e4e
+source-git-commit: 3e6d310c5aec1a3435424fb122b71d825db5af0e
 workflow-type: tm+mt
-source-wordcount: 3460
+source-wordcount: 2728
 ht-degree: 3%
 
 ---
@@ -26,19 +26,19 @@ ht-degree: 3%
 
 [Referência de Ponto de Extremidade de Clientes Potenciais](https://developer.adobe.com/marketo-apis/api/mapi#tag/Leads)
 
-A API do líder da Marketo fornece um grande conjunto de recursos para aplicativos CRUD simples contra registros de clientes potenciais, bem como a capacidade de modificar a associação de um cliente potencial em listas estáticas e programas e iniciar o processamento de Campanha inteligente para clientes potenciais.
+A API de clientes potenciais da Marketo é compatível com operações CRUD em registros de clientes potenciais. Você também pode modificar a associação de um lead em listas e programas estáticos e iniciar o processamento do Smart Campaign para leads.
 
 ## Descrever
 
-Um dos principais recursos da API de clientes potenciais é o método Descrever. Use Descrever clientes em potencial para recuperar uma lista completa dos campos disponíveis para interação por meio da API REST, bem como metadados para cada:
+Use Descrever clientes em potencial para recuperar os campos disponíveis por meio da API REST e os metadados de cada campo:
 
-* Tipo de dados
-* Nomes da API REST
-* Comprimento (se aplicável)
-* Somente leitura
-* Rótulo amigável
+- Tipo de dados
+- Nome da API REST
+- Comprimento, se aplicável
+- Status somente leitura
+- Rótulo amigável
 
-Descrever é a principal fonte da verdade sobre se os campos estão disponíveis para uso e os metadados sobre esses campos.
+Descrever é a principal fonte da verdade para a disponibilidade de campo e os metadados.
 
 ### Solicitação
 
@@ -70,13 +70,18 @@ GET /rest/v1/leads/describe.json
 }
 ```
 
-Normalmente, as respostas incluem um conjunto muito maior de campos no array de resultados, mas estamos omitindo-os para fins de demonstração. Cada item na matriz de resultados corresponde a um campo disponível no registro de lead e terá, no mínimo, uma id, um displayName e um tipo de dados. Os objetos filho rest e soap podem ou não estar presentes em um determinado campo, e sua presença indicará se o campo é válido para uso nas APIs REST ou SOAP. A propriedade `readOnly` indica se o campo é somente leitura por meio da API correspondente (REST ou SOAP). A propriedade length indica o comprimento máximo do campo, se presente. A propriedade dataType indica o tipo de dados do campo.
+As respostas reais incluem mais campos na matriz de resultados. Cada item representa um campo disponível no registro de cliente potencial e contém pelo menos uma id, um displayName e um tipo de dados.
+
+Os objetos filho rest e soap aparecem somente quando o campo é válido para a API correspondente. A propriedade `readOnly` indica se a API correspondente pode atualizar o campo. Quando presente, a propriedade length fornece o comprimento máximo do campo e a propriedade dataType fornece o tipo de dados do campo.
 
 ## Consultar
 
-Há dois métodos principais para a recuperação de leads: os métodos Obter lead por ID e Obter leads por tipo de filtro. Obter lead por ID pega uma única id de lead como parâmetro de caminho e retorna um único registro de lead.
+Use um dos dois métodos principais para recuperar leads:
 
-Como opção, você pode enviar um parâmetro de campos que contém uma lista separada por vírgulas de nomes de campos para retornar. Se o parâmetro fields não estiver incluído nessa solicitação, os seguintes campos padrão serão retornados: `email`, `updatedAt`, `createdAt`, `lastName`, `firstName` e `id`. Ao solicitar uma lista de campos, se um campo específico for solicitado, mas não for retornado, o valor estará implícito em ser nulo.
+- Obter lead por ID pega uma id de lead como parâmetro de caminho e retorna um registro de lead.
+- Obter Clientes Potenciais por Tipo de Filtro localiza registros cujo campo selecionado corresponde a um dos valores fornecidos.
+
+Para Obter lead por ID, você pode passar um parâmetro de campos com uma lista separada por vírgulas de nomes de campos para retornar. Se a solicitação omitir campos, a resposta incluirá `email`, `updatedAt`, `createdAt`, `lastName`, `firstName` e `id`. Se um campo solicitado não for retornado, seu valor será considerado nulo.
 
 ### Solicitação
 
@@ -103,15 +108,15 @@ GET /rest/v1/lead/{id}.json
 }
 ```
 
-Para esse método, sempre haverá um único registro na primeira posição da matriz de resultados.
+Obter lead por ID sempre retorna um registro na primeira posição da matriz de resultados.
 
-Obter Clientes Potenciais por Tipo de Filtro retornará o mesmo tipo de registro, mas pode retornar até 300 por página. Ela requer os parâmetros de consulta `filterType` e `filterValues`.
+Obter clientes em potencial por tipo de filtro retorna o mesmo tipo de registro e pode retornar até 300 registros por página. Os parâmetros de consulta `filterType` e `filterValues` são obrigatórios.
 
-`filterType` aceita qualquer campo personalizado ou a maioria dos campos usados com frequência. Chame o ponto de extremidade `Describe2` para obter uma lista abrangente de campos pesquisáveis permitidos para uso em `filterType`. Ao pesquisar por Campo Personalizado, somente os seguintes tipos de dados são suportados: `string`, `email`, `integer`. Você pode obter detalhes de campo (descrição, tipo e assim por diante) usando o método Descrever mencionado acima.
+`filterType` aceita qualquer campo personalizado e os campos usados com mais frequência. Chame o ponto de extremidade `Describe2` para recuperar os campos pesquisáveis permitidos para `filterType`. Ao pesquisar por Campo Personalizado, os tipos de dados aceitos são `string`, `email` e `integer`. Use o método Descrever para recuperar detalhes do campo, como descrição e tipo.
 
-`filterValues` aceita até 300 valores em formato separado por vírgulas. A chamada procura registros em que o campo do cliente potencial corresponde a um dos `filterValues` incluídos. Se o número de clientes potenciais correspondentes ao filtro de cliente potencial for maior que 1.000, será retornado o erro: &quot;1003, Muitos resultados correspondem ao filtro&quot;.
+`filterValues` aceita até 300 valores separados por vírgulas. A chamada retorna registros em que o campo de lead selecionado corresponde a um desses valores. Se mais de 1.000 leads corresponderem ao filtro, a API retornará &quot;1003, Muitos resultados correspondem ao filtro&quot;.
 
-Se o tamanho total da solicitação GET exceder 8 KB, um erro HTTP será retornado: &quot;414, URI too long&quot; (de acordo com RFC 7231). Como solução alternativa, você pode alterar o GET para POST, adicionar o parâmetro _method=GET e colocar uma string de consulta no corpo da solicitação.
+Se o total de solicitações GET exceder 8 KB, a API retornará &quot;414, URI muito longo&quot; na RFC 7231. Para contornar esse limite, altere GET para POST, adicione o parâmetro _method=GET e coloque a sequência de consulta no corpo da solicitação.
 
 ### Solicitação
 
@@ -146,9 +151,9 @@ GET /rest/v1/leads.json?filterType=id&filterValues=318581,318592
 }
 ```
 
-Esta chamada procura registros que correspondam às IDs incluídas em `filterValues` e retorna quaisquer registros correspondentes.
+Esta chamada retorna registros cujas ids correspondem aos valores em `filterValues`.
 
-Se nenhum registro for encontrado, a resposta indicará sucesso, mas a matriz de resultados estará vazia.
+Se nenhum registro for correspondente, a resposta indicará sucesso e conterá uma matriz de resultados vazia.
 
 ### Resposta
 
@@ -160,15 +165,15 @@ Se nenhum registro for encontrado, a resposta indicará sucesso, mas a matriz de
 }
 ```
 
-Tanto a opção Obter lead por ID quanto a opção Obter leads por tipo de filtro também aceitarão um parâmetro de consulta de campos, que aceita uma lista separada por vírgulas de campos da API. Se isso for incluído, cada registro na resposta incluirá os campos listados.  Se for omitido, um conjunto padrão de campos será retornado: `id`, `email`, `updatedAt`, `createdAt`, `firstName` e `lastName`.
+Ambos Obter lead por ID e Obter leads por tipo de filtro aceitam um parâmetro de consulta de campos que contém uma lista de campos de API separados por vírgulas. Quando os campos estão presentes, cada registro de resposta inclui os campos listados. Se for omitida, a resposta incluirá `id`, `email`, `updatedAt`, `createdAt`, `firstName` e `lastName`.
 
 ## ADOBE ECID
 
-Quando o recurso Compartilhamento de público da Adobe Experience Cloud está ativado, ocorre um processo de sincronização de cookies que associa a Adobe Experience Cloud ID (ECID) a leads da Marketo.  Os métodos de recuperação de clientes potenciais mencionados acima podem ser usados para recuperar valores ECID associados.  Faça isso especificando `ecids` no parâmetro de campos. Por exemplo, `&fields=email,firstName,lastName,ecids`.
+Quando o Compartilhamento de público-alvo da Adobe Experience Cloud está ativado, a sincronização de cookies associa os valores da Adobe Experience Cloud ID (ECID) aos clientes potenciais da Marketo. Para recuperar valores de ECID associados aos métodos de recuperação de lead anteriores, inclua `ecids` no parâmetro fields. Por exemplo, `&fields=email,firstName,lastName,ecids`.
 
 ## Criar e atualizar
 
-Além de recuperar dados de lead, você pode criar, atualizar e excluir registros de lead por meio da API. Criar e atualizar clientes potenciais compartilham o mesmo endpoint com o tipo de operação que está sendo definido na solicitação e até 300 registros podem ser criados ou atualizados ao mesmo tempo.
+A API de clientes potenciais pode criar, atualizar e excluir registros de clientes potenciais. As operações de criação e atualização usam o mesmo ponto de extremidade, com o tipo de operação definido na solicitação. Uma solicitação pode criar ou atualizar até 300 registros.
 
 >[!NOTE]
 >
@@ -233,29 +238,40 @@ POST /rest/v1/leads.json
 }
 ```
 
-Nesta solicitação, você vê dois campos importantes, `action` e `lookupField`. `action` especifica o tipo de operação da solicitação e pode ser `createOrUpdate`, `createOnly`, `updateOnly` ou `createDuplicate`. Se for omitido, a ação assumirá `createOrUpdate` como padrão.  O parâmetro `lookupField` especifica a chave a ser usada quando a ação for `createOrUpdate` ou `updateOnly`. Se `lookupField` for omitido, a chave padrão será `email`.
+A solicitação usa dois campos importantes:
 
-Por padrão, a partição padrão é usada. Opcionalmente, você pode especificar o parâmetro `partitionName`, que só funciona se a ação for `createOnly` ou `createOrUpdate`. Para que `partitionName` funcione como critério de desduplicação adicional, ele deve fazer parte do tipo de origem nas regras de desduplicação personalizadas. Durante uma operação de atualização, se um cliente em potencial não existir na partição especificada, um erro será retornado. Se o usuário somente API não tiver permissão para acessar a partição especificada, um erro será retornado.
+- `action` especifica o tipo de operação: `createOrUpdate`, `createOnly`, `updateOnly` ou `createDuplicate`. Se omitido, o padrão será `createOrUpdate`.
+- `lookupField` especifica a chave quando a ação é `createOrUpdate` ou `updateOnly`. Se omitido, o padrão será `email`.
 
-O campo `id` só pode ser incluído como parâmetro ao ser usada a ação `updateOnly`, pois `id` é uma chave exclusiva gerenciada pelo sistema.
+Por padrão, a operação usa a partição padrão. O parâmetro `partitionName` opcional funciona somente quando a ação é `createOnly` ou `createOrUpdate`. Para usar `partitionName` como critério de desduplicação adicional, inclua-o no tipo de origem para regras de desduplicação personalizadas.
 
-A solicitação também deve ter um parâmetro `input`, que é uma matriz de registros de cliente potencial. Cada registro de lead é um objeto JSON com qualquer número de campos de lead. As chaves incluídas em um registro devem ser exclusivas para esse registro, e todas as cadeias de caracteres JSON devem ser codificadas em UTF-8. O campo `externalCompanyId` pode ser usado para vincular o registro de cliente potencial a um registro de empresa. O campo `externalSalesPersonId` pode ser usado para vincular o registro de cliente potencial a um registro de vendedor.
+Durante uma atualização, a API retornará um erro se o lead não existir na partição especificada ou se o usuário somente da API não puder acessar essa partição.
 
-Observação: ao executar solicitações de substituição de lead simultaneamente ou em rápida sucessão, registros duplicados podem resultar ao fazer várias solicitações com o mesmo valor-chave se uma chamada subsequente com o mesmo valor for feita antes dos primeiros retornos. Isso pode ser evitado usando o `createOnly` ou `updateOnly` conforme apropriado, ou enfileirando chamadas e aguardando sua chamada retornar antes de fazer chamadas de substituição subsequentes com a mesma chave.
+Como `id` é uma chave exclusiva gerenciada pelo sistema, inclua-a somente com a ação `updateOnly`.
+
+A solicitação deve incluir um parâmetro `input` contendo uma matriz de registros de cliente potencial. Cada registro de lead é um objeto JSON com qualquer número de campos de lead. As chaves devem ser exclusivas em cada registro e todas as cadeias de caracteres JSON devem usar a codificação UTF-8.
+
+Usar `externalCompanyId` para vincular um registro de cliente potencial a um registro de empresa. Use `externalSalesPersonId` para vincular um registro de cliente potencial a um registro de vendedor.
+
+Solicitações de substituição simultâneas ou cronometradas de perto podem criar registros duplicados quando várias solicitações usam o mesmo valor de chave antes que a primeira solicitação retorne. Para evitar duplicatas, use `createOnly` ou `updateOnly` conforme apropriado. Como alternativa, enfileire chamadas e aguarde até que cada chamada retorne antes de enviar outra substituição com a mesma chave.
 
 ## Campos
 
-O objeto de cliente potencial contém campos padrão e, opcionalmente, campos personalizados. Campos padrão estão presentes em todas as assinaturas do Marketo Engage, enquanto campos personalizados são criados pelo usuário conforme necessário. Cada definição de campo é composta de um conjunto de atributos que descrevem o campo. Exemplos de atributos são nome de exibição, nome da API e dataType. Esses atributos são conhecidos coletivamente como metadados.
+O objeto de cliente potencial contém campos padrão e campos personalizados opcionais. Existem campos padrão em cada assinatura do Marketo Engage, enquanto os usuários criam campos personalizados conforme necessário.
 
-Os endpoints a seguir permitem consultar, criar e atualizar campos no objeto de cliente potencial. Essas APIs exigem que o usuário da API proprietária tenha uma função com uma ou ambas as permissões de Campo padrão de esquema de leitura-gravação ou Campo personalizado de esquema de leitura-gravação.
+Cada definição de campo contém atributos de metadados, como nome de exibição, nome da API e dataType.
+
+Use os pontos de extremidade a seguir para consultar, criar e atualizar campos no objeto do cliente potencial. A função do usuário da API deve ter a permissão Campo padrão do esquema de leitura-gravação, a permissão Campo personalizado do esquema de leitura-gravação ou ambas.
 
 ## Campos de consulta
 
-Consultar campos de cliente potencial é simples. Você pode consultar um único campo de cliente potencial por nome de API ou consultar o conjunto de todos os campos de cliente potencial. Os campos padrão e personalizados podem ser recuperados, dependendo das permissões de função que estão sendo usadas. Campos ocultos também são recuperados.
+Consultar um campo de cliente potencial por nome de API ou consultar todos os campos de cliente potencial. Dependendo das permissões de função, a resposta pode incluir campos padrão, campos personalizados e campos ocultos.
 
 ## Por nome
 
-O ponto de extremidade Obter Campo de Cliente Potencial por Nome recupera metadados de um único campo no objeto de cliente potencial. O parâmetro de caminho fieldApiName necessário especifica o nome da API do campo. A resposta é como o endpoint Descrever lead, mas contém metadados adicionais, como o atributo isCustom, que indica se o campo é um campo personalizado.
+O ponto de extremidade Obter campo de cliente potencial por nome recupera metadados de um campo de cliente potencial. O parâmetro de caminho fieldApiName necessário especifica o nome da API do campo.
+
+A resposta é semelhante à resposta Descrever lead, mas inclui metadados adicionais. Por exemplo, o atributo isCustom indica se o campo é personalizado.
 
 ### Solicitação
 
@@ -287,7 +303,9 @@ GET /rest/v1/leads/schema/fields/{fieldApiName}.json
 
 ## Navegar
 
-O ponto de extremidade Obter campos de cliente potencial recupera metadados para todos os campos no objeto de cliente potencial, incluindo. Por padrão, no máximo 300 registros são retornados. Você pode usar o parâmetro de consulta `batchSize` para reduzir esse número. Se o atributo `moreResult` for true, significa que mais resultados estarão disponíveis. Continue a chamar este ponto de extremidade até que o atributo `moreResult` retorne falso, o que significa que não há resultados disponíveis. O `nextPageToken` retornado desta API deve sempre ser reutilizado para a próxima iteração desta chamada.
+O ponto de extremidade Obter campos de cliente potencial recupera metadados para todos os campos no objeto de cliente potencial. Por padrão, retorna no máximo 300 registros. Use o parâmetro de consulta `batchSize` para reduzir esse número.
+
+Se `moreResult` for verdadeiro, mais resultados estarão disponíveis. Passar o `nextPageToken` retornado em cada chamada subsequente até `moreResult` ser falso.
 
 ### Solicitação
 
@@ -429,12 +447,21 @@ GET /rest/v1/leads/schema/fields.json
 
 ## Criar campos
 
-O ponto de extremidade Criar campos de cliente potencial cria um ou mais campos personalizados no objeto de cliente potencial. Esse endpoint fornece funcionalidade comparável à que está disponível na interface do usuário do Marketo Engage. É possível criar até 100 campos personalizados usando esse endpoint.
-Considere cuidadosamente cada campo criado na instância de produção do Marketo Engage usando a API.  Depois que um campo é criado, não é possível excluí-lo (você só pode ocultá-lo). A proliferação de campos não utilizados é uma prática recomendada que causará desordem na sua instância.
+O ponto de extremidade Criar campos de cliente potencial cria um ou mais campos personalizados no objeto de cliente potencial e fornece funcionalidade comparável à interface do usuário do Marketo Engage. Você pode criar até 100 campos personalizados com esse endpoint.
 
-O parâmetro de entrada necessário é uma matriz de objetos de campo de cliente potencial. Cada objeto contém um ou mais atributos. Os atributos necessários são `displayName`, `name` e `dataType`, que correspondem ao nome de exibição da interface do usuário do campo, ao nome da API do campo e ao tipo de campo, respectivamente.  Opcionalmente, você pode especificar `description`, `isHidden`, `isHtmlEncodingInEmail` e `isSensitive`.
+Considere cuidadosamente cada campo antes de criá-lo em uma instância de produção. Depois que um campo é criado, você pode ocultá-lo, mas não pode excluí-lo. Campos não utilizados adicionam desordem à instância.
 
-Há algumas regras associadas ao nome e à nomenclatura `displayName`. O atributo name deve ser exclusivo, começar com uma letra e conter apenas letras, números ou sublinhado. O `displayName` deve ser exclusivo e não pode conter caracteres especiais.  Uma convenção de nomenclatura comum é aplicar camel case a `displayName` para produzir nome. Por exemplo, um `displayName` de &quot;Meu campo personalizado&quot; produziria um nome de &quot;myCustomField&quot;.
+O parâmetro de entrada necessário é uma matriz de objetos de campo de cliente potencial. Cada objeto requer estes atributos:
+
+- `displayName` é o nome de exibição da interface do usuário do campo.
+- `name` é o nome da API do campo.
+- `dataType` é o tipo de campo.
+
+Os atributos opcionais são `description`, `isHidden`, `isHtmlEncodingInEmail` e `isSensitive`.
+
+O atributo name deve ser exclusivo, começar com uma letra e conter apenas letras, números ou sublinhados. O `displayName` deve ser exclusivo e não pode conter caracteres especiais.
+
+Uma convenção comum aplica camel case a `displayName` para produzir nome. Por exemplo, um `displayName` de &quot;Meu campo personalizado&quot; produz um nome de &quot;myCustomField&quot;.
 
 ### Solicitação
 
@@ -484,7 +511,7 @@ POST /rest/v1/leads/schema/fields.json
 
 ## Atualizar campo
 
-O ponto de extremidade Atualizar campo de cliente potencial atualiza um único campo personalizado no objeto de cliente potencial. Na maioria das vezes, as operações de atualização de campo executadas usando a interface do usuário do Marketo Engage são viáveis usando a API. Há algumas diferenças resumidas na tabela abaixo.
+O ponto de extremidade Atualizar campo de cliente potencial atualiza um campo personalizado no objeto de cliente potencial. A maioria das atualizações de campo disponíveis na interface do usuário do Marketo Engage também está disponível por meio da API. A tabela a seguir resume as diferenças.
 
 <table>
 <tbody>
@@ -565,7 +592,7 @@ O ponto de extremidade Atualizar campo de cliente potencial atualiza um único c
 </tbody>
 </table>
 
-O parâmetro de caminho `fieldApiName` necessário especifica o nome da API do campo a ser atualizado. O parâmetro de entrada necessário é uma matriz que contém um único objeto de campo de cliente potencial.  O objeto de campo contém um ou mais atributos.
+O parâmetro de caminho `fieldApiName` necessário especifica o nome da API do campo a ser atualizado. O parâmetro de entrada necessário é uma matriz que contém um objeto de campo de cliente potencial com um ou mais atributos.
 
 ### Solicitação
 
@@ -604,11 +631,15 @@ POST /rest/v1/leads/schema/fields/{fieldApiName}.json
 
 ## Enviar lead ao Marketo
 
-O lead de push é uma alternativa para sincronização de leads no Marketo, projetado principalmente para permitir um grau maior de capacidade de acionamento do que os leads de sincronização padrão (uso semelhante a um formulário do Marketo). Além da sincronização de campos de cliente potencial, esse endpoint permite a associação de clientes potenciais com base em valores de cookie, que são passados para o endpoint. Isso é feito passando o valor `mkt_tok` gerado ao clicar em um email do Marketo ou passando um nome de programa na chamada. Esse endpoint também cria uma única atividade acionável, que está associada a um programa e/ou campanha no Marketo. Isso permite acionar eventos de captura de leads atribuídos a uma campanha ou programa específico para iniciar workflows associados no Marketo.
+O lead de push é uma alternativa para Sincronizar leads e fornece mais opções de acionamento, semelhantes a um formulário do Marketo. Além de sincronizar campos de cliente potencial, o endpoint pode associar um cliente potencial com base em um valor de cookie. Passe o valor `mkt_tok` gerado por um clique de um email do Marketo ou passe um nome de programa na chamada.
 
-A interface do lead de push é muito semelhante à Sincronização de leads. Todas as mesmas chaves primárias são válidas, e os mesmos nomes de API são usados para campos (não há parâmetro de ação porque esta é sempre uma operação de substituição). Os parâmetros `programName` e de entrada são obrigatórios, e os parâmetros `lookupField`, `source` e `reason` são opcionais. O parâmetro de entrada é uma matriz de objetos de lead. A atividade resultante é atribuída ao programa nomeado correspondente. Os parâmetros `source` e `reason` são campos de sequência arbitrários que podem ser adicionados à solicitação para incorporar esses valores nas atividades resultantes. Eles podem ser usados como restrições nos acionadores correspondentes (o lead é enviado para o Marketo) e filtros (o lead é enviado para o Marketo).
+O endpoint também cria uma atividade acionável associada a um programa, campanha ou ambos do Marketo. Use esta atividade para iniciar workflows de eventos de captura de clientes potenciais atribuídos a uma campanha ou programa específico.
 
-Observação sobre atividades anônimas. Se desejar associar atividades anônimas anteriores ao lead recém-criado, não especifique o atributo de cookies no objeto do lead e chame Associar Lead após Lead Push. Se quiser criar um novo cliente potencial sem histórico de atividades, basta especificar o atributo de cookies no objeto do cliente potencial.
+O lead de push usa as mesmas chaves primárias e nomes de API de campo que Sincronizar leads. Ele não tem parâmetro de ação porque sempre executa uma substituição.
+
+Os parâmetros de entrada `programName` e são obrigatórios. O parâmetro de entrada é uma matriz de objetos de lead e a atividade resultante é atribuída ao programa nomeado. Os parâmetros `lookupField`, `source` e `reason` são opcionais. Adicione cadeias de caracteres arbitrárias em `source` e `reason` para incluir esses valores nas atividades resultantes. Você pode usar os valores como restrições nos acionadores correspondentes (o lead é enviado para o Marketo) e filtros (o lead foi enviado para o Marketo).
+
+Para associar atividades anônimas anteriores a um cliente potencial recém-criado, omita o atributo de cookies do objeto de cliente potencial e chame Associar Cliente Potencial após Encaminhar Cliente Potencial. Para criar um cliente potencial sem histórico de atividades, especifique o atributo de cookies no objeto do cliente potencial.
 
 ### Solicitação
 
@@ -674,7 +705,7 @@ POST /rest/v1/leads/push.json
 }
 ```
 
-Para passar o parâmetro `mkt_tok`, atribua o valor ao membro mktToken em um registro de cliente potencial no parâmetro de entrada da seguinte maneira.
+Para passar o parâmetro `mkt_tok`, atribua seu valor ao membro mktToken em um registro de cliente potencial dentro do parâmetro de entrada.
 
 ### Corpo
 
@@ -699,24 +730,28 @@ Para passar o parâmetro `mkt_tok`, atribua o valor ao membro mktToken em um reg
 
 ## Enviar formulário
 
-Enviar formulário é uma alternativa para sincronizar clientes potenciais com o Marketo e foi projetado para fornecer funcionalidade equivalente ao envio de um Formulário do Marketo. Isso permite acionar eventos de captura de leads atribuídos a uma campanha ou programa específico para iniciar workflows associados no Marketo.
+Enviar formulário é uma alternativa para sincronizar clientes potenciais e fornece funcionalidade equivalente ao envio de um Formulário do Marketo. Use-a para iniciar workflows a partir de eventos de captura de clientes potenciais atribuídos a uma campanha ou programa específico.
 
 O endpoint Enviar formulário é compatível com a seguinte funcionalidade:
 
-* Substitui um registro de cliente potencial usando o campo de email como chave primária
-* Cria uma atividade &quot;Preencher formulário&quot; associada a um programa e/ou campanha
-* Permite a associação de clientes potenciais com base no valor do cookie
-* Executa validação de campo de formulário
+- Substitui um registro de cliente potencial usando o campo de email como a chave primária.
+- Cria uma atividade &quot;Preencher formulário&quot; associada a um programa, campanha ou ambos.
+- Associa um cliente potencial com base em um valor de cookie.
+- Valida campos de formulário.
 
-O envio de um formulário segue o padrão de banco de dados de clientes potenciais padrão. Um único registro de objeto é transmitido no membro de entrada necessário do corpo JSON de uma solicitação POST. O membro `formId` necessário contém a ID de formulário do Marketo de destino.
+Enviar um formulário com o padrão de banco de dados de clientes potenciais padrão. Transmita um registro de objeto no membro de entrada necessário do corpo JSON da solicitação POST. O membro `formId` necessário contém a ID de formulário do Marketo de destino.
 
-O `programId` opcional pode ser usado para especificar o programa ao qual adicionar o cliente em potencial e/ou especificar o programa ao qual adicionar campos personalizados de membros do programa. Se `programId` for fornecido, o cliente potencial será adicionado ao programa e todos os campos de membro do programa presentes no formulário também serão adicionados. Observe que o programa especificado deve estar no mesmo espaço de trabalho que o formulário. Se o formulário não contiver campos personalizados de membros do programa e `programId` não for fornecido, o cliente em potencial não será adicionado a um programa. Se o formulário residir em um programa e `programId` não for fornecido, esse programa será usado quando um ou mais campos personalizados de membro do programa estiverem presentes no formulário.
+Use o `programId` opcional para identificar o programa que recebe o cliente potencial, os campos personalizados do membro do programa ou ambos. Se `programId` estiver presente, o cliente em potencial será adicionado ao programa junto com quaisquer campos de membros do programa no formulário. O programa deve estar no mesmo espaço de trabalho do formulário.
 
-No registro de entrada, o objeto `leadFormFields` é obrigatório. Este objeto contém um ou mais pares nome/valor que correspondem aos campos de formulário a serem preenchidos.  Todos os campos especificados devem ser definidos no formulário especificado. O nome é o nome da API REST do campo. Observe que o campo `email` é obrigatório.
+Se o formulário não contiver campos personalizados de membros do programa e `programId` for omitido, o cliente potencial não será adicionado a um programa. Se o formulário pertencer a um programa, contiver um ou mais campos personalizados de membros do programa e omitir `programId`, o ponto de extremidade usará o programa do formulário.
 
-O objeto membro `visitorData` é opcional e contém pares de nome/valor que correspondem aos dados de visita de página, incluindo `pageURL`, `queryString`, `leadClientIpAddress` e `userAgentString`. Pode ser usado para preencher campos de atividade adicionais para fins de filtragem e acionamento.
+O objeto `leadFormFields` necessário contém um ou mais pares de nome/valor para os campos a serem preenchidos. Cada campo deve ser definido no formulário especificado e cada nome deve ser o nome da API REST do campo. O campo `email` é obrigatório.
 
-A string do membro do cookie é opcional e permite associar um cookie do Munchkin a um registro de pessoa no Marketo. Quando um novo lead é criado, todas as atividades anônimas anteriores são associadas a esse lead, a menos que o valor do cookie tenha sido previamente associado a outro registro conhecido. Se o valor do cookie foi associado anteriormente, as novas atividades são rastreadas em relação ao registro, mas as atividades antigas não serão migradas do registro conhecido existente. Para criar um novo lead sem histórico de atividade, basta omitir o membro do cookie.
+O objeto `visitorData` opcional contém dados de visita de página, incluindo `pageURL`, `queryString`, `leadClientIpAddress` e `userAgentString`. Use-a para preencher campos de atividade adicionais para filtros e acionadores.
+
+O membro opcional cookie associa um cookie do Munchkin a um registro pessoal do Marketo. Quando o endpoint cria um lead, ele associa atividades anônimas anteriores a esse lead, a menos que o cookie tenha sido associado anteriormente a outro registro conhecido.
+
+Se o cookie tiver sido associado anteriormente, as novas atividades serão rastreadas em relação ao novo registro, mas as atividades antigas permanecerão com o registro conhecido existente. Para criar um cliente potencial sem histórico de atividades, omita o membro do cookie.
 
 Novos clientes potenciais são criados na partição primária do espaço de trabalho no qual o formulário reside.
 
@@ -772,7 +807,7 @@ Content-Type: application/json
 }
 ```
 
-Aqui podemos ver os detalhes da atividade &quot;Preencher formulário&quot; correspondente na interface do usuário do Marketo Engage:
+A imagem a seguir mostra os detalhes da atividade &quot;Preencher formulário&quot; correspondente na interface do usuário do Marketo Engage:
 
 ![Preencher Interface do Usuário do Formulário](assets/fill_out_form_activity_details.png)
 
@@ -783,7 +818,9 @@ Aqui podemos ver os detalhes da atividade &quot;Preencher formulário&quot; corr
 >A partir de 31 de março de 2026, as chamadas que incluírem mais de 25 IDs no parâmetro `leadIds` de uma chamada de API de Mesclagem de Leads resultarão em um código de erro 1080 e a chamada será ignorada. As tarefas que exigem a fusão de mais de 25 registros em um só devem ser divididas em várias tarefas para garantir o sucesso dessas chamadas.
 >
 
-Às vezes, é necessário mesclar registros duplicados, e o Marketo facilita isso por meio da API de mesclagem de leads. A mesclagem de clientes potenciais combinará seus logs de atividades, programas, campanhas e associações de listas e informações de CRM, bem como mesclará todos os valores de campo em um único registro. A Mesclagem de Clientes Potenciais utiliza uma ID de cliente potencial como parâmetro de caminho e um único `leadId` como parâmetro de consulta ou uma lista de 25 IDs separadas por vírgula no parâmetro `leadIds`
+Use a API Mesclar leads para combinar registros duplicados em um registro. Uma mesclagem combina logs de atividades, programa, campanha e associações de lista, informações de CRM e valores de campo.
+
+Transmita a ID do lead vencedor como um parâmetro de caminho. Passe um `leadId` como parâmetro de consulta ou até 25 ids separadas por vírgulas no parâmetro `leadIds`.
 
 
 ### Solicitação
@@ -801,13 +838,15 @@ POST /rest/v1/leads/{id}/merge.json?leadId=1324
 }
 ```
 
-O lead especificado no parâmetro de caminho é o lead vencedor, portanto, se houver campos em conflito entre os registros que estão sendo mesclados, o valor do vencedor será obtido, exceto se o campo no registro vencedor estiver vazio e o campo correspondente no registro perdedor não estiver. Os clientes potenciais especificados nos parâmetros `leadId` ou `leadIds` são os clientes potenciais perdidos.
+O lead no parâmetro de caminho é o lead vencedor. Quando os valores de campo entram em conflito, a mesclagem usa o valor do vencedor, a menos que esse valor esteja vazio e o valor do registro perdedor não esteja. Os clientes em potencial no parâmetro `leadId` ou `leadIds` são os clientes em potencial perdidos.
 
-Se você tiver uma assinatura habilitada para sincronização com SFDC, também poderá usar o parâmetro `mergeInCRM` em sua solicitação. Se definido como true, a mesclagem correspondente no CRM também será executada. Se ambos os clientes em potencial estiverem na SFDC e um for um cliente potencial do CRM e o outro for um contato do CRM, o vencedor será o contato do CRM (independentemente de qual cliente potencial for especificado como vencedor). Se um dos leads estiver no SFDC e o outro for somente no Marketo, o vencedor será o lead da SFDC (independentemente de qual lead é especificado como vencedor).
+Para uma assinatura habilitada para sincronização com SFDC, use o parâmetro `mergeInCRM` para também executar a mesclagem no CRM. Se ambos os registros estiverem no SFDC e um for um cliente potencial do CRM, enquanto o outro for um contato do CRM, o contato do CRM vencerá independentemente do vencedor especificado. Se um registro estiver no SFDC e o outro existir somente no Marketo, o líder do SFDC vencerá independentemente do vencedor especificado.
 
 ## Associar Atividade da Web
 
-Por meio do Rastreamento de leads (Munchkin), a Marketo registra a atividade dos visitantes do seu site e das páginas de aterrissagem da Marketo na Web. Essas atividades, Visitas e Cliques, são registradas com uma chave que corresponde a um cookie &quot;_mkto_track&quot; definido no navegador do lead, e o Marketo usa isso para rastrear as atividades da mesma pessoa. Normalmente, a associação a registros de cliente potencial ocorre quando um cliente potencial clica em um email do Marketo ou preenche um formulário do Marketo, mas às vezes uma associação pode ser acionada por um tipo diferente de evento e você pode usar o ponto de extremidade Associar cliente potencial para fazer isso. O endpoint assume a ID do registro de lead conhecido como um parâmetro de caminho e o valor do cookie &quot;_mkto_trk&quot; no parâmetro de consulta de cookie.
+O Rastreamento de lead (Munchkin) registra Visitas e Cliques para os visitantes do seu site e das Páginas de aterrissagem do Marketo. Essas atividades usam uma chave que corresponde ao cookie &quot;_mkto_track&quot; no navegador do lead, permitindo que o Marketo rastreie as atividades da mesma pessoa.
+
+A associação a um registro de cliente potencial geralmente ocorre quando um cliente potencial segue um link de um email do Marketo ou envia um formulário do Marketo. Para associar um lead após outro tipo de evento, use o endpoint Associar lead. Transmita a ID de registro de lead conhecida como um parâmetro de caminho e o valor de cookie &quot;_mkto_track&quot; no parâmetro de consulta de cookie.
 
 ### Solicitação
 
@@ -824,13 +863,14 @@ POST /rest/v1/leads/{id}/associate.json?cookie=id:287-GTJ-838%26token:_mch-marke
 }
 ```
 
-Se um cookie já estiver associado a um registro de cliente potencial conhecido, o uso dessa API em um registro de cliente potencial diferente fará com que a nova atividade da Web seja registrada em relação a esse registro, mas não moverá nenhuma atividade da Web existente para o novo registro.
+Se o cookie já estiver associado a um cliente potencial conhecido, o uso dessa API para um cliente potencial diferente registrará a nova atividade da Web em relação ao novo registro. A atividade da Web existente não é movida para o novo registro.
 Associação
 
-Os registros de clientes potenciais também podem ser recuperados com base na associação a uma lista estática ou a um programa. Além disso, você pode recuperar todas as listas estáticas, programas ou campanhas inteligentes das quais um lead é membro.
+Recuperar registros de cliente potencial com base na associação a uma lista estática ou programa. Você também pode recuperar todas as listas estáticas, programas ou campanhas inteligentes que incluam um lead específico.
 
-A estrutura de resposta e os parâmetros opcionais são idênticos aos de Obter clientes em potencial por tipo de filtro, embora `filterType` e `filterValues` não possam ser usados com essa API.
-Para acessar a ID da lista por meio da interface do usuário do Marketo, navegue até a lista. A lista `id` está na URL da lista estática, `https://app-**&#x200B;**.marketo.com/#ST1001A1`. Neste exemplo, 1001 é o `id` da lista.
+A estrutura de resposta e os parâmetros opcionais correspondem a Obter Clientes Potenciais por Tipo de Filtro, mas esta API não aceita `filterType` ou `filterValues`.
+
+Para localizar a ID da lista na interface do usuário do Marketo, navegue até a lista e inspecione o URL. Em `https://app-****.marketo.com/#ST1001A1`, 1001 é a lista `id`.
 
 ## Obter Programas por ID de Cliente Potencial
 
@@ -873,7 +913,7 @@ GET /rest/v1/list/{listId}/leads.json?batchSize=3
 
 ## Obter Listas por ID de Cliente Potencial
 
-O ponto de extremidade Obter Listas por Id de Cliente Potencial pega o parâmetro de caminho `id` do registro de cliente potencial e retorna todos os registros de lista estática dos quais o cliente potencial é membro.
+O ponto de extremidade Obter Listas por Id de Cliente Potencial pega um parâmetro de caminho `id` de registro de cliente potencial e retorna cada lista estática que inclui o cliente potencial.
 
 ### Solicitação
 
@@ -911,11 +951,13 @@ GET /rest/v1/leads/{id}/listMembership.json?batchSize=3
 
 ## Programas
 
-A associação ao programa pode ser recuperada de maneira semelhante às listas. Os mesmos parâmetros de solicitação opcionais estão disponíveis ao chamar o ponto de extremidade Obter clientes em potencial por ID de programa e passar o parâmetro de caminho `programId`.
+Recuperar associação de programa da mesma forma que a associação de lista. Obter Clientes Potenciais por Id de Programa aceita os mesmos parâmetros de solicitação opcionais e requer o parâmetro de caminho `programId`.
 
-Como opção, você pode enviar um parâmetro de campos que contém uma lista separada por vírgulas de nomes de campos para retornar. Se o parâmetro fields não estiver incluído nessa solicitação, os seguintes campos padrão serão retornados: `email`, `updatedAt`, `createdAt`, `lastName`, `firstName`, `membership` e `id`. Ao solicitar uma lista de campos, se um campo específico for solicitado, mas não for retornado, o valor estará implícito em ser nulo.
+Como opção, transmita um parâmetro de campos que contenha uma lista de nomes de campo separados por vírgulas. Se os campos forem omitidos, a resposta incluirá `email`, `updatedAt`, `createdAt`, `lastName`, `firstName`, `membership` e `id`. Se um campo solicitado não for retornado, seu valor será considerado nulo.
 
-A estrutura de resposta é muito semelhante, pois cada item na matriz de resultados é um lead, exceto que cada registro também tem um objeto filho chamado &quot;associação&quot;. Este objeto de associação inclui dados sobre a relação do cliente potencial com o programa indicado na chamada, sempre mostrando seus `progressionStatus`, `acquiredBy`, `reachedSuccess` e `membershipDate`. Se o programa pai também for um programa de compromisso, a associação terá membros `stream`, `nurtureCadence` e `isExhausted` para indicar sua posição e atividade no programa de compromisso.
+Cada item na matriz de resultados é um cliente potencial com um objeto filho chamado &quot;associação&quot;. Este objeto descreve a relação do cliente potencial com o programa solicitado e sempre inclui `progressionStatus`, `acquiredBy`, `reachedSuccess` e `membershipDate`.
+
+Se o programa pai for um programa de envolvimento, a associação também incluirá `stream`, `nurtureCadence` e `isExhausted` para descrever a posição e a atividade do cliente potencial nesse programa.
 
 ### Solicitação
 
@@ -989,7 +1031,7 @@ GET /rest/v1/leads/programs/{programId}.json?batchSize=3
 }
 ```
 
-O ponto de extremidade Obter Programas por ID de Cliente Potencial pega um parâmetro de caminho de ID de registro de cliente potencial e retorna todos os registros de programa dos quais o cliente potencial é membro. Os parâmetros opcionais `filterType` e `filterValues` permitem filtrar pela ID do programa.
+O ponto de extremidade Obter programas por ID do cliente potencial pega um parâmetro de caminho de ID de registro de cliente potencial e retorna todos os programas que incluem o cliente potencial. Use os parâmetros `filterType` e `filterValues` opcionais para filtrar por ID de programa.
 
 ### Solicitação
 
@@ -1020,7 +1062,7 @@ GET /rest/v1/leads/{id}/programMembership.json
 
 ## Campanhas inteligentes
 
-O ponto de extremidade Obter campanhas inteligentes por ID do lead usa um parâmetro de caminho de ID de registro do lead e retorna todos os registros de campanha inteligente dos quais o lead é membro.
+O ponto de extremidade Obter campanhas inteligentes por ID do lead usa um parâmetro de caminho de ID de registro do lead e retorna todas as campanhas inteligentes que incluem o lead.
 
 ### Solicitação
 
@@ -1058,7 +1100,7 @@ GET /rest/v1/leads/{id}/smartCampaignMembership.json?batchSize=3
 
 ## Excluir
 
-A remoção de clientes em potencial é simples e direta usando o ponto de extremidade Excluir clientes em potencial.  Especifique as IDs de cliente potencial a serem excluídas usando os atributos de ID no corpo.  O máximo é de 300 clientes em potencial por solicitação.  Usar tipo de conteúdo: cabeçalho application/json.
+Use o ponto de extremidade Excluir clientes em potencial para remover registros de clientes em potencial. Especifique as IDs de cliente potencial no corpo com atributos de ID. Uma solicitação pode excluir até 300 clientes em potencial. Envie o cabeçalho Content-Type: application/json.
 
 ### Solicitação
 
@@ -1102,22 +1144,22 @@ POST /rest/v1/leads/delete.json
 
 ## Relações
 
-* Empresas por meio do campo externalCompanyId no registro de cliente potencial
-* SalesPersons por meio do campo externalSalesPersonId no registro de cliente potencial
-* Programas por meio da associação a programas
-* Listas por meio da associação à lista
-* Atividades por meio do campo leadId na atividade
-* Segmentação por campos de segmento individuais no registro de cliente potencial
-* Partições por meio de leadPartitionId no registro de cliente potencial
+- Empresas por meio do campo externalCompanyId no registro de cliente potencial
+- SalesPersons por meio do campo externalSalesPersonId no registro de cliente potencial
+- Programas por meio da associação a programas
+- Listas por meio da associação à lista
+- Atividades por meio do campo leadId na atividade
+- Segmentação por campos de segmento individuais no registro de cliente potencial
+- Partições por meio do campo leadPartitionId no registro de cliente potencial
 
 ## Tempos limite
 
-Os pontos de extremidade de clientes potenciais têm um tempo limite de 30s, a menos que observado abaixo:
+Os pontos de extremidade de clientes potenciais têm um tempo limite de 30s, exceto para os seguintes pontos de extremidade:
 
-* Clientes potenciais de sincronização: 90s
-* Associar lead: 60s
-* Mesclar leads: 180s
-* Atualizar Partição de Cliente Potencial: 60s
-* Enviar lead para o Marketo: 90s
-* Obter clientes em potencial por tipo de filtro: 60s
-* Obter leads pela ID de lista: 60s
+- Clientes potenciais de sincronização: 90s
+- Associar lead: 60s
+- Mesclar leads: 180s
+- Atualizar Partição de Cliente Potencial: 60s
+- Enviar lead para o Marketo: 90s
+- Obter clientes em potencial por tipo de filtro: 60s
+- Obter leads pela ID de lista: 60s

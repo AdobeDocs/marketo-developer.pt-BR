@@ -8,10 +8,10 @@ product_v2:
   - id: b27e5950-9033-45ac-9f86-eb22e567f615
 role_v2:
   - id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
-source-git-commit: 00118a89f25a23b931fac671130932bb0e0e4e4e
+source-git-commit: 3e6d310c5aec1a3435424fb122b71d825db5af0e
 workflow-type: tm+mt
-source-wordcount: 151
-ht-degree: 2%
+source-wordcount: 117
+ht-degree: 3%
 
 ---
 
@@ -19,11 +19,13 @@ ht-degree: 2%
 
 [Referência de ponto de extremidade de canais](https://developer.adobe.com/marketo-apis/api/asset#tag/Channels)
 
-Canais são um campo padrão e obrigatório para todos os tipos de programas. Cada tipo de canal só pode ser usado com o `applicableProgramType` especificado e fornece a lista de status de programas disponíveis que são válidos para membros de programas em cada programa. Se os status do programa de um canal forem alterados após a criação de um programa, a lista de status do programa para a qual um cliente potencial pode ser alterado corresponderá à lista fornecida pelo canal no momento, mas não alterará retroativamente o status do programa para nenhum registro de associação de programa existente.
+Canais são um campo obrigatório para cada tipo de programa. Um canal pode ser usado somente com seu `applicableProgramType` especificado. O canal também define os status do programa disponíveis para os membros do programa.
+
+Se você alterar os status de um canal depois de criar um programa, o programa usará a lista atualizada para alterações de status futuras. Os registros de associação ao programa existentes mantêm seus status atuais.
 
 ## Consultar
 
-Os canais podem ser consultados como ativos padrão, mas não têm um terminal para recuperar um canal por ID.
+Consultar canais como ativos padrão. A API não fornece um terminal para recuperar um canal por ID.
 
 ### Navegar
 

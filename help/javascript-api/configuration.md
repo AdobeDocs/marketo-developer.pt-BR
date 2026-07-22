@@ -13,16 +13,16 @@ role_v2:
   - id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
 topic_v2:
   - id: aa2f3246-cb95-4b30-8899-fdf7d73550cc
-source-git-commit: 00118a89f25a23b931fac671130932bb0e0e4e4e
+source-git-commit: 3e6d310c5aec1a3435424fb122b71d825db5af0e
 workflow-type: tm+mt
-source-wordcount: 614
-ht-degree: 4%
+source-wordcount: 541
+ht-degree: 5%
 
 ---
 
 # Configuração
 
-O Munchkin pode aceitar várias definições de configuração para personalizar o comportamento. As definições de configuração são propriedades de um objeto JavaScript passado como segundo parâmetro ao chamar [Munchkin.init()](api-reference.md#munchkin_init)
+O Munchkin aceita configurações que personalizam seu comportamento. Passe as configurações como propriedades de um objeto JavaScript no segundo parâmetro de [Munchkin.init()](api-reference.md#munchkin_init).
 
 ```json
 Munchkin.init("AAA-BBB-CCC", {
@@ -32,25 +32,25 @@ Munchkin.init("AAA-BBB-CCC", {
 );
 ```
 
-O objeto de definições de configuração pode conter qualquer número de propriedades da tabela abaixo.
+O objeto de definições de configuração pode conter qualquer número de propriedades na tabela a seguir.
 
 ## Propriedades
 
 | Nome | Tipo de dados | Descrição |
 | --- | --- | --- |
-| altIds | Matriz | Aceita uma matriz de sequências de caracteres da Munchkin ID. Quando ativado, duplica todas as atividades da Web nas assinaturas direcionadas, com base na Munchkin ID. |
+| altIds | Matriz | Aceita uma matriz de sequências de caracteres da Munchkin ID. Quando ativado, duplica todas as atividades da Web para as assinaturas identificadas pelas Munchkin IDs. |
 | anonymizeIP | Booleano | Torna anônimo o endereço IP registrado no Marketo para novos visitantes. |
 | apiOnly | Booleano | Se definida como true, a função `Munchkin.Init()` não chamará `visitsWebPage`. Isso é útil para aplicativos web de página única que precisam de controle total sobre cada evento `visitsWebPage`. |
-| asyncOnly | Booleano | Se definido como verdadeiro, envia o de XMLHttpRequest de forma assíncrona. O padrão é falso. |
-| clickTime | Inteiro | Define o tempo a ser bloqueado após um clique para permitir a solicitação de rastreamento de cliques (em milissegundos). A redução desse número reduz a precisão do rastreamento de cliques. O padrão é 350 ms. |
-| cookieAnon | Booleano | Se definido como falso, impede o rastreamento e a criação de cookies de novos leads anônimos. Os clientes potenciais têm cookies e são rastreados após preencher um formulário do Marketo ou clicando em um email do Marketo. O padrão é verdadeiro. |
+| asyncOnly | Booleano | Se definido como verdadeiro, envia XMLHttpRequests de forma assíncrona. O padrão é falso. |
+| clickTime | Inteiro | Define o tempo, em milissegundos, a ser bloqueado após um clique para que a solicitação de rastreamento de cliques possa ser concluída. A redução desse valor reduz a precisão do rastreamento de cliques. O padrão é 350 ms. |
+| cookieAnon | Booleano | Se definido como falso, impede o rastreamento e a criação de cookies para novos leads anônimos. Os clientes potenciais recebem cookies e são rastreados depois de enviar um formulário do Marketo ou clicar em um email do Marketo. O padrão é verdadeiro. |
 | cookieLifeDays | Inteiro | Define a data de expiração de qualquer cookie de rastreamento do Munchkin recém-criado para este número de dias no futuro. O padrão é 730 dias (2 anos). |
 | customName | String | Nome de página personalizado. Somente para uso do sistema. |
-| <a name="domainlevel"></a>domainLevel | Inteiro | Define o número de partes do domínio da página a serem usadas ao definir o atributo de domínio do cookie.Por exemplo, suponha que o domínio da página atual seja &quot;www.example.com&quot;.domainLevel: 2 definirá o atributo de domínio do cookie como &quot;.example.com&quot;domainLevel: 3 definirá o atributo de domínio do cookie como &quot;.www.example.com&quot;Background:Munchkin gerenciará automaticamente determinados domínios de nível superior com duas letras. O padrão é duas partes nos casos normais em que o domínio de nível superior é de três letras. Por exemplo &quot;www.example.com&quot;, as duas partes mais à direita são usadas para definir o cookie, &quot;.example.com&quot;.Para códigos de país com duas letras, como &quot;.jp&quot;, &quot;.us&quot;, &quot;.cn&quot; e &quot;.uk&quot;, o código assume três partes como padrão. Por exemplo, &quot;www.example.co.jp&quot; usará três partes de domínio mais à direita, &quot;.example.co.jp&quot;. Se o padrão de domínio exigir um comportamento diferente, isso deverá ser especificado usando o parâmetro `domainLevel`. |
+| <a name="domainlevel"></a>domainLevel | Inteiro | Define quantas partes do domínio da página devem ser usadas para o atributo de domínio do cookie.<br><br>Para &quot;www.example.com&quot;, `domainLevel: 2` define o domínio do cookie como &quot;.example.com&quot; e `domainLevel: 3` o define como &quot;.www.example.com&quot;.<br><br>Por padrão, o Munchkin usa duas partes quando o domínio de nível superior tem três letras. Por exemplo, &quot;www.example.com&quot; usa &quot;.example.com&quot;.<br><br>Para códigos de país de duas letras, como &quot;.jp&quot;, &quot;.us&quot;, &quot;.cn&quot; e &quot;.uk&quot;, o Munchkin usa três partes. Por exemplo, &quot;www.example.co.jp&quot; usa &quot;.example.co.jp&quot;.<br><br>Use o parâmetro `domainLevel` quando o padrão de domínio exigir comportamento diferente. |
 | domainSelectorV2 | Booleano | Se definido como verdadeiro, o utiliza um método aprimorado para determinar como definir o atributo de domínio do cookie. |
 | httpsOnly | Booleano | O padrão é false. Quando definido como true, define o cookie para usar a configuração Secure quando a página rastreada foi veiculada via https. |
-| useBeaconAPI | Booleano | O padrão é false. Quando definido como verdadeiro, usa a [API Beacon](https://developer.mozilla.org/en-US/docs/Web/API/Beacon_API) para enviar solicitações de não bloqueio em vez de [XMLHttpRequest](https://developer.mozilla.org/pt-BR/docs/Web/API/XMLHttpRequest). Se o navegador não suportar essa API, o Munchkin voltará a usar XMLHttpRequest. |
-| wsInfo | String | Usa uma string para direcionar um espaço de trabalho. Essa ID de espaço de trabalho é obtida selecionando o Workspace no menu Admin > Integração > Munchkin. Essa configuração se aplica somente à criação inicial de um registro de lead anônimo. Depois que o valor do cookie do Munchkin tiver sido estabelecido para esse registro de lead, o parâmetro wsInfo não poderá ser usado para alterar sua partição. Como essa configuração afeta apenas clientes potenciais anônimos, ela só é relevante para [Visitantes Anônimos em Relatórios da Web](https://experienceleague.adobe.com/pt-br/docs/marketo/using/product-docs/reporting/basic-reporting/report-activity/display-people-or-anonymous-visitors-in-web-reports) específicos da partição. |
+| useBeaconAPI | Booleano | O padrão é false. Quando definido como verdadeiro, usa a [API Beacon](https://developer.mozilla.org/en-US/docs/Web/API/Beacon_API) para enviar solicitações de não bloqueio em vez de [XMLHttpRequest](https://developer.mozilla.org/pt-BR/docs/Web/API/XMLHttpRequest). Se o navegador não for compatível com a API Beacon, o Munchkin usará XMLHttpRequest. |
+| wsInfo | String | Segmenta um espaço de trabalho. Obtenha a ID do espaço de trabalho selecionando o espaço de trabalho no menu Admin > Integração > Munchkin.<br><br>Esta configuração se aplica somente quando um registro de cliente potencial anônimo é criado inicialmente. Depois que o valor do cookie do Munchkin é estabelecido para esse registro de lead, o parâmetro wsInfo não pode alterar sua partição.<br><br>Como essa configuração afeta somente clientes potenciais anônimos, ela é relevante somente para [Visitantes Anônimos em Relatórios da Web](https://experienceleague.adobe.com/pt-br/docs/marketo/using/product-docs/reporting/basic-reporting/report-activity/display-people-or-anonymous-visitors-in-web-reports) específicos da partição. |
 
 ## Exemplos
 
@@ -86,7 +86,7 @@ Este exemplo envia toda a atividade da Web para as instâncias com Munchkin IDs 
 
 ### Definir rastreamento para assíncrono
 
-Este exemplo força todos os XMLHttpRequest a serem enviados de forma assíncrona a partir do thread principal.
+Este exemplo força todos os XMLHttpRequests a serem enviados de forma assíncrona a partir do thread principal.
 
 ```javascript
 <script type="text/javascript">

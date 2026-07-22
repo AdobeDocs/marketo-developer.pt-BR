@@ -1,6 +1,6 @@
 ---
 title: Recomendação de rich media
-description: Configure a Recomendação de mídia avançada usando a tag RTP de conteúdo preditivo do Marketo, os divs template1 template2 template3, o GET para preencher e o SET para configurar categorias.
+description: Configure a Recomendação de mídia avançada usando a tag RTP de conteúdo preditivo do Marketo, divs template1 template2 template3, GET para preencher, SET para configurar categorias.
 feature: Javascript
 exl-id: ee92e46d-e529-40a2-a0d0-ee233916f004
 TQID: https://experienceleague.adobe.com/ygm5h1FJZZW4mC318-fRR3VAcO6j1sitcAeqIUjDTbI
@@ -10,54 +10,54 @@ feature_v2:
   - id: b3b8a63f-51fc-40f6-a7d2-a31c5d49fb45
 role_v2:
   - id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
-source-git-commit: 00118a89f25a23b931fac671130932bb0e0e4e4e
+source-git-commit: 3e6d310c5aec1a3435424fb122b71d825db5af0e
 workflow-type: tm+mt
-source-wordcount: 854
+source-wordcount: 814
 ht-degree: 4%
 
 ---
 
 # Recomendação de rich media
 
-As tags e chamadas de API a seguir devem ser configuradas na página em que você deseja exibir o modelo Recomendação de mídia avançada.
+Para exibir um modelo de Recomendação de mídia avançada, adicione as tags e chamadas de API necessárias à página.
 
-1. No cabeçalho da página
-   1. Tenha a tag RTP instalada
-   1. Adicionar a chamada do GET à página para preencher as recomendações
-   1. Adicione a chamada SET para configurar o template
-1. No corpo da página
-   1. Coloque a tag de modelo (classe div) no local onde deseja que o modelo apareça
+1. No cabeçalho da página:
+   1. Instale a tag RTP.
+   1. Adicione a chamada GET que preenche as recomendações.
+   1. Adicione a chamada SET que configura o template.
+1. No corpo da página:
+   1. Coloque a tag de modelo (classe div) onde deseja que o modelo apareça.
 
-Mais informações disponíveis [aqui](https://experienceleague.adobe.com/pt-br/docs/marketo/using/product-docs/predictive-content/enabling-predictive-content/enable-predictive-content-for-web-rich-media).
+Para obter mais informações, consulte [Habilitar Conteúdo Preditivo para Mídia da Web](https://experienceleague.adobe.com/pt-br/docs/marketo/using/product-docs/predictive-content/enabling-predictive-content/enable-predictive-content-for-web-rich-media).
 
 ## Tag de modelo
 
 | Atributo | Opcional/Obrigatório | Descrição |
 | --- | --- | --- |
-| classe | Obrigatório | Especifique que esse elemento div HTML é RTP recommendation div. |
-| data-rtp-template-id | Obrigatório | A ID do modelo. Isso determina o alinhamento da recomendação. Use &quot;template1&quot; para alinhamento horizontal, &quot;template2&quot; para alinhamento vertical ou &quot;template3&quot; para alinhamento vertical que inclui apenas título e descrição. O script injeta o modelo correspondente nesses `div.Permissible` valores: template1, template2, template3. |
+| classe | Obrigatório | Identifica o elemento div HTML como uma recomendação RTP div. |
+| data-rtp-template-id | Obrigatório | Determina o alinhamento da recomendação. Use &quot;template1&quot; para alinhamento horizontal, &quot;template2&quot; para alinhamento vertical ou &quot;template3&quot; para alinhamento vertical com apenas um título e uma descrição. O script injeta o modelo correspondente neste `div`. Valores admissíveis: template1, template2, template3. |
 
 ### Exemplos
 
-Para exibir suas recomendações em alinhamento horizontal, use &quot;template1&quot;.
+Use &quot;template1&quot; para exibir as recomendações horizontalmente.
 
 ```html
 <div class="RTP_RCMD2" data-rtp-template-id="template1"></div>
 ```
 
-Para exibir suas recomendações em alinhamento vertical, use &quot;template2&quot;.
+Use &quot;template2&quot; para exibir as recomendações verticalmente.
 
 ```html
 <div class="RTP_RCMD2" data-rtp-template-id="template2"></div>
 ```
 
-Para exibir suas recomendações em alinhamento vertical somente com título e descrição, use &quot;template3&quot;.
+Use &quot;template3&quot; para exibir as recomendações verticalmente com apenas um título e uma descrição.
 
 ```html
 <div class="RTP_RCMD2" data-rtp-template-id="template3"></div>
 ```
 
-Veja as capturas de tela dos alinhamentos do modelo [aqui](#example_of_rich_media_recommendation_template_1).
+Veja os [exemplos de alinhamento do modelo](#example_of_rich_media_recommendation_template_1).
 
 ## Preencher recomendação
 
@@ -75,9 +75,9 @@ Este método preenche toda a mídia avançada `<divs>` da página com recomenda�
 
 ## Alterar configuração do modelo
 
-Este método altera a configuração padrão do modelo.
+Esse método altera a configuração do template padrão.
 
-Observação: ao usar esse método, ele deve ser chamado antes de chamar rtp(&#39;get&#39;,&#39;rcmd&#39;, &#39;richmedia&#39;);
+Chame esse método antes de chamar rtp(&#39;get&#39;,&#39;rcmd&#39;, &#39;richmedia&#39;);
 
 ### Uso
 
@@ -93,7 +93,7 @@ Observação: ao usar esse método, ele deve ser chamado antes de chamar rtp(&#3
 
 ### Exemplos
 
-Este trecho de código altera o texto do título de um modelo.
+Este exemplo altera o texto do título de um modelo.
 
 ```javascript
 rtp("set", "rcmd", "richmedia","template1",
@@ -103,7 +103,7 @@ rtp("set", "rcmd", "richmedia","template1",
 );
 ```
 
-Este trecho de código mostra categorias de configuração com várias configurações para um modelo.
+Este exemplo define categorias e várias propriedades de configuração para um modelo.
 
 ```javascript
 rtp("set", "rcmd", "richmedia",
@@ -124,9 +124,11 @@ rtp("set", "rcmd", "richmedia",
 );
 ```
 
-OBSERVAÇÃO: use &quot;categoria&quot; para filtrar o conteúdo exibido no resultado das recomendações de conteúdo preditivo. Para aplicar conteúdo preditivo a todas as partes de conteúdo ativadas, deixe a &quot;categoria&quot; vazia. Se você quiser recomendar somente conteúdo específico para a saída no modelo de Mídia avançada, adicione uma categoria para o conteúdo na página Definir conteúdo e associe essa categoria no código do modelo de recomendação. Categorização do conteúdo relevante de acordo com as seções do seu site (produtos ou soluções).
+Use &quot;categoria&quot; para filtrar o conteúdo exibido nas recomendações de conteúdo preditivo. Para usar conteúdo preditivo para todo o conteúdo ativado, deixe a &quot;categoria&quot; vazia.
 
-Este trecho de código mostra como definir várias configurações de modelo para um modelo.
+Para recomendar somente conteúdo específico no modelo Mídia avançada, adicione uma categoria para o conteúdo na página Definir conteúdo. Em seguida, associe essa categoria ao código do template de recomendação. Por exemplo, categorize o conteúdo relevante pelas seções de produto ou solução do seu site.
+
+Este exemplo define várias propriedades de configuração para um modelo.
 
 ```javascript
 rtp("set", "rcmd", "richmedia",
@@ -156,11 +158,11 @@ rtp("set", "rcmd", "richmedia",
 | rcmd.cta.text | &quot;rcmd.cta.text&quot; : &quot;Push&quot; | Altera o texto do botão. O texto é o mesmo para todos os botões. |
 | categoria | &quot;categoria&quot; : [&quot;uma categoria&quot;] | Altera a categoria de recomendação à qual este modelo dá suporte. O modelo exibe somente recomendações com uma das categorias definidas por essa configuração. |
 
-Observação: o suporte à configuração pode ser alterado por modelo.
+O suporte à configuração pode variar de acordo com o modelo.
 
 #### Exemplo básico
 
-Este exemplo tem um template com três recomendações. Copie este exemplo em uma página do HTML e substitua a tag RTP pela sua tag.
+Este exemplo exibe três recomendações em um modelo. Copie o exemplo em uma página do HTML e substitua a tag RTP pela sua tag.
 
 ```html
 <!DOCTYPE>
@@ -192,7 +194,7 @@ rtp('get','rcmd', 'richmedia');
 
 #### Exemplo avançado
 
-Este exemplo tem um template com três recomendações. O título do modelo é &quot;CONTEÚDO RECOMENDADO&quot; e o texto do botão será &quot;Leia mais&quot;. Copie este exemplo em uma página do HTML e substitua a tag RTP pela sua tag.
+Este exemplo exibe três recomendações em um modelo. O título do modelo é &quot;CONTEÚDO RECOMENDADO&quot; e o texto do botão é &quot;Leia mais&quot;. Copie o exemplo em uma página do HTML e substitua a tag RTP pela sua tag.
 
 ```html
 <!DOCTYPE>
@@ -236,16 +238,24 @@ rtp('get','rcmd', 'richmedia');
 
 #### Exemplo de modelo de recomendação de mídia avançada #1
 
-**Nome**: modelo1 **Descrição**: conteúdo horizontal, incluindo imagem, título, descrição e botão call to action.
+**Nome**: modelo1
+
+**Descrição**: conteúdo horizontal que inclui uma imagem, título, descrição e botão do call-to-action.
 
 ![Modelo de mídia avançada](assets/rich-media-template1.png)
 
 #### Exemplo de modelo de recomendação de mídia avançada #2
 
-**Nome**: modelo2 **Descrição**: conteúdo vertical, incluindo imagem, título, descrição e botão call to action.
+**Nome**: modelo2
+
+**Descrição**: conteúdo vertical que inclui uma imagem, título, descrição e botão do call-to-action.
 
 ![Modelo de mídia avançada](assets/rich-media-template2.png)
 
 #### Exemplo de modelo de recomendação de mídia avançada #3
 
-**Nome**: modelo3 **Descrição**: conteúdo vertical que inclui apenas título e descrição. Ao passar o mouse, o cabeçalho muda de cor e é vinculado por hiperlink ao URL do conteúdo. A descrição também vincula ao conteúdo sem alteração de cor. ![Modelo de mídia avançada](assets/rich-media-template3.png)
+**Nome**: modelo3
+
+**Descrição**: conteúdo vertical que inclui apenas um título e uma descrição. Ao passar o mouse, o cabeçalho muda de cor e de links para o URL do conteúdo. A descrição também vincula ao conteúdo sem alterar a cor.
+
+![Modelo de mídia avançada](assets/rich-media-template3.png)

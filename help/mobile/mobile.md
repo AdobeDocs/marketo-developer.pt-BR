@@ -11,25 +11,25 @@ role_v2:
 topic_v2:
   - id: c13ff12d-60f1-49cd-833a-d43359628223
   - id: c18d9e03-ac7d-4811-9c92-3e92ddc70ade
-source-git-commit: 00118a89f25a23b931fac671130932bb0e0e4e4e
+source-git-commit: 3e6d310c5aec1a3435424fb122b71d825db5af0e
 workflow-type: tm+mt
-source-wordcount: 165
-ht-degree: 3%
+source-wordcount: 134
+ht-degree: 4%
 
 ---
 
 # Dispositivos móveis
 
-O Marketo Mobile Engagement permite que os profissionais de marketing ouçam e respondam aos clientes em seus dispositivos móveis para fornecer experiências móveis atraentes com facilidade.
+O Marketo Mobile Engagement ajuda os profissionais de marketing a fornecer experiências móveis e responder à atividade do cliente em dispositivos móveis.
 
-O Marketo Mobile Engagement é composto por dois componentes:
+O Marketo Mobile Engagement tem dois componentes:
 
 1. SDK móvel
 
-   O Marketo Mobile SDK é integrado ao seu aplicativo móvel e é o mecanismo responsável por fornecer marketing avançado e por coletar análises.
+   Integre o Marketo Mobile SDK ao seu aplicativo móvel para fornecer conteúdo de marketing e coletar análises.
 
 1. Marketing para dispositivos móveis
 
-   Os profissionais de marketing usam o Marketo para definir públicos, criar notificações, iniciar campanhas de mensagens direcionadas e exibir análises detalhadas de clientes.
+   Use o Marketo para definir públicos, criar notificações, iniciar campanhas de mensagens direcionadas e exibir análises de clientes.
 
-Depois de integrar o Marketo SDK ao seu aplicativo móvel, você poderá enviar Notificações por push para dispositivos móveis e Mensagens no aplicativo para seus clientes pelo Marketo. Para saber como configurar e implantar mensagens móveis no Marketo, consulte a seção [Marketing para dispositivos móveis](https://experienceleague.adobe.com/pt-br/docs/marketo/using/product-docs/mobile-marketing/admin/add-a-mobile-app) na documentação do produto.
+Depois de integrar o Marketo SDK ao seu aplicativo móvel, você pode enviar notificações por push e mensagens no aplicativo móveis do Marketo. Para configurar e implantar mensagens móveis, consulte [Marketing para dispositivos móveis](https://experienceleague.adobe.com/pt-br/docs/marketo/using/product-docs/mobile-marketing/admin/add-a-mobile-app) na documentação do produto.

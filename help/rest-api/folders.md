@@ -13,9 +13,9 @@ feature_v2:
   - id: e64968b2-4ee5-47f9-8cae-0588f184b9eb
 role_v2:
   - id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
-source-git-commit: 00118a89f25a23b931fac671130932bb0e0e4e4e
+source-git-commit: 3e6d310c5aec1a3435424fb122b71d825db5af0e
 workflow-type: tm+mt
-source-wordcount: 1099
+source-wordcount: 806
 ht-degree: 1%
 
 ---
@@ -24,11 +24,13 @@ ht-degree: 1%
 
 [Referência de Ponto de Extremidade de Pastas](https://developer.adobe.com/marketo-apis/api/asset#tag/Folders)
 
-As pastas são o principal ativo organizacional no Marketo e todos os outros tipos de ativos têm pelo menos uma pasta como principal. Essa pasta pai pode ser uma Pasta puramente organizacional ou um Programa, que tem uma relação funcional com outros tipos de ativos e também pode ser o pai de outros ativos. As pastas podem ser criadas, consultadas, atualizadas e excluídas por meio da API, além de permitir a recuperação de uma lista de seus conteúdos. Embora os Programas possam ser retornados por meio da consulta à API Pastas, a criação, atualização e exclusão de programas deve ser executada por meio da API Programas.
+As pastas são os principais ativos organizacionais no Marketo. Todos os outros tipos de ativos têm pelo menos um pai que é uma Pasta ou um Programa. Uma Pasta é puramente organizacional, enquanto um Programa tem uma relação funcional com outros tipos de ativos e também pode conter ativos.
+
+Use a API Pastas para criar, consultar, atualizar e excluir pastas ou recuperar seu conteúdo. As consultas de pasta podem retornar Programas, mas você deve usar a API Programas para criar, atualizar ou excluir um Programa.
 
 ## Consultar
 
-A consulta de pastas segue os tipos de consulta padrão para ativos de [por id](https://developer.adobe.com/marketo-apis/api/asset#tag/Folders/operation/getFolderByIdUsingGET), [por nome](https://developer.adobe.com/marketo-apis/api/asset#tag/Folders/operation/getFolderByNameUsingGET) e [navegação](https://developer.adobe.com/marketo-apis/api/asset#tag/Folders/operation/getFolderUsingGET).
+As pastas oferecem suporte aos padrões de consulta de ativos padrão: [por id](https://developer.adobe.com/marketo-apis/api/asset#tag/Folders/operation/getFolderByIdUsingGET), [por nome](https://developer.adobe.com/marketo-apis/api/asset#tag/Folders/operation/getFolderByNameUsingGET) e por [navegação](https://developer.adobe.com/marketo-apis/api/asset#tag/Folders/operation/getFolderUsingGET).
 
 ### Por ID
 
@@ -69,7 +71,11 @@ GET /rest/asset/v1/folder/{id}.json?type=Folder
 }
 ```
 
-O parâmetro de tipo é obrigatório e deve ser &quot;Folder&quot; ou &quot;Program&quot;.  O tipo determina se a pesquisa na pasta é feita com base em uma ID de pasta ou uma ID de programa. Para esse endpoint, somente um único registro é retornado na matriz de resultados. Observe o parâmetro `folderType` na resposta. Isso pode indicar vários tipos diferentes de pastas. As pastas de Atividades do Marketo têm um tipo de Pasta de marketing ou Programa, que pode conter vários tipos diferentes de ativos, enquanto as pastas do Design Studio têm um tipo correspondente ao tipo de ativo que elas podem conter. Por exemplo, uma pasta com `folderType` de &quot;Email&quot; pode conter apenas Emails ou outras subpastas, que podem ter um `folderType` de Email ou Modelo de email. Os tipos podem incluir:
+O parâmetro `type` é obrigatório e deve ser `Folder` ou `Program`. Ele determina se o endpoint pesquisa uma ID de pasta ou uma ID de programa. O ponto de extremidade retorna um registro na matriz de resultados.
+
+A resposta `folderType` identifica o que a pasta pode conter. As pastas de Atividades de marketing têm um tipo de Pasta de marketing ou Programa e podem conter vários tipos de ativos. As pastas do Design Studio têm um tipo que corresponde aos ativos que elas podem conter. Por exemplo, uma pasta Email pode conter emails e subpastas com um tipo de pasta Email ou Modelo de email.
+
+Os tipos de pasta incluem:
 
 - Email
 - Modelo de e-mail
@@ -80,7 +86,13 @@ O parâmetro de tipo é obrigatório e deve ser &quot;Folder&quot; ou &quot;Prog
 
 ### Por nome
 
-[Consulta por nome](https://developer.adobe.com/marketo-apis/api/asset#tag/Folders/operation/getFolderByNameUsingGET) também é permitida. O endpoint da consulta por nome tem o nome como o único parâmetro obrigatório. Name realiza uma correspondência exata da string com o campo de nome das pastas na instância e retorna resultados para cada pasta correspondente a esse nome. Ele também tem os parâmetros de consulta opcionais de &quot;tipo&quot;, que podem ser Pasta ou Programa, &quot;raiz&quot; da ID da pasta de pesquisa ou &quot;espaço de trabalho&quot; do nome do espaço de trabalho de pesquisa. Se o parâmetro raiz for definido, o parâmetro de tipo também deverá ser definido.
+O ponto de extremidade [consulta por nome](https://developer.adobe.com/marketo-apis/api/asset#tag/Folders/operation/getFolderByNameUsingGET) requer `name`, que execute uma correspondência exata com os nomes das pastas e retorne todas as pastas correspondentes.
+
+O endpoint também aceita estes parâmetros opcionais:
+
+- `type`: O tipo de pasta, `Folder` ou `Program`.
+- `root`: A identificação da pasta a ser pesquisada. Se você definir `root`, também deverá definir `type`.
+- `workspace`: O nome do espaço de trabalho a ser pesquisado.
 
 ```http
 GET /rest/asset/v1/folder/byName.json?name=Test%2010%20-%20deverly
@@ -119,21 +131,21 @@ GET /rest/asset/v1/folder/byName.json?name=Test%2010%20-%20deverly
 }
 ```
 
-Ao pesquisar por nome, é importante observar que as Atividades de marketing e o Design Studio são suas próprias pastas raiz, para que possam ser recuperadas por nome e usadas para percorrer o restante da hierarquia de pastas em uma instância de destino.
+As Atividades de marketing e o Design Studio são pastas raiz. Recupere a raiz pelo nome e use-a para percorrer a hierarquia de pastas na instância de destino.
 
-### Navegar
+### Procurar
 
-As pastas também podem ser [recuperadas em massa](https://developer.adobe.com/marketo-apis/api/asset#tag/Folders/operation/getFolderUsingGET). O parâmetro &quot;root&quot; pode ser usado para especificar a pasta pai na qual a consulta será executada e é formatado como um objeto JSON incorporado como o valor do parâmetro de consulta. A raiz tem dois membros:
+Você também pode [recuperar pastas em massa](https://developer.adobe.com/marketo-apis/api/asset#tag/Folders/operation/getFolderUsingGET). Use o parâmetro `root` para especificar a pasta pai na qual consultar. Passar `root` como um objeto JSON inserido com dois membros:
 
-1. id - a id da pasta ou do programa.
-1. Tipo - Pasta ou Programa, dependendo do tipo da pasta raiz do navegador.
+1. `id`: A identificação da pasta ou do programa.
+1. `type`: `Folder` ou `Program`, dependendo do tipo de pasta raiz.
 
-Se a pasta raiz não for conhecida ou o objetivo for recuperar todas as pastas em uma determinada área, a raiz pode ser especificada como as áreas &quot;Atividades de marketing&quot;, &quot;Design Studio&quot; ou &quot;Banco de dados de clientes potenciais&quot;. As IDs para cada uma delas podem ser recuperadas por meio da API [Obter pasta por nome](https://developer.adobe.com/marketo-apis/api/asset#tag/Folders/operation/getFolderByNameUsingGET) e especificando o nome da área desejada.
+Se você não souber a pasta raiz ou quiser recuperar todas as pastas em uma área, use a raiz das Atividades de marketing, do Design Studio ou do Banco de dados de clientes potenciais. Recupere a ID raiz passando o nome da área para a API [Obter Pasta por Nome](https://developer.adobe.com/marketo-apis/api/asset#tag/Folders/operation/getFolderByNameUsingGET).
 
-Como outros pontos de acesso de recuperação de ativos em massa, offset e maxReturn são parâmetros opcionais para paginação.   Outros parâmetros opcionais são:
+Assim como em outros pontos de extremidade de recuperação de ativos em massa, use os parâmetros `offset` e `maxReturn` opcionais para paginação. Outros parâmetros opcionais são:
 
-- Espaço de trabalho - O nome do espaço de trabalho para o qual filtrar.
-- maxDepth - O número máximo de níveis a serem percorridos na hierarquia de pastas. Se definido como 0, somente a pasta especificada na raiz é retornada. Se não especificado, o valor padrão é 2.
+- `workSpace`: O nome do espaço de trabalho pelo qual filtrar.
+- `maxDepth`: o número máximo de níveis a serem percorridos na hierarquia de pastas. Um valor de 0 retorna somente a pasta especificada por `root`. O padrão é 2.
 
 ```http
 GET /rest/asset/v1/folders.json?root={"id":14,"type":"Folder"}
@@ -215,13 +227,21 @@ GET /rest/asset/v1/folders.json?root={"id":14,"type":"Folder"}
 
 ## Estrutura de resposta
 
-Grande parte da estrutura de resposta da pasta é autoexplicativa, mas alguns campos são dignos de nota individualmente. Os campos `folderId` e pai são objetos JSON que incluem a ID explícita e o tipo da própria pasta. Esse tipo é aquele usado em consultas, raiz e parâmetros primários pela API para garantir a definição adequada entre os tipos de pastas Pasta e Programa. O `folderType` reflete o uso da pasta, que pode ser uma das seguintes: &quot;Pasta de marketing&quot;, &quot;Programa&quot;, &quot;Email&quot;, &quot;Modelo de email&quot;, &quot;Página de aterrissagem&quot;, &quot;Modelo de página de aterrissagem&quot;, &quot;Trecho&quot;, &quot;Imagem&quot;, &quot;Zona&quot; ou &quot;Arquivo&quot;.  Os tipos Pasta de marketing e Programa indicam que existem em Atividades de marketing e podem conter vários tipos de ativos. Os outros tipos indicam que podem conter somente esse tipo de ativo, subpastas e a versão do modelo desse tipo, se aplicável. A Zona de tipo representa as pastas de nível raiz encontradas em Atividades de marketing.
+Os campos `folderId` e `parent` são objetos JSON que contêm a ID e o tipo da pasta. A API usa este tipo na consulta, `root` e `parent` parâmetros para distinguir os tipos de pasta Pasta e Programa.
 
-O caminho de uma pasta mostra sua hierarquia na árvore de pastas, semelhante a um caminho de estilo Unix. A primeira entrada no caminho sempre será Marketing Activities ou Design Studio. Se a instância de destino tiver espaços de trabalho, a segunda entrada no caminho será o nome do espaço de trabalho proprietário. O campo `url` mostra a URL explícita do ativo na instância designada. Este não é um link universal e deve ser autenticado como um usuário para funcionar corretamente. `isSystem` indica se a pasta é do sistema. Se definido como true, a própria pasta será somente leitura, embora as pastas possam ser criadas como filhas dela.
+O campo `folderType` descreve como a pasta é usada. Seu valor pode ser Pasta de marketing, Programa, Email, Modelo de email, Página de aterrissagem, Modelo de página de aterrissagem, Trecho, Imagem, Zona ou Arquivo. A Pasta de marketing e o Programa existem em Atividades de marketing e podem conter vários tipos de ativos. Os outros tipos de pasta contêm somente o tipo de ativo, as subpastas e a versão do modelo correspondentes desse tipo de ativo, quando aplicável. A zona representa uma pasta de nível raiz em Atividades de marketing.
+
+A pasta `path` mostra sua hierarquia como um caminho de estilo Unix. A primeira entrada é sempre Marketing Activities ou Design Studio. Se a instância tiver espaços de trabalho, a segunda entrada será o nome do espaço de trabalho proprietário.
+
+O campo `url` contém a URL do ativo para a instância designada. Não é um link universal e requer autenticação do usuário. O campo `isSystem` indica se a pasta é uma pasta do sistema somente leitura. Você pode criar pastas secundárias em uma pasta do sistema.
 
 ## Criar e atualizar
 
-[A criação de pastas](https://developer.adobe.com/marketo-apis/api/asset#tag/Folders/operation/createFolderUsingPOST) é simples e executada com um aplicativo/x-www-form-urlencoded POST que tem dois parâmetros obrigatórios, &quot;name&quot;, uma cadeia de caracteres e &quot;parent&quot;, o pai em que a pasta será criada, que é um objeto JSON inserido com dois membros, id e tipo, seja Pasta ou Programa, dependendo do tipo da pasta de destino. Opcionalmente, &quot;descrição&quot;, uma string, também pode ser incluída e pode ter até 2000 caracteres.
+Para [criar uma pasta](https://developer.adobe.com/marketo-apis/api/asset#tag/Folders/operation/createFolderUsingPOST), envie uma solicitação POST `application/x-www-form-urlencoded` com estes parâmetros:
+
+- `name`: Cadeia de caracteres necessária contendo o nome da pasta.
+- `parent`: Objeto JSON inserido obrigatório contendo `id` e `type`. O tipo é `Folder` ou `Program`, dependendo do pai.
+- `description`: cadeia de caracteres opcional de até 2.000 caracteres.
 
 ```http
 POST /rest/asset/v1/folders.json
@@ -268,7 +288,9 @@ parent={"id":416,"type":"Folder"}&name=Test 10 - deverly&description=This is a t
 }
 ```
 
-As atualizações em pastas são feitas por meio de um endpoint separado, e descrição, nome e `isArchive` são parâmetros opcionais para atualização. Se `isArchive` for alterado por uma atualização, isso resultará no arquivamento da pasta, se alterada para verdadeiro, ou no desarquivamento, se alterada para falso, na interface do usuário do Marketo. Os programas não podem ser atualizados com essa API.
+Use o ponto de extremidade de atualização para alterar os parâmetros `description`, `name` ou `isArchive` opcionais. Configurar `isArchive` como `true` arquiva a pasta na interface do usuário do Marketo. Configurar como `false` remove a pasta do arquivo morto.
+
+Não é possível atualizar Programas com esta API.
 
 ```http
 POST /rest/asset/v1/folder/{id}.json
@@ -317,7 +339,7 @@ type=Folder&description=This is a test (update 01)
 
 ### Excluir
 
-As exclusões podem ser feitas em pastas únicas se estiverem vazias, o que significa que elas não contêm ativos ou subpastas. Se uma pasta for do tipo Program ou tiver o campo isSystem definido como true, ela não poderá ser excluída com essa API.
+É possível excluir uma única pasta somente quando ela não contém ativos ou subpastas. Você não pode usar esta API para excluir um Programa ou uma pasta cujo campo `isSystem` é `true`.
 
 ```http
 POST /rest/asset/v1/folder/{id}/delete.json

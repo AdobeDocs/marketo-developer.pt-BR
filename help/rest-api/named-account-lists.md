@@ -10,10 +10,10 @@ feature_v2:
   - id: c5f60233-d5ea-4453-a799-0ad258b4d399
 role_v2:
   - id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
-source-git-commit: 00118a89f25a23b931fac671130932bb0e0e4e4e
+source-git-commit: 3e6d310c5aec1a3435424fb122b71d825db5af0e
 workflow-type: tm+mt
-source-wordcount: 746
-ht-degree: 2%
+source-wordcount: 686
+ht-degree: 3%
 
 ---
 
@@ -21,16 +21,23 @@ ht-degree: 2%
 
 [Referência de Ponto de Extremidade de Listas de Contas Nomeadas](https://developer.adobe.com/marketo-apis/api/mapi#tag/Named-Account-Lists)
 
-[Listas de contas nomeadas](https://experienceleague.adobe.com/pt-br/docs/marketo/using/product-docs/target-account-management/target/account-lists) no Marketo representam coleções de contas nomeadas. Eles podem ser usados para uma grande variedade de casos, incluindo categorização, enriquecimento de dados e filtragem inteligente de campanha. As APIs da Lista de contas nomeadas permitem o gerenciamento remoto desses ativos de lista e sua associação.
+[Listas de Contas Nomeadas](https://experienceleague.adobe.com/pt-br/docs/marketo/using/product-docs/target-account-management/target/account-lists) são coleções de contas nomeadas na Marketo. Use-os para categorização, enriquecimento de dados e filtragem de campanha inteligente.
+
+As APIs da Lista de contas nomeadas permitem gerenciar remotamente os ativos de lista e seus membros.
 `Content`
 
 ## Permissões
 
-Para consultar Listas de Contas Nomeadas, é necessária a permissão Lista de Contas Nomeadas Somente Leitura ou Lista de Contas Nomeadas Leitura-Gravação. Para Criar, Atualizar ou Excluir Listas, é necessária a permissão Ler-Gravar Lista de Contas Nomeadas. A consulta de associação de lista requer as permissões de Conta Nomeada Somente Leitura ou Conta Nomeada Leitura-Gravação, enquanto o gerenciamento de associação requer as Permissões de Conta Nomeada Leitura-Gravação.
+A permissão necessária depende da operação:
+
+- Consultar Listas de Contas Nomeadas: Lista de Contas Nomeadas Somente Leitura ou Lista de Contas Nomeadas Leitura-Gravação.
+- Criar, atualizar ou excluir listas: Lista de Contas Nomeadas de Leitura/Gravação.
+- Associação da lista de consultas: Conta Nomeada Somente Leitura ou Conta Nomeada Leitura/Gravação.
+- Gerenciar associação de lista: Conta Nomeada de Leitura-Gravação.
 
 ## Modelo
 
-As Listas de contas nomeadas têm um número limitado de campos padrão e não são extensíveis com campos personalizados.
+As listas de contas nomeadas têm um conjunto limitado de campos padrão e não são compatíveis com campos personalizados.
 `Named Account List Field`
 
 | Nome | Tipo de dados | Atualizável | Observações |
@@ -43,7 +50,9 @@ As Listas de contas nomeadas têm um número limitado de campos padrão e não s
 
 ## Consultar
 
-Consultar listas de contas é simples e fácil. Atualmente, há apenas dois filterTypes válidos para consultar listas de contas nomeadas: &quot;dedupeFields&quot; e &quot;idField&quot;. O campo para filtrar está definido no parâmetro `filterType` da consulta, e os valores estão definidos em `filterValues as` uma lista separada por vírgulas. Os filtros `nextPageToken` e `batchSize` também são parâmetros opcionais.
+As consultas de lista de contas nomeadas suportam dois filterTypes: &quot;dedupeFields&quot; e &quot;idField&quot;. Defina o campo no parâmetro de consulta `filterType` e forneça os valores em `filterValues as` uma lista separada por vírgulas.
+
+Os filtros `nextPageToken` e `batchSize` são opcionais.
 
 ```http
 GET /rest/v1/namedAccountLists.json?filterType=idField&filterValues=dff23271-f996-47d7-984f-f2676861b5fb,dff23271-f996-47d7-984f-f2676861b5fc
@@ -78,11 +87,13 @@ GET /rest/v1/namedAccountLists.json?filterType=idField&filterValues=dff23271-f99
 
 ## Criar e atualizar
 
-A criação e a atualização de registros de lista de contas nomeadas seguem os padrões estabelecidos para outras operações de criação e atualização de bancos de dados de clientes potenciais. Lembre-se de que as listas de contas nomeadas têm apenas um campo atualizável, `name`.
+Criar e atualizar registros de lista de contas nomeadas usando o padrão padrão de Banco de Dados de Cliente Potencial padrão. As listas de contas nomeadas têm apenas um campo atualizável: `name`.
 
-O endpoint permite os dois tipos de ação padrão: &quot;createOnly&quot; e &quot;updateOnly&quot;.  O `action defaults` para &quot;createOnly&quot;.
+O endpoint oferece suporte a dois tipos de ação padrão: &quot;createOnly&quot; e &quot;updateOnly&quot;. O `action defaults` para &quot;createOnly&quot;.
 
-O `dedupeBy parameter` opcional poderá ser especificado se a ação for `updateOnly`.  Os valores permitidos são &quot;dedupeFields&quot; (correspondente a &quot;name&quot;) ou &quot;idField&quot; (correspondente a &quot;marketoGUID&quot;).  Nos modos `createOnly`, somente &quot;name&quot; é permitido como o campo `dedupeBy`. É possível enviar até 300 registros de cada vez.
+Você pode especificar o `dedupeBy parameter` opcional quando a ação for `updateOnly`. Os valores permitidos são &quot;dedupeFields&quot;, que corresponde a &quot;name&quot;, e &quot;idField&quot;, que corresponde a &quot;marketoGUID&quot;.
+
+Nos modos `createOnly`, somente &quot;name&quot; é permitido como o campo `dedupeBy`. É possível enviar até 300 registros de cada vez.
 
 ```http
 POST /rest/v1/namedAccountLists.json
@@ -124,7 +135,9 @@ POST /rest/v1/namedAccountLists.json
 
 ## Excluir
 
-A exclusão de Listas de Contas Nomeadas é simples e pode ser feita com base no `name` ou no `marketoGUID` da lista. Para selecionar a chave que deseja usar, passe &quot;dedupeFields&quot; para o nome ou &quot;idField&quot; para marketoGUID no membro `deleteB` da sua solicitação. Se desdefinido, o padrão será dedupeFields. É possível excluir até 300 registros de cada vez.
+Exclua Listas de Contas Nomeadas usando `name` ou `marketoGUID` da lista. Para selecionar a chave, passe &quot;dedupeFields&quot; como nome ou &quot;idField&quot; como marketoGUID no membro `deleteB` da solicitação.
+
+Se não estiver definido, o valor padrão será dedupeFields. É possível excluir até 300 registros de cada vez.
 
 ```http
 POST /rest/v1/namedAccountLists/delete.json
@@ -176,13 +189,13 @@ POST /rest/v1/namedAccountLists/delete.json
 }
 ```
 
-Caso um registro não possa ser encontrado para uma determinada chave, o item de resultado correspondente terá um`status` de &quot;ignorado&quot; e um motivo com um código e uma mensagem descrevendo a falha, como mostrado no exemplo acima.
+Se um registro não puder ser encontrado para uma chave, o item de resultado correspondente terá um `status` de &quot;ignorado&quot;. Também inclui um motivo com um código e uma mensagem que descrevem a falha.
 
 ## Gerenciar associação
 
 ### Associação de consulta
 
-Consultar a associação de uma lista de contas nomeadas é simples, exigindo apenas o `i` da lista de contas. Os parâmetros opcionais são:
+Consultar associação à lista de contas nomeadas fornecendo o `i` da lista de contas. Os parâmetros opcionais são:
 
 -`field` - uma lista separada por vírgulas de campos a serem incluídos nos registros de resposta
 -`nextPageToke` - para paginação através do conjunto de resultados
@@ -219,7 +232,7 @@ GET /rest/v1/namedAccountList/{id}/namedAccounts.json
 
 ### Adicionar membros
 
-Contas nomeadas podem ser facilmente adicionadas a uma Lista de contas nomeadas. Contas só podem ser adicionadas usando marketoGUID. Você pode adicionar até 300 registros por vez.
+Adicione contas nomeadas a uma Lista de contas nomeadas usando o marketoGUID. Você pode adicionar até 300 registros por vez.
 
 ```http
 POST /rest/v1/namedAccountList/{id}/namedAccounts.json
@@ -259,7 +272,7 @@ POST /rest/v1/namedAccountList/{id}/namedAccounts.json
 
 ### Remover membros
 
-A remoção de registros de uma lista de contas tem um caminho diferente, mas a mesma interface, exigindo `marketoGUI` para cada registro que você deseja excluir. É possível remover até 300 registros de cada vez.
+A remoção de registros de uma lista de contas usa um caminho diferente, mas a mesma interface. Forneça um `marketoGUI` para cada registro a ser removido. É possível remover até 300 registros de cada vez.
 
 ```http
 POST /rest/v1/namedAccountList/{id}/namedAccounts/remove.json
@@ -299,10 +312,10 @@ POST /rest/v1/namedAccountList/{id}/namedAccounts/remove.json
 
 ## Tempos limite
 
-- Os endpoints da Lista de Contas Nomeadas têm um tempo limite de 30s, a menos que indicado abaixo
-   - Sincronizar listas de contas nomeadas: 60s
-   - Excluir Listas de Contas Nomeadas: 60s
-   - Obter Listas de Contas Nomeadas: 60s
-   - Adicionar membros da lista de contas nomeadas: 60s
-   - Remover Membros da Lista de Contas Nomeadas: 60s
-   - Obter Membros da Lista de Contas Nomeadas: 60s
+- Os endpoints da Lista de Contas Nomeadas têm um tempo limite de 30s, a menos que especificado de outra forma.
+- Sincronizar Listas de Contas Nomeadas tem um tempo limite de 60s.
+- Excluir listas de contas nomeadas tem um tempo limite de 60s.
+- Obter Listas de Contas Nomeadas tem um tempo limite de 60s.
+- Adicionar membros da lista de contas nomeadas tem um tempo limite de 60s.
+- O tempo limite para Remover Membros da Lista de Contas Nomeadas é de 60s.
+- Obter Membros da Lista de Contas Nomeadas tem um tempo limite de 60s.

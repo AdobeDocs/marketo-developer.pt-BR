@@ -12,9 +12,9 @@ role_v2:
   - id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
 topic_v2:
   - id: a004cc84-67b9-4a33-a3a7-8ec7273ef4dc
-source-git-commit: 00118a89f25a23b931fac671130932bb0e0e4e4e
+source-git-commit: 3e6d310c5aec1a3435424fb122b71d825db5af0e
 workflow-type: tm+mt
-source-wordcount: 730
+source-wordcount: 590
 ht-degree: 1%
 
 ---
@@ -23,13 +23,15 @@ ht-degree: 1%
 
 [Referência de Ponto de Extremidade de Contas Nomeadas](https://developer.adobe.com/marketo-apis/api/mapi#tag/Named-Accounts)
 
-O Marketo oferece um conjunto de APIs para executar operações CRUD em contas nomeadas para uso com o Marketo ABM. Essas APIs seguem o padrão de interface padrão para APIs de banco de dados de clientes potenciais, fornecendo as opções Descrever, Criar/Atualizar, Excluir e Consultar.
+O Marketo fornece APIs para executar operações CRUD em contas nomeadas para uso com o Marketo ABM. Essas APIs seguem o padrão de interface do banco de dados de clientes potenciais e fornecem as opções Descrever, Criar/Atualizar, Excluir e Consultar.
 
-Atualmente, as únicas funções relacionadas à ABM disponíveis por meio das APIs do Marketo são as operações CRUD para contas nomeadas; os clientes em potencial não podem ser vinculados a contas nomeadas por meio de qualquer API.
+Atualmente, as APIs do Marketo oferecem suporte somente a operações CRUD para contas nomeadas. Não é possível vincular clientes potenciais a contas nomeadas por meio das APIs.
 
 ## Descrever
 
-Descrever contas nomeadas retorna metadados relacionados ao uso de contas nomeadas por meio das APIs do Marketo, incluindo uma lista de campos pesquisáveis válidos ao consultar e uma lista de todos os campos disponíveis para uso da API. O `idField` de uma conta nomeada é sempre `marketoGUID`, e o único `dedupeField` disponível, e a chave para criação é o campo `name` do objeto.
+Descrever contas nomeadas retorna metadados para usar contas nomeadas por meio de APIs do Marketo. A resposta inclui campos pesquisáveis válidos e todos os campos disponíveis para a API.
+
+O `idField` de uma conta nomeada é sempre `marketoGUID`. O campo `name` do objeto é o único `dedupeField` e a chave de criação disponíveis.
 
 ```http
 GET /rest/v1/namedaccounts/describe.json
@@ -144,7 +146,9 @@ GET /rest/v1/namedaccounts/describe.json
 
 ### Consultar
 
-A consulta de contas nomeadas é baseada no uso de um filterType e um conjunto de até 300 filterValues separados por vírgula. `filterType` pode ser qualquer campo único retornado no membro `searchableFields` do resultado descrito para contas nomeadas, enquanto filterValues pode ser qualquer entrada válida para o tipo de dados do campo. Para retornar um conjunto específico de campos do, um parâmetro de campos deve ser transmitido, onde o valor é uma lista de campos separados por vírgulas a serem retornados na resposta. Como outras opções de consulta, o número máximo de registros para uma única página de consulta é 300, e registros adicionais no conjunto devem ser solicitados com o uso do nextPageToken retornado pela chamada.
+Consulte contas nomeadas usando um filterType e até 300 filterValues separados por vírgula. O filterType pode ser qualquer único campo retornado no membro `searchableFields` da resposta Describe. Cada entrada filterValues deve ser um valor válido para o tipo de dados do campo.
+
+Para retornar campos específicos, passe um parâmetro de campos com uma lista de campos separada por vírgulas. Uma página de consulta contém no máximo 300 registros. Para recuperar registros adicionais, use o nextPageToken retornado pela chamada.
 
 ```http
 GET /rest/v1/namedaccounts.json?filterType=name&filterValues=Google,Yahoo
@@ -175,7 +179,13 @@ GET /rest/v1/namedaccounts.json?filterType=name&filterValues=Google,Yahoo
 
 ### Criar e atualizar
 
-A criação e a atualização de contas nomeadas seguem o padrão de banco de dados de clientes potenciais padrão. Os registros devem ser passados no membro de entrada de um corpo JSON em uma solicitação POST. `input` é o único membro necessário, com `action` e `dedupeBy` como membros opcionais. É possível incluir até 300 registros na entrada. A ação pode ser createOnly, updateOnly ou createOrUpdate. Se não especificada, a ação padrão é createOrUpdate. dedupeBy só pode ser especificado quando a ação é updateOnly e aceita apenas um dedupeFields ou idField, que correspondem aos campos name e marketoGUID, respectivamente.
+Criar e atualizar contas nomeadas usando o padrão de Banco de Dados de Cliente Potencial padrão. Transmita registros no membro de entrada do corpo JSON de uma solicitação POST. É possível incluir até 300 registros.
+
+Os membros da solicitação são:
+
+- `input`: o único membro necessário.
+- `action`: um membro opcional que aceita createOnly, updateOnly ou createOrUpdate. O padrão é createOrUpdate.
+- `dedupeBy`: um membro opcional disponível somente quando a ação é updateOnly. Ele aceita dedupeFields ou idField, que correspondem aos campos name e marketoGUID, respectivamente.
 
 ```http
 POST /rest/v1/namedaccounts.json
@@ -223,17 +233,19 @@ Content-Type: application/json
 
 ### Campos
 
-O objeto de conta nomeado contém um conjunto de campos. Cada definição de campo é composta de um conjunto de atributos que descrevem o campo. Exemplos de atributos são nome de exibição, nome da API e dataType. Esses atributos são conhecidos coletivamente como metadados.
+O objeto de conta nomeado contém campos definidos por atributos como nome de exibição, nome da API e dataType. Juntos, esses atributos são chamados de metadados.
 
-Os endpoints a seguir permitem consultar campos no objeto da empresa. Essas APIs exigem que o usuário da API proprietária tenha uma função com uma ou ambas as permissões de Campo padrão de esquema de leitura-gravação ou Campo personalizado de esquema de leitura-gravação.
+Os seguintes campos de consulta de endpoints no objeto da empresa. O usuário da API deve ter uma função com a permissão Campo padrão do esquema de leitura-gravação, Campo personalizado do esquema de leitura-gravação ou ambas.
 
 ### Campos de consulta
 
-Consultar campos de conta nomeados é simples. Você pode consultar um único campo de conta nomeado por nome de API ou consultar o conjunto de todos os campos de empresa.
+Consulte um campo de conta nomeado pelo nome da API ou recupere todos os campos da empresa.
 
 #### Por nome
 
-O ponto de extremidade [Obter Campo de Conta Nomeado por Nome](https://developer.adobe.com/marketo-apis/api/mapi#tag/Named-Accounts/operation/getNamedAccountFieldByNameUsingGET) recupera metadados para um único campo no objeto de conta nomeado. O parâmetro de caminho fieldApiName necessário especifica o nome da API do campo. A resposta é como o ponto de extremidade Descrever conta nomeada, mas contém metadados adicionais, como o atributo isCustom que indica se o campo é um campo personalizado.
+O ponto de extremidade [Obter Campo de Conta Nomeado por Nome](https://developer.adobe.com/marketo-apis/api/mapi#tag/Named-Accounts/operation/getNamedAccountFieldByNameUsingGET) recupera metadados de um campo no objeto de conta nomeado. O parâmetro de caminho fieldApiName necessário especifica o nome da API do campo.
+
+A resposta é semelhante à resposta Descrever conta nomeada, mas inclui metadados adicionais. Por exemplo, o atributo isCustom indica se o campo é personalizado.
 
 ```http
 GET /rest/v1/namedaccounts/schema/fields/annualRevenue.json
@@ -261,7 +273,9 @@ GET /rest/v1/namedaccounts/schema/fields/annualRevenue.json
 
 #### Navegar
 
-O ponto de extremidade [Obter Campos de Conta Nomeada](https://developer.adobe.com/marketo-apis/api/mapi#tag/Named-Accounts/operation/getNamedAccountFieldByNameUsingGET) recupera metadados para todos os campos no objeto de conta nomeado. Por padrão, no máximo 300 registros são retornados. Você pode usar o parâmetro de consulta batchSize para reduzir esse número. Se o atributo moreResult for true, significa que mais resultados estarão disponíveis. Continue a chamar esse endpoint até que o atributo moreResult retorne false, o que significa que não há resultados disponíveis. O nextPageToken retornado desta API deve ser sempre reutilizado para a próxima iteração desta chamada.
+O ponto de extremidade [Obter Campos de Conta Nomeada](https://developer.adobe.com/marketo-apis/api/mapi#tag/Named-Accounts/operation/getNamedAccountFieldByNameUsingGET) recupera metadados para todos os campos no objeto de conta nomeado. Por padrão, retorna no máximo 300 registros. Use o parâmetro de consulta batchSize para reduzir esse número.
+
+Se o atributo moreResult for true, mais resultados estarão disponíveis. Continue chamando o ponto de extremidade com o nextPageToken retornado até que moreResult seja false.
 
 ```http
 GET /rest/v1/namedaccounts/schema/fields.json?batchSize=5
@@ -340,7 +354,9 @@ GET /rest/v1/namedaccounts/schema/fields.json?batchSize=5
 
 ### Excluir
 
-As exclusões são feitas por meio de uma solicitação JSON POST e têm um membro de entrada obrigatório e um membro deleteBy opcional. deleteBy pode ser um dos &quot;dedupeFields&quot; ou &quot;idField&quot;, correspondendo a name ou marketoGUID, respectivamente, e assumirá dedupeFields como padrão, caso não esteja definido. O membro de entrada aceita uma matriz de até 300 registros, contendo um membro cada, seja name ou marketoGUID, dependendo da configuração de deleteBy.
+Exclua as contas nomeadas enviando uma solicitação POST com um corpo JSON. A solicitação inclui um membro de entrada necessário e um membro deleteBy opcional.
+
+O membro deleteBy aceita &quot;dedupeFields&quot; ou &quot;idField&quot;, que correspondem a name e marketoGUID, respectivamente. Se não estiver definido, o padrão será dedupeFields. O membro de entrada aceita até 300 registros. Cada registro contém name ou marketoGUID, dependendo da configuração deleteBy.
 
 ```http
 POST /rest/v1/namedaccounts/delete.json
@@ -398,6 +414,6 @@ Content-Type: application/json
 
 ## Tempos limite
 
-- Os endpoints de conta nomeados têm um tempo limite de 30 s, a menos que observado abaixo
-   - Sincronizar contas nomeadas: 120s
-   - Excluir contas nomeadas: 60s
+- Os endpoints de conta nomeados têm um tempo limite de 30 s, a menos que especificado de outra forma.
+- Sincronizar contas nomeadas tem um tempo limite de 120s.
+- O tempo limite para excluir contas nomeadas é de 60s.
