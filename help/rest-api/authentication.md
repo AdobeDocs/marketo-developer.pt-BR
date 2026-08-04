@@ -4,13 +4,11 @@ feature: REST API
 description: Autentique APIs REST do Marketo com OAuth 2.0 com duas pernas, crie e use tokens de acesso, alterne para o Cabeçalho de autorização, gerencie a expiração e manipule erros 601 e 602.
 exl-id: f89a8389-b50c-4e86-a9e4-6f6acfa98e7e
 TQID: https://experienceleague.adobe.com/cIeI0m61CyIWq4HEosZ-QAsxzZb0WcrQRpCud2qysfY
-product_v2:
-  - id: b27e5950-9033-45ac-9f86-eb22e567f615
-role_v2:
-  - id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
-source-git-commit: 3e6d310c5aec1a3435424fb122b71d825db5af0e
+product_v2: id: b27e5950-9033-45ac-9f86-eb22e567f615
+role_v2: id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
+source-git-commit: 6d9408d07557d4b7426ad72d2a886220d622fb78
 workflow-type: tm+mt
-source-wordcount: 528
+source-wordcount: 526
 ht-degree: 0%
 
 ---
@@ -61,7 +59,7 @@ Todas as chamadas à API REST devem incluir um token de acesso em um cabeçalho 
 
 >[!IMPORTANT]
 >
->O suporte para autenticação usando o parâmetro de consulta `access_token` será removido em 31 de agosto de 2026. Se o projeto usar um parâmetro de consulta para passar o token de acesso, ele deverá ser atualizado para usar o [Cabeçalho de autorização](https://experienceleague.adobe.com/pt-br/docs/marketo-developer/marketo/rest/authentication#using-an-access-token) o mais rápido possível. O novo desenvolvimento deve usar o cabeçalho `Authorization` exclusivamente.
+>O suporte para autenticação usando o parâmetro de consulta `access_token` será removido em 31 de agosto de 2026. Se o projeto usar um parâmetro de consulta para passar o token de acesso, ele deverá ser atualizado para usar o [Cabeçalho de autorização](https://experienceleague.adobe.com/en/docs/marketo-developer/marketo/rest/authentication#using-an-access-token) o mais rápido possível. O novo desenvolvimento deve usar o cabeçalho `Authorization` exclusivamente.
 
 ### Alternar para o cabeçalho de Autorização
 
@@ -83,7 +81,7 @@ curl ... -H 'Authorization: Bearer <Access Token>' <REST API Endpoint Base URL>/
 
 Armazene o token de acesso e o período de expiração da resposta de identidade. O gerenciamento da expiração do token ajuda a impedir erros inesperados de autenticação durante a operação normal.
 
-Antes de fazer uma chamada REST, verifique o tempo de vida restante do token. Se o token tiver expirado, renove-o chamando o ponto de extremidade [Identidade](https://developer.adobe.com/marketo-apis/api/identity/#tag/Identity/operation/identityUsingGET). A renovação proativa evita falhas causadas por tokens expirados e torna a latência da chamada REST mais previsível, o que é importante para aplicativos voltados para o usuário final.
+Antes de fazer uma chamada REST, verifique o tempo de vida restante do token. Se o token tiver expirado, renove-o chamando o ponto de extremidade [Identidade](https://developer.adobe.com/marketo-apis/api/identity#tag/Identity). A renovação proativa evita falhas causadas por tokens expirados e torna a latência da chamada REST mais previsível, o que é importante para aplicativos voltados para o usuário final.
 
 Os erros de autenticação retornam os seguintes códigos:
 
