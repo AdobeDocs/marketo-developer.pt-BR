@@ -4,8 +4,10 @@ feature: REST API
 description: Saiba como usar as APIs REST de extração de lead em massa do Marketo para exportar leads em massa com filtros de data, lista e lista inteligente, campos personalizados e formatos CSV/TSV.
 exl-id: 42796e89-5468-463e-9b67-cce7e798677b
 TQID: https://experienceleague.adobe.com/4eMJR87fHDdccrVid3wHtspvBVQmrBGHYMlIwFCSdEI
-product_v2: id: b27e5950-9033-45ac-9f86-eb22e567f615
-role_v2: id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
+product_v2:
+  - id: b27e5950-9033-45ac-9f86-eb22e567f615
+role_v2:
+  - id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
 source-git-commit: aeb0d5a176ffdd0910ee533353593bba95f91d08
 workflow-type: tm+mt
 source-wordcount: 1017
