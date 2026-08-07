@@ -27,7 +27,7 @@ O Marketo fornece APIs para ler, escrever, criar e atualizar registros de oportu
 
 A API expõe ambos os tipos de objeto. Assim como na maioria dos tipos de objeto de banco de dados de clientes potenciais, cada um tem uma chamada Descrever correspondente que retorna metadados de objeto.
 
-As APIs de oportunidade fornecem acesso somente leitura para assinaturas que têm a [Sincronização do SFDC](https://experienceleague.adobe.com/docs/marketo/using/product-docs/crm-sync/salesforce-sync/sfdc-sync-details/sfdc-sync-field-sync.html?lang=en) ou a [Sincronização do Microsoft Dynamics](https://experienceleague.adobe.com/docs/marketo/using/product-docs/crm-sync/microsoft-dynamics/microsoft-dynamics-sync-details/microsoft-dynamics-sync-user-sync.html?lang=en) habilitada.
+As APIs de oportunidade fornecem acesso somente leitura para assinaturas que têm a [Sincronização do SFDC](https://experienceleague.adobe.com/docs/marketo/using/product-docs/crm-sync/salesforce-sync/sfdc-sync-details/sfdc-sync-field-sync.html?lang=pt-BR) ou a [Sincronização do Microsoft Dynamics](https://experienceleague.adobe.com/docs/marketo/using/product-docs/crm-sync/microsoft-dynamics/microsoft-dynamics-sync-details/microsoft-dynamics-sync-user-sync.html?lang=pt-BR) habilitada.
 
 ## Descrever
 

@@ -292,7 +292,7 @@ As variáveis são metatags no elemento `<head>` de um modelo de página de ater
 </head>
 ```
 
-Para obter mais informações, consulte a seção &quot;Variável editável&quot; na documentação [Criar um modelo de página de aterrissagem guiado](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/demand-generation/landing-pages/landing-page-templates/create-a-guided-landing-page-template).
+Para obter mais informações, consulte a seção &quot;Variável editável&quot; na documentação [Criar um modelo de página de aterrissagem guiado](https://experienceleague.adobe.com/pt-br/docs/marketo/using/product-docs/demand-generation/landing-pages/landing-page-templates/create-a-guided-landing-page-template).
 
 ### Consultar
 

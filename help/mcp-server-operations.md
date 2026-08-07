@@ -28,7 +28,7 @@ As seguintes operações estão disponíveis através do servidor MCP [!DNL Mark
 >
 >A equipe do servidor MCP está trabalhando para ativar as APIs de ativos Smart List e Smart Campaign para trabalhar com o servidor MCP. Esse trabalho, incluindo itens de incluir na lista de permissões, deve ser concluído no terceiro trimestre de 2026.
 
-Para obter informações sobre como os dados são tratados com a IA do Marketo e o servidor MCP do Marketo Engage, consulte a página [Informações de Dados](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/marketo-ai/data-information).
+Para obter informações sobre como os dados são tratados com a IA do Marketo e o servidor MCP do Marketo Engage, consulte a página [Informações de Dados](https://experienceleague.adobe.com/pt-br/docs/marketo/using/product-docs/marketo-ai/data-information).
 
 ## Exportação em massa
 
