@@ -4,17 +4,13 @@ feature: REST API
 description: Guia do Marketo REST para CRUD em contas nomeadas para ABM, com descrever, consultar, criar exemplos de atualização, campos pesquisáveis, regras de desduplicação e sem vinculação de leads.
 exl-id: 2aa1d2a0-9e54-4a9a-abb1-0d0479ed3558
 TQID: https://experienceleague.adobe.com/iY3UYVelm3aKuuDBCTxaVCbkXfwnJzDjV3Kvn9rcNbA
-product_v2:
-  - id: b27e5950-9033-45ac-9f86-eb22e567f615
-feature_v2:
-  - id: c5f60233-d5ea-4453-a799-0ad258b4d399
-role_v2:
-  - id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
-topic_v2:
-  - id: a004cc84-67b9-4a33-a3a7-8ec7273ef4dc
-source-git-commit: 3e6d310c5aec1a3435424fb122b71d825db5af0e
+product_v2: id: b27e5950-9033-45ac-9f86-eb22e567f615
+feature_v2: id: c5f60233-d5ea-4453-a799-0ad258b4d399
+role_v2: id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
+topic_v2: id: a004cc84-67b9-4a33-a3a7-8ec7273ef4dc
+source-git-commit: aeb0d5a176ffdd0910ee533353593bba95f91d08
 workflow-type: tm+mt
-source-wordcount: 590
+source-wordcount: 584
 ht-degree: 1%
 
 ---
@@ -243,7 +239,7 @@ Consulte um campo de conta nomeado pelo nome da API ou recupere todos os campos 
 
 #### Por nome
 
-O ponto de extremidade [Obter Campo de Conta Nomeado por Nome](https://developer.adobe.com/marketo-apis/api/mapi#tag/Named-Accounts/operation/getNamedAccountFieldByNameUsingGET) recupera metadados de um campo no objeto de conta nomeado. O parâmetro de caminho fieldApiName necessário especifica o nome da API do campo.
+O ponto de extremidade [Obter Campo de Conta Nomeado por Nome](https://developer.adobe.com/marketo-apis/api/mapi#operation/getNamedAccountFieldByNameUsingGET) recupera metadados de um campo no objeto de conta nomeado. O parâmetro de caminho fieldApiName necessário especifica o nome da API do campo.
 
 A resposta é semelhante à resposta Descrever conta nomeada, mas inclui metadados adicionais. Por exemplo, o atributo isCustom indica se o campo é personalizado.
 
@@ -273,7 +269,7 @@ GET /rest/v1/namedaccounts/schema/fields/annualRevenue.json
 
 #### Navegar
 
-O ponto de extremidade [Obter Campos de Conta Nomeada](https://developer.adobe.com/marketo-apis/api/mapi#tag/Named-Accounts/operation/getNamedAccountFieldByNameUsingGET) recupera metadados para todos os campos no objeto de conta nomeado. Por padrão, retorna no máximo 300 registros. Use o parâmetro de consulta batchSize para reduzir esse número.
+O ponto de extremidade [Obter Campos de Conta Nomeada](https://developer.adobe.com/marketo-apis/api/mapi#operation/getNamedAccountFieldByNameUsingGET) recupera metadados para todos os campos no objeto de conta nomeado. Por padrão, retorna no máximo 300 registros. Use o parâmetro de consulta batchSize para reduzir esse número.
 
 Se o atributo moreResult for true, mais resultados estarão disponíveis. Continue chamando o ponto de extremidade com o nextPageToken retornado até que moreResult seja false.
 

@@ -4,15 +4,12 @@ feature: REST API
 description: Importação em massa do Marketo para carregar clientes em potencial, objetos personalizados e membros do programa por meio de uploads de várias partes, criação de trabalhos assíncronos, status de pesquisa e falhas de manuseio.
 exl-id: f7922fd2-8408-4d04-8955-0f8f58914d24
 TQID: https://experienceleague.adobe.com/lr9dyX-fY-oJ2LM5P0zE1m24HtFYKQYYbxMkVe--PkE
-product_v2:
-  - id: b27e5950-9033-45ac-9f86-eb22e567f615
-feature_v2:
-  - id: c5f60233-d5ea-4453-a799-0ad258b4d399
-role_v2:
-  - id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
-source-git-commit: 3e6d310c5aec1a3435424fb122b71d825db5af0e
+product_v2: id: b27e5950-9033-45ac-9f86-eb22e567f615
+feature_v2: id: c5f60233-d5ea-4453-a799-0ad258b4d399
+role_v2: id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
+source-git-commit: aeb0d5a176ffdd0910ee533353593bba95f91d08
 workflow-type: tm+mt
-source-wordcount: 538
+source-wordcount: 526
 ht-degree: 3%
 
 ---
@@ -57,7 +54,7 @@ A resposta da importação em massa não indica se um registro individual foi at
 
 ## Criação de um trabalho
 
-Crie um trabalho de importação de cliente potencial chamando o ponto de extremidade [Importar Clientes Potenciais](https://developer.adobe.com/marketo-apis/api/mapi#tag/Bulk-Import-Leads/operation/importLeadUsingPOST). Este ponto de extremidade usa [multipart/form-data como o tipo de conteúdo](https://www.w3.org/Protocols/rfc1341/7_2_Multipart.html).
+Crie um trabalho de importação de cliente potencial chamando o ponto de extremidade [Importar Clientes Potenciais](https://developer.adobe.com/marketo-apis/api/mapi#operation/importLeadUsingPOST). Este ponto de extremidade usa [multipart/form-data como o tipo de conteúdo](https://www.w3.org/Protocols/rfc1341/7_2_Multipart.html).
 
 Use uma biblioteca de suporte HTTP para seu idioma preferido para criar a solicitação multipart. Você também pode usar o [curl](https://curl.se/) para começar.
 
@@ -112,7 +109,7 @@ Cada endpoint de criação de trabalho compartilha parâmetros para configurar o
 
 ## Status do trabalho de pesquisa
 
-Passe o `batchId` para o ponto de extremidade [Obter Status de Cliente Potencial de Importação](https://developer.adobe.com/marketo-apis/api/mapi#tag/Bulk-Import-Leads/operation/getImportLeadStatusUsingGET) para recuperar o status do trabalho.
+Passe o `batchId` para o ponto de extremidade [Obter Status de Cliente Potencial de Importação](https://developer.adobe.com/marketo-apis/api/mapi#operation/getImportLeadStatusUsingGET) para recuperar o status do trabalho.
 
 ```http
 GET /bulk/v1/leads/batch/{batchId}.json
@@ -144,7 +141,7 @@ Neste exemplo, o trabalho está concluído, portanto, a pesquisa pode ser interr
 
 O atributo `numOfRowsFailed` na resposta Obter Status de Cliente Potencial de Importação indica o número de linhas com falha. Um valor maior que zero significa que ocorreram falhas.
 
-Para recuperar os registros com falha e suas causas, use o [Obter Falhas de Importação de Cliente Potencial](https://developer.adobe.com/marketo-apis/api/mapi#tag/Bulk-Import-Leads/operation/getImportLeadFailuresUsingGET).
+Para recuperar os registros com falha e suas causas, use o [Obter Falhas de Importação de Cliente Potencial](https://developer.adobe.com/marketo-apis/api/mapi#operation/getImportLeadFailuresUsingGET).
 
 ```http
 GET /bulk/v1/leads/batch/{batchId}/failures.json

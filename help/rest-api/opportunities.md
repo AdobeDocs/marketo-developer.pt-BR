@@ -4,17 +4,13 @@ feature: REST API
 description: API REST do Marketo para descrever, consultar, criar e atualizar oportunidades, desduplicação e campos pesquisáveis, limites e comportamento somente leitura com sincronização do SFDC ou Dynamics.
 exl-id: 46451285-4125-4857-890a-575069a68288
 TQID: https://experienceleague.adobe.com/rBDJcXWQrN5qyKRWHyzVC-sc9BH2mQFLm7fKUk-NUn8
-product_v2:
-  - id: b27e5950-9033-45ac-9f86-eb22e567f615
-feature_v2:
-  - id: c5f60233-d5ea-4453-a799-0ad258b4d399
-role_v2:
-  - id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
-topic_v2:
-  - id: a004cc84-67b9-4a33-a3a7-8ec7273ef4dc
-source-git-commit: 3e6d310c5aec1a3435424fb122b71d825db5af0e
+product_v2: id: b27e5950-9033-45ac-9f86-eb22e567f615
+feature_v2: id: c5f60233-d5ea-4453-a799-0ad258b4d399
+role_v2: id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
+topic_v2: id: a004cc84-67b9-4a33-a3a7-8ec7273ef4dc
+source-git-commit: aeb0d5a176ffdd0910ee533353593bba95f91d08
 workflow-type: tm+mt
-source-wordcount: 708
+source-wordcount: 702
 ht-degree: 0%
 
 ---
@@ -27,7 +23,7 @@ O Marketo fornece APIs para ler, escrever, criar e atualizar registros de oportu
 
 A API expõe ambos os tipos de objeto. Assim como na maioria dos tipos de objeto de banco de dados de clientes potenciais, cada um tem uma chamada Descrever correspondente que retorna metadados de objeto.
 
-As APIs de oportunidade fornecem acesso somente leitura para assinaturas que têm a [Sincronização do SFDC](https://experienceleague.adobe.com/docs/marketo/using/product-docs/crm-sync/salesforce-sync/sfdc-sync-details/sfdc-sync-field-sync.html?lang=pt-BR) ou a [Sincronização do Microsoft Dynamics](https://experienceleague.adobe.com/docs/marketo/using/product-docs/crm-sync/microsoft-dynamics/microsoft-dynamics-sync-details/microsoft-dynamics-sync-user-sync.html?lang=pt-BR) habilitada.
+As APIs de oportunidade fornecem acesso somente leitura para assinaturas que têm a [Sincronização do SFDC](https://experienceleague.adobe.com/docs/marketo/using/product-docs/crm-sync/salesforce-sync/sfdc-sync-details/sfdc-sync-field-sync.html?lang=en) ou a [Sincronização do Microsoft Dynamics](https://experienceleague.adobe.com/docs/marketo/using/product-docs/crm-sync/microsoft-dynamics/microsoft-dynamics-sync-details/microsoft-dynamics-sync-user-sync.html?lang=en) habilitada.
 
 ## Descrever
 
@@ -100,7 +96,7 @@ Os principais campos de resposta são:
 
 ## Consultar
 
-O padrão para [oportunidades de consulta](https://developer.adobe.com/marketo-apis/api/mapi#tag/Opportunities/operation/getOpportunitiesUsingGET) segue de perto a API de clientes potenciais. No entanto, o parâmetro `filterType` aceita somente campos listados na matriz `searchableFields` da resposta de Descrever ou dedupeFields correspondentes.
+O padrão para [oportunidades de consulta](https://developer.adobe.com/marketo-apis/api/mapi#operation/getOpportunitiesUsingGET) segue de perto a API de clientes potenciais. No entanto, o parâmetro `filterType` aceita somente campos listados na matriz `searchableFields` da resposta de Descrever ou dedupeFields correspondentes.
 
 Para campos de oportunidade personalizados, somente campos do tipo String ou Integer são exibidos na matriz searchableFields.
 
@@ -221,7 +217,7 @@ Consulte um campo de empresa por nome de API ou recupere todos os campos de empr
 
 #### Por nome
 
-O ponto de extremidade [Obter Campo de Oportunidade por Nome](https://developer.adobe.com/marketo-apis/api/mapi#tag/Opportunities/operation/getOpportunityFieldByNameUsingGET) recupera metadados de um campo no objeto da empresa. O parâmetro de caminho `fieldApiName` necessário especifica o nome da API do campo.
+O ponto de extremidade [Obter Campo de Oportunidade por Nome](https://developer.adobe.com/marketo-apis/api/mapi#operation/getOpportunityFieldByNameUsingGET) recupera metadados de um campo no objeto da empresa. O parâmetro de caminho `fieldApiName` necessário especifica o nome da API do campo.
 
 A resposta é semelhante à resposta Descrever oportunidade, mas inclui metadados adicionais. Por exemplo, o atributo `isCustom` indica se o campo é personalizado.
 
@@ -252,7 +248,7 @@ GET /rest/v1/opportunities/schema/fields/externalOpportunityId.json
 
 #### Procurar
 
-O ponto de extremidade [Obter Campos de Oportunidade](https://developer.adobe.com/marketo-apis/api/mapi#tag/Opportunities/operation/getOpportunityFieldsUsingGET) recupera metadados para todos os campos no objeto da empresa. Por padrão, retorna no máximo 300 registros. Use o parâmetro de consulta `batchSize` para reduzir esse número.
+O ponto de extremidade [Obter Campos de Oportunidade](https://developer.adobe.com/marketo-apis/api/mapi#operation/getOpportunityFieldsUsingGET) recupera metadados para todos os campos no objeto da empresa. Por padrão, retorna no máximo 300 registros. Use o parâmetro de consulta `batchSize` para reduzir esse número.
 
 Se o atributo `moreResult` for true, mais resultados estarão disponíveis. Continue chamando o ponto de extremidade com o `nextPageToken` retornado até que moreResult seja false.
 

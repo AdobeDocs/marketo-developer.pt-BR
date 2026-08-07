@@ -4,15 +4,12 @@ feature: REST API, Dynamic Content
 description: Configure o conteúdo dinâmico do Marketo em nível de seção por meio das APIs REST usando segmentações para personalizar emails, páginas de aterrissagem e trechos com endpoints e exemplos
 exl-id: 8ab97624-5fb5-4a41-911f-ec8616dd43c9
 TQID: https://experienceleague.adobe.com/MwfPxu74qk0bPZMr6yuxQi--e3gMvP1tXQZ5iMil02o
-product_v2:
-  - id: b27e5950-9033-45ac-9f86-eb22e567f615
-feature_v2:
-  - id: c5f60233-d5ea-4453-a799-0ad258b4d399
-role_v2:
-  - id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
-source-git-commit: 3e6d310c5aec1a3435424fb122b71d825db5af0e
+product_v2: id: b27e5950-9033-45ac-9f86-eb22e567f615
+feature_v2: id: c5f60233-d5ea-4453-a799-0ad258b4d399
+role_v2: id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
+source-git-commit: aeb0d5a176ffdd0910ee533353593bba95f91d08
 workflow-type: tm+mt
-source-wordcount: 329
+source-wordcount: 325
 ht-degree: 3%
 
 ---
@@ -35,7 +32,7 @@ Quando um lead exibe o ativo, o Marketo exibe a variação do segmento do lead. 
 
 Esse exemplo usa uma segmentação de Região (EUA) para exibir uma promoção de evento para leads no segmento Sudoeste. O segmento inclui leads da Califórnia, Nevada, Utah, Colorado, Arizona e Novo México.
 
-Use o ponto de extremidade [Atualizar Seção de Conteúdo de Email](https://developer.adobe.com/marketo-apis/api/asset#tag/Emails/operation/updateEmailComponentContentUsingPOST) para alterar a seção editável com ID `Q1-promotion-banner` para uma seção `DynamicContent`. O parâmetro `value` especifica a ID de segmentação.
+Use o ponto de extremidade [Atualizar Seção de Conteúdo de Email](https://developer.adobe.com/marketo-apis/api/asset#operation/updateEmailComponentContentUsingPOST) para alterar a seção editável com ID `Q1-promotion-banner` para uma seção `DynamicContent`. O parâmetro `value` especifica a ID de segmentação.
 
 Emails e landing pages seguem esse padrão. Os trechos usam o padrão diferente descrito na documentação da API de trechos.
 
@@ -63,7 +60,7 @@ type=DynamicContent&value=1001
 }
 ```
 
-Chame o ponto de extremidade [Atualizar Seção de Conteúdo Dinâmico de Email](https://developer.adobe.com/marketo-apis/api/asset#tag/Emails/operation/updateEmailDynamicContentUsingPOST) para adicionar conteúdo a um segmento em uma seção específica.
+Chame o ponto de extremidade [Atualizar Seção de Conteúdo Dinâmico de Email](https://developer.adobe.com/marketo-apis/api/asset#operation/updateEmailDynamicContentUsingPOST) para adicionar conteúdo a um segmento em uma seção específica.
 
 A solicitação a seguir exibe um banner especial em vez do conteúdo padrão para clientes potenciais no segmento Sudoeste. Para criar mais variações, chame o endpoint para cada segmento e seção.
 
