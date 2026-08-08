@@ -12,16 +12,16 @@ role_v2:
   - id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
 topic_v2:
   - id: a004cc84-67b9-4a33-a3a7-8ec7273ef4dc
-source-git-commit: 3e6d310c5aec1a3435424fb122b71d825db5af0e
+source-git-commit: aeb0d5a176ffdd0910ee533353593bba95f91d08
 workflow-type: tm+mt
-source-wordcount: 894
+source-wordcount: 890
 ht-degree: 9%
 
 ---
 
 # Serviços personalizados
 
-Um Serviço Personalizado fornece as credenciais usadas para autenticar com o Marketo e obter um token de acesso do [Serviço de Identidade](https://developer.adobe.com/marketo-apis/api/identity/#tag/Identity/operation/identityUsingGET) da Marketo. Cada serviço personalizado tem como escopo um usuário somente API e suas permissões são derivadas desse usuário.
+Um Serviço Personalizado fornece as credenciais usadas para autenticar com o Marketo e obter um token de acesso do [Serviço de Identidade](https://developer.adobe.com/marketo-apis/api/identity#operation/identityUsingGET) da Marketo. Cada serviço personalizado tem como escopo um usuário somente API e suas permissões são derivadas desse usuário.
 
 ## Funções
 
@@ -79,7 +79,7 @@ Dê um nome descritivo ao serviço. Na lista &quot;Serviço&quot;, selecione &qu
 
 O serviço é exibido na lista de serviços do LaunchPoint com uma opção &quot;Exibir detalhes&quot;. Selecione &quot;Exibir detalhes&quot; para acessar a ID do cliente, o segredo do cliente, o usuário proprietário e a opção Obter token.
 
-Use Obter token para testes de curto prazo. O token tem a mesma duração dos tokens obtidos do [Serviço de identidade](https://developer.adobe.com/marketo-apis/api/identity/#tag/Identity/operation/identityUsingGET) e é válido por 3.600 segundos após a criação.
+Use Obter token para testes de curto prazo. O token tem a mesma duração dos tokens obtidos do [Serviço de identidade](https://developer.adobe.com/marketo-apis/api/identity#operation/identityUsingGET) e é válido por 3.600 segundos após a criação.
 
 ![Obter token](assets/get-token.png)
 

@@ -15,9 +15,9 @@ role_v2:
   - id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
 topic_v2:
   - id: a004cc84-67b9-4a33-a3a7-8ec7273ef4dc
-source-git-commit: 3e6d310c5aec1a3435424fb122b71d825db5af0e
+source-git-commit: aeb0d5a176ffdd0910ee533353593bba95f91d08
 workflow-type: tm+mt
-source-wordcount: 2728
+source-wordcount: 2733
 ht-degree: 3%
 
 ---
@@ -72,7 +72,7 @@ GET /rest/v1/leads/describe.json
 
 As respostas reais incluem mais campos na matriz de resultados. Cada item representa um campo disponível no registro de cliente potencial e contém pelo menos uma id, um displayName e um tipo de dados.
 
-Os objetos filho rest e soap aparecem somente quando o campo é válido para a API correspondente. A propriedade `readOnly` indica se a API correspondente pode atualizar o campo. Quando presente, a propriedade length fornece o comprimento máximo do campo e a propriedade dataType fornece o tipo de dados do campo.
+Os objetos filho REST aparecem somente quando o campo é válido para a API correspondente. A propriedade `readOnly` indica se a API correspondente pode atualizar o campo. Quando presente, a propriedade length fornece o comprimento máximo do campo e a propriedade dataType fornece o tipo de dados do campo.
 
 ## Consultar
 
@@ -177,7 +177,7 @@ A API de clientes potenciais pode criar, atualizar e excluir registros de client
 
 >[!NOTE]
 >
-> Não há suporte para a atualização de campos da Empresa usando o ponto de extremidade [Clientes Potenciais de Sincronização](https://developer.adobe.com/marketo-apis/api/mapi#tag/Leads/operation/syncLeadUsingPOST). Em vez disso, use o ponto de extremidade [Sincronizar Empresas](https://developer.adobe.com/marketo-apis/api/mapi#tag/Companies/operation/syncCompaniesUsingPOST).
+> Não há suporte para a atualização de campos da Empresa usando o ponto de extremidade [Clientes Potenciais de Sincronização](https://developer.adobe.com/marketo-apis/api/mapi#operation/syncLeadUsingPOST). Em vez disso, use o ponto de extremidade [Sincronizar Empresas](https://developer.adobe.com/marketo-apis/api/mapi#operation/syncCompaniesUsingPOST).
 
 >[!NOTE]
 >

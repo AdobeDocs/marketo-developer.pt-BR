@@ -12,9 +12,9 @@ role_v2:
   - id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
 topic_v2:
   - id: a004cc84-67b9-4a33-a3a7-8ec7273ef4dc
-source-git-commit: 3e6d310c5aec1a3435424fb122b71d825db5af0e
+source-git-commit: aeb0d5a176ffdd0910ee533353593bba95f91d08
 workflow-type: tm+mt
-source-wordcount: 590
+source-wordcount: 584
 ht-degree: 1%
 
 ---
@@ -243,7 +243,7 @@ Consulte um campo de conta nomeado pelo nome da API ou recupere todos os campos 
 
 #### Por nome
 
-O ponto de extremidade [Obter Campo de Conta Nomeado por Nome](https://developer.adobe.com/marketo-apis/api/mapi#tag/Named-Accounts/operation/getNamedAccountFieldByNameUsingGET) recupera metadados de um campo no objeto de conta nomeado. O parâmetro de caminho fieldApiName necessário especifica o nome da API do campo.
+O ponto de extremidade [Obter Campo de Conta Nomeado por Nome](https://developer.adobe.com/marketo-apis/api/mapi#operation/getNamedAccountFieldByNameUsingGET) recupera metadados de um campo no objeto de conta nomeado. O parâmetro de caminho fieldApiName necessário especifica o nome da API do campo.
 
 A resposta é semelhante à resposta Descrever conta nomeada, mas inclui metadados adicionais. Por exemplo, o atributo isCustom indica se o campo é personalizado.
 
@@ -273,7 +273,7 @@ GET /rest/v1/namedaccounts/schema/fields/annualRevenue.json
 
 #### Navegar
 
-O ponto de extremidade [Obter Campos de Conta Nomeada](https://developer.adobe.com/marketo-apis/api/mapi#tag/Named-Accounts/operation/getNamedAccountFieldByNameUsingGET) recupera metadados para todos os campos no objeto de conta nomeado. Por padrão, retorna no máximo 300 registros. Use o parâmetro de consulta batchSize para reduzir esse número.
+O ponto de extremidade [Obter Campos de Conta Nomeada](https://developer.adobe.com/marketo-apis/api/mapi#operation/getNamedAccountFieldByNameUsingGET) recupera metadados para todos os campos no objeto de conta nomeado. Por padrão, retorna no máximo 300 registros. Use o parâmetro de consulta batchSize para reduzir esse número.
 
 Se o atributo moreResult for true, mais resultados estarão disponíveis. Continue chamando o ponto de extremidade com o nextPageToken retornado até que moreResult seja false.
 

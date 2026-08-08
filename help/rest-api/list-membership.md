@@ -3,9 +3,9 @@ title: Associação de Lista (Listas Estáticas)
 feature: REST API, Static Lists
 description: Use as APIs REST do Banco de Dados de Clientes Potenciais da Marketo para adicionar clientes potenciais a listas estáticas, remover clientes potenciais, recuperar membros da lista e verificar associação da lista.
 exl-id: b8f74bcf-834a-44db-81fd-621048afeba4
-source-git-commit: 3e6d310c5aec1a3435424fb122b71d825db5af0e
+source-git-commit: aeb0d5a176ffdd0910ee533353593bba95f91d08
 workflow-type: tm+mt
-source-wordcount: '427'
+source-wordcount: '415'
 ht-degree: 6%
 
 ---
@@ -32,7 +32,7 @@ As APIs de Associação de Lista fornecem endpoints do Banco de Dados de Cliente
 
 ## Adicionar à lista
 
-Use o ponto de extremidade [Adicionar à Lista](https://developer.adobe.com/marketo-apis/api/mapi#tag/Static-Lists/operation/addLeadsToListUsingPOST) para adicionar um ou mais membros a uma lista. Passe o parâmetro de caminho `listId` necessário e um ou mais parâmetros de consulta `id` que contêm IDs de cliente potencial. O número máximo de IDs de clientes potenciais é 300.
+Use o ponto de extremidade [Adicionar à Lista](https://developer.adobe.com/marketo-apis/api/mapi#operation/addLeadsToListUsingPOST) para adicionar um ou mais membros a uma lista. Passe o parâmetro de caminho `listId` necessário e um ou mais parâmetros de consulta `id` que contêm IDs de cliente potencial. O número máximo de IDs de clientes potenciais é 300.
 
 A resposta contém uma matriz `result` com o status de cada ID de cliente potencial na solicitação.
 
@@ -65,7 +65,7 @@ POST /rest/v1/lists/{listId}/leads.json?id=318594&id=318595
 
 ## Remover da lista
 
-Use o ponto de extremidade [Remover da Lista](https://developer.adobe.com/marketo-apis/api/mapi#tag/Static-Lists/operation/removeLeadsFromListUsingDELETE) para remover um ou mais membros de uma lista. Passe o parâmetro de caminho `listId` necessário e um ou mais parâmetros de consulta `id` que contêm IDs de cliente potencial. O número máximo de IDs de clientes potenciais é 300.
+Use o ponto de extremidade [Remover da Lista](https://developer.adobe.com/marketo-apis/api/mapi#operation/removeLeadsFromListUsingDELETE) para remover um ou mais membros de uma lista. Passe o parâmetro de caminho `listId` necessário e um ou mais parâmetros de consulta `id` que contêm IDs de cliente potencial. O número máximo de IDs de clientes potenciais é 300.
 
 A resposta contém uma matriz `result` com o status de cada ID de cliente potencial na solicitação.
 
@@ -102,7 +102,7 @@ DELETE /rest/v1/lists/{listId}/leads.json?id=318603&id=318595&id=999999
 
 ## Obter clientes em potencial por ID de lista
 
-Use o ponto de extremidade [Obter Clientes Potenciais por Id de Lista](https://developer.adobe.com/marketo-apis/api/mapi#tag/Static-Lists/operation/getLeadsByListIdUsingGET) para recuperar membros de uma lista. Passe o parâmetro de caminho `listId` necessário. Você também pode enviar parâmetros de consulta opcionais para especificar os critérios de filtragem.
+Use o ponto de extremidade [Obter Clientes Potenciais por Id de Lista](https://developer.adobe.com/marketo-apis/api/mapi#operation/getLeadsByListIdUsingGET) para recuperar membros de uma lista. Passe o parâmetro de caminho `listId` necessário. Você também pode enviar parâmetros de consulta opcionais para especificar os critérios de filtragem.
 
 Os parâmetros opcionais de consulta são:
 
@@ -152,7 +152,7 @@ GET /rest/v1/lists/{listId}/leads.json?batchSize=3
 
 ## Membro da lista
 
-Use o ponto de extremidade [Membro da Lista](https://developer.adobe.com/marketo-apis/api/mapi#tag/Static-Lists/operation/areLeadsMemberOfListUsingGET) para determinar se um ou mais clientes em potencial são membros de uma lista. Passe o parâmetro de caminho `listId` necessário e um ou mais parâmetros de consulta `id` que contêm IDs de cliente potencial. O número máximo de IDs de clientes potenciais é 300.
+Use o ponto de extremidade [Membro da Lista](https://developer.adobe.com/marketo-apis/api/mapi#operation/areLeadsMemberOfListUsingGET) para determinar se um ou mais clientes em potencial são membros de uma lista. Passe o parâmetro de caminho `listId` necessário e um ou mais parâmetros de consulta `id` que contêm IDs de cliente potencial. O número máximo de IDs de clientes potenciais é 300.
 
 A resposta contém uma matriz `result` com o status de cada ID de cliente potencial na solicitação.
 

@@ -8,9 +8,9 @@ product_v2:
   - id: b27e5950-9033-45ac-9f86-eb22e567f615
 role_v2:
   - id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
-source-git-commit: 3e6d310c5aec1a3435424fb122b71d825db5af0e
+source-git-commit: aeb0d5a176ffdd0910ee533353593bba95f91d08
 workflow-type: tm+mt
-source-wordcount: 131
+source-wordcount: 129
 ht-degree: 1%
 
 ---
@@ -39,7 +39,7 @@ A API REST do Marketo compacta o corpo da resposta e inclui o seguinte cabeçalh
 Content-Encoding: gzip
 ```
 
-O exemplo de cURL a seguir chama o ponto de extremidade [Obter Clientes Potenciais por Tipo de Filtro](https://developer.adobe.com/marketo-apis/api/mapi#tag/Leads/operation/getLeadsByFilterUsingGET) para recuperar cinco clientes potenciais:
+O exemplo de cURL a seguir chama o ponto de extremidade [Obter Clientes Potenciais por Tipo de Filtro](https://developer.adobe.com/marketo-apis/api/mapi#operation/getLeadsByFilterUsingGET) para recuperar cinco clientes potenciais:
 
 ```bash
 curl -H 'Accept-Encoding: gzip' 'https://123-ABC-456.mktorest.com/rest/v1/leads.json?filterType=id&filterValues=4,5,7,12,13'

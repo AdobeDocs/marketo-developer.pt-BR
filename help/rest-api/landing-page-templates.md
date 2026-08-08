@@ -12,9 +12,9 @@ role_v2:
   - id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
 topic_v2:
   - id: a004cc84-67b9-4a33-a3a7-8ec7273ef4dc
-source-git-commit: 3e6d310c5aec1a3435424fb122b71d825db5af0e
+source-git-commit: aeb0d5a176ffdd0910ee533353593bba95f91d08
 workflow-type: tm+mt
-source-wordcount: 519
+source-wordcount: 499
 ht-degree: 2%
 
 ---
@@ -33,7 +33,7 @@ Para obter uma comparação detalhada, consulte [Noções básicas sobre página
 
 ## Consultar
 
-Consulte os modelos de página de aterrissagem [por ID](https://developer.adobe.com/marketo-apis/api/asset#tag/Landing-Page-Templates/operation/getLandingPageTemplateByIdUsingGET), [por nome](https://developer.adobe.com/marketo-apis/api/asset#tag/Landing-Page-Templates/operation/getLandingPageTemplateByNameUsingGET) ou por [navegação](https://developer.adobe.com/marketo-apis/api/asset#tag/Landing-Page-Templates/operation/getLandingPageTemplatesUsingGET). Esses endpoints retornam metadados de modelo. Recupere o conteúdo do HTML separadamente para cada modelo por ID.
+Consulte os modelos de página de aterrissagem [por ID](https://developer.adobe.com/marketo-apis/api/asset#operation/getLandingPageTemplateByIdUsingGET), [por nome](https://developer.adobe.com/marketo-apis/api/asset#operation/getLandingPageTemplateByNameUsingGET) ou por [navegação](https://developer.adobe.com/marketo-apis/api/asset#operation/getLandingPageTemplatesUsingGET). Esses endpoints retornam metadados de modelo. Recupere o conteúdo do HTML separadamente para cada modelo por ID.
 
 ## Criar e atualizar
 
@@ -79,11 +79,11 @@ name=New LPT - PHP&folder={"id":12,"type":"Folder"}
 }
 ```
 
-Adicione o conteúdo do modelo separadamente com o ponto de extremidade [Atualizar Conteúdo do Modelo de Página de Aterrissagem](https://developer.adobe.com/marketo-apis/api/asset#tag/Landing-Page-Templates/operation/updateLandingPageTemplateContentUsingPOST).
+Adicione o conteúdo do modelo separadamente com o ponto de extremidade [Atualizar Conteúdo do Modelo de Página de Aterrissagem](https://developer.adobe.com/marketo-apis/api/asset#operation/updateLandingPageTemplateContentUsingPOST).
 
 ### Atualizar metadados
 
-Use o ponto de extremidade [Atualizar Metadados de Modelo de Página de Aterrissagem](https://developer.adobe.com/marketo-apis/api/asset#tag/Landing-Page-Templates/operation/updateLpTemplateUsingPOST) para alterar o nome, a descrição ou a configuração `enableMunchkin`.
+Use o ponto de extremidade [Atualizar Metadados de Modelo de Página de Aterrissagem](https://developer.adobe.com/marketo-apis/api/asset#operation/updateLpTemplateUsingPOST) para alterar o nome, a descrição ou a configuração `enableMunchkin`.
 
 ### Atualizar conteúdo
 

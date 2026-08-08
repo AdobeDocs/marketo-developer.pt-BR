@@ -17,9 +17,9 @@ role_v2:
   - id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
 topic_v2:
   - id: a004cc84-67b9-4a33-a3a7-8ec7273ef4dc
-source-git-commit: 3e6d310c5aec1a3435424fb122b71d825db5af0e
+source-git-commit: aeb0d5a176ffdd0910ee533353593bba95f91d08
 workflow-type: tm+mt
-source-wordcount: 1494
+source-wordcount: 1447
 ht-degree: 3%
 
 ---
@@ -40,11 +40,11 @@ Use os endpoints de formulários para gerenciar formulários de sistemas remotos
 
 ## Consultar
 
-A Forms oferece suporte aos métodos de recuperação de ativos padrão: [por id](https://developer.adobe.com/marketo-apis/api/asset#tag/Forms/operation/getLpFormByIdUsingGET), [por nome](https://developer.adobe.com/marketo-apis/api/asset#tag/Forms/operation/getLpFormByNameUsingGET) e por [navegação](https://developer.adobe.com/marketo-apis/api/asset#tag/Forms/operation/browseForms2UsingGET). Uma resposta de formulário contém todas as propriedades de formulário, exceto a lista de campos.
+A Forms oferece suporte aos métodos de recuperação de ativos padrão: [por id](https://developer.adobe.com/marketo-apis/api/asset#operation/getLpFormByIdUsingGET), [por nome](https://developer.adobe.com/marketo-apis/api/asset#operation/getLpFormByNameUsingGET) e por [navegação](https://developer.adobe.com/marketo-apis/api/asset#operation/browseForms2UsingGET). Uma resposta de formulário contém todas as propriedades de formulário, exceto a lista de campos.
 
 ### Por ID
 
-Passar um formulário `id` como parâmetro de caminho para [Obter Formulário por Id](https://developer.adobe.com/marketo-apis/api/asset#tag/Forms/operation/getLpFormByIdUsingGET). O ponto de extremidade retorna o registro de formulário correspondente.
+Passar um formulário `id` como parâmetro de caminho para [Obter Formulário por Id](https://developer.adobe.com/marketo-apis/api/asset#operation/getLpFormByIdUsingGET). O ponto de extremidade retorna o registro de formulário correspondente.
 
 ```http
 GET /rest/asset/v1/form/{id}.json
@@ -98,7 +98,7 @@ GET /rest/asset/v1/form/{id}.json
 
 ### Por nome
 
-Passar um formulário `name` para [Obter Formulário por Nome](https://developer.adobe.com/marketo-apis/api/asset#tag/Forms/operation/getLpFormByNameUsingGET). O ponto de extremidade retorna o registro de formulário correspondente.
+Passar um formulário `name` para [Obter Formulário por Nome](https://developer.adobe.com/marketo-apis/api/asset#operation/getLpFormByNameUsingGET). O ponto de extremidade retorna o registro de formulário correspondente.
 
 ```http
 GET /rest/asset/v1/form/byName.json?name=newForm
@@ -152,7 +152,7 @@ GET /rest/asset/v1/form/byName.json?name=newForm
 
 ### Procurar
 
-[Obter Forms](https://developer.adobe.com/marketo-apis/api/asset#tag/Forms/operation/browseForms2UsingGET) segue o padrão de navegação da API de ativos. Ele é compatível com estes filtros opcionais:
+[Obter Forms](https://developer.adobe.com/marketo-apis/api/asset#operation/browseForms2UsingGET) segue o padrão de navegação da API de ativos. Ele é compatível com estes filtros opcionais:
 
 - `status`: Filtros por `approved`, `approved with draft`, ou `draft`.
 - `maxReturn`: Limita o número de registros retornados.
@@ -332,7 +332,7 @@ Antes de atualizar ou excluir campos ou alterar seu comportamento, recupere a li
 
 ### Dependências
 
-Passar um formulário `id` como parâmetro de caminho para [Obter Formulário Usado por](https://developer.adobe.com/marketo-apis/api/asset#tag/Forms/operation/getFormUsedByUsingGET). O endpoint retorna ativos que dependem do formulário.
+Passar um formulário `id` como parâmetro de caminho para [Obter Formulário Usado por](https://developer.adobe.com/marketo-apis/api/asset#operation/getFormUsedByUsingGET). O endpoint retorna ativos que dependem do formulário.
 
 Os seguintes tipos de ativos podem usar formulários:
 
@@ -366,7 +366,7 @@ GET /rest/asset/v1/form/{id}/usedBy.json
 
 ## Criar e atualizar
 
-Para [criar um formulário](https://developer.adobe.com/marketo-apis/api/asset#tag/Forms/operation/createLpFormsUsingPOST), forneça dois campos obrigatórios:
+Para [criar um formulário](https://developer.adobe.com/marketo-apis/api/asset#operation/createLpFormsUsingPOST), forneça dois campos obrigatórios:
 
 - A pasta principal do formulário.
 - O nome do formulário.
@@ -431,7 +431,7 @@ name=newForm&description=test&folder={"type": "Folder","id": 293}&language=Frenc
 }
 ```
 
-Para [atualizar um formulário](https://developer.adobe.com/marketo-apis/api/asset#tag/Forms/operation/updateFormsUsingPOST), passe sua ID. Durante a criação ou atualização, é possível definir os parâmetros de estilo base que controlam como o formulário é exibido para o usuário.
+Para [atualizar um formulário](https://developer.adobe.com/marketo-apis/api/asset#operation/updateFormsUsingPOST), passe sua ID. Durante a criação ou atualização, é possível definir os parâmetros de estilo base que controlam como o formulário é exibido para o usuário.
 
 ```http
 POST /rest/asset/v1/form/736.json
@@ -496,7 +496,7 @@ Os endpoints de criar e atualizar formulário não modificam o comportamento con
 
 Antes de adicionar ou editar campos de formulário, recupere os campos válidos para a instância de destino. As operações de campo usam a propriedade `id` retornada para cada campo.
 
-Para campos de cliente potencial, use o ponto de extremidade [Obter Campos de Formulário Disponíveis](https://developer.adobe.com/marketo-apis/api/asset#tag/Form-Fields/operation/getAllFieldsUsingGET). A resposta inclui o tipo de dados de cada campo e os metadados padrão aplicados quando o campo é adicionado a um formulário.
+Para campos de cliente potencial, use o ponto de extremidade [Obter Campos de Formulário Disponíveis](https://developer.adobe.com/marketo-apis/api/asset#operation/getAllFieldsUsingGET). A resposta inclui o tipo de dados de cada campo e os metadados padrão aplicados quando o campo é adicionado a um formulário.
 
 ```http
 GET /rest/asset/v1/form/fields.json
@@ -628,7 +628,7 @@ GET /rest/asset/v1/form/fields.json
 }
 ```
 
-Para campos personalizados de Membros do Programa, chame o ponto de extremidade [Obter Campos de Membros do Programa de Formulário Disponíveis](https://developer.adobe.com/marketo-apis/api/asset#tag/Form-Fields/operation/getAllProgramMemberFieldsUsingGET). A resposta inclui tipos de dados de campo personalizado e metadados padrão do Membro do programa.
+Para campos personalizados de Membros do Programa, chame o ponto de extremidade [Obter Campos de Membros do Programa de Formulário Disponíveis](https://developer.adobe.com/marketo-apis/api/asset#operation/getAllProgramMemberFieldsUsingGET). A resposta inclui tipos de dados de campo personalizado e metadados padrão do Membro do programa.
 
 Para usar esses campos, o formulário deve estar em um Programa, não no Design Studio. Uma landing page que contenha um formulário com esses campos também deve estar em um programa. Ele não pode estar no ou clonado no Design Studio.
 
@@ -669,7 +669,7 @@ GET /rest/asset/v1/form/programMemberFields.json
 
 Cada formulário tem uma lista editável de campos exibidos para o usuário quando o formulário é carregado. Use o endpoint correspondente para adicionar, atualizar ou excluir um campo de cada vez.
 
-Para [adicionar um campo](https://developer.adobe.com/marketo-apis/api/asset#tag/Form-Fields/operation/addFieldToAFormUsingPOST), forneça a ID do formulário pai e o campo `fieldId`. Todas as outras propriedades estão vazias ou usam padrões com base no tipo de dados e nos metadados do campo.
+Para [adicionar um campo](https://developer.adobe.com/marketo-apis/api/asset#operation/addFieldToAFormUsingPOST), forneça a ID do formulário pai e o campo `fieldId`. Todas as outras propriedades estão vazias ou usam padrões com base no tipo de dados e nos metadados do campo.
 
 Enviar os dados como uma POST com `application/x-www-form-urlencoded`, não como JSON.
 
@@ -835,7 +835,7 @@ Use Adicionar campo à resposta do formulário para determinar como formatar um 
 
 ### Reorganização do campo
 
-Use o ponto de extremidade [Alterar Posições de Campos de Formulário](https://developer.adobe.com/marketo-apis/api/asset#tag/Form-Fields/operation/updateFieldPositionsUsingPOST) para reorganizar todos os campos de formulário como uma única unidade. O ponto de extremidade requer `positions`, uma matriz JSON de objetos com três membros:
+Use o ponto de extremidade [Alterar Posições de Campos de Formulário](https://developer.adobe.com/marketo-apis/api/asset#operation/updateFieldPositionsUsingPOST) para reorganizar todos os campos de formulário como uma única unidade. O ponto de extremidade requer `positions`, uma matriz JSON de objetos com três membros:
 
 - `columnNumber`
 - `rowNumber`
@@ -875,7 +875,7 @@ positions=[{"columnNumber":0,"rowNumber":0,"fieldName":"FirstName"},{"columnNumb
 
 ### Rich text
 
-Use um [ponto de extremidade separado](https://developer.adobe.com/marketo-apis/api/asset#tag/Form-Fields/operation/addRichTextFieldUsingPOST) para adicionar campos de rich text. Transmita o conteúdo como HTML em uma solicitação `multipart/form-data`. A HTML não deve conter scripts, metatags ou tags de link.
+Use um [ponto de extremidade separado](https://developer.adobe.com/marketo-apis/api/asset#operation/addRichTextFieldUsingPOST) para adicionar campos de rich text. Transmita o conteúdo como HTML em uma solicitação `multipart/form-data`. A HTML não deve conter scripts, metatags ou tags de link.
 
 ```http
 POST /rest/asset/v1/form/{id}/richText.json
@@ -918,7 +918,7 @@ Um conjunto de campos é um grupo opcional de campos. A lista de campos de níve
 
 Um campo deve ser exclusivo dentro do formulário. O mesmo campo não pode aparecer na lista de campos pai do formulário e em um conjunto de campos filho.
 
-Adicione um fieldset com o [Adicionar Fieldset ao ponto de extremidade do Formulário](https://developer.adobe.com/marketo-apis/api/asset#tag/Form-Fields/operation/addFieldSetUsingPOST). O conjunto de campos aparece na resposta [Obter Campos para Formulário](https://developer.adobe.com/marketo-apis/api/asset#tag/Form-Fields/operation/getFormFieldByFormVidUsingGET). Para adicionar campos ao conjunto de campos, use [Atualizar Posições de Campo](https://developer.adobe.com/marketo-apis/api/asset#tag/Form-Fields/operation/updateFieldPositionsUsingPOST) para movê-las para `fieldList`.
+Adicione um fieldset com o [Adicionar Fieldset ao ponto de extremidade do Formulário](https://developer.adobe.com/marketo-apis/api/asset#operation/addFieldSetUsingPOST). O conjunto de campos aparece na resposta [Obter Campos para Formulário](https://developer.adobe.com/marketo-apis/api/asset#operation/getFormFieldByFormVidUsingGET). Para adicionar campos ao conjunto de campos, use [Atualizar Posições de Campo](https://developer.adobe.com/marketo-apis/api/asset#operation/updateFieldPositionsUsingPOST) para movê-las para `fieldList`.
 
 Para esses endpoints, envie os dados como uma POST com `application/x-www-form-urlencoded`, não como JSON.
 
@@ -965,7 +965,7 @@ visibilityRule={"ruleType":"show", "rules":[{"subjectField": "LastName", "operat
 }
 ```
 
-Para obter a lista completa de operadores, consulte [Adicionar regras de visibilidade do campo de formulário](https://developer.adobe.com/marketo-apis/api/asset#tag/Form-Fields/operation/addFormFieldVisibilityRuleUsingPOST).
+Para obter a lista completa de operadores, consulte [Adicionar regras de visibilidade do campo de formulário](https://developer.adobe.com/marketo-apis/api/asset#operation/addFormFieldVisibilityRuleUsingPOST).
 
 ## Acompanhamento
 
@@ -977,7 +977,7 @@ O valor `followupType` pode ser `lp` ou `url`. O valor `lp` indica que `followup
 
 ## Botão Enviar
 
-Use o ponto de extremidade [Atualizar Botão Enviar](https://developer.adobe.com/marketo-apis/api/asset#tag/Forms/operation/updateFormSubmitButtonUsingPOST) para modificar o estilo do botão enviar. Você pode atualizar `buttonPosition`, `buttonStyle`, `label` e `waitingLabel`. O `waitingLabel` aparece enquanto o envio está pendente.
+Use o ponto de extremidade [Atualizar Botão Enviar](https://developer.adobe.com/marketo-apis/api/asset#operation/updateFormSubmitButtonUsingPOST) para modificar o estilo do botão enviar. Você pode atualizar `buttonPosition`, `buttonStyle`, `label` e `waitingLabel`. O `waitingLabel` aparece enquanto o envio está pendente.
 
 Esta é uma atualização destrutiva.
 

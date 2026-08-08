@@ -13,9 +13,9 @@ feature_v2:
   - id: e64968b2-4ee5-47f9-8cae-0588f184b9eb
 role_v2:
   - id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
-source-git-commit: 3e6d310c5aec1a3435424fb122b71d825db5af0e
+source-git-commit: aeb0d5a176ffdd0910ee533353593bba95f91d08
 workflow-type: tm+mt
-source-wordcount: 806
+source-wordcount: 792
 ht-degree: 1%
 
 ---
@@ -30,7 +30,7 @@ Use a API Pastas para criar, consultar, atualizar e excluir pastas ou recuperar 
 
 ## Consultar
 
-As pastas oferecem suporte aos padrões de consulta de ativos padrão: [por id](https://developer.adobe.com/marketo-apis/api/asset#tag/Folders/operation/getFolderByIdUsingGET), [por nome](https://developer.adobe.com/marketo-apis/api/asset#tag/Folders/operation/getFolderByNameUsingGET) e por [navegação](https://developer.adobe.com/marketo-apis/api/asset#tag/Folders/operation/getFolderUsingGET).
+As pastas oferecem suporte aos padrões de consulta de ativos padrão: [por id](https://developer.adobe.com/marketo-apis/api/asset#operation/getFolderByIdUsingGET), [por nome](https://developer.adobe.com/marketo-apis/api/asset#operation/getFolderByNameUsingGET) e por [navegação](https://developer.adobe.com/marketo-apis/api/asset#operation/getFolderUsingGET).
 
 ### Por ID
 
@@ -86,7 +86,7 @@ Os tipos de pasta incluem:
 
 ### Por nome
 
-O ponto de extremidade [consulta por nome](https://developer.adobe.com/marketo-apis/api/asset#tag/Folders/operation/getFolderByNameUsingGET) requer `name`, que execute uma correspondência exata com os nomes das pastas e retorne todas as pastas correspondentes.
+O ponto de extremidade [consulta por nome](https://developer.adobe.com/marketo-apis/api/asset#operation/getFolderByNameUsingGET) requer `name`, que execute uma correspondência exata com os nomes das pastas e retorne todas as pastas correspondentes.
 
 O endpoint também aceita estes parâmetros opcionais:
 
@@ -135,12 +135,12 @@ As Atividades de marketing e o Design Studio são pastas raiz. Recupere a raiz p
 
 ### Procurar
 
-Você também pode [recuperar pastas em massa](https://developer.adobe.com/marketo-apis/api/asset#tag/Folders/operation/getFolderUsingGET). Use o parâmetro `root` para especificar a pasta pai na qual consultar. Passar `root` como um objeto JSON inserido com dois membros:
+Você também pode [recuperar pastas em massa](https://developer.adobe.com/marketo-apis/api/asset#operation/getFolderUsingGET). Use o parâmetro `root` para especificar a pasta pai na qual consultar. Passar `root` como um objeto JSON inserido com dois membros:
 
 1. `id`: A identificação da pasta ou do programa.
 1. `type`: `Folder` ou `Program`, dependendo do tipo de pasta raiz.
 
-Se você não souber a pasta raiz ou quiser recuperar todas as pastas em uma área, use a raiz das Atividades de marketing, do Design Studio ou do Banco de dados de clientes potenciais. Recupere a ID raiz passando o nome da área para a API [Obter Pasta por Nome](https://developer.adobe.com/marketo-apis/api/asset#tag/Folders/operation/getFolderByNameUsingGET).
+Se você não souber a pasta raiz ou quiser recuperar todas as pastas em uma área, use a raiz das Atividades de marketing, do Design Studio ou do Banco de dados de clientes potenciais. Recupere a ID raiz passando o nome da área para a API [Obter Pasta por Nome](https://developer.adobe.com/marketo-apis/api/asset#operation/getFolderByNameUsingGET).
 
 Assim como em outros pontos de extremidade de recuperação de ativos em massa, use os parâmetros `offset` e `maxReturn` opcionais para paginação. Outros parâmetros opcionais são:
 
@@ -237,7 +237,7 @@ O campo `url` contém a URL do ativo para a instância designada. Não é um lin
 
 ## Criar e atualizar
 
-Para [criar uma pasta](https://developer.adobe.com/marketo-apis/api/asset#tag/Folders/operation/createFolderUsingPOST), envie uma solicitação POST `application/x-www-form-urlencoded` com estes parâmetros:
+Para [criar uma pasta](https://developer.adobe.com/marketo-apis/api/asset#operation/createFolderUsingPOST), envie uma solicitação POST `application/x-www-form-urlencoded` com estes parâmetros:
 
 - `name`: Cadeia de caracteres necessária contendo o nome da pasta.
 - `parent`: Objeto JSON inserido obrigatório contendo `id` e `type`. O tipo é `Folder` ou `Program`, dependendo do pai.

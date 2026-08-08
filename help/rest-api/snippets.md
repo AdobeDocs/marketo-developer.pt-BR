@@ -13,9 +13,9 @@ role_v2:
 topic_v2:
   - id: a004cc84-67b9-4a33-a3a7-8ec7273ef4dc
   - id: bce87dde-a4ab-44c9-8a18-ad66e4ddb377
-source-git-commit: 3e6d310c5aec1a3435424fb122b71d825db5af0e
+source-git-commit: aeb0d5a176ffdd0910ee533353593bba95f91d08
 workflow-type: tm+mt
-source-wordcount: 386
+source-wordcount: 376
 ht-degree: 3%
 
 ---
@@ -28,7 +28,7 @@ Os trechos são componentes reutilizáveis do HTML que podem ser incorporados a 
 
 ## Consultar
 
-Trechos de consulta [por ID](https://developer.adobe.com/marketo-apis/api/asset#tag/Snippets/operation/getSnippetByIdUsingGET) ou por [navegação](https://developer.adobe.com/marketo-apis/api/asset#tag/Snippets/operation/getSnippetUsingGET). A API não fornece um método de consulta por nome. Ambos os pontos de extremidade aceitam o campo `status` para recuperar uma versão aprovada ou de rascunho.
+Trechos de consulta [por ID](https://developer.adobe.com/marketo-apis/api/asset#operation/getSnippetByIdUsingGET) ou por [navegação](https://developer.adobe.com/marketo-apis/api/asset#operation/getSnippetUsingGET). A API não fornece um método de consulta por nome. Ambos os pontos de extremidade aceitam o campo `status` para recuperar uma versão aprovada ou de rascunho.
 
 ### Por ID
 
@@ -153,7 +153,7 @@ A resposta contém seções do tipo `HTML` ou `DynamicContent`. Ele também pode
 
 ## Criar e atualizar
 
-Crie o ativo de trecho e seu conteúdo separadamente. Primeiro, chame o ponto de extremidade [create snippet](https://developer.adobe.com/marketo-apis/api/asset#tag/Snippets/operation/createSnippetUsingPOST). A descrição é opcional. Passar dados como `x-www-form-urlencoded`, não como JSON.
+Crie o ativo de trecho e seu conteúdo separadamente. Primeiro, chame o ponto de extremidade [create snippet](https://developer.adobe.com/marketo-apis/api/asset#operation/createSnippetUsingPOST). A descrição é opcional. Passar dados como `x-www-form-urlencoded`, não como JSON.
 
 ```http
 POST /rest/asset/v1/snippets.json
@@ -225,7 +225,7 @@ type=HTML&content=draft testUpdateSnippetContent1 HTML Content
 }
 ```
 
-Para [atualizar metadados](https://developer.adobe.com/marketo-apis/api/asset#tag/Snippets/operation/updateSnippetUsingPOST), especifique a ID do trecho. Você pode atualizar apenas o nome e a descrição.
+Para [atualizar metadados](https://developer.adobe.com/marketo-apis/api/asset#operation/updateSnippetUsingPOST), especifique a ID do trecho. Você pode atualizar apenas o nome e a descrição.
 
 ```http
 POST /rest/asset/v1/snippet/{id}.json
@@ -416,7 +416,7 @@ POST /rest/asset/v1/snippet/{id}/discardDraft.json
 
 ## Clonar
 
-Para [clonar um trecho](https://developer.adobe.com/marketo-apis/api/asset#tag/Snippets/operation/cloneSnippetUsingPOST), forneça um nome, a ID do trecho de origem e uma pasta. A descrição é opcional. Se a origem não tiver uma versão aprovada, o endpoint clonará seu rascunho.
+Para [clonar um trecho](https://developer.adobe.com/marketo-apis/api/asset#operation/cloneSnippetUsingPOST), forneça um nome, a ID do trecho de origem e uma pasta. A descrição é opcional. Se a origem não tiver uma versão aprovada, o endpoint clonará seu rascunho.
 
 ```http
 POST /rest/asset/v1/snippet/{id}/clone.json

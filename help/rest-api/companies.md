@@ -12,9 +12,9 @@ role_v2:
   - id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
 topic_v2:
   - id: a004cc84-67b9-4a33-a3a7-8ec7273ef4dc
-source-git-commit: 3e6d310c5aec1a3435424fb122b71d825db5af0e
+source-git-commit: aeb0d5a176ffdd0910ee533353593bba95f91d08
 workflow-type: tm+mt
-source-wordcount: 582
+source-wordcount: 572
 ht-degree: 1%
 
 ---
@@ -23,7 +23,7 @@ ht-degree: 1%
 
 [Referência de Empresa](https://developer.adobe.com/marketo-apis/api/mapi#tag/Companies)
 
-As empresas representam as organizações às quais os registros de lead pertencem. Para adicionar um cliente potencial a uma Empresa, preencha seu campo `externalCompanyId` usando os pontos de extremidade [Sincronizar Clientes Potenciais](https://developer.adobe.com/marketo-apis/api/mapi#tag/Leads/operation/syncLeadUsingPOST) ou [Importação de Cliente Potencial em Massa](bulk-lead-import.md).
+As empresas representam as organizações às quais os registros de lead pertencem. Para adicionar um cliente potencial a uma Empresa, preencha seu campo `externalCompanyId` usando os pontos de extremidade [Sincronizar Clientes Potenciais](https://developer.adobe.com/marketo-apis/api/mapi#operation/syncLeadUsingPOST) ou [Importação de Cliente Potencial em Massa](bulk-lead-import.md).
 
 Não é possível remover um cliente potencial de uma empresa, a menos que você adicione o cliente potencial a uma empresa diferente. Clientes potenciais vinculados a um registro da empresa herdam valores desse registro como se os valores existissem no registro de cliente potencial.
 
@@ -109,7 +109,7 @@ GET /rest/v1/companies/describe.json
 
 ## Consultar
 
-O padrão para [empresas de consulta](https://developer.adobe.com/marketo-apis/api/mapi#tag/Companies/operation/getCompaniesUsingGET) segue de perto a API de clientes potenciais. No entanto, o parâmetro `filterType` aceita somente campos listados na matriz searchableFields da resposta Descrever Empresas ou dedupeFields.
+O padrão para [empresas de consulta](https://developer.adobe.com/marketo-apis/api/mapi#operation/getCompaniesUsingGET) segue de perto a API de clientes potenciais. No entanto, o parâmetro `filterType` aceita somente campos listados na matriz searchableFields da resposta Descrever Empresas ou dedupeFields.
 
 Os parâmetros de consulta são:
 
@@ -152,7 +152,7 @@ GET /rest/v1/companies.json?filterType=id&filterValues=3433,5345
 
 ## Criar e atualizar
 
-O ponto de extremidade [Empresas de Sincronização](https://developer.adobe.com/marketo-apis/api/mapi#tag/Companies/operation/syncCompaniesUsingPOST) aceita um parâmetro `input` necessário que contém uma matriz de objetos da empresa.
+O ponto de extremidade [Empresas de Sincronização](https://developer.adobe.com/marketo-apis/api/mapi#operation/syncCompaniesUsingPOST) aceita um parâmetro `input` necessário que contém uma matriz de objetos da empresa.
 
 Assim como com as oportunidades, o endpoint é compatível com três modos de criação e atualização: createOnly, updateOnly e createOrUpdate. Especifique o modo no parâmetro `action` da solicitação.
 
@@ -214,7 +214,7 @@ Consulte um campo de empresa por nome de API ou recupere todos os campos de empr
 
 #### Por nome
 
-O ponto de extremidade [Obter Campo de Empresa por Nome](https://developer.adobe.com/marketo-apis/api/mapi#tag/Companies/operation/getCompanyFieldByNameUsingGET) recupera metadados de um campo no objeto de empresa. O parâmetro de caminho `fieldApiName` necessário especifica o nome da API do campo.
+O ponto de extremidade [Obter Campo de Empresa por Nome](https://developer.adobe.com/marketo-apis/api/mapi#operation/getCompanyFieldByNameUsingGET) recupera metadados de um campo no objeto de empresa. O parâmetro de caminho `fieldApiName` necessário especifica o nome da API do campo.
 
 A resposta é semelhante à resposta Descrever empresa, mas inclui metadados adicionais. Por exemplo, o atributo `isCustom` indica se o campo é personalizado.
 
@@ -245,7 +245,7 @@ GET /rest/v1/companies/schema/fields/industry.json
 
 #### Procurar
 
-O ponto de extremidade [Obter Campos de Empresa](https://developer.adobe.com/marketo-apis/api/mapi#tag/Companies/operation/getCompanyFieldsUsingGET) recupera metadados para todos os campos no objeto de empresa. Por padrão, retorna no máximo 300 registros. Use o parâmetro de consulta `batchSize` para reduzir esse número.
+O ponto de extremidade [Obter Campos de Empresa](https://developer.adobe.com/marketo-apis/api/mapi#operation/getCompanyFieldsUsingGET) recupera metadados para todos os campos no objeto de empresa. Por padrão, retorna no máximo 300 registros. Use o parâmetro de consulta `batchSize` para reduzir esse número.
 
 Se o atributo `moreResult` for true, mais resultados estarão disponíveis. Continue chamando o ponto de extremidade com o `nextPageToken` retornado até que `moreResult` seja falso.
 

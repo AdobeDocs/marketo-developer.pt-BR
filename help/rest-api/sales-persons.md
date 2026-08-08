@@ -10,9 +10,9 @@ feature_v2:
   - id: c5f60233-d5ea-4453-a799-0ad258b4d399
 role_v2:
   - id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
-source-git-commit: 3e6d310c5aec1a3435424fb122b71d825db5af0e
+source-git-commit: aeb0d5a176ffdd0910ee533353593bba95f91d08
 workflow-type: tm+mt
-source-wordcount: 369
+source-wordcount: 363
 ht-degree: 0%
 
 ---
@@ -27,9 +27,9 @@ Vendedores são registros pessoais que representam os proprietários de vendas d
 
 Relacione Vendedores a outros registros passando o atributo externalSalesPersonId para o ponto de extremidade correspondente:
 
-- Registros de cliente potencial: [Sincronizar clientes potenciais](https://developer.adobe.com/marketo-apis/api/mapi#tag/Leads/operation/syncLeadUsingPOST).
-- Registros de oportunidade: [Sincronizar oportunidades](https://developer.adobe.com/marketo-apis/api/mapi#tag/Opportunities/operation/syncOpportunitiesUsingPOST).
-- Registros da empresa: [Sincronizar empresas](https://developer.adobe.com/marketo-apis/api/mapi#tag/Companies/operation/syncCompaniesUsingPOST).
+- Registros de cliente potencial: [Sincronizar clientes potenciais](https://developer.adobe.com/marketo-apis/api/mapi#operation/syncLeadUsingPOST).
+- Registros de oportunidade: [Sincronizar oportunidades](https://developer.adobe.com/marketo-apis/api/mapi#operation/syncOpportunitiesUsingPOST).
+- Registros da empresa: [Sincronizar empresas](https://developer.adobe.com/marketo-apis/api/mapi#operation/syncCompaniesUsingPOST).
 
 Os registros de Vendedor só podem ser editados por meio da API.
 

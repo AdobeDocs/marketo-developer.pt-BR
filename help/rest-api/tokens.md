@@ -8,9 +8,9 @@ product_v2:
   - id: b27e5950-9033-45ac-9f86-eb22e567f615
 role_v2:
   - id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
-source-git-commit: 3e6d310c5aec1a3435424fb122b71d825db5af0e
+source-git-commit: aeb0d5a176ffdd0910ee533353593bba95f91d08
 workflow-type: tm+mt
-source-wordcount: 290
+source-wordcount: 284
 ht-degree: 4%
 
 ---
@@ -40,7 +40,7 @@ A API oferece suporte apenas a esses tipos de dados ao criar um token.
 
 ## Consultar
 
-[Obter Tokens por ID de Pasta](https://developer.adobe.com/marketo-apis/api/asset#tag/Tokens/operation/getTokensByFolderIdUsingGET) usa a ID de um programa ou pasta como um parâmetro de caminho. Use o parâmetro `folderType` para especificar o tipo.
+[Obter Tokens por ID de Pasta](https://developer.adobe.com/marketo-apis/api/asset#operation/getTokensByFolderIdUsingGET) usa a ID de um programa ou pasta como um parâmetro de caminho. Use o parâmetro `folderType` para especificar o tipo.
 
 ```http
 GET /rest/asset/v1/folder/{id}/tokens.json?folderType=Folder
@@ -73,7 +73,7 @@ GET /rest/asset/v1/folder/{id}/tokens.json?folderType=Folder
 
 ## Criar e atualizar
 
-O ponto de extremidade [Criar Token](https://developer.adobe.com/marketo-apis/api/asset#tag/Tokens/operation/addTokenTOFolderUsingPOST) cria um token ou atualiza um token existente com os valores enviados. Os tokens pertencem a uma pasta ou programa.
+O ponto de extremidade [Criar Token](https://developer.adobe.com/marketo-apis/api/asset#operation/addTokenTOFolderUsingPOST) cria um token ou atualiza um token existente com os valores enviados. Os tokens pertencem a uma pasta ou programa.
 
 O parâmetro de caminho `id` identifica a pasta pai. Os parâmetros `name`, `type`, `value` e `folderType` são obrigatórios. Transmita os dados como POST `x-www-form-urlencoded`, não como JSON. O token `name` não pode exceder 50 caracteres.
 
@@ -116,7 +116,7 @@ name=April Fools&type=date&value=2015-04-01&folderType=Folder
 
 ## Excluir
 
-[Excluir token por nome](https://developer.adobe.com/marketo-apis/api/asset#tag/Tokens/operation/deleteTokenByNameUsingPOST) usa a identificação de um programa ou pasta como um parâmetro de caminho. Use `folderType` para especificar o tipo.
+[Excluir token por nome](https://developer.adobe.com/marketo-apis/api/asset#operation/deleteTokenByNameUsingPOST) usa a identificação de um programa ou pasta como um parâmetro de caminho. Use `folderType` para especificar o tipo.
 
 A pasta pai, o token `name` e o token `type` são obrigatórios. Transmita os dados como POST `x-www-form-urlencoded`, não como JSON.
 

@@ -1,7 +1,7 @@
 ---
 title: Mapeamentos de resposta
 feature: Webhooks
-description: Os Webhooks do Marketo respondem aos mapeamentos para JSON e XML, mapeiam atributos para campos de clientes potenciais com nomes de API do SOAP, notação de pontos e matrizes e compatibilidade de tipo.
+description: O Marketo Webhooks responde a mapeamentos para JSON e XML, mapeia atributos para campos de cliente potencial, notação de pontos e matriz e compatibilidade de tipo.
 exl-id: 95c6e33e-487c-464b-b920-3c67e248d84e
 TQID: https://experienceleague.adobe.com/-OGDeKLPS1KmWGIKj6BGq5DGXoCSj5ip-dVr7-kKDro
 product_v2:
@@ -10,16 +10,16 @@ feature_v2:
   - id: c5f60233-d5ea-4453-a799-0ad258b4d399
 role_v2:
   - id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
-source-git-commit: 3e6d310c5aec1a3435424fb122b71d825db5af0e
+source-git-commit: bcf56d2102f2f60eac5ad3318d348fd020391e6b
 workflow-type: tm+mt
-source-wordcount: 374
+source-wordcount: 370
 ht-degree: 1%
 
 ---
 
 # Mapeamentos de resposta
 
-O Marketo pode traduzir dados de webhook de JSON ou XML e gravar os valores para campos de cliente potencial. O parâmetro Campo do Marketo sempre usa o [nome da API do SOAP](../rest-api/fields.md) do campo.
+O Marketo pode traduzir dados de webhook de JSON ou XML e gravar os valores para campos de cliente potencial. O parâmetro Campo do Marketo sempre usa o nome da API do SOAP do campo.
 
 Cada webhook pode ter um número ilimitado de mapeamentos de resposta. Para adicionar ou editar mapeamentos, selecione [!UICONTROL Editar] no painel Mapeamentos de Resposta do webhook:
 

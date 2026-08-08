@@ -12,9 +12,9 @@ role_v2:
   - id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
 topic_v2:
   - id: a004cc84-67b9-4a33-a3a7-8ec7273ef4dc
-source-git-commit: 3e6d310c5aec1a3435424fb122b71d825db5af0e
+source-git-commit: aeb0d5a176ffdd0910ee533353593bba95f91d08
 workflow-type: tm+mt
-source-wordcount: 1026
+source-wordcount: 1081
 ht-degree: 5%
 
 ---
@@ -31,7 +31,7 @@ O usuário da API deve ter uma função com a permissão Lead somente leitura, c
 
 ## Descrever
 
-Use [Descrever Membro do Programa](https://developer.adobe.com/marketo-apis/api/mapi#tag/Program-Members/operation/describeProgramMemberUsingGET2) para determinar quais campos estão disponíveis e recuperar seus metadados. O atributo `name` contém o nome do campo REST API.
+Use [Descrever Membro do Programa](https://developer.adobe.com/marketo-apis/api/mapi#operation/describeProgramMemberUsingGET2) para determinar quais campos estão disponíveis e recuperar seus metadados. O atributo `name` contém o nome do campo REST API.
 
 ```http
 GET /rest/v1/programs/members/describe.json
@@ -251,7 +251,7 @@ Todo trabalho deve especificar `programId` ou `programIds`. Todos os outros filt
     <tr>
       <td>NurtureCadence</td>
       <td>String</td>
-      <td>Aceita uma sequência de caracteres usada para filtrar registros de associação de programa para uma determinada cadência de criação. Os valores permitidos são:
+      <td>Aceita uma sequência de caracteres usada para filtrar registros de associação de programa para uma determinada cadência de criação.Os valores permitidos são:
         <ul>
           <li>pausar - a cadência está pausada</li>
           <li>norma - a cadência é normal</li>
@@ -260,7 +260,7 @@ Todo trabalho deve especificar `programId` ou `programIds`. Todos os outros filt
     <tr>
       <td>statusNames</td>
       <td>Matriz[Cadeia de caracteres]</td>
-      <td>Aceita uma matriz de nomes de status de membros do programa. Vários nomes de status são ORed juntos.Trabalhos com esse tipo de filtro retornam todos os registros acessíveis cujo status de membro do programa corresponde a qualquer um dos nomes de status especificados. Nomes de status padrão e definidos pelo usuário podem ser usados. Se o filtro statusNames for usado com o filtro "programIds", cada programa será verificado em busca de registros de associação cujo status corresponda a qualquer um dos nomes de status. Se um nome de status não for encontrado em nenhum dos programas, o erro "1003, Dados inválidos" será retornado.
+      <td>Aceita uma matriz de nomes de status de membros do programa. Vários nomes de status são ORed juntos.As tarefas com este tipo de filtro retornam todos os registros acessíveis cujo status de membro do programa corresponde a qualquer um dos nomes de status especificados. Podem ser usados os nomes de status padrão e definido pelo usuário.Se o filtro statusNames for usado com o filtro "programIds", cada programa será verificado para procurar registros de associação cujo status corresponda a qualquer um dos nomes de status. Se um nome de status não for encontrado em nenhum dos programas, o erro "1003, Dados inválidos" será retornado.
         <table>
           <tbody>
             <tr>
@@ -337,7 +337,7 @@ O ponto de extremidade Criar Trabalho do Membro do Programa de Exportação forn
 
 ## Criação de um trabalho
 
-Use o ponto de extremidade [Criar Trabalho de Membro do Programa de Exportação](https://developer.adobe.com/marketo-apis/api/mapi#tag/Bulk-Export-Program-Members/operation/createExportProgramMembersUsingPOST) para definir o trabalho de exportação. Especifique um `filter` que contenha a ID do programa e o `fields` a ser exportado. Você também pode especificar `format` e `columnHeaderNames`.
+Use o ponto de extremidade [Criar Trabalho de Membro do Programa de Exportação](https://developer.adobe.com/marketo-apis/api/mapi#operation/createExportProgramMembersUsingPOST) para definir o trabalho de exportação. Especifique um `filter` que contenha a ID do programa e o `fields` a ser exportado. Você também pode especificar `format` e `columnHeaderNames`.
 
 ```http
 POST /bulk/v1/program/members/export/create.json
@@ -381,7 +381,7 @@ POST /bulk/v1/program/members/export/create.json
 }
 ```
 
-A resposta confirma que o trabalho foi criado, mas a exportação não é iniciada automaticamente. Passe o `exportId` retornado para o ponto de extremidade [Enfileirar Trabalho de Membro do Programa de Exportação](https://developer.adobe.com/marketo-apis/api/mapi#tag/Bulk-Export-Program-Members/operation/enqueueExportProgramMembersUsingPOST) para iniciar o trabalho:
+A resposta confirma que o trabalho foi criado, mas a exportação não é iniciada automaticamente. Passe o `exportId` retornado para o ponto de extremidade [Enfileirar Trabalho de Membro do Programa de Exportação](https://developer.adobe.com/marketo-apis/api/mapi#operation/enqueueExportProgramMembersUsingPOST) para iniciar o trabalho:
 
 ```http
 POST /bulk/v1/program/members/export/{exportId}/enqueue.json
@@ -409,7 +409,7 @@ A resposta de enfileiramento inicialmente retorna um status `Queued`. Quando um 
 
 Você pode recuperar o status somente para trabalhos criados pelo mesmo usuário da API.
 
-Como a exportação é executada de forma assíncrona, use o ponto de extremidade [Obter Status do Trabalho do Membro do Programa de Exportação](https://developer.adobe.com/marketo-apis/api/mapi#tag/Bulk-Export-Leads/operation/getExportLeadsStatusUsingGET) para sondar seu progresso. O status é atualizado apenas uma vez a cada 60 segundos, portanto, não consulte com mais frequência.
+Como a exportação é executada de forma assíncrona, use o ponto de extremidade [Obter Status do Trabalho do Membro do Programa de Exportação](https://developer.adobe.com/marketo-apis/api/mapi#operation/getExportLeadsStatusUsingGET) para sondar seu progresso. O status é atualizado apenas uma vez a cada 60 segundos, portanto, não consulte com mais frequência.
 
 O status pode ser `Created`, `Queued`, `Processing`, `Canceled`, `Completed` ou `Failed`.
 
@@ -459,7 +459,7 @@ Essa resposta mostra que a tarefa ainda está sendo processada, portanto, o arqu
 
 ## Recuperação de dados
 
-Para recuperar uma exportação concluída de membros do programa, passe o `exportId` para o ponto de extremidade [Obter Arquivo de Membro do Programa de Exportação](https://developer.adobe.com/marketo-apis/api/mapi#tag/Bulk-Export-Program-Members/operation/getExportProgramMembersFileUsingGET).
+Para recuperar uma exportação concluída de membros do programa, passe o `exportId` para o ponto de extremidade [Obter Arquivo de Membro do Programa de Exportação](https://developer.adobe.com/marketo-apis/api/mapi#operation/getExportProgramMembersFileUsingGET).
 
 O ponto de extremidade retorna o arquivo no formato configurado para o trabalho. Se um campo de membro do programa solicitado não contiver dados, o campo de exportação correspondente conterá `null`.
 
@@ -487,7 +487,7 @@ Para recuperação parcial ou retomável, o ponto de extremidade do arquivo dá 
 
 ## Cancelar um trabalho
 
-Para cancelar um trabalho configurado incorretamente ou que não é mais necessário, chame o ponto de extremidade [Cancelar Trabalho de Membro do Programa de Exportação](https://developer.adobe.com/marketo-apis/api/mapi#tag/Bulk-Export-Program-Members/operation/cancelExportProgramMembersUsingPOST):
+Para cancelar um trabalho configurado incorretamente ou que não é mais necessário, chame o ponto de extremidade [Cancelar Trabalho de Membro do Programa de Exportação](https://developer.adobe.com/marketo-apis/api/mapi#operation/cancelExportProgramMembersUsingPOST):
 
 ```http
 POST /bulk/v1/program/members/export/{exportId}/cancel.json

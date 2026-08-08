@@ -18,9 +18,9 @@ role_v2:
   - id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
 topic_v2:
   - id: eddd9b14-83bd-4ff4-9072-54a4a484abb7
-source-git-commit: 3e6d310c5aec1a3435424fb122b71d825db5af0e
+source-git-commit: bcf56d2102f2f60eac5ad3318d348fd020391e6b
 workflow-type: tm+mt
-source-wordcount: 614
+source-wordcount: 613
 ht-degree: 4%
 
 ---
@@ -39,7 +39,7 @@ Configure cada webhook com estas propriedades:
 
 - **[!UICONTROL URL]** - A URL para a qual você envia a solicitação de serviço Web.
 - **[!UICONTROL Tipo de Solicitação]** - O método HTTP.
-- **[!UICONTROL Modelo de carga]** - O modelo para informações enviadas no corpo da POSTAGEM. Use qualquer formato de dados compatível com HTTP POST, incluindo XML, JSON ou SOAP. O formato de serialização deve permitir aspas duplas em cadeias de caracteres. Para inserir um token, selecione **[!UICONTROL Inserir Token]**. O Marketo delimita automaticamente os tokens do tipo sequência de caracteres em aspas duplas.
+- **[!UICONTROL Modelo de carga]** - O modelo para informações enviadas no corpo da POSTAGEM. Use qualquer formato de dados compatível com HTTP POST, incluindo XML e JSON. O formato de serialização deve permitir aspas duplas em cadeias de caracteres. Para inserir um token, selecione **[!UICONTROL Inserir Token]**. O Marketo delimita automaticamente os tokens do tipo sequência de caracteres em aspas duplas.
 - **[!UICONTROL Codificação do token de solicitação]** - O formato de solicitação, JSON ou Form/Url, usado para codificar valores de token que incluem caracteres especiais, como um E comercial (&amp;). Selecione a codificação de corpo correta para que o webhook se comunique corretamente com o serviço da Web.
 - **[!UICONTROL Tipo de resposta]** - O formato de resposta, JSON ou XML. Selecione o tipo correto para mapear propriedades de resposta a campos de cliente potencial no Marketo.
 - **[!UICONTROL Cabeçalhos Personalizados]** - Pares de Valores-Chave adicionados como Cabeçalhos HTTP por meio de **[!UICONTROL Ações de Webhooks]** > **[!UICONTROL Definir Cabeçalho Personalizado]**. É possível adicionar qualquer número de cabeçalhos personalizados.

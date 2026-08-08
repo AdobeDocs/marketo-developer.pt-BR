@@ -17,9 +17,9 @@ topic_v2:
   - id: a004cc84-67b9-4a33-a3a7-8ec7273ef4dc
   - id: cc72dcf1-72e1-48cc-b434-e7c27d62d67c
   - id: eddd9b14-83bd-4ff4-9072-54a4a484abb7
-source-git-commit: 3e6d310c5aec1a3435424fb122b71d825db5af0e
+source-git-commit: aeb0d5a176ffdd0910ee533353593bba95f91d08
 workflow-type: tm+mt
-source-wordcount: 2255
+source-wordcount: 2332
 ht-degree: 4%
 
 ---
@@ -384,8 +384,8 @@ Por exemplo, se uma solicitação Sincronizar clientes em potencial definir &quo
 >    <tr>
 >      <td><a name="1012"></a>1012</td>
 >      <td>Valor de cookie inválido ‘%s’</td>
->      <td>Pode ocorrer ao chamar o <a href="https://developer.adobe.com/marketo-apis/api/mapi#tag/Leads/operation/associateLeadUsingPOST">Associar lead</a> com um valor inválido para o parâmetro "cookie".
->        Isso também ocorre ao chamar <a href="https://developer.adobe.com/marketo-apis/api/mapi#tag/Leads/operation/getLeadsByFilterUsingGET">Obter clientes em potencial por tipo de filtro</a> com "filterType=cookies" e um valor inválido para o parâmetro "filterValues".</td>
+>      <td>Pode ocorrer ao chamar o <a href="https://developer.adobe.com/marketo-apis/api/mapi#operation/associateLeadUsingPOST">Associar lead</a> com um valor inválido para o parâmetro "cookie".
+>        Isso também ocorre ao chamar <a href="https://developer.adobe.com/marketo-apis/api/mapi#operation/getLeadsByFilterUsingGET">Obter clientes em potencial por Tipo de filtro</a> com "filterType=cookies" e um valor inválido para o parâmetro "filterValues".</td>
 >    </tr>
 >    <tr>
 >      <td><a name="1013"></a>1013</td>
@@ -503,24 +503,24 @@ Por exemplo, se uma solicitação Sincronizar clientes em potencial definir &quo
 >    </tr>
 >    <tr>
 >      <td><a name="1076"></a>1076</td>
->      <td>A chamada <a href="https://developer.adobe.com/marketo-apis/api/mapi#tag/Leads/operation/mergeLeadsUsingPOST">Mesclar clientes em potencial</a> com o sinalizador mergeInCRM é 4.</td>
+>      <td>A chamada <a href="https://developer.adobe.com/marketo-apis/api/mapi#operation/mergeLeadsUsingPOST">Mesclar clientes em potencial</a> com o sinalizador mergeInCRM é 4.</td>
 >      <td>Você está criando um registro duplicado. É recomendável usar um registro existente.
 >        Essa é a mensagem de erro, que o Marketo recebe ao mesclar no Salesforce.</td>
 >    </tr>
 >    <tr>
 >      <td><a name="1077"></a>1077</td>
->      <td>A chamada <a href="https://developer.adobe.com/marketo-apis/api/mapi#tag/Leads/operation/mergeLeadsUsingPOST">Mesclar clientes em potencial</a> falhou devido ao comprimento do "Campo SFDC"</td>
+>      <td>A chamada <a href="https://developer.adobe.com/marketo-apis/api/mapi#operation/mergeLeadsUsingPOST">Mesclar clientes em potencial</a> falhou devido ao comprimento do "Campo SFDC"</td>
 >      <td>Uma chamada de Mesclagem de leads com mergeInCRM definido como true falhou porque o "Campo SFDC" excede o limite de caracteres permitidos. Para corrigir, reduza o comprimento de "SFDC Field" ou defina mergeInCRM como false.</td>
 >    </tr>
 >    <tr>
 >      <td><a name="1078"></a>1078</td>
->      <td>A chamada <a href="https://developer.adobe.com/marketo-apis/api/mapi#tag/Leads/operation/mergeLeadsUsingPOST">Mesclar clientes em potencial</a> falhou devido à entidade excluída, não a um cliente potencial/contato ou a critérios de filtro de campo não correspondem.</td>
+>      <td>A chamada <a href="https://developer.adobe.com/marketo-apis/api/mapi#operation/mergeLeadsUsingPOST">Mesclar clientes em potencial</a> falhou devido à entidade excluída, não a um cliente potencial/contato ou a critérios de filtro de campo não correspondem.</td>
 >      <td>Falha na mesclagem; não é possível executar a operação de mesclagem no CRM sincronizado nativamente
 >        Essa é a mensagem de erro, que o Marketo recebe ao mesclar no Salesforce.</td>
 >    </tr>
 >    <tr>
 >      <td><a name="1079"></a>1079</td>
->      <td>A chamada <a href="https://developer.adobe.com/marketo-apis/api/mapi#tag/Leads/operation/mergeLeadsUsingPOST">Mesclar clientes em potencial</a> falhou devido ao conflito de URL personalizado em registros duplicados</td>
+>      <td>A chamada <a href="https://developer.adobe.com/marketo-apis/api/mapi#operation/mergeLeadsUsingPOST">Mesclar clientes em potencial</a> falhou devido ao conflito de URL personalizado em registros duplicados</td>
 >      <td>Uma chamada de Mesclar leads especificou muitos leads com a mesma URL personalizada. Para resolver, use a interface do usuário do Marketo Engage para mesclar esses registros.</td>
 >    </tr>
 >  </tbody>

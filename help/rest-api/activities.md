@@ -12,9 +12,9 @@ role_v2:
   - id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
 topic_v2:
   - id: a004cc84-67b9-4a33-a3a7-8ec7273ef4dc
-source-git-commit: 3e6d310c5aec1a3435424fb122b71d825db5af0e
+source-git-commit: aeb0d5a176ffdd0910ee533353593bba95f91d08
 workflow-type: tm+mt
-source-wordcount: 1758
+source-wordcount: 1740
 ht-degree: 0%
 
 ---
@@ -33,7 +33,7 @@ A maioria das atividades será removida após algum período.
 
 ## Descrever
 
-Use o ponto de extremidade [Obter Tipos de Atividade](https://developer.adobe.com/marketo-apis/api/mapi#tag/Activities/operation/getAllActivityTypesUsingGET) para recuperar os tipos de atividade disponíveis e suas definições para uma instância.
+Use o ponto de extremidade [Obter Tipos de Atividade](https://developer.adobe.com/marketo-apis/api/mapi#operation/getAllActivityTypesUsingGET) para recuperar os tipos de atividade disponíveis e suas definições para uma instância.
 
 ```
 GET /rest/v1/activities/types.json
@@ -88,7 +88,7 @@ A resposta também define cada atributo possível para o tipo de atividade e seu
 
 ## Consultar
 
-Use o ponto de extremidade [Obter Atividades de Cliente Potencial](https://developer.adobe.com/marketo-apis/api/mapi#tag/Activities/operation/getLeadActivitiesUsingGET) para recuperar atividades. Primeiro, recupere um token de paginação para a data e hora em que a recuperação da atividade deve começar. Passe esse token no parâmetro de consulta `nextPageToken`.
+Use o ponto de extremidade [Obter Atividades de Cliente Potencial](https://developer.adobe.com/marketo-apis/api/mapi#operation/getLeadActivitiesUsingGET) para recuperar atividades. Primeiro, recupere um token de paginação para a data e hora em que a recuperação da atividade deve começar. Passe esse token no parâmetro de consulta `nextPageToken`.
 
 Transmita até dez IDs de tipo de atividade como uma lista separada por vírgulas no parâmetro de consulta `activityTypeIds`.
 
@@ -157,7 +157,7 @@ Em cada item da matriz de resultados, o atributo de cadeia de caracteres `market
 
 ### Alterações no valor dos dados
 
-Use o ponto de extremidade [Obter Alterações de Cliente Potencial](https://developer.adobe.com/marketo-apis/api/mapi#tag/Activities/operation/getLeadChangesUsingGET) para recuperar registros de Alteração de Valor de Dados para campos de cliente potencial. Sua interface difere da API Obter atividades de lead de duas maneiras:
+Use o ponto de extremidade [Obter Alterações de Cliente Potencial](https://developer.adobe.com/marketo-apis/api/mapi#operation/getLeadChangesUsingGET) para recuperar registros de Alteração de Valor de Dados para campos de cliente potencial. Sua interface difere da API Obter atividades de lead de duas maneiras:
 
 - O ponto de extremidade não tem parâmetro `activityTypeIds` porque retorna somente a Alteração do Valor dos Dados e novas atividades de cliente potencial.
 - O parâmetro de consulta `fields` necessário aceita uma lista de campos separada por vírgulas cujas alterações você deseja recuperar.
@@ -216,7 +216,7 @@ Em cada item da matriz de resultados, o atributo de cadeia de caracteres `market
 
 ### Clientes potenciais excluídos
 
-Use o ponto de extremidade [Obter Clientes Potenciais Excluídos](https://developer.adobe.com/marketo-apis/api/mapi#tag/Activities/operation/getDeletedLeadsUsingGET) para recuperar atividades de cliente potencial excluídas da Marketo.
+Use o ponto de extremidade [Obter Clientes Potenciais Excluídos](https://developer.adobe.com/marketo-apis/api/mapi#operation/getDeletedLeadsUsingGET) para recuperar atividades de cliente potencial excluídas da Marketo.
 
 ```http
 GET /rest/v1/activities/deletedleads.json?nextPageToken=GIYDAOBNGEYS2MBWKQYDAORQGA5DAMBOGAYDAKZQGAYDALBQ
@@ -270,13 +270,13 @@ Quando um tipo de atividade personalizada é aprovado, o Marketo cria um acionad
 - Máximo de atividades personalizadas: 10
 - Máximo de atributos por atividade personalizada: 20
 
-Recupere dados de atividades personalizadas por meio da API [Obter Atividades de Cliente Potencial](https://developer.adobe.com/marketo-apis/api/mapi#tag/Activities/operation/getLeadActivitiesUsingGET), da mesma forma que recupera atividades padrão.
+Recupere dados de atividades personalizadas por meio da API [Obter Atividades de Cliente Potencial](https://developer.adobe.com/marketo-apis/api/mapi#operation/getLeadActivitiesUsingGET), da mesma forma que recupera atividades padrão.
 
 ## Tipos de consulta
 
-Use [Obter Tipos de Atividade Personalizados](https://developer.adobe.com/marketo-apis/api/mapi#tag/Activities/operation/getCustomActivityTypeUsingGET) para recuperar detalhes sobre os tipos provisionados em uma instância do Marketo. Use [Descrever Tipo de Atividade Personalizada](https://developer.adobe.com/marketo-apis/api/mapi#tag/Activities/operation/describeCustomActivityTypeUsingGET) para recuperar metadados de atributo para um tipo específico.
+Use [Obter Tipos de Atividade Personalizados](https://developer.adobe.com/marketo-apis/api/mapi#operation/getCustomActivityTypeUsingGET) para recuperar detalhes sobre os tipos provisionados em uma instância do Marketo. Use [Descrever Tipo de Atividade Personalizada](https://developer.adobe.com/marketo-apis/api/mapi#operation/describeCustomActivityTypeUsingGET) para recuperar metadados de atributo para um tipo específico.
 
-O ponto de extremidade padrão [Obter Tipos de Atividade](https://developer.adobe.com/marketo-apis/api/mapi#tag/Activities/operation/getAllActivityTypesUsingGET) também retorna metadados de atividade personalizados, mas não identifica se um tipo é personalizado.
+O ponto de extremidade padrão [Obter Tipos de Atividade](https://developer.adobe.com/marketo-apis/api/mapi#operation/getAllActivityTypesUsingGET) também retorna metadados de atividade personalizados, mas não identifica se um tipo é personalizado.
 
 ### Obter tipos
 
@@ -653,7 +653,7 @@ POST /rest/v1/activities/external/type/{apiName}/attributes/delete.json
 
 As atividades personalizadas são registros de atividades históricas (write-once) para registros individuais de pessoas. Os administradores do Marketo podem gerenciar o esquema no Marketo ou uma integração de API pode gerenciá-lo remotamente.
 
-Use o ponto de extremidade [Adicionar atividades personalizadas](https://developer.adobe.com/marketo-apis/api/mapi#tag/Activities/operation/addCustomActivityUsingPOST) para adicionar atividades personalizadas a registros de clientes potenciais. O campo `leadId` associa cada atividade a um cliente potencial. Exibir atividades personalizadas no log de atividades do cliente potencial ou recuperá-las por meio de Obter atividades do cliente potencial especificando a ID do tipo de atividade personalizada.
+Use o ponto de extremidade [Adicionar atividades personalizadas](https://developer.adobe.com/marketo-apis/api/mapi#operation/addCustomActivityUsingPOST) para adicionar atividades personalizadas a registros de clientes potenciais. O campo `leadId` associa cada atividade a um cliente potencial. Exibir atividades personalizadas no log de atividades do cliente potencial ou recuperá-las por meio de Obter atividades do cliente potencial especificando a ID do tipo de atividade personalizada.
 
 Use atividades personalizadas para dados relacionados a uma pessoa que não precisam ser atualizados ou substituídos. Por exemplo, registre a participação no evento como uma atividade &quot;Evento assistido&quot;.
 

@@ -15,9 +15,9 @@ role_v2:
   - id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
 topic_v2:
   - id: ebde5b41-29c9-4f5e-9ef6-1197e85409e3
-source-git-commit: 3e6d310c5aec1a3435424fb122b71d825db5af0e
+source-git-commit: aeb0d5a176ffdd0910ee533353593bba95f91d08
 workflow-type: tm+mt
-source-wordcount: 741
+source-wordcount: 718
 ht-degree: 2%
 
 ---
@@ -46,11 +46,11 @@ Um programa também pode ter tags. Tags são campos personalizáveis que podem s
 
 ## Consultar
 
-Consulte programas por ID, nome, navegação ou tipo e valor de tag. Use [Obter Tipos de Marca](https://developer.adobe.com/marketo-apis/api/asset#tag/Tags/operation/getTagTypesUsingGET) para recuperar marcas e valores disponíveis.
+Consulte programas por ID, nome, navegação ou tipo e valor de tag. Use [Obter Tipos de Marca](https://developer.adobe.com/marketo-apis/api/asset#operation/getTagTypesUsingGET) para recuperar marcas e valores disponíveis.
 
 ### Por ID
 
-O ponto de extremidade [Obter Programa por Id](https://developer.adobe.com/marketo-apis/api/asset#tag/Sales-Persons/operation/describeUsingGET_5) requer um parâmetro de caminho `id`.
+O ponto de extremidade [Obter Programa por Id](https://developer.adobe.com/marketo-apis/api/asset#operation/getProgramByIdUsingGET) requer um parâmetro de caminho `id`.
 
 Você pode obter a ID do programa a partir da URL da interface, como `https://app-\*\*\*.marketo.com/#PG1001A1`. Neste exemplo, a ID é `1001`, entre o primeiro e o segundo conjunto de letras.
 
@@ -140,13 +140,13 @@ GET /rest/asset/v1/program/byName.json?name=TestProgramName&includeTags=true
 
 ### Procurar
 
-Use o ponto de extremidade [Obter Programas](https://developer.adobe.com/marketo-apis/api/asset#tag/Sales-Persons/operation/describeUsingGET_5) para procurar programas.
+Use o ponto de extremidade [Obter Programas](https://developer.adobe.com/marketo-apis/api/asset#operation/browseProgramsUsingGET) para procurar programas.
 
 O parâmetro `status` opcional filtra os programas de Email e Envolvimento por status. Os valores válidos são `on` e `off` para programas de Envolvimento e `unlocked` para programas de Email.
 
 O parâmetro `maxReturn` opcional controla o número de programas retornados. O padrão é 20, e o máximo é 200. Use o parâmetro `offset` opcional para paginação; seu padrão é 0.
 
-Esse endpoint não retorna tags de programa. Recupere marcas com [Obter Programas por ID](https://developer.adobe.com/marketo-apis/api/asset#tag/Programs/operation/getProgramByIdUsingGET) ou [Obter Programas por Nome](https://developer.adobe.com/marketo-apis/api/asset#tag/Programs/operation/getProgramByNameUsingGET).
+Esse endpoint não retorna tags de programa. Recupere marcas com [Obter Programas por ID](https://developer.adobe.com/marketo-apis/api/asset#operation/getProgramByIdUsingGET) ou [Obter Programas por Nome](https://developer.adobe.com/marketo-apis/api/asset#operation/getProgramByNameUsingGET).
 
 ```http
 GET /rest/asset/v1/programs.json
@@ -201,7 +201,7 @@ GET /rest/asset/v1/programs.json
 
 ### Por Intervalo de Datas
 
-Use os parâmetros `earliestUpdatedAt` e `latestUpdatedAt` com [Obter Programas](https://developer.adobe.com/marketo-apis/api/asset#tag/Sales-Persons/operation/describeUsingGET_5) para definir limites de data-hora baixos e altos. O ponto de extremidade retorna programas criados ou atualizados dentro do intervalo.
+Use os parâmetros `earliestUpdatedAt` e `latestUpdatedAt` com [Obter Programas](https://developer.adobe.com/marketo-apis/api/asset#operation/browseProgramsUsingGET) para definir limites de data-hora baixos e altos. O ponto de extremidade retorna programas criados ou atualizados dentro do intervalo.
 
 ```http
 GET /rest/asset/v1/programs.json?earliestUpdatedAt=2017-01-01T00:00:00-05:00&latestUpdatedAt=2017-01-30T00:00:00-05:00
@@ -292,7 +292,7 @@ GET /rest/asset/v1/programs.json?earliestUpdatedAt=2017-01-01T00:00:00-05:00&lat
 
 ### Por tipo de tag
 
-O ponto de extremidade [Obter Programas por Marca](https://developer.adobe.com/marketo-apis/api/asset#tag/Programs/operation/getProgramListByTagUsingGET) retorna programas que correspondem ao tipo e ao valor da marca especificados.
+O ponto de extremidade [Obter Programas por Marca](https://developer.adobe.com/marketo-apis/api/asset#operation/getProgramListByTagUsingGET) retorna programas que correspondem ao tipo e ao valor da marca especificados.
 
 Os parâmetros `tagType` e `tagValue` são obrigatórios. O inteiro opcional `maxReturn` controla o número de programas retornados; o padrão é 20 e o máximo é 200. Use o inteiro `offset` opcional para paginação; seu padrão é 0. Os resultados são retornados em ordem aleatória.
 
@@ -334,9 +334,9 @@ GET /rest/asset/v1/program/byTag.json?tagType=Presenter&tagValue=Dennis
 
 ## Criar e atualizar
 
-[Criar](https://developer.adobe.com/marketo-apis/api/asset#tag/Programs/operation/createProgramUsingPOST) um programa requer `folder`, `name`, `type` e `channel`. Os parâmetros opcionais são `description`, `costs` e `tags`. Algumas assinaturas exigem tags para tipos de programas específicos. Use Obter tags para verificar os requisitos da instância.
+[Criar](https://developer.adobe.com/marketo-apis/api/asset#operation/createProgramUsingPOST) um programa requer `folder`, `name`, `type` e `channel`. Os parâmetros opcionais são `description`, `costs` e `tags`. Algumas assinaturas exigem tags para tipos de programas específicos. Use Obter tags para verificar os requisitos da instância.
 
-Ao [atualizar](https://developer.adobe.com/marketo-apis/api/asset#tag/Programs/operation/updateProgramUsingPOST), você pode alterar apenas a descrição, o nome, `tags` e `costs`. Você pode definir o canal e o tipo somente durante a criação. Configurar `costsDestructiveUpdate` como `true` apaga todos os custos existentes e os substitui pelos custos incluídos na solicitação.
+Ao [atualizar](https://developer.adobe.com/marketo-apis/api/asset#operation/updateProgramUsingPOST), você pode alterar apenas a descrição, o nome, `tags` e `costs`. Você pode definir o canal e o tipo somente durante a criação. Configurar `costsDestructiveUpdate` como `true` apaga todos os custos existentes e os substitui pelos custos incluídos na solicitação.
 
 Ao criar ou atualizar um Programa de Email, um `startDate` e `endDate` também podem ser transmitidos como uma data/hora UTC:
 
@@ -503,7 +503,7 @@ POST /rest/asset/v1/program/{id}/unapprove.json
 
 ## Clonar
 
-[A clonagem de programas](https://developer.adobe.com/marketo-apis/api/asset#tag/Programs/operation/cloneProgramUsingPOST) requer um novo nome e uma nova pasta pai. A descrição é opcional. O `name` deve ser globalmente exclusivo e não pode exceder 255 caracteres.
+[A clonagem de programas](https://developer.adobe.com/marketo-apis/api/asset#operation/cloneProgramUsingPOST) requer um novo nome e uma nova pasta pai. A descrição é opcional. O `name` deve ser globalmente exclusivo e não pode exceder 255 caracteres.
 
 Defina o atributo de tipo do parâmetro `folder` como `Folder`. A pasta de destino deve estar no mesmo espaço de trabalho que o programa de origem.
 

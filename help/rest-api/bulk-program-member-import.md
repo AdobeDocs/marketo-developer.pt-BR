@@ -12,9 +12,9 @@ role_v2:
   - id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
 topic_v2:
   - id: b5ce8718-c3af-4fdb-a1a9-fca32f83a87c
-source-git-commit: 3e6d310c5aec1a3435424fb122b71d825db5af0e
+source-git-commit: aeb0d5a176ffdd0910ee533353593bba95f91d08
 workflow-type: tm+mt
-source-wordcount: 771
+source-wordcount: 742
 ht-degree: 0%
 
 ---
@@ -38,7 +38,7 @@ Se você exceder o máximo de 10 trabalhos, a API retornará um erro `1016, Too 
 
 ## Importar arquivo
 
-A primeira linha do arquivo deve ser um cabeçalho que lista os nomes de campo da API REST para os quais os valores em cada mapa de linha. Recupere esses nomes usando os pontos de extremidade [Descrever lead](https://developer.adobe.com/marketo-apis/api/mapi#tag/Leads/operation/describeUsingGET_2) e [Descrever Membro do Programa](https://developer.adobe.com/marketo-apis/api/mapi#tag/Leads/operation/describeProgramMemberUsingGET).
+A primeira linha do arquivo deve ser um cabeçalho que lista os nomes de campo da API REST para os quais os valores em cada mapa de linha. Recupere esses nomes usando os pontos de extremidade [Descrever lead](https://developer.adobe.com/marketo-apis/api/mapi#operation/describeUsingGET_2) e [Descrever Membro do Programa](https://developer.adobe.com/marketo-apis/api/mapi#operation/describeProgramMemberUsingGET).
 
 Os registros podem conter campos de cliente potencial, campos de cliente potencial personalizados e campos de membro de programa personalizado.
 
@@ -53,7 +53,7 @@ Enviar a solicitação usando o tipo de conteúdo `multipart/form-data`. Use uma
 
 ## Criação de um trabalho
 
-O ponto de extremidade [Importar Membros do Programa](https://developer.adobe.com/marketo-apis/api/mapi#tag/Bulk-Import-Program-Members/operation/importProgramMemberUsingPOST) lê os registros de membros do programa de um arquivo e os adiciona a um programa com status especificado. Os registros podem conter campos de cliente potencial e campos de membro de programa personalizado.
+O ponto de extremidade [Importar Membros do Programa](https://developer.adobe.com/marketo-apis/api/mapi#operation/importProgramMemberUsingPOST) lê os registros de membros do programa de um arquivo e os adiciona a um programa com status especificado. Os registros podem conter campos de cliente potencial e campos de membro de programa personalizado.
 
 Todos os registros devem incluir o campo de email, que é usado para desduplicação.
 
@@ -133,7 +133,7 @@ Lancel,Lannister,Lancel@Lannister.com,Lannister,House Lannister,0
 
 ## Status do trabalho de pesquisa
 
-Depois de criar o trabalho de importação, sonde-o a cada 5-30 segundos. Passe o parâmetro de caminho `batchId` para o ponto de extremidade [Obter Status de Membro do Programa de Importação](https://developer.adobe.com/marketo-apis/api/mapi#tag/Bulk-Import-Program-Members/operation/getImportProgramMemberStatusUsingGET).
+Depois de criar o trabalho de importação, sonde-o a cada 5-30 segundos. Passe o parâmetro de caminho `batchId` para o ponto de extremidade [Obter Status de Membro do Programa de Importação](https://developer.adobe.com/marketo-apis/api/mapi#operation/getImportProgramMemberStatusUsingGET).
 
 ```http
 GET /bulk/v1/program/members/import/{batchId}/status.json
@@ -163,7 +163,7 @@ Quando o job for concluído, a resposta listará o número de linhas processadas
 
 ## Falhas
 
-O atributo `numOfRowsFailed` na resposta [Obter Status de Membro do Programa de Importação](https://developer.adobe.com/marketo-apis/api/mapi#tag/Bulk-Import-Program-Members/operation/getImportProgramMemberStatusUsingGET) indica o número de linhas com falha. Um valor maior que zero significa que ocorreram falhas.
+O atributo `numOfRowsFailed` na resposta [Obter Status de Membro do Programa de Importação](https://developer.adobe.com/marketo-apis/api/mapi#operation/getImportProgramMemberStatusUsingGET) indica o número de linhas com falha. Um valor maior que zero significa que ocorreram falhas.
 
 Passe o parâmetro de caminho `batchId` para o ponto de extremidade Obter Falhas de Membro do Programa de Importação para recuperar os registros com falha e suas causas.
 
@@ -217,9 +217,9 @@ Aerys,Targaryen,Aerys@Targaryen.com,Targaryen,House Targaryen,TEXT_VALUE_IN_INTE
 
 ## Avisos
 
-O atributo `numOfRowsWithWarning` na resposta [Obter Status do Membro do Programa de Importação](https://developer.adobe.com/marketo-apis/api/mapi#tag/Bulk-Import-Program-Members/operation/getImportProgramMemberStatusUsingGET) indica o número de linhas com avisos. Um valor maior que zero significa que ocorreram avisos.
+O atributo `numOfRowsWithWarning` na resposta [Obter Status do Membro do Programa de Importação](https://developer.adobe.com/marketo-apis/api/mapi#operation/getImportProgramMemberStatusUsingGET) indica o número de linhas com avisos. Um valor maior que zero significa que ocorreram avisos.
 
-Passe o parâmetro de caminho `batchId` para o ponto de extremidade [Obter Avisos do Membro do Programa de Importação](https://developer.adobe.com/marketo-apis/api/mapi#tag/Bulk-Import-Program-Members/operation/getImportProgramMemberWarningsUsingGET) para recuperar os registros afetados e suas causas.
+Passe o parâmetro de caminho `batchId` para o ponto de extremidade [Obter Avisos do Membro do Programa de Importação](https://developer.adobe.com/marketo-apis/api/mapi#operation/getImportProgramMemberWarningsUsingGET) para recuperar os registros afetados e suas causas.
 
 ```http
 GET /bulk/v1/program/members/import/{batchId}/warnings.json
