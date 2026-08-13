@@ -21,9 +21,9 @@ role_v2:
   - id: ff6a42d2-313e-452e-93a6-792e4fad9ff8
 topic_v2:
   - id: bbbea26f-9621-49eb-9ab8-e06fb3bbce8c
-source-git-commit: 2019d398e32790d76735ef672e9ca4b48b8dd2bb
+source-git-commit: 4d690179b0ff8da03b6eb7d11566f511d491f369
 workflow-type: tm+mt
-source-wordcount: 2216
+source-wordcount: 2214
 ht-degree: 1%
 
 ---
@@ -379,7 +379,7 @@ Exemplo de prompts:
 
 ### Clientes potenciais e listas
 
-Localizar clientes potenciais por endereço de email, criar ou atualizar registros de clientes potenciais e gerenciar associação estática de listas.
+Localizar clientes potenciais por endereço de email, criar registros de clientes potenciais e gerenciar associação estática de listas.
 
 Exemplo de prompts:
 
