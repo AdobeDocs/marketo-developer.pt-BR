@@ -1,7 +1,6 @@
 ---
 title: Servidor MCP do Marketo Engage
 description: Saiba como conectar um assistente de IA ao Marketo usando o servidor MCP do Marketo Engage. Configure o Claude Desktop, o Cursor, o Código Claude ou o Código VS com suas credenciais do Marketo.
-badgeBeta: label="Disponibilidade limitada" type="informative" tooltip="No momento, esse recurso está em uma versão beta limitada"
 exl-id: ab446e56-6250-4af5-b03e-162991d09a5c
 autotag-review: '2026-06-02T13:31:15.329Z'
 TQID: 'https://experienceleague.adobe.com/PJJm7yv8HmbwMB2fsnfDCXs8zprDJK5Q5z2uiiCJRZI'
@@ -21,22 +20,19 @@ role_v2:
   - id: ff6a42d2-313e-452e-93a6-792e4fad9ff8
 topic_v2:
   - id: bbbea26f-9621-49eb-9ab8-e06fb3bbce8c
-source-git-commit: 4d690179b0ff8da03b6eb7d11566f511d491f369
+source-git-commit: 8fc4e9a161decdc0b39a7e98bdb17de035538a6a
 workflow-type: tm+mt
-source-wordcount: 2214
-ht-degree: 1%
+source-wordcount: 2144
+ht-degree: 0%
 
 ---
 
-# [!DNL Marketo Engage] Servidor MCP
 
->[!AVAILABILITY]
->
-> Este recurso está em disponibilidade limitada. Para solicitar acesso, preencha [este formulário](https://forms.cloud.microsoft/Pages/ResponsePage.aspx?id=Wht7-jR7h0OUrtLBeN7O4Y-uSf63sAxCmWyqMJg8eMFUMVZSVExSNDA3T0I4SEcwRDFSVTBGWU01Uy4u&origin=QRCode){target="_blank"}. Certifique-se de ter a Munchkin ID da sua assinatura pronta.
+# [!DNL Marketo Engage] Servidor MCP
 
 >[!NOTE]
 >
->A equipe do servidor MCP está trabalhando para ativar as APIs de ativos Smart List e Smart Campaign para trabalhar com o servidor MCP. A maior parte deste trabalho, incluindo atividades, ações e regras de incluir na lista de permissões, deverá estar concluída no terceiro trimestre de 2026.
+>As ferramentas `create` e `update` da Smart List e do Smart Campaign estão programadas para serem lançadas em setembro de 2026.
 
 O Protocolo de contexto de modelo (MCP) é um padrão aberto que conecta ferramentas de IA a serviços externos. O servidor MCP [!DNL Marketo] conecta seu assistente de IA ao [!DNL Marketo]. Ele fornece mais de 100 operações para formulários, programas, campanhas inteligentes, leads, emails, trechos, listas e pastas.
 

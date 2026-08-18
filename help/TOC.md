@@ -6,9 +6,9 @@ role: Admin
 feature-set: "Marketo Engage"
 index: true
 author: Donald
-source-git-commit: bcf56d2102f2f60eac5ad3318d348fd020391e6b
+source-git-commit: ece6e257d28839582be659daf0b8ba1a6b6a5c3c
 workflow-type: tm+mt
-source-wordcount: '257'
+source-wordcount: '256'
 ht-degree: 36%
 
 ---
@@ -125,8 +125,8 @@ ht-degree: 36%
 - [Scripts de e-mails](email-scripting.md)
 - [Exemplos de script de email](examples.md)
 - [Objetos do Marketo](marketo-objects.md)
-- {hide-from-toc}[Servidor MCP](mcp-server.md)
-- {hide-from-toc}[Operações MCP com suporte](mcp-server-operations.md)
+- [Operações de MCP](mcp-server-operations.md)
+- [Servidor MCP](mcp-server.md)
 - {hide-from-toc}[Licença](api-license.md)
 - [Sandbox de parceiros](partner-sandbox.md)
 - [Etapas de fluxo de autoatendimento](self-service-flow-steps.md)
