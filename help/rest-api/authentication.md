@@ -4,13 +4,11 @@ feature: REST API
 description: Autentique APIs REST do Marketo com OAuth 2.0 com duas pernas, crie e use tokens de acesso, alterne para o Cabeçalho de autorização, gerencie a expiração e manipule erros 601 e 602.
 exl-id: f89a8389-b50c-4e86-a9e4-6f6acfa98e7e
 TQID: https://experienceleague.adobe.com/cIeI0m61CyIWq4HEosZ-QAsxzZb0WcrQRpCud2qysfY
-product_v2:
-  - id: b27e5950-9033-45ac-9f86-eb22e567f615
-role_v2:
-  - id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
-source-git-commit: 6d9408d07557d4b7426ad72d2a886220d622fb78
+product_v2: id: b27e5950-9033-45ac-9f86-eb22e567f615
+role_v2: id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
+source-git-commit: 1a442b6008fbb8f05ad346f1b7185a5b2e22f0e4
 workflow-type: tm+mt
-source-wordcount: 526
+source-wordcount: 487
 ht-degree: 0%
 
 ---
@@ -61,7 +59,7 @@ Todas as chamadas à API REST devem incluir um token de acesso em um cabeçalho 
 
 >[!IMPORTANT]
 >
->O suporte para autenticação usando o parâmetro de consulta `access_token` será removido em 31 de agosto de 2026. Se o projeto usar um parâmetro de consulta para passar o token de acesso, ele deverá ser atualizado para usar o [Cabeçalho de autorização](https://experienceleague.adobe.com/pt-br/docs/marketo-developer/marketo/rest/authentication#using-an-access-token) o mais rápido possível. O novo desenvolvimento deve usar o cabeçalho `Authorization` exclusivamente.
+>O suporte para autenticação usando o parâmetro de consulta `access_token` foi removido em 31 de agosto de 2026. O novo desenvolvimento deve usar o cabeçalho `Authorization` exclusivamente.
 
 ### Alternar para o cabeçalho de Autorização
 
