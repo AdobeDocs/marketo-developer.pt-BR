@@ -10,9 +10,9 @@ feature_v2:
   - id: f71e690b-4480-4b67-9ef5-88f42f9cdfdb
 role_v2:
   - id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
-source-git-commit: 3e6d310c5aec1a3435424fb122b71d825db5af0e
+source-git-commit: 1a442b6008fbb8f05ad346f1b7185a5b2e22f0e4
 workflow-type: tm+mt
-source-wordcount: 1549
+source-wordcount: 1525
 ht-degree: 1%
 
 ---
@@ -43,14 +43,14 @@ As APIs de extração em massa usam o mesmo método de autenticação OAuth 2.0 
 
 >[!IMPORTANT]
 >
->O suporte para autenticação usando o parâmetro de consulta **access_token** será removido em 31 de agosto de 2026. Se o projeto usar um parâmetro de consulta para passar o token de acesso, ele deverá ser atualizado para usar o cabeçalho **Autorização** o mais rápido possível. O novo desenvolvimento deve usar o cabeçalho **Autorização** exclusivamente.
+>O suporte para autenticação usando o parâmetro de consulta **access_token** foi removido em 31 de agosto de 2026. O novo desenvolvimento deve usar o cabeçalho **Autorização** exclusivamente.
 
 ## Limites
 
 - Máximo de trabalhos de exportação simultâneos: 2
 - Máximo de trabalhos de exportação em fila, incluindo os trabalhos que estão sendo exportados no momento: 10
 - Período de retenção do arquivo: sete dias
-- Alocação de exportação diária padrão: 500 MB. A alocação é redefinida diariamente às 12h00, horário padrão da região central dos EUA. Os aumentos estão disponíveis para compra.
+- A alocação é redefinida diariamente às 12h CST/CDT, dependendo do Horário de verão. Os aumentos estão disponíveis para compra.
 - Período máximo para o filtro de intervalo de datas (`createdAt` ou `updatedAt`): 31 dias
 
 Os filtros de Extração de lead em massa para UpdatedAt e Smart List não estão disponíveis para alguns tipos de assinatura. Se esses filtros não estiverem disponíveis, o ponto de extremidade Criar trabalho de lead de exportação retornará o erro &quot;1035, Tipo de filtro não suportado para assinatura de destino&quot;. Entre em contato com o Suporte da Marketo para ativar essa funcionalidade para sua assinatura.
