@@ -8,9 +8,9 @@ product_v2:
   - id: b27e5950-9033-45ac-9f86-eb22e567f615
 role_v2:
   - id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
-source-git-commit: 1a442b6008fbb8f05ad346f1b7185a5b2e22f0e4
+source-git-commit: eb4e99aff94f3106b96f999fc56a6db7c5598b1f
 workflow-type: tm+mt
-source-wordcount: 487
+source-wordcount: 563
 ht-degree: 0%
 
 ---
@@ -62,6 +62,8 @@ Todas as chamadas à API REST devem incluir um token de acesso em um cabeçalho 
 >[!IMPORTANT]
 >
 >O suporte para autenticação usando o parâmetro de consulta `access_token` foi removido em 31 de agosto de 2026. O novo desenvolvimento deve usar o cabeçalho `Authorization` exclusivamente.
+>Essa alteração é uma correção de segurança para estar em conformidade com as Práticas recomendadas de segurança da Indústria e do OAuth 2.0, que recomendam não transmitir tokens de acesso em URLs.  Os workflows existentes que se autenticam dessa maneira já podem estar enfrentando erros 603 (Acesso negado).
+>Priorize a atualização da sua integração para usar a autenticação baseada em cabeçalho antes de 15 de setembro de 2026.  Se precisar de mais tempo, entre em contato com o Suporte da Adobe para discutir as opções disponíveis
 
 ### Alternar para o cabeçalho de Autorização
 
