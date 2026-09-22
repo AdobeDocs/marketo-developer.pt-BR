@@ -1,18 +1,16 @@
 ---
 user-guide-title: Guia do desenvolvedor do [!DNL Marketo]
-user-guide-description: Este guia fornece instruções para usar as  [!DNL Marketo] APIs.
+user-guide-description: Este guia fornece instruções sobre o uso das APIs do [!DNL Marketo].
 breadcrumb-title: Guia do desenvolvedor do [!DNL Marketo]
 role: Admin
 feature-set: "Marketo Engage"
 index: true
 author: Donald
-source-git-commit: ece6e257d28839582be659daf0b8ba1a6b6a5c3c
+source-git-commit: 4dffbef0e0ea16393a9e30f5f8e1021331ca9a37
 workflow-type: tm+mt
-source-wordcount: '256'
-ht-degree: 36%
-
+source-wordcount: '262'
+ht-degree: 38%
 ---
-
 
 # Desenvolvedor [!DNL Marketo] {#marketo}
 
@@ -115,6 +113,8 @@ ht-degree: 36%
   - [Tags](rest-api/tags.md)
   - [Contexto do usuário](rest-api/user-context.md)
   - [Gerenciamento de usuários](rest-api/user-management.md)
+- SOAP {#soap}
+  - [Migração para a API REST](soap-api/migration.md)
 - [Perguntas frequentes sobre o SOAP](soap-faq.md)
 - Webhooks {#webhooks}
   - [Erros](webhooks/errors.md)
