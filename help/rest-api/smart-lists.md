@@ -6,27 +6,33 @@ exl-id: 4ba37e57-ee56-48c3-bb2b-b4ec8e907911
 TQID: https://experienceleague.adobe.com/wQ2PQFabw8E5XYP4zJ2RMPcurRkoxA7UecpA-YuQuBc
 product_v2:
   - id: b27e5950-9033-45ac-9f86-eb22e567f615
+    internal-label: Marketo Engage
 feature_v2:
   - id: a7170d27-32ab-462b-a333-269abc654483
+    internal-label: Smart Campaigns
   - id: e64968b2-4ee5-47f9-8cae-0588f184b9eb
+    internal-label: Programs
 subfeature_v2:
   - id: d0251300-e25f-466f-9856-7e11ce8fa7aa
+    internal-label: Smart Lists
 role_v2:
   - id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
-source-git-commit: aeb0d5a176ffdd0910ee533353593bba95f91d08
+    internal-label: Admin
+source-git-commit: 15a223e2511f405ebaebbba933acac1429514030
 workflow-type: tm+mt
-source-wordcount: 402
-ht-degree: 1%
-
+source-wordcount: '393'
+ht-degree: 2%
 ---
-
 # Listas inteligentes
 
 [Referência de Ponto de Extremidade de Smart Lists](https://developer.adobe.com/marketo-apis/api/asset#tag/Smart-Lists)
 
 Use as APIs REST de Smart Lists para consultar, clonar e excluir smart lists.
 
-Essas APIs só oferecem suporte a listas inteligentes criadas pelo usuário. Eles não oferecem suporte a [listas inteligentes internas ou do sistema](https://experienceleague.adobe.com/pt-br/docs/marketo/using/product-docs/core-marketo-concepts/smart-lists-and-static-lists/using-smart-lists/use-built-in-system-smart-lists).
+>[!NOTE]
+>
+>No aplicativo, se você selecionar o operador &quot;in&quot; para Membro da lista ou Membro da lista inteligente, ele aparecerá na resposta da API como &quot;is&quot;.
+> ![No campo de operador](assets/in-operator.png){width=600}
 
 ## Consultar
 
@@ -199,7 +205,7 @@ GET /rest/asset/v1/smartList/byName.json?name=2018 Leads
 }
 ```
 
-### Procurar
+### Navegar
 
 Use o ponto de extremidade de navegação para [recuperar listas inteligentes em lotes](https://developer.adobe.com/marketo-apis/api/asset#operation/getSmartListsUsingGET). O parâmetro `folder` opcional define o escopo da consulta para uma pasta pai. Passe-o como um objeto JSON contendo `id` e `type`.
 
