@@ -173,7 +173,7 @@ O MME SDK para Android é compatível com o uso direto do [Firebase Cloud Messag
 
 1. Integre o Marketo Android SDK mais recente ao aplicativo do Android. Consulte as etapas no [GitHub](https://github.com/Marketo/android-sdk).
 1. Configure o aplicativo Firebase no Console do Firebase.
-   1. Crie ou adicione um projeto no [](https://accounts.google.com/ServiceLogin?passive=1209600&osid=1&continue=https://console.firebase.google.com/&followup=https://console.firebase.google.com/)Console Firebase.
+   1. Crie ou adicione um projeto no [&#128279;](https://accounts.google.com/ServiceLogin?passive=1209600&osid=1&continue=https://console.firebase.google.com/&followup=https://console.firebase.google.com/)Console Firebase.
       1. No [console Firebase](https://accounts.google.com/ServiceLogin?passive=1209600&osid=1&continue=https://console.firebase.google.com/&followup=https://console.firebase.google.com/), selecione **[!UICONTROL Adicionar projeto]**.
       1. Selecione o projeto GCM na lista de projetos existentes do Google Cloud e selecione **[!UICONTROL Adicionar Firebase]**.
       1. Na tela de boas-vindas do Firebase, selecione **[!UICONTROL Adicionar o Firebase ao seu aplicativo Android]**.
