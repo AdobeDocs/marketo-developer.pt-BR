@@ -3,29 +3,38 @@ title: Tipos de campos
 feature: REST API
 description: Lista abrangente de tipos de campo do Marketo com definições, exemplos e formatos, incluindo datetime ISO 8601, limites de área de texto, moeda e booleano.
 exl-id: a0ba9e02-ed42-4be3-9cdd-a97fee9a726e
-TQID: https://experienceleague.adobe.com/Q-L1NCCS1caYip-niSrBAkp6k37ErzmsLCFvn7fRJW0
+TQID: 'https://experienceleague.adobe.com/Q-L1NCCS1caYip-niSrBAkp6k37ErzmsLCFvn7fRJW0'
 product_v2:
   - id: b27e5950-9033-45ac-9f86-eb22e567f615
+    internal-label: Marketo Engage
 feature_v2:
   - id: a7170d27-32ab-462b-a333-269abc654483
+    internal-label: Smart Campaigns
   - id: c5f60233-d5ea-4453-a799-0ad258b4d399
+    internal-label: Database
   - id: d1d0a9cd-295d-4976-8c39-ddae266f240e
+    internal-label: Administration
+  - id: dca84292-69e9-4116-a575-667d31fa060d
+    internal-label: APIs
 subfeature_v2:
   - id: ad89fb33-8541-4339-afe7-bb13d1633714
+    internal-label: Flow Step
+  - id: cf1396d8-ab85-4e93-b35d-d9b573024abf
+    internal-label: REST APIs
 role_v2:
   - id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
+    internal-label: Admin
 topic_v2:
   - id: eddd9b14-83bd-4ff4-9072-54a4a484abb7
-source-git-commit: 3e6d310c5aec1a3435424fb122b71d825db5af0e
+    internal-label: Administration
+source-git-commit: 5620f050ba834be3f6648650b5cc7d781ea394bf
 workflow-type: tm+mt
-source-wordcount: 371
+source-wordcount: '371'
 ht-degree: 8%
-
 ---
-
 # Tipos de campos
 
-A tabela a seguir descreve os tipos de campo disponíveis no Marketo. Para obter mais informações, consulte o [glossário de tipo de campo personalizado](https://experienceleague.adobe.com/pt-br/docs/marketo/using/product-docs/administration/field-management/custom-field-type-glossary) e o [Limites de campo do Marketo por tipo de campo](https://nation.marketo.com/t5/knowledgebase/marketo-field-limits-by-field-type/ta-p/251613).
+A tabela a seguir descreve os tipos de campo disponíveis no Marketo. Para obter mais informações, consulte o [glossário de tipo de campo personalizado](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/administration/field-management/custom-field-type-glossary) e o [Limites de campo do Marketo por tipo de campo](https://nation.marketo.com/t5/knowledgebase/marketo-field-limits-by-field-type/ta-p/251613).
 
 | Tipo de campo | Descrição | Exemplo |
 | --- | --- | --- |
@@ -33,7 +42,7 @@ A tabela a seguir descreve os tipos de campo disponíveis no Marketo. Para obter
 | Email | Um campo de sequência de caracteres que aceita endereços de email | <example@example.com> |
 | Flutuante | Um campo de número que contém Números Reais e pode usar uma casa decimal. | 10,4 |
 | Inteiro | Números inteiros | 10 |
-| Fórmula | Campos cujos valores são gerados pela manipulação de dados de outros campos presentes em um registro de cliente potencial. Elas não são exportadas e não podem ser usadas em Campanhas inteligentes. | Veja este [artigo](https://experienceleague.adobe.com/pt-br/docs/marketo/using/product-docs/administration/field-management/create-and-use-a-concatenated-string-formula-field) |
+| Fórmula | Campos cujos valores são gerados pela manipulação de dados de outros campos presentes em um registro de cliente potencial. Elas não são exportadas e não podem ser usadas em Campanhas inteligentes. | Veja este [artigo](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/administration/field-management/create-and-use-a-concatenated-string-formula-field) |
 | Porcentagem | Uma porcentagem expressa como um número inteiro | 30 |
 | URL | Um campo de texto que restringe a entrada para URLs, incluindo o protocolo do URL. | <http://example.com/> |
 | Telefone | Número de telefone | 111-111-1111 |

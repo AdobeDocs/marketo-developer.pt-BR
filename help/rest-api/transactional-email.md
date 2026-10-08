@@ -3,21 +3,28 @@ title: Email transacional
 feature: REST API
 description: Saiba como configurar o Marketo para emails transacionais e acioná-los por meio da Campanha de solicitação da API REST, com etapas de configuração e exemplos de código Java.
 exl-id: 057bc342-53f3-4624-a3c0-ae619e0c81a5
-TQID: https://experienceleague.adobe.com/eUw2THnwDdIuEO3MsuG4cSaoPnKVvdZ0ZTV-gxP-pJQ
+TQID: 'https://experienceleague.adobe.com/eUw2THnwDdIuEO3MsuG4cSaoPnKVvdZ0ZTV-gxP-pJQ'
 product_v2:
   - id: b27e5950-9033-45ac-9f86-eb22e567f615
+    internal-label: Marketo Engage
 feature_v2:
   - id: b3b8a63f-51fc-40f6-a7d2-a31c5d49fb45
+    internal-label: Configuration
   - id: e64968b2-4ee5-47f9-8cae-0588f184b9eb
+    internal-label: Programs
+  - id: dca84292-69e9-4116-a575-667d31fa060d
+    internal-label: APIs
+subfeature_v2:
+  - id: cf1396d8-ab85-4e93-b35d-d9b573024abf
+    internal-label: REST APIs
 role_v2:
   - id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
-source-git-commit: aeb0d5a176ffdd0910ee533353593bba95f91d08
+    internal-label: Admin
+source-git-commit: 5620f050ba834be3f6648650b5cc7d781ea394bf
 workflow-type: tm+mt
-source-wordcount: 891
+source-wordcount: '891'
 ht-degree: 1%
-
 ---
-
 # Email transacional
 
 Use a API [Solicitar Campanha](https://developer.adobe.com/marketo-apis/api/mapi#operation/triggerCampaignUsingPOST) para enviar emails transacionais para registros específicos do Marketo. Configure o email e acione a campanha antes de fazer a solicitação.
@@ -36,7 +43,7 @@ Aprove o email antes de criar a campanha:
 
 ![SolicitarCampanha-Aprovar-Rascunho](assets/request-campaign-approve-draft.png)
 
-Se necessário, consulte [Criar uma nova Campanha Inteligente](https://experienceleague.adobe.com/docs/marketo/using/product-docs/core-marketo-concepts/smart-campaigns/creating-a-smart-campaign/create-a-new-smart-campaign.html?lang=pt-BR). Configure a Smart List da campanha com o acionador A campanha é solicitada:
+Se necessário, consulte [Criar uma nova Campanha Inteligente](https://experienceleague.adobe.com/docs/marketo/using/product-docs/core-marketo-concepts/smart-campaigns/creating-a-smart-campaign/create-a-new-smart-campaign.html). Configure a Smart List da campanha com o acionador A campanha é solicitada:
 
 ![Lista Inteligente De Campanha De Solicitação](assets/request-campaign-smart-list.png)
 
@@ -192,7 +199,7 @@ Essa classe tem um construtor que aceita um Auth e a Id da campanha. Clientes po
 
 ### Criação do email
 
-Para personalizar nosso conteúdo, primeiro devemos configurar um [programa](https://experienceleague.adobe.com/docs/marketo/using/product-docs/core-marketo-concepts/programs/creating-programs/create-a-program.html?lang=pt-BR) e um [email](https://experienceleague.adobe.com/docs/marketo/using/home.html?lang=pt-BR) no Marketo. Para gerar nosso conteúdo personalizado, devemos criar tokens dentro do programa e, em seguida, colocá-los no email que vamos enviar. Para simplificar, estamos usando apenas um token neste exemplo, mas você pode substituir qualquer número de tokens em um email, no campo Do email, Do nome, Responder para ou qualquer parte do conteúdo do email. Então, vamos criar um token de Rich Text para substituição e chamá-lo de &quot;bodyReplacement&quot;. O Rich Text permite substituir qualquer conteúdo no token pelo HTML arbitrário que queremos inserir.
+Para personalizar nosso conteúdo, primeiro devemos configurar um [programa](https://experienceleague.adobe.com/docs/marketo/using/product-docs/core-marketo-concepts/programs/creating-programs/create-a-program.html) e um [email](https://experienceleague.adobe.com/docs/marketo/using/home.html?lang=pt-BR) no Marketo. Para gerar nosso conteúdo personalizado, devemos criar tokens dentro do programa e, em seguida, colocá-los no email que vamos enviar. Para simplificar, estamos usando apenas um token neste exemplo, mas você pode substituir qualquer número de tokens em um email, no campo Do email, Do nome, Responder para ou qualquer parte do conteúdo do email. Então, vamos criar um token de Rich Text para substituição e chamá-lo de &quot;bodyReplacement&quot;. O Rich Text permite substituir qualquer conteúdo no token pelo HTML arbitrário que queremos inserir.
 
 ![Novo-Token](assets/New-Token.png)
 

@@ -3,22 +3,33 @@ title: Extração de Objeto Personalizado em Massa
 feature: REST API, Custom Objects
 description: Guia para APIs REST de Extração de objeto personalizado em massa do Marketo para exportar objetos personalizados vinculados a lead com filtros de lista e updateAt, campos selecionados e...
 exl-id: 86cf02b0-90a3-4ec6-8abd-b4423cdd94eb
-TQID: https://experienceleague.adobe.com/KAT-vab2uZq8FrRbZLy30PCJNfq01znDDuSSWuIu7WE
+TQID: 'https://experienceleague.adobe.com/KAT-vab2uZq8FrRbZLy30PCJNfq01znDDuSSWuIu7WE'
 product_v2:
   - id: b27e5950-9033-45ac-9f86-eb22e567f615
+    internal-label: Marketo Engage
 feature_v2:
   - id: d1d0a9cd-295d-4976-8c39-ddae266f240e
+    internal-label: Administration
+  - id: dca84292-69e9-4116-a575-667d31fa060d
+    internal-label: APIs
+  - id: b3b8a63f-51fc-40f6-a7d2-a31c5d49fb45
+    internal-label: Configuration
+subfeature_v2:
+  - id: cf1396d8-ab85-4e93-b35d-d9b573024abf
+    internal-label: REST APIs
+  - id: ea4e3ff5-e7b9-4b4c-a5a0-dc27cc3f4275
+    internal-label: Custom objects
 role_v2:
   - id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
+    internal-label: Admin
 topic_v2:
   - id: eddd9b14-83bd-4ff4-9072-54a4a484abb7
-source-git-commit: aeb0d5a176ffdd0910ee533353593bba95f91d08
+    internal-label: Administration
+source-git-commit: 5620f050ba834be3f6648650b5cc7d781ea394bf
 workflow-type: tm+mt
-source-wordcount: 1186
+source-wordcount: '1186'
 ht-degree: 2%
-
 ---
-
 # Extração de Objeto Personalizado em Massa
 
 [Referência de Ponto de Extremidade de Extração de Objeto Personalizado em Massa](https://developer.adobe.com/marketo-apis/api/mapi#tag/Bulk-Export-Custom-Objects)
@@ -27,7 +38,7 @@ As APIs REST de extração de objeto personalizado em massa recuperam grandes co
 
 A API exporta registros de objetos personalizados de primeiro nível do Marketo vinculados diretamente a clientes potenciais. Especifique o nome do objeto personalizado e uma lista de clientes potenciais vinculados. Para cada lead, a API grava registros de objeto personalizado vinculados correspondentes como linhas no arquivo de exportação.
 
-Você pode exibir dados do objeto personalizado na [guia Objeto Personalizado da página de detalhes do lead na interface do usuário do Marketo](https://experienceleague.adobe.com/pt-br/docs/marketo/using/product-docs/administration/marketo-custom-objects/understanding-marketo-custom-objects).
+Você pode exibir dados do objeto personalizado na [guia Objeto Personalizado da página de detalhes do lead na interface do usuário do Marketo](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/administration/marketo-custom-objects/understanding-marketo-custom-objects).
 
 ## Permissões
 

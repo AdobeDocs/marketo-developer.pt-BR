@@ -3,23 +3,32 @@ title: Pastas
 feature: REST API
 description: Guia da API REST do Marketo para pastas que abrangem criação, atualização, exclusão, consulta por id e nome, navegação em massa com raiz, espaço de trabalho, maxDepth e paginação.
 exl-id: 4b55c256-ef0a-42b4-9548-ff8a4106f064
-TQID: https://experienceleague.adobe.com/OxCNdy8qW6jwq8u57RF9mqVKPVvH99UmuiOBjFprHCM
+TQID: 'https://experienceleague.adobe.com/OxCNdy8qW6jwq8u57RF9mqVKPVvH99UmuiOBjFprHCM'
 product_v2:
   - id: b27e5950-9033-45ac-9f86-eb22e567f615
+    internal-label: Marketo Engage
 feature_v2:
   - id: b0bb9048-d951-48d8-8232-45cf248a7e27
+    internal-label: Forms
   - id: c5f60233-d5ea-4453-a799-0ad258b4d399
+    internal-label: Database
   - id: d65b4a73-87a3-4d56-b638-74e74d9939ce
+    internal-label: Design Studio
   - id: e64968b2-4ee5-47f9-8cae-0588f184b9eb
+    internal-label: Programs
+  - id: dca84292-69e9-4116-a575-667d31fa060d
+    internal-label: APIs
+subfeature_v2:
+  - id: cf1396d8-ab85-4e93-b35d-d9b573024abf
+    internal-label: REST APIs
 role_v2:
   - id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
-source-git-commit: aeb0d5a176ffdd0910ee533353593bba95f91d08
+    internal-label: Admin
+source-git-commit: 5620f050ba834be3f6648650b5cc7d781ea394bf
 workflow-type: tm+mt
-source-wordcount: 792
+source-wordcount: '792'
 ht-degree: 1%
-
 ---
-
 # Pastas
 
 [Referência de Ponto de Extremidade de Pastas](https://developer.adobe.com/marketo-apis/api/asset#tag/Folders)
@@ -133,7 +142,7 @@ GET /rest/asset/v1/folder/byName.json?name=Test%2010%20-%20deverly
 
 As Atividades de marketing e o Design Studio são pastas raiz. Recupere a raiz pelo nome e use-a para percorrer a hierarquia de pastas na instância de destino.
 
-### Procurar
+### Navegar
 
 Você também pode [recuperar pastas em massa](https://developer.adobe.com/marketo-apis/api/asset#operation/getFolderUsingGET). Use o parâmetro `root` para especificar a pasta pai na qual consultar. Passar `root` como um objeto JSON inserido com dois membros:
 

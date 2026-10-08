@@ -3,22 +3,29 @@ title: Empresas
 feature: REST API
 description: Use a API REST das Empresas Marketo para descrever, consultar e sincronizar registros da empresa, gerenciar campos e realizar a desduplicação por externalCompanyId e observar a sincronização de CRM como somente leitura.
 exl-id: 80e514a2-1c86-46a7-82bc-e4db702189b0
-TQID: https://experienceleague.adobe.com/LdJYN4lx9JfcE-02zTz8ktfYXm4EdPtxMYOx9gGR0sg
+TQID: 'https://experienceleague.adobe.com/LdJYN4lx9JfcE-02zTz8ktfYXm4EdPtxMYOx9gGR0sg'
 product_v2:
   - id: b27e5950-9033-45ac-9f86-eb22e567f615
+    internal-label: Marketo Engage
 feature_v2:
   - id: c5f60233-d5ea-4453-a799-0ad258b4d399
+    internal-label: Database
+  - id: dca84292-69e9-4116-a575-667d31fa060d
+    internal-label: APIs
+subfeature_v2:
+  - id: cf1396d8-ab85-4e93-b35d-d9b573024abf
+    internal-label: REST APIs
 role_v2:
   - id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
+    internal-label: Admin
 topic_v2:
   - id: a004cc84-67b9-4a33-a3a7-8ec7273ef4dc
-source-git-commit: aeb0d5a176ffdd0910ee533353593bba95f91d08
+    internal-label: Metadata
+source-git-commit: 5620f050ba834be3f6648650b5cc7d781ea394bf
 workflow-type: tm+mt
-source-wordcount: 572
+source-wordcount: '572'
 ht-degree: 1%
-
 ---
-
 # Empresas
 
 [Referência de Empresa](https://developer.adobe.com/marketo-apis/api/mapi#tag/Companies)
@@ -27,7 +34,7 @@ As empresas representam as organizações às quais os registros de lead pertenc
 
 Não é possível remover um cliente potencial de uma empresa, a menos que você adicione o cliente potencial a uma empresa diferente. Clientes potenciais vinculados a um registro da empresa herdam valores desse registro como se os valores existissem no registro de cliente potencial.
 
-As APIs da empresa fornecem acesso somente leitura para assinaturas com a [Sincronização do SFDC](https://experienceleague.adobe.com/docs/marketo/using/product-docs/crm-sync/salesforce-sync/sfdc-sync-details/sfdc-sync-field-sync.html?lang=pt-BR) ou a [Sincronização do Microsoft Dynamics](https://experienceleague.adobe.com/docs/marketo/using/product-docs/crm-sync/microsoft-dynamics/microsoft-dynamics-sync-details/microsoft-dynamics-sync-user-sync.html?lang=pt-BR) habilitada.
+As APIs da empresa fornecem acesso somente leitura para assinaturas com a [Sincronização do SFDC](https://experienceleague.adobe.com/docs/marketo/using/product-docs/crm-sync/salesforce-sync/sfdc-sync-details/sfdc-sync-field-sync.html?lang=en) ou a [Sincronização do Microsoft Dynamics](https://experienceleague.adobe.com/docs/marketo/using/product-docs/crm-sync/microsoft-dynamics/microsoft-dynamics-sync-details/microsoft-dynamics-sync-user-sync.html?lang=en) habilitada.
 
 ## Descrever
 
@@ -243,7 +250,7 @@ GET /rest/v1/companies/schema/fields/industry.json
 }
 ```
 
-#### Procurar
+#### Navegar
 
 O ponto de extremidade [Obter Campos de Empresa](https://developer.adobe.com/marketo-apis/api/mapi#operation/getCompanyFieldsUsingGET) recupera metadados para todos os campos no objeto de empresa. Por padrão, retorna no máximo 300 registros. Use o parâmetro de consulta `batchSize` para reduzir esse número.
 

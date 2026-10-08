@@ -3,26 +3,30 @@ title: Mensagens no aplicativo
 feature: Mobile Marketing
 description: Configure mensagens no aplicativo do Marketo com o Mobile SDK, configure acionadores de evento personalizados, rastreie a atividade de toque e corrija os problemas de primeira inicialização de abertura do aplicativo.
 exl-id: 73c9f862-d154-4b37-94ce-92311aa756e8
-TQID: https://experienceleague.adobe.com/RVkEUBaFb-PHd0gE9ngzYc5zOojINwSI7ic2TmcU7-8
+TQID: 'https://experienceleague.adobe.com/RVkEUBaFb-PHd0gE9ngzYc5zOojINwSI7ic2TmcU7-8'
 product_v2:
   - id: b27e5950-9033-45ac-9f86-eb22e567f615
+    internal-label: Marketo Engage
+feature_v2:
+  - id: 44b89f75-c1af-5353-8094-79b278102d46
+    internal-label: Mobile Marketing
 role_v2:
   - id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
+    internal-label: Admin
 topic_v2:
   - id: c1579802-ddd4-4214-8a91-97b2066abe11
-source-git-commit: 3e6d310c5aec1a3435424fb122b71d825db5af0e
+    internal-label: Troubleshooting
+source-git-commit: 5620f050ba834be3f6648650b5cc7d781ea394bf
 workflow-type: tm+mt
-source-wordcount: 321
+source-wordcount: '321'
 ht-degree: 2%
-
 ---
-
 # Mensagens no aplicativo
 
 Conclua estas etapas para usar as mensagens no aplicativo do Marketo:
 
 1. Instale o Marketo Mobile SDK conforme descrito em [Instalação móvel](installation.md).
-1. Adicione seu aplicativo móvel ao Marketo conforme descrito em [Adicionar um aplicativo móvel](https://experienceleague.adobe.com/pt-br/docs/marketo/using/product-docs/mobile-marketing/admin/add-a-mobile-app).
+1. Adicione seu aplicativo móvel ao Marketo conforme descrito em [Adicionar um aplicativo móvel](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/mobile-marketing/admin/add-a-mobile-app).
 1. Opcional: adicione código ao aplicativo móvel para capturar [Ações personalizadas](custom-actions.md).
 
 Depois de instalar o Marketo Mobile SDK e adicionar seu aplicativo ao Marketo, você pode enviar mensagens no aplicativo que são exibidas quando um usuário abre seu aplicativo.
@@ -43,4 +47,4 @@ Os eventos personalizados são acionados pela interação do usuário após a ab
 
 Para rastrear atividades de toque e basear a frequência de exibição no número de toques, atribua uma ação diferente de &quot;descartar&quot; a um botão principal ou secundário.
 
-Para obter mais informações, consulte [Mensagens no aplicativo](https://experienceleague.adobe.com/pt-br/docs/marketo/using/product-docs/mobile-marketing/in-app-messages/creating-in-app-messages/create-an-in-app-message) na documentação do produto.
+Para obter mais informações, consulte [Mensagens no aplicativo](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/mobile-marketing/in-app-messages/creating-in-app-messages/create-an-in-app-message) na documentação do produto.

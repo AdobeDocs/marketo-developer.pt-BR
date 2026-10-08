@@ -3,22 +3,29 @@ title: Oportunidades
 feature: REST API
 description: API REST do Marketo para descrever, consultar, criar e atualizar oportunidades, desduplicação e campos pesquisáveis, limites e comportamento somente leitura com sincronização do SFDC ou Dynamics.
 exl-id: 46451285-4125-4857-890a-575069a68288
-TQID: https://experienceleague.adobe.com/rBDJcXWQrN5qyKRWHyzVC-sc9BH2mQFLm7fKUk-NUn8
+TQID: 'https://experienceleague.adobe.com/rBDJcXWQrN5qyKRWHyzVC-sc9BH2mQFLm7fKUk-NUn8'
 product_v2:
   - id: b27e5950-9033-45ac-9f86-eb22e567f615
+    internal-label: Marketo Engage
 feature_v2:
   - id: c5f60233-d5ea-4453-a799-0ad258b4d399
+    internal-label: Database
+  - id: dca84292-69e9-4116-a575-667d31fa060d
+    internal-label: APIs
+subfeature_v2:
+  - id: cf1396d8-ab85-4e93-b35d-d9b573024abf
+    internal-label: REST APIs
 role_v2:
   - id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
+    internal-label: Admin
 topic_v2:
   - id: a004cc84-67b9-4a33-a3a7-8ec7273ef4dc
-source-git-commit: aeb0d5a176ffdd0910ee533353593bba95f91d08
+    internal-label: Metadata
+source-git-commit: 5620f050ba834be3f6648650b5cc7d781ea394bf
 workflow-type: tm+mt
-source-wordcount: 702
+source-wordcount: '702'
 ht-degree: 0%
-
 ---
-
 # Oportunidades
 
 [Referência do endpoint da oportunidade](https://developer.adobe.com/marketo-apis/api/mapi#tag/Opportunities)
@@ -27,7 +34,7 @@ O Marketo fornece APIs para ler, escrever, criar e atualizar registros de oportu
 
 A API expõe ambos os tipos de objeto. Assim como na maioria dos tipos de objeto de banco de dados de clientes potenciais, cada um tem uma chamada Descrever correspondente que retorna metadados de objeto.
 
-As APIs de oportunidade fornecem acesso somente leitura para assinaturas que têm a [Sincronização do SFDC](https://experienceleague.adobe.com/docs/marketo/using/product-docs/crm-sync/salesforce-sync/sfdc-sync-details/sfdc-sync-field-sync.html?lang=pt-BR) ou a [Sincronização do Microsoft Dynamics](https://experienceleague.adobe.com/docs/marketo/using/product-docs/crm-sync/microsoft-dynamics/microsoft-dynamics-sync-details/microsoft-dynamics-sync-user-sync.html?lang=pt-BR) habilitada.
+As APIs de oportunidade fornecem acesso somente leitura para assinaturas que têm a [Sincronização do SFDC](https://experienceleague.adobe.com/docs/marketo/using/product-docs/crm-sync/salesforce-sync/sfdc-sync-details/sfdc-sync-field-sync.html?lang=en) ou a [Sincronização do Microsoft Dynamics](https://experienceleague.adobe.com/docs/marketo/using/product-docs/crm-sync/microsoft-dynamics/microsoft-dynamics-sync-details/microsoft-dynamics-sync-user-sync.html?lang=en) habilitada.
 
 ## Descrever
 
@@ -250,7 +257,7 @@ GET /rest/v1/opportunities/schema/fields/externalOpportunityId.json
 }
 ```
 
-#### Procurar
+#### Navegar
 
 O ponto de extremidade [Obter Campos de Oportunidade](https://developer.adobe.com/marketo-apis/api/mapi#operation/getOpportunityFieldsUsingGET) recupera metadados para todos os campos no objeto da empresa. Por padrão, retorna no máximo 300 registros. Use o parâmetro de consulta `batchSize` para reduzir esse número.
 

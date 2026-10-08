@@ -2,13 +2,23 @@
 title: Obter atualizações da API do lead
 feature: REST API
 description: Saiba mais sobre as alterações nos limites para Obter atividades de cliente potencial e Obter endpoints de alterações de cliente potencial.
-source-git-commit: 3e6d310c5aec1a3435424fb122b71d825db5af0e
+product_v2:
+  - id: b27e5950-9033-45ac-9f86-eb22e567f615
+    internal-label: Marketo Engage
+feature_v2:
+  - id: dca84292-69e9-4116-a575-667d31fa060d
+    internal-label: APIs
+subfeature_v2:
+  - id: cf1396d8-ab85-4e93-b35d-d9b573024abf
+    internal-label: REST APIs
+role_v2:
+  - id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
+    internal-label: Admin
+source-git-commit: 5620f050ba834be3f6648650b5cc7d781ea394bf
 workflow-type: tm+mt
 source-wordcount: '311'
 ht-degree: 0%
-
 ---
-
 # Obter atualizações da API do lead
 
 A partir de 30 de setembro de 2026, as chamadas para os pontos de extremidade [Obter Atividades de Cliente Potencial](https://developer.adobe.com/marketo-apis/api/mapi#operation/getLeadActivitiesUsingGET) ou [Obter Alterações de Cliente Potencial](https://developer.adobe.com/marketo-apis/api/mapi#operation/getLeadChangesUsingGET) que incluem o parâmetro `listId` falharão se as listas de destino contiverem 10.000 ou mais clientes potenciais. Os pontos de extremidade retornarão um Código de Erro 1003 indicando que a lista estática de destino tem muitos registros.
@@ -28,7 +38,7 @@ Compartilhe este documento com as pessoas ou a equipe responsável pelas integra
 Dependendo do caso de uso, use uma destas opções de migração:
 
 * Limitar listas estáticas usadas para extração de atividade a 10.000 membros. Divida as listas existentes em listas menores para continuar pesquisando o mesmo público-alvo para atividades do.
-* Extraia atividades ou alterações no valor dos dados usando a Extração de atividade em massa ou os Fluxos de dados. Ingresse os resultados na associação de lista estática com [getLeadByListId](https://developer.adobe.com/marketo-apis/api/mapi#operation/getLeadsByListIdUsingGET_1) ou [Extração de Cliente Potencial em Massa](https://experienceleague.adobe.com/pt-br/docs/marketo-developer/marketo/rest/bulk-extract/bulk-lead-extract).
+* Extraia atividades ou alterações no valor dos dados usando a Extração de atividade em massa ou os Fluxos de dados. Ingresse os resultados na associação de lista estática com [getLeadByListId](https://developer.adobe.com/marketo-apis/api/mapi#operation/getLeadsByListIdUsingGET_1) ou [Extração de Cliente Potencial em Massa](https://experienceleague.adobe.com/en/docs/marketo-developer/marketo/rest/bulk-extract/bulk-lead-extract).
 
 ## O Que Acontecerá Se Eu Não Fizer Nada?
 

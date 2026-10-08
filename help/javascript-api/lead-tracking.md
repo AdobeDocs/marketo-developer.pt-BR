@@ -3,26 +3,35 @@ title: Acompanhamento de lead
 description: Saiba como incorporar o Marketo Munchkin JavaScript, rastrear visitas e cliques, gerenciar leads conhecidos e anônimos, cookies entre domínios e recusar campanhas inteligentes.
 feature: Munchkin Tracking Code, Javascript
 exl-id: 7ece5133-9d32-4be3-a940-4ac0310c4d8b
-TQID: https://experienceleague.adobe.com/nGUcLLgL9X7PBKf2E5IzppDj8e-SyEtxmkQaESd90mE
+TQID: 'https://experienceleague.adobe.com/nGUcLLgL9X7PBKf2E5IzppDj8e-SyEtxmkQaESd90mE'
 product_v2:
   - id: b27e5950-9033-45ac-9f86-eb22e567f615
+    internal-label: Marketo Engage
 feature_v2:
   - id: a7170d27-32ab-462b-a333-269abc654483
+    internal-label: Smart Campaigns
   - id: b3b8a63f-51fc-40f6-a7d2-a31c5d49fb45
+    internal-label: Configuration
   - id: d1d0a9cd-295d-4976-8c39-ddae266f240e
+    internal-label: Administration
+  - id: 1c1a93b2-f024-5627-9905-6faf6fcc22be
+    internal-label: Munchkin Tracking Code
+  - id: dda1332a-c3e0-583f-9d9b-15f1934e0ad3
+    internal-label: Javascript
 subfeature_v2:
   - id: d0251300-e25f-466f-9856-7e11ce8fa7aa
+    internal-label: Smart lists
 role_v2:
   - id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
+    internal-label: Admin
 topic_v2:
   - id: eddd9b14-83bd-4ff4-9072-54a4a484abb7
-source-git-commit: aeb0d5a176ffdd0910ee533353593bba95f91d08
+    internal-label: Administration
+source-git-commit: 5620f050ba834be3f6648650b5cc7d781ea394bf
 workflow-type: tm+mt
-source-wordcount: 718
+source-wordcount: '718'
 ht-degree: 0%
-
 ---
-
 # API de rastreamento de lead
 
 O Munchkin JavaScript da Marketo rastreia visitas à página e cliques em links em páginas de aterrissagem do Marketo e páginas da Web externas. O Marketo registra essas interações como atividades &quot;Visitar página da Web&quot; e &quot;Link clicado na página da Web&quot;.
@@ -123,7 +132,7 @@ Os cookies do Munchkin são específicos para cada domínio de segundo nível, c
 
 ## Beta
 
-Para aceitar o canal beta do Munchkin para suas páginas de aterrissagem, acesse [Admin -> Treasure Chest](https://experienceleague.adobe.com/pt-br/docs/marketo/using/product-docs/administration/settings/enable-or-disable-treasure-chest-features) e ative a configuração &quot;Munchkin Beta nas páginas de aterrissagem&quot;.
+Para aceitar o canal beta do Munchkin para suas páginas de aterrissagem, acesse [Admin -> Treasure Chest](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/administration/settings/enable-or-disable-treasure-chest-features) e ative a configuração &quot;Munchkin Beta nas páginas de aterrissagem&quot;.
 
 Esta configuração adiciona trechos de código ao menu **[!UICONTROL Admin]** -> **[!UICONTROL Munchkin]**. Use esses trechos para executar a versão beta em sites externos.
 

@@ -3,20 +3,23 @@ title: Recomendação de rich media
 description: Configure a Recomendação de mídia avançada usando a tag RTP de conteúdo preditivo do Marketo, divs template1 template2 template3, GET para preencher, SET para configurar categorias.
 feature: Javascript
 exl-id: ee92e46d-e529-40a2-a0d0-ee233916f004
-TQID: https://experienceleague.adobe.com/ygm5h1FJZZW4mC318-fRR3VAcO6j1sitcAeqIUjDTbI
+TQID: 'https://experienceleague.adobe.com/ygm5h1FJZZW4mC318-fRR3VAcO6j1sitcAeqIUjDTbI'
 product_v2:
   - id: b27e5950-9033-45ac-9f86-eb22e567f615
+    internal-label: Marketo Engage
 feature_v2:
   - id: b3b8a63f-51fc-40f6-a7d2-a31c5d49fb45
+    internal-label: Configuration
+  - id: dda1332a-c3e0-583f-9d9b-15f1934e0ad3
+    internal-label: Javascript
 role_v2:
   - id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
-source-git-commit: 3e6d310c5aec1a3435424fb122b71d825db5af0e
+    internal-label: Admin
+source-git-commit: 5620f050ba834be3f6648650b5cc7d781ea394bf
 workflow-type: tm+mt
-source-wordcount: 814
+source-wordcount: '814'
 ht-degree: 4%
-
 ---
-
 # Recomendação de rich media
 
 Para exibir um modelo de Recomendação de mídia avançada, adicione as tags e chamadas de API necessárias à página.
@@ -28,7 +31,7 @@ Para exibir um modelo de Recomendação de mídia avançada, adicione as tags e 
 1. No corpo da página:
    1. Coloque a tag de modelo (classe div) onde deseja que o modelo apareça.
 
-Para obter mais informações, consulte [Habilitar Conteúdo Preditivo para Mídia da Web](https://experienceleague.adobe.com/pt-br/docs/marketo/using/product-docs/predictive-content/enabling-predictive-content/enable-predictive-content-for-web-rich-media).
+Para obter mais informações, consulte [Habilitar Conteúdo Preditivo para Mídia da Web](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/predictive-content/enabling-predictive-content/enable-predictive-content-for-web-rich-media).
 
 ## Tag de modelo
 

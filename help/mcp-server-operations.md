@@ -15,10 +15,13 @@ feature_v2:
     internal-label: APIs
   - id: e64968b2-4ee5-47f9-8cae-0588f184b9eb
     internal-label: Programs
+role_v2:
+  - id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
+    internal-label: Admin
 topic_v2:
   - id: bbbea26f-9621-49eb-9ab8-e06fb3bbce8c
     internal-label: Artificial intelligence
-source-git-commit: 56fb36ccfa88bb90244f7756b0fba6ac787bfbfe
+source-git-commit: 5620f050ba834be3f6648650b5cc7d781ea394bf
 workflow-type: tm+mt
 source-wordcount: '1214'
 ht-degree: 50%
@@ -28,7 +31,7 @@ ht-degree: 50%
 
 As seguintes operações estão disponíveis através do servidor MCP [!DNL Marketo Engage]. O servidor fornece pontos de extremidade somente leitura ou não destrutivos. O sistema de IA não pode usar `Delete` ou outras operações destrutivas.
 
-Para obter informações sobre como os dados são tratados com a IA do Marketo e o servidor MCP do Marketo Engage, consulte a página [Informações de Dados](https://experienceleague.adobe.com/pt-br/docs/marketo/using/product-docs/marketo-ai/data-information).
+Para obter informações sobre como os dados são tratados com a IA do Marketo e o servidor MCP do Marketo Engage, consulte a página [Informações de Dados](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/marketo-ai/data-information).
 
 ## Exportação em massa
 

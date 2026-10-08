@@ -3,20 +3,30 @@ title: Regras de redirecionamento de páginas
 feature: REST API, Landing Pages
 description: Use as APIs REST do Marketo Asset para criar, consultar, atualizar e excluir regras de redirecionamento de página de aterrissagem com filtros, paginação, opções de nome de host e destinos que não sejam da Marketo.
 exl-id: f63aa5ef-5872-4401-be75-6fb9b2977734
-TQID: https://experienceleague.adobe.com/2gePbKA3xeoRdnL8mNnObN-GPTX00Ii4-zcM0lBjs-o
+TQID: 'https://experienceleague.adobe.com/2gePbKA3xeoRdnL8mNnObN-GPTX00Ii4-zcM0lBjs-o'
 product_v2:
   - id: b27e5950-9033-45ac-9f86-eb22e567f615
+    internal-label: Marketo Engage
 feature_v2:
   - id: f82558ea-6af5-44eb-a424-5b3389abb0a3
+    internal-label: Templates
+  - id: dca84292-69e9-4116-a575-667d31fa060d
+    internal-label: APIs
+  - id: c2dbad80-0f5c-4d96-a798-2a65f93b8721
+    internal-label: Assets
+subfeature_v2:
+  - id: cf1396d8-ab85-4e93-b35d-d9b573024abf
+    internal-label: REST APIs
+  - id: edda586e-0147-48f2-b791-992622a00783
+    internal-label: Landing pages
 role_v2:
   - id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
-source-git-commit: aeb0d5a176ffdd0910ee533353593bba95f91d08
+    internal-label: Admin
+source-git-commit: 5620f050ba834be3f6648650b5cc7d781ea394bf
 workflow-type: tm+mt
-source-wordcount: 596
+source-wordcount: '596'
 ht-degree: 5%
-
 ---
-
 # Regras de redirecionamento de páginas
 
 [Referência de ponto de extremidade das regras de redirecionamento da landing page](https://developer.adobe.com/marketo-apis/api/asset#tag/Landing-Page-Redirect-Rules)
@@ -64,7 +74,7 @@ GET /rest/asset/v1/redirectRule/{id}.json
 }
 ```
 
-### Procurar
+### Navegar
 
 O ponto de extremidade [Obter Regras de Redirecionamento de Página de Aterrissagem](https://developer.adobe.com/marketo-apis/api/asset#operation/getLandingPageRedirectRulesUsingGET) retorna registros de regra de redirecionamento de página de aterrissagem.
 
@@ -162,7 +172,7 @@ O parâmetro `redirectTo` especifica o destino como um objeto JSON com um par ti
 | Marketo | landingPageId | {&quot;type&quot;:&quot;landingPageId&quot;,&quot;value&quot;:&quot;1774&quot;} |
 | Não Marketo | url | {&quot;type&quot;:&quot;url&quot;,&quot;value&quot;:&quot;www.contactLogs.com&quot;} |
 
-Para obter mais informações, consulte [Redirecionar uma página de aterrissagem do Marketo para outra página](https://experienceleague.adobe.com/docs/marketo/using/product-docs/demand-generation/landing-pages/landing-page-actions/redirect-a-marketo-landing-page-to-another-page.html?lang=pt-BR).
+Para obter mais informações, consulte [Redirecionar uma página de aterrissagem do Marketo para outra página](https://experienceleague.adobe.com/docs/marketo/using/product-docs/demand-generation/landing-pages/landing-page-actions/redirect-a-marketo-landing-page-to-another-page.html).
 
 ```http
 POST /rest/asset/v1/redirectRules.json
