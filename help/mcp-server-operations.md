@@ -31,7 +31,7 @@ ht-degree: 50%
 
 As seguintes operações estão disponíveis através do servidor MCP [!DNL Marketo Engage]. O servidor fornece pontos de extremidade somente leitura ou não destrutivos. O sistema de IA não pode usar `Delete` ou outras operações destrutivas.
 
-Para obter informações sobre como os dados são tratados com a IA do Marketo e o servidor MCP do Marketo Engage, consulte a página [Informações de Dados](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/marketo-ai/data-information).
+Para obter informações sobre como os dados são tratados com a IA do Marketo e o servidor MCP do Marketo Engage, consulte a página [Informações de Dados](https://experienceleague.adobe.com/pt-br/docs/marketo/using/product-docs/marketo-ai/data-information).
 
 ## Exportação em massa
 
