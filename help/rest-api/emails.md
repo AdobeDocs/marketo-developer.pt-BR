@@ -3,24 +3,33 @@ title: Emails
 feature: REST API
 description: Saiba como usar a API REST do Marketo Asset para consultar e gerenciar ativos de email por ID, nome ou navegação de pasta, com observações sobre conteúdo preditivo e limites de teste A/B.
 exl-id: 6875730d-c74a-42cf-a3d2-dad7a3ac535d
-TQID: https://experienceleague.adobe.com/t2FyPbwS836MvOe5rL0rVS7ibtzzZMmXwmgHBDZEr8Q
+TQID: 'https://experienceleague.adobe.com/t2FyPbwS836MvOe5rL0rVS7ibtzzZMmXwmgHBDZEr8Q'
 product_v2:
   - id: b27e5950-9033-45ac-9f86-eb22e567f615
+    internal-label: Marketo Engage
 feature_v2:
   - id: c5f60233-d5ea-4453-a799-0ad258b4d399
+    internal-label: Database
   - id: e64968b2-4ee5-47f9-8cae-0588f184b9eb
+    internal-label: Programs
   - id: f82558ea-6af5-44eb-a424-5b3389abb0a3
+    internal-label: Templates
+  - id: dca84292-69e9-4116-a575-667d31fa060d
+    internal-label: APIs
+subfeature_v2:
+  - id: cf1396d8-ab85-4e93-b35d-d9b573024abf
+    internal-label: REST APIs
 role_v2:
   - id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
+    internal-label: Admin
 topic_v2:
   - id: a004cc84-67b9-4a33-a3a7-8ec7273ef4dc
-source-git-commit: aeb0d5a176ffdd0910ee533353593bba95f91d08
+    internal-label: Metadata
+source-git-commit: 5620f050ba834be3f6648650b5cc7d781ea394bf
 workflow-type: tm+mt
-source-wordcount: 1763
+source-wordcount: '1763'
 ht-degree: 2%
-
 ---
-
 # Emails
 
 [Referência de ponto de extremidade de email](https://developer.adobe.com/marketo-apis/api/asset#tag/Emails)
@@ -172,7 +181,7 @@ GET /rest/asset/v1/email/byName.json?name=My Email&folder={"id":1056,"type"="Fol
 }
 ```
 
-### Procurar
+### Navegar
 
 A navegação por email segue o padrão da API de ativos e é compatível com estes filtros opcionais:
 
@@ -773,7 +782,7 @@ Para o exemplo de `Skeleton`, a tabela a seguir mapeia cada `moduleId` para seu 
 | dois artigos | 6 |
 | rodapé | 7 |
 
-#### Adicionar
+#### Add
 
 Para [adicionar um módulo](https://developer.adobe.com/marketo-apis/api/asset#operation/addModuleUsingPOST), selecione um módulo existente no modelo do email. Especifique a ID do email e `moduleId` como parâmetros de caminho. O parâmetro de consulta `index` necessário determina a posição do módulo. Se `index` exceder o maior índice existente, a API anexará o módulo ao email.
 

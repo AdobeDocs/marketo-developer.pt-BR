@@ -3,20 +3,26 @@ title: Importação em massa
 feature: REST API
 description: Importação em massa do Marketo para carregar clientes em potencial, objetos personalizados e membros do programa por meio de uploads de várias partes, criação de trabalhos assíncronos, status de pesquisa e falhas de manuseio.
 exl-id: f7922fd2-8408-4d04-8955-0f8f58914d24
-TQID: https://experienceleague.adobe.com/lr9dyX-fY-oJ2LM5P0zE1m24HtFYKQYYbxMkVe--PkE
+TQID: 'https://experienceleague.adobe.com/lr9dyX-fY-oJ2LM5P0zE1m24HtFYKQYYbxMkVe--PkE'
 product_v2:
   - id: b27e5950-9033-45ac-9f86-eb22e567f615
+    internal-label: Marketo Engage
 feature_v2:
   - id: c5f60233-d5ea-4453-a799-0ad258b4d399
+    internal-label: Database
+  - id: dca84292-69e9-4116-a575-667d31fa060d
+    internal-label: APIs
+subfeature_v2:
+  - id: cf1396d8-ab85-4e93-b35d-d9b573024abf
+    internal-label: REST APIs
 role_v2:
   - id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
-source-git-commit: aeb0d5a176ffdd0910ee533353593bba95f91d08
+    internal-label: Admin
+source-git-commit: 5620f050ba834be3f6648650b5cc7d781ea394bf
 workflow-type: tm+mt
-source-wordcount: 526
+source-wordcount: '526'
 ht-degree: 3%
-
 ---
-
 # Importação em massa
 
 A Importação em Massa fornece interfaces para inserir grandes conjuntos de dados relacionados a pessoas e pessoas. Você pode importar três tipos de objetos:

@@ -3,7 +3,7 @@ title: Migração para a API REST
 feature: SOAP
 description: Guia passo a passo para migrar o Marketo Engage do SOAP para o REST até 31 de janeiro de 2026, com mapeamentos de endpoint, OAuth, métodos de sincronização de clientes potenciais e arquiteturas de referência.
 exl-id: c2956db3-defe-4163-99f3-58654ce8ee2b
-TQID: https://experienceleague.adobe.com/pEtAxdR8gw0XQ9YFM8kEIxhQvK8LbHSFXBYPcXRGUjs
+TQID: 'https://experienceleague.adobe.com/pEtAxdR8gw0XQ9YFM8kEIxhQvK8LbHSFXBYPcXRGUjs'
 product_v2:
   - id: b27e5950-9033-45ac-9f86-eb22e567f615
     internal-label: Marketo Engage
@@ -20,10 +20,15 @@ feature_v2:
     internal-label: Database
   - id: e64968b2-4ee5-47f9-8cae-0588f184b9eb
     internal-label: Programs
+  - id: dca84292-69e9-4116-a575-667d31fa060d
+    internal-label: APIs
+subfeature_v2:
+  - id: 567da6d8-7120-5e34-b91b-392b2d1402ff
+    internal-label: SOAP
 role_v2:
   - id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
     internal-label: Admin
-source-git-commit: 4dffbef0e0ea16393a9e30f5f8e1021331ca9a37
+source-git-commit: 5620f050ba834be3f6648650b5cc7d781ea394bf
 workflow-type: tm+mt
 source-wordcount: '1418'
 ht-degree: 4%
@@ -36,7 +41,7 @@ A API do Marketo Engage SOAP será desativada após 31 de março de 2026. Todas 
 
 A API do SOAP oferece suporte a uma variedade limitada de casos de uso em comparação ao [REST AP](https://experienceleague.adobe.com/pt-br/docs/marketo-developer/marketo/rest/rest-api)I. Ao determinar quais endpoints mapear seus casos de uso, você deve seguir as [Práticas recomendadas de integração do Marketo](https://experienceleague.adobe.com/pt-br/docs/marketo-developer/marketo/rest/marketo-integration-best-practices)
 
-[Arquiteturas de Referência](https://experienceleague.adobe.com/pt-br/docs/marketo-developer/marketo/rest/reference-architectures) estão disponíveis para casos de uso de [Sincronização de CRM](https://experienceleague.adobe.com/docs/marketo-developer/assets/sync-architecture-whitepaper.pdf?lang=pt-BR) e [Exportação de Data Warehouse](https://experienceleague.adobe.com/docs/marketo-developer/assets/reference_architecture.pdf?lang=pt-BR).
+[Arquiteturas de Referência](https://experienceleague.adobe.com/pt-br/docs/marketo-developer/marketo/rest/reference-architectures) estão disponíveis para casos de uso de [Sincronização de CRM](https://experienceleague.adobe.com/docs/marketo-developer/assets/sync-architecture-whitepaper.pdf?lang=en) e [Exportação de Data Warehouse](https://experienceleague.adobe.com/docs/marketo-developer/assets/reference_architecture.pdf?lang=en).
 
 ## Autenticação
 
