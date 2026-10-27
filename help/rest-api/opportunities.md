@@ -21,20 +21,20 @@ role_v2:
 topic_v2:
   - id: a004cc84-67b9-4a33-a3a7-8ec7273ef4dc
     internal-label: Metadata
-source-git-commit: 5620f050ba834be3f6648650b5cc7d781ea394bf
+source-git-commit: 1cdb28422994b772a0fa430e213facaf26817952
 workflow-type: tm+mt
 source-wordcount: '702'
 ht-degree: 0%
 ---
 # Oportunidades
 
-[Referência do endpoint da oportunidade](https://developer.adobe.com/marketo-apis/api/mapi#tag/Opportunities)
+[Referência do endpoint da oportunidade](https://developer.adobe.com/marketo-apis/api/mapi#tag/Oppofrtunities)
 
 O Marketo fornece APIs para ler, escrever, criar e atualizar registros de oportunidade. No Marketo, o objeto intermediário Função da oportunidade vincula os registros da oportunidade aos registros de cliente potencial e contato. Uma oportunidade pode, portanto, estar vinculada a muitos leads individuais.
 
 A API expõe ambos os tipos de objeto. Assim como na maioria dos tipos de objeto de banco de dados de clientes potenciais, cada um tem uma chamada Descrever correspondente que retorna metadados de objeto.
 
-As APIs de oportunidade fornecem acesso somente leitura para assinaturas que têm a [Sincronização do SFDC](https://experienceleague.adobe.com/docs/marketo/using/product-docs/crm-sync/salesforce-sync/sfdc-sync-details/sfdc-sync-field-sync.html?lang=pt-BR) ou a [Sincronização do Microsoft Dynamics](https://experienceleague.adobe.com/docs/marketo/using/product-docs/crm-sync/microsoft-dynamics/microsoft-dynamics-sync-details/microsoft-dynamics-sync-user-sync.html?lang=pt-BR) habilitada.
+As APIs de oportunidade fornecem acesso somente leitura para assinaturas que têm a [Sincronização do SFDC](https://experienceleague.adobe.com/docs/marketo/using/product-docs/crm-sync/salesforce-sync/sfdc-sync-details/sfdc-sync-field-sync.html?lang=en) ou a [Sincronização do Microsoft Dynamics](https://experienceleague.adobe.com/docs/marketo/using/product-docs/crm-sync/microsoft-dynamics/microsoft-dynamics-sync-details/microsoft-dynamics-sync-user-sync.html?lang=en) habilitada.
 
 ## Descrever
 
