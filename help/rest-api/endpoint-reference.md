@@ -31,7 +31,7 @@ role_v2:
 topic_v2:
   - id: a004cc84-67b9-4a33-a3a7-8ec7273ef4dc
     internal-label: Metadata
-source-git-commit: 5620f050ba834be3f6648650b5cc7d781ea394bf
+source-git-commit: 1cdb28422994b772a0fa430e213facaf26817952
 workflow-type: tm+mt
 source-wordcount: '4807'
 ht-degree: 29%
@@ -41,9 +41,9 @@ ht-degree: 29%
 Use as seguintes referências para localizar parâmetros de solicitação, esquemas de resposta e exemplos para cada grupo de API REST do Marketo:
 
 - [Ativo](https://developer.adobe.com/marketo-apis/api/asset)
-- [Identidade](https://developer.adobe.com/marketo-apis/api/identity/)
+- [Identidade](https://developer.adobe.com/marketo-apis/api/identity)
 - [Banco de dados de leads](https://developer.adobe.com/marketo-apis/api/mapi)
-- [Gerenciamento de usuários](https://developer.adobe.com/marketo-apis/api/user/)
+- [Gerenciamento de usuários](https://developer.adobe.com/marketo-apis/api/user)
 
 ## Lista de Pontos de Extremidade {#endpoint_list}
 
